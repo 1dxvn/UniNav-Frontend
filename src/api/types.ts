@@ -60,3 +60,9 @@ export interface Health {
   buildings: number;
   edges: number;
 }
+
+export interface Floor {
+  level: number;
+  name: string;
+  building_count: number;
+}

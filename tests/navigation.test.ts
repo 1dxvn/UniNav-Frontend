@@ -39,4 +39,6 @@ test("a moving avatar connects to a reachable edge endpoint", () => {
   assert.equal(start.place.name, "Library");
   assert.equal(start.connector[0].z, -2);
   assert.equal(start.connector[1].z, -10);
+  const nearStart = routingStart(new Vector3(10, 0, -0.05), places, walkSegments(places, paths), 0);
+  assert.equal(nearStart.place.name, "Library");
 });

@@ -3,32 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UniNav</title>
+    <meta name="theme-color" content="#163e36" />
+    <meta name="description" content="Explore your campus in 3D and find your way with UniNav." />
+    <title>UniNav · Find your way</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23163e36'/%3E%3Cpath d='M11 12v11a9 9 0 0018 0V12M15 18l5-5 5 5' fill='none' stroke='%23c9edb6' stroke-width='3'/%3E%3C/svg%3E" />
   </head>
   <body>
-    <div id="scene"></div>
-    <aside id="panel" class="panel">
-      <h1>UniNav</h1>
-      <p id="api-status" class="muted">Connecting to the API…</p>
-
-      <form id="login-form" class="stack">
-        <label>Username <input name="username" autocomplete="username" required /></label>
-        <label>Password <input name="password" type="password" autocomplete="current-password" required /></label>
-        <button type="submit">Sign in</button>
-        <p id="login-error" class="error" hidden></p>
-      </form>
-
-      <div id="session" class="stack" hidden>
-        <p>Signed in as <strong id="session-user"></strong> <button id="logout" type="button" class="link">Sign out</button></p>
-        <label>From <select id="origin"></select></label>
-        <label>To <select id="destination"></select></label>
-        <label class="inline"><input id="avoid-stairs" type="checkbox" /> Avoid stairs</label>
-        <button id="calculate" type="button">Calculate route</button>
-        <p id="route-error" class="error" hidden></p>
-        <ol id="route-steps" class="steps"></ol>
-        <p id="route-summary" class="muted"></p>
-      </div>
-    </aside>
-    <script type="module" src="/src/main.ts"></script>
+    <header class="header">
+      <a class="brand" href="/app/" aria-label="UniNav home"><span class="brand-mark">u<span>↗</span></span><span>UniNav<span class="brand-dot">.</span></span></a>
+      <div class="header-divider"></div><span class="header-subtitle">A little direction. A world to discover.</span>
+      <div class="header-right"><span class="live-badge"><i></i> Campus explorer</span><button id="open-login" class="button button-dark" type="button">Sign in <span>↗</span></button><div id="session" class="user-session" hidden><span id="user-initial" class="user-initial"></span><span id="session-user"></span><button id="logout" class="text-button" type="button">Sign out</button></div></div>
+    </header>
+    <main class="workspace">
+      <aside class="sidebar">
+        <div class="intro"><span class="eyebrow">YOUR CAMPUS, CONNECTED</span><h1>Find your<br />next stop<span>.</span></h1><p>Less searching.<br />More getting where you belong.</p></div>
+        <section class="planner" aria-label="Plan your route">
+          <div class="section-heading"><h2>Where are you headed?</h2><span class="tiny-badge">01</span></div>
+          <label class="field-label" for="origin">START POINT</label><div class="select-wrap origin-wrap"><span class="input-symbol">◉</span><select id="origin" aria-label="Start point" disabled></select></div>
+          <p class="field-hint">Changing the start point places your avatar there.</p>
+          <label class="field-label" for="search">FIND A PLACE</label><div class="search-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Room, service or faculty…" autocomplete="off" /></div>
+          <div class="filter-row"><label class="sr-only" for="destination-floor">Destination floor</label><select id="destination-floor"><option value="all">All floors</option></select><span id="place-count" class="field-hint"></span></div>
+          <div id="place-list" class="place-list" aria-label="Destinations"></div>
+          <div id="destination-preview" class="destination-preview" hidden><span class="destination-icon">↗</span><div><span class="field-label">YOUR DESTINATION</span><strong id="destination-name"></strong><span id="destination-meta" class="field-hint"></span></div></div>
+          <label class="checkbox"><input id="avoid-stairs" type="checkbox" /><span>Avoid stairs</span><span class="checkbox-note">Accessible route</span></label>
+          <button id="calculate" class="button button-primary" type="button" disabled>Find my route <span>↗</span></button>
+          <p id="route-error" class="error" role="alert" hidden></p>
+        </section>
+        <section id="route-card" class="route-card" aria-label="Your route" hidden>
+          <div class="section-heading"><span class="eyebrow">YOUR ROUTE</span><span id="route-distance" class="route-distance"></span></div>
+          <h2 id="route-title"></h2><p id="route-summary" class="field-hint"></p>
+          <progress id="route-progress" max="1" value="0" aria-label="Route progress"></progress>
+          <div class="route-actions"><button id="follow" class="button button-dark" type="button">Start walking →</button><button id="cancel" class="button button-outline" type="button">Cancel</button></div>
+          <details><summary>Step-by-step directions</summary><ol id="route-steps" class="steps"></ol></details>
+        </section>
+        <div class="sidebar-note"><span>⌁</span><p>A familiar place.<br /><strong>A new perspective.</strong></p><span class="note-grid" aria-hidden="true">✳</span></div>
+      </aside>
+      <section class="viewport" aria-label="Campus explorer">
+        <div id="scene"></div>
+        <div class="map-heading"><span class="eyebrow">EXPLORE IN 3D</span><h2 id="floor-title">Ground floor</h2><span id="model-status" class="model-status">Connecting to campus…</span></div>
+        <div class="view-switch" aria-label="Camera view"><button id="isometric" class="active" type="button" aria-pressed="true">3D view</button><button id="top-view" type="button" aria-pressed="false">Top view</button></div>
+        <div id="map-loading" class="map-message" role="status"><span class="loading-ring"></span><h3>Finding our bearings…</h3><p>Connecting to your campus.</p><button id="retry" class="button button-dark" type="button" hidden>Try again</button></div>
+        <div class="floor-control"><label class="eyebrow" for="floor">FLOOR</label><select id="floor" aria-label="Visible floor"></select></div>
+        <div class="map-tools"><button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button><button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button><span></span><button id="reset-view" type="button" aria-label="Fit campus" title="Fit campus">⌖</button><button id="labels" type="button" aria-label="Toggle place labels" aria-pressed="true" title="Place labels">Aa</button><button id="references" type="button" aria-label="Toggle reference points" aria-pressed="false" title="Model reference points" hidden>△</button><button id="export" type="button" aria-label="Export view" title="Export view">↧</button></div>
+        <div class="compass" title="Plan +Y axis. This drawing is not oriented to geographic north."><span>+Y</span><svg id="plan-axis" viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 31 34 22 27 13 34Z" fill="#315e50"/><path d="M22 5v22l-9 7Z" fill="#a1b3a3"/></svg></div>
+        <div class="map-bottom"><div class="map-legend"><span><i class="legend-avatar"></i>You</span><span><i class="legend-path"></i>Walkway</span><span><i class="legend-route"></i>Your route</span></div><span class="scale-label">METRES · 1:1 WORLD SCALE</span></div>
+        <div class="walk-status"><span class="avatar-status-icon">↟</span><div><strong id="travel-status" role="status">Ready to explore</strong><span id="travel-detail">W A S D to walk · Drag to orbit · Scroll to zoom</span></div><span class="keycap">W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span></div>
+      </section>
+    </main>
+    <footer class="footer"><span id="api-status"><i class="status-dot"></i> Connecting to campus</span><span>UNINAV <span class="footer-separator">/</span> MADE FOR YOUR EVERYDAY JOURNEY</span><a href="/docs" target="_blank" rel="noopener">API docs ↗</a></footer>
+    <dialog id="auth-dialog" aria-labelledby="auth-title">
+      <button id="close-login" class="dialog-close" type="button" aria-label="Close sign in">×</button><span class="eyebrow">WELCOME TO UNINAV</span><h2 id="auth-title">Your campus awaits<span>.</span></h2><p id="auth-description">Sign in to find a route and start exploring.</p>
+      <form id="login-form" class="auth-form"><label>Username<input name="username" autocomplete="username" minlength="3" maxlength="50" pattern="[A-Za-z0-9_.-]+" required /></label><label>Password<input name="password" type="password" autocomplete="current-password" maxlength="72" required /></label><p id="login-error" class="error" role="alert" hidden></p><button id="login-submit" class="button button-primary" type="submit">Sign in →</button></form>
+      <button id="auth-toggle" class="text-button" type="button">New here? Create an account</button>
+    </dialog>
+    <script type="module" src="/src/app.ts"></script>
   </body>
 </html>

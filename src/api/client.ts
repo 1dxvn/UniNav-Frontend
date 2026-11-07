@@ -1,4 +1,4 @@
-import type { Building, CampusPath, Health, RouteRequest, RouteResponse, Token, User } from "./types.ts";
+import type { Building, CampusPath, Floor, Health, RouteRequest, RouteResponse, Token, User } from "./types.ts";
 
 // Same origin by default: FastAPI serves this app and the API from one host.
 // VITE_API_BASE_URL can point elsewhere if the API is ever hosted separately.
@@ -47,11 +47,18 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   if (init.body !== undefined) headers.set("Content-Type", "application/json");
   if (token) headers.set("Authorization", `Bearer ${token}`);
 
-  const response = await fetch(`${API_BASE_URL}${path}`, { ...init, headers });
+  let response: Response;
+  try {
+    response = await fetch(`${API_BASE_URL}${path}`, { ...init, headers, signal: init.signal ?? AbortSignal.timeout(15000) });
+  } catch {
+    throw new ApiError(0, "Cannot reach UniNav. Check your connection and try again.");
+  }
   if (response.status === 401) storeToken(null);
   if (!response.ok) {
     const body: unknown = await response.json().catch(() => null);
-    throw new ApiError(response.status, describeError(body, `Request failed with status ${response.status}.`));
+    const message = describeError(body, `Request failed with status ${response.status}.`);
+    const retry = response.headers.get("Retry-After");
+    throw new ApiError(response.status, response.status === 429 && retry ? `${message} Try again in ${retry} seconds.` : message);
   }
   if (response.status === 204) return undefined as T;
   return (await response.json()) as T;
@@ -67,13 +74,20 @@ export const api = {
       body: JSON.stringify({ username, password }),
     });
     storeToken(result.access_token);
-    return api.me();
+    try { return await api.me(); }
+    catch (error) { storeToken(null); throw error; }
+  },
+
+  async register(username: string, password: string): Promise<User> {
+    await request<User>("/auth/register", { method: "POST", body: JSON.stringify({ username, password }) });
+    return api.login(username, password);
   },
 
   me: (): Promise<User> => request<User>("/auth/me"),
   health: (): Promise<Health> => request<Health>("/health"),
   buildings: (): Promise<Building[]> => request<Building[]>("/buildings"),
   paths: (): Promise<CampusPath[]> => request<CampusPath[]>("/paths"),
+  floors: (): Promise<Floor[]> => request<Floor[]>("/floors"),
   calculateRoute: (body: RouteRequest): Promise<RouteResponse> =>
     request<RouteResponse>("/routes/calculate", { method: "POST", body: JSON.stringify(body) }),
 };

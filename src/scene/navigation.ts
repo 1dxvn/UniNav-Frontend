@@ -77,7 +77,7 @@ export function canWalk(from: Vector3, to: Vector3, segments: WalkSegment[], flo
 // Walking can end between nodes. Continue along that edge to a reachable endpoint
 // before using the API route; do not jump to an unrelated nearest room.
 export function routingStart(position: Vector3, places: Building[], segments: WalkSegment[], floor: number): { place: Building; connector: Vector3[] } {
-  const exact = places.find((place) => place.floor === floor && toScenePosition(place).distanceTo(position) < 0.08);
+  const exact = places.find((place) => place.floor === floor && toScenePosition(place).distanceTo(position) < 0.00001);
   if (exact) return { place: exact, connector: [position.clone(), toScenePosition(exact)] };
   const segment = nearestWalkSegment(position, segments, floor);
   if (!segment || projectOnSegment(position, segment.a, segment.b).distance > CORRIDOR_RADIUS + 0.01) {
