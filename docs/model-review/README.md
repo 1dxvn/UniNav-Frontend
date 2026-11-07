@@ -8,33 +8,36 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | --- | --- | --- |
 | H0 (Preclinic) | Route to the Preclinic through the north circulation and the storeroom; door leaves and furniture regenerated | `h0/api-routes.json`, `h0/walk-*.json` |
 | C1 (Plan 3, first visual pass) | Brick facades, glass frames and mullions, interior tiles, plaza pavers, gardens, trees and cypresses from the DWG, stone walls, green wall, fence, lamp posts, solar bike canopy, access pavilion roof and frame | `before/`, `after-c1/` |
+| C2 (Plan 3, interiors) | Shaped furniture inside the validated footprints, floors by use (ceramic, vinyl, oak laminate), hanging destination signs and an entrance sign | `after-c2/` |
 
 ## Comparable captures (Plan 3 §11)
 
 All Blender captures use the same cameras (`Review_Cameras` collection in `model/campus.blend`) at 1600 × 1000 px:
 
-| Capture | Camera | Before | After C1 |
-| --- | --- | --- | --- |
-| General view | `Cam_General` | `before/blender-general.png` | `after-c1/blender-general.png` |
-| Access / facade | `Cam_Entrance` | `before/blender-entrance.png` | `after-c1/blender-entrance.png` |
-| Patio / plaza | `Cam_Patio` | `before/blender-patio.png` | `after-c1/blender-patio.png` |
-| Interior with doors and furniture | `Cam_Interior2` | `before/blender-interior-2.png` | `after-c1/blender-interior-2.png` |
-| Interior from the garden side (trees now in front) | `Cam_Interior` | `before/blender-interior.png` | `after-c1/blender-interior.png` |
-| Browser, 3D, arrival at the Preclinic | app | `before/browser-3d-preclinic-arrival.png` | `after-c1/browser-3d-preclinic-arrival.png` |
-| Browser, top view with the Preclinic route | app | `before/browser-top-preclinic-route.png` | `after-c1/browser-top-preclinic-route.png` |
+The same file names appear in `before/`, `after-c1/` and `after-c2/`:
+
+| Capture | Camera | File |
+| --- | --- | --- |
+| General view | `Cam_General` | `blender-general.png` |
+| Access / facade | `Cam_Entrance` | `blender-entrance.png` |
+| Patio / plaza | `Cam_Patio` | `blender-patio.png` |
+| Interior with doors and furniture | `Cam_Interior2` | `blender-interior-2.png` |
+| Interior from the garden side (trees in front from C1 on) | `Cam_Interior` | `blender-interior.png` |
+| Browser, 3D, arrival at the Preclinic | app | `browser-3d-preclinic-arrival.png` |
+| Browser, top view with the Preclinic route | app | `browser-top-preclinic-route.png` |
+| Browser, 3D, arrival at ICETEX | app | `browser-3d-icetex-arrival.png` |
 
 The browser captures come from a temporary Playwright walk run by Claude against `http://127.0.0.1:8001`, in Brave. That run is kept out of `tests/` and writes nothing to `docs/verification/`.
 
 ## Checks repeated after each export
 
 1. **Collision rays.** The same rays as `collides()` in `src/scene/campus.ts` (heights 0.45 and 1.2 m, offsets ±0.22 m) are cast every 0.1 m along all API edges in both directions, against every mesh of the GLB.
-   - C1: 16 edges × 2 directions, **0 blocked**.
-   - 100 meshes and 52,688 triangles.
-   - **1.73 ms** per `collides()` call. The previous GLB took 3.35 ms.
+   - C1: 16 edges × 2 directions, **0 blocked**. 100 meshes and 52,688 triangles. **1.73 ms** per `collides()` call; the previous GLB took 3.35 ms.
+   - C2: **0 blocked**. 137 meshes and 73,644 triangles. **1.78 ms** per call. GLB 3.76 MB.
 2. **Browser walks.** Hall Acceso → ICETEX, Morphology Laboratory, Elevator and Restroom Hall and Preclinic, plus Preclinic → Hall Acceso.
-   - C1: all five reach `arrived`.
+   - C1 and C2: all five reach `arrived`.
    - Final error 0.000 m and maximum centre-line deviation ≤ 0.0007 m.
-   - No `blocked` state and no page errors (`after-c1/walks/`).
+   - No `blocked` state and no page errors (`after-c1/walks/`, `after-c2/walks/`).
 3. **API routes.** `/routes/calculate` for the same pairs returns 200 (`h0/api-routes.json`).
 4. **Served model.** `npm run build`; `dist/models/campus.glb` is the exported file.
 
