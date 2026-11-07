@@ -1,0 +1,29 @@
+{
+  "from": "Preclinic / Dentistry Coordination",
+  "to": "Hall Acceso",
+  "path": [
+    "Preclinic / Dentistry Coordination",
+    "Preclinic storeroom",
+    "North circulation east",
+    "North circulation west",
+    "Elevator and Restroom Hall",
+    "Hall corridor north",
+    "Hall corridor south",
+    "Hall junction",
+    "ICETEX doorway",
+    "ICETEX approach",
+    "South circulation",
+    "Access courtyard",
+    "Hall Acceso"
+  ],
+  "distance": 102.38191356730576,
+  "finalErrorMetres": 0,
+  "samples": 223,
+  "maxCentreLineErrorMetres": 0.0005868178760489971,
+  "statesSeen": [
+    "ready",
+    "walking",
+    "arrived"
+  ],
+  "pageErrors": []
+}

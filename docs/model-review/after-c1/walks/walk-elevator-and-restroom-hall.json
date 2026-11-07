@@ -1,0 +1,25 @@
+{
+  "from": "Hall Acceso",
+  "to": "Elevator and Restroom Hall",
+  "path": [
+    "Hall Acceso",
+    "Access courtyard",
+    "South circulation",
+    "ICETEX approach",
+    "ICETEX doorway",
+    "Hall junction",
+    "Hall corridor south",
+    "Hall corridor north",
+    "Elevator and Restroom Hall"
+  ],
+  "distance": 64.9657206921718,
+  "finalErrorMetres": 0,
+  "samples": 139,
+  "maxCentreLineErrorMetres": 0.0006085518714578724,
+  "statesSeen": [
+    "ready",
+    "walking",
+    "arrived"
+  ],
+  "pageErrors": []
+}

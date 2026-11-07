@@ -1,0 +1,22 @@
+{
+  "from": "Hall Acceso",
+  "to": "ICETEX",
+  "path": [
+    "Hall Acceso",
+    "Access courtyard",
+    "South circulation",
+    "ICETEX approach",
+    "ICETEX doorway",
+    "ICETEX"
+  ],
+  "distance": 50.07977350820436,
+  "finalErrorMetres": 0,
+  "samples": 117,
+  "maxCentreLineErrorMetres": 0.0006737538576851548,
+  "statesSeen": [
+    "ready",
+    "walking",
+    "arrived"
+  ],
+  "pageErrors": []
+}

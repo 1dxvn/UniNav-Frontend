@@ -1,0 +1,22 @@
+{
+  "from": "Hall Acceso",
+  "to": "Morphology Laboratory",
+  "path": [
+    "Hall Acceso",
+    "Access courtyard",
+    "South circulation",
+    "Laboratory corridor west",
+    "Laboratory corridor east",
+    "Morphology Laboratory"
+  ],
+  "distance": 71.29847808557872,
+  "finalErrorMetres": 0,
+  "samples": 158,
+  "maxCentreLineErrorMetres": 0.0006145935149220711,
+  "statesSeen": [
+    "ready",
+    "walking",
+    "arrived"
+  ],
+  "pageErrors": []
+}
