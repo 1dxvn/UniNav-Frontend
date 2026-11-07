@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "label": "UCC floor 5 navigation",
+  "floor": 5,
+  "model": "floor-5.glb",
+  "alignment": "api",
+  "transform": {
+    "scale": 1,
+    "rotationYDegrees": 0,
+    "translation": [
+      0,
+      15.26,
+      0
+    ]
+  },
+  "references": [
+    {
+      "buildingName": "P5_REF_1_Column_21_62",
+      "nodeName": "P5_REF_1_Column_21_62",
+      "planPosition": [
+        21.22,
+        62.3
+      ],
+      "position": [
+        21.22,
+        0,
+        -62.3
+      ]
+    },
+    {
+      "buildingName": "P5_REF_2_Column_47_37",
+      "nodeName": "P5_REF_2_Column_47_37",
+      "planPosition": [
+        46.99,
+        36.96
+      ],
+      "position": [
+        46.99,
+        0,
+        -36.96
+      ]
+    },
+    {
+      "buildingName": "P5_REF_3_Column_70_62",
+      "nodeName": "P5_REF_3_Column_70_62",
+      "planPosition": [
+        70.1,
+        62.34
+      ],
+      "position": [
+        70.1,
+        0,
+        -62.34
+      ]
+    }
+  ]
+}
