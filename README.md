@@ -1,41 +1,95 @@
-# UniNav Frontend
+﻿# UniNav Frontend
 
-Web client for [UniNav](https://github.com/1dxvn/UniNav): a Three.js campus scene written in
-TypeScript that signs in against the FastAPI backend and draws the routes it calculates.
+A TypeScript / Three.js campus explorer connected to the UniNav FastAPI backend.
+The UCC Bloque B first-floor GLB is supplied by Claude; all runtime routes come
+from FastAPI. The app supports sign-in and registration, search, floor selection,
+step-free graph filtering, keyboard movement, guidance, pause/resume and arrival.
 
-## Run
+## Start the real-floor demo
 
-The backend serves this app under `/app/`, so the normal setup is to clone this repository
-inside the backend folder and build it:
-
-```bash
-npm install
-npm run build          # type-checks and writes dist/
-cd .. && python main.py   # open http://localhost:8000/
-```
-
-For live reload while editing, keep FastAPI running on port 8000 and start Vite:
+Keep this independent repository cloned as `UniNav-Frontend/` inside the backend.
+It must be excluded by the backend's `.git/info/exclude`.
 
 ```bash
-npm run dev            # http://localhost:5173/app/
+npm ci
+npm run build
+cd ..
+python -m scripts.run_campus --port 8001
+# Windows: venv/Scripts/python.exe -m scripts.run_campus --port 8001
 ```
 
-Vite forwards API calls to `http://127.0.0.1:8000` (change it with `UNINAV_BACKEND_URL`).
+Open <http://127.0.0.1:8001/>. Sign in with `student` / `demo1234`.
+The real floor uses the backend's separate `uninav-campus.db`, seeded idempotently.
+`python main.py` still uses the original sample database and port 8000.
 
-## API base URL
+Three destinations are connected: ICETEX, Morphology Laboratory, and Elevator and
+Restroom Hall. Preclinic is available as an intentional no-route case while its
+actual doorway awaits confirmation. See [the one-minute rehearsal](docs/REHEARSAL.md).
 
-The client calls the API on the same origin it was loaded from. Set `VITE_API_BASE_URL` at
-build time only if the API is hosted elsewhere.
+## Development
 
-## Coordinates
+With the real-floor backend running on port 8001:
 
-Plan coordinates from the API `(x, y)` are metres and map to the Three.js XZ plane as
-`(x, -y)`. Height is Y, with 3.5 m per floor, the backend convention.
+```powershell
+$env:UNINAV_BACKEND_URL = 'http://127.0.0.1:8001'
+npm run dev
+# Open http://localhost:5173/app/
+```
+
+Vite is configured with `base: '/app/'` and proxies all existing API groups.
+FastAPI redirects `/` to `/app/` and serves `dist/` on the same origin. The API
+and `/docs` still start without a frontend build. The default development proxy
+is port 8000; `UNINAV_BACKEND_URL` changes it. `VITE_API_BASE_URL` is only needed
+when intentionally building for an API on another origin.
+
+Fonts and the model are local build assets; the browser needs no CDN or map API.
+No external service keys are stored in the frontend.
+
+## Movement and coordinates
+
+API plan metres `(x, y, floor)` become `(x, floor * 3.5, -y)` with world Y up.
+The drawing's +Y is a plan axis, not geographic north. The delivered model is at
+local zero and is translated up 3.5 m for API floor 1. Heights remain approximate.
+
+Choose a start point to place the avatar. Click a destination or search for it,
+find the route, then start walking. Pause/resume and Cancel are separate actions.
+W/A/S/D or arrows take manual control (W = plan +Y); Esc cancels guidance.
+Movement stays within graph corridors and model barriers. Calculating from a
+mid-edge position connects along that edge, respecting its direction.
+
+The client resolves every returned place and directed edge before drawing it.
+It never skips unknown waypoints or rounds corners across walls. The GLB loader
+checks three noncollinear references against the live API and actual named GLB
+nodes, with a maximum registration error of 0.15 m. A mismatch keeps the labelled
+graph preview available. See [model review](docs/campus-review.md) and
+[coordinate handoff](docs/campus-handoff.md).
+
+## Validation
+
+Tested with Node 24.19 and Python 3.14 on Windows. Tests are also TypeScript.
+
+```bash
+npm run typecheck
+npm test
+npm run build
+```
+
+With the real backend running, set `UNINAV_TEST_URL=http://127.0.0.1:8001` and run
+`npm run test:e2e`. Playwright uses an installed Brave on this Windows machine,
+`UNINAV_BROWSER` if supplied, or its Chromium (`npx playwright install chromium`).
+The sample test runs when the configured API contains the original sample campus.
+
+`node --experimental-strip-types tools/verify-model.ts` checks actual GLB anchors
+and clearance for every API edge. `tools/prepare-campus-graph.ts` is an offline
+geometry check and graph-drafting aid only; the app never imports it.
+Screenshots, the real API response and measured arrival coordinates are in
+[`docs/verification/`](docs/verification/).
 
 ## Layout
 
-```
-src/api/      typed client and response types for the FastAPI endpoints
-src/scene/    Three.js scene: places, paths, route line and avatar
-src/main.ts   panel: sign in, choose origin and destination, show the route
-```
+- `src/app.ts`: session, search, route panel, loading and error states.
+- `src/api/`: typed FastAPI client; no client pathfinder.
+- `src/scene/`: rendering, coordinates, validated navigation and GLB references.
+- `public/models/`: GLB, top capture and reference sidecar.
+- `model/`: Claude's editable Blender source and plan comparison, outside the build.
+- `tests/`, `tools/`: graph guards, browser rehearsal and model verification.
