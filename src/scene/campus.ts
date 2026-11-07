@@ -123,7 +123,9 @@ export class CampusScene {
       }
       if (key === "escape") this.cancel();
     }, options);
-    window.addEventListener("keyup", (event) => this.keys.delete(event.key.toLowerCase()), options);
+    window.addEventListener("keyup", (event) => {
+      if (this.keys.delete(event.key.toLowerCase())) this.emit();
+    }, options);
     window.addEventListener("blur", () => this.keys.clear(), options);
     document.addEventListener("visibilitychange", () => {
       this.keys.clear();
