@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-11-07T08:59:44.434Z",
+  "modelSha256": "d65846a8b614062d63e60a339da6e9c9ce29e8ffae2d01a90fbd16611e6a356e",
+  "rendererMode": "hardware",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "headless": true,
+  "general": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "samples": 720,
+    "durationMs": 5000.2,
+    "averageFps": 143.9942402303908,
+    "p95FrameMs": 7.100000000000364
+  },
+  "top": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "samples": 720,
+    "durationMs": 5000.099999999999,
+    "averageFps": 143.99712005759886,
+    "p95FrameMs": 7.100000000000364
+  },
+  "walking": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "samples": 720,
+    "durationMs": 5000.1,
+    "averageFps": 143.99712005759883,
+    "p95FrameMs": 7
+  }
+}

@@ -32,7 +32,7 @@ interface SceneEvents {
   floor: (floor: number) => void;
   model: (message: string, loaded: boolean, detail?: string) => void;
   view: (overview: boolean, top: boolean) => void;
-  resources: (state: { overview: boolean; loaded: string[]; visible: string[]; colliders: number }) => void;
+  resources: (state: { overview: boolean; preview: boolean; loaded: string[]; visible: string[]; colliders: number }) => void;
 }
 export class CampusScene {
   private readonly renderer: THREE.WebGLRenderer;
@@ -227,7 +227,7 @@ export class CampusScene {
 
   setFloor(floor: number, fit = true): void {
     this.overviewError = null;
-    if (this.overview) this.keys.clear();
+    this.keys.clear();
     this.overview = false;
     this.viewFloor = floor;
     this.renderer.shadowMap.needsUpdate = true;
@@ -266,7 +266,7 @@ export class CampusScene {
     await this.syncModels(true);
     if (generation !== this.routeGeneration) return;
     if (this.getCatalog()) for (const floor of this.routeFloors()) {
-      if (!this.models?.values().some((model) => model.entry.floors.includes(floor))) throw new Error(`Floor ${floor} model is pending. This route cannot be followed yet.`);
+      if (!this.models?.values().some((model) => model.entry.kind !== "floor-preview" && model.entry.floors.includes(floor))) throw new Error(`Floor ${floor} navigation is pending. This route cannot be followed yet.`);
     }
     for (let i = 1; i < this.waypoints.length; i++) {
       const a = this.waypoints[i - 1].clone().add(new THREE.Vector3(0, 0.13, 0));
@@ -281,7 +281,13 @@ export class CampusScene {
     this.state = this.waypoints.length === 1 ? "arrived" : "ready";
     this.emit();
   }
-  follow(): void { if (["ready", "paused"].includes(this.state)) { this.keys.clear(); this.state = "walking"; this.emit(); } }
+  follow(): void {
+    if (["ready", "paused"].includes(this.state)) {
+      this.keys.clear();
+      if (this.viewFloor !== this.avatarFloor) this.setFloor(this.avatarFloor);
+      this.state = "walking"; this.emit();
+    }
+  }
   pause(): void { if (this.state === "walking") { this.state = "paused"; this.emit(); } }
   cancel(): void { this.clearRoute(); this.emit(); }
   clearRoute(): void {
@@ -325,8 +331,9 @@ export class CampusScene {
 
   resetView(): void {
     const points = this.places.filter((place) => this.overview || place.floor === this.viewFloor).map(toScenePosition);
-    const bounds = points.length ? new THREE.Box3().setFromPoints(points).expandByScalar(5) : new THREE.Box3(new THREE.Vector3(-20, 0, -15), new THREE.Vector3(20, 0, 15));
-    for (const model of this.models?.values() ?? []) if (model.root.visible) bounds.union(new THREE.Box3().setFromObject(model.root));
+    const visibleModels = this.models?.values().filter((model) => model.root.visible) ?? [];
+    const bounds = points.length ? new THREE.Box3().setFromPoints(points).expandByScalar(5) : visibleModels.length ? new THREE.Box3() : new THREE.Box3(new THREE.Vector3(-20, 0, -15), new THREE.Vector3(20, 0, 15));
+    for (const model of visibleModels) bounds.union(new THREE.Box3().setFromObject(model.root));
     const center = bounds.getCenter(new THREE.Vector3());
     const size = bounds.getSize(new THREE.Vector3());
     const aspect = this.container.clientWidth / Math.max(this.container.clientHeight, 1);
@@ -361,6 +368,11 @@ export class CampusScene {
     // The unrelated sample API must not acquire the UCC inventory.
     return this.manifest?.models.some((entry) => entry.binding?.placeNames.every((name) => this.places.some((place) => place.name === name))) ? this.manifest.catalog : null;
   }
+  floorPresentation(floor: number): "navigable" | "preview" | "pending" {
+    if (!this.getCatalog()) return "pending";
+    const entries = this.manifest!.models.filter((entry) => entry.state === "ready" && entry.floors.includes(floor));
+    return entries.some((entry) => entry.kind !== "floor-preview") ? "navigable" : entries.length ? "preview" : "pending";
+  }
   private async loadModelEntry(entry: ModelEntry): Promise<LoadedCampusModel> {
     if (entry.kind === "exterior") {
       const modelURL = new URL(entry.model!,new URL(import.meta.env.BASE_URL,location.href));
@@ -374,13 +386,15 @@ export class CampusScene {
       // Exterior geometry has no navigation references and never becomes a collider.
       return { entry,root,pins:new THREE.Group(),colliders:[],references:0 };
     }
-    if (!entry.binding || await dataFingerprint(entry.binding.placeNames,this.places,this.paths) !== entry.binding.sha256) throw new Error(`Model data revision differs: ${entry.label}. Reload compatible campus data.`);
+    const preview = entry.kind === "floor-preview";
+    if (!preview && (!entry.binding || await dataFingerprint(entry.binding.placeNames,this.places,this.paths) !== entry.binding.sha256)) throw new Error(`Model data revision differs: ${entry.label}. Reload compatible campus data.`);
     const referenceURL = new URL(entry.reference!,new URL(import.meta.env.BASE_URL,location.href));
     const response = await fetch(referenceURL,{ cache:"no-cache" });
     if (!response.ok) throw new Error(`Could not read references for ${entry.label}.`);
     const referenceBytes = await response.arrayBuffer();
     if (await sha256(new Uint8Array(referenceBytes)) !== entry.referenceSha256) throw new Error(`Model references changed: ${entry.label}.`);
     const reference = parseReference(JSON.parse(new TextDecoder().decode(referenceBytes)));
+    if (preview !== (reference.alignment === "structural")) throw new Error("Structural references are reserved for non-navigable floor previews.");
     if (entry.floors.length !== 1 || entry.floors[0] !== reference.floor) throw new Error("Model floor and reference floor differ.");
     const aligned = validateAlignment(reference, this.places);
     const modelURL = new URL(reference.model,referenceURL);
@@ -403,7 +417,7 @@ export class CampusScene {
       pin.position.copy(point.position).y += 0.8;
       pins.add(pin);
     }
-    return { entry,reference,root,pins,colliders:modelColliders(root),references:aligned.length };
+    return { entry,reference,root,pins,colliders:preview ? [] : modelColliders(root),references:aligned.length };
   }
   private routeFloors(): number[] {
     return [...new Set(this.places.filter((place) => this.waypoints.some((point) => point.distanceTo(toScenePosition(place)) < 0.01)).map((place) => place.floor))];
@@ -411,7 +425,8 @@ export class CampusScene {
   private async syncModels(strict = false): Promise<void> {
     const store = this.models, manifest = this.manifest;
     if (!store || !manifest) return;
-    const required = requiredModels(manifest,this.viewFloor,this.avatarFloor,this.routeFloors(),this.overview);
+    const required = requiredModels(manifest,this.viewFloor,this.avatarFloor,this.routeFloors(),this.overview)
+      .filter((entry) => this.getCatalog() || (entry.kind !== "floor-preview" && entry.kind !== "exterior"));
     const missing = required.some((entry) => !store.values().some((model) => model.entry.id === entry.id));
     if (missing) this.events.model("Loading campus model…",false);
     const result = await store.sync(required.map((entry) => entry.id));
@@ -420,7 +435,7 @@ export class CampusScene {
     this.applyModels(missing);
     if (result.errors.length) {
       if (strict) throw result.errors[0];
-      this.events.model("Model unavailable · using graph preview",false,String(result.errors[0]));
+      this.events.model(this.floorPresentation(this.viewFloor) === "preview" ? "Floor preview unavailable · choose another floor" : "Model unavailable · using graph preview",false,String(result.errors[0]));
     }
   }
   private applyModels(fit: boolean): void {
@@ -436,17 +451,21 @@ export class CampusScene {
       model.pins.visible = !this.overview && floorModels.includes(model);
       setModelTopView(model.root,this.topView);
     }
-    this.colliders = loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.floors.includes(this.avatarFloor)).flatMap((model) => model.colliders);
+    const preview = floorModels.some((model) => model.entry.kind === "floor-preview");
+    const ground = this.scene.getObjectByName("presentation-ground");
+    if (ground) ground.position.y = (floorModels[0]?.reference?.transform.translation[1] ?? this.viewFloor * FLOOR_HEIGHT) - 0.5;
+    this.colliders = loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.kind !== "floor-preview" && model.entry.floors.includes(this.avatarFloor)).flatMap((model) => model.colliders);
     this.floorGroups.forEach((group,level) => { group.visible = !this.overview && level === this.viewFloor && !floorModels.length; });
     this.modelGroup.visible = !!active.length;
-    this.routeGroup.visible = !this.overview;
-    this.avatar.visible = this.places.length > 0 && this.avatarFloor === this.viewFloor && !this.overview;
+    this.routeGroup.visible = !this.overview && !preview;
+    this.avatar.visible = this.places.length > 0 && this.avatarFloor === this.viewFloor && !this.overview && !preview;
     this.destinationRing.visible = this.destinationFloor === this.viewFloor && !this.overview;
     if (this.overview && exteriorModels.length) this.events.model(`Campus overview · First floor: ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true,"Exterior follows the documented first-floor frame. Block identities and facade details retain their documented approximations.");
     else if (floorModels.length && this.overviewError) this.events.model("Exterior unavailable · floor view",true,this.overviewError);
+    else if (preview) this.events.model(`Preview only · ${floorModels.reduce((sum,model) => sum+model.references,0)} structural references aligned`,true,"Inspection only. Routes and vertical connections are pending. The model flattens documented half-levels.");
     else if (floorModels.length) this.events.model(`${floorModels.map((model) => model.entry.label).join(" + ")} · ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true);
     else if (this.manifest) this.events.model("Floor model pending",false);
-    this.events.resources({ overview:this.overview,loaded:loaded.map((model) => model.entry.id),visible:active.map((model) => model.entry.id),colliders:this.colliders.length });
+    this.events.resources({ overview:this.overview,preview,loaded:loaded.map((model) => model.entry.id),visible:active.map((model) => model.entry.id),colliders:this.colliders.length });
     if (fit) this.resetView();
   }
   exportView(): void {

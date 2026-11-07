@@ -1,7 +1,7 @@
 # Floor previews and vertical integration review
 
-Codex review, 7 November 2026. Source exports: Claude's C8/C9/C10 through
-`63b9039`. The preview metadata transcribes the three structural anchors and
+Codex review, 7 November 2026. Source exports: Claude's C8–C11 through
+`099c212` (stair wells added on floors 2–5). The preview metadata transcribes the three structural anchors and
 recommended world elevation from each `public/models/floor-N/campus-reference.md`.
 It does not create API places. The references use `alignment: structural`, not
 API-room alignment. The GLB node positions are checked separately against those
@@ -27,8 +27,8 @@ explicit approximation. Stair meshes in a preview do not establish a route.
   route only with corresponding geometry and heights. The nearby ramp direction
   is unconfirmed; no alternative connection should be inferred.
 - Check the whole body/head clearance of the first-floor candidate into floor 2,
-  including flight starts, return flight, curved landing and arrival. The source
-  references still list missing slab holes. A single downward probe at west
+  including flight starts, return flight, curved landing and arrival. C11 added
+  slab wells; full stair clearance is still unverified. A single downward probe at west
   return-flight point (18.05,58) does not hit the slab on floors 2–5; this is not
   a complete clearance or support test and does not prove that a hole is needed
   at that particular point. Resolve actual obstacles from full sweeps/captures.

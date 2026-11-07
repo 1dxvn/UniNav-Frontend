@@ -106,13 +106,15 @@ function openLogin(): void {
 function updateTravel(update: TravelUpdate): void {
   const changed = travelState !== update.state;
   travelState = update.state;
+  const inspectingPreview = ui.modelStatus.dataset.preview === "true";
   const title: Record<TravelState, string> = {
-    idle: "Ready to explore", ready: "Your route is ready", walking: "On your way", paused: "Taking a pause",
+    idle: inspectingPreview ? "Inspecting this floor" : "Ready to explore", ready: "Your route is ready", walking: "On your way", paused: "Taking a pause",
     arrived: `You've arrived${destination ? ` at ${placeName(destination)}` : ""}`, blocked: "The walkway is blocked",
   };
   if (changed || ui.travelStatus.textContent !== title[update.state]) ui.travelStatus.textContent = title[update.state];
   ui.travelStatus.dataset.state = update.state;
-  ui.travelDetail.textContent = update.state === "idle" ? (overviewVisible ? "Choose a destination or open a floor to start walking." : "W A S D to walk · Drag to orbit · Scroll to zoom") :
+  document.querySelectorAll<HTMLElement>(".walk-status .keycap").forEach((key) => { key.hidden = inspectingPreview; });
+  ui.travelDetail.textContent = update.state === "idle" ? (inspectingPreview ? "View only · routes on this floor are pending." : overviewVisible ? "Choose a destination or open a floor to start walking." : "W A S D to walk · Drag to orbit · Scroll to zoom") :
     update.state === "blocked" ? "Model geometry obstructs this route. Check the corridor alignment." :
     update.state === "arrived" ? `${floorName(update.floor)} · Choose another place to keep exploring.` :
     `${update.remaining.toFixed(1)} m remaining · ${floorName(update.floor)} · Esc to cancel`;
@@ -136,6 +138,7 @@ try {
     view: syncViewControls,
     resources: (state) => {
       ui.modelStatus.dataset.view = state.overview ? "campus" : "floor";
+      ui.modelStatus.dataset.preview = String(state.preview);
       ui.modelStatus.dataset.loadedModels = JSON.stringify(state.loaded);
       ui.modelStatus.dataset.visibleModels = JSON.stringify(state.visible);
       ui.modelStatus.dataset.colliders = String(state.colliders);
@@ -184,7 +187,7 @@ async function loadCampus(): Promise<void> {
     if (catalog) {
       const observed = ui.floor.value;
       const levels = [...new Set(catalog.blocks.flatMap((block) => block.floors.map((floor) => floor.level)))].sort((a,b) => a-b);
-      ui.floor.replaceChildren(...levels.map((level) => new Option(`${String(level).padStart(2,"0")}${places.some((place) => place.floor === level) ? "" : " · model pending"}`,String(level))));
+      ui.floor.replaceChildren(...levels.map((level) => new Option(`${String(level).padStart(2,"0")}${scene!.floorPresentation(level) === "preview" ? " · preview" : scene!.floorPresentation(level) === "pending" ? " · model pending" : ""}`,String(level))));
       ui.floor.value = observed;
     }
     const overview = element("campus-overview");

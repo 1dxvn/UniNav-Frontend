@@ -92,12 +92,40 @@ the working export's hash separately. An unintegrated working change is not
 evidence that the served revision changed. A changed served revision fails the
 rehearsal.
 
-## Remaining H1 work
+## Structural floor previews
 
-The backend catalogue is read-only metadata; it is not a migration of `Building`
-or the name-keyed graph. Stable place/connection identifiers, repeated visible
-names, ID-based route waypoints and non-destructive versioned campus seeds remain
-to implement. This delivery prepares the resource side and source inventory.
-The exterior is integrated as a non-navigable overview with separate controls.
-Further floors need documented
-doors, elevations, vertical waypoints, matching exports and physical rehearsals.
+Floors 0, 2, 3, 4 and 5 are available for inspection. Their entries use
+`kind: floor-preview`, `navigable: false`, exactly one floor, reviewed hashes and
+a source document. They cannot declare a graph binding or satisfy an avatar/route
+model requirement. Only the observed preview is loaded, alongside C2 for the
+avatar; leaving it disposes its resources. Previews add zero collision meshes.
+The unrelated sample API never loads these UCC resources.
+
+Preview reference JSON uses `alignment: structural` and an explicit
+`planPosition: [x,y]` for each of its three named GLB anchors. The legacy field
+`buildingName` acts as the anchor label here; it does not create an API place.
+Validation compares the documented plan frame and the actual GLB nodes. Normal
+navigable floors require API alignment and data binding; structural alignment
+cannot promote a preview to a navigable model.
+
+The scene uses the source's recommended world elevation for both model and
+presentation ground. These cuts flatten their A/B half-levels and retain the
+documented stair approximations. The selector and model badge say **preview**;
+movement remains on the avatar's floor. Resuming a preserved route restores its
+view without repositioning the avatar. See
+[integration review](blocks/floor-preview-integration.md) for the remaining checks.
+
+The build also validates every recovery asset against its committed hash when
+the working copy matches. Text hashes use the committed bytes, avoiding Windows
+line-ending differences. This catches an incorrect source commit before the next
+working export changes and needs recovery.
+
+## Remaining navigation work
+
+Backend `15f467c` provides stable identities, repeated visible labels, ID/position
+waypoints and scoped versioned imports; see `UniNav/docs/CAMPUS_DATASETS.md`.
+The physical block inventory still has derived A/B identities. Upper-floor routes
+need confirmed destinations, door/turn coordinates, vertical waypoints, coherent
+elevations and full clearance/support rehearsals. The measured B laboratory stair
+still needs matching geometry/data. Preview delivery does not complete H2 or the
+three plans.

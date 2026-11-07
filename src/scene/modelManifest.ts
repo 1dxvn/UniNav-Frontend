@@ -7,7 +7,7 @@ export interface ModelEntry {
   id: string; label: string; floors: number[]; state: "ready" | "pending";
   revision: string; reference?: string; modelSha256?: string;
   sourceCommit?: string; referenceSha256?: string;
-  kind?: "floor" | "exterior"; navigable?: false;
+  kind?: "floor" | "exterior" | "floor-preview"; navigable?: false;
   model?: string; transform?: CampusReference["transform"]; sourceDocument?: string;
   binding?: { placeNames: string[]; sha256: string };
 }
@@ -22,7 +22,7 @@ export function parseManifest(value: unknown): CampusManifest {
   const ids = new Set<string>();
   for (const entry of manifest.models) {
     if (!entry || typeof entry.id !== "string" || !/^[a-zA-Z0-9_-]+$/.test(entry.id) || ids.has(entry.id) || !entry.label?.trim() || !entry.revision?.trim() ||
-      !["ready","pending"].includes(entry.state) || ![undefined,"floor","exterior"].includes(entry.kind) ||
+      !["ready","pending"].includes(entry.state) || ![undefined,"floor","exterior","floor-preview"].includes(entry.kind) ||
       !Array.isArray(entry.floors) || (entry.kind !== "exterior" && !entry.floors.length) ||
       entry.floors.some((f) => !Number.isInteger(f) || f < 0 || f > 7) || new Set(entry.floors).size !== entry.floors.length) throw new Error("Invalid or duplicate model entry.");
     ids.add(entry.id);
@@ -36,12 +36,14 @@ export function parseManifest(value: unknown): CampusManifest {
         typeof entry.sourceDocument !== "string" || !entry.sourceDocument.trim()))) throw new Error("Exterior entries need a reviewed transform and must remain non-navigable.");
       continue;
     }
-    if (entry.state === "ready" && (!entry.reference || !/^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.json$/.test(entry.reference) ||
-      !/^[a-f0-9]{7,40}$/.test(entry.sourceCommit ?? "") || !hashPattern.test(entry.referenceSha256 ?? "") ||
-      !hashPattern.test(entry.modelSha256 ?? "") || !entry.binding || !hashPattern.test(entry.binding.sha256) ||
-      !Array.isArray(entry.binding.placeNames) || entry.binding.placeNames.length < 3 ||
-      entry.binding.placeNames.some((name) => typeof name !== "string" || !name.trim()) ||
-      new Set(entry.binding.placeNames).size !== entry.binding.placeNames.length)) throw new Error("Ready models need references, hashes and a complete data binding.");
+    if (entry.kind === "floor-preview" && (entry.navigable !== false || entry.binding ||
+      !entry.sourceDocument?.trim() || entry.floors.length !== 1)) throw new Error("Floor previews need a source and must remain non-navigable.");
+    const reviewed = /^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.json$/.test(entry.reference ?? "") &&
+      /^[a-f0-9]{7,40}$/.test(entry.sourceCommit ?? "") && hashPattern.test(entry.referenceSha256 ?? "") && hashPattern.test(entry.modelSha256 ?? "");
+    const binding = entry.binding;
+    const completeBinding = binding && hashPattern.test(binding.sha256) && Array.isArray(binding.placeNames) && binding.placeNames.length >= 3 &&
+      binding.placeNames.every((name) => typeof name === "string" && !!name.trim()) && new Set(binding.placeNames).size === binding.placeNames.length;
+    if (entry.state === "ready" && (!reviewed || (entry.kind !== "floor-preview" && !completeBinding))) throw new Error("Ready models need references, hashes and a complete data binding.");
   }
   return manifest;
 }
@@ -73,5 +75,6 @@ export async function dataFingerprint(placeNames: string[], places: Building[], 
 export function requiredModels(manifest: CampusManifest, viewFloor: number, avatarFloor: number, routeFloors: number[], overview = false): ModelEntry[] {
   const required = new Set([viewFloor,avatarFloor,...routeFloors]);
   if (overview) required.add(manifest.catalog.integrated_dataset.legacy_floor);
-  return manifest.models.filter((entry) => entry.state === "ready" && (entry.kind === "exterior" ? overview : entry.floors.some((floor) => required.has(floor))));
+  return manifest.models.filter((entry) => entry.state === "ready" && (entry.kind === "exterior" ? overview :
+    entry.kind === "floor-preview" ? !overview && entry.floors.includes(viewFloor) : entry.floors.some((floor) => required.has(floor))));
 }

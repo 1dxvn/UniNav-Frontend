@@ -8,8 +8,12 @@ test("sample API: sign in, walk an unsmoothed turn twice, pause and manually ove
   test.skip(!places.some((place: { name: string }) => place.name === "Main Entrance"), "Requires the backend sample campus.");
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
+  const uccPreviews: string[] = [];
+  page.on("request", (request) => { if (/\/models\/floor-\d\//.test(request.url())) uccPreviews.push(request.url()); });
   await page.goto("/");
   await expect(page.locator("#api-status")).toContainText("Campus online");
+  await expect(page.locator("#model-status")).not.toContainText("Preview only");
+  expect(uccPreviews).toEqual([]);
   await page.locator("#open-login").click();
   await page.getByLabel("Username", { exact: true }).fill("student");
   await page.getByLabel("Password", { exact: true }).fill("demo1234");
@@ -62,4 +66,5 @@ test("sample API: sign in, walk an unsmoothed turn twice, pause and manually ove
   const bounded = (await page.locator("#travel-status").getAttribute("data-position"))!.split(",").map(Number);
   expect(Math.abs(bounded[2])).toBeLessThanOrEqual(0.63);
   expect(errors).toEqual([]);
+  expect(uccPreviews).toEqual([]);
 });

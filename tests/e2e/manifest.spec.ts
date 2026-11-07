@@ -6,7 +6,10 @@ test.beforeEach(async ({ request }) => {
   test.skip(!places.some((place) => place.name === "Hall Acceso"),"Requires the real campus.");
 });
 
-test("observing a pending floor preserves avatar position and restores the cached first floor", async ({ page }) => {
+test("observing a pending floor preserves avatar position and restores the cached first floor", async ({ page, request }) => {
+  const manifest = await (await request.get("/app/models/campus-manifest.json")).json();
+  manifest.models = manifest.models.filter((entry: { floors:number[] }) => !entry.floors.includes(2));
+  await page.route("**/models/campus-manifest.json",(route) => route.fulfill({ status:200,json:manifest }));
   await page.goto("/app/");
   await expect(page.locator("#model-status")).toContainText("3 references aligned");
   await page.locator("#isometric").click();

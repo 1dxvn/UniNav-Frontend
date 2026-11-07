@@ -1,0 +1,20 @@
+{
+  "8000": {
+    "/health": 200,
+    "/app/": 200,
+    "/docs": 200,
+    "/openapi.json": 200,
+    "places": 21,
+    "paths": 25
+  },
+  "8001": {
+    "/health": 200,
+    "/app/": 200,
+    "/docs": 200,
+    "/openapi.json": 200,
+    "places": 19,
+    "paths": 16
+  },
+  "served_first_floor_sha256": "d65846a8b614062d63e60a339da6e9c9ce29e8ffae2d01a90fbd16611e6a356e",
+  "working_first_floor_sha256": "41e225fec86f15303276342555be4924d24e1cef79826cfd696f433ca9cee645"
+}

@@ -8,10 +8,13 @@ export async function committedAsset(commit: string, path: string): Promise<Buff
   return stdout;
 }
 export async function reviewedAsset(entry: ModelEntry, path: string, expectedHash: string): Promise<Buffer> {
-  const working = await readFile(`public/${path}`).catch(() => null);
-  if (working && await sha256(working) === expectedHash) return working;
+  // Validate the recovery copy even when the working export currently matches.
+  // Otherwise a concurrent uncommitted export can be pinned to the wrong commit
+  // and only fail later, when the next model revision needs this fallback.
   const committed = await committedAsset(entry.sourceCommit!,path);
   if (await sha256(committed) !== expectedHash) throw new Error(`Reviewed asset ${path} does not match manifest commit ${entry.sourceCommit}.`);
+  const working = await readFile(`public/${path}`).catch(() => null);
+  if (working && await sha256(working) === expectedHash) return working;
   console.log(`Using reviewed ${path} from ${entry.sourceCommit}; the working export is pending integration.`);
   return committed;
 }

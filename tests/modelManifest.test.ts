@@ -53,6 +53,17 @@ test("exterior resources are required only by overview and cannot declare naviga
   assert.throws(() => parseManifest({ ...manifest,models:[{ ...exterior,transform:{ ...exterior.transform,scale:0 } }] }),/non-navigable/);
 });
 
+test("floor previews are observed resources and cannot supply avatar or route models", () => {
+  const preview = manifest.models.find((entry) => entry.kind === "floor-preview")!;
+  assert.ok(preview);
+  assert.throws(() => parseManifest({ ...manifest,models:[{ ...preview,navigable:undefined }] }),/non-navigable/);
+  assert.throws(() => parseManifest({ ...manifest,models:[{ ...preview,binding:floorModel.binding }] }),/non-navigable/);
+  assert.throws(() => parseManifest({ ...manifest,models:[{ ...preview,modelSha256:undefined }] }),/references, hashes/);
+  assert.equal(requiredModels(manifest,1,preview.floors[0],[preview.floors[0]]).some((m) => m.id === preview.id),false);
+  assert.equal(requiredModels(manifest,preview.floors[0],1,[]).some((m) => m.id === preview.id),true);
+  assert.equal(requiredModels(manifest,preview.floors[0],1,[],true).some((m) => m.id === preview.id),false);
+});
+
 test("model store reuses resources needed by the avatar and route and releases unused floors", async () => {
   const loaded: string[] = [], released: string[] = [];
   const store = new ModelStore(async (id) => { loaded.push(id); return id; },(id) => released.push(id));

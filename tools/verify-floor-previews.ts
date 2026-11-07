@@ -18,8 +18,9 @@ for (const row of revisions) {
   const reference = parseReference(JSON.parse(referenceBytes.toString("utf8")));
   const aligned = validateAlignment(reference,[]);
   const working = await readFile(`public/${base}/campus.glb`);
-  const bytes = sha(working) === row.model_sha256 ? working : await committedAsset(row.sourceCommit,`${base}/campus.glb`);
-  if (sha(bytes) !== row.model_sha256) throw new Error(`Reviewed model changed on floor ${row.level}.`);
+  const committed = await committedAsset(row.sourceCommit,`${base}/campus.glb`);
+  if (sha(committed) !== row.model_sha256) throw new Error(`Reviewed model does not match its source commit on floor ${row.level}.`);
+  const bytes = sha(working) === row.model_sha256 ? working : committed;
   const gltf = await parseModelGeometry(bytes);
   const root = new Group(); root.applyMatrix4(referenceMatrix(reference)); root.add(gltf.scene); root.updateMatrixWorld(true);
   validateModelNodes(reference,root);
