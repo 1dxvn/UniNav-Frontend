@@ -7,7 +7,7 @@
    "zones": [
     {
      "id": "B-west-body",
-     "rule": "footprint, y < 49.0, 13.6 <= x < 36.4, minus other zones",
+     "rule": "footprint, y < 49.23, 13.6 <= x < 36.4, minus other zones",
      "level": 0.0,
      "status": "confirmed"
     },
@@ -19,7 +19,7 @@
     },
     {
      "id": "A-north-bar",
-     "rule": "footprint, y >= 49.0, x >= 13.6",
+     "rule": "footprint, y >= 49.23, x >= 13.6",
      "level": -0.63,
      "status": "confirmed"
     },
@@ -103,7 +103,7 @@
     },
     {
      "id": "east-B-laboratory-wing",
-     "rule": "footprint, y < 49.0, x >= 39.2, minus sloped hall",
+     "rule": "footprint, y < 49.23, x >= 39.2, minus sloped hall",
      "level": null,
      "status": "pending: stair top (+1.19) and foot (-0.90) open into the same drawn circulation"
     },
@@ -323,13 +323,13 @@
    "zones": [
     {
      "id": "A-north-bar",
-     "rule": "footprint, y >= 49.0, x >= 13.6",
+     "rule": "footprint, y >= 49.23, x >= 13.6",
      "level": 2.68,
      "status": "confirmed"
     },
     {
      "id": "B-body",
-     "rule": "footprint, y < 49.0",
+     "rule": "footprint, y < 49.23",
      "level": 2.94,
      "status": "confirmed at (28.99, 34.04); extent derived"
     },
