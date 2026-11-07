@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-11-07T11:52:30.040933+00:00",
+  "services": [
+    {
+      "port": 8000,
+      "responses": {
+        "/health": 200,
+        "/app/": 200,
+        "/docs": 200,
+        "/openapi.json": 200
+      },
+      "places": 21,
+      "paths": 25
+    },
+    {
+      "port": 8001,
+      "responses": {
+        "/health": 200,
+        "/app/": 200,
+        "/docs": 200,
+        "/openapi.json": 200
+      },
+      "places": 19,
+      "paths": 16
+    }
+  ],
+  "reviewedAssets": [
+    {
+      "id": "ucc-first-floor",
+      "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "id": "campus-exterior",
+      "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "id": "ucc-floor-0-preview",
+      "modelSha256": "1cc05a1b3acce2e11c0b5ea04bed96b5f36206904d63c24d36eb449e62541bf7"
+    },
+    {
+      "id": "ucc-floor-2-preview",
+      "modelSha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a"
+    },
+    {
+      "id": "ucc-floor-3-preview",
+      "modelSha256": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "id": "ucc-floor-4-preview",
+      "modelSha256": "db7a29e45defb7cfc8a0f010b7569429ca7fe39b1c0aea4d4e21a7d20eaa3987"
+    },
+    {
+      "id": "ucc-floor-5-preview",
+      "modelSha256": "0bedcb88c3fb0b9da213fb6fc54d8aff88fd66c3a3f250d542a30d867e65931b"
+    }
+  ],
+  "bundles": [
+    {
+      "file": "index-8Ch4cN_C.js",
+      "sha256": "92d63aa031c52648c0e1184798c085ba0a3327eea757aa27b453bf399ebffd31"
+    }
+  ]
+}

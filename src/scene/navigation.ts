@@ -10,20 +10,76 @@ export interface WalkSegment {
   b: Vector3;
 }
 
-export interface WalkWaypoint { position: Vector3; floor: number; placeId?: number }
-export interface WalkStart { place: Building; connector: [Vector3,Vector3]; floor: number }
+export interface WalkWaypoint { position: Vector3; floor: number; placeId?: number; kind?: CampusPath["kind"] }
+export interface WalkStart { place: Building; connector: [Vector3,Vector3]; floor: number; kind?: CampusPath["kind"] }
 
 // Keep API floor identity alongside position. A high landing can still belong
 // to its departure floor; world Y is never a floor number.
-export function walkWaypoints(start: WalkStart, route: Building[]): WalkWaypoint[] {
+export function walkWaypoints(start: WalkStart, route: Building[], paths: CampusPath[] = []): WalkWaypoint[] {
   if (!route.length || route[0].id !== start.place.id || start.connector[1].distanceTo(toScenePosition(route[0])) > 0.001) {
     throw new Error("The route does not start at the selected graph connection.");
   }
-  const points: WalkWaypoint[] = route.map((place) => ({ position:toScenePosition(place),floor:place.floor,placeId:place.id }));
+  const incoming = (a: number,b: number) => paths.find((p) => (p.source_id===a && p.target_id===b) || (p.bidirectional && p.source_id===b && p.target_id===a))?.kind;
+  const points: WalkWaypoint[] = route.map((place,index) => ({ position:toScenePosition(place),floor:place.floor,placeId:place.id,
+    kind:index ? incoming(route[index-1].id,place.id) : undefined }));
   if (start.floor !== route[0].floor || start.connector[0].distanceTo(points[0].position) > 0.001) {
+    points[0].kind=start.kind;
     points.unshift({ position:start.connector[0].clone(),floor:start.floor });
   }
   return points;
+}
+
+export interface StairNetwork { segments: WalkSegment[]; floors: number[] }
+export function stairNetworks(segments: WalkSegment[]): StairNetwork[] {
+  const remaining=new Set(segments.filter((s) => s.path.kind==="stairs")), result:StairNetwork[]=[];
+  while (remaining.size) {
+    const first=remaining.values().next().value!;
+    const group=[first], ids=new Set([first.source.id,first.target.id]); remaining.delete(first);
+    for (let changed=true;changed;) {
+      changed=false;
+      for (const s of remaining) if (ids.has(s.source.id) || ids.has(s.target.id)) {
+        ids.add(s.source.id); ids.add(s.target.id); group.push(s); remaining.delete(s); changed=true;
+      }
+    }
+    result.push({ segments:group,floors:[...new Set(group.flatMap((s) => [s.source.floor,s.target.floor]))] });
+  }
+  return result;
+}
+export function nearbyStairFloors(position: Vector3,floor: number,networks: StairNetwork[]): number[] {
+  return [...new Set(networks.filter((n) => n.floors.includes(floor) && n.segments.some((s) =>
+    projectOnSegment(position,s.a,s.b).distance<=CORRIDOR_RADIUS+0.35)).flatMap((n) => n.segments
+      .filter((s) => s.source.floor===floor || s.target.floor===floor).flatMap((s) => [s.source.floor,s.target.floor])))];
+}
+
+// Graph-constrained keyboard movement. Stepped motion needs reviewed support;
+// ordinary same-floor movement preserves the existing graph-only fallback.
+export function manualStep(from: Vector3,desired: Vector3,segments: WalkSegment[],floor: number,
+  support:(from:Vector3,expected:Vector3)=>Vector3|undefined,blocked:(from:Vector3,to:Vector3)=>boolean): { position:Vector3; floor:number } | undefined {
+  const options=segments.filter((s) => s.path.kind==="stairs" ? s.source.floor===floor || s.target.floor===floor : s.source.floor===floor && s.target.floor===floor)
+    .map((s) => ({ s,current:projectOnSegment(from,s.a,s.b) })).filter(({current}) => current.distance<=CORRIDOR_RADIUS+0.001)
+    .sort((a,b) => a.current.distance-b.current.distance);
+  for (const {s,current} of options) {
+    if (s.path.kind!=="stairs" && Math.abs(from.y-current.point.y)>0.03) continue;
+    const next=desired.clone();
+    let currentT=segmentProgress(from,s.a,s.b),nextT=segmentProgress(next,s.a,s.b);
+    if (s.path.kind==="stairs") {
+      const flatA=s.a.clone().setY(0),flatB=s.b.clone().setY(0);
+      currentT=segmentProgress(from.clone().setY(0),flatA,flatB);
+      nextT=segmentProgress(next.clone().setY(0),flatA,flatB);
+      const t=Math.max(0,Math.min(1,nextT));
+      next.y=s.a.y+(s.b.y-s.a.y)*t;
+    }
+    const projection=projectOnSegment(next,s.a,s.b);
+    if (projection.distance>CORRIDOR_RADIUS || (!s.path.bidirectional && nextT<currentT-0.00001)) continue;
+    const position=s.path.kind==="stairs" ? support(from,next) : next;
+    if (!position || blocked(from,position)) continue;
+    let nextFloor=floor;
+    if (s.path.kind==="stairs") {
+      if (position.distanceTo(s.b)<0.15 && Math.abs(position.y-s.b.y)<0.03) nextFloor=s.target.floor;
+      else if (position.distanceTo(s.a)<0.15 && Math.abs(position.y-s.a.y)<0.03) nextFloor=s.source.floor;
+    }
+    return { position,floor:nextFloor };
+  }
 }
 
 export function advanceWalk(position: Vector3, floor: number, target: WalkWaypoint, distance: number): { position:Vector3; floor:number; reached:boolean } {
@@ -47,6 +103,11 @@ export function projectOnSegment(point: Vector3, a: Vector3, b: Vector3): { poin
   const t = lengthSquared === 0 ? 0 : Math.max(0, Math.min(1, point.clone().sub(a).dot(direction) / lengthSquared));
   const projected = a.clone().addScaledVector(direction, t);
   return { point: projected, t, distance: point.distanceTo(projected) };
+}
+
+function segmentProgress(point:Vector3,a:Vector3,b:Vector3):number {
+  const d=b.clone().sub(a);
+  return d.lengthSq() ? point.clone().sub(a).dot(d)/d.lengthSq() : 0;
 }
 
 export function nearestWalkSegment(position: Vector3, segments: WalkSegment[], floor: number): WalkSegment | undefined {
@@ -123,5 +184,5 @@ export function routingStart(position: Vector3, places: Building[], segments: Wa
   }
   const place = !segment.path.bidirectional || position.distanceTo(segment.b) <= position.distanceTo(segment.a)
     ? segment.target : segment.source;
-  return { place, connector: [position.clone(), toScenePosition(place)],floor };
+  return { place, connector: [position.clone(), toScenePosition(place)],floor,kind:segment.path.kind };
 }

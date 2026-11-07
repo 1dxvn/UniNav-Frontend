@@ -1,0 +1,67 @@
+{
+  "sources": [
+    {
+      "commit": "a2dbda0",
+      "path": "models/campus.glb",
+      "elevation": 3.5,
+      "sha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "commit": "a2dbda0",
+      "path": "models/floor-2/campus.glb",
+      "elevation": 6.44,
+      "sha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a"
+    }
+  ],
+  "checks": [
+    {
+      "mode": "automatic",
+      "direction": "up",
+      "samples": 313,
+      "finalPosition": [
+        39.001,
+        6.44,
+        -55.896
+      ],
+      "floor": 2,
+      "maxFootError": 0
+    },
+    {
+      "mode": "automatic",
+      "direction": "down",
+      "samples": 313,
+      "finalPosition": [
+        36.35,
+        3.5,
+        -55.9
+      ],
+      "floor": 1,
+      "maxFootError": 0
+    },
+    {
+      "mode": "manual",
+      "direction": "up",
+      "samples": 292,
+      "finalPosition": [
+        39.001,
+        6.44,
+        -55.896
+      ],
+      "floor": 2,
+      "maxFootError": 0
+    },
+    {
+      "mode": "manual",
+      "direction": "down",
+      "samples": 292,
+      "finalPosition": [
+        36.35,
+        3.5,
+        -55.9
+      ],
+      "floor": 1,
+      "maxFootError": 0
+    }
+  ],
+  "fixtureOnly": true
+}

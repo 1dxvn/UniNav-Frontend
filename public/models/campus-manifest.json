@@ -151,6 +151,7 @@
       "reference": "models/campus-reference.json",
       "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
       "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+      "supportNodes": ["Floor_Slab", "Stair_A_West_1", "Stair_A_East_1"],
       "binding": {
         "placeNames": [
           "Access courtyard",

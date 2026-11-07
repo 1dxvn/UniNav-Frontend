@@ -3,7 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import type { Building, CampusPath } from "../api/types.ts";
 import { FLOOR_HEIGHT, toScenePosition, WALK_SPEED } from "./coordinates.ts";
-import { advanceWalk, canWalk, routingStart, walkSegments, type WalkSegment, type WalkWaypoint } from "./navigation.ts";
+import { advanceWalk, manualStep, nearbyStairFloors, routingStart, stairNetworks, walkSegments, type StairNetwork, type WalkSegment, type WalkWaypoint } from "./navigation.ts";
 import { parseReference, referenceMatrix, transformMatrix, validateAlignment, validateModelNodes, type CampusReference } from "./modelReference.ts";
 import { modelColliders, modelCollision, type ModelCollider } from "./modelCollision.ts";
 import { prepareModelPresentation, setModelTopView } from "./modelPresentation.ts";
@@ -11,10 +11,11 @@ import { disposeGroup } from "./dispose.ts";
 import { dataFingerprint, parseManifest, requiredModels, sha256, type CampusManifest, type ModelEntry } from "./modelManifest.ts";
 import { ModelStore } from "./modelStore.ts";
 import type { CampusCatalog } from "./catalog.ts";
+import { supportColliders, supportedStep } from "./walkSupport.ts";
 
 interface LoadedCampusModel {
   entry: ModelEntry; reference?: CampusReference; root: THREE.Group;
-  pins: THREE.Group; colliders: ModelCollider[]; references: number;
+  pins: THREE.Group; colliders: ModelCollider[]; supports: ModelCollider[]; references: number;
 }
 
 export type TravelState = "idle" | "ready" | "walking" | "paused" | "arrived" | "blocked";
@@ -58,6 +59,8 @@ export class CampusScene {
   private models: ModelStore<LoadedCampusModel> | null = null;
   private routeGeneration = 0;
   private segments: WalkSegment[] = [];
+  private stairs: StairNetwork[] = [];
+  private movementModelKey = "";
   private waypoints: WalkWaypoint[] = [];
   private index = 1;
   private state: TravelState = "idle";
@@ -71,6 +74,7 @@ export class CampusScene {
   private destinationFloor: number | undefined;
   private labelsVisible = true;
   private colliders: ModelCollider[] = [];
+  private supports: ModelCollider[] = [];
   private lastEmission = 0;
   private walkTime = 0;
 
@@ -180,6 +184,7 @@ export class CampusScene {
     this.places = places;
     this.paths = paths;
     this.segments = walkSegments(places, paths);
+    this.stairs = stairNetworks(this.segments);
     for (const floor of new Set(places.map((place) => place.floor))) {
       const group = new THREE.Group();
       this.floorGroups.set(floor, group);
@@ -225,9 +230,9 @@ export class CampusScene {
     if (places.length) this.setOrigin(places.find((place) => place.building_type === "entrance") ?? places[0]);
   }
 
-  setFloor(floor: number, fit = true): void {
+  setFloor(floor: number, fit = true, preserveKeys = false): void {
     this.overviewError = null;
-    this.keys.clear();
+    if (!preserveKeys) this.keys.clear();
     this.overview = false;
     this.viewFloor = floor;
     this.renderer.shadowMap.needsUpdate = true;
@@ -352,6 +357,7 @@ export class CampusScene {
     disposeGroup(this.modelGroup);
     disposeGroup(this.referenceGroup);
     this.colliders = [];
+    this.supports = [];
     this.setFloor(this.viewFloor, false);
     this.events.model("Loading campus model…", false);
     const response = await fetch(`${import.meta.env.BASE_URL}models/campus-manifest.json`, { cache:"no-cache" });
@@ -385,7 +391,7 @@ export class CampusScene {
       const root = new THREE.Group(); root.applyMatrix4(transformMatrix(entry.transform!)); root.add(gltf.scene); root.updateMatrixWorld(true);
       prepareModelPresentation(root);
       // Exterior geometry has no navigation references and never becomes a collider.
-      return { entry,root,pins:new THREE.Group(),colliders:[],references:0 };
+      return { entry,root,pins:new THREE.Group(),colliders:[],supports:[],references:0 };
     }
     const preview = entry.kind === "floor-preview";
     if (!preview && (!entry.binding || await dataFingerprint(entry.binding.placeNames,this.places,this.paths) !== entry.binding.sha256)) throw new Error(`Model data revision differs: ${entry.label}. Reload compatible campus data.`);
@@ -418,15 +424,23 @@ export class CampusScene {
       pin.position.copy(point.position).y += 0.8;
       pins.add(pin);
     }
-    return { entry,reference,root,pins,colliders:preview ? [] : modelColliders(root),references:aligned.length };
+    let supports:ModelCollider[]=[];
+    try { supports=preview ? [] : supportColliders(root,entry.supportNodes ?? []); }
+    catch (error) { disposeGroup(root); disposeGroup(pins); throw error; }
+    return { entry,reference,root,pins,colliders:preview ? [] : modelColliders(root),supports,references:aligned.length };
   }
   private routeFloors(): number[] {
     return [...new Set(this.waypoints.map((point) => point.floor))];
   }
+  private movementFloors(): number[] {
+    return [...new Set([this.avatarFloor,...this.routeFloors(),...nearbyStairFloors(this.avatar.position,this.avatarFloor,this.stairs)])].sort();
+  }
   private async syncModels(strict = false): Promise<void> {
     const store = this.models, manifest = this.manifest;
     if (!store || !manifest) return;
-    const required = requiredModels(manifest,this.viewFloor,this.avatarFloor,this.routeFloors(),this.overview)
+    const movementFloors=this.movementFloors();
+    this.movementModelKey=movementFloors.join(",");
+    const required = requiredModels(manifest,this.viewFloor,this.avatarFloor,movementFloors,this.overview)
       .filter((entry) => this.getCatalog() || (entry.kind !== "floor-preview" && entry.kind !== "exterior"));
     const missing = required.some((entry) => !store.values().some((model) => model.entry.id === entry.id));
     if (missing) this.events.model("Loading campus model…",false);
@@ -457,8 +471,10 @@ export class CampusScene {
     if (ground) ground.position.y = (floorModels[0]?.reference?.transform.translation[1] ?? this.viewFloor * FLOOR_HEIGHT) - 0.5;
     // Retain both sides of vertical transitions, including overhead geometry.
     // The swept bounds in modelCollision discard distant floors per movement.
-    const collisionFloors=new Set([this.avatarFloor,...this.routeFloors()]);
-    this.colliders = loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.kind !== "floor-preview" && model.entry.floors.some((floor) => collisionFloors.has(floor))).flatMap((model) => model.colliders);
+    const collisionFloors=new Set(this.movementFloors());
+    const walkingModels=loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.kind !== "floor-preview" && model.entry.floors.some((floor) => collisionFloors.has(floor)));
+    this.colliders = walkingModels.flatMap((model) => model.colliders);
+    this.supports = walkingModels.flatMap((model) => model.supports);
     this.floorGroups.forEach((group,level) => { group.visible = !this.overview && level === this.viewFloor && !floorModels.length; });
     this.modelGroup.visible = !!active.length;
     this.routeGroup.visible = !this.overview && !preview;
@@ -499,29 +515,40 @@ export class CampusScene {
     const delta = Math.min(this.clock.getDelta(), 0.15);
     let moved = false;
     if (this.state === "walking" && this.index < this.waypoints.length) {
-      const target = this.waypoints[this.index];
-      const direction = target.position.clone().sub(this.avatar.position);
-      const advanced = advanceWalk(this.avatar.position,this.avatarFloor,target,WALK_SPEED*delta);
-      const next = advanced.position;
-      if (this.collides(this.avatar.position, next)) { this.state = "blocked"; this.emit(); }
-      else {
-        this.avatar.position.copy(next);
-        if (direction.x * direction.x + direction.z * direction.z > 0.001) this.face(direction, delta);
-        moved = true;
-        if (advanced.reached) this.index++;
-        const floor = advanced.floor;
-        if (floor !== this.avatarFloor) { this.avatarFloor = floor; this.setFloor(floor, false); }
-        if (this.index >= this.waypoints.length) { this.state = "arrived"; this.emit(); }
+      const count=Math.max(1,Math.ceil(WALK_SPEED*delta/0.06));
+      for (let i=0;i<count && this.state==="walking";i++) {
+        const target=this.waypoints[this.index];
+        const direction=target.position.clone().sub(this.avatar.position);
+        const advanced=advanceWalk(this.avatar.position,this.avatarFloor,target,WALK_SPEED*delta/count);
+        const next=target.kind==="stairs" ? supportedStep(this.avatar.position,advanced.position,this.supports) : advanced.position;
+        if (!next || this.collides(this.avatar.position,next)) { this.state="blocked"; this.emit(); break; }
+        this.avatar.position.copy(next); moved=true;
+        if (direction.x*direction.x+direction.z*direction.z>0.001) this.face(direction,delta/count);
+        if (advanced.reached) {
+          this.index++;
+          if (advanced.floor!==this.avatarFloor) { this.avatarFloor=advanced.floor; this.setFloor(advanced.floor,false); }
+          if (this.index>=this.waypoints.length) { this.state="arrived"; this.emit(); }
+          break;
+        }
       }
     } else if (this.keys.size && this.avatar.visible) {
       const dx = Number(this.keys.has("d") || this.keys.has("arrowright")) - Number(this.keys.has("a") || this.keys.has("arrowleft"));
       const dz = Number(this.keys.has("s") || this.keys.has("arrowdown")) - Number(this.keys.has("w") || this.keys.has("arrowup"));
       const direction = new THREE.Vector3(dx, 0, dz).normalize();
-      const next = this.avatar.position.clone().addScaledVector(direction, WALK_SPEED * delta);
-      if (canWalk(this.avatar.position, next, this.segments, this.avatarFloor) && !this.collides(this.avatar.position, next)) {
-        this.avatar.position.copy(next); this.face(direction, delta); moved = true;
+      const modelsReady=!this.getCatalog() || this.movementFloors().every((floor) => this.models?.values().some((m) => m.entry.kind!=="floor-preview" && m.entry.kind!=="exterior" && m.entry.floors.includes(floor)));
+      // Bound substeps below a tread depth, including on a slow frame. Never
+      // skip a riser or a narrow unsupported gap with one long keyboard move.
+      const count=Math.max(1,Math.ceil(WALK_SPEED*delta/0.06));
+      for (let i=0;modelsReady && i<count;i++) {
+        const next=this.avatar.position.clone().addScaledVector(direction,WALK_SPEED*delta/count);
+        const step=manualStep(this.avatar.position,next,this.segments,this.avatarFloor,
+          (from,expected) => supportedStep(from,expected,this.supports),(from,to) => this.collides(from,to));
+        if (!step) break;
+        this.avatar.position.copy(step.position); this.face(direction,delta/count); moved=true;
+        if (step.floor!==this.avatarFloor) { this.avatarFloor=step.floor; this.setFloor(step.floor,false,true); }
       }
     }
+    if (this.manifest && this.movementFloors().join(",")!==this.movementModelKey) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
     if (moved) this.walkTime += delta;
     this.body.position.y = moved ? Math.sin(this.walkTime * 15) * 0.035 : 0;
     this.controls.update();
@@ -561,6 +588,7 @@ export class CampusScene {
     this.models?.dispose(); this.models = null;
     disposeGroup(this.scene);
     this.colliders = [];
+    this.supports = [];
     this.renderer.dispose(); this.labels.forEach((label) => label.remove());
   }
 }

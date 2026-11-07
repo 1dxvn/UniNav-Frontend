@@ -1,0 +1,16 @@
+{
+  "reports": [
+    {
+      "mode": "automatic",
+      "samples": 92,
+      "maxFootErrorMetres": 1.1444091807533141e-7
+    },
+    {
+      "mode": "manual",
+      "samples": 94,
+      "maxFootErrorMetres": 1.1444091807533141e-7
+    }
+  ],
+  "coordinateResolutionMetres": 0.001,
+  "fixtureOnly": true
+}

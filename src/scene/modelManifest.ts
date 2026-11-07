@@ -10,6 +10,7 @@ export interface ModelEntry {
   kind?: "floor" | "exterior" | "floor-preview"; navigable?: false;
   model?: string; transform?: CampusReference["transform"]; sourceDocument?: string;
   binding?: { placeNames: string[]; sha256: string };
+  supportNodes?: string[];
 }
 export interface CampusManifest { version: 1; catalog: CampusCatalog; models: ModelEntry[] }
 const hashPattern = /^[a-f0-9]{64}$/;
@@ -26,6 +27,9 @@ export function parseManifest(value: unknown): CampusManifest {
       !Array.isArray(entry.floors) || (entry.kind !== "exterior" && !entry.floors.length) ||
       entry.floors.some((f) => !Number.isInteger(f) || f < 0 || f > 7) || new Set(entry.floors).size !== entry.floors.length) throw new Error("Invalid or duplicate model entry.");
     ids.add(entry.id);
+    if (entry.supportNodes !== undefined && (entry.kind === "floor-preview" || entry.kind === "exterior" ||
+      !Array.isArray(entry.supportNodes) || !entry.supportNodes.length || new Set(entry.supportNodes).size !== entry.supportNodes.length ||
+      entry.supportNodes.some((name) => typeof name !== "string" || !name.trim()))) throw new Error("Only navigable floors can declare distinct walking surface nodes.");
     if (entry.kind === "exterior") {
       const t = entry.transform;
       if (entry.floors.length || entry.navigable !== false || entry.binding ||

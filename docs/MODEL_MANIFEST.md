@@ -123,6 +123,26 @@ working export changes and needs recovery.
 
 ## Remaining navigation work
 
+Navigable entries can declare `supportNodes`, a reviewed list of exact GLB node
+names for floor slabs and stair treads. Missing nodes fail loading. Previews and
+exteriors cannot declare foot support. The current first floor declares
+`Floor_Slab`, `Stair_A_West_1` and `Stair_A_East_1`; rails and furniture remain
+obstacles and do not support the feet. New exports require this list to be
+reviewed again alongside their hashes.
+
+Stair movement samples the actual top surfaces inside a 0.12 m foot footprint,
+allows at most a 0.20 m step, and keeps torso/head collision checks against every
+obstacle. These are movement parameters, not claimed physical stair dimensions.
+Missing support blocks movement. Both keyboard and guided motion use bounded
+substeps of at most 0.06 m. Floor changes follow graph endpoint metadata.
+Nearby stair components retain adjacent navigable floor models even after route
+cancellation; preview resources cannot supply that requirement.
+
+The first supported vertical browser rehearsal uses a disposable API dataset
+and test-specific manifest/reference bindings. It does not promote the public
+floor-2 preview or import routes into the development database. See
+`verification/h2-stair-support/README.md` for its exact scope and remaining work.
+
 Backend `15f467c` provides stable identities, repeated visible labels, ID/position
 waypoints and scoped versioned imports; see `UniNav/docs/CAMPUS_DATASETS.md`.
 The physical block inventory still has derived A/B identities. Upper-floor routes

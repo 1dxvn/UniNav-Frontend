@@ -216,7 +216,7 @@ async function calculateRoute(): Promise<void> {
     const route = await api.calculateRoute({ origin_id: start.place.id, destination_id: target.id, avoid: ui.avoidStairs.checked ? ["stairs"] : [] });
     if (revision !== requestRevision || !signedIn) return;
     const resolved = resolveRoute(route, buildings, paths, start.place.id, target.id);
-    await scene.showRoute(walkWaypoints(start,resolved));
+    await scene.showRoute(walkWaypoints(start,resolved,paths));
     if (revision !== requestRevision || !signedIn) return;
     currentRoute = route;
     ui.origin.value = String(start.place.id);

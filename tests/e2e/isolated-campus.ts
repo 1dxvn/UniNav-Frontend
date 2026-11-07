@@ -9,12 +9,13 @@ import { createInterface } from "node:readline";
 import { promisify } from "node:util";
 
 // Only the error rehearsal uses this fixture. Walks still use UNINAV_TEST_URL.
-export const test = base.extend({
-  baseURL: async ({ playwright }, use) => {
+export const test = base.extend<{ navigationDataset:string | undefined }>({
+  navigationDataset:[undefined,{ option:true }],
+  baseURL: async ({ playwright,navigationDataset }, use) => {
     const backend = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
     const directory = await mkdtemp(join(tmpdir(), "uninav-e2e-"));
     const python = process.env.UNINAV_TEST_PYTHON ?? join(backend, "venv", process.platform === "win32" ? "Scripts/python.exe" : "bin/python");
-    const child = spawn(python, ["-m", "tests.serve_campus", "--directory", directory], { cwd: backend, windowsHide: true });
+    const child = spawn(python, ["-m", "tests.serve_campus", "--directory", directory,...(navigationDataset ? ["--dataset",navigationDataset] : [])], { cwd: backend, windowsHide: true });
     const lines = createInterface({ input: child.stdout });
     let log = "";
     child.stderr.on("data", (data: Buffer) => { log = (log + data.toString()).slice(-4000); });
