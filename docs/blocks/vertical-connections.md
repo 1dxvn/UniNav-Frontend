@@ -77,7 +77,7 @@ These facts come from the first-floor sheet, in first-floor plan metres. They li
 
 **1. Hall steps, between the hall corridor (N 0.00) and the elevator hall (N −0.63).**
 - A strip x 27.3–29.8, y 47.86–49.23 (`3.20 M2` on the sheet) has three numbered treads (1–3 at y 48.08, 48.55 and 48.97) and an "S" arrow. The levels on either side give 0.63 m in total, going down northwards.
-- *(Measured at 10:50.)* Four nosing lines (layer 02) cross the strip, at y 47.86, 48.32, 48.78 and 49.23. They enclose three treads of 0.46 m, so the 0.63 m drop is **4 risers of about 0.158 m**, not 3 of 0.21 m. Each riser is under the runtime's 0.20 m step limit. Nosings, going north:
+- *(Measured at 10:44.)* Four nosing lines (layer 02) cross the strip, at y 47.86, 48.32, 48.78 and 49.23. They enclose three treads of 0.46 m, so the 0.63 m drop is **4 risers of about 0.158 m**, not 3 of 0.21 m. Each riser is under the runtime's 0.20 m step limit. Nosings, going north:
 
   | Riser | y | Level after it |
   | --- | --- | --- |

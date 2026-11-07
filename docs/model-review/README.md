@@ -52,7 +52,7 @@ The browser captures come from a temporary Playwright walk run by Claude against
 
 - **Level changes on the first-floor routes (09:08, important for "Avoid stairs").**
   - The first-floor sheet draws steps (0.63 m) between the hall corridor (N 0.00) and the elevator hall (N −0.63), at x 27.3–29.8, y 47.86–49.23.
-  - *(10:50)* Three numbered treads of 0.46 m lie between four nosing lines (y 47.86, 48.32, 48.78, 49.23). That is 4 risers of about 0.158 m, so each is under your 0.20 m step limit, not 0.21 m.
+  - *(10:44)* Three numbered treads of 0.46 m lie between four nosing lines (y 47.86, 48.32, 48.78, 49.23). That is 4 risers of about 0.158 m, so each is under your 0.20 m step limit, not 0.21 m.
   - The API edge `Hall corridor north → Elevator and Restroom Hall` crosses them, and the node `Hall corridor north` stands on the first tread. So every route from Hall Acceso to Block A (elevators, north circulation, Preclinic, and your new floor-2 routes) goes down steps.
   - The Block B stair links three levels (N −0.90, 0.00, +1.19). The hatched hall north of it rises from N −0.90 to the north circulation (N −0.63). No ramp reaches N +1.19 on this sheet.
   - Details and suggested edges are in `docs/blocks/vertical-connections.md`, "First-floor level changes on the API routes". The model is still flat there; real levels can come as a candidate when the graph is ready for them.
