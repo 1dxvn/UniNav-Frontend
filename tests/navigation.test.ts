@@ -42,3 +42,18 @@ test("a moving avatar connects to a reachable edge endpoint", () => {
   const nearStart = routingStart(new Vector3(10, 0, -0.05), places, walkSegments(places, paths), 0);
   assert.equal(nearStart.place.name, "Library");
 });
+
+test("structured routes use IDs with repeated visible labels and explicit heights", () => {
+  const multiFloor = places.slice(0, 2).map((place, index) => ({ ...place, code: `test:${place.id}`,
+    display_name: "Hall", floor: index + 1, elevation_m: index === 0 ? 3.5 : 6.44 }));
+  const structured: RouteResponse = { ...route, path: ["stale alias", "stale alias"], waypoints: multiFloor.map((p) => ({ ...p,
+    code: p.code, display_name: "Hall", block_code: null, floor_code: null })), steps: [
+    { ...route.steps[0], origin_id: 1, destination_id: 2, path_id: 1, connection_code: "test:edge" }] };
+  const edges = [{ ...paths[0], code: "test:edge" }];
+  assert.deepEqual(resolveRoute(structured, multiFloor, edges, 1, 2).map((p) => toScenePosition(p).y), [3.5, 6.44]);
+  assert.throws(() => resolveRoute({ ...structured, waypoints: [] }, multiFloor, edges, 1, 2), /endpoints/);
+  assert.throws(() => resolveRoute({ ...structured, waypoints: structured.waypoints!.map((p) => ({ ...p, id: 99 })) }, multiFloor, edges, 1, 2), /unknown place ID/);
+  assert.throws(() => resolveRoute({ ...structured, waypoints: structured.waypoints!.map((p) => ({ ...p, elevation_m: 7 })) }, multiFloor, edges, 1, 2), /position/);
+  assert.throws(() => resolveRoute({ ...structured, steps: [{ ...structured.steps[0], path_id: 99 }] }, multiFloor, edges, 1, 2), /connection/);
+  assert.throws(() => resolveRoute({ ...structured, steps: [{ ...structured.steps[0], destination_id: 99 }] }, multiFloor, edges, 1, 2), /connection/);
+});

@@ -18,13 +18,21 @@ export interface Building {
   x: number;
   y: number;
   floor: number;
-  elevation_m?: number;
+  code?: string;
+  display_name?: string | null;
+  block_code?: string | null;
+  floor_code?: string | null;
+  elevation_m?: number | null;
+  effective_elevation_m?: number;
+  elevation_source?: string | null;
+  data_scope?: string | null;
   faculty: string | null;
   building_type: string | null;
 }
 
 export interface CampusPath {
   id: number;
+  code?: string;
   source_id: number;
   target_id: number;
   source_name: string;
@@ -46,9 +54,29 @@ export interface RouteStep {
   destination_name: string;
   kind: PathKind;
   distance: number;
+  origin_id?: number;
+  destination_id?: number;
+  path_id?: number;
+  connection_code?: string;
+  origin_display_name?: string;
+  destination_display_name?: string;
+}
+
+export interface RouteWaypoint {
+  id: number;
+  code: string;
+  name: string;
+  display_name: string;
+  x: number;
+  y: number;
+  floor: number;
+  elevation_m: number;
+  block_code: string | null;
+  floor_code: string | null;
 }
 
 export interface RouteResponse {
+  waypoints?: RouteWaypoint[];
   path: string[];
   steps: RouteStep[];
   distance: number;

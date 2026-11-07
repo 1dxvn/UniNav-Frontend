@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-11-07T08:36:53.322Z",
+  "exterior": {
+    "id": "campus-exterior",
+    "kind": "exterior",
+    "navigable": false,
+    "label": "Campus overview",
+    "floors": [],
+    "state": "ready",
+    "revision": "C5-31c5d68",
+    "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
+    "model": "models/blocks/campus-exterior.glb",
+    "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+    "transform": {
+      "scale": 1,
+      "rotationYDegrees": 0,
+      "translation": [
+        0,
+        3.5,
+        0
+      ]
+    },
+    "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+  },
+  "colliders": 137,
+  "position": "0.000,3.500,0.000",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "headless": true,
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "averageFps": 144,
+  "p95FrameMs": 7,
+  "samples": 720,
+  "resourceTimings": [
+    {
+      "url": "/app/models/campus.glb",
+      "durationMs": 18.099999994039536,
+      "transferSize": 3755556,
+      "decodedBodySize": 3755256
+    },
+    {
+      "url": "/app/models/blocks/campus-exterior.glb",
+      "durationMs": 19,
+      "transferSize": 2092712,
+      "decodedBodySize": 2092412
+    }
+  ],
+  "jsHeap": {
+    "usedBytes": 27103143,
+    "totalBytes": 35358283,
+    "limitBytes": 4395630592
+  }
+}

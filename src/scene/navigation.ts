@@ -39,10 +39,22 @@ export function nearestWalkSegment(position: Vector3, segments: WalkSegment[], f
 }
 
 // Never discard an unknown waypoint: that would join its neighbours through a wall.
-// Validate directed edges as well as names before drawing or moving anything.
+// Prefer stable IDs and explicit elevations. The legacy name contract remains
+// available while an existing campus server is running an older API version.
 export function resolveRoute(route: RouteResponse, places: Building[], paths: CampusPath[], originId: number, destinationId: number): Building[] {
+  const byId = new Map(places.map((place) => [place.id, place]));
   const byName = new Map(places.map((place) => [place.name, place]));
-  const resolved = route.path.map((name) => {
+  const resolved = route.waypoints !== undefined ? route.waypoints.map((waypoint) => {
+    const place = byId.get(waypoint.id);
+    if (!place) throw new Error(`Route contains an unknown place ID: ${waypoint.id}. Reload the campus.`);
+    if ((place.code !== undefined && place.code !== waypoint.code) || place.floor !== waypoint.floor ||
+        ![waypoint.x, waypoint.y, waypoint.elevation_m].every(Number.isFinite) ||
+        Math.abs(place.x - waypoint.x) > 0.00001 || Math.abs(place.y - waypoint.y) > 0.00001 ||
+        Math.abs(toScenePosition(place).y - waypoint.elevation_m) > 0.00001) {
+      throw new Error(`The route position for ${place.name} has changed. Reload the campus.`);
+    }
+    return place;
+  }) : route.path.map((name) => {
     const place = byName.get(name);
     if (!place) throw new Error(`Route contains an unknown place: ${name}. Reload the campus.`);
     return place;
@@ -55,7 +67,11 @@ export function resolveRoute(route: RouteResponse, places: Building[], paths: Ca
     const a = resolved[index - 1];
     const b = resolved[index];
     const step = route.steps[index - 1];
-    if (step.origin_name !== a.name || step.destination_name !== b.name || !paths.some((edge) =>
+    const matchesEndpoints = route.waypoints !== undefined
+      ? step.origin_id === a.id && step.destination_id === b.id
+      : step.origin_name === a.name && step.destination_name === b.name;
+    if (!matchesEndpoints || !paths.some((edge) =>
+      (route.waypoints === undefined || (step.path_id === edge.id && (!edge.code || step.connection_code === edge.code))) &&
       edge.kind === step.kind && ((edge.source_id === a.id && edge.target_id === b.id) ||
       (edge.bidirectional && edge.source_id === b.id && edge.target_id === a.id)))) {
       throw new Error(`The route connection from ${a.name} to ${b.name} is unavailable. Reload the campus.`);

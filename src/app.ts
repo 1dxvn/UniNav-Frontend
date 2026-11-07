@@ -40,6 +40,7 @@ function showError(target: HTMLElement, error: unknown): void {
   target.textContent = error instanceof Error ? error.message : String(error);
   target.hidden = false;
 }
+function placeName(place: Building): string { return place.display_name ?? place.name; }
 function floorName(level: number): string { return floors.find((floor) => floor.level === level)?.name ?? `Floor ${level}`; }
 function clearRoute(): void {
   revision++;
@@ -53,7 +54,7 @@ function renderPlaces(): void {
   const selectedFloor = ui.destinationFloor.value;
   const places = buildings.filter((place) => !["waypoint", "junction", "corridor", "reference"].includes(place.building_type ?? "") &&
     (selectedFloor === "all" || place.floor === Number(selectedFloor)) &&
-    `${place.name} ${place.faculty ?? ""} ${place.building_type ?? ""} ${floorName(place.floor)}`.toLowerCase().includes(query));
+    `${placeName(place)} ${place.name} ${place.block_code ?? ""} ${place.faculty ?? ""} ${place.building_type ?? ""} ${floorName(place.floor)}`.toLowerCase().includes(query));
   ui.count.textContent = `${places.length} places`;
   ui.places.replaceChildren();
   for (const place of places) {
@@ -65,8 +66,8 @@ function renderPlaces(): void {
     icon.className = "place-icon";
     icon.textContent = place.building_type === "stairs" ? "↟" : place.building_type === "elevator" ? "↕" : "⌑";
     const text = document.createElement("span"), title = document.createElement("strong"), meta = document.createElement("small");
-    title.textContent = place.name;
-    meta.textContent = `${floorName(place.floor)} · ${(place.building_type ?? "place").replaceAll("_", " ")}`;
+    title.textContent = placeName(place);
+    meta.textContent = `${place.block_code ? `Block ${place.block_code} · ` : ""}${floorName(place.floor)} · ${(place.building_type ?? "place").replaceAll("_", " ")}`;
     text.append(title, meta);
     const arrow = document.createElement("span"); arrow.className = "place-arrow"; arrow.textContent = "↗";
     button.append(icon, text, arrow);
@@ -85,8 +86,8 @@ function selectDestination(place: Building): void {
   scene?.setDestination(place);
   scene?.setFloor(place.floor);
   ui.preview.hidden = false;
-  ui.destinationName.textContent = place.name;
-  ui.destinationMeta.textContent = `${floorName(place.floor)} · ${place.faculty ?? "Campus"}`;
+  ui.destinationName.textContent = placeName(place);
+  ui.destinationMeta.textContent = `${place.block_code ? `Block ${place.block_code} · ` : ""}${floorName(place.floor)} · ${place.faculty ?? "Campus"}`;
   ui.calculate.disabled = false;
   renderPlaces();
 }
@@ -107,7 +108,7 @@ function updateTravel(update: TravelUpdate): void {
   travelState = update.state;
   const title: Record<TravelState, string> = {
     idle: "Ready to explore", ready: "Your route is ready", walking: "On your way", paused: "Taking a pause",
-    arrived: `You've arrived${destination ? ` at ${destination.name}` : ""}`, blocked: "The walkway is blocked",
+    arrived: `You've arrived${destination ? ` at ${placeName(destination)}` : ""}`, blocked: "The walkway is blocked",
   };
   if (changed || ui.travelStatus.textContent !== title[update.state]) ui.travelStatus.textContent = title[update.state];
   ui.travelStatus.dataset.state = update.state;
@@ -160,7 +161,7 @@ async function loadCampus(): Promise<void> {
     ui.status.append(dot, ` Campus online · ${health.buildings} places`);
     ui.floor.replaceChildren(...floors.filter((floor) => floor.building_count > 0).map((floor) => new Option(String(floor.level).padStart(2, "0"), String(floor.level))));
     ui.destinationFloor.replaceChildren(new Option("All floors", "all"), ...floors.filter((floor) => floor.building_count > 0).map((floor) => new Option(floor.name, String(floor.level))));
-    ui.origin.replaceChildren(...places.filter((place) => place.building_type !== "reference").map((place) => new Option(`${place.name} · F${place.floor}`, String(place.id))));
+    ui.origin.replaceChildren(...places.filter((place) => place.building_type !== "reference").map((place) => new Option(`${placeName(place)} · ${place.block_code ? `Block ${place.block_code} · ` : ""}F${place.floor}`, String(place.id))));
     ui.origin.disabled = !places.length;
     clearRoute();
     scene.setCampus(places, connections);
@@ -221,11 +222,11 @@ async function calculateRoute(): Promise<void> {
     const connectorLength = start.connector[0].distanceTo(start.connector[1]);
     const physicalDistance = resolved.slice(1).reduce((sum, place, index) => sum + toScenePosition(place).distanceTo(toScenePosition(resolved[index])), connectorLength);
     ui.distance.textContent = `${physicalDistance.toFixed(0)} m`;
-    ui.title.textContent = target.name;
-    ui.summary.textContent = `About ${Math.max(1, Math.ceil(physicalDistance / WALK_SPEED))} sec · ${resolved.length - 1} connections${ui.avoidStairs.checked ? " · Step-free" : ""}`;
+    ui.title.textContent = placeName(target);
+    ui.summary.textContent = `About ${Math.max(1, Math.ceil(physicalDistance / WALK_SPEED))} sec · ${resolved.length - 1} connections${ui.avoidStairs.checked ? " · Mapped stairs excluded" : ""}`;
     ui.steps.replaceChildren(...route.steps.map((step) => {
       const item = document.createElement("li");
-      item.textContent = `${step.origin_name} → ${step.destination_name} · ${step.kind} · ${step.distance.toFixed(1)} m`;
+      item.textContent = `${step.origin_display_name ?? step.origin_name} → ${step.destination_display_name ?? step.destination_name} · ${step.kind} · ${step.distance.toFixed(1)} m`;
       return item;
     }));
     ui.card.scrollIntoView({ behavior: "smooth", block: "nearest" });

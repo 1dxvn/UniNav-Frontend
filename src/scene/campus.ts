@@ -213,9 +213,9 @@ export class CampusScene {
       if (isWaypoint) continue;
       const label = document.createElement("button");
       label.className = "place-label";
-      label.textContent = place.name;
+      label.textContent = place.display_name ?? place.name;
       label.type = "button";
-      label.title = `Navigate to ${place.name}`;
+      label.title = `Navigate to ${place.display_name ?? place.name}`;
       label.addEventListener("click", () => this.events.select(place));
       this.container.appendChild(label);
       this.labels.set(place.id, label);

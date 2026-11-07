@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-11-07T08:39:09.919Z",
+  "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
+  "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+  "transform": {
+    "scale": 1,
+    "rotationYDegrees": 0,
+    "translation": [
+      0,
+      3.5,
+      0
+    ]
+  },
+  "navigable": false,
+  "navigationColliders": 0,
+  "meshes": 48,
+  "triangles": 31106,
+  "minHeightAboveFirstFloorMetres": 2.430000066757202,
+  "exteriorBounds": {
+    "min": [
+      -6.996840476989746,
+      5.930000066757202,
+      -67.76959228515625
+    ],
+    "max": [
+      72.24046325683594,
+      26.399999618530273,
+      -8.28169059753418
+    ]
+  },
+  "firstFloorBounds": {
+    "min": [
+      -10.831844329833984,
+      3.1500000059604645,
+      -68.66985321044922
+    ],
+    "max": [
+      77,
+      9.740852355957031,
+      8.079999923706055
+    ]
+  },
+  "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+}

@@ -1,0 +1,18 @@
+{
+  "8000": {
+    "/health": 200,
+    "/app/": 200,
+    "/docs": 200,
+    "/openapi.json": 200,
+    "places": 21,
+    "has_new_metadata": true
+  },
+  "8001": {
+    "/health": 200,
+    "/app/": 200,
+    "/docs": 200,
+    "/openapi.json": 200,
+    "places": 19,
+    "has_new_metadata": false
+  }
+}
