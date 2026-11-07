@@ -1,0 +1,158 @@
+{
+  "route": {
+    "path": [
+      "Hall Acceso",
+      "Access courtyard",
+      "South circulation",
+      "ICETEX approach",
+      "ICETEX doorway",
+      "ICETEX"
+    ],
+    "steps": [
+      {
+        "origin_name": "Hall Acceso",
+        "destination_name": "Access courtyard",
+        "kind": "outdoor",
+        "distance": 17.55704986607944,
+        "origin_id": 1,
+        "destination_id": 2,
+        "path_id": 1,
+        "connection_code": "ucc:floor1:e01",
+        "origin_display_name": "Hall Acceso",
+        "destination_display_name": "Access courtyard"
+      },
+      {
+        "origin_name": "Access courtyard",
+        "destination_name": "South circulation",
+        "kind": "outdoor",
+        "distance": 23.005434140654682,
+        "origin_id": 2,
+        "destination_id": 3,
+        "path_id": 2,
+        "connection_code": "ucc:floor1:e02",
+        "origin_display_name": "Access courtyard",
+        "destination_display_name": "South circulation"
+      },
+      {
+        "origin_name": "South circulation",
+        "destination_name": "ICETEX approach",
+        "kind": "corridor",
+        "distance": 1.5811388300841898,
+        "origin_id": 3,
+        "destination_id": 4,
+        "path_id": 3,
+        "connection_code": "ucc:floor1:e03",
+        "origin_display_name": "South circulation",
+        "destination_display_name": "ICETEX approach"
+      },
+      {
+        "origin_name": "ICETEX approach",
+        "destination_name": "ICETEX doorway",
+        "kind": "corridor",
+        "distance": 2.0615528128088303,
+        "origin_id": 4,
+        "destination_id": 5,
+        "path_id": 4,
+        "connection_code": "ucc:floor1:e04",
+        "origin_display_name": "ICETEX approach",
+        "destination_display_name": "ICETEX doorway"
+      },
+      {
+        "origin_name": "ICETEX doorway",
+        "destination_name": "ICETEX",
+        "kind": "corridor",
+        "distance": 5.874597858577216,
+        "origin_id": 5,
+        "destination_id": 6,
+        "path_id": 5,
+        "connection_code": "ucc:floor1:e05",
+        "origin_display_name": "ICETEX doorway",
+        "destination_display_name": "ICETEX"
+      }
+    ],
+    "distance": 50.07977350820436,
+    "origin_name": "Hall Acceso",
+    "destination_name": "ICETEX",
+    "waypoints": [
+      {
+        "id": 1,
+        "code": "ucc:floor1:p01",
+        "name": "Hall Acceso",
+        "display_name": "Hall Acceso",
+        "x": 0,
+        "y": 0,
+        "floor": 1,
+        "elevation_m": 3.5,
+        "block_code": null,
+        "floor_code": "ucc-first-floor"
+      },
+      {
+        "id": 2,
+        "code": "ucc:floor1:p02",
+        "name": "Access courtyard",
+        "display_name": "Access courtyard",
+        "x": 6,
+        "y": 16.5,
+        "floor": 1,
+        "elevation_m": 3.5,
+        "block_code": null,
+        "floor_code": "ucc-first-floor"
+      },
+      {
+        "id": 3,
+        "code": "ucc:floor1:p03",
+        "name": "South circulation",
+        "display_name": "South circulation",
+        "x": 21.5,
+        "y": 33.5,
+        "floor": 1,
+        "elevation_m": 3.5,
+        "block_code": null,
+        "floor_code": "ucc-first-floor"
+      },
+      {
+        "id": 4,
+        "code": "ucc:floor1:p04",
+        "name": "ICETEX approach",
+        "display_name": "ICETEX approach",
+        "x": 23,
+        "y": 34,
+        "floor": 1,
+        "elevation_m": 3.5,
+        "block_code": null,
+        "floor_code": "ucc-first-floor"
+      },
+      {
+        "id": 5,
+        "code": "ucc:floor1:p05",
+        "name": "ICETEX doorway",
+        "display_name": "ICETEX doorway",
+        "x": 23.5,
+        "y": 36,
+        "floor": 1,
+        "elevation_m": 3.5,
+        "block_code": null,
+        "floor_code": "ucc-first-floor"
+      },
+      {
+        "id": 6,
+        "code": "ucc:floor1:p06",
+        "name": "ICETEX",
+        "display_name": "ICETEX",
+        "x": 24.55,
+        "y": 41.78,
+        "floor": 1,
+        "elevation_m": 3.5,
+        "block_code": null,
+        "floor_code": "ucc-first-floor"
+      }
+    ]
+  },
+  "finalPosition": [
+    24.55,
+    3.5,
+    -41.78
+  ],
+  "finalError": 0,
+  "pageErrors": []
+}

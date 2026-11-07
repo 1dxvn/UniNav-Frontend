@@ -1,0 +1,62 @@
+{
+  "modelSourceCommit": "389cfd9",
+  "results": [
+    {
+      "file": "medical-research-arrival-walks.json",
+      "direction": "outbound",
+      "samples": 280,
+      "newScopeSupportSamples": 85,
+      "maxFootErrorMetres": 1.1444091807533141e-7,
+      "maxDistanceFromGraphMetres": 0.06131835242475027,
+      "finalErrorMetres": 0
+    },
+    {
+      "file": "medical-research-arrival-walks.json",
+      "direction": "return",
+      "samples": 281,
+      "newScopeSupportSamples": 87,
+      "maxFootErrorMetres": 1.1444091807533141e-7,
+      "maxDistanceFromGraphMetres": 0.06004973474838374,
+      "finalErrorMetres": 0
+    },
+    {
+      "file": "mixed-reality-entrance-walks.json",
+      "direction": "outbound",
+      "samples": 273,
+      "newScopeSupportSamples": 78,
+      "maxFootErrorMetres": 1.1444091807533141e-7,
+      "maxDistanceFromGraphMetres": 0.06047263807340102,
+      "finalErrorMetres": 0
+    },
+    {
+      "file": "mixed-reality-entrance-walks.json",
+      "direction": "return",
+      "samples": 269,
+      "newScopeSupportSamples": 76,
+      "maxFootErrorMetres": 1.1444091807533141e-7,
+      "maxDistanceFromGraphMetres": 0.06357224251092787,
+      "finalErrorMetres": 0
+    },
+    {
+      "file": "molecular-biology-entrance-walks.json",
+      "direction": "outbound",
+      "samples": 272,
+      "newScopeSupportSamples": 78,
+      "maxFootErrorMetres": 1.1444091807533141e-7,
+      "maxDistanceFromGraphMetres": 0.05708952541648627,
+      "finalErrorMetres": 0
+    },
+    {
+      "file": "molecular-biology-entrance-walks.json",
+      "direction": "return",
+      "samples": 273,
+      "newScopeSupportSamples": 77,
+      "maxFootErrorMetres": 1.1444091807533141e-7,
+      "maxDistanceFromGraphMetres": 0.060472605665762715,
+      "finalErrorMetres": 0
+    }
+  ],
+  "readyGraphMatchesRehearsal": true,
+  "coordinateResolutionMetres": 0.001,
+  "note": "Support checks cover the newly added scope, including stairs and floor 2. Only documentary elevation_source may differ from the prepared dataset; coordinates, identities, names, types and paths agree. Legacy approach retains its flat-model convention."
+}

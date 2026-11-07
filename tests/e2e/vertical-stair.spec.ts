@@ -8,6 +8,11 @@ import { test } from "./isolated-campus.ts";
 test.use({ navigationDataset:fileURLToPath(new URL("../fixtures/ucc-east-stair.json",import.meta.url)) });
 const output=process.env.UNINAV_EVIDENCE_DIR ?? "docs/verification/h2-stair-support";
 async function position(page:Page) { return (await page.locator("#travel-status").getAttribute("data-position"))!.split(",").map(Number); }
+async function modelEvidence(request:import("@playwright/test").APIRequestContext){
+  const manifest=await(await request.get("/app/models/campus-manifest.json")).json() as CampusManifest;
+  const upper=manifest.models.find(m=>m.id==="ucc-floor-2-preview")!,lower=manifest.models.find(m=>m.id==="ucc-first-floor")!;
+  return {modelSourceCommit:upper.sourceCommit,modelHash:upper.modelSha256,lowerModelHash:lower.modelSha256};
+}
 test.beforeEach(async ({page,request}) => {
   const places=await (await request.get("/buildings")).json() as Building[];
   const paths=await (await request.get("/paths")).json() as CampusPath[];
@@ -77,11 +82,11 @@ test("real stair pair: FastAPI up/down, avoid-stairs, pause and replan after key
   const lower=await position(page);expect(lower).toEqual([bottom.x,3.5,-bottom.y]);expect(await page.locator("#floor").inputValue()).toBe("1");
   const samples=await page.evaluate(()=>(window as unknown as {stairSamples:unknown[]}).stairSamples);
   expect(JSON.stringify(samples)).not.toContain('"state":"blocked"');expect(errors).toEqual([]);
-  await writeFile(`${output}/vertical-browser.json`,JSON.stringify({routes,paused,afterOverride,upper,lower,samples,errors,fixtureOnly:true},null,2));
+  await writeFile(`${output}/vertical-browser.json`,JSON.stringify({...await modelEvidence(request),routes,paused,afterOverride,upper,lower,samples,errors,fixtureOnly:true},null,2));
   await page.screenshot({path:`${output}/vertical-lower-arrival.png`});
 });
 
-test("real stair pair: keyboard climbs and descends the supported treads and landing",async ({page})=>{
+test("real stair pair: keyboard climbs and descends the supported treads and landing",async ({page,request})=>{
   test.setTimeout(120000);
   const fixture=JSON.parse(await readFile(new URL("../fixtures/ucc-east-stair.json",import.meta.url),"utf8"));
   const points=fixture.places.filter((p:{code:string})=>p.code.startsWith("test:east-stair:p")) as Building[];
@@ -104,5 +109,5 @@ test("real stair pair: keyboard climbs and descends the supported treads and lan
     arrivals.push({direction,position:actual,floor:await page.locator("#floor").inputValue(),finalErrorMetres});
     await page.screenshot({path:`${output}/manual-${direction}-arrival.png`});
   }
-  await writeFile(`${output}/vertical-manual-browser.json`,JSON.stringify({samples,arrivals,fixtureOnly:true},null,2));
+  await writeFile(`${output}/vertical-manual-browser.json`,JSON.stringify({...await modelEvidence(request),samples,arrivals,fixtureOnly:true},null,2));
 });

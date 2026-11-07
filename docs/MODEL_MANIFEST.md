@@ -92,8 +92,8 @@ its full distance is not a surveyed stair-flight length.
 `tools/prepare-floor2-profile.ts` obtains the actual serialized API snapshot using
 the disposable backend fixture's `--snapshot-json` mode. It opens no port and
 never touches a development database. Its first-floor binding includes the new
-incident edges. Floor 2 uses the committed API reference and C13 export in
-`a6d3f11`. The build stages assets from every profile, rejecting conflicting bytes
+incident edges. Floor 2 uses the API reference first delivered in `a6d3f11`,
+paired with the reviewed C14 export in `389cfd9`. The build stages assets from every profile, rejecting conflicting bytes
 at a shared URL before replacing the last build. Baseline refresh preserves the
 profile declarations; changed shared geometry needs coherent updates to all users.
 
@@ -184,6 +184,24 @@ line-ending differences. This catches an incorrect source commit before the next
 working export changes and needs recovery.
 
 ## Remaining navigation work
+
+C14 (`389cfd9`) is integrated for floors 0, 2, 4 and 5 across all four profiles.
+Floor 3's GLB is unchanged; the first floor remains the reviewed C13 export and
+the exterior remains C5. `tools/integrate-c14.ts` verifies committed references,
+GLB anchors and support node names before updating the integration metadata.
+The model source, original data bindings, stair restrictions, profile identities
+and navigation dataset are preserved. See `verification/c14/README.md`.
+
+The three selected floor-2 doorway facts now cite their committed inventory,
+SHA-256 `18fc3d7c…`, rather than a working snapshot. Other inventory entries
+remain drawing facts: the known floor-0 toilet/door-leaf and balcony-glass probe
+exceptions do not become accepted entrances. Structural previews create no API
+destinations. The first-floor hall/B levels still await physical candidate models.
+
+Browser playback verification reads the recorded source revision and checks its
+model hashes, including the unchanged lower model. Visual audits may change
+`elevation_source` documentation; every other prepared place field and every path
+field must remain identical. This does not relax runtime model/data bindings.
 
 Navigable entries can declare `supportNodes`, a reviewed list of exact GLB node
 names for floor slabs and stair treads. Missing nodes fail loading. Previews and

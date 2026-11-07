@@ -5,7 +5,7 @@ import { sha256 } from "../../src/scene/modelManifest.ts";
 import type { Building,RouteResponse } from "../../src/api/types.ts";
 import { test } from "./isolated-campus.ts";
 
-const candidate="docs/verification/h2-floor2-candidate";
+const candidate=process.env.UNINAV_ROUTE_REVIEW_DIR ?? "docs/verification/c14";
 const output=process.env.UNINAV_EVIDENCE_DIR ?? candidate;
 const stairReview=process.env.UNINAV_STAIRS_REVIEW==="1";
 const upperDataset=fileURLToPath(new URL("../../../data/datasets/ucc-second-floor.json",import.meta.url));
@@ -50,7 +50,9 @@ for(const code of ["ucc:f2:mixed-reality-entrance","ucc:f2:molecular-biology-ent
       await page.screenshot({path:`${output}/${code.split(":").at(-1)}-${direction}.png`});
     }
     expect(errors).toEqual([]);
-    await writeFile(`${output}/${code.split(":").at(-1)}-walks.json`,JSON.stringify({sourceCommit:review.sourceCommit,modelHash,scope:"temporary API dataset with shipped profile; no model/reference overrides",runs,errors},null,2));
+    const manifest=await(await request.get("/app/models/campus-manifest.json")).json();
+    const lowerModelHash=manifest.models.find((m:{id:string})=>m.id==="ucc-first-floor").modelSha256;
+    await writeFile(`${output}/${code.split(":").at(-1)}-walks.json`,JSON.stringify({sourceCommit:review.sourceCommit,modelHash,lowerModelHash,profile:stairReview ? "ucc-two-floors-stair-review":"ucc-two-floors",scope:"temporary API dataset with shipped profile; no model/reference overrides",runs,errors},null,2));
   });
 }
 

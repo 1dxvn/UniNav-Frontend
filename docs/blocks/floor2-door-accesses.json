@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source": "Claude DWG jamb extraction, working doorways.json SHA256 18fc3d7c1f37ac43fd1e331c9d59db342620d74b62188d19d756db6fe1677f6f (2026-11-07); selected integration facts, independently checked against each reviewed GLB. Not a claim that all other doorways are accepted.",
+  "source": "Claude DWG jamb extraction, committed model/tools/data/floor2/doorways.json @ 389cfd9, SHA256 18fc3d7c1f37ac43fd1e331c9d59db342620d74b62188d19d756db6fe1677f6f; selected integration facts checked against C13 and C14 GLBs. Not a claim that all other doorways are accepted.",
   "frame": "Registered first-floor plan metres; plan +Y is not geographic north.",
   "doorways": [
     {

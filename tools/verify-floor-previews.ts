@@ -13,7 +13,7 @@ const revisions = JSON.parse(await readFile(`${output}/source-revisions.json`,"u
 const results = [];
 for (const row of revisions) {
   const base = `models/floor-${row.level}`;
-  const referenceBytes = await readFile(`public/${base}/campus-reference.json`);
+  const referenceBytes = await committedAsset(row.sourceCommit,`${base}/campus-reference.json`);
   if (sha(referenceBytes) !== row.reference_sha256) throw new Error(`References changed on floor ${row.level}.`);
   const reference = parseReference(JSON.parse(referenceBytes.toString("utf8")));
   const aligned = validateAlignment(reference,[]);

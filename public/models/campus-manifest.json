@@ -212,11 +212,11 @@
         0
       ],
       "state": "ready",
-      "revision": "C13-a2dbda0",
-      "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+      "revision": "C14-ucc-floor-0-preview-389cfd9",
+      "sourceCommit": "389cfd9",
       "reference": "models/floor-0/campus-reference.json",
       "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-      "modelSha256": "1cc05a1b3acce2e11c0b5ea04bed96b5f36206904d63c24d36eb449e62541bf7",
+      "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
       "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
     },
     {
@@ -228,11 +228,11 @@
         2
       ],
       "state": "ready",
-      "revision": "C13-a2dbda0",
-      "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+      "revision": "C14-ucc-floor-2-preview-389cfd9",
+      "sourceCommit": "389cfd9",
       "reference": "models/floor-2/campus-reference.json",
       "referenceSha256": "2ba11cd9f962b681aa5ace5bcf3c973c246df7ae9200e26b4b5cf7f9793c52bc",
-      "modelSha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a",
+      "modelSha256": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6",
       "sourceDocument": "public/models/floor-2/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
     },
     {
@@ -260,11 +260,11 @@
         4
       ],
       "state": "ready",
-      "revision": "C13-a2dbda0",
-      "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+      "revision": "C14-ucc-floor-4-preview-389cfd9",
+      "sourceCommit": "389cfd9",
       "reference": "models/floor-4/campus-reference.json",
       "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-      "modelSha256": "db7a29e45defb7cfc8a0f010b7569429ca7fe39b1c0aea4d4e21a7d20eaa3987",
+      "modelSha256": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06",
       "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
     },
     {
@@ -276,11 +276,11 @@
         5
       ],
       "state": "ready",
-      "revision": "C13-a2dbda0",
-      "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+      "revision": "C14-ucc-floor-5-preview-389cfd9",
+      "sourceCommit": "389cfd9",
       "reference": "models/floor-5/campus-reference.json",
       "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-      "modelSha256": "0bedcb88c3fb0b9da213fb6fc54d8aff88fd66c3a3f250d542a30d867e65931b",
+      "modelSha256": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592",
       "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
     }
   ],
@@ -368,11 +368,11 @@
             0
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-0-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "1cc05a1b3acce2e11c0b5ea04bed96b5f36206904d63c24d36eb449e62541bf7",
+          "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
           "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         },
         {
@@ -384,11 +384,11 @@
             2
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-2-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-reference.json",
           "referenceSha256": "2ba11cd9f962b681aa5ace5bcf3c973c246df7ae9200e26b4b5cf7f9793c52bc",
-          "modelSha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a",
+          "modelSha256": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6",
           "sourceDocument": "public/models/floor-2/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         },
         {
@@ -416,11 +416,11 @@
             4
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-4-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "db7a29e45defb7cfc8a0f010b7569429ca7fe39b1c0aea4d4e21a7d20eaa3987",
+          "modelSha256": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06",
           "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         },
         {
@@ -432,11 +432,11 @@
             5
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-5-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "0bedcb88c3fb0b9da213fb6fc54d8aff88fd66c3a3f250d542a30d867e65931b",
+          "modelSha256": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592",
           "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         }
       ]
@@ -544,11 +544,11 @@
             0
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-0-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "1cc05a1b3acce2e11c0b5ea04bed96b5f36206904d63c24d36eb449e62541bf7",
+          "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
           "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         },
         {
@@ -576,11 +576,11 @@
             4
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-4-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "db7a29e45defb7cfc8a0f010b7569429ca7fe39b1c0aea4d4e21a7d20eaa3987",
+          "modelSha256": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06",
           "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         },
         {
@@ -592,11 +592,11 @@
             5
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-5-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "0bedcb88c3fb0b9da213fb6fc54d8aff88fd66c3a3f250d542a30d867e65931b",
+          "modelSha256": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592",
           "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         },
         {
@@ -607,11 +607,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "H2-three-destinations-a6d3f11-stair-review-b9648f5",
-          "sourceCommit": "a6d3f11",
+          "revision": "C14-ucc-second-floor-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a",
+          "modelSha256": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6",
           "supportNodes": [
             "P2_Floor_Slab",
             "P2_Stair_A_East_1",
@@ -748,11 +748,11 @@
             0
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-0-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "1cc05a1b3acce2e11c0b5ea04bed96b5f36206904d63c24d36eb449e62541bf7",
+          "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
           "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         },
         {
@@ -780,11 +780,11 @@
             4
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-4-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "db7a29e45defb7cfc8a0f010b7569429ca7fe39b1c0aea4d4e21a7d20eaa3987",
+          "modelSha256": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06",
           "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         },
         {
@@ -796,11 +796,11 @@
             5
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
-          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "revision": "C14-ucc-floor-5-preview-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "0bedcb88c3fb0b9da213fb6fc54d8aff88fd66c3a3f250d542a30d867e65931b",
+          "modelSha256": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592",
           "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
         },
         {
@@ -811,11 +811,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "H2-three-destinations-a6d3f11",
-          "sourceCommit": "a6d3f11",
+          "revision": "C14-ucc-second-floor-389cfd9",
+          "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a",
+          "modelSha256": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6",
           "supportNodes": [
             "P2_Floor_Slab",
             "P2_Stair_A_East_1",

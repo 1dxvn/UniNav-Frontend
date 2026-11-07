@@ -7,6 +7,12 @@ import { test } from "./isolated-campus.ts";
 test.use({navigationDataset:fileURLToPath(new URL("../../../data/datasets/ucc-second-floor.json",import.meta.url))});
 const output=process.env.UNINAV_EVIDENCE_DIR ?? "docs/verification/h2-profiles";
 async function pos(page:import("@playwright/test").Page){return (await page.locator("#travel-status").getAttribute("data-position"))!.split(",").map(Number);}
+async function modelEvidence(request:import("@playwright/test").APIRequestContext){
+  const manifest=await(await request.get("/app/models/campus-manifest.json")).json();
+  const models=manifest.profiles.find((p:{id:string})=>p.id==="ucc-two-floors").models;
+  const upper=models.find((m:{id:string})=>m.id==="ucc-second-floor"),lower=models.find((m:{id:string})=>m.id==="ucc-first-floor");
+  return {modelSourceCommit:upper.sourceCommit,modelHash:upper.modelSha256,lowerModelHash:lower.modelSha256};
+}
 async function login(page:import("@playwright/test").Page){
   await page.locator("#open-login").click();await page.getByLabel("Username",{exact:true}).fill("student");await page.getByLabel("Password",{exact:true}).fill("demo1234");await page.locator("#login-submit").click();await expect(page.locator("#session-user")).toHaveText("student");
 }
@@ -47,7 +53,7 @@ test("shipped two-floor profile preserves pause/replan and releases models after
   await page.locator("#calculate").click();await expect(page.locator("#travel-status")).toHaveAttribute("data-state","ready");await page.locator("#follow").click();await expect(page.locator("#travel-status")).toHaveAttribute("data-state","arrived",{timeout:30000});
   expect(await pos(page)).toEqual([target.x,6.44,-target.y]);
   const samples=await page.evaluate(()=>(window as unknown as {stairSamples:unknown[]}).stairSamples);
-  await writeFile(`${output}/two-floor-vertical-browser.json`,JSON.stringify({profile:"ucc-two-floors",paused,finalPosition:await pos(page),samples},null,2));
+  await writeFile(`${output}/two-floor-vertical-browser.json`,JSON.stringify({...await modelEvidence(request),profile:"ucc-two-floors",paused,finalPosition:await pos(page),samples},null,2));
   await page.locator("canvas").focus();await page.keyboard.press("Escape");await expect.poll(loaded).toEqual(["ucc-second-floor"]);
   const counts=()=>page.evaluate(()=>({...((window as unknown as {profileGpu:Record<string,number>}).profileGpu)}));
   await page.waitForTimeout(200);const baseline=await counts(),cycles=[],position=await pos(page);
@@ -80,5 +86,5 @@ test("shipped two-floor profile supports a complete keyboard stair climb and des
     }
     const actual=await pos(page),target=route.at(-1)!,error=Math.hypot(actual[0]-target.x,actual[1]-target.elevation_m!,actual[2]+target.y);expect(error).toBeLessThan(0.07);expect(await page.locator("#floor").inputValue()).toBe(direction==="up" ? "2":"1");arrivals.push({direction,position:actual,error});
   }
-  await mkdir(output,{recursive:true});await writeFile(`${output}/two-floor-vertical-manual-browser.json`,JSON.stringify({profile:"ucc-two-floors",samples,arrivals},null,2));
+  await mkdir(output,{recursive:true});await writeFile(`${output}/two-floor-vertical-manual-browser.json`,JSON.stringify({...await modelEvidence(request),profile:"ucc-two-floors",samples,arrivals},null,2));
 });

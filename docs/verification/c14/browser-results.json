@@ -1,0 +1,1586 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--grep-invert",
+      "reviewed first-floor stair classification",
+      "--reporter=line,json",
+      "--output=test-results-c14"
+    ],
+    "configFile": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\playwright.config.ts",
+    "rootDir": "C:/Users/Admin/Documents/UniNav/UniNav-Frontend/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Admin/Documents/UniNav/UniNav-Frontend/test-results-c14",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/Admin/Documents/UniNav/UniNav-Frontend/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:8001",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "launchOptions": {
+            "executablePath": "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe",
+            "args": []
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "campus.spec.ts",
+      "file": "campus.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real GLB and API: walk to ICETEX and back",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 37326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:14:34.505Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "908b0a273b53a7bc24ac-60166a140848ea78e309",
+          "file": "campus.spec.ts",
+          "line": 46,
+          "column": 3
+        },
+        {
+          "title": "real GLB and API: walk to Morphology Laboratory and back",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7165,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#travel-status')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"idle\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('#travel-status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#travel-status')\u001b[22m\n\u001b[2m    14 × locator resolved to <strong role=\"status\" data-state=\"idle\" id=\"travel-status\" data-position=\"0.000,3.500,0.000\">Ready to explore</strong>\u001b[22m\n\u001b[2m       - unexpected value \"idle\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#travel-status')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"idle\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('#travel-status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#travel-status')\u001b[22m\n\u001b[2m    14 × locator resolved to <strong role=\"status\" data-state=\"idle\" id=\"travel-status\" data-position=\"0.000,3.500,0.000\">Ready to explore</strong>\u001b[22m\n\u001b[2m       - unexpected value \"idle\"\u001b[22m\n\n    at C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts:79:52",
+                    "location": {
+                      "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts",
+                      "column": 52,
+                      "line": 79
+                    },
+                    "snippet": " \u001b[90m 77 |\u001b[39m       expect(route\u001b[33m.\u001b[39mpath\u001b[33m.\u001b[39mat(\u001b[33m-\u001b[39m\u001b[35m1\u001b[39m))\u001b[33m.\u001b[39mtoBe(target\u001b[33m.\u001b[39mname)\u001b[33m;\u001b[39m\n \u001b[90m 78 |\u001b[39m       expect(route\u001b[33m.\u001b[39msteps\u001b[33m.\u001b[39mevery((step) \u001b[33m=>\u001b[39m step\u001b[33m.\u001b[39mkind \u001b[33m!==\u001b[39m \u001b[32m\"stairs\"\u001b[39m))\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 79 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m\"#travel-status\"\u001b[39m))\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"data-state\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"ready\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 80 |\u001b[39m       \u001b[36mif\u001b[39m (direction \u001b[33m===\u001b[39m \u001b[32m\"outbound\"\u001b[39m \u001b[33m&&\u001b[39m (destination \u001b[33m===\u001b[39m \u001b[32m\"ICETEX\"\u001b[39m \u001b[33m||\u001b[39m destination\u001b[33m.\u001b[39mstartsWith(\u001b[32m\"Preclinic\"\u001b[39m))) {\n \u001b[90m 81 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m\"#top-view\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 82 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m\"#references\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts",
+                        "column": 52,
+                        "line": 79
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#travel-status')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"idle\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('#travel-status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#travel-status')\u001b[22m\n\u001b[2m    14 × locator resolved to <strong role=\"status\" data-state=\"idle\" id=\"travel-status\" data-position=\"0.000,3.500,0.000\">Ready to explore</strong>\u001b[22m\n\u001b[2m       - unexpected value \"idle\"\u001b[22m\n\n\n  77 |       expect(route.path.at(-1)).toBe(target.name);\n  78 |       expect(route.steps.every((step) => step.kind !== \"stairs\")).toBeTruthy();\n> 79 |       await expect(page.locator(\"#travel-status\")).toHaveAttribute(\"data-state\", \"ready\");\n     |                                                    ^\n  80 |       if (direction === \"outbound\" && (destination === \"ICETEX\" || destination.startsWith(\"Preclinic\"))) {\n  81 |         await page.locator(\"#top-view\").click();\n  82 |         await page.locator(\"#references\").click();\n    at C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts:79:52"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:15:12.375Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-bb98f-phology-Laboratory-and-back\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-bb98f-phology-Laboratory-and-back\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-bb98f-phology-Laboratory-and-back\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-bb98f-phology-Laboratory-and-back\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts",
+                    "column": 52,
+                    "line": 79
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "908b0a273b53a7bc24ac-3c33d48b38f5d9d81aab",
+          "file": "campus.spec.ts",
+          "line": 46,
+          "column": 3
+        },
+        {
+          "title": "real GLB and API: walk to Elevator and Restroom Hall and back",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7092,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#travel-status')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"idle\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('#travel-status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#travel-status')\u001b[22m\n\u001b[2m    14 × locator resolved to <strong role=\"status\" data-state=\"idle\" id=\"travel-status\" data-position=\"0.000,3.500,0.000\">Ready to explore</strong>\u001b[22m\n\u001b[2m       - unexpected value \"idle\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#travel-status')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"idle\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('#travel-status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#travel-status')\u001b[22m\n\u001b[2m    14 × locator resolved to <strong role=\"status\" data-state=\"idle\" id=\"travel-status\" data-position=\"0.000,3.500,0.000\">Ready to explore</strong>\u001b[22m\n\u001b[2m       - unexpected value \"idle\"\u001b[22m\n\n    at C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts:79:52",
+                    "location": {
+                      "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts",
+                      "column": 52,
+                      "line": 79
+                    },
+                    "snippet": " \u001b[90m 77 |\u001b[39m       expect(route\u001b[33m.\u001b[39mpath\u001b[33m.\u001b[39mat(\u001b[33m-\u001b[39m\u001b[35m1\u001b[39m))\u001b[33m.\u001b[39mtoBe(target\u001b[33m.\u001b[39mname)\u001b[33m;\u001b[39m\n \u001b[90m 78 |\u001b[39m       expect(route\u001b[33m.\u001b[39msteps\u001b[33m.\u001b[39mevery((step) \u001b[33m=>\u001b[39m step\u001b[33m.\u001b[39mkind \u001b[33m!==\u001b[39m \u001b[32m\"stairs\"\u001b[39m))\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 79 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m\"#travel-status\"\u001b[39m))\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"data-state\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"ready\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 80 |\u001b[39m       \u001b[36mif\u001b[39m (direction \u001b[33m===\u001b[39m \u001b[32m\"outbound\"\u001b[39m \u001b[33m&&\u001b[39m (destination \u001b[33m===\u001b[39m \u001b[32m\"ICETEX\"\u001b[39m \u001b[33m||\u001b[39m destination\u001b[33m.\u001b[39mstartsWith(\u001b[32m\"Preclinic\"\u001b[39m))) {\n \u001b[90m 81 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m\"#top-view\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 82 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m\"#references\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts",
+                        "column": 52,
+                        "line": 79
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#travel-status')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"idle\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('#travel-status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#travel-status')\u001b[22m\n\u001b[2m    14 × locator resolved to <strong role=\"status\" data-state=\"idle\" id=\"travel-status\" data-position=\"0.000,3.500,0.000\">Ready to explore</strong>\u001b[22m\n\u001b[2m       - unexpected value \"idle\"\u001b[22m\n\n\n  77 |       expect(route.path.at(-1)).toBe(target.name);\n  78 |       expect(route.steps.every((step) => step.kind !== \"stairs\")).toBeTruthy();\n> 79 |       await expect(page.locator(\"#travel-status\")).toHaveAttribute(\"data-state\", \"ready\");\n     |                                                    ^\n  80 |       if (direction === \"outbound\" && (destination === \"ICETEX\" || destination.startsWith(\"Preclinic\"))) {\n  81 |         await page.locator(\"#top-view\").click();\n  82 |         await page.locator(\"#references\").click();\n    at C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts:79:52"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:15:23.240Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-a93f3--and-Restroom-Hall-and-back\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-a93f3--and-Restroom-Hall-and-back\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-a93f3--and-Restroom-Hall-and-back\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-a93f3--and-Restroom-Hall-and-back\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts",
+                    "column": 52,
+                    "line": 79
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "908b0a273b53a7bc24ac-99bab01f67d994c4f143",
+          "file": "campus.spec.ts",
+          "line": 46,
+          "column": 3
+        },
+        {
+          "title": "real GLB and API: walk to Preclinic / Dentistry Coordination and back",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7216,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#travel-status')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"idle\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('#travel-status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#travel-status')\u001b[22m\n\u001b[2m    14 × locator resolved to <strong role=\"status\" data-state=\"idle\" id=\"travel-status\" data-position=\"0.000,3.500,0.000\">Ready to explore</strong>\u001b[22m\n\u001b[2m       - unexpected value \"idle\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#travel-status')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"idle\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('#travel-status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#travel-status')\u001b[22m\n\u001b[2m    14 × locator resolved to <strong role=\"status\" data-state=\"idle\" id=\"travel-status\" data-position=\"0.000,3.500,0.000\">Ready to explore</strong>\u001b[22m\n\u001b[2m       - unexpected value \"idle\"\u001b[22m\n\n    at C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts:79:52",
+                    "location": {
+                      "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts",
+                      "column": 52,
+                      "line": 79
+                    },
+                    "snippet": " \u001b[90m 77 |\u001b[39m       expect(route\u001b[33m.\u001b[39mpath\u001b[33m.\u001b[39mat(\u001b[33m-\u001b[39m\u001b[35m1\u001b[39m))\u001b[33m.\u001b[39mtoBe(target\u001b[33m.\u001b[39mname)\u001b[33m;\u001b[39m\n \u001b[90m 78 |\u001b[39m       expect(route\u001b[33m.\u001b[39msteps\u001b[33m.\u001b[39mevery((step) \u001b[33m=>\u001b[39m step\u001b[33m.\u001b[39mkind \u001b[33m!==\u001b[39m \u001b[32m\"stairs\"\u001b[39m))\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 79 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m\"#travel-status\"\u001b[39m))\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"data-state\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"ready\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 80 |\u001b[39m       \u001b[36mif\u001b[39m (direction \u001b[33m===\u001b[39m \u001b[32m\"outbound\"\u001b[39m \u001b[33m&&\u001b[39m (destination \u001b[33m===\u001b[39m \u001b[32m\"ICETEX\"\u001b[39m \u001b[33m||\u001b[39m destination\u001b[33m.\u001b[39mstartsWith(\u001b[32m\"Preclinic\"\u001b[39m))) {\n \u001b[90m 81 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m\"#top-view\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 82 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m\"#references\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts",
+                        "column": 52,
+                        "line": 79
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#travel-status')\nExpected: \u001b[32m\"ready\"\u001b[39m\nReceived: \u001b[31m\"idle\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('#travel-status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#travel-status')\u001b[22m\n\u001b[2m    14 × locator resolved to <strong role=\"status\" data-state=\"idle\" id=\"travel-status\" data-position=\"0.000,3.500,0.000\">Ready to explore</strong>\u001b[22m\n\u001b[2m       - unexpected value \"idle\"\u001b[22m\n\n\n  77 |       expect(route.path.at(-1)).toBe(target.name);\n  78 |       expect(route.steps.every((step) => step.kind !== \"stairs\")).toBeTruthy();\n> 79 |       await expect(page.locator(\"#travel-status\")).toHaveAttribute(\"data-state\", \"ready\");\n     |                                                    ^\n  80 |       if (direction === \"outbound\" && (destination === \"ICETEX\" || destination.startsWith(\"Preclinic\"))) {\n  81 |         await page.locator(\"#top-view\").click();\n  82 |         await page.locator(\"#references\").click();\n    at C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts:79:52"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:15:32.838Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-84c02-istry-Coordination-and-back\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-84c02-istry-Coordination-and-back\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-84c02-istry-Coordination-and-back\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\campus-real-GLB-and-API-wa-84c02-istry-Coordination-and-back\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\campus.spec.ts",
+                    "column": 52,
+                    "line": 79
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "908b0a273b53a7bc24ac-8810d4657e60e395a4e0",
+          "file": "campus.spec.ts",
+          "line": 46,
+          "column": 3
+        },
+        {
+          "title": "mobile layout and sign-in validation remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1492,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:15:42.182Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "908b0a273b53a7bc24ac-76161454b1a46a0d82fd",
+          "file": "campus.spec.ts",
+          "line": 133,
+          "column": 1
+        },
+        {
+          "title": "manual control cancels guidance and replans from the current position",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2038,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:15:44.142Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "908b0a273b53a7bc24ac-7928166fb526182e130d",
+          "file": "campus.spec.ts",
+          "line": 150,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "errors.spec.ts",
+      "file": "errors.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real API: isolated test destination returns no route, then an expired session recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4037,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:15:46.257Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2c69674198c4542748c6-2b300697c4050fa190c2",
+          "file": "errors.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "floor-previews.spec.ts",
+      "file": "floor-previews.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "five structural previews preserve the actor and release GPU buffers on each visit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9531,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:15:50.318Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d51d581ac58076bf6f70-65c5270472cf2576e541",
+          "file": "floor-previews.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "inspecting a preview preserves a paused route and resume restores the actor floor",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18725,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:15:59.858Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d51d581ac58076bf6f70-9491673aa950d0e554eb",
+          "file": "floor-previews.spec.ts",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "a changed preview is rejected and returning to the first floor recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1078,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:16:18.594Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d51d581ac58076bf6f70-d7ca88f0efe9cd82cf72",
+          "file": "floor-previews.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "structural anchors cannot replace a navigable floor's API alignment",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 500,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:16:19.687Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d51d581ac58076bf6f70-74e7b071256d0c039fc9",
+          "file": "floor-previews.spec.ts",
+          "line": 123,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "floor2-destinations.spec.ts",
+      "file": "floor2-destinations.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "mapped floor 2: Hall Acceso to ucc:f2:mixed-reality-entrance and back through its drawn doorway",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 71228,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:16:20.254Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4ea007be71855df1aa-99b2eb9a7ba7351e4953",
+          "file": "floor2-destinations.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "mapped floor 2: Hall Acceso to ucc:f2:molecular-biology-entrance and back through its drawn doorway",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 70939,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:17:31.493Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4ea007be71855df1aa-fbf06ebf5e4fafb45822",
+          "file": "floor2-destinations.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "mapped floor 2: Hall Acceso to ucc:f2:medical-research-arrival and back through its drawn doorway",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 73790,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:18:42.443Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4ea007be71855df1aa-194df84691000f9b16e9",
+          "file": "floor2-destinations.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "floor 2 API algorithms preserve heights and exclude the only mapped stairs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2814,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:19:56.246Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4ea007be71855df1aa-3116533a9484cec8f01b",
+          "file": "floor2-destinations.spec.ts",
+          "line": 59,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "legacy-stairs.spec.ts",
+      "file": "legacy-stairs.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "legacy API cannot offer the six known stair-crossing directions with Avoid stairs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3669,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:19:59.084Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f93bc202ea41e2695273-689191585772a1c2eb24",
+          "file": "legacy-stairs.spec.ts",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "Avoid stairs checks the current connector footprint and keeps its clear approach available",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2854,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:20:02.764Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f93bc202ea41e2695273-4ff6bac491cfdc6f98af",
+          "file": "legacy-stairs.spec.ts",
+          "line": 29,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "manifest.spec.ts",
+      "file": "manifest.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "observing a pending floor preserves avatar position and restores the cached first floor",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1019,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:20:05.659Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e1d7e3432235f33d0a4-96e44b6736deb3feebe8",
+          "file": "manifest.spec.ts",
+          "line": 9,
+          "column": 1
+        },
+        {
+          "title": "a changed GLB is rejected before parsing and recovers with a matching export",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1257,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:20:06.689Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e1d7e3432235f33d0a4-fa4a19839cbdbfa5cb92",
+          "file": "manifest.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "an incompatible graph revision is rejected even when reference anchors still align",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:20:07.957Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e1d7e3432235f33d0a4-eba5b8b4505fe589878e",
+          "file": "manifest.spec.ts",
+          "line": 44,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "model-profiles.spec.ts",
+      "file": "model-profiles.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "partial API metadata rejects the expanded profile and cannot move through graph fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3966,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:20:08.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "23e89f2473d6a70b26ee-2d3651040b02739ed1e7",
+          "file": "model-profiles.spec.ts",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "shipped two-floor profile preserves pause/replan and releases models after floor inspection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16488,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:20:12.519Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "23e89f2473d6a70b26ee-f8a96f741c205ba47511",
+          "file": "model-profiles.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "shipped two-floor profile supports a complete keyboard stair climb and descent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 30889,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:20:29.022Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "23e89f2473d6a70b26ee-0ed1bb468c350803c2f7",
+          "file": "model-profiles.spec.ts",
+          "line": 74,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "overview.spec.ts",
+      "file": "overview.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "campus overview loads the reviewed exterior, preserves position and releases it for floor view",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6319,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:20:59.938Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6e2f4ad74dab265ac116-ddad064367f39b7eae5d",
+          "file": "overview.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "an unavailable exterior falls back to the verified floor and can be retried",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 781,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:21:06.266Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6e2f4ad74dab265ac116-ecd21d9b7b4d80bf665d",
+          "file": "overview.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "a changed exterior export is rejected while the verified floor stays usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 821,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:21:07.059Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6e2f4ad74dab265ac116-1e7c078ac9837706aaa8",
+          "file": "overview.spec.ts",
+          "line": 78,
+          "column": 1
+        },
+        {
+          "title": "route planning leaves overview and disables it until guidance is cancelled",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:21:07.893Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6e2f4ad74dab265ac116-e790eca985a3e2c30930",
+          "file": "overview.spec.ts",
+          "line": 89,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "presentation.spec.ts",
+      "file": "presentation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "campus presentation: comparable views and measured frame cadence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17196,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:21:09.285Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a964c83dbf6a737e02-a53e9e6dd4157a833895",
+          "file": "presentation.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "resources.spec.ts",
+      "file": "resources.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "missing GLB shows a clear graph preview and recovers after reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 944,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:21:26.508Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c5a9a91e1b9b058112b5-46ac17811ddf266f79b3",
+          "file": "resources.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sample.spec.ts",
+      "file": "sample.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "sample API: sign in, walk an unsmoothed turn twice, pause and manually override",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Requires the backend sample campus.",
+                  "location": {
+                    "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\sample.spec.ts",
+                    "line": 8,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 163,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:21:27.474Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Requires the backend sample campus.",
+                      "location": {
+                        "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\sample.spec.ts",
+                        "line": 8,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b92766bcf73bd5c029a8-7f1b5af56d4a9b58de7b",
+          "file": "sample.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "sample API: graph-only stairs still guide across floors without UCC model resources",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Requires the original sample campus.",
+                  "location": {
+                    "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\sample.spec.ts",
+                    "line": 74,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 154,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:21:27.648Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Requires the original sample campus.",
+                      "location": {
+                        "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\sample.spec.ts",
+                        "line": 74,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b92766bcf73bd5c029a8-f829a814235cd24f0a64",
+          "file": "sample.spec.ts",
+          "line": 72,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "structured-route.spec.ts",
+      "file": "structured-route.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "versioned API: stable waypoint IDs guide a reviewed first-floor walk",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20886,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:21:27.819Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd5f0e8731593fe3b550-a987d6827246fe6c82c2",
+          "file": "structured-route.spec.ts",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "vertical-stair.spec.ts",
+      "file": "vertical-stair.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real stair pair: FastAPI up/down, avoid-stairs, pause and replan after keyboard override",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13658,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:21:48.731Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "130082b327842a28eb14-6aa7162a650d7739cbb2",
+          "file": "vertical-stair.spec.ts",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "real stair pair: keyboard climbs and descends the supported treads and landing",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23847,
+                  "error": {
+                    "message": "ReferenceError: request is not defined",
+                    "stack": "ReferenceError: request is not defined\n    at C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\vertical-stair.spec.ts:112:99",
+                    "location": {
+                      "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\vertical-stair.spec.ts",
+                      "column": 99,
+                      "line": 112
+                    },
+                    "snippet": " \u001b[90m 110 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({path\u001b[33m:\u001b[39m\u001b[32m`${output}/manual-${direction}-arrival.png`\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m 111 |\u001b[39m   }\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 112 |\u001b[39m   \u001b[36mawait\u001b[39m writeFile(\u001b[32m`${output}/vertical-manual-browser.json`\u001b[39m\u001b[33m,\u001b[39m\u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mstringify({\u001b[33m...\u001b[39m\u001b[36mawait\u001b[39m modelEvidence(request)\u001b[33m,\u001b[39msamples\u001b[33m,\u001b[39marrivals\u001b[33m,\u001b[39mfixtureOnly\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}\u001b[33m,\u001b[39m\u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m\u001b[35m2\u001b[39m))\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 113 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 114 |\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\vertical-stair.spec.ts",
+                        "column": 99,
+                        "line": 112
+                      },
+                      "message": "ReferenceError: request is not defined\n\n  110 |     await page.screenshot({path:`${output}/manual-${direction}-arrival.png`});\n  111 |   }\n> 112 |   await writeFile(`${output}/vertical-manual-browser.json`,JSON.stringify({...await modelEvidence(request),samples,arrivals,fixtureOnly:true},null,2));\n      |                                                                                                   ^\n  113 | });\n  114 |\n    at C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\vertical-stair.spec.ts:112:99"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T16:22:02.401Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\vertical-stair-real-stair--d5810-upported-treads-and-landing\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\vertical-stair-real-stair--d5810-upported-treads-and-landing\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\test-results-c14\\vertical-stair-real-stair--d5810-upported-treads-and-landing\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Admin\\Documents\\UniNav\\UniNav-Frontend\\tests\\e2e\\vertical-stair.spec.ts",
+                    "column": 99,
+                    "line": 112
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "130082b327842a28eb14-04d0a7315f12c442e8e0",
+          "file": "vertical-stair.spec.ts",
+          "line": 89,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T16:14:33.839Z",
+    "duration": 484831.788,
+    "expected": 28,
+    "skipped": 2,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

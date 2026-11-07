@@ -23,9 +23,9 @@ try{
 const manifest=parseManifest(JSON.parse(await readFile("public/models/campus-manifest.json","utf8")));
 const profileModels=structuredClone(manifest.models).filter(m=>m.id!=="ucc-floor-2-preview");
 const first=profileModels.find(m=>m.id==="ucc-first-floor")!;
-const sourceCommit="a6d3f11";
-first.sourceCommit=sourceCommit;first.revision="H2-two-floors-a6d3f11";
-const upper:ModelEntry={id:"ucc-second-floor",label:"UCC · Second floor",floors:[2],state:"ready",kind:"floor",revision:"H2-three-destinations-a6d3f11",sourceCommit,
+const sourceCommit=process.env.UNINAV_FLOOR2_COMMIT ?? manifest.profiles?.find(p=>p.id==="ucc-two-floors")?.models.find(m=>m.id==="ucc-second-floor")?.sourceCommit ?? "a6d3f11";
+first.sourceCommit=sourceCommit;first.revision=`H2-two-floors-${sourceCommit}`;
+const upper:ModelEntry={id:"ucc-second-floor",label:"UCC · Second floor",floors:[2],state:"ready",kind:"floor",revision:`H2-three-destinations-${sourceCommit}`,sourceCommit,
   reference:"models/floor-2/campus-navigation-reference.json",referenceSha256:await sha256(await committedAsset(sourceCommit,"models/floor-2/campus-navigation-reference.json")),
   modelSha256:await sha256(await committedAsset(sourceCommit,"models/floor-2/campus.glb")),supportNodes:["P2_Floor_Slab","P2_Stair_A_East_1","P2_Stair_A_West_1"]};
 profileModels.push(upper);

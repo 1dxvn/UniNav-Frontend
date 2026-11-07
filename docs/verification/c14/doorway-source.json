@@ -1,0 +1,22 @@
+{
+  "sourceCommit": "389cfd9",
+  "inventorySha256": "18fc3d7c1f37ac43fd1e331c9d59db342620d74b62188d19d756db6fe1677f6f",
+  "selected": [
+    {
+      "id": "D13",
+      "allSelectedFactsMatchCommittedInventory": true,
+      "through": "clear"
+    },
+    {
+      "id": "D14",
+      "allSelectedFactsMatchCommittedInventory": true,
+      "through": "clear"
+    },
+    {
+      "id": "D15",
+      "allSelectedFactsMatchCommittedInventory": true,
+      "through": "clear"
+    }
+  ],
+  "otherDoorwaysAccepted": false
+}
