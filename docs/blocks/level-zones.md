@@ -62,3 +62,26 @@ Codex's request lists them. The check results are in the candidate's reference s
 | B stair after-point | (39.4, 33.1) | N +1.19, but the zone beyond is pending |
 
 The B laboratory split is documented, but the candidate does not raise the laboratory side (pending above), so that split stays a data classification only.
+
+## Floors 3, 4 and 5 (added for the C16 candidate)
+
+Block A is the north bar on these floors too (footprint, y ≥ the facade line, x ≥ 13.6). The west block stays pending.
+
+| Floor | Block A (confirmed) | Block B (confirmed) | Facade line | Hall junction |
+| --- | --- | --- | --- | --- |
+| 3 | N +6.37 at (38.6, 55.14), (17.9, 55.24) | N +5.88 at (35.46, 35.09) | y 49.28 | Treads 1–3 between four nosings (y 47.91, 48.37, 48.83, 49.28): 4 risers of 0.1225 m up northwards. **Confirmed** |
+| 4 | N +9.87 at (39.32, 55.14), (17.89, 55.59) | N +8.82 at (35.46, 35.05) | y 49.19 | Four nosings drawn, but 1.05 m over 4 risers is 0.2625 m each. **Pending** (contradictory) |
+| 5 | N +13.37 at (17.89, 55.68), (39.76, 56.03) | N +11.76 at (35.66, 35.06) | y 49.23 | Not drawn. **Pending** |
+
+The Block B stair's half landings are N +4.64 (floor 3, at (39.77, 33.35)), N +7.58 (floor 4) and N +10.52 (floor 5); they are not modelled.
+
+**Tower stairs (Block A to Block A):**
+
+| Stairs | Real levels | Rise |
+| --- | --- | --- |
+| 1 → 2 | N −0.63 → +2.68 | 3.31 m |
+| 2 → 3 | N +2.68 → +6.37 | 3.69 m |
+| 3 → 4 | N +6.37 → +9.87 | 3.50 m |
+| 4 → 5 | N +9.87 → +13.37 | 3.50 m |
+
+The candidate set built on these zones is `model/candidates/c16/`.
