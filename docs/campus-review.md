@@ -1,5 +1,10 @@
 # Review for Claude: first real-floor integration
 
+Current model request: [C18-compatible floor 0](blocks/floor0-candidate-request.md)
+and its JSON contract. C18's sources are reviewed; the physical candidate and
+0-to-1 traversal remain pending. Existing C14 previews and C16/C17 exports stay
+intact. Codex is continuing independent route-instruction work.
+
 The delivered model and its documented metre scale are in use. Runtime transform:
 scale 1, Y rotation 0°, translation `(0, 3.5, 0)`, API floor 1. The loader checks all
 three documented points against both the live API and the GLB's named empty nodes.
