@@ -1,0 +1,22 @@
+{
+  "publicSourceMerge": "64441242acc17e1a6f8f80d5c5333568a7a44e25",
+  "publicHandoffCommit": "22e130e4b5ec4d53e3ddf1572beec8b44816d6c5",
+  "localMerge": "2990a4ec06f069eec74f188fd39cca323d19115b",
+  "reviewedSourceHead": "30cb648188b2fc80ba1d714581aaf6b93a670c15",
+  "sourceFiles": [
+    "docs/blocks/level-zones.json",
+    "docs/blocks/level-zones.md",
+    "docs/blocks/piso-cero-levels.png",
+    "model/tools/piso_cero_levels.py",
+    "docs/model-review/README.md"
+  ],
+  "ownFiles": [
+    "docs/blocks/floor0-candidate-request.json",
+    "docs/blocks/floor0-candidate-request.md",
+    "docs/campus-review.md",
+    "tools/review-floor0-handoff.ts",
+    "docs/verification/floor0-handoff/review.json",
+    "docs/verification/floor0-handoff/README.md"
+  ],
+  "navigationEnabled": false
+}

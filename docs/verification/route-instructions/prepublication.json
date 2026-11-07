@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-11-07T22:26:31.474347+00:00",
+  "foreign": {
+    "CONTINUIDAD.md": "ec92de42a3e27a2e950aeb779708c1ef142d376ef35aa7d4d6a730d11596b089",
+    "scripts/codex_continuity.py": "a558ee4572062ba7dd2eba2af02264a1bc10abfb9c5f73c3a4721a3430152ec2",
+    "tests/unit/test_codex_continuity.py": "7d086a05a7533999d395752c758b5cc4ff4a55d9385da2d664395516e17c9bc5",
+    "scripts/seed.py": "64c37d037a2d22d8ed11c93e388cbf34dbcd2475694c6578d61ae6e0ff450cc2"
+  },
+  "sourceWorkingHashes": {
+    "docs/blocks/level-zones.json": "a6e65d6d021607d5b263d2839831eaf9da6d8d4ee7f8d833208838d4725c2a35",
+    "docs/blocks/level-zones.md": "b179f7b94b4d115ecac83b4bb01cedeed4eccab87a32d7bf20a66348e44c3090",
+    "docs/blocks/piso-cero-levels.png": "46532c228d37d4866c69b2820eb91ef5f395343c7b9934283b2acade56a5b125",
+    "model/tools/piso_cero_levels.py": "daa64489bf3deabf0188ebce9719b84ee2f4eb4c0f99eba6ea2b8ebe16d09caa",
+    "docs/model-review/README.md": "f099783a1c01d66e969777c1129bf25a396fc92fa437fedb897f10ad240d1e49"
+  },
+  "githubLogin": "1dxvn",
+  "identity": {
+    ".": [
+      "1dxvn <hugo.burgos@campusucc.edu.co> 1794090390 -0500",
+      "1dxvn <hugo.burgos@campusucc.edu.co> 1794090390 -0500"
+    ],
+    "UniNav-Frontend": [
+      "1dxvn <hugo.burgos@campusucc.edu.co> 1794090390 -0500",
+      "1dxvn <hugo.burgos@campusucc.edu.co> 1794090390 -0500"
+    ]
+  },
+  "sourceCommitsToInclude": [
+    "30cb648188b2fc80ba1d714581aaf6b93a670c15|1dxvn|hugo.burgos@campusucc.edu.co|1dxvn|hugo.burgos@campusucc.edu.co",
+    "de3815e9da53db79ea6fdaf279f7c83ded92ce3a|1dxvn|hugo.burgos@campusucc.edu.co|1dxvn|hugo.burgos@campusucc.edu.co",
+    "b2a05e016553aa628fb15ed95d8a27580bd270c7|1dxvn|hugo.burgos@campusucc.edu.co|1dxvn|hugo.burgos@campusucc.edu.co"
+  ],
+  "manifestUnchangedSha256": "d1f8cd6b054e360f26500c855210dd8df7d1827a2f1afbd2cfde1d23dad68b62",
+  "realDatabase": [
+    19,
+    16
+  ],
+  "services": {
+    "8000": {
+      "/health": 200,
+      "/app/": 200,
+      "/docs": 200,
+      "/openapi.json": 200
+    },
+    "8001": {
+      "/health": 200,
+      "/app/": 200,
+      "/docs": 200,
+      "/openapi.json": 200
+    }
+  }
+}
