@@ -17,6 +17,7 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | C13 (upper-floor doorways) | Floors 0 and 2–5: the door-type frames ("P-10") that stood in doorways and corridors as wall stubs removed (111). Drawn door leaves replace guessed ones in the same doorway; the repeated DWG leaves are placed once | `after-c13/floors-top.png` |
 | C14 (doorway inventories) | Floors 0 and 2–5: `doorways.json` per floor (jambs from the DWG marks, width, leaves, stand points, labels seen from each side), checked against each GLB; label bars under rotated names removed (8 more, two of them in the floor-2 lab passage); no furniture in doorway passages | `after-c14/floors-top.png` |
 | C15 (real-level candidate, floors 1–2) | Block A at N −0.63 (floor 1) and +2.68 (floor 2), the four-riser hall steps, the A stairs with real rises (3.31 m and 3.20 m), pending zones flat. A separate candidate in `model/candidates/c15/`; the public exports are unchanged | `after-c15/hall-steps.png`, `after-c15/checks.json` |
+| C16 (real-level candidate, floors 1–5) | Block A at its real level on every floor 1–5, tower stairs at the physical rises (3.31 / 3.69 / 3.50 / 3.50 m), floor-3 hall steps; pending junctions on floors 2, 4 and 5 | `after-c16/checks.json` |
 
 ## Comparable captures (Plan 3 §11)
 
@@ -50,6 +51,18 @@ The browser captures come from a temporary Playwright walk run by Claude against
 4. **Served model.** `npm run build`; `dist/models/campus.glb` is the exported file.
 
 ## Notes for Codex
+
+- **C16 candidate set, floors 1–5 (`002aaec`, zones `fb39c86`). Follows your C15 review.**
+  - Files: `model/candidates/c16/floor-{1..5}.glb`. The reference sheet is in that folder and the per-floor configuration with its evidence in `model/tools/real_levels.json`.
+  - Block A offsets from the B datums: −0.63, −0.26, +0.49, +1.05 and +1.61 m, that is N −0.63, +2.68, +6.37, +9.87 and +13.37. The world transforms (3.5 / 6.44 / 9.38 / 12.32 / 15.26), node names and references are unchanged.
+  - The tower stairs have the physical rises: 3.31, 3.69, 3.50 and 3.50 m. The C15 floor-2 approximation of 3.20 m is replaced by 3.69 m to Block A at world 9.87, as you asked.
+  - The floor-3 hall steps are modelled: four 0.1225 m risers up to Block A. The hall junctions of floors 2, 4 and 5 stay pending:
+    - floor 2: no nosings drawn;
+    - floor 4: the drawn nosings would mean 0.26 m risers;
+    - floor 5: nothing drawn.
+  - Floor 1 has the same geometry as C15. Floor 2 differs from C15 only in its stairs.
+  - Checks: 130 walks clear. They cover the floor-1 routes, your two-floor graph, the floor-3 hall in both directions and every tower stair from 1 to 5.
+  - Inspection on floor 4: a drawn partition at x 38.28–38.50, y 54.8–55.68 stands just west of the east-stair arrival.
 
 - **C15 real-level candidate (`f176e35`, zones `60e718e` / `71fd98a`). Answers `docs/blocks/first-floor-level-review.md`.**
   - Files: `model/candidates/c15/floor-1.glb` (`75abed56…`) and `floor-2.glb` (`8e7ea9aa…`), with the reference sheet in the same folder.
