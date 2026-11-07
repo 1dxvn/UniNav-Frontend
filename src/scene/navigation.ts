@@ -10,6 +10,28 @@ export interface WalkSegment {
   b: Vector3;
 }
 
+export interface WalkWaypoint { position: Vector3; floor: number; placeId?: number }
+export interface WalkStart { place: Building; connector: [Vector3,Vector3]; floor: number }
+
+// Keep API floor identity alongside position. A high landing can still belong
+// to its departure floor; world Y is never a floor number.
+export function walkWaypoints(start: WalkStart, route: Building[]): WalkWaypoint[] {
+  if (!route.length || route[0].id !== start.place.id || start.connector[1].distanceTo(toScenePosition(route[0])) > 0.001) {
+    throw new Error("The route does not start at the selected graph connection.");
+  }
+  const points: WalkWaypoint[] = route.map((place) => ({ position:toScenePosition(place),floor:place.floor,placeId:place.id }));
+  if (start.floor !== route[0].floor || start.connector[0].distanceTo(points[0].position) > 0.001) {
+    points.unshift({ position:start.connector[0].clone(),floor:start.floor });
+  }
+  return points;
+}
+
+export function advanceWalk(position: Vector3, floor: number, target: WalkWaypoint, distance: number): { position:Vector3; floor:number; reached:boolean } {
+  const remaining=position.distanceTo(target.position);
+  const reached=remaining <= Math.max(0,distance)+0.000001;
+  return { position:reached ? target.position.clone() : position.clone().lerp(target.position,Math.max(0,distance)/remaining),floor:reached ? target.floor : floor,reached };
+}
+
 export function walkSegments(places: Building[], paths: CampusPath[]): WalkSegment[] {
   const byId = new Map(places.map((place) => [place.id, place]));
   return paths.flatMap((path) => {
@@ -31,7 +53,7 @@ export function nearestWalkSegment(position: Vector3, segments: WalkSegment[], f
   let best: WalkSegment | undefined;
   let distance = Infinity;
   for (const segment of segments) {
-    if (segment.source.floor !== floor || segment.target.floor !== floor) continue;
+    if (segment.source.floor !== floor && segment.target.floor !== floor) continue;
     const candidate = projectOnSegment(position, segment.a, segment.b).distance;
     if (candidate < distance) { best = segment; distance = candidate; }
   }
@@ -92,14 +114,14 @@ export function canWalk(from: Vector3, to: Vector3, segments: WalkSegment[], flo
 
 // Walking can end between nodes. Continue along that edge to a reachable endpoint
 // before using the API route; do not jump to an unrelated nearest room.
-export function routingStart(position: Vector3, places: Building[], segments: WalkSegment[], floor: number): { place: Building; connector: Vector3[] } {
+export function routingStart(position: Vector3, places: Building[], segments: WalkSegment[], floor: number): WalkStart {
   const exact = places.find((place) => place.floor === floor && toScenePosition(place).distanceTo(position) < 0.00001);
-  if (exact) return { place: exact, connector: [position.clone(), toScenePosition(exact)] };
+  if (exact) return { place: exact, connector: [position.clone(), toScenePosition(exact)],floor };
   const segment = nearestWalkSegment(position, segments, floor);
   if (!segment || projectOnSegment(position, segment.a, segment.b).distance > CORRIDOR_RADIUS + 0.01) {
     throw new Error("Choose a start point before calculating a route.");
   }
   const place = !segment.path.bidirectional || position.distanceTo(segment.b) <= position.distanceTo(segment.a)
     ? segment.target : segment.source;
-  return { place, connector: [position.clone(), toScenePosition(place)] };
+  return { place, connector: [position.clone(), toScenePosition(place)],floor };
 }

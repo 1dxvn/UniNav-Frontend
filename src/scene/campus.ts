@@ -3,7 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import type { Building, CampusPath } from "../api/types.ts";
 import { FLOOR_HEIGHT, toScenePosition, WALK_SPEED } from "./coordinates.ts";
-import { canWalk, routingStart, walkSegments, type WalkSegment } from "./navigation.ts";
+import { advanceWalk, canWalk, routingStart, walkSegments, type WalkSegment, type WalkWaypoint } from "./navigation.ts";
 import { parseReference, referenceMatrix, transformMatrix, validateAlignment, validateModelNodes, type CampusReference } from "./modelReference.ts";
 import { modelColliders, modelCollision, type ModelCollider } from "./modelCollision.ts";
 import { prepareModelPresentation, setModelTopView } from "./modelPresentation.ts";
@@ -58,7 +58,7 @@ export class CampusScene {
   private models: ModelStore<LoadedCampusModel> | null = null;
   private routeGeneration = 0;
   private segments: WalkSegment[] = [];
-  private waypoints: THREE.Vector3[] = [];
+  private waypoints: WalkWaypoint[] = [];
   private index = 1;
   private state: TravelState = "idle";
   private totalLength = 0;
@@ -253,24 +253,25 @@ export class CampusScene {
     this.destinationRing.visible = !!place && !this.overview && place.floor === this.viewFloor;
     if (place) this.destinationRing.position.copy(toScenePosition(place)).y += 0.12;
   }
-  async showRoute(points: THREE.Vector3[]): Promise<void> {
+  async showRoute(points: WalkWaypoint[]): Promise<void> {
     this.overviewError = null;
     this.overview = false;
     this.events.view(false,this.topView);
     this.applyModels(false);
     this.clearRoute();
     const generation = this.routeGeneration;
-    this.waypoints = points.filter((point, index) => index === 0 || point.distanceTo(points[index - 1]) > 0.001).map((point) => point.clone());
+    this.waypoints = points.map((point) => ({ ...point,position:point.position.clone() }));
     if (!this.waypoints.length) return;
-    if (this.avatar.position.distanceTo(this.waypoints[0]) > 0.1) throw new Error("Your position changed. Calculate the route again.");
+    if (this.avatar.position.distanceTo(this.waypoints[0].position) > 0.1 || this.avatarFloor !== this.waypoints[0].floor) throw new Error("Your position changed. Calculate the route again.");
     await this.syncModels(true);
     if (generation !== this.routeGeneration) return;
     if (this.getCatalog()) for (const floor of this.routeFloors()) {
       if (!this.models?.values().some((model) => model.entry.kind !== "floor-preview" && model.entry.floors.includes(floor))) throw new Error(`Floor ${floor} navigation is pending. This route cannot be followed yet.`);
     }
     for (let i = 1; i < this.waypoints.length; i++) {
-      const a = this.waypoints[i - 1].clone().add(new THREE.Vector3(0, 0.13, 0));
-      const b = this.waypoints[i].clone().add(new THREE.Vector3(0, 0.13, 0));
+      if (this.waypoints[i-1].position.distanceToSquared(this.waypoints[i].position)<0.000001) continue;
+      const a = this.waypoints[i - 1].position.clone().add(new THREE.Vector3(0, 0.13, 0));
+      const b = this.waypoints[i].position.clone().add(new THREE.Vector3(0, 0.13, 0));
       this.routeGroup.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.LineCurve3(a, b), 1, 0.09, 8, false), new THREE.MeshStandardMaterial({ color: 0x0b9279, emissive: 0x075943, emissiveIntensity: 0.25, roughness: 0.65 })));
       const dot = new THREE.Mesh(new THREE.SphereGeometry(0.17, 12, 8), new THREE.MeshStandardMaterial({ color: 0x0b9279 }));
       dot.position.copy(b);
@@ -420,7 +421,7 @@ export class CampusScene {
     return { entry,reference,root,pins,colliders:preview ? [] : modelColliders(root),references:aligned.length };
   }
   private routeFloors(): number[] {
-    return [...new Set(this.places.filter((place) => this.waypoints.some((point) => point.distanceTo(toScenePosition(place)) < 0.01)).map((place) => place.floor))];
+    return [...new Set(this.waypoints.map((point) => point.floor))];
   }
   private async syncModels(strict = false): Promise<void> {
     const store = this.models, manifest = this.manifest;
@@ -454,7 +455,10 @@ export class CampusScene {
     const preview = floorModels.some((model) => model.entry.kind === "floor-preview");
     const ground = this.scene.getObjectByName("presentation-ground");
     if (ground) ground.position.y = (floorModels[0]?.reference?.transform.translation[1] ?? this.viewFloor * FLOOR_HEIGHT) - 0.5;
-    this.colliders = loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.kind !== "floor-preview" && model.entry.floors.includes(this.avatarFloor)).flatMap((model) => model.colliders);
+    // Retain both sides of vertical transitions, including overhead geometry.
+    // The swept bounds in modelCollision discard distant floors per movement.
+    const collisionFloors=new Set([this.avatarFloor,...this.routeFloors()]);
+    this.colliders = loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.kind !== "floor-preview" && model.entry.floors.some((floor) => collisionFloors.has(floor))).flatMap((model) => model.colliders);
     this.floorGroups.forEach((group,level) => { group.visible = !this.overview && level === this.viewFloor && !floorModels.length; });
     this.modelGroup.visible = !!active.length;
     this.routeGroup.visible = !this.overview && !preview;
@@ -480,8 +484,8 @@ export class CampusScene {
   }
   private remaining(): number {
     if (this.index >= this.waypoints.length) return 0;
-    let distance = this.avatar.position.distanceTo(this.waypoints[this.index]);
-    for (let i = this.index + 1; i < this.waypoints.length; i++) distance += this.waypoints[i - 1].distanceTo(this.waypoints[i]);
+    let distance = this.avatar.position.distanceTo(this.waypoints[this.index].position);
+    for (let i = this.index + 1; i < this.waypoints.length; i++) distance += this.waypoints[i - 1].position.distanceTo(this.waypoints[i].position);
     return distance;
   }
   private emit(): void {
@@ -496,15 +500,16 @@ export class CampusScene {
     let moved = false;
     if (this.state === "walking" && this.index < this.waypoints.length) {
       const target = this.waypoints[this.index];
-      const direction = target.clone().sub(this.avatar.position);
-      const next = this.avatar.position.clone().add(direction.clone().setLength(Math.min(WALK_SPEED * delta, direction.length())));
+      const direction = target.position.clone().sub(this.avatar.position);
+      const advanced = advanceWalk(this.avatar.position,this.avatarFloor,target,WALK_SPEED*delta);
+      const next = advanced.position;
       if (this.collides(this.avatar.position, next)) { this.state = "blocked"; this.emit(); }
       else {
         this.avatar.position.copy(next);
         if (direction.x * direction.x + direction.z * direction.z > 0.001) this.face(direction, delta);
         moved = true;
-        if (next.distanceTo(target) < 0.005) { this.avatar.position.copy(target); this.index++; }
-        const floor = Math.round(this.avatar.position.y / FLOOR_HEIGHT);
+        if (advanced.reached) this.index++;
+        const floor = advanced.floor;
         if (floor !== this.avatarFloor) { this.avatarFloor = floor; this.setFloor(floor, false); }
         if (this.index >= this.waypoints.length) { this.state = "arrived"; this.emit(); }
       }

@@ -4,7 +4,7 @@ import "./style.css";
 import { api, ApiError } from "./api/client.ts";
 import type { Building, CampusPath, Floor, RouteResponse } from "./api/types.ts";
 import { CampusScene, type TravelState, type TravelUpdate } from "./scene/campus.ts";
-import { resolveRoute } from "./scene/navigation.ts";
+import { resolveRoute, walkWaypoints } from "./scene/navigation.ts";
 import { toScenePosition, WALK_SPEED } from "./scene/coordinates.ts";
 
 function element<T extends HTMLElement>(id: string): T {
@@ -216,7 +216,7 @@ async function calculateRoute(): Promise<void> {
     const route = await api.calculateRoute({ origin_id: start.place.id, destination_id: target.id, avoid: ui.avoidStairs.checked ? ["stairs"] : [] });
     if (revision !== requestRevision || !signedIn) return;
     const resolved = resolveRoute(route, buildings, paths, start.place.id, target.id);
-    await scene.showRoute([...start.connector, ...resolved.slice(1).map(toScenePosition)]);
+    await scene.showRoute(walkWaypoints(start,resolved));
     if (revision !== requestRevision || !signedIn) return;
     currentRoute = route;
     ui.origin.value = String(start.place.id);

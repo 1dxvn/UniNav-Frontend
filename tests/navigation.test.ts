@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { Vector3 } from "three";
 import type { Building, CampusPath, RouteResponse } from "../src/api/types.ts";
-import { canWalk, resolveRoute, routingStart, walkSegments } from "../src/scene/navigation.ts";
+import { advanceWalk, canWalk, resolveRoute, routingStart, walkSegments, walkWaypoints } from "../src/scene/navigation.ts";
 import { toScenePosition } from "../src/scene/coordinates.ts";
 
 const places: Building[] = [
@@ -56,4 +56,43 @@ test("structured routes use IDs with repeated visible labels and explicit height
   assert.throws(() => resolveRoute({ ...structured, waypoints: structured.waypoints!.map((p) => ({ ...p, elevation_m: 7 })) }, multiFloor, edges, 1, 2), /position/);
   assert.throws(() => resolveRoute({ ...structured, steps: [{ ...structured.steps[0], path_id: 99 }] }, multiFloor, edges, 1, 2), /connection/);
   assert.throws(() => resolveRoute({ ...structured, steps: [{ ...structured.steps[0], destination_id: 99 }] }, multiFloor, edges, 1, 2), /connection/);
+});
+
+test("playback retains waypoint floors on high landings and changes floors only on arrival", () => {
+  const landing={ position:new Vector3(0,5.5,0),floor:1,placeId:2 };
+  const midway=advanceWalk(new Vector3(0,3.5,0),1,landing,1);
+  assert.equal(midway.floor,1); assert.equal(midway.position.y,4.5); assert.equal(midway.reached,false);
+  const atLanding=advanceWalk(midway.position,1,landing,2);
+  assert.equal(atLanding.floor,1); assert.equal(atLanding.position.y,5.5); assert.equal(atLanding.reached,true);
+  const upper={ position:new Vector3(0,6.44,0),floor:2,placeId:3 };
+  const rising=advanceWalk(atLanding.position,1,upper,0.4);
+  assert.equal(rising.floor,1); assert.equal(rising.reached,false);
+  assert.equal(advanceWalk(rising.position,1,upper,1).floor,2);
+  const descending=advanceWalk(upper.position,2,landing,0.4);
+  assert.equal(descending.floor,2);
+  assert.equal(advanceWalk(descending.position,2,landing,1).floor,1);
+});
+
+test("a paused inter-floor connector preserves actor floor and position before its API endpoint", () => {
+  const synthetic:Building[]=[
+    { ...places[0],floor:1,elevation_m:3.5 },{ ...places[1],x:0,floor:2,elevation_m:6.44 },
+  ];
+  const segment=[{ ...paths[0],kind:"stairs" as const }];
+  const current=new Vector3(0,6.1,0);
+  const start=routingStart(current,synthetic,walkSegments(synthetic,segment),1);
+  assert.equal(start.place.id,2); assert.equal(start.floor,1);
+  const points=walkWaypoints(start,[synthetic[1]]);
+  assert.deepEqual(points.map((point) => point.floor),[1,2]);
+  assert.deepEqual(points[0].position.toArray(),current.toArray());
+  assert.equal(points[1].placeId,2);
+  current.y=0; assert.equal(points[0].position.y,6.1);
+  assert.throws(() => walkWaypoints(start,[synthetic[0]]),/selected graph connection/);
+});
+
+test("waypoint identities survive coincident positions and zero-distance arrival", () => {
+  const coincident=places.slice(0,2).map((p) => ({ ...p,x:0,y:0 }));
+  const start=routingStart(new Vector3(),coincident,[],0);
+  const points=walkWaypoints(start,coincident);
+  assert.deepEqual(points.map((p) => p.placeId),[1,2]);
+  assert.equal(advanceWalk(new Vector3(),0,{ position:new Vector3(),floor:1 },0).floor,1);
 });

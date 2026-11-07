@@ -20,7 +20,7 @@ test("static bounds preserve body-ray collisions across rotations, heights and b
     const d = to.clone().sub(from), distance = d.length();
     if (distance < 0.0001) return false;
     d.normalize();
-    return [0.45,1.2].some((height) => [-0.22,0,0.22].some((offset) =>
+    return [0.45,1.2,1.8].some((height) => [-0.22,0,0.22].some((offset) =>
       new Raycaster(from.clone().add(new Vector3(-d.z*offset,height,d.x*offset)),d,0,distance+0.25).intersectObjects(meshes,false).length > 0));
   }
   let collisions = 0, clear = 0;
@@ -35,6 +35,16 @@ test("static bounds preserve body-ray collisions across rotations, heights and b
   }
   assert.ok(collisions > 5 && clear > 5);
   assert.equal(modelCollision(new Vector3(),new Vector3(),colliders),undefined);
+  disposeGroup(root);
+});
+
+test("head clearance blocks a beam above the torso even when the mesh is hidden", () => {
+  const beam=new Mesh(new BoxGeometry(0.2,0.12,2),new MeshStandardMaterial({ side:DoubleSide }));
+  beam.position.set(0.7,1.75,0); beam.visible=false;
+  const root=new Group(); root.add(beam);
+  assert.equal(modelCollision(new Vector3(),new Vector3(1,0,0),modelColliders(root)),beam);
+  beam.position.y=2.1;
+  assert.equal(modelCollision(new Vector3(),new Vector3(1,0,0),modelColliders(root)),undefined);
   disposeGroup(root);
 });
 

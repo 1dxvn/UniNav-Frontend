@@ -1,17 +1,19 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
+import { join } from "node:path";
 import { Group, Raycaster, Vector3 } from "three";
 import type { Building, CampusPath } from "../src/api/types.ts";
 import { parseModelGeometry } from "./model-geometry.ts";
 import { parseReference, referenceMatrix, validateAlignment, validateModelNodes } from "../src/scene/modelReference.ts";
-import { modelColliders, modelCollision } from "../src/scene/modelCollision.ts";
+import { BODY_RAY_HEIGHTS, modelColliders, modelCollision } from "../src/scene/modelCollision.ts";
 import { toScenePosition } from "../src/scene/coordinates.ts";
 
 const api = process.env.UNINAV_TEST_URL ?? "http://127.0.0.1:8001";
 const output = process.env.UNINAV_VERIFY_DIR ?? "docs/verification/c2";
-const bytes = await readFile("public/models/campus.glb");
+const modelRoot=process.env.UNINAV_MODEL_ROOT ?? "public/models";
+const bytes = await readFile(join(modelRoot,"campus.glb"));
 const hash = (data: Uint8Array) => createHash("sha256").update(data).digest("hex");
-const reference = parseReference(JSON.parse(await readFile("public/models/campus-reference.json","utf8")));
+const reference = parseReference(JSON.parse(await readFile(join(modelRoot,"campus-reference.json"),"utf8")));
 const places = await (await fetch(`${api}/buildings`)).json() as Building[];
 const paths = await (await fetch(`${api}/paths`)).json() as CampusPath[];
 validateAlignment(reference,places);
@@ -35,7 +37,7 @@ function original(from: Vector3, to: Vector3): boolean {
   const direction = to.clone().sub(from), distance = direction.length();
   if (distance < 0.0001) return false;
   direction.normalize();
-  for (const height of [0.45,1.2]) for (const offset of [-0.22,0,0.22]) {
+  for (const height of BODY_RAY_HEIGHTS) for (const offset of [-0.22,0,0.22]) {
     const start = from.clone().add(new Vector3(-direction.z*offset,height,direction.x*offset));
     if (new Raycaster(start,direction,0,distance+0.25).intersectObjects(meshes,false).length) return true;
   }
@@ -52,10 +54,10 @@ function measure(check: (a: Vector3,b: Vector3) => unknown): number {
 }
 const originalMs = measure(original), optimizedMs = measure((a,b) => modelCollision(a,b,colliders));
 const served = await fetch(`${api}/app/models/campus.glb`);
-if (!served.ok || hash(new Uint8Array(await served.arrayBuffer())) !== hash(bytes) || hash(await readFile("public/models/campus.glb")) !== hash(bytes)) {
+if (!served.ok || hash(new Uint8Array(await served.arrayBuffer())) !== hash(bytes) || hash(await readFile(join(modelRoot,"campus.glb"))) !== hash(bytes)) {
   throw new Error("Model revision changed or differs from the served file.");
 }
-const report = { checkedAt:new Date().toISOString(), modelSha256:hash(bytes), meshes:meshes.length,
+const report = { checkedAt:new Date().toISOString(), modelSha256:hash(bytes), meshes:meshes.length,rayHeights:BODY_RAY_HEIGHTS,
   routeSamples:samples.length, timedCallsPerImplementation:samples.length*5, mismatches:0,
   originalMeanMsPerCall:originalMs, optimizedMeanMsPerCall:optimizedMs, speedup:originalMs/optimizedMs };
 await mkdir(output,{ recursive:true });
