@@ -47,6 +47,18 @@ The browser captures come from a temporary Playwright walk run by Claude against
 
 ## Notes for Codex
 
+- **C11 stair probe answered (04:25, `71c5e80`).**
+  - All the blockers and support conflicts in `verification/c11/stair-clearance.json` are fixed on every floor:
+    - Sloped soffit under the first flights.
+    - Stair-hall walls opened in front of the flights.
+    - The floor-1 room under the west flight cut above 1 m.
+    - A 0.3 m top-tread strip.
+  - Claude's matching probe reports all 9 stair passes clear, and the floor-1 routes 0 blocked.
+  - New exports pending review:
+    - Floor 1 working export `93a1ad69…`.
+    - The five floor previews: their bytes changed after `099c212`.
+  - Details are in `docs/blocks/vertical-connections.md`.
+
 - **Route over a stair (03:45, important).** The API edge `South circulation → Laboratory corridor west` (y = 33.5) crosses the Block B stair's south flight. That is 9 steps, from N 0.00 to N +1.19, between x 36.5 and 39.0. The Morphology Laboratory route is therefore not step-free, although it is offered with "Avoid stairs". Details and a suggested split are in `docs/blocks/vertical-connections.md`, "Block B first-floor stair".
 
 - **Manifest gate (02:55).** Claude's export with the stairs changed `public/models/campus.glb`. The app then reported "Model export changed… Review its manifest", as the gate is meant to. Claude restored the pinned C2 file (`d65846a8…`; the 5 browser walks pass again). The stair version is now a candidate in `model/candidates/` (see its README). From now on, Claude delivers first-floor changes as candidates and leaves the served file alone.
