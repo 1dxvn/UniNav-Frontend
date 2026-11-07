@@ -14,6 +14,7 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | C6 (Plan 3 P3, monito) | Optional faceless avatar GLB with `Idle` and `Walk` clips (`public/models/avatar/`) | `after-c6/` |
 | C5 (Plan 2 A1, exterior) | Exterior massing of Blocks A and B, floors 2–5: registered floor outlines, real levels per block, brick with ribbon windows, roofs and terraces, rooftop courts, glass stair towers. Separate GLB `public/models/blocks/campus-exterior.glb` | `after-c5/` |
 | C12 (Plan 3 / Plan 2, upper-floor interiors) | Floors 0 and 2–5: room-tag bars removed from the walls (67), the door leaves drawn in the DWG added (143), furniture kept inside its own room (no desks in corridors; five more classrooms furnished on floor 2) | `after-c12/floors-top.png` (same framing as `after-c9/`) |
+| C13 (upper-floor doorways) | Floors 0 and 2–5: the door-type frames ("P-10") that stood in doorways and corridors as wall stubs removed (111). Drawn door leaves replace guessed ones in the same doorway; the repeated DWG leaves are placed once | `after-c13/floors-top.png` |
 
 ## Comparable captures (Plan 3 §11)
 
@@ -48,15 +49,30 @@ The browser captures come from a temporary Playwright walk run by Claude against
 
 ## Notes for Codex
 
-- **Upper-floor previews re-exported (C12, `fe71176`, `08fd92b`).**
-  - Floors 0 and 2–5 changed again. Their working exports are pending review: floor 0 `c4a2bb57…`, floor 2 `368da98e…`, floor 3 `25b75bfd…`, floor 4 `970d899f…`, floor 5 `a6be6a29…`.
-  - `npm run build` still serves the reviewed bytes pinned at `f15ddb9` (checked: `1818cc7e`, `403cb77b`, `8842b50c`, `3836f2b3`, `f02ed3b2`).
-  - Changes:
-    - The filled bars next to room names had been modelled as free-standing walls in classrooms and halls. They are gone.
-    - The leaves drawn in the DWG are now doors, placed as drawn (`P<N>_Doors`), without swing arcs.
-    - Desks stay inside their rooms.
-  - Each export keeps its 3 reference nodes, the stairs and the C11 cuts. Claude's stair probe still reports all 9 passes clear.
-  - When these floors get API paths, the new leaves stand where the DWG draws them, open. Rerun `extras.py` and then `door_leaves_dwg.py` with the floor graph (`model/tools/README.md`, step 6h2).
+- **Upper-floor previews re-exported again (C13, `35a5565`, `a2dbda0`). This replaces the C12 exports of `08fd92b`.**
+  - Do not integrate the floor previews of `08fd92b`. In those exports, each door-type code ("P-7", "P-10") was drawn inside a 0.25 × 0.54 m frame, and the frames were modelled as 2.8 m wall stubs, often inside the doorway or the corridor. Rays through the Aula 203 B and 204 B doorways hit them at y 37.0. The same stubs are in the earlier previews (`099c212`, `f15ddb9`).
+  - New working exports, pending review:
+
+    | Floor | Working export |
+    | --- | --- |
+    | 0 | `1cc05a1b…` |
+    | 2 | `63a1ac43…` |
+    | 3 | `905b611a…` |
+    | 4 | `db7a29e4…` |
+    | 5 | `0bedcb88…` |
+
+  - What changed since C12:
+    - 111 frames are removed: 22, 26, 16, 21 and 26 on floors 0, 2, 3, 4 and 5.
+    - Gap detection now finds more doorways.
+    - Where a doorway had both a guessed leaf and a drawn one, the drawn leaf is used. The guessed side was arbitrary; one glass leaf opened into the floor-2 north corridor.
+    - A leaf the DWG repeats is placed once.
+  - Kept from C12:
+    - No room-tag bars as walls.
+    - Furniture inside its own room.
+  - Checks: the 3 references per export, the stairs and the C11 cuts are intact. Claude's stair probe reports 9 clear passes. Rays through the classroom doorways and along the floor-2 north corridor (y 54.8) are clear.
+  - Some restroom doors on the floor-2 north corridor open outwards, as drawn. Their leaves reach y 55.1 in the 2.4 m corridor, so routes should run along y ≈ 54.5–54.8.
+  - The first floor has no such frames and is unchanged (`93a1ad69…`).
+  - When these floors get API paths, rerun `extras.py` and then `door_leaves_dwg.py` with the floor graph (`model/tools/README.md`, step 6h2).
 
 - **C11 stair probe answered (04:25, `71c5e80`).**
   - All the blockers and support conflicts in `verification/c11/stair-clearance.json` are fixed on every floor:
