@@ -1,0 +1,27 @@
+{
+  "build": "passed",
+  "typecheck": "passed",
+  "frontendUnitCases": 51,
+  "apiCases": 15,
+  "distinctBrowserCases": 10,
+  "baseGuidedArrivals": 8,
+  "threeFloorGuidedArrivals": 2,
+  "connectorArrivalErrorMetres": 0.0,
+  "rawSegmentsPerThreeFloorRoute": 71,
+  "directionsPerThreeFloorRoute": 24,
+  "highlightPositionsChecked": 662,
+  "maxDistanceFromHighlightedEdges": 0.14020316730743557,
+  "metrics": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "averageFps": 143.99520015999508
+  },
+  "floor0Anchors": 3,
+  "sourceLevelLabels": 7,
+  "floor0NavigationEnabled": false,
+  "manifestUnchangedSha256": "d1f8cd6b054e360f26500c855210dd8df7d1827a2f1afbd2cfde1d23dad68b62",
+  "realDatabase": [
+    19,
+    16
+  ],
+  "finalJsBundle": "index-DCY9idfS.js"
+}

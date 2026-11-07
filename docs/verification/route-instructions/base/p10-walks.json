@@ -1,0 +1,2534 @@
+{
+  "profile": "ucc-two-floors-c15",
+  "models": [
+    {
+      "url": "models/c16/floor-1.glb",
+      "hash": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-1.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-3.glb",
+      "hash": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-3.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-4.glb",
+      "hash": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-4.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-5.glb",
+      "hash": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-5.glb"
+      }
+    },
+    {
+      "url": "models/c17/floor-2.glb",
+      "hash": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
+      "source": {
+        "commit": "0f6a862",
+        "path": "model/candidates/c17/floor-2.glb"
+      }
+    }
+  ],
+  "scope": "production scripts.run_campus launcher and versioned profile on an isolated database; shipped manifest without overrides",
+  "runs": [
+    {
+      "direction": "outbound",
+      "route": {
+        "path": [
+          "Hall Acceso",
+          "Access courtyard",
+          "South circulation",
+          "ICETEX approach",
+          "ICETEX doorway",
+          "Hall junction",
+          "Hall corridor south",
+          "Hall corridor north",
+          "Hall steps tread 1",
+          "Hall steps tread 2",
+          "Hall steps tread 3",
+          "Hall steps / Block A arrival",
+          "Elevator and Restroom Hall"
+        ],
+        "steps": [
+          {
+            "origin_name": "Hall Acceso",
+            "destination_name": "Access courtyard",
+            "kind": "outdoor",
+            "distance": 17.5576906226303,
+            "origin_id": 1,
+            "destination_id": 2,
+            "path_id": 1,
+            "connection_code": "ucc:floor1:e01",
+            "origin_display_name": "Hall Acceso",
+            "destination_display_name": "Access courtyard"
+          },
+          {
+            "origin_name": "Access courtyard",
+            "destination_name": "South circulation",
+            "kind": "outdoor",
+            "distance": 23.00592315035413,
+            "origin_id": 2,
+            "destination_id": 3,
+            "path_id": 2,
+            "connection_code": "ucc:floor1:e02",
+            "origin_display_name": "Access courtyard",
+            "destination_display_name": "South circulation"
+          },
+          {
+            "origin_name": "South circulation",
+            "destination_name": "ICETEX approach",
+            "kind": "corridor",
+            "distance": 1.5811388300841898,
+            "origin_id": 3,
+            "destination_id": 4,
+            "path_id": 3,
+            "connection_code": "ucc:floor1:e03",
+            "origin_display_name": "South circulation",
+            "destination_display_name": "ICETEX approach"
+          },
+          {
+            "origin_name": "ICETEX approach",
+            "destination_name": "ICETEX doorway",
+            "kind": "corridor",
+            "distance": 2.0615528128088303,
+            "origin_id": 4,
+            "destination_id": 5,
+            "path_id": 4,
+            "connection_code": "ucc:floor1:e04",
+            "origin_display_name": "ICETEX approach",
+            "destination_display_name": "ICETEX doorway"
+          },
+          {
+            "origin_name": "ICETEX doorway",
+            "destination_name": "Hall junction",
+            "kind": "corridor",
+            "distance": 0.7071067811865476,
+            "origin_id": 5,
+            "destination_id": 7,
+            "path_id": 6,
+            "connection_code": "ucc:floor1:e06",
+            "origin_display_name": "ICETEX doorway",
+            "destination_display_name": "Hall junction"
+          },
+          {
+            "origin_name": "Hall junction",
+            "destination_name": "Hall corridor south",
+            "kind": "corridor",
+            "distance": 4,
+            "origin_id": 7,
+            "destination_id": 8,
+            "path_id": 7,
+            "connection_code": "ucc:floor1:e07",
+            "origin_display_name": "Hall junction",
+            "destination_display_name": "Hall corridor south"
+          },
+          {
+            "origin_name": "Hall corridor south",
+            "destination_name": "Hall corridor north",
+            "kind": "corridor",
+            "distance": 11.100000000000001,
+            "origin_id": 8,
+            "destination_id": 9,
+            "path_id": 8,
+            "connection_code": "ucc:floor1:e08",
+            "origin_display_name": "Hall corridor south",
+            "destination_display_name": "Hall corridor north"
+          },
+          {
+            "origin_name": "Hall corridor north",
+            "destination_name": "Hall steps tread 1",
+            "kind": "stairs",
+            "distance": 0.514690440944848,
+            "origin_id": 9,
+            "destination_id": 20,
+            "path_id": 17,
+            "connection_code": "ucc:floor1:hall:e1",
+            "origin_display_name": "Hall corridor north",
+            "destination_display_name": "Hall steps tread 1"
+          },
+          {
+            "origin_name": "Hall steps tread 1",
+            "destination_name": "Hall steps tread 2",
+            "kind": "stairs",
+            "distance": 0.48621625846941213,
+            "origin_id": 20,
+            "destination_id": 21,
+            "path_id": 18,
+            "connection_code": "ucc:floor1:hall:e2",
+            "origin_display_name": "Hall steps tread 1",
+            "destination_display_name": "Hall steps tread 2"
+          },
+          {
+            "origin_name": "Hall steps tread 2",
+            "destination_name": "Hall steps tread 3",
+            "kind": "stairs",
+            "distance": 0.4814885772269146,
+            "origin_id": 21,
+            "destination_id": 22,
+            "path_id": 19,
+            "connection_code": "ucc:floor1:hall:e3",
+            "origin_display_name": "Hall steps tread 2",
+            "destination_display_name": "Hall steps tread 3"
+          },
+          {
+            "origin_name": "Hall steps tread 3",
+            "destination_name": "Hall steps / Block A arrival",
+            "kind": "stairs",
+            "distance": 0.5194528371276881,
+            "origin_id": 22,
+            "destination_id": 23,
+            "path_id": 20,
+            "connection_code": "ucc:floor1:hall:e4",
+            "origin_display_name": "Hall steps tread 3",
+            "destination_display_name": "Hall steps / Block A arrival"
+          },
+          {
+            "origin_name": "Hall steps / Block A arrival",
+            "destination_name": "Elevator and Restroom Hall",
+            "kind": "corridor",
+            "distance": 3.3277319603597877,
+            "origin_id": 23,
+            "destination_id": 10,
+            "path_id": 9,
+            "connection_code": "ucc:floor1:e09",
+            "origin_display_name": "Hall steps / Block A arrival",
+            "destination_display_name": "Elevator and Restroom Hall"
+          }
+        ],
+        "distance": 65.34299227119264,
+        "origin_name": "Hall Acceso",
+        "destination_name": "Elevator and Restroom Hall",
+        "waypoints": [
+          {
+            "id": 1,
+            "code": "ucc:floor1:p01",
+            "name": "Hall Acceso",
+            "display_name": "Hall Acceso",
+            "x": 0,
+            "y": 0,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 2,
+            "code": "ucc:floor1:p02",
+            "name": "Access courtyard",
+            "display_name": "Access courtyard",
+            "x": 6,
+            "y": 16.5,
+            "floor": 1,
+            "elevation_m": 3.35,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 3,
+            "code": "ucc:floor1:p03",
+            "name": "South circulation",
+            "display_name": "South circulation",
+            "x": 21.5,
+            "y": 33.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 4,
+            "code": "ucc:floor1:p04",
+            "name": "ICETEX approach",
+            "display_name": "ICETEX approach",
+            "x": 23,
+            "y": 34,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 5,
+            "code": "ucc:floor1:p05",
+            "name": "ICETEX doorway",
+            "display_name": "ICETEX doorway",
+            "x": 23.5,
+            "y": 36,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 7,
+            "code": "ucc:floor1:p07",
+            "name": "Hall junction",
+            "display_name": "Hall junction",
+            "x": 24,
+            "y": 36.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 8,
+            "code": "ucc:floor1:p08",
+            "name": "Hall corridor south",
+            "display_name": "Hall corridor south",
+            "x": 28,
+            "y": 36.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 9,
+            "code": "ucc:floor1:p09",
+            "name": "Hall corridor north",
+            "display_name": "Hall corridor north",
+            "x": 28,
+            "y": 47.6,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 20,
+            "code": "ucc:floor1:hall-tread-01",
+            "name": "Hall steps tread 1",
+            "display_name": "Hall steps tread 1",
+            "x": 28,
+            "y": 48.09,
+            "floor": 1,
+            "elevation_m": 3.3425,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 21,
+            "code": "ucc:floor1:hall-tread-02",
+            "name": "Hall steps tread 2",
+            "display_name": "Hall steps tread 2",
+            "x": 28,
+            "y": 48.55,
+            "floor": 1,
+            "elevation_m": 3.185,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 22,
+            "code": "ucc:floor1:hall-tread-03",
+            "name": "Hall steps tread 3",
+            "display_name": "Hall steps tread 3",
+            "x": 28,
+            "y": 49.004999999999995,
+            "floor": 1,
+            "elevation_m": 3.0275,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 23,
+            "code": "ucc:floor1:hall-after",
+            "name": "Hall steps / Block A arrival",
+            "display_name": "Hall steps / Block A arrival",
+            "x": 28,
+            "y": 49.5,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 10,
+            "code": "ucc:floor1:p10",
+            "name": "Elevator and Restroom Hall",
+            "display_name": "Elevator and Restroom Hall",
+            "x": 25.77,
+            "y": 51.97,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          }
+        ]
+      },
+      "position": [
+        25.77,
+        2.87,
+        -51.97
+      ],
+      "finalErrorMetres": 0,
+      "samples": [
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "ready"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "ready"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.085,3.500,-0.234",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.213,3.500,-0.587",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.341,3.500,-0.939",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.470,3.500,-1.292",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.598,3.500,-1.644",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.726,3.500,-1.996",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.854,3.500,-2.349",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.982,3.500,-2.701",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.110,3.500,-3.053",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.238,3.500,-3.406",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.367,3.500,-3.758",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.490,3.500,-4.098",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.616,3.500,-4.443",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.744,3.500,-4.796",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.872,3.500,-5.148",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.000,3.500,-5.501",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.128,3.500,-5.853",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.257,3.500,-6.206",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.385,3.500,-6.558",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.513,3.500,-6.910",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.641,3.500,-7.263",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.769,3.500,-7.615",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.897,3.500,-7.968",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.025,3.500,-8.320",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.153,3.500,-8.672",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.282,3.500,-9.025",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.410,3.500,-9.377",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.538,3.500,-9.729",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.668,3.350,-10.087",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.794,3.350,-10.434",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.927,3.350,-10.800",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.050,3.350,-11.139",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.179,3.350,-11.491",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.307,3.350,-11.844",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.435,3.350,-12.196",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.563,3.350,-12.549",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.691,3.350,-12.901",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.819,3.350,-13.253",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.948,3.350,-13.606",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.076,3.350,-13.958",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.204,3.350,-14.311",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.332,3.350,-14.663",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.460,3.350,-15.016",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.588,3.350,-15.368",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.717,3.350,-15.720",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.845,3.350,-16.073",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.973,3.350,-16.426",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.196,3.350,-16.715",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.449,3.350,-16.993",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.702,3.350,-17.270",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.954,3.350,-17.547",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.207,3.350,-17.824",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.460,3.350,-18.101",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.712,3.350,-18.378",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.965,3.350,-18.655",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.218,3.350,-18.932",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.471,3.350,-19.210",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.723,3.350,-19.486",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.976,3.350,-19.764",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.228,3.350,-20.041",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.481,3.350,-20.318",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.734,3.350,-20.595",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.986,3.350,-20.872",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.239,3.350,-21.149",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.492,3.350,-21.426",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.744,3.350,-21.703",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.999,3.350,-21.983",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.249,3.350,-22.257",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.502,3.350,-22.535",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.755,3.350,-22.812",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.008,3.350,-23.089",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.260,3.350,-23.366",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.513,3.350,-23.643",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.765,3.350,-23.920",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.018,3.350,-24.197",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.271,3.350,-24.474",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.523,3.350,-24.752",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.776,3.350,-25.029",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.029,3.350,-25.305",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.281,3.350,-25.583",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.534,3.350,-25.860",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.786,3.350,-26.137",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.039,3.350,-26.414",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.282,3.350,-26.680",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.530,3.350,-26.952",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.783,3.350,-27.230",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.035,3.350,-27.507",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.288,3.350,-27.784",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.545,3.350,-28.066",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.793,3.350,-28.338",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.046,3.350,-28.615",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.299,3.350,-28.892",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.551,3.350,-29.169",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.804,3.350,-29.446",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.056,3.350,-29.723",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.309,3.350,-30.000",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.562,3.350,-30.277",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.814,3.350,-30.554",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.066,3.350,-30.831",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.319,3.350,-31.108",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.571,3.350,-31.384",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.824,3.350,-31.661",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.075,3.350,-31.938",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.328,3.350,-32.214",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.584,3.500,-32.495",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.832,3.500,-32.767",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.084,3.500,-33.044",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.337,3.500,-33.321",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.606,3.500,-33.535",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.962,3.500,-33.654",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.317,3.500,-33.772",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.673,3.500,-33.891",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.005,3.500,-34.020",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.096,3.500,-34.384",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.187,3.500,-34.748",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.278,3.500,-35.111",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.369,3.500,-35.475",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.460,3.500,-35.839",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.647,3.500,-36.147",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.913,3.500,-36.413",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.250,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.625,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.000,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.375,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.750,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.125,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.500,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.883,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.250,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.626,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-36.875",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.250",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.625",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.000",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.375",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.750",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.125",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.875",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.250",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.625",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.000",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.375",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.750",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.125",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.514",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.875",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.250",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.625",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.000",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.375",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.750",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.125",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.875",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.250",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.625",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.000",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.375",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.736",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.343,-48.090",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.185,-48.438",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.185,-48.777",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.028,-49.123",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,2.870,-49.485",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.762,2.870,-49.763",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.512,2.870,-50.041",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.260,2.870,-50.320",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.009,2.870,-50.598",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.757,2.870,-50.876",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.506,2.870,-51.154",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.254,2.870,-51.434",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.002,2.870,-51.713",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.770,2.870,-51.970",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "25.770,2.870,-51.970",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "25.770,2.870,-51.970",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "25.770,2.870,-51.970",
+          "floor": "1",
+          "state": "arrived"
+        }
+      ]
+    },
+    {
+      "direction": "return",
+      "route": {
+        "path": [
+          "Elevator and Restroom Hall",
+          "Hall steps / Block A arrival",
+          "Hall steps tread 3",
+          "Hall steps tread 2",
+          "Hall steps tread 1",
+          "Hall corridor north",
+          "Hall corridor south",
+          "Hall junction",
+          "ICETEX doorway",
+          "ICETEX approach",
+          "South circulation",
+          "Access courtyard",
+          "Hall Acceso"
+        ],
+        "steps": [
+          {
+            "origin_name": "Elevator and Restroom Hall",
+            "destination_name": "Hall steps / Block A arrival",
+            "kind": "corridor",
+            "distance": 3.3277319603597877,
+            "origin_id": 10,
+            "destination_id": 23,
+            "path_id": 9,
+            "connection_code": "ucc:floor1:e09",
+            "origin_display_name": "Elevator and Restroom Hall",
+            "destination_display_name": "Hall steps / Block A arrival"
+          },
+          {
+            "origin_name": "Hall steps / Block A arrival",
+            "destination_name": "Hall steps tread 3",
+            "kind": "stairs",
+            "distance": 0.5194528371276881,
+            "origin_id": 23,
+            "destination_id": 22,
+            "path_id": 20,
+            "connection_code": "ucc:floor1:hall:e4",
+            "origin_display_name": "Hall steps / Block A arrival",
+            "destination_display_name": "Hall steps tread 3"
+          },
+          {
+            "origin_name": "Hall steps tread 3",
+            "destination_name": "Hall steps tread 2",
+            "kind": "stairs",
+            "distance": 0.4814885772269146,
+            "origin_id": 22,
+            "destination_id": 21,
+            "path_id": 19,
+            "connection_code": "ucc:floor1:hall:e3",
+            "origin_display_name": "Hall steps tread 3",
+            "destination_display_name": "Hall steps tread 2"
+          },
+          {
+            "origin_name": "Hall steps tread 2",
+            "destination_name": "Hall steps tread 1",
+            "kind": "stairs",
+            "distance": 0.48621625846941213,
+            "origin_id": 21,
+            "destination_id": 20,
+            "path_id": 18,
+            "connection_code": "ucc:floor1:hall:e2",
+            "origin_display_name": "Hall steps tread 2",
+            "destination_display_name": "Hall steps tread 1"
+          },
+          {
+            "origin_name": "Hall steps tread 1",
+            "destination_name": "Hall corridor north",
+            "kind": "stairs",
+            "distance": 0.514690440944848,
+            "origin_id": 20,
+            "destination_id": 9,
+            "path_id": 17,
+            "connection_code": "ucc:floor1:hall:e1",
+            "origin_display_name": "Hall steps tread 1",
+            "destination_display_name": "Hall corridor north"
+          },
+          {
+            "origin_name": "Hall corridor north",
+            "destination_name": "Hall corridor south",
+            "kind": "corridor",
+            "distance": 11.100000000000001,
+            "origin_id": 9,
+            "destination_id": 8,
+            "path_id": 8,
+            "connection_code": "ucc:floor1:e08",
+            "origin_display_name": "Hall corridor north",
+            "destination_display_name": "Hall corridor south"
+          },
+          {
+            "origin_name": "Hall corridor south",
+            "destination_name": "Hall junction",
+            "kind": "corridor",
+            "distance": 4,
+            "origin_id": 8,
+            "destination_id": 7,
+            "path_id": 7,
+            "connection_code": "ucc:floor1:e07",
+            "origin_display_name": "Hall corridor south",
+            "destination_display_name": "Hall junction"
+          },
+          {
+            "origin_name": "Hall junction",
+            "destination_name": "ICETEX doorway",
+            "kind": "corridor",
+            "distance": 0.7071067811865476,
+            "origin_id": 7,
+            "destination_id": 5,
+            "path_id": 6,
+            "connection_code": "ucc:floor1:e06",
+            "origin_display_name": "Hall junction",
+            "destination_display_name": "ICETEX doorway"
+          },
+          {
+            "origin_name": "ICETEX doorway",
+            "destination_name": "ICETEX approach",
+            "kind": "corridor",
+            "distance": 2.0615528128088303,
+            "origin_id": 5,
+            "destination_id": 4,
+            "path_id": 4,
+            "connection_code": "ucc:floor1:e04",
+            "origin_display_name": "ICETEX doorway",
+            "destination_display_name": "ICETEX approach"
+          },
+          {
+            "origin_name": "ICETEX approach",
+            "destination_name": "South circulation",
+            "kind": "corridor",
+            "distance": 1.5811388300841898,
+            "origin_id": 4,
+            "destination_id": 3,
+            "path_id": 3,
+            "connection_code": "ucc:floor1:e03",
+            "origin_display_name": "ICETEX approach",
+            "destination_display_name": "South circulation"
+          },
+          {
+            "origin_name": "South circulation",
+            "destination_name": "Access courtyard",
+            "kind": "outdoor",
+            "distance": 23.00592315035413,
+            "origin_id": 3,
+            "destination_id": 2,
+            "path_id": 2,
+            "connection_code": "ucc:floor1:e02",
+            "origin_display_name": "South circulation",
+            "destination_display_name": "Access courtyard"
+          },
+          {
+            "origin_name": "Access courtyard",
+            "destination_name": "Hall Acceso",
+            "kind": "outdoor",
+            "distance": 17.5576906226303,
+            "origin_id": 2,
+            "destination_id": 1,
+            "path_id": 1,
+            "connection_code": "ucc:floor1:e01",
+            "origin_display_name": "Access courtyard",
+            "destination_display_name": "Hall Acceso"
+          }
+        ],
+        "distance": 65.34299227119264,
+        "origin_name": "Elevator and Restroom Hall",
+        "destination_name": "Hall Acceso",
+        "waypoints": [
+          {
+            "id": 10,
+            "code": "ucc:floor1:p10",
+            "name": "Elevator and Restroom Hall",
+            "display_name": "Elevator and Restroom Hall",
+            "x": 25.77,
+            "y": 51.97,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 23,
+            "code": "ucc:floor1:hall-after",
+            "name": "Hall steps / Block A arrival",
+            "display_name": "Hall steps / Block A arrival",
+            "x": 28,
+            "y": 49.5,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 22,
+            "code": "ucc:floor1:hall-tread-03",
+            "name": "Hall steps tread 3",
+            "display_name": "Hall steps tread 3",
+            "x": 28,
+            "y": 49.004999999999995,
+            "floor": 1,
+            "elevation_m": 3.0275,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 21,
+            "code": "ucc:floor1:hall-tread-02",
+            "name": "Hall steps tread 2",
+            "display_name": "Hall steps tread 2",
+            "x": 28,
+            "y": 48.55,
+            "floor": 1,
+            "elevation_m": 3.185,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 20,
+            "code": "ucc:floor1:hall-tread-01",
+            "name": "Hall steps tread 1",
+            "display_name": "Hall steps tread 1",
+            "x": 28,
+            "y": 48.09,
+            "floor": 1,
+            "elevation_m": 3.3425,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 9,
+            "code": "ucc:floor1:p09",
+            "name": "Hall corridor north",
+            "display_name": "Hall corridor north",
+            "x": 28,
+            "y": 47.6,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 8,
+            "code": "ucc:floor1:p08",
+            "name": "Hall corridor south",
+            "display_name": "Hall corridor south",
+            "x": 28,
+            "y": 36.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 7,
+            "code": "ucc:floor1:p07",
+            "name": "Hall junction",
+            "display_name": "Hall junction",
+            "x": 24,
+            "y": 36.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 5,
+            "code": "ucc:floor1:p05",
+            "name": "ICETEX doorway",
+            "display_name": "ICETEX doorway",
+            "x": 23.5,
+            "y": 36,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 4,
+            "code": "ucc:floor1:p04",
+            "name": "ICETEX approach",
+            "display_name": "ICETEX approach",
+            "x": 23,
+            "y": 34,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 3,
+            "code": "ucc:floor1:p03",
+            "name": "South circulation",
+            "display_name": "South circulation",
+            "x": 21.5,
+            "y": 33.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 2,
+            "code": "ucc:floor1:p02",
+            "name": "Access courtyard",
+            "display_name": "Access courtyard",
+            "x": 6,
+            "y": 16.5,
+            "floor": 1,
+            "elevation_m": 3.35,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 1,
+            "code": "ucc:floor1:p01",
+            "name": "Hall Acceso",
+            "display_name": "Hall Acceso",
+            "x": 0,
+            "y": 0,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          }
+        ]
+      },
+      "position": [
+        0,
+        3.5,
+        0
+      ],
+      "finalErrorMetres": 0,
+      "samples": [
+        {
+          "position": "25.770,2.870,-51.970",
+          "floor": "1",
+          "state": "ready"
+        },
+        {
+          "position": "25.770,2.870,-51.970",
+          "floor": "1",
+          "state": "ready"
+        },
+        {
+          "position": "25.770,2.870,-51.970",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.937,2.870,-51.785",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.188,2.870,-51.507",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.442,2.870,-51.226",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.691,2.870,-50.950",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.933,2.870,-50.681",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.179,2.870,-50.409",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.431,2.870,-50.131",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.682,2.870,-49.852",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.933,2.870,-49.574",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,2.870,-49.252",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.028,-48.907",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.185,-48.550",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.343,-48.202",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.860",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.496",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.121",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.746",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.371",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.996",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.621",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.246",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.871",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.495",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.121",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.746",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.367",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.996",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.621",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.246",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.871",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.496",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.121",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.746",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.370",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.996",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.621",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.246",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.871",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.496",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.121",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.746",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.371",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-36.996",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-36.621",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.750,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.375,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.000,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.622,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.250,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.875,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.500,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.125,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.750,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.375,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.000,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.749,3.500,-36.249",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.495,3.500,-35.980",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.404,3.500,-35.616",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.313,3.500,-35.252",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.222,3.500,-34.889",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.131,3.500,-34.524",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.040,3.500,-34.161",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.802,3.500,-33.934",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.446,3.500,-33.815",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.090,3.500,-33.697",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.735,3.500,-33.578",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.416,3.500,-33.408",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.164,3.500,-33.131",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.911,3.500,-32.854",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.659,3.500,-32.577",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.406,3.350,-32.300",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.153,3.350,-32.023",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.900,3.350,-31.746",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.648,3.350,-31.469",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.395,3.350,-31.192",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.143,3.350,-30.914",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.890,3.350,-30.637",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.637,3.350,-30.360",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.385,3.350,-30.083",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.132,3.350,-29.806",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.880,3.350,-29.529",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.626,3.350,-29.252",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.374,3.350,-28.975",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.121,3.350,-28.698",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.866,3.350,-28.418",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.616,3.350,-28.143",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.363,3.350,-27.866",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.111,3.350,-27.589",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.858,3.350,-27.312",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.605,3.350,-27.035",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.353,3.350,-26.758",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.100,3.350,-26.481",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.847,3.350,-26.203",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.595,3.350,-25.927",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.342,3.350,-25.649",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.090,3.350,-25.373",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.837,3.350,-25.095",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.584,3.350,-24.818",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.331,3.350,-24.541",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.079,3.350,-24.264",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.826,3.350,-23.987",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.573,3.350,-23.709",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.321,3.350,-23.432",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.068,3.350,-23.155",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.816,3.350,-22.878",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.563,3.350,-22.601",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.310,3.350,-22.324",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.057,3.350,-22.047",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.804,3.350,-21.769",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.552,3.350,-21.493",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.300,3.350,-21.216",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.047,3.350,-20.938",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.794,3.350,-20.661",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.541,3.350,-20.384",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.289,3.350,-20.107",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.036,3.350,-19.830",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.783,3.350,-19.553",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.531,3.350,-19.276",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.278,3.350,-18.999",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.025,3.350,-18.721",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.773,3.350,-18.445",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.520,3.350,-18.167",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.267,3.350,-17.890",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.015,3.350,-17.613",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.758,3.350,-17.332",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.510,3.350,-17.059",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.257,3.350,-16.782",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.004,3.350,-16.505",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.879,3.350,-16.167",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.751,3.350,-15.815",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.623,3.350,-15.462",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.495,3.350,-15.110",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.366,3.350,-14.758",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.238,3.350,-14.405",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.110,3.350,-14.053",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.982,3.350,-13.700",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.854,3.350,-13.348",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.726,3.350,-12.996",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.598,3.350,-12.643",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.469,3.350,-12.291",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.341,3.350,-11.938",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.213,3.350,-11.586",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.085,3.350,-11.234",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.957,3.350,-10.881",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.825,3.350,-10.519",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.701,3.350,-10.177",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.572,3.500,-9.824",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.444,3.500,-9.471",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.316,3.500,-9.118",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.187,3.500,-8.765",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.060,3.500,-8.414",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.932,3.500,-8.062",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.803,3.500,-7.709",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.675,3.500,-7.357",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.547,3.500,-7.004",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.419,3.500,-6.652",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.291,3.500,-6.300",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.163,3.500,-5.947",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.034,3.500,-5.595",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.906,3.500,-5.242",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.778,3.500,-4.890",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.650,3.500,-4.537",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.522,3.500,-4.185",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.394,3.500,-3.833",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.266,3.500,-3.480",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.137,3.500,-3.128",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.009,3.500,-2.775",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.881,3.500,-2.423",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.753,3.500,-2.071",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.625,3.500,-1.718",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.497,3.500,-1.366",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.369,3.500,-1.014",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.240,3.500,-0.661",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.112,3.500,-0.308",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "arrived"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

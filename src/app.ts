@@ -6,6 +6,7 @@ import type { Building, CampusPath, Floor, RouteResponse } from "./api/types.ts"
 import { CampusScene, type TravelState, type TravelUpdate } from "./scene/campus.ts";
 import { resolveRoute, walkWaypoints } from "./scene/navigation.ts";
 import { toScenePosition, WALK_SPEED } from "./scene/coordinates.ts";
+import { activeInstruction,routeInstructions,type RouteInstruction } from "./routeInstructions.ts";
 
 function element<T extends HTMLElement>(id: string): T {
   const found = document.getElementById(id);
@@ -31,6 +32,7 @@ const ui = {
 let buildings: Building[] = [], paths: CampusPath[] = [], floors: Floor[] = [];
 let destination: Building | undefined;
 let currentRoute: RouteResponse | null = null;
+let directions:RouteInstruction[]=[];
 let travelState: TravelState = "idle";
 let revision = 0, loading = false, signedIn = false, registerMode = false, pendingNavigation = false;
 let scene: CampusScene | null = null;
@@ -45,6 +47,7 @@ function floorName(level: number): string { return floors.find((floor) => floor.
 function clearRoute(): void {
   revision++;
   currentRoute = null;
+  directions=[];
   scene?.cancel();
   ui.card.hidden = true;
   ui.routeError.hidden = true;
@@ -106,6 +109,7 @@ function openLogin(): void {
 function updateTravel(update: TravelUpdate): void {
   const changed = travelState !== update.state;
   travelState = update.state;
+  const activeStep=activeInstruction(directions,update.waypoint),cue=directions[activeStep]?.text;
   const inspectingPreview = ui.modelStatus.dataset.preview === "true";
   const title: Record<TravelState, string> = {
     idle: inspectingPreview ? "Inspecting this floor" : "Ready to explore", ready: "Your route is ready", walking: "On your way", paused: "Taking a pause",
@@ -117,15 +121,18 @@ function updateTravel(update: TravelUpdate): void {
   ui.travelDetail.textContent = update.state === "idle" ? (inspectingPreview ? "View only · routes on this floor are pending." : overviewVisible ? "Choose a destination or open a floor to start walking." : "W A S D to walk · Drag to orbit · Scroll to zoom") :
     update.state === "blocked" ? "Model geometry obstructs this route. Check the corridor alignment." :
     update.state === "arrived" ? `${floorName(update.floor)} · Choose another place to keep exploring.` :
-    `${update.remaining.toFixed(1)} m remaining · ${floorName(update.floor)} · Esc to cancel`;
+    `${cue ? `${cue} · `:""}${update.remaining.toFixed(1)} m remaining · ${floorName(update.floor)} · Esc to cancel`;
   ui.progress.value = update.progress;
   ui.follow.textContent = update.state === "walking" ? "Pause walking Ⅱ" : update.state === "paused" ? "Resume walking →" : update.state === "arrived" ? "Destination reached ✓" : "Start walking →";
   ui.follow.disabled = ["idle", "arrived", "blocked"].includes(update.state);
   element<HTMLButtonElement>("campus-overview").disabled = ["ready","walking","paused"].includes(update.state);
   if (update.state === "idle" && currentRoute) { currentRoute = null; ui.card.hidden = true; revision++; }
   if (update.state === "blocked" && changed) showError(ui.routeError, "The model blocks the calculated corridor. Cancel and check the reference points or graph.");
-  const activeStep = Math.max(0, update.waypoint - 2);
-  Array.from(ui.steps.children).forEach((item, index) => item.classList.toggle("current", index === activeStep && update.state === "walking"));
+  Array.from(ui.steps.children).forEach((item,index)=>{
+    const current=index===activeStep && ["walking","paused"].includes(update.state);
+    item.classList.toggle("current",current);
+    if(current)item.setAttribute("aria-current","step");else item.removeAttribute("aria-current");
+  });
   // Observable coordinates support the route rehearsal without exposing a control API.
   ui.travelStatus.dataset.position = update.position.map((value) => value.toFixed(3)).join(",");
 }
@@ -228,10 +235,12 @@ async function calculateRoute(): Promise<void> {
     const physicalDistance = resolved.slice(1).reduce((sum, place, index) => sum + toScenePosition(place).distanceTo(toScenePosition(resolved[index])), connectorLength);
     ui.distance.textContent = `${physicalDistance.toFixed(0)} m`;
     ui.title.textContent = placeName(target);
-    ui.summary.textContent = `About ${Math.max(1, Math.ceil(physicalDistance / WALK_SPEED))} sec · ${resolved.length - 1} connections${ui.avoidStairs.checked ? " · Mapped stairs excluded" : ""}`;
-    ui.steps.replaceChildren(...route.steps.map((step) => {
+    directions=routeInstructions(route,resolved,floorName,{distance:connectorLength,kind:start.kind ?? "corridor",floor:start.floor});
+    ui.summary.textContent = `About ${Math.max(1, Math.ceil(physicalDistance / WALK_SPEED))} sec · ${directions.length} ${directions.length===1 ? "direction":"directions"}${ui.avoidStairs.checked ? " · Mapped stairs excluded" : ""}`;
+    ui.steps.replaceChildren(...directions.map((step) => {
       const item = document.createElement("li");
-      item.textContent = `${step.origin_display_name ?? step.origin_name} → ${step.destination_display_name ?? step.destination_name} · ${step.kind} · ${step.distance.toFixed(1)} m`;
+      item.textContent = `${step.text} · ${step.distance.toFixed(1)} m`;
+      item.dataset.firstStep=String(step.firstStep);item.dataset.lastStep=String(step.lastStep);item.dataset.kind=step.kind;item.dataset.phase=step.phase;
       return item;
     }));
     ui.card.scrollIntoView({ behavior: "smooth", block: "nearest" });
