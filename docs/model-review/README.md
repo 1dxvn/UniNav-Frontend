@@ -9,6 +9,7 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | H0 (Preclinic) | Route to the Preclinic through the north circulation and the storeroom; door leaves and furniture regenerated | `h0/api-routes.json`, `h0/walk-*.json` |
 | C1 (Plan 3, first visual pass) | Brick facades, glass frames and mullions, interior tiles, plaza pavers, gardens, trees and cypresses from the DWG, stone walls, green wall, fence, lamp posts, solar bike canopy, access pavilion roof and frame | `before/`, `after-c1/` |
 | C2 (Plan 3, interiors) | Shaped furniture inside the validated footprints, floors by use (ceramic, vinyl, oak laminate), hanging destination signs and an entrance sign | `after-c2/` |
+| C5 (Plan 2 A1, exterior) | Exterior massing of Blocks A and B, floors 2–5: registered floor outlines, real levels per block, brick with ribbon windows, roofs and terraces, rooftop courts, glass stair towers. Separate GLB `public/models/blocks/campus-exterior.glb` | `after-c5/` |
 
 ## Comparable captures (Plan 3 §11)
 
