@@ -15,6 +15,7 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | C5 (Plan 2 A1, exterior) | Exterior massing of Blocks A and B, floors 2–5: registered floor outlines, real levels per block, brick with ribbon windows, roofs and terraces, rooftop courts, glass stair towers. Separate GLB `public/models/blocks/campus-exterior.glb` | `after-c5/` |
 | C12 (Plan 3 / Plan 2, upper-floor interiors) | Floors 0 and 2–5: room-tag bars removed from the walls (67), the door leaves drawn in the DWG added (143), furniture kept inside its own room (no desks in corridors; five more classrooms furnished on floor 2) | `after-c12/floors-top.png` (same framing as `after-c9/`) |
 | C13 (upper-floor doorways) | Floors 0 and 2–5: the door-type frames ("P-10") that stood in doorways and corridors as wall stubs removed (111). Drawn door leaves replace guessed ones in the same doorway; the repeated DWG leaves are placed once | `after-c13/floors-top.png` |
+| C14 (doorway inventories) | Floors 0 and 2–5: `doorways.json` per floor (jambs from the DWG marks, width, leaves, stand points, labels seen from each side), checked against each GLB; label bars under rotated names removed (8 more, two of them in the floor-2 lab passage); no furniture in doorway passages | `after-c14/floors-top.png` |
 
 ## Comparable captures (Plan 3 §11)
 
@@ -48,6 +49,31 @@ The browser captures come from a temporary Playwright walk run by Claude against
 4. **Served model.** `npm run build`; `dist/models/campus.glb` is the exported file.
 
 ## Notes for Codex
+
+- **C14: doorway inventories and new exports (`f0289fe`, `389cfd9`).**
+  - Your three floor-2 routes (`a6d3f11`) use doorways D13, D14 and D15 from `model/tools/data/floor2/doorways.json`. That file is committed unchanged in `389cfd9` (SHA-256 `18fc3d7c…`).
+  - The floor-2 working GLB you also tested, `44fbeda2…`, is now committed in `389cfd9`.
+  - New exports:
+
+    | Floor | Export | Commit |
+    | --- | --- | --- |
+    | 0 | `a266b162…` | `389cfd9` |
+    | 2 | `44fbeda2…` | `389cfd9` |
+    | 3 | `905b611a…` | unchanged since `a2dbda0` |
+    | 4 | `18f2fcaa…` | `389cfd9` |
+    | 5 | `fc942855…` | `389cfd9` |
+
+  - Changes since C13:
+    - Filled label bars under rotated room names are removed: 7 on floor 2 (two of them stood in the lab-cubicle passage) and 1 on floor 4.
+    - Illustrative furniture is kept out of every doorway passage.
+    - Floor 2 has 8 drawn leaves replacing guessed ones, up from 4, because of the new doorways.
+  - Each `doorways.json` lists the jambs, width, drawn leaves, two stand points and the room labels visible from each side. Visibility uses a line of sight through no wall, column or glass, with the doorway itself closed. `through` is the result of `model/tools/doorway_rays.ts` against the committed GLB.
+  - Doorway checks with both stand points:
+    - Floor 2: 24 of 24 clear.
+    - Floor 0: 38 of 40. D08 crosses a toilet; D17 crosses a drawn leaf.
+    - Floors 3, 4 and 5: all but one each. The exception is the balcony doorway at x ≈ 69.6, whose outer stand point meets the balcony glass.
+  - Some doorways have no stand point on one side (too close to a solid), and some jamb marks are unpaired. Both are listed in the JSON.
+  - These are drawing facts, not entrances: which doorway a destination uses stays a graph decision.
 
 - **Upper-floor previews re-exported again (C13, `35a5565`, `a2dbda0`). This replaces the C12 exports of `08fd92b`.**
   - Do not integrate the floor previews of `08fd92b`. In those exports, each door-type code ("P-7", "P-10") was drawn inside a 0.25 × 0.54 m frame, and the frames were modelled as 2.8 m wall stubs, often inside the doorway or the corridor. Rays through the Aula 203 B and 204 B doorways hit them at y 37.0. The same stubs are in the earlier previews (`099c212`, `f15ddb9`).
