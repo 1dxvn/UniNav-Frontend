@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "label": "UCC floor 4 structural preview",
+  "floor": 4,
+  "model": "campus.glb",
+  "alignment": "structural",
+  "transform": {
+    "scale": 1,
+    "rotationYDegrees": 0,
+    "translation": [
+      0,
+      12.32,
+      0
+    ]
+  },
+  "references": [
+    {
+      "buildingName": "P4_REF_1_Column_28_26",
+      "nodeName": "P4_REF_1_Column_28_26",
+      "planPosition": [
+        27.74,
+        25.75
+      ],
+      "position": [
+        27.74,
+        0.0,
+        -25.75
+      ]
+    },
+    {
+      "buildingName": "P4_REF_2_Column_21_62",
+      "nodeName": "P4_REF_2_Column_21_62",
+      "planPosition": [
+        21.22,
+        62.23
+      ],
+      "position": [
+        21.22,
+        0.0,
+        -62.23
+      ]
+    },
+    {
+      "buildingName": "P4_REF_3_Column_70_62",
+      "nodeName": "P4_REF_3_Column_70_62",
+      "planPosition": [
+        70.1,
+        62.28
+      ],
+      "position": [
+        70.1,
+        0.0,
+        -62.28
+      ]
+    }
+  ]
+}

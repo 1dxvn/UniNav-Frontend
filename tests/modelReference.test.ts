@@ -38,3 +38,15 @@ test("checks the actual GLB node positions as well as documented anchors", () =>
   root.remove(root.getObjectByName("office")!);
   assert.throws(() => validateModelNodes(reference, root), /missing/);
 });
+
+test("structural previews validate the source plan without creating API places", () => {
+  const structural: CampusReference = { ...reference, alignment:"structural", floor:2,
+    transform:{ ...reference.transform,translation:[0,6.44,0] },
+    references:reference.references.map((point) => ({ ...point,planPosition:[point.position[0],-point.position[2]] })) };
+  assert.equal(validateAlignment(parseReference(structural),[]).length,3);
+  assert.ok(validateAlignment(structural,[]).every((point) => point.error === 0 && point.position.y === 6.44));
+  assert.throws(() => parseReference({ ...structural,references:reference.references }),/references/);
+  assert.throws(() => validateAlignment({ ...structural,transform:{ ...structural.transform,scale:2 } },[]),/source plan/);
+  assert.throws(() => validateAlignment({ ...structural,references:structural.references.map((point) => ({ ...point,nodeName:"same" })) },[]),/distinct/);
+  assert.throws(() => validateAlignment({ ...structural,references:structural.references.map((point) => ({ ...point,position:[point.position[0],0,0],planPosition:[point.position[0],0] })) },[]),/collinear/);
+});
