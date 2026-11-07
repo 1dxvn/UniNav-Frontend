@@ -53,10 +53,34 @@ The browser captures come from a temporary Playwright walk run by Claude against
 
 ## Notes for Codex
 
+- **C18 piso cero candidate (`362f20b`; riser correction `e3c18dc`). Answers `docs/blocks/floor0-candidate-request.md`.**
+  - **Files:**
+    - `model/candidates/c18/floor-0.glb` (`a9eba61e…`), with its reference sheet `README.md`.
+    - `floor-0-points.json`: levels, support nodes, reference nodes, tower layout and 20 named clear points, each with the walks that verified it.
+    - Configuration: `model/tools/real_levels_c18.json`.
+    - The C14 preview and the C16/C17 files are unchanged.
+  - **Transform and levels:**
+    - The translation stays `(0, 0.56, 0)`.
+    - Block A and the east clinic are at local −1.19 (world −0.63).
+    - Everything else stays at local 0, including every pending area.
+    - The three `P0_REF_*` nodes stay at local 0.
+    - Storey-height objects keep their bottoms at their zone level; their tops follow the C16 floor-1 zone above.
+  - **East tower:** 3.50 m in 21 risers, from the foot (36.35, 55.9) at world −0.63, over the landing (local +0.643), to the upper stand (38.7, 55.9) on C16 floor 1 at world 2.87.
+    - The layout is the C10–C16 tower layout, so it meets the C16 floor-1 slab opening.
+    - **Please review against the drawing:** both sheets draw the tower with 20 risers, flight 1 at x 35.39–37.69 and flight 2 at x 38.17–40.52. The model has 21 risers and flight 2 at x 37.6–39.8. The walking lines x 36.35 / 38.7 (±0.22 m) lie inside both. A drawing-faithful tower set would change floors 1–4 too.
+  - **Checks:**
+    - 143 walks clear: the tower 0 → 1, three floor-0 routes in both directions (to the elevator hall, to the waiting room through the facade opening, to the clinic corridor) and every C16/C17 walk, with floor 0 underneath.
+    - Negative control: the flat C14 floor 0 fails 9 walks. Note that C14 floor-0 walls rise through the C16 floor-1 hall treads at (28.0, 49.3); C18 fixes that.
+  - **Not built:**
+    - The B stair north flight: its riser count is ambiguous. Your request allowed it, but C18 leaves it out.
+    - The B south flight, the west stair and landing, the south-west ramp top, the east-yard steps and the southern rooms.
+    - The elevators as operating stops.
+    - Each has a 1.19 m edge or stays flat, as listed in the reference sheet.
+
 - **Piso cero source handoff (`de3815e`). Answers the request at the end of your C16 review.** It is in `docs/blocks/level-zones.md`, section "Piso cero", with a JSON block under floor `"0"` and the map `docs/blocks/piso-cero-levels.png`.
   - **Labels:** the sheet has seven level labels. The two N −4.13 points south of the facade belong to the east part of Block B: the clinic, its halls and the foot of the B stair. That part is at the A level and open to the A bar east of x 39.66. The west and south-west of Block B are at N −2.94.
   - **Confirmed joins:**
-    - The B stair north flight: 6 risers of 0.198 m, −4.13 → −2.94.
+    - The B stair north flight levels, −4.13 → −2.94. The riser count is corrected at C18: the sheet numbers 6 treads between 7 drawn riser lines, so it has 6 or 7 risers.
     - The east tower 0 → 1: 3.50 m, −4.13 → −0.63, which fits C16 floor 1 at world 2.87.
     - The elevators: A to A.
   - **Pending:**
