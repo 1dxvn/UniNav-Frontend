@@ -18,6 +18,7 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | C14 (doorway inventories) | Floors 0 and 2–5: `doorways.json` per floor (jambs from the DWG marks, width, leaves, stand points, labels seen from each side), checked against each GLB; label bars under rotated names removed (8 more, two of them in the floor-2 lab passage); no furniture in doorway passages | `after-c14/floors-top.png` |
 | C15 (real-level candidate, floors 1–2) | Block A at N −0.63 (floor 1) and +2.68 (floor 2), the four-riser hall steps, the A stairs with real rises (3.31 m and 3.20 m), pending zones flat. A separate candidate in `model/candidates/c15/`; the public exports are unchanged | `after-c15/hall-steps.png`, `after-c15/checks.json` |
 | C16 (real-level candidate, floors 1–5) | Block A at its real level on every floor 1–5, tower stairs at the physical rises (3.31 / 3.69 / 3.50 / 3.50 m), floor-3 hall steps; pending junctions on floors 2, 4 and 5 | `after-c16/checks.json` |
+| C17 (real-level candidate, floor-2 ramp) | C16 with the floor-2 A/B junction modelled as the drawn ramp (N +2.68 → +2.94 over 1.37 m, about 19 %); floors 1, 3, 4 and 5 reused from C16 | `after-c17/checks.json`, `after-c17/ramp-*.png` |
 
 ## Comparable captures (Plan 3 §11)
 
@@ -51,6 +52,23 @@ The browser captures come from a temporary Playwright walk run by Claude against
 4. **Served model.** `npm run build`; `dist/models/campus.glb` is the exported file.
 
 ## Notes for Codex
+
+- **C17: the floor-2 junction ramp (`0f6a862`, zones `b36d328`). The user confirmed the block identities on 7 November at 16:07.**
+  - **Block identities:** Block A is the north bar and Block B the south body. They join at the hall corridor (x 27.35–29.75), which the user marked on the floor-2 sheet. The A/B identities are no longer derived.
+  - **Files:**
+    - `model/candidates/c17/floor-2.glb` (`7a81de62…`), with its reference sheet in the same folder.
+    - Floors 1, 3, 4 and 5 are the C16 files, unchanged and not re-exported.
+    - Configuration: `model/tools/real_levels_c17.json`.
+  - **What changed:** only floor 2, inside the strip x 27.353–29.753, y 47.906–49.275.
+    - The strip is now a ramp from N +2.94 at its south edge to N +2.68 at its north edge: 0.00 → −0.26 from the B datum, world 6.44 → 6.18.
+    - Outside the strip, the C16 and C17 height maps are identical (44,100 points).
+  - **Evidence for the ramp:** no treads, an arrow from A to B and "S" (*sube*) at the A end. On floors 3 and 4 the same strip has numbered treads.
+  - **Slope:** about 19 %. It is step-free, but steeper than the usual accessibility limits. Please do not label it wheelchair-accessible without a site check.
+  - **Checks:**
+    - 136 walks clear: every C16 walk plus the ramp down and up in three lanes.
+    - Negative control: the flat C16 floor 2 fails all 6 ramp walks.
+  - **Routes:** a floor-2 B ↔ A route would cross at x 28.1–29.75. The B corridor south of the ramp is x 28.1–30.0. Your floor-2 destinations D13–D15 are in Block A and do not need it.
+  - **Still pending:** the floor-4 and floor-5 junctions.
 
 - **C16 candidate set, floors 1–5 (`002aaec`, zones `fb39c86`). Follows your C15 review.**
   - Files: `model/candidates/c16/floor-{1..5}.glb`. The reference sheet is in that folder and the per-floor configuration with its evidence in `model/tools/real_levels.json`.
