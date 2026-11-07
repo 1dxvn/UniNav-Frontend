@@ -1,0 +1,15 @@
+{
+  "publicCommit": "569628abc182a9d1425c2ed0d7d3130c218921e6",
+  "localMerge": "324eaab111f144aa83071895fb1622eed46645d9",
+  "parentRemote": "b48f338403d3460f8c33d36dd2439502258b6f77",
+  "ownFiles": [
+    "data/campus-profiles.json",
+    "data/datasets/ucc-third-floor.json",
+    "docs/CAMPUS_DATASETS.md",
+    "docs/CAMPUS_STARTUP.md",
+    "tests/api/test_campus_profiles.py",
+    "tests/api/test_ucc_third_floor.py",
+    "tests/unit/test_campus_launcher.py"
+  ],
+  "continuityCommitExcluded": true
+}
