@@ -63,7 +63,31 @@ W["glass_lines"] = [g for g in W.get("glass_lines", []) if BUILD.contains(LineSt
 W["ramps"] = [r for r in W["ramps"] if BUILD.contains(Polygon(r["outer"]).representative_point())]
 solid = unary_union([walls] + polys(W["columns"]) + polys(W["glass"]))
 foot = solid.buffer(4.5, join_style=2).buffer(-4.5, join_style=2)
+# Large rooms enclosed by walls and glass (doorways closed by a 0.7 m margin) also get a floor, whatever their size.
+enclosed = [Polygon(i).buffer(0.7, join_style=2) for p in getattr(solid.buffer(0.7, join_style=2), "geoms", [solid.buffer(0.7, join_style=2)])
+            if p.geom_type == "Polygon" for i in p.interiors if Polygon(i).area > 4]
+foot = unary_union([foot] + enclosed)
 foot = unary_union([Polygon(p.exterior) for p in getattr(foot, "geoms", [foot]) if p.geom_type == "Polygon" and p.area > 30])
+# Rooms that a wide 9 m closing adds are kept only if they are enclosed: >= 92 % of their outline runs along the
+# existing floor, walls or glass. Open facade notches fail this test and stay open.
+big = solid.buffer(9.0, join_style=2).buffer(-9.0, join_style=2)
+edge = unary_union([foot.buffer(0.3), solid.buffer(0.3)])
+added = []
+cands = big.difference(foot).difference(solid.buffer(0.15))      # split candidates along walls and glass
+for p in getattr(cands, "geoms", [cands]):
+    if p.geom_type != "Polygon" or p.area < 6: continue
+    share = p.exterior.intersection(edge).length / p.exterior.length
+    if share >= 0.92: added.append(p.buffer(0.2, join_style=2))
+# The glass-walled north-west block (cafeteria on floor 1, library on floor 2, periodicals room on floor 3) gets the
+# convex hull of its walls and glass, as on the first floor.
+west = solid.intersection(box(-8, 41.5, 13.6, 64.5))
+west = unary_union([p for p in getattr(west, "geoms", [west]) if p.geom_type == "Polygon" and p.area > 0.25])   # ignore stray stubs
+south_edge = solid.intersection(box(-8, 41.5, 13.6, 44.0)).area      # the block's south glazing (floors 1-3 only)
+if not west.is_empty and west.area > 1 and south_edge > 0.5:
+    added.append(west.convex_hull.buffer(0.02, join_style=2))
+foot = unary_union([foot] + added)
+foot = unary_union([Polygon(p.exterior) for p in getattr(foot, "geoms", [foot]) if p.geom_type == "Polygon" and p.area > 30])
+print("enclosed rooms added to the slab:", len(added), round(sum(a.area for a in added), 1), "m2")
 W["footprint"] = [ring(p) for p in getattr(foot, "geoms", [foot]) if p.geom_type == "Polygon"]
 W["walls_method"] = f"solid hatches + thin faces of layer 01 (t < {MAXT} m)"
 json.dump(W, open(WING, "w", encoding="utf-8"), ensure_ascii=False)
