@@ -6,9 +6,10 @@ wall for sliding ones. extras.py only finds doorways as gaps between walls, so m
 
 This appends each drawn leaf to extras.json as drawn (2.10 m high, 0.044 m thick, "src": "dwg") and removes the
 furniture within one leaf length of it, so desks do not stand in the swing or the doorway. No swing arc is added,
-because a leaf drawn along the wall may be a sliding door. Leaves within 0.3 m of a door extras.py already placed, or
-within 0.6 m of the centre of a doorway it already filled, are skipped, as are leaves that cross a model solid or fall
-outside the footprint. Re-running replaces the previous "dwg" leaves (run it right after extras.py).
+because a leaf drawn along the wall may be a sliding door. Where extras.py already filled the same doorway (a leaf
+within 0.3 m, or a doorway centre within 0.6 m), the drawn leaf replaces its leaf and arc: without routes, extras.py
+picks the swing side arbitrarily, and the drawing shows the real one. Skipped: repeated rectangles, and leaves that
+cross a model solid or fall outside the footprint. Run it right after extras.py.
 Usage: python door_leaves_dwg.py <dxf> data/floorN
 """
 import sys, json, math, os, ezdxf
@@ -24,8 +25,7 @@ solid = unary_union(polys("walls") + polys("columns") + polys("glass"))
 foot = unary_union(polys("footprint")).buffer(0.3)
 
 X["doors"] = [d for d in X["doors"] if d.get("src") != "dwg"]
-have_open = [Point(o["center"]) for o in X["openings"] if o.get("door")]
-have_leaf = unary_union([LineString([d["a"], d["b"]]) for d in X["doors"]]) if X["doors"] else None
+gap_open = [o for o in X["openings"] if o.get("door")]
 
 leaves = []
 for e in ezdxf.readfile(DXF).modelspace().query('LWPOLYLINE[layer=="02"]'):
@@ -39,16 +39,24 @@ for e in ezdxf.readfile(DXF).modelspace().query('LWPOLYLINE[layer=="02"]'):
     if l1 < l2: e1, l1, l2 = e2, l2, l1
     if l2 <= 0.065 and 0.55 <= l1 <= 1.3: leaves.append((poly, (e1[0] / l1, e1[1] / l1), l1))
 
-added, skipped, clear = 0, {"duplicate": 0, "solid": 0, "outside": 0}, []
+added, replaced, skipped, clear, placed = 0, 0, {"repeated": 0, "solid": 0, "outside": 0}, [], []
 for poly, (ux, uy), L in leaves:
     cx, cy = poly.centroid.x, poly.centroid.y
     a = (cx - ux * L / 2, cy - uy * L / 2); b = (cx + ux * L / 2, cy + uy * L / 2); line = LineString([a, b])
     if not foot.contains(poly): skipped["outside"] += 1; continue
     if poly.buffer(-0.005).intersects(solid): skipped["solid"] += 1; continue
-    if (have_leaf is not None and line.distance(have_leaf) < 0.3) or any(line.distance(o) < 0.6 for o in have_open):
-        skipped["duplicate"] += 1; continue
+    if any(line.hausdorff_distance(q) < 0.05 for q in placed):          # the DWG repeats some leaves
+        skipped["repeated"] += 1; continue
+    gone = [d for d in X["doors"] if d.get("src") != "dwg" and line.distance(LineString([d["a"], d["b"]])) < 0.3]
+    for o in gap_open:
+        if line.distance(Point(o["center"])) < 0.6:
+            gone += [d for d in X["doors"] if d.get("src") != "dwg" and Point(d["a"]).distance(Point(o["center"])) < o["width"] / 2 + 0.15]
+    for d in gone:
+        if d in X["doors"]:
+            X["doors"].remove(d); replaced += 1
+            X["arcs"] = [r for r in X["arcs"] if Point(r["center"]).distance(Point(d["a"])) > 1e-6]
     X["doors"].append({"a": [a[0], a[1]], "b": [b[0], b[1]], "thick": 0.044, "height": 2.10, "glass": False, "src": "dwg"})
-    clear.append(line.buffer(min(L, 0.9))); added += 1
+    clear.append(line.buffer(min(L, 0.9))); placed.append(line); added += 1
 
 removed_parts = removed_items = 0
 if clear:
@@ -58,5 +66,5 @@ if clear:
     keep = [i for i in X["items"] if not Polygon(i["footprint"]).buffer(0).intersects(zone)]
     removed_items = len(X["items"]) - len(keep); X["items"] = keep
 json.dump(X, open(XP, "w", encoding="utf-8"))
-print(f"{FLOOR_DIR}: DWG leaves {len(leaves)}, added {added}, skipped {skipped}, furniture parts removed {removed_parts}, "
+print(f"{FLOOR_DIR}: DWG leaves {len(leaves)}, added {added}, gap leaves replaced {replaced}, skipped {skipped}, furniture parts removed {removed_parts}, "
       f"items removed {removed_items}, doors now {len(X['doors'])}")
