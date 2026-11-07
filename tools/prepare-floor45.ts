@@ -87,7 +87,7 @@ async function floorSpecs(floor:number,arrival:Place,hubX:number,specs:{id:strin
 }
 const arrival4=tower(3,hub3);
 // Floor 4: a drawn partition at x 38.28-38.50, y 54.8-55.68 stands west of the stair arrival; the corridor hub keeps x 38.95.
-const hub4=await floorSpecs(4,arrival4,38.95,[{id:"D27",room:"420 A"},{id:"D26",room:"421 A"},{id:"D28",room:"422 A"}]);
+await floorSpecs(4,arrival4,38.95,[{id:"D27",room:"420 A"},{id:"D26",room:"421 A"},{id:"D28",room:"422 A"}]);
 const arrival5=tower(4,arrival4,55.95);
 await floorSpecs(5,arrival5,38.7,[{id:"D18",room:"512 A"},{id:"D19",room:"513 A"},{id:"D11",room:"515 A"}]);
 const references:Record<number,ReturnType<typeof parseReference>>={};

@@ -405,3 +405,31 @@ isolated database and the shipped manifest:**
 `floor3-assets.spec.ts` now expects the same 49 resources. See
 `blocks/floor0-navigation.md` and `verification/floor0/`.
 
+## Six-floor C18 profile (Block A floors 4 and 5)
+
+`ucc-six-floors-c18` binds the prepared 235-place / 218-connection API: the five
+reviewed scopes, with `ucc:floor45-connection` / `c16-floors-4-5-v1` added. It is
+listed first; the six older profiles keep their exact manifest entries.
+
+- **Floors 4 and 5:** their unchanged C16 GLBs (`a187213f…`, `8ba3edac…`) become
+  navigable.
+- **API references:** `models/c16/floor-{4,5}-navigation-reference.json` @fdbe565,
+  three structural anchors each at world 12.32 and 15.26.
+- **Support nodes:** floor 4 `P4_Floor_Slab`, `P4_Stair_A_East_1` and
+  `P4_Stair_A_West_1`; floor 5 `P5_Floor_Slab`.
+- **Floors 0–3:** the same entries as `ucc-four-floors-c18`.
+
+The C16 east tower rises 3 → 4 and 4 → 5 (3.50 m each) on the reviewed 21-riser
+plan points. On floor 4 the drawn partition west of the 3–4 arrival is passed to
+the north, along y 55.95. Destinations: Classrooms 420 A, 421 A and 422 A (floor 4)
+and 512 A, 513 A and 515 A (floor 5).
+
+**Tools:**
+- `tools/prepare-floor45.ts` audits all 436 directed runs against six floors and
+  checks label visibility.
+- `tools/prepare-floor45-profile.ts` takes a temporary FastAPI snapshot.
+
+**Browser:** `tests/e2e/floor45.spec.ts` covers the six round trips, the 56 pinned
+resources of all eight profiles, partial floor-4 metadata (`incompatible`) and a
+wrong floor-4 GLB (fails closed, recovers on retry). See
+`blocks/floor45-navigation.md` and `verification/floor45/`.
