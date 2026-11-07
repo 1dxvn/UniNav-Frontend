@@ -1,5 +1,6 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
+import { resolve, join } from "node:path";
 import { Group, Mesh, Raycaster, Vector3 } from "three";
 import { parseModelGeometry } from "./model-geometry.ts";
 import { toScenePosition } from "../src/scene/coordinates.ts";
@@ -7,11 +8,12 @@ import type { Building, CampusPath } from "../src/api/types.ts";
 import { parseReference, referenceMatrix, validateAlignment, validateModelNodes } from "../src/scene/modelReference.ts";
 
 const api = process.env.UNINAV_TEST_URL ?? "http://127.0.0.1:8001";
-const reference = parseReference(JSON.parse(await readFile(new URL("../public/models/campus-reference.json", import.meta.url), "utf8")));
+const modelRoot = resolve(process.env.UNINAV_MODEL_ROOT ?? "public/models");
+const reference = parseReference(JSON.parse(await readFile(join(modelRoot,"campus-reference.json"), "utf8")));
 const places = await (await fetch(`${api}/buildings`)).json() as Building[];
 const paths = await (await fetch(`${api}/paths`)).json() as CampusPath[];
 const references = validateAlignment(reference, places);
-const bytes = await readFile(new URL("../public/models/campus.glb", import.meta.url));
+const bytes = await readFile(join(modelRoot,reference.model));
 const modelSha256 = createHash("sha256").update(bytes).digest("hex");
 const served = await fetch(`${api}/app/models/campus.glb`);
 if (!served.ok || createHash("sha256").update(new Uint8Array(await served.arrayBuffer())).digest("hex") !== modelSha256) {
@@ -76,11 +78,11 @@ const collisionChecks = paths.flatMap((path) => {
     return { from:from.name, to:to.name, samples:count, blocked:false };
   });
 });
-if (createHash("sha256").update(await readFile(new URL("../public/models/campus.glb", import.meta.url))).digest("hex") !== modelSha256) {
+if (createHash("sha256").update(await readFile(join(modelRoot,reference.model))).digest("hex") !== modelSha256) {
   throw new Error("The export changed during geometry verification. Repeat against the new revision.");
 }
 const report = {
-  checkedAt:new Date().toISOString(), model:"campus.glb", modelSha256,
+  checkedAt:new Date().toISOString(), model:reference.model, modelRoot, modelSha256,
   geometryOnlyTextureLoading:true, floor:reference.floor, transform:reference.transform,
   references:references.map((point,index) => ({name:point.name, documentedErrorMetres:point.error, glbErrorMetres:root.getObjectByName(reference.references[index].nodeName)!.getWorldPosition(new Vector3()).distanceTo(point.position),position:point.position.toArray()})),
   minimumWallClearanceMetres:Math.min(...edges.map((edge) => edge.minimumWallClearanceMetres)), edges, collisionChecks,

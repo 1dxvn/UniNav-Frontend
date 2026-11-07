@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
+const evidence = process.env.UNINAV_EVIDENCE_DIR ?? "docs/verification";
 
 test("sample API: sign in, walk an unsmoothed turn twice, pause and manually override", async ({ page, request }) => {
   const health = await request.get("/health"); expect(health.ok()).toBeTruthy();
@@ -26,9 +27,9 @@ test("sample API: sign in, walk an unsmoothed turn twice, pause and manually ove
     await expect(page.locator("#travel-status")).toHaveAttribute("data-state", "ready");
     await page.locator("#top-view").click();
     if (run === 0) {
-      await mkdir("docs/verification", { recursive: true });
-      await page.screenshot({ path: "docs/verification/sample-first-route.png", fullPage: true });
-      await writeFile("docs/verification/sample-api-route.json", JSON.stringify(route, null, 2));
+      await mkdir(evidence, { recursive: true });
+      await page.screenshot({ path: `${evidence}/sample-first-route.png`, fullPage: true });
+      await writeFile(`${evidence}/sample-api-route.json`, JSON.stringify(route, null, 2));
     }
     await page.evaluate(() => {
       const target = document.getElementById("travel-status")!;

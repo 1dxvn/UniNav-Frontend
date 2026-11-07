@@ -44,6 +44,10 @@ when intentionally building for an API on another origin.
 
 Fonts and the model are local build assets; the browser needs no CDN or map API.
 No external service keys are stored in the frontend.
+Builds use only the exports reviewed in `public/models/campus-manifest.json`.
+Working model changes remain with Claude until integrated. See
+[the catalogue and manifest contract](docs/MODEL_MANIFEST.md) for revision checks,
+resource lifecycle and preparation of another floor.
 
 ## Movement and coordinates
 

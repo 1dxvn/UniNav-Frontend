@@ -18,6 +18,7 @@ export interface Building {
   x: number;
   y: number;
   floor: number;
+  elevation_m?: number;
   faculty: string | null;
   building_type: string | null;
 }

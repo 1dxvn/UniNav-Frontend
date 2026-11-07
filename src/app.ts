@@ -129,7 +129,7 @@ try {
   scene = new CampusScene(element("scene"), {
     travel: updateTravel, select: selectDestination,
     floor: (floor) => { ui.floor.value = String(floor); element("floor-title").textContent = floorName(floor); },
-    model: (message, loaded) => { ui.modelStatus.textContent = message; ui.modelStatus.classList.toggle("verified", loaded); element("references").hidden = !loaded; },
+    model: (message, loaded, detail) => { ui.modelStatus.textContent = message; ui.modelStatus.title = detail ?? ""; ui.modelStatus.classList.toggle("verified", loaded); element("references").hidden = !loaded; },
   });
 } catch (error) {
   ui.loading.querySelector("h3")!.textContent = "3D rendering is unavailable";
@@ -170,6 +170,13 @@ async function loadCampus(): Promise<void> {
       ui.modelStatus.classList.remove("verified");
       element("references").hidden = true;
     }
+    const catalog = scene.getCatalog();
+    if (catalog) {
+      const observed = ui.floor.value;
+      const levels = [...new Set(catalog.blocks.flatMap((block) => block.floors.map((floor) => floor.level)))].sort((a,b) => a-b);
+      ui.floor.replaceChildren(...levels.map((level) => new Option(`${String(level).padStart(2,"0")}${places.some((place) => place.floor === level) ? "" : " · model pending"}`,String(level))));
+      ui.floor.value = observed;
+    }
   } catch (error) {
     ui.status.textContent = "Campus connection unavailable";
     ui.loading.querySelector("h3")!.textContent = "Let's reconnect";
@@ -193,7 +200,8 @@ async function calculateRoute(): Promise<void> {
     const route = await api.calculateRoute({ origin_id: start.place.id, destination_id: target.id, avoid: ui.avoidStairs.checked ? ["stairs"] : [] });
     if (revision !== requestRevision || !signedIn) return;
     const resolved = resolveRoute(route, buildings, paths, start.place.id, target.id);
-    scene.showRoute([...start.connector, ...resolved.slice(1).map(toScenePosition)]);
+    await scene.showRoute([...start.connector, ...resolved.slice(1).map(toScenePosition)]);
+    if (revision !== requestRevision || !signedIn) return;
     currentRoute = route;
     ui.origin.value = String(start.place.id);
     scene.setFloor(start.place.floor);

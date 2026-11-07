@@ -5,6 +5,9 @@ test("real API: isolated test destination returns no route, then an expired sess
   const places = await (await request.get("/buildings")).json() as { name: string }[];
   expect(places).toHaveLength(20);
   expect(places.some((place) => place.name === "Isolated test destination")).toBe(true);
+  const catalog = await (await request.get("/campus/catalog")).json();
+  expect(catalog.available).toBe(true);
+  expect(catalog.catalog.revision).toBe("dwg-a35f892");
   await page.goto("/app/");
   await expect(page.locator("#model-status")).toContainText("3 references aligned");
   await page.locator("#open-login").click();

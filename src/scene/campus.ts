@@ -8,6 +8,14 @@ import { parseReference, referenceMatrix, validateAlignment, validateModelNodes,
 import { modelColliders, modelCollision, type ModelCollider } from "./modelCollision.ts";
 import { prepareModelPresentation, setModelTopView } from "./modelPresentation.ts";
 import { disposeGroup } from "./dispose.ts";
+import { dataFingerprint, parseManifest, requiredModels, sha256, type CampusManifest, type ModelEntry } from "./modelManifest.ts";
+import { ModelStore } from "./modelStore.ts";
+import type { CampusCatalog } from "./catalog.ts";
+
+interface LoadedCampusModel {
+  entry: ModelEntry; reference: CampusReference; root: THREE.Group;
+  pins: THREE.Group; colliders: ModelCollider[]; references: number;
+}
 
 export type TravelState = "idle" | "ready" | "walking" | "paused" | "arrived" | "blocked";
 export interface TravelUpdate {
@@ -22,7 +30,7 @@ interface SceneEvents {
   travel: (update: TravelUpdate) => void;
   select: (place: Building) => void;
   floor: (floor: number) => void;
-  model: (message: string, loaded: boolean) => void;
+  model: (message: string, loaded: boolean, detail?: string) => void;
 }
 export class CampusScene {
   private readonly renderer: THREE.WebGLRenderer;
@@ -43,6 +51,10 @@ export class CampusScene {
   private readonly abort = new AbortController();
   private readonly resizeObserver: ResizeObserver;
   private places: Building[] = [];
+  private paths: CampusPath[] = [];
+  private manifest: CampusManifest | null = null;
+  private models: ModelStore<LoadedCampusModel> | null = null;
+  private routeGeneration = 0;
   private segments: WalkSegment[] = [];
   private waypoints: THREE.Vector3[] = [];
   private index = 1;
@@ -53,7 +65,6 @@ export class CampusScene {
   private frustum = 35;
   private topView = false;
   private labelsVisible = true;
-  private reference: CampusReference | null = null;
   private colliders: ModelCollider[] = [];
   private lastEmission = 0;
   private walkTime = 0;
@@ -162,6 +173,7 @@ export class CampusScene {
     this.labels.forEach((label) => label.remove());
     this.labels.clear();
     this.places = places;
+    this.paths = paths;
     this.segments = walkSegments(places, paths);
     for (const floor of new Set(places.map((place) => place.floor))) {
       const group = new THREE.Group();
@@ -213,11 +225,10 @@ export class CampusScene {
     this.renderer.shadowMap.needsUpdate = true;
     const ground = this.scene.getObjectByName("presentation-ground");
     if (ground) ground.position.y = floor * FLOOR_HEIGHT - 0.5;
-    this.floorGroups.forEach((group, level) => { group.visible = level === floor && this.reference?.floor !== floor; });
-    this.modelGroup.visible = this.reference?.floor === floor;
+    this.applyModels(fit);
     this.avatar.visible = this.places.length > 0 && this.avatarFloor === floor;
-    if (fit) this.resetView();
     this.events.floor(floor);
+    if (this.manifest) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
   }
   setOrigin(place: Building): void {
     this.clearRoute();
@@ -233,11 +244,17 @@ export class CampusScene {
     this.destinationRing.visible = !!place;
     if (place) this.destinationRing.position.copy(toScenePosition(place)).y += 0.12;
   }
-  showRoute(points: THREE.Vector3[]): void {
+  async showRoute(points: THREE.Vector3[]): Promise<void> {
     this.clearRoute();
+    const generation = this.routeGeneration;
     this.waypoints = points.filter((point, index) => index === 0 || point.distanceTo(points[index - 1]) > 0.001).map((point) => point.clone());
     if (!this.waypoints.length) return;
     if (this.avatar.position.distanceTo(this.waypoints[0]) > 0.1) throw new Error("Your position changed. Calculate the route again.");
+    await this.syncModels(true);
+    if (generation !== this.routeGeneration) return;
+    if (this.getCatalog()) for (const floor of this.routeFloors()) {
+      if (!this.models?.values().some((model) => model.entry.floors.includes(floor))) throw new Error(`Floor ${floor} model is pending. This route cannot be followed yet.`);
+    }
     for (let i = 1; i < this.waypoints.length; i++) {
       const a = this.waypoints[i - 1].clone().add(new THREE.Vector3(0, 0.13, 0));
       const b = this.waypoints[i].clone().add(new THREE.Vector3(0, 0.13, 0));
@@ -254,7 +271,11 @@ export class CampusScene {
   follow(): void { if (["ready", "paused"].includes(this.state)) { this.keys.clear(); this.state = "walking"; this.emit(); } }
   pause(): void { if (this.state === "walking") { this.state = "paused"; this.emit(); } }
   cancel(): void { this.clearRoute(); this.emit(); }
-  clearRoute(): void { disposeGroup(this.routeGroup); this.waypoints = []; this.index = 1; this.totalLength = 0; this.state = "idle"; }
+  clearRoute(): void {
+    this.routeGeneration++;
+    disposeGroup(this.routeGroup); this.waypoints = []; this.index = 1; this.totalLength = 0; this.state = "idle";
+    if (this.manifest) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
+  }
   toggleLabels(): boolean { this.labelsVisible = !this.labelsVisible; return this.labelsVisible; }
   toggleReferences(): boolean { this.referenceGroup.visible = !this.referenceGroup.visible; return this.referenceGroup.visible; }
   setTopView(top: boolean): void {
@@ -268,7 +289,7 @@ export class CampusScene {
   resetView(): void {
     const points = this.places.filter((place) => place.floor === this.viewFloor).map(toScenePosition);
     const bounds = points.length ? new THREE.Box3().setFromPoints(points).expandByScalar(5) : new THREE.Box3(new THREE.Vector3(-20, 0, -15), new THREE.Vector3(20, 0, 15));
-    if (this.reference?.floor === this.viewFloor) bounds.union(new THREE.Box3().setFromObject(this.modelGroup));
+    for (const model of this.models?.values() ?? []) if (model.entry.floors.includes(this.viewFloor)) bounds.union(new THREE.Box3().setFromObject(model.root));
     const center = bounds.getCenter(new THREE.Vector3());
     const size = bounds.getSize(new THREE.Vector3());
     const aspect = this.container.clientWidth / Math.max(this.container.clientHeight, 1);
@@ -280,18 +301,44 @@ export class CampusScene {
     this.resize();
   }
   async loadModel(): Promise<void> {
+    this.manifest = null;
+    this.models?.dispose(); this.models = null;
     disposeGroup(this.modelGroup);
     disposeGroup(this.referenceGroup);
-    this.reference = null;
     this.colliders = [];
     this.setFloor(this.viewFloor, false);
     this.events.model("Loading campus model…", false);
-    const response = await fetch(`${import.meta.env.BASE_URL}models/campus-reference.json`, { cache: "no-cache" });
-    if (response.status === 404) { this.events.model("Sample campus · real floor model pending", false); return; }
-    if (!response.ok) throw new Error("Could not read the campus model references.");
-    const reference = parseReference(await response.json());
+    const response = await fetch(`${import.meta.env.BASE_URL}models/campus-manifest.json`, { cache:"no-cache" });
+    if (response.status === 404) { this.events.model("Campus model manifest pending",false); return; }
+    if (!response.ok) throw new Error("Could not read the campus model manifest.");
+    this.manifest = parseManifest(await response.json());
+    const entries = this.manifest.models;
+    this.models = new ModelStore((id) => this.loadModelEntry(entries.find((entry) => entry.id === id)!), (model) => {
+      model.root.removeFromParent(); model.pins.removeFromParent();
+      disposeGroup(model.root); disposeGroup(model.pins);
+    });
+    await this.syncModels(true);
+  }
+  getCatalog(): CampusCatalog | null {
+    // The unrelated sample API must not acquire the UCC inventory.
+    return this.manifest?.models.some((entry) => entry.binding?.placeNames.every((name) => this.places.some((place) => place.name === name))) ? this.manifest.catalog : null;
+  }
+  private async loadModelEntry(entry: ModelEntry): Promise<LoadedCampusModel> {
+    if (!entry.binding || await dataFingerprint(entry.binding.placeNames,this.places,this.paths) !== entry.binding.sha256) throw new Error(`Model data revision differs: ${entry.label}. Reload compatible campus data.`);
+    const referenceURL = new URL(entry.reference!,new URL(import.meta.env.BASE_URL,location.href));
+    const response = await fetch(referenceURL,{ cache:"no-cache" });
+    if (!response.ok) throw new Error(`Could not read references for ${entry.label}.`);
+    const referenceBytes = await response.arrayBuffer();
+    if (await sha256(new Uint8Array(referenceBytes)) !== entry.referenceSha256) throw new Error(`Model references changed: ${entry.label}.`);
+    const reference = parseReference(JSON.parse(new TextDecoder().decode(referenceBytes)));
+    if (entry.floors.length !== 1 || entry.floors[0] !== reference.floor) throw new Error("Model floor and reference floor differ.");
     const aligned = validateAlignment(reference, this.places);
-    const gltf = await new GLTFLoader().loadAsync(`${import.meta.env.BASE_URL}models/${reference.model}`);
+    const modelURL = new URL(reference.model,referenceURL);
+    const resource = await fetch(modelURL,{ cache:"no-cache" });
+    if (!resource.ok) throw new Error(`Could not load ${entry.label}.`);
+    const bytes = await resource.arrayBuffer();
+    if (await sha256(new Uint8Array(bytes)) !== entry.modelSha256) throw new Error(`Model export changed: ${entry.label}. Review its manifest before integrating.`);
+    const gltf = await new GLTFLoader().parseAsync(bytes,new URL(".",modelURL).href);
     const root = new THREE.Group();
     root.applyMatrix4(referenceMatrix(reference));
     root.add(gltf.scene);
@@ -300,17 +347,47 @@ export class CampusScene {
     catch (error) { disposeGroup(root); throw error; }
     prepareModelPresentation(root);
     setModelTopView(root, this.topView);
-    this.modelGroup.add(root);
-    this.colliders = modelColliders(root);
-    this.reference = reference;
-    disposeGroup(this.referenceGroup);
+    const pins = new THREE.Group();
     for (const [index, point] of aligned.entries()) {
       const pin = new THREE.Mesh(new THREE.ConeGeometry(0.3, 1.2, 12), new THREE.MeshBasicMaterial({ color: [0xea8c36, 0x437ec8, 0xb25ca9][index % 3] }));
       pin.position.copy(point.position).y += 0.8;
-      this.referenceGroup.add(pin);
+      pins.add(pin);
     }
-    this.setFloor(reference.floor);
-    this.events.model(`${reference.label} · ${aligned.length} references aligned`, true);
+    return { entry,reference,root,pins,colliders:modelColliders(root),references:aligned.length };
+  }
+  private routeFloors(): number[] {
+    return [...new Set(this.places.filter((place) => this.waypoints.some((point) => point.distanceTo(toScenePosition(place)) < 0.01)).map((place) => place.floor))];
+  }
+  private async syncModels(strict = false): Promise<void> {
+    const store = this.models, manifest = this.manifest;
+    if (!store || !manifest) return;
+    const required = requiredModels(manifest,this.viewFloor,this.avatarFloor,this.routeFloors());
+    const missing = required.some((entry) => !store.values().some((model) => model.entry.id === entry.id));
+    if (missing) this.events.model("Loading campus model…",false);
+    const result = await store.sync(required.map((entry) => entry.id));
+    if (store !== this.models || !result.current) return;
+    this.renderer.shadowMap.needsUpdate = true;
+    this.applyModels(missing);
+    if (result.errors.length) {
+      if (strict) throw result.errors[0];
+      this.events.model("Model unavailable · using graph preview",false,String(result.errors[0]));
+    }
+  }
+  private applyModels(fit: boolean): void {
+    const loaded = this.models?.values() ?? [];
+    const active = loaded.filter((model) => model.entry.floors.includes(this.viewFloor));
+    for (const model of loaded) {
+      if (model.root.parent !== this.modelGroup) this.modelGroup.add(model.root);
+      if (model.pins.parent !== this.referenceGroup) this.referenceGroup.add(model.pins);
+      model.root.visible = model.pins.visible = active.includes(model);
+      setModelTopView(model.root,this.topView);
+    }
+    this.colliders = loaded.filter((model) => model.entry.floors.includes(this.avatarFloor)).flatMap((model) => model.colliders);
+    this.floorGroups.forEach((group,level) => { group.visible = level === this.viewFloor && !active.length; });
+    this.modelGroup.visible = !!active.length;
+    if (active.length) this.events.model(`${active.map((model) => model.entry.label).join(" + ")} · ${active.reduce((sum,model) => sum+model.references,0)} references aligned`,true);
+    else if (this.manifest) this.events.model("Floor model pending",false);
+    if (fit) this.resetView();
   }
   exportView(): void {
     this.renderer.render(this.scene, this.camera);
@@ -320,7 +397,6 @@ export class CampusScene {
     link.click();
   }
   private collides(from: THREE.Vector3, to: THREE.Vector3): boolean {
-    if (this.reference?.floor !== this.avatarFloor) return false;
     return !!modelCollision(from, to, this.colliders);
   }
   private remaining(): number {
@@ -398,6 +474,7 @@ export class CampusScene {
   }
   dispose(): void {
     this.renderer.setAnimationLoop(null); this.abort.abort(); this.resizeObserver.disconnect(); this.controls.dispose();
+    this.models?.dispose(); this.models = null;
     disposeGroup(this.scene);
     this.colliders = [];
     this.renderer.dispose(); this.labels.forEach((label) => label.remove());

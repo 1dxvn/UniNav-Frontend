@@ -1,0 +1,24 @@
+{
+  "path": [
+    "Main Entrance",
+    "Reception",
+    "Restrooms F0"
+  ],
+  "steps": [
+    {
+      "origin_name": "Main Entrance",
+      "destination_name": "Reception",
+      "kind": "corridor",
+      "distance": 12
+    },
+    {
+      "origin_name": "Reception",
+      "destination_name": "Restrooms F0",
+      "kind": "corridor",
+      "distance": 12
+    }
+  ],
+  "distance": 24,
+  "origin_name": "Main Entrance",
+  "destination_name": "Restrooms F0"
+}

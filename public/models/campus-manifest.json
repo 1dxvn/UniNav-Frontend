@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "catalog": {
+    "version": 1,
+    "id": "ucc-pasto",
+    "revision": "dwg-a35f892",
+    "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg",
+    "integrated_dataset": {
+      "id": "ucc-first-floor",
+      "revision": "ucc-first-floor-3809907",
+      "label": "UCC first-floor cutaway",
+      "legacy_floor": 1,
+      "model_elevation_m": 3.5,
+      "elevation_evidence": "provisional"
+    },
+    "blocks": [
+      {
+        "id": "A",
+        "name": "Block A",
+        "identity_evidence": "derived",
+        "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg",
+        "floors": [
+          {
+            "id": "A-0",
+            "level": 0,
+            "name": "Floor 0 (Piso cero)",
+            "source_label": "PLANTA PISO CERO",
+            "datum_elevation_m": -4.13,
+            "evidence": "derived"
+          },
+          {
+            "id": "A-1",
+            "level": 1,
+            "name": "First floor",
+            "source_label": "PLANTA PRIMER PISO",
+            "datum_elevation_m": -0.63,
+            "evidence": "derived"
+          },
+          {
+            "id": "A-2",
+            "level": 2,
+            "name": "Second floor",
+            "source_label": "PLANTA SEGUNDO PISO",
+            "datum_elevation_m": 2.68,
+            "evidence": "derived"
+          },
+          {
+            "id": "A-3",
+            "level": 3,
+            "name": "Third floor",
+            "source_label": "PLANTA TERCER PISO",
+            "datum_elevation_m": 6.37,
+            "evidence": "derived"
+          },
+          {
+            "id": "A-4",
+            "level": 4,
+            "name": "Fourth floor",
+            "source_label": "PLANTA CUARTO PISO",
+            "datum_elevation_m": 9.87,
+            "evidence": "derived"
+          },
+          {
+            "id": "A-5",
+            "level": 5,
+            "name": "Fifth floor",
+            "source_label": "PLANTA QUINTO PISO",
+            "datum_elevation_m": 13.37,
+            "evidence": "derived"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Block B",
+        "identity_evidence": "derived",
+        "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg",
+        "floors": [
+          {
+            "id": "B-0",
+            "level": 0,
+            "name": "Floor 0 (Piso cero)",
+            "source_label": "PLANTA PISO CERO",
+            "datum_elevation_m": -2.94,
+            "evidence": "derived"
+          },
+          {
+            "id": "B-1",
+            "level": 1,
+            "name": "First floor",
+            "source_label": "PLANTA PRIMER PISO",
+            "datum_elevation_m": 0,
+            "evidence": "derived"
+          },
+          {
+            "id": "B-2",
+            "level": 2,
+            "name": "Second floor",
+            "source_label": "PLANTA SEGUNDO PISO",
+            "datum_elevation_m": 2.94,
+            "evidence": "derived"
+          },
+          {
+            "id": "B-3",
+            "level": 3,
+            "name": "Third floor",
+            "source_label": "PLANTA TERCER PISO",
+            "datum_elevation_m": 5.88,
+            "evidence": "derived"
+          },
+          {
+            "id": "B-4",
+            "level": 4,
+            "name": "Fourth floor",
+            "source_label": "PLANTA CUARTO PISO",
+            "datum_elevation_m": 8.82,
+            "evidence": "derived"
+          },
+          {
+            "id": "B-5",
+            "level": 5,
+            "name": "Fifth floor",
+            "source_label": "PLANTA QUINTO PISO",
+            "datum_elevation_m": 11.76,
+            "evidence": "derived"
+          }
+        ]
+      }
+    ],
+    "unassigned_sheets": [
+      "PLANTA AZOTEA CANCHAS SINTETICAS",
+      "PLANTA AZOTEA CUBIERTAS"
+    ],
+    "notes": [
+      "Block A as the north bar and Block B as the south body remain derived identities awaiting physical confirmation. Place assignments are not changed.",
+      "Sheet level values are documented; attribution to blocks is derived. The current C2 model remains a flat slab at scene elevation 3.5 m.",
+      "Block B ground-floor clinic also contains N -4.13; first-floor ramps have intermediate levels. A single floor datum does not describe every point.",
+      "Plan (x,y) maps to scene (x,elevation,-y). Plan +Y is not geographic north. Survey datums must be reconciled with each exported model before navigation is enabled."
+    ]
+  },
+  "models": [
+    {
+      "id": "ucc-first-floor",
+      "label": "UCC · First floor",
+      "floors": [
+        1
+      ],
+      "state": "ready",
+      "revision": "C2-efd05d1",
+      "sourceCommit": "efd05d1",
+      "reference": "models/campus-reference.json",
+      "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
+      "modelSha256": "d65846a8b614062d63e60a339da6e9c9ce29e8ffae2d01a90fbd16611e6a356e",
+      "binding": {
+        "placeNames": [
+          "Access courtyard",
+          "Elevator and Restroom Hall",
+          "Hall Acceso",
+          "Hall corridor north",
+          "Hall corridor south",
+          "Hall junction",
+          "ICETEX",
+          "ICETEX approach",
+          "ICETEX column reference",
+          "ICETEX doorway",
+          "Laboratory corridor east",
+          "Laboratory corridor west",
+          "Lockers column reference",
+          "Morphology Laboratory",
+          "North circulation east",
+          "North circulation west",
+          "Preclinic / Dentistry Coordination",
+          "Preclinic storeroom",
+          "South circulation"
+        ],
+        "sha256": "75f46e58551e42cd1a509ff080d0767902717e620b52b4d736719947d032e197"
+      }
+    }
+  ]
+}

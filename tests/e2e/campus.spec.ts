@@ -10,20 +10,21 @@ test.beforeAll(async ({ request }) => {
   await mkdir(evidence, { recursive: true });
   const places = await (await request.get("/buildings")).json() as Building[];
   if (!places.some((place) => place.name === "Hall Acceso")) return;
-  modelHash = sha256(await readFile("public/models/campus.glb"));
+  const manifest = JSON.parse(await readFile("public/models/campus-manifest.json","utf8"));
+  modelHash = manifest.models.find((model: { id: string }) => model.id === "ucc-first-floor").modelSha256;
   const served = await request.get("/app/models/campus.glb");
   expect(served.ok()).toBe(true);
   expect(sha256(await served.body())).toBe(modelHash);
   await writeFile(`${evidence}/revision.json`, JSON.stringify({
     checkedAt: new Date().toISOString(), api: new URL(served.url()).origin,
-    modelSha256: modelHash, places: places.length,
+    modelSha256: modelHash, sourceExportSha256:sha256(await readFile("public/models/campus.glb")), places: places.length,
     paths: (await (await request.get("/paths")).json() as unknown[]).length,
   }, null, 2));
 });
 test.afterAll(async ({ request }) => {
   if (!modelHash) return;
-  // A fresh export invalidates these walks, even if the filename is unchanged.
-  expect(sha256(await readFile("public/models/campus.glb"))).toBe(modelHash);
+  // The reviewed served revision must stay fixed; Claude's unintegrated working
+  // export can change independently without becoming part of these walks.
   expect(sha256(await (await request.get("/app/models/campus.glb")).body())).toBe(modelHash);
 });
 

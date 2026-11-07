@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run typecheck && vite build",
+    "build": "npm run typecheck && node --experimental-strip-types tools/build-reviewed.ts",
     "typecheck": "tsc --noEmit && tsc -p tsconfig.tools.json",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "test:e2e": "playwright test",

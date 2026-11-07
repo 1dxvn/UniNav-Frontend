@@ -59,9 +59,9 @@ test("campus presentation: comparable views and measured frame cadence", async (
   await page.locator("#follow").click();
   await expect(page.locator("#travel-status")).toHaveAttribute("data-state","paused");
   await page.screenshot({ path:`${output}/${stage}-walking.png`,fullPage:true });
-  const bytes = await readFile("public/models/campus.glb");
+  const manifest = JSON.parse(await readFile("public/models/campus-manifest.json","utf8"));
   const served = await request.get("/app/models/campus.glb");
-  const modelSha256 = createHash("sha256").update(bytes).digest("hex");
+  const modelSha256 = manifest.models.find((model: { id: string }) => model.id === "ucc-first-floor").modelSha256;
   expect(createHash("sha256").update(await served.body()).digest("hex")).toBe(modelSha256);
   await writeFile(`${output}/${stage}-performance.json`, JSON.stringify({
     checkedAt:new Date().toISOString(), modelSha256, rendererMode:process.env.UNINAV_RENDERER ?? "software",
