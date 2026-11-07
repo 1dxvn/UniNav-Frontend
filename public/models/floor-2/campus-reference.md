@@ -53,16 +53,11 @@ Filtered out as annotation: 462 small filled bars at the room-label anchors (roo
   - Communications office, internships coordination, staff room.
   - Two light wells (VACIO).
 
-## Detail (C8)
+## Detail (C8, revised in C12)
 
-- **Doors and fixtures:**
-  - `P2_Doors` and `P2_Door_Swings`: 11 detected doorways get an open leaf and a flat swing arc. On this sheet most doorways are not drawn as gaps between wall ends, so the others remain plain openings.
-  - `P2_Fixtures`: 14 sanitary fixtures from the `sanitarios` blocks.
-- **Furniture (illustrative), `P2_Furniture_<i>_<j>`:**
-  - Classrooms get rows of student desks with chairs. These are AULA 201, 206 B, 207 B and 220.
-  - Laboratories get lab benches with stools.
-  - The Medicine dean's office gets a desk.
-  - Rooms whose label falls outside a closed room polygon stay empty.
+- **Doors and fixtures:** `P2_Doors` holds 40 open leaves. 10 are in doorways found as gaps between wall ends, each with a flat swing arc in `P2_Door_Swings`. The other 30 are the leaves drawn in the DWG (thin rectangles on layer 02, `door_leaves_dwg.py`), placed as drawn and without an arc, because a leaf drawn along the wall may be a sliding door. `P2_Fixtures` holds 14 sanitary fixtures from the `sanitarios` blocks.
+- **Furniture (illustrative), `P2_Furniture_<i>_<j>`:** 184 student desk sets, 2 lab benches, 1 desks. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage. Each kit stays inside its own room (C12): rooms with gaps in their walls are closed progressively, corridors under 2.8 m wide are left out, and furniture within one leaf length of a drawn door is removed.
+- **Room-tag bars (C12):** 16 filled bars drawn next to room names, 1.2–3 m long, had become free-standing walls in the rooms. They are now kept out of `P2_Walls` (`walls_from_lines.py`, `blender_drop_tag_walls.py`).
 - **Floor zones, `P2_Floor_Zones`:** vinyl in labs and classrooms, laminate in offices.
 - **Routes:** this floor has no API routes yet, so leaves and furniture were placed without a route-clearance check. When Codex adds paths, rerun `extras.py` with the floor-2 graph to keep them clear (`model/tools/README.md`).
 

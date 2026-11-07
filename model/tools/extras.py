@@ -174,6 +174,50 @@ PROGRAMME = ([(r"^AULA|SALON", "class")] if CLASSROOMS else []) + [
 ]
 used_rooms = {}
 furniture, report, items = [], [], []
+# Other floors: many rooms have gaps in their walls, so the free region around a label can be the whole floor and a
+# kit spilled into corridors and neighbouring rooms. There each label takes the first room, in progressively closed
+# solids (gaps up to 1.5, 2.5 and 3.5 m), whose area is 0.5-1.6 times its labelled area; failing that, the tightest
+# region is clipped by a wall-aligned square of the labelled area around the label (as the floor zones are). Either
+# way, strips under 2.8 m wide (corridors, lobbies) are removed first.
+closed_rooms = []
+if CLASSROOMS:
+    for R2 in (0.75, 1.25, 1.75):
+        cl = solid.buffer(R2, join_style=2, mitre_limit=2).buffer(-R2, join_style=2, mitre_limit=2)
+        g = foot2.difference(unary_union([plugs, cl]))
+        closed_rooms.append([p for p in getattr(g, "geoms", [g]) if p.geom_type == "Polygon" and p.area > 2])
+def wall_angle(room, pt, a):
+    disc = pt.buffer(max(3.0, math.sqrt(a))); hist = {}
+    for ringc in [room.exterior] + list(room.interiors):
+        cc = list(ringc.coords)
+        for p0, p1 in zip(cc, cc[1:]):
+            seg = LineString([p0, p1])
+            if not seg.intersects(disc): continue
+            t = round((math.degrees(math.atan2(p1[1] - p0[1], p1[0] - p0[0])) % 90) / 3) * 3 % 90
+            hist[t] = hist.get(t, 0) + seg.intersection(disc).length
+    return math.radians(max(hist, key=hist.get)) if hist else 0.0
+def drop_corridors(region, pt):
+    """The part of a region at the label once its strips under 2.8 m wide (corridors, lobbies) are removed."""
+    opened = region.buffer(-1.4, join_style=2).buffer(1.4, join_style=2)
+    parts = [p for p in getattr(opened, "geoms", [opened]) if p.geom_type == "Polygon"]
+    return min(parts, key=lambda p: p.distance(pt)) if parts else region
+def fit_room(pt, room):
+    """(room, area) for a kit on the other floors. Without an area label, a closed room of 15-120 m2 is accepted."""
+    best_a = min(areas, key=lambda q: q[1].distance(pt)) if areas else None
+    a = best_a[0] if best_a and best_a[1].distance(pt) < 1.5 else None
+    lo, hi = (0.5 * a, 1.6 * a) if a else (15.0, 120.0)
+    best = room
+    for r in [room] + [next((r for r in rs if r.contains(pt)), None) for rs in closed_rooms]:
+        if r is None: continue
+        if lo <= r.area <= hi: return drop_corridors(r, pt), (a or r.area)
+        if lo <= r.area < best.area: best = r
+    # Still leaky: drop the corridors, keep the part at the label and clip it by the square.
+    best = drop_corridors(best, pt)
+    a = a or 60.0
+    half = math.sqrt(a) * 0.62
+    sq = affinity.rotate(box(-half, -half, half, half), wall_angle(best, pt, a), origin=(0, 0), use_radians=True)
+    clip = best.intersection(affinity.translate(sq, pt.x, pt.y))
+    parts = [p for p in getattr(clip, "geoms", [clip]) if p.geom_type == "Polygon"]
+    return (min(parts, key=lambda p: p.distance(pt)) if parts else best), a
 for text, pt in labels:
     kind = next((k for rx, k in PROGRAMME if re.search(rx, text)), None)
     if kind is None:
@@ -182,11 +226,13 @@ for text, pt in labels:
     if room is None:
         report.append((text, kind, "outside any room"))
         continue
+    if CLASSROOMS:
+        room, a_fit = fit_room(pt, room)
     key = (round(pt.x, 0), round(pt.y, 0))
     if any(math.hypot(key[0] - k[0], key[1] - k[1]) < 1.2 for k in used_rooms):
         continue
     used_rooms[key] = text
-    a = area_near(pt)
+    a = a_fit if CLASSROOMS else area_near(pt)
     zone = room.intersection(pt.buffer(max(2.4, math.sqrt(a) * 0.75))).buffer(-0.30, join_style=2)
     if zone.is_empty:
         report.append((text, kind, "too small"))

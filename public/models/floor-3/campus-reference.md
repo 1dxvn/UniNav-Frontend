@@ -33,10 +33,10 @@ Room tags drawn at the label anchors and the repeated 0.34 × 1.38 m blocks are 
 
 AZOTEA, AULA 308 A, INGENIERIA, BAÑO MUJERES, BAÑO HOMBRES, VACIO, HEMEROTECA, HALL HEMEROTECA, CUARTO TECNICO, LABORATORIO INFORMATICA 1, LABORATORIO INFORMATICA 3, LABORATORIO INFORMATICA 2, LABORATORIO INFORMATICA 4, LABORATORIO INFORMATICA 5, DE BIOPROCESOS, LAB. DE APLICACION, A LA QUIMICA, BODEGA, LABORATORIO, AULA No 307 B, AULA No 308 B, SALA DE AUDIENCIA, AULA No 318 B, AULA No 316 B, PROGRAMA DE ING., INDUSTRIAL, DECANATURA, HALL ASCENSORES, Y BAÑOS, ASEO, BALCON, OFICINA, COORDINADOR, DE LA FISICA, ASENSOR, CIRCULACIÓN, SALA PROFESORES, ARCHIVO, AULA 309 A, AULA 310 A
 
-## Detail (C9)
+## Detail (C9, revised in C12)
 
-- **Doors and fixtures:** `P3_Doors` and `P3_Door_Swings` give 15 open leaves, each with a flat swing arc, in the detected doorways. `P3_Fixtures` holds 34 sanitary fixtures from the `sanitarios` blocks.
-- **Furniture (illustrative), `P3_Furniture_<i>_<j>`:** 263 student desk sets, 8 lab benches, 5 lockers / shelving, 1 desks. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage.
+- **Doors and fixtures:** `P3_Doors` holds 40 open leaves. 15 are in doorways found as gaps between wall ends, each with a flat swing arc in `P3_Door_Swings`. The other 25 are the leaves drawn in the DWG (thin rectangles on layer 02, `door_leaves_dwg.py`), placed as drawn and without an arc, because a leaf drawn along the wall may be a sliding door. `P3_Fixtures` holds 34 sanitary fixtures from the `sanitarios` blocks.
+- **Furniture (illustrative), `P3_Furniture_<i>_<j>`:** 181 student desk sets, 18 lab benches, 1 lockers / shelving, 1 desks. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage. Each kit stays inside its own room (C12): rooms with gaps in their walls are closed progressively, corridors under 2.8 m wide are left out, and furniture within one leaf length of a drawn door is removed.
 - **Floor zones, `P3_Floor_Zones`:** 4 wet, 6 lab, 2 office (ceramic, vinyl, laminate).
 - **Routes:** this floor has no API paths yet, so leaves and furniture were placed without a route-clearance check. When paths exist, rerun `extras.py` with this floor's graph.
 

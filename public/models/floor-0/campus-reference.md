@@ -33,11 +33,12 @@ Room tags drawn at the label anchors and the repeated 0.34 × 1.38 m blocks are 
 
 COMPRESOR, BODEGA, BAÑO MUJERES, BAÑO HOMBRES, AUDITORIO, DE POSGRADO, PATIO, ARCHIVO HISTORIAS, SALA DE DEBRIEFING N2, CONTROL, DEBRIEFING, SALA  DE, SALA DE ESPERA, COMPRESORES, AREA INSUMOS ESTUDIANTES, LOCKERS, DOCENTES, CUARTO TECNICO RACK, CUARTO TECNICO ELECTRICO, OFICINA, CUARTO DE CONTROL, ENFERMERIA, HALL CLINICA, JARDIN, CONSULTORIO, PROCEDIMIENTOS, ESPECIALES, AREA DE ESTUDIOS, SALA DE CONSULTAS, DE HISTORIAS CLINICAS, CLINICAS, ASEO, AREA LIMPIA, UNIDAD DE CUIDADO CRITICO, ADMINISTRATIVA, AREA DE POSTGRADO, CLINICA, PASILLO, CIRCULACION, ASENSOR
 
-## Detail (C9)
+## Detail (C9, revised in C12)
 
-- **Doors and fixtures:** `P0_Doors` and `P0_Door_Swings` give 23 open leaves, each with a flat swing arc, in the detected doorways. `P0_Fixtures` holds 18 sanitary fixtures from the `sanitarios` blocks.
-- **Furniture (illustrative), `P0_Furniture_<i>_<j>`:** 30 lockers / shelving, 2 desks, 1 lab benches. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage.
-- **Floor zones, `P0_Floor_Zones`:** 5 wet, 1 lab, 3 office (ceramic, vinyl, laminate).
+- **Doors and fixtures:** `P0_Doors` holds 55 open leaves. 23 are in doorways found as gaps between wall ends, each with a flat swing arc in `P0_Door_Swings`. The other 32 are the leaves drawn in the DWG (thin rectangles on layer 02, `door_leaves_dwg.py`), placed as drawn and without an arc, because a leaf drawn along the wall may be a sliding door. `P0_Fixtures` holds 18 sanitary fixtures from the `sanitarios` blocks.
+- **Furniture (illustrative), `P0_Furniture_<i>_<j>`:** 7 lab benches, 29 lockers / shelving, 1 desks. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage. Each kit stays inside its own room (C12): rooms with gaps in their walls are closed progressively, corridors under 2.8 m wide are left out, and furniture within one leaf length of a drawn door is removed.
+- **Room-tag bars (C12):** 2 filled bars drawn next to room names, 1.2–3 m long, had become free-standing walls in the rooms. They are now kept out of `P0_Walls` (`walls_from_lines.py`, `blender_drop_tag_walls.py`).
+- **Floor zones, `P0_Floor_Zones`:** 6 wet, 1 lab, 3 office (ceramic, vinyl, laminate).
 - **Routes:** this floor has no API paths yet, so leaves and furniture were placed without a route-clearance check. When paths exist, rerun `extras.py` with this floor's graph.
 
 ## Not yet in this version
