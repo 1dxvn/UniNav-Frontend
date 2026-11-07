@@ -33,6 +33,13 @@ Room tags drawn at the label anchors and the repeated 0.34 × 1.38 m blocks are 
 
 COMPRESOR, BODEGA, BAÑO MUJERES, BAÑO HOMBRES, AUDITORIO, DE POSGRADO, PATIO, ARCHIVO HISTORIAS, SALA DE DEBRIEFING N2, CONTROL, DEBRIEFING, SALA  DE, SALA DE ESPERA, COMPRESORES, AREA INSUMOS ESTUDIANTES, LOCKERS, DOCENTES, CUARTO TECNICO RACK, CUARTO TECNICO ELECTRICO, OFICINA, CUARTO DE CONTROL, ENFERMERIA, HALL CLINICA, JARDIN, CONSULTORIO, PROCEDIMIENTOS, ESPECIALES, AREA DE ESTUDIOS, SALA DE CONSULTAS, DE HISTORIAS CLINICAS, CLINICAS, ASEO, AREA LIMPIA, UNIDAD DE CUIDADO CRITICO, ADMINISTRATIVA, AREA DE POSTGRADO, CLINICA, PASILLO, CIRCULACION, ASENSOR
 
+## Detail (C9)
+
+- **Doors and fixtures:**  and  give 23 open leaves, each with a flat swing arc, in the detected doorways.  holds 18 sanitary fixtures from the  blocks.
+- **Furniture (illustrative), :** 30 lockers / shelving, 2 desks, 1 lab benches. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage.
+- **Floor zones, :** 5 wet, 1 lab, 3 office (ceramic, vinyl, laminate).
+- **Routes:** this floor has no API paths yet, so leaves and furniture were placed without a route-clearance check. When paths exist, rerun  with this floor's graph.
+
 ## Not yet in this version
 
-Door leaves, furniture, floor zones, signs, slab holes over stairs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.
+Signs, slab holes over stairs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.

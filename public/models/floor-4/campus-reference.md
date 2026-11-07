@@ -33,6 +33,13 @@ Room tags drawn at the label anchors and the repeated 0.34 × 1.38 m blocks are 
 
 TERRAZA, DE ESTAR, BAÑO MUJERES, BAÑO HOMBRES, SUB- DIRECCIÓN, GESTIÓN HUMANA, SALA JUNTAS, SALA DE ESPERA, DIR. DE SEDE, SUB-DIR. DE DLLO, TERRAZA POSTERIOR, HALL ACCESO, AULA 422 A, AULA 423 A, AULA 421 A, AULA 424 A, AULA 420 A, CENTRO DE, INVESTIGACION, SOCIOJURIDICO, OFICINA DE PROYECTOS, AULA 402 B, AULA 401, SALA, PROGRAMA DE, ENFERMERIA, DECANATURA, DERECHO, JEFE DE PROGRAMA, SECRETARIA DE, CUARTO TECNICO, SECRETARÍA, PROYECCION INSTITUCIONAL, INSTITUCIONAL, Y FINANCIERO, PLANEACIÓN Y, AUTOEVALUACIÓN, ADMINISTRACION, HALL ASCENSORES, Y BAÑOS
 
+## Detail (C9)
+
+- **Doors and fixtures:**  and  give 16 open leaves, each with a flat swing arc, in the detected doorways.  holds 37 sanitary fixtures from the  blocks.
+- **Furniture (illustrative), :** 175 student desk sets, 4 waiting benches, 3 desks, 1 lockers / shelving. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage.
+- **Floor zones, :** 1 wet, 5 lab, 3 office (ceramic, vinyl, laminate).
+- **Routes:** this floor has no API paths yet, so leaves and furniture were placed without a route-clearance check. When paths exist, rerun  with this floor's graph.
+
 ## Not yet in this version
 
-Door leaves, furniture, floor zones, signs, slab holes over stairs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.
+Signs, slab holes over stairs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.

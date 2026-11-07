@@ -33,6 +33,13 @@ Room tags drawn at the label anchors and the repeated 0.34 × 1.38 m blocks are 
 
 AZOTEA, AULA 308 A, INGENIERIA, BAÑO MUJERES, BAÑO HOMBRES, VACIO, HEMEROTECA, HALL HEMEROTECA, CUARTO TECNICO, LABORATORIO INFORMATICA 1, LABORATORIO INFORMATICA 3, LABORATORIO INFORMATICA 2, LABORATORIO INFORMATICA 4, LABORATORIO INFORMATICA 5, DE BIOPROCESOS, LAB. DE APLICACION, A LA QUIMICA, BODEGA, LABORATORIO, AULA No 307 B, AULA No 308 B, SALA DE AUDIENCIA, AULA No 318 B, AULA No 316 B, PROGRAMA DE ING., INDUSTRIAL, DECANATURA, HALL ASCENSORES, Y BAÑOS, ASEO, BALCON, OFICINA, COORDINADOR, DE LA FISICA, ASENSOR, CIRCULACIÓN, SALA PROFESORES, ARCHIVO, AULA 309 A, AULA 310 A
 
+## Detail (C9)
+
+- **Doors and fixtures:**  and  give 15 open leaves, each with a flat swing arc, in the detected doorways.  holds 34 sanitary fixtures from the  blocks.
+- **Furniture (illustrative), :** 263 student desk sets, 8 lab benches, 5 lockers / shelving, 1 desks. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage.
+- **Floor zones, :** 4 wet, 6 lab, 2 office (ceramic, vinyl, laminate).
+- **Routes:** this floor has no API paths yet, so leaves and furniture were placed without a route-clearance check. When paths exist, rerun  with this floor's graph.
+
 ## Not yet in this version
 
-Door leaves, furniture, floor zones, signs, slab holes over stairs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.
+Signs, slab holes over stairs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.
