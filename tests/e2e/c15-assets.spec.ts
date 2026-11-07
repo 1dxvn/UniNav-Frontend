@@ -7,7 +7,8 @@ import type { Building,RouteResponse } from "../../src/api/types.ts";
 test.use(process.env.UNINAV_C15_STARTUP==="1" ? {campusProfile:"ucc-two-floors-c15"}:{navigationDataset:["ucc-first-floor-c15.json","ucc-second-floor-c15.json"].map(p=>fileURLToPath(new URL(`../../../data/datasets/${p}`,import.meta.url)))});
 test("C15 refuses the flat legacy export even when its old reference anchors still align",async({page,request})=>{
   const bytes=await(await request.get("/app/models/campus.glb")).body();
-  await page.route("**/models/c15/floor-1.glb",r=>r.fulfill({body:bytes,contentType:"model/gltf-binary"}));
+  const manifest=await(await request.get("/app/models/campus-manifest.json")).json(),profile=manifest.profiles.find((p:{id:string})=>p.id==="ucc-two-floors-c15"),first=profile.models.find((m:{id:string})=>m.id==="ucc-first-floor");
+  await page.route(`**/${first.model}`,r=>r.fulfill({body:bytes,contentType:"model/gltf-binary"}));
   await page.goto("/app/");await expect(page.locator("#model-status")).toHaveAttribute("title",/Model export changed/);await expect(page.locator("#model-status")).not.toHaveClass(/verified/);
   const before=await page.locator("#travel-status").getAttribute("data-position");
   await page.locator("canvas").focus();await page.keyboard.down("w");await page.waitForTimeout(200);await page.keyboard.up("w");

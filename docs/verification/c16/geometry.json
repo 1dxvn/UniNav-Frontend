@@ -1,0 +1,2295 @@
+{
+  "commit": "002aaec",
+  "configurationCommit": "002aaec",
+  "zonesCommit": "fb39c86",
+  "sources": [
+    {
+      "floor": 1,
+      "path": "model/candidates/c16/floor-1.glb",
+      "commit": "002aaec",
+      "sha256": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c",
+      "worldDatum": 3.5,
+      "aWorld": 2.87
+    },
+    {
+      "floor": 2,
+      "path": "model/candidates/c16/floor-2.glb",
+      "commit": "002aaec",
+      "sha256": "b099eb799e1dbaf23fee818601b64499113fea401062add809c2b8d57de43f44",
+      "worldDatum": 6.44,
+      "aWorld": 6.180000000000001
+    },
+    {
+      "floor": 3,
+      "path": "model/candidates/c16/floor-3.glb",
+      "commit": "002aaec",
+      "sha256": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d",
+      "worldDatum": 9.38,
+      "aWorld": 9.870000000000001
+    },
+    {
+      "floor": 4,
+      "path": "model/candidates/c16/floor-4.glb",
+      "commit": "002aaec",
+      "sha256": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf",
+      "worldDatum": 12.32,
+      "aWorld": 13.370000000000001
+    },
+    {
+      "floor": 5,
+      "path": "model/candidates/c16/floor-5.glb",
+      "commit": "002aaec",
+      "sha256": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d",
+      "worldDatum": 15.26,
+      "aWorld": 16.87
+    }
+  ],
+  "anchors": [
+    {
+      "floor": 1,
+      "reference": "models/campus-reference.json",
+      "sourceCommit": "a6d3f11",
+      "points": [
+        {
+          "name": "Hall Acceso",
+          "error": 0,
+          "nodeError": 0
+        },
+        {
+          "name": "ICETEX column reference",
+          "error": 0,
+          "nodeError": 5.117953404757962e-7
+        },
+        {
+          "name": "Lockers column reference",
+          "error": 0,
+          "nodeError": 0.0000018374015155952338
+        }
+      ]
+    },
+    {
+      "floor": 2,
+      "reference": "models/floor-2/campus-navigation-reference.json",
+      "sourceCommit": "389cfd9",
+      "points": [
+        {
+          "name": "P2_REF_1_Column_South",
+          "error": 0,
+          "nodeError": 9.187007577976169e-7
+        },
+        {
+          "name": "P2_REF_2_Column_NorthWest",
+          "error": 0,
+          "nodeError": 7.033954187812057e-7
+        },
+        {
+          "name": "P2_REF_3_Column_NorthEast",
+          "error": 0,
+          "nodeError": 0.0000018625725670778693
+        }
+      ]
+    },
+    {
+      "floor": 3,
+      "reference": "models/floor-3/campus-reference.json",
+      "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+      "points": [
+        {
+          "name": "P3_REF_1_Column_28_20",
+          "error": 0,
+          "nodeError": 3.4119689629856723e-7
+        },
+        {
+          "name": "P3_REF_2_Column_21_62",
+          "error": 0,
+          "nodeError": 7.033954187812057e-7
+        },
+        {
+          "name": "P3_REF_3_Column_70_62",
+          "error": 0,
+          "nodeError": 0.0000018625725670778693
+        }
+      ]
+    },
+    {
+      "floor": 4,
+      "reference": "models/floor-4/campus-reference.json",
+      "sourceCommit": "389cfd9",
+      "points": [
+        {
+          "name": "P4_REF_1_Column_28_26",
+          "error": 0,
+          "nodeError": 2.2888183437430598e-7
+        },
+        {
+          "name": "P4_REF_2_Column_21_62",
+          "error": 0,
+          "nodeError": 8.252451928148529e-7
+        },
+        {
+          "name": "P4_REF_3_Column_70_62",
+          "error": 0,
+          "nodeError": 0.0000019540784378708508
+        }
+      ]
+    },
+    {
+      "floor": 5,
+      "reference": "models/floor-5/campus-reference.json",
+      "sourceCommit": "389cfd9",
+      "points": [
+        {
+          "name": "P5_REF_1_Column_21_62",
+          "error": 0,
+          "nodeError": 0.0000010264300544292826
+        },
+        {
+          "name": "P5_REF_2_Column_47_37",
+          "error": 0,
+          "nodeError": 0.0000019119207881730665
+        },
+        {
+          "name": "P5_REF_3_Column_70_62",
+          "error": 0,
+          "nodeError": 0.0000015334893160749489
+        }
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "file": "ucc-first-floor-c15.json",
+      "hash": "7b57188b71575c416da37def2e0144123274876d1151af8e27c3ef3b04a1ff3b"
+    },
+    {
+      "file": "ucc-second-floor-c15.json",
+      "hash": "c269e64a2dc03f0a77788827d4f4a7ee988fc96025c464d1d79797ad03a30c5b"
+    }
+  ],
+  "graph": [
+    {
+      "name": "ucc:floor1:e01",
+      "samples": 502,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        6,
+        3.3499999940395355,
+        -16.5
+      ],
+      "code": "ucc:floor1:e01",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e01 reverse",
+      "samples": 502,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        0,
+        3.5,
+        0
+      ],
+      "code": "ucc:floor1:e01",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e02",
+      "samples": 658,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        21.5,
+        3.5,
+        -33.5
+      ],
+      "code": "ucc:floor1:e02",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e02 reverse",
+      "samples": 658,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        6,
+        3.3499999940395355,
+        -16.5
+      ],
+      "code": "ucc:floor1:e02",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e03",
+      "samples": 46,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        23,
+        3.5,
+        -34
+      ],
+      "code": "ucc:floor1:e03",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e03 reverse",
+      "samples": 46,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        21.5,
+        3.5,
+        -33.5
+      ],
+      "code": "ucc:floor1:e03",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e04",
+      "samples": 59,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        23.5,
+        3.5,
+        -36
+      ],
+      "code": "ucc:floor1:e04",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e04 reverse",
+      "samples": 59,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        23,
+        3.5,
+        -34
+      ],
+      "code": "ucc:floor1:e04",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e05",
+      "samples": 168,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        24.55,
+        3.5,
+        -41.78
+      ],
+      "code": "ucc:floor1:e05",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e05 reverse",
+      "samples": 168,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        23.5,
+        3.5,
+        -36
+      ],
+      "code": "ucc:floor1:e05",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e06",
+      "samples": 21,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        24,
+        3.5,
+        -36.5
+      ],
+      "code": "ucc:floor1:e06",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e06 reverse",
+      "samples": 21,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        23.5,
+        3.5,
+        -36
+      ],
+      "code": "ucc:floor1:e06",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e07",
+      "samples": 115,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.5,
+        -36.5
+      ],
+      "code": "ucc:floor1:e07",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e07 reverse",
+      "samples": 115,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        24,
+        3.5,
+        -36.5
+      ],
+      "code": "ucc:floor1:e07",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e08",
+      "samples": 318,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.5,
+        -47.6
+      ],
+      "code": "ucc:floor1:e08",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e08 reverse",
+      "samples": 318,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.5,
+        -36.5
+      ],
+      "code": "ucc:floor1:e08",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e09",
+      "samples": 96,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        25.77,
+        2.87,
+        -51.97
+      ],
+      "code": "ucc:floor1:e09",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e09 reverse",
+      "samples": 96,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        2.87,
+        -49.5
+      ],
+      "code": "ucc:floor1:e09",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e10",
+      "samples": 572,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        41.5,
+        3.5,
+        -33.5
+      ],
+      "code": "ucc:floor1:e10",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e10 reverse",
+      "samples": 572,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        21.5,
+        3.5,
+        -33.5
+      ],
+      "code": "ucc:floor1:e10",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e11",
+      "samples": 150,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.5,
+        3.5,
+        -32
+      ],
+      "code": "ucc:floor1:e11",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e11 reverse",
+      "samples": 150,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        41.5,
+        3.5,
+        -33.5
+      ],
+      "code": "ucc:floor1:e11",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e12",
+      "samples": 158,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        42.96,
+        3.5,
+        -27.77
+      ],
+      "code": "ucc:floor1:e12",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e12 reverse",
+      "samples": 158,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.5,
+        3.5,
+        -32
+      ],
+      "code": "ucc:floor1:e12",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e13",
+      "samples": 192,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        32,
+        2.87,
+        -54.4
+      ],
+      "code": "ucc:floor1:e13",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e13 reverse",
+      "samples": 192,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        25.77,
+        2.87,
+        -51.97
+      ],
+      "code": "ucc:floor1:e13",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e14",
+      "samples": 751,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -54.7
+      ],
+      "code": "ucc:floor1:e14",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e14 reverse",
+      "samples": 751,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        32,
+        2.87,
+        -54.4
+      ],
+      "code": "ucc:floor1:e14",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e15",
+      "samples": 87,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -51.68
+      ],
+      "code": "ucc:floor1:e15",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e15 reverse",
+      "samples": 87,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -54.7
+      ],
+      "code": "ucc:floor1:e15",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:e16",
+      "samples": 42,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        56.84,
+        2.87,
+        -51.96
+      ],
+      "code": "ucc:floor1:e16",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:e16 reverse",
+      "samples": 42,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -51.68
+      ],
+      "code": "ucc:floor1:e16",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:hall:e1",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.342500001192093,
+        -48.09
+      ],
+      "code": "ucc:floor1:hall:e1",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:hall:e1 reverse",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.5,
+        -47.6
+      ],
+      "code": "ucc:floor1:hall:e1",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:hall:e2",
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.185000002384186,
+        -48.55
+      ],
+      "code": "ucc:floor1:hall:e2",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:hall:e2 reverse",
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.342500001192093,
+        -48.09
+      ],
+      "code": "ucc:floor1:hall:e2",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:hall:e3",
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.0275000035762787,
+        -49.004999999999995
+      ],
+      "code": "ucc:floor1:hall:e3",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:hall:e3 reverse",
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.185000002384186,
+        -48.55
+      ],
+      "code": "ucc:floor1:hall:e3",
+      "reverse": true
+    },
+    {
+      "name": "ucc:floor1:hall:e4",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        2.8700000047683716,
+        -49.5
+      ],
+      "code": "ucc:floor1:hall:e4",
+      "reverse": false
+    },
+    {
+      "name": "ucc:floor1:hall:e4 reverse",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        3.0275000035762787,
+        -49.004999999999995
+      ],
+      "code": "ucc:floor1:hall:e4",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e001",
+      "samples": 125,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        2.87,
+        -54.4496953541508
+      ],
+      "code": "ucc:f2:e001",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e001 reverse",
+      "samples": 125,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        32,
+        2.87,
+        -54.4
+      ],
+      "code": "ucc:f2:e001",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e002",
+      "samples": 627,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -54.7
+      ],
+      "code": "ucc:f2:e002",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e002 reverse",
+      "samples": 627,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        2.87,
+        -54.4496953541508
+      ],
+      "code": "ucc:f2:e002",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e003",
+      "samples": 42,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        2.87,
+        -55.9
+      ],
+      "code": "ucc:f2:e003",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e003 reverse",
+      "samples": 42,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        2.87,
+        -54.4496953541508
+      ],
+      "code": "ucc:f2:e003",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e004",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.027619034051895,
+        -56.35
+      ],
+      "code": "ucc:f2:e004",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e004 reverse",
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        2.8700000047683716,
+        -55.9
+      ],
+      "code": "ucc:f2:e004",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e005",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.185238093137741,
+        -56.65
+      ],
+      "code": "ucc:f2:e005",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e005 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.027619034051895,
+        -56.35
+      ],
+      "code": "ucc:f2:e005",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e006",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.342857152223587,
+        -56.95
+      ],
+      "code": "ucc:f2:e006",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e006 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.185238093137741,
+        -56.65
+      ],
+      "code": "ucc:f2:e006",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e007",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.5004761767340824,
+        -57.25
+      ],
+      "code": "ucc:f2:e007",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e007 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.342857152223587,
+        -56.95
+      ],
+      "code": "ucc:f2:e007",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e008",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.6580952405929565,
+        -57.550000000000004
+      ],
+      "code": "ucc:f2:e008",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e008 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.5004761767340824,
+        -57.25
+      ],
+      "code": "ucc:f2:e008",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e009",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.8157142996788025,
+        -57.85
+      ],
+      "code": "ucc:f2:e009",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e009 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.6580952405929565,
+        -57.550000000000004
+      ],
+      "code": "ucc:f2:e009",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e010",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.9733333587646484,
+        -58.15
+      ],
+      "code": "ucc:f2:e010",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e010 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.8157142996788025,
+        -57.85
+      ],
+      "code": "ucc:f2:e010",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e011",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        4.13095235824585,
+        -58.45
+      ],
+      "code": "ucc:f2:e011",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e011 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        3.9733333587646484,
+        -58.15
+      ],
+      "code": "ucc:f2:e011",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e012",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        4.28857147693634,
+        -58.75
+      ],
+      "code": "ucc:f2:e012",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e012 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        4.13095235824585,
+        -58.45
+      ],
+      "code": "ucc:f2:e012",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e013",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        4.4461904764175415,
+        -59.050000000000004
+      ],
+      "code": "ucc:f2:e013",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e013 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        4.28857147693634,
+        -58.75
+      ],
+      "code": "ucc:f2:e013",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e014",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        4.603809475898743,
+        -59.35
+      ],
+      "code": "ucc:f2:e014",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e014 reverse",
+      "samples": 11,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        4.4461904764175415,
+        -59.050000000000004
+      ],
+      "code": "ucc:f2:e014",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e015",
+      "samples": 39,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        37.55,
+        4.603809475898743,
+        -60
+      ],
+      "code": "ucc:f2:e015",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e015 reverse",
+      "samples": 39,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        4.603809475898743,
+        -59.35
+      ],
+      "code": "ucc:f2:e015",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e016",
+      "samples": 38,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        4.603809475898743,
+        -59.35
+      ],
+      "code": "ucc:f2:e016",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e016 reverse",
+      "samples": 38,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        37.55,
+        4.603809475898743,
+        -60
+      ],
+      "code": "ucc:f2:e016",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e017",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        4.761428594589233,
+        -59.05
+      ],
+      "code": "ucc:f2:e017",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e017 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        4.603809475898743,
+        -59.35
+      ],
+      "code": "ucc:f2:e017",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e018",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        4.919047713279724,
+        -58.75
+      ],
+      "code": "ucc:f2:e018",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e018 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        4.761428594589233,
+        -59.05
+      ],
+      "code": "ucc:f2:e018",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e019",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.076666712760925,
+        -58.449999999999996
+      ],
+      "code": "ucc:f2:e019",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e019 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        4.919047713279724,
+        -58.75
+      ],
+      "code": "ucc:f2:e019",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e020",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.2342857122421265,
+        -58.15
+      ],
+      "code": "ucc:f2:e020",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e020 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.076666712760925,
+        -58.449999999999996
+      ],
+      "code": "ucc:f2:e020",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e021",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.391904711723328,
+        -57.849999999999994
+      ],
+      "code": "ucc:f2:e021",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e021 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.2342857122421265,
+        -58.15
+      ],
+      "code": "ucc:f2:e021",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e022",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.549523591995239,
+        -57.55
+      ],
+      "code": "ucc:f2:e022",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e022 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.391904711723328,
+        -57.849999999999994
+      ],
+      "code": "ucc:f2:e022",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e023",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.7071428298950195,
+        -57.25
+      ],
+      "code": "ucc:f2:e023",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e023 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.549523591995239,
+        -57.55
+      ],
+      "code": "ucc:f2:e023",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e024",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.864761829376221,
+        -56.949999999999996
+      ],
+      "code": "ucc:f2:e024",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e024 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.7071428298950195,
+        -57.25
+      ],
+      "code": "ucc:f2:e024",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e025",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.022380828857422,
+        -56.65
+      ],
+      "code": "ucc:f2:e025",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e025 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        5.864761829376221,
+        -56.949999999999996
+      ],
+      "code": "ucc:f2:e025",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e026",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.1800000095367436,
+        -56.349999999999994
+      ],
+      "code": "ucc:f2:e026",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e026 reverse",
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.022380828857422,
+        -56.65
+      ],
+      "code": "ucc:f2:e026",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e027",
+      "samples": 13,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.1800000095367436,
+        -55.9
+      ],
+      "code": "ucc:f2:e027",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e027 reverse",
+      "samples": 13,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.1800000095367436,
+        -56.349999999999994
+      ],
+      "code": "ucc:f2:e027",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e028",
+      "samples": 35,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e028",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e028 reverse",
+      "samples": 35,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.18,
+        -55.9
+      ],
+      "code": "ucc:f2:e028",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e029",
+      "samples": 226,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e029",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e029 reverse",
+      "samples": 226,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e029",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e030",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e030",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e030 reverse",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e030",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e031",
+      "samples": 109,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e031",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e031 reverse",
+      "samples": 109,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e031",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e032",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.205
+      ],
+      "code": "ucc:f2:e032",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e032 reverse",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e032",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e033",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -53.605
+      ],
+      "code": "ucc:f2:e033",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e033 reverse",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.205
+      ],
+      "code": "ucc:f2:e033",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e034",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -53.005
+      ],
+      "code": "ucc:f2:e034",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e034 reverse",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -53.605
+      ],
+      "code": "ucc:f2:e034",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e035",
+      "samples": 23,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -55.475
+      ],
+      "code": "ucc:f2:e035",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e035 reverse",
+      "samples": 23,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e035",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e036",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -56.075
+      ],
+      "code": "ucc:f2:e036",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e036 reverse",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -55.475
+      ],
+      "code": "ucc:f2:e036",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e037",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -56.675
+      ],
+      "code": "ucc:f2:e037",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e037 reverse",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -56.075
+      ],
+      "code": "ucc:f2:e037",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e038",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -54.18
+      ],
+      "code": "ucc:f2:e038",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e038 reverse",
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -54.7
+      ],
+      "code": "ucc:f2:e038",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e039",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -53.58
+      ],
+      "code": "ucc:f2:e039",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e039 reverse",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -54.18
+      ],
+      "code": "ucc:f2:e039",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e040",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -52.98
+      ],
+      "code": "ucc:f2:e040",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e040 reverse",
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -53.58
+      ],
+      "code": "ucc:f2:e040",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e041",
+      "samples": 86,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -50
+      ],
+      "code": "ucc:f2:e041",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e041 reverse",
+      "samples": 86,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -52.98
+      ],
+      "code": "ucc:f2:e041",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e042",
+      "samples": 105,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.569,
+        6.18,
+        -50
+      ],
+      "code": "ucc:f2:e042",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e042 reverse",
+      "samples": 105,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -50
+      ],
+      "code": "ucc:f2:e042",
+      "reverse": true
+    },
+    {
+      "name": "ucc:f2:e043",
+      "samples": 51,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.569,
+        6.18,
+        -51.782
+      ],
+      "code": "ucc:f2:e043",
+      "reverse": false
+    },
+    {
+      "name": "ucc:f2:e043 reverse",
+      "samples": 51,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.569,
+        6.18,
+        -50
+      ],
+      "code": "ucc:f2:e043",
+      "reverse": true
+    }
+  ],
+  "towers": [
+    {
+      "name": "tower east 1/2",
+      "samples": 305,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        6.1800000095367436,
+        -55.9
+      ],
+      "lower": 1,
+      "upper": 2,
+      "tower": "east",
+      "reverse": false,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower east 1/2 reverse",
+      "samples": 305,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        2.8700000047683716,
+        -55.9
+      ],
+      "lower": 1,
+      "upper": 2,
+      "tower": "east",
+      "reverse": true,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower west 1/2",
+      "samples": 334,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        18.05000000000001,
+        6.1800000095367436,
+        -55.9
+      ],
+      "lower": 1,
+      "upper": 2,
+      "tower": "west",
+      "reverse": false,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower west 1/2 reverse",
+      "samples": 334,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        14.65,
+        2.8700000047683716,
+        -55.9
+      ],
+      "lower": 1,
+      "upper": 2,
+      "tower": "west",
+      "reverse": true,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower east 2/3",
+      "samples": 305,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        9.870000009536744,
+        -55.9
+      ],
+      "lower": 2,
+      "upper": 3,
+      "tower": "east",
+      "reverse": false,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower east 2/3 reverse",
+      "samples": 305,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        6.1800000095367436,
+        -55.9
+      ],
+      "lower": 2,
+      "upper": 3,
+      "tower": "east",
+      "reverse": true,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower west 2/3",
+      "samples": 334,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        18.05000000000001,
+        9.870000009536744,
+        -55.9
+      ],
+      "lower": 2,
+      "upper": 3,
+      "tower": "west",
+      "reverse": false,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower west 2/3 reverse",
+      "samples": 334,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        14.65,
+        6.1800000095367436,
+        -55.9
+      ],
+      "lower": 2,
+      "upper": 3,
+      "tower": "west",
+      "reverse": true,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower east 3/4",
+      "samples": 305,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        13.369999952316284,
+        -55.9
+      ],
+      "lower": 3,
+      "upper": 4,
+      "tower": "east",
+      "reverse": false,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower east 3/4 reverse",
+      "samples": 305,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        9.870000009536744,
+        -55.9
+      ],
+      "lower": 3,
+      "upper": 4,
+      "tower": "east",
+      "reverse": true,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower west 3/4",
+      "samples": 334,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        18.05000000000001,
+        13.369999952316284,
+        -55.9
+      ],
+      "lower": 3,
+      "upper": 4,
+      "tower": "west",
+      "reverse": false,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower west 3/4 reverse",
+      "samples": 334,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        14.65,
+        9.870000009536744,
+        -55.9
+      ],
+      "lower": 3,
+      "upper": 4,
+      "tower": "west",
+      "reverse": true,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower east 4/5",
+      "samples": 305,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        38.7,
+        16.870000014305113,
+        -55.9
+      ],
+      "lower": 4,
+      "upper": 5,
+      "tower": "east",
+      "reverse": false,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower east 4/5 reverse",
+      "samples": 305,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        36.35,
+        13.369999952316284,
+        -55.9
+      ],
+      "lower": 4,
+      "upper": 5,
+      "tower": "east",
+      "reverse": true,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower west 4/5",
+      "samples": 334,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        18.05000000000001,
+        16.870000014305113,
+        -55.9
+      ],
+      "lower": 4,
+      "upper": 5,
+      "tower": "west",
+      "reverse": false,
+      "scope": "inspection only; no API connection added"
+    },
+    {
+      "name": "tower west 4/5 reverse",
+      "samples": 334,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        14.65,
+        13.369999952316284,
+        -55.9
+      ],
+      "lower": 4,
+      "upper": 5,
+      "tower": "west",
+      "reverse": true,
+      "scope": "inspection only; no API connection added"
+    }
+  ],
+  "hall3": [
+    {
+      "name": "floor 3 hall up",
+      "samples": 60,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        9.870000009536744,
+        -49.6
+      ]
+    },
+    {
+      "name": "floor 3 hall down",
+      "samples": 61,
+      "firstBlocker": null,
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        9.38,
+        -47.6
+      ]
+    }
+  ],
+  "rejectedJunctions": [
+    {
+      "name": "unreviewed A/B junction 2",
+      "samples": 44,
+      "firstBlocker": null,
+      "unsupported": true,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        6.44,
+        -49.09338384673976
+      ],
+      "floor": 2,
+      "expectedRejected": true
+    },
+    {
+      "name": "unreviewed A/B junction 4",
+      "samples": 58,
+      "firstBlocker": null,
+      "unsupported": true,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        12.32,
+        -49.061190592949075
+      ],
+      "floor": 4,
+      "expectedRejected": true
+    },
+    {
+      "name": "unreviewed A/B junction 5",
+      "samples": 0,
+      "firstBlocker": "P5_Walls_1",
+      "unsupported": false,
+      "noProgress": false,
+      "lastPosition": [
+        28,
+        15.26,
+        -47.6
+      ],
+      "floor": 5,
+      "expectedRejected": true
+    }
+  ],
+  "mixedNeighbour": {
+    "name": "C15 floor 2 with C16 floor 3",
+    "samples": 35,
+    "firstBlocker": null,
+    "unsupported": true,
+    "noProgress": true,
+    "lastPosition": [
+      36.35,
+      6.484761914759875,
+      -56.64999988236754
+    ],
+    "expectedRejected": true
+  },
+  "failed": [],
+  "unsafeAccepted": [],
+  "unchangedDataAndFourProfiles": true
+}

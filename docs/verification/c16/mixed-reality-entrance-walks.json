@@ -1,0 +1,5049 @@
+{
+  "profile": "ucc-two-floors-c15",
+  "models": [
+    {
+      "url": "models/c16/floor-1.glb",
+      "hash": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-1.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-3.glb",
+      "hash": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-3.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-4.glb",
+      "hash": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-4.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-5.glb",
+      "hash": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-5.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-2.glb",
+      "hash": "b099eb799e1dbaf23fee818601b64499113fea401062add809c2b8d57de43f44",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-2.glb"
+      }
+    }
+  ],
+  "scope": "production scripts.run_campus launcher and versioned profile on an isolated database; shipped manifest without overrides",
+  "runs": [
+    {
+      "direction": "outbound",
+      "route": {
+        "path": [
+          "Hall Acceso",
+          "Access courtyard",
+          "South circulation",
+          "ICETEX approach",
+          "ICETEX doorway",
+          "Hall junction",
+          "Hall corridor south",
+          "Hall corridor north",
+          "Hall steps tread 1",
+          "Hall steps tread 2",
+          "Hall steps tread 3",
+          "Hall steps / Block A arrival",
+          "Elevator and Restroom Hall",
+          "North circulation west",
+          "North circulation / east stair junction",
+          "East stair point 0 (floors 1-2)",
+          "East stair point 1 (floors 1-2)",
+          "East stair point 2 (floors 1-2)",
+          "East stair point 3 (floors 1-2)",
+          "East stair point 4 (floors 1-2)",
+          "East stair point 5 (floors 1-2)",
+          "East stair point 6 (floors 1-2)",
+          "East stair point 7 (floors 1-2)",
+          "East stair point 8 (floors 1-2)",
+          "East stair point 9 (floors 1-2)",
+          "East stair point 10 (floors 1-2)",
+          "East stair point 11 (floors 1-2)",
+          "East stair point 12 (floors 1-2)",
+          "East stair point 13 (floors 1-2)",
+          "East stair point 14 (floors 1-2)",
+          "East stair point 15 (floors 1-2)",
+          "East stair point 16 (floors 1-2)",
+          "East stair point 17 (floors 1-2)",
+          "East stair point 18 (floors 1-2)",
+          "East stair point 19 (floors 1-2)",
+          "East stair point 20 (floors 1-2)",
+          "East stair point 21 (floors 1-2)",
+          "East stair point 22 (floors 1-2)",
+          "East stair point 23 (floors 1-2)",
+          "East stair point 24 (floors 1-2)",
+          "Second-floor north circulation",
+          "Mixed reality corridor turn",
+          "D14 corridor stand",
+          "D14 doorway centre",
+          "Mixed Reality Laboratory (floor 2)"
+        ],
+        "steps": [
+          {
+            "origin_name": "Hall Acceso",
+            "destination_name": "Access courtyard",
+            "kind": "outdoor",
+            "distance": 17.5576906226303,
+            "origin_id": 1,
+            "destination_id": 2,
+            "path_id": 1,
+            "connection_code": "ucc:floor1:e01",
+            "origin_display_name": "Hall Acceso",
+            "destination_display_name": "Access courtyard"
+          },
+          {
+            "origin_name": "Access courtyard",
+            "destination_name": "South circulation",
+            "kind": "outdoor",
+            "distance": 23.00592315035413,
+            "origin_id": 2,
+            "destination_id": 3,
+            "path_id": 2,
+            "connection_code": "ucc:floor1:e02",
+            "origin_display_name": "Access courtyard",
+            "destination_display_name": "South circulation"
+          },
+          {
+            "origin_name": "South circulation",
+            "destination_name": "ICETEX approach",
+            "kind": "corridor",
+            "distance": 1.5811388300841898,
+            "origin_id": 3,
+            "destination_id": 4,
+            "path_id": 3,
+            "connection_code": "ucc:floor1:e03",
+            "origin_display_name": "South circulation",
+            "destination_display_name": "ICETEX approach"
+          },
+          {
+            "origin_name": "ICETEX approach",
+            "destination_name": "ICETEX doorway",
+            "kind": "corridor",
+            "distance": 2.0615528128088303,
+            "origin_id": 4,
+            "destination_id": 5,
+            "path_id": 4,
+            "connection_code": "ucc:floor1:e04",
+            "origin_display_name": "ICETEX approach",
+            "destination_display_name": "ICETEX doorway"
+          },
+          {
+            "origin_name": "ICETEX doorway",
+            "destination_name": "Hall junction",
+            "kind": "corridor",
+            "distance": 0.7071067811865476,
+            "origin_id": 5,
+            "destination_id": 7,
+            "path_id": 6,
+            "connection_code": "ucc:floor1:e06",
+            "origin_display_name": "ICETEX doorway",
+            "destination_display_name": "Hall junction"
+          },
+          {
+            "origin_name": "Hall junction",
+            "destination_name": "Hall corridor south",
+            "kind": "corridor",
+            "distance": 4,
+            "origin_id": 7,
+            "destination_id": 8,
+            "path_id": 7,
+            "connection_code": "ucc:floor1:e07",
+            "origin_display_name": "Hall junction",
+            "destination_display_name": "Hall corridor south"
+          },
+          {
+            "origin_name": "Hall corridor south",
+            "destination_name": "Hall corridor north",
+            "kind": "corridor",
+            "distance": 11.100000000000001,
+            "origin_id": 8,
+            "destination_id": 9,
+            "path_id": 8,
+            "connection_code": "ucc:floor1:e08",
+            "origin_display_name": "Hall corridor south",
+            "destination_display_name": "Hall corridor north"
+          },
+          {
+            "origin_name": "Hall corridor north",
+            "destination_name": "Hall steps tread 1",
+            "kind": "stairs",
+            "distance": 0.514690440944848,
+            "origin_id": 9,
+            "destination_id": 20,
+            "path_id": 17,
+            "connection_code": "ucc:floor1:hall:e1",
+            "origin_display_name": "Hall corridor north",
+            "destination_display_name": "Hall steps tread 1"
+          },
+          {
+            "origin_name": "Hall steps tread 1",
+            "destination_name": "Hall steps tread 2",
+            "kind": "stairs",
+            "distance": 0.48621625846941213,
+            "origin_id": 20,
+            "destination_id": 21,
+            "path_id": 18,
+            "connection_code": "ucc:floor1:hall:e2",
+            "origin_display_name": "Hall steps tread 1",
+            "destination_display_name": "Hall steps tread 2"
+          },
+          {
+            "origin_name": "Hall steps tread 2",
+            "destination_name": "Hall steps tread 3",
+            "kind": "stairs",
+            "distance": 0.4814885772269146,
+            "origin_id": 21,
+            "destination_id": 22,
+            "path_id": 19,
+            "connection_code": "ucc:floor1:hall:e3",
+            "origin_display_name": "Hall steps tread 2",
+            "destination_display_name": "Hall steps tread 3"
+          },
+          {
+            "origin_name": "Hall steps tread 3",
+            "destination_name": "Hall steps / Block A arrival",
+            "kind": "stairs",
+            "distance": 0.5194528371276881,
+            "origin_id": 22,
+            "destination_id": 23,
+            "path_id": 20,
+            "connection_code": "ucc:floor1:hall:e4",
+            "origin_display_name": "Hall steps tread 3",
+            "destination_display_name": "Hall steps / Block A arrival"
+          },
+          {
+            "origin_name": "Hall steps / Block A arrival",
+            "destination_name": "Elevator and Restroom Hall",
+            "kind": "corridor",
+            "distance": 3.3277319603597877,
+            "origin_id": 23,
+            "destination_id": 10,
+            "path_id": 9,
+            "connection_code": "ucc:floor1:e09",
+            "origin_display_name": "Hall steps / Block A arrival",
+            "destination_display_name": "Elevator and Restroom Hall"
+          },
+          {
+            "origin_name": "Elevator and Restroom Hall",
+            "destination_name": "North circulation west",
+            "kind": "corridor",
+            "distance": 6.687136906030862,
+            "origin_id": 10,
+            "destination_id": 15,
+            "path_id": 13,
+            "connection_code": "ucc:floor1:e13",
+            "origin_display_name": "Elevator and Restroom Hall",
+            "destination_display_name": "North circulation west"
+          },
+          {
+            "origin_name": "North circulation west",
+            "destination_name": "North circulation / east stair junction",
+            "kind": "corridor",
+            "distance": 4.350283856051716,
+            "origin_id": 15,
+            "destination_id": 24,
+            "path_id": 21,
+            "connection_code": "ucc:f2:e001",
+            "origin_display_name": "North circulation west",
+            "destination_display_name": "North circulation / east stair junction"
+          },
+          {
+            "origin_name": "North circulation / east stair junction",
+            "destination_name": "East stair point 0 (floors 1-2)",
+            "kind": "corridor",
+            "distance": 1.4503046458492008,
+            "origin_id": 24,
+            "destination_id": 25,
+            "path_id": 23,
+            "connection_code": "ucc:f2:e003",
+            "origin_display_name": "North circulation / east stair junction",
+            "destination_display_name": "East stair point 0 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 0 (floors 1-2)",
+            "destination_name": "East stair point 1 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.47680579305670023,
+            "origin_id": 25,
+            "destination_id": 26,
+            "path_id": 24,
+            "connection_code": "ucc:f2:e004",
+            "origin_display_name": "East stair point 0 (floors 1-2)",
+            "destination_display_name": "East stair point 1 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 1 (floors 1-2)",
+            "destination_name": "East stair point 2 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860643456185,
+            "origin_id": 26,
+            "destination_id": 27,
+            "path_id": 25,
+            "connection_code": "ucc:f2:e005",
+            "origin_display_name": "East stair point 1 (floors 1-2)",
+            "destination_display_name": "East stair point 2 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 2 (floors 1-2)",
+            "destination_name": "East stair point 3 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860559736583,
+            "origin_id": 27,
+            "destination_id": 28,
+            "path_id": 26,
+            "connection_code": "ucc:f2:e006",
+            "origin_display_name": "East stair point 2 (floors 1-2)",
+            "destination_display_name": "East stair point 3 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 3 (floors 1-2)",
+            "destination_name": "East stair point 4 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888607178736707,
+            "origin_id": 28,
+            "destination_id": 29,
+            "path_id": 27,
+            "connection_code": "ucc:f2:e007",
+            "origin_display_name": "East stair point 3 (floors 1-2)",
+            "destination_display_name": "East stair point 4 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 4 (floors 1-2)",
+            "destination_name": "East stair point 5 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888605643876757,
+            "origin_id": 29,
+            "destination_id": 30,
+            "path_id": 28,
+            "connection_code": "ucc:f2:e008",
+            "origin_display_name": "East stair point 4 (floors 1-2)",
+            "destination_display_name": "East stair point 5 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 5 (floors 1-2)",
+            "destination_name": "East stair point 6 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888605597365223,
+            "origin_id": 30,
+            "destination_id": 31,
+            "path_id": 29,
+            "connection_code": "ucc:f2:e009",
+            "origin_display_name": "East stair point 5 (floors 1-2)",
+            "destination_display_name": "East stair point 6 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 6 (floors 1-2)",
+            "destination_name": "East stair point 7 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888608760108463,
+            "origin_id": 31,
+            "destination_id": 32,
+            "path_id": 30,
+            "connection_code": "ucc:f2:e010",
+            "origin_display_name": "East stair point 6 (floors 1-2)",
+            "destination_display_name": "East stair point 7 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 7 (floors 1-2)",
+            "destination_name": "East stair point 8 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860559736583,
+            "origin_id": 32,
+            "destination_id": 33,
+            "path_id": 31,
+            "connection_code": "ucc:f2:e011",
+            "origin_display_name": "East stair point 7 (floors 1-2)",
+            "destination_display_name": "East stair point 8 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 8 (floors 1-2)",
+            "destination_name": "East stair point 9 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860564387615,
+            "origin_id": 33,
+            "destination_id": 34,
+            "path_id": 32,
+            "connection_code": "ucc:f2:e012",
+            "origin_display_name": "East stair point 8 (floors 1-2)",
+            "destination_display_name": "East stair point 9 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 9 (floors 1-2)",
+            "destination_name": "East stair point 10 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860559736585,
+            "origin_id": 34,
+            "destination_id": 35,
+            "path_id": 33,
+            "connection_code": "ucc:f2:e013",
+            "origin_display_name": "East stair point 9 (floors 1-2)",
+            "destination_display_name": "East stair point 10 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 10 (floors 1-2)",
+            "destination_name": "East stair point 11 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860564387611,
+            "origin_id": 35,
+            "destination_id": 36,
+            "path_id": 34,
+            "connection_code": "ucc:f2:e014",
+            "origin_display_name": "East stair point 10 (floors 1-2)",
+            "destination_display_name": "East stair point 11 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 11 (floors 1-2)",
+            "destination_name": "East stair point 12 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 1.3647344063956137,
+            "origin_id": 36,
+            "destination_id": 37,
+            "path_id": 35,
+            "connection_code": "ucc:f2:e015",
+            "origin_display_name": "East stair point 11 (floors 1-2)",
+            "destination_display_name": "East stair point 12 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 12 (floors 1-2)",
+            "destination_name": "East stair point 13 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 1.3209844813622948,
+            "origin_id": 37,
+            "destination_id": 38,
+            "path_id": 36,
+            "connection_code": "ucc:f2:e016",
+            "origin_display_name": "East stair point 12 (floors 1-2)",
+            "destination_display_name": "East stair point 13 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 13 (floors 1-2)",
+            "destination_name": "East stair point 14 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860559736585,
+            "origin_id": 38,
+            "destination_id": 39,
+            "path_id": 37,
+            "connection_code": "ucc:f2:e017",
+            "origin_display_name": "East stair point 13 (floors 1-2)",
+            "destination_display_name": "East stair point 14 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 14 (floors 1-2)",
+            "destination_name": "East stair point 15 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888611876341856,
+            "origin_id": 39,
+            "destination_id": 40,
+            "path_id": 38,
+            "connection_code": "ucc:f2:e018",
+            "origin_display_name": "East stair point 14 (floors 1-2)",
+            "destination_display_name": "East stair point 15 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 15 (floors 1-2)",
+            "destination_name": "East stair point 16 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888605643876735,
+            "origin_id": 40,
+            "destination_id": 41,
+            "path_id": 39,
+            "connection_code": "ucc:f2:e019",
+            "origin_display_name": "East stair point 15 (floors 1-2)",
+            "destination_display_name": "East stair point 16 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 16 (floors 1-2)",
+            "destination_name": "East stair point 17 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.338885993649037,
+            "origin_id": 41,
+            "destination_id": 42,
+            "path_id": 40,
+            "connection_code": "ucc:f2:e020",
+            "origin_display_name": "East stair point 16 (floors 1-2)",
+            "destination_display_name": "East stair point 17 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 17 (floors 1-2)",
+            "destination_name": "East stair point 18 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888611876342484,
+            "origin_id": 42,
+            "destination_id": 43,
+            "path_id": 41,
+            "connection_code": "ucc:f2:e021",
+            "origin_display_name": "East stair point 17 (floors 1-2)",
+            "destination_display_name": "East stair point 18 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 18 (floors 1-2)",
+            "destination_name": "East stair point 19 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.338886118298309,
+            "origin_id": 43,
+            "destination_id": 44,
+            "path_id": 42,
+            "connection_code": "ucc:f2:e022",
+            "origin_display_name": "East stair point 18 (floors 1-2)",
+            "destination_display_name": "East stair point 19 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 19 (floors 1-2)",
+            "destination_name": "East stair point 20 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888599411414555,
+            "origin_id": 44,
+            "destination_id": 45,
+            "path_id": 43,
+            "connection_code": "ucc:f2:e023",
+            "origin_display_name": "East stair point 19 (floors 1-2)",
+            "destination_display_name": "East stair point 20 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 20 (floors 1-2)",
+            "destination_name": "East stair point 21 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388861182983153,
+            "origin_id": 45,
+            "destination_id": 46,
+            "path_id": 44,
+            "connection_code": "ucc:f2:e024",
+            "origin_display_name": "East stair point 20 (floors 1-2)",
+            "destination_display_name": "East stair point 21 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 21 (floors 1-2)",
+            "destination_name": "East stair point 22 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888599411414555,
+            "origin_id": 46,
+            "destination_id": 47,
+            "path_id": 45,
+            "connection_code": "ucc:f2:e025",
+            "origin_display_name": "East stair point 21 (floors 1-2)",
+            "destination_display_name": "East stair point 22 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 22 (floors 1-2)",
+            "destination_name": "East stair point 23 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388861182983153,
+            "origin_id": 47,
+            "destination_id": 48,
+            "path_id": 46,
+            "connection_code": "ucc:f2:e026",
+            "origin_display_name": "East stair point 22 (floors 1-2)",
+            "destination_display_name": "East stair point 23 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 23 (floors 1-2)",
+            "destination_name": "East stair point 24 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.4500000000000003,
+            "origin_id": 48,
+            "destination_id": 49,
+            "path_id": 47,
+            "connection_code": "ucc:f2:e027",
+            "origin_display_name": "East stair point 23 (floors 1-2)",
+            "destination_display_name": "East stair point 24 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 24 (floors 1-2)",
+            "destination_name": "Second-floor north circulation",
+            "kind": "corridor",
+            "distance": 1.1999999999999957,
+            "origin_id": 49,
+            "destination_id": 50,
+            "path_id": 48,
+            "connection_code": "ucc:f2:e028",
+            "origin_display_name": "East stair point 24 (floors 1-2)",
+            "destination_display_name": "Second-floor north circulation"
+          },
+          {
+            "origin_name": "Second-floor north circulation",
+            "destination_name": "Mixed reality corridor turn",
+            "kind": "corridor",
+            "distance": 7.903999999999996,
+            "origin_id": 50,
+            "destination_id": 51,
+            "path_id": 49,
+            "connection_code": "ucc:f2:e029",
+            "origin_display_name": "Second-floor north circulation",
+            "destination_display_name": "Mixed reality corridor turn"
+          },
+          {
+            "origin_name": "Mixed reality corridor turn",
+            "destination_name": "D14 corridor stand",
+            "kind": "corridor",
+            "distance": 0.49500000000000455,
+            "origin_id": 51,
+            "destination_id": 54,
+            "path_id": 52,
+            "connection_code": "ucc:f2:e032",
+            "origin_display_name": "Mixed reality corridor turn",
+            "destination_display_name": "D14 corridor stand"
+          },
+          {
+            "origin_name": "D14 corridor stand",
+            "destination_name": "D14 doorway centre",
+            "kind": "corridor",
+            "distance": 0.6000000000000014,
+            "origin_id": 54,
+            "destination_id": 55,
+            "path_id": 53,
+            "connection_code": "ucc:f2:e033",
+            "origin_display_name": "D14 corridor stand",
+            "destination_display_name": "D14 doorway centre"
+          },
+          {
+            "origin_name": "D14 doorway centre",
+            "destination_name": "Mixed Reality Laboratory (floor 2)",
+            "kind": "corridor",
+            "distance": 0.5999999999999943,
+            "origin_id": 55,
+            "destination_id": 56,
+            "path_id": 54,
+            "connection_code": "ucc:f2:e034",
+            "origin_display_name": "D14 doorway centre",
+            "destination_display_name": "Mixed Reality Laboratory (floor 2)"
+          }
+        ],
+        "distance": 99.01996366359555,
+        "origin_name": "Hall Acceso",
+        "destination_name": "Mixed Reality Laboratory (floor 2)",
+        "waypoints": [
+          {
+            "id": 1,
+            "code": "ucc:floor1:p01",
+            "name": "Hall Acceso",
+            "display_name": "Hall Acceso",
+            "x": 0,
+            "y": 0,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 2,
+            "code": "ucc:floor1:p02",
+            "name": "Access courtyard",
+            "display_name": "Access courtyard",
+            "x": 6,
+            "y": 16.5,
+            "floor": 1,
+            "elevation_m": 3.35,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 3,
+            "code": "ucc:floor1:p03",
+            "name": "South circulation",
+            "display_name": "South circulation",
+            "x": 21.5,
+            "y": 33.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 4,
+            "code": "ucc:floor1:p04",
+            "name": "ICETEX approach",
+            "display_name": "ICETEX approach",
+            "x": 23,
+            "y": 34,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 5,
+            "code": "ucc:floor1:p05",
+            "name": "ICETEX doorway",
+            "display_name": "ICETEX doorway",
+            "x": 23.5,
+            "y": 36,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 7,
+            "code": "ucc:floor1:p07",
+            "name": "Hall junction",
+            "display_name": "Hall junction",
+            "x": 24,
+            "y": 36.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 8,
+            "code": "ucc:floor1:p08",
+            "name": "Hall corridor south",
+            "display_name": "Hall corridor south",
+            "x": 28,
+            "y": 36.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 9,
+            "code": "ucc:floor1:p09",
+            "name": "Hall corridor north",
+            "display_name": "Hall corridor north",
+            "x": 28,
+            "y": 47.6,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 20,
+            "code": "ucc:floor1:hall-tread-01",
+            "name": "Hall steps tread 1",
+            "display_name": "Hall steps tread 1",
+            "x": 28,
+            "y": 48.09,
+            "floor": 1,
+            "elevation_m": 3.3425,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 21,
+            "code": "ucc:floor1:hall-tread-02",
+            "name": "Hall steps tread 2",
+            "display_name": "Hall steps tread 2",
+            "x": 28,
+            "y": 48.55,
+            "floor": 1,
+            "elevation_m": 3.185,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 22,
+            "code": "ucc:floor1:hall-tread-03",
+            "name": "Hall steps tread 3",
+            "display_name": "Hall steps tread 3",
+            "x": 28,
+            "y": 49.004999999999995,
+            "floor": 1,
+            "elevation_m": 3.0275,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 23,
+            "code": "ucc:floor1:hall-after",
+            "name": "Hall steps / Block A arrival",
+            "display_name": "Hall steps / Block A arrival",
+            "x": 28,
+            "y": 49.5,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 10,
+            "code": "ucc:floor1:p10",
+            "name": "Elevator and Restroom Hall",
+            "display_name": "Elevator and Restroom Hall",
+            "x": 25.77,
+            "y": 51.97,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 15,
+            "code": "ucc:floor1:p15",
+            "name": "North circulation west",
+            "display_name": "North circulation west",
+            "x": 32,
+            "y": 54.4,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 24,
+            "code": "ucc:f2:north-junction",
+            "name": "North circulation / east stair junction",
+            "display_name": "North circulation / east stair junction",
+            "x": 36.35,
+            "y": 54.4496953541508,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 25,
+            "code": "ucc:f2:east-stair-00",
+            "name": "East stair point 0 (floors 1-2)",
+            "display_name": "East stair point 0 (floors 1-2)",
+            "x": 36.35,
+            "y": 55.9,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 26,
+            "code": "ucc:f2:east-stair-01",
+            "name": "East stair point 1 (floors 1-2)",
+            "display_name": "East stair point 1 (floors 1-2)",
+            "x": 36.35,
+            "y": 56.35,
+            "floor": 1,
+            "elevation_m": 3.027619048,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 27,
+            "code": "ucc:f2:east-stair-02",
+            "name": "East stair point 2 (floors 1-2)",
+            "display_name": "East stair point 2 (floors 1-2)",
+            "x": 36.35,
+            "y": 56.65,
+            "floor": 1,
+            "elevation_m": 3.185238097,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 28,
+            "code": "ucc:f2:east-stair-03",
+            "name": "East stair point 3 (floors 1-2)",
+            "display_name": "East stair point 3 (floors 1-2)",
+            "x": 36.35,
+            "y": 56.95,
+            "floor": 1,
+            "elevation_m": 3.342857128,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 29,
+            "code": "ucc:f2:east-stair-04",
+            "name": "East stair point 4 (floors 1-2)",
+            "display_name": "East stair point 4 (floors 1-2)",
+            "x": 36.35,
+            "y": 57.25,
+            "floor": 1,
+            "elevation_m": 3.500476193,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 30,
+            "code": "ucc:f2:east-stair-05",
+            "name": "East stair point 5 (floors 1-2)",
+            "display_name": "East stair point 5 (floors 1-2)",
+            "x": 36.35,
+            "y": 57.550000000000004,
+            "floor": 1,
+            "elevation_m": 3.658095225,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 31,
+            "code": "ucc:f2:east-stair-06",
+            "name": "East stair point 6 (floors 1-2)",
+            "display_name": "East stair point 6 (floors 1-2)",
+            "x": 36.35,
+            "y": 57.85,
+            "floor": 1,
+            "elevation_m": 3.815714256,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 32,
+            "code": "ucc:f2:east-stair-07",
+            "name": "East stair point 7 (floors 1-2)",
+            "display_name": "East stair point 7 (floors 1-2)",
+            "x": 36.35,
+            "y": 58.15,
+            "floor": 1,
+            "elevation_m": 3.973333355,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 33,
+            "code": "ucc:f2:east-stair-08",
+            "name": "East stair point 8 (floors 1-2)",
+            "display_name": "East stair point 8 (floors 1-2)",
+            "x": 36.35,
+            "y": 58.45,
+            "floor": 1,
+            "elevation_m": 4.130952386,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 34,
+            "code": "ucc:f2:east-stair-09",
+            "name": "East stair point 9 (floors 1-2)",
+            "display_name": "East stair point 9 (floors 1-2)",
+            "x": 36.35,
+            "y": 58.75,
+            "floor": 1,
+            "elevation_m": 4.288571418,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 35,
+            "code": "ucc:f2:east-stair-10",
+            "name": "East stair point 10 (floors 1-2)",
+            "display_name": "East stair point 10 (floors 1-2)",
+            "x": 36.35,
+            "y": 59.050000000000004,
+            "floor": 1,
+            "elevation_m": 4.446190449,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 36,
+            "code": "ucc:f2:east-stair-11",
+            "name": "East stair point 11 (floors 1-2)",
+            "display_name": "East stair point 11 (floors 1-2)",
+            "x": 36.35,
+            "y": 59.35,
+            "floor": 1,
+            "elevation_m": 4.603809481,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 37,
+            "code": "ucc:f2:east-stair-12",
+            "name": "East stair point 12 (floors 1-2)",
+            "display_name": "East stair point 12 (floors 1-2)",
+            "x": 37.55,
+            "y": 60,
+            "floor": 1,
+            "elevation_m": 4.603809481,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 38,
+            "code": "ucc:f2:east-stair-13",
+            "name": "East stair point 13 (floors 1-2)",
+            "display_name": "East stair point 13 (floors 1-2)",
+            "x": 38.7,
+            "y": 59.35,
+            "floor": 1,
+            "elevation_m": 4.603809481,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 39,
+            "code": "ucc:f2:east-stair-14",
+            "name": "East stair point 14 (floors 1-2)",
+            "display_name": "East stair point 14 (floors 1-2)",
+            "x": 38.7,
+            "y": 59.05,
+            "floor": 1,
+            "elevation_m": 4.761428512,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 40,
+            "code": "ucc:f2:east-stair-15",
+            "name": "East stair point 15 (floors 1-2)",
+            "display_name": "East stair point 15 (floors 1-2)",
+            "x": 38.7,
+            "y": 58.75,
+            "floor": 1,
+            "elevation_m": 4.919047678,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 41,
+            "code": "ucc:f2:east-stair-16",
+            "name": "East stair point 16 (floors 1-2)",
+            "display_name": "East stair point 16 (floors 1-2)",
+            "x": 38.7,
+            "y": 58.449999999999996,
+            "floor": 1,
+            "elevation_m": 5.07666671,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 42,
+            "code": "ucc:f2:east-stair-17",
+            "name": "East stair point 17 (floors 1-2)",
+            "display_name": "East stair point 17 (floors 1-2)",
+            "x": 38.7,
+            "y": 58.15,
+            "floor": 1,
+            "elevation_m": 5.234285607,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 43,
+            "code": "ucc:f2:east-stair-18",
+            "name": "East stair point 18 (floors 1-2)",
+            "display_name": "East stair point 18 (floors 1-2)",
+            "x": 38.7,
+            "y": 57.849999999999994,
+            "floor": 1,
+            "elevation_m": 5.391904773,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 44,
+            "code": "ucc:f2:east-stair-19",
+            "name": "East stair point 19 (floors 1-2)",
+            "display_name": "East stair point 19 (floors 1-2)",
+            "x": 38.7,
+            "y": 57.55,
+            "floor": 1,
+            "elevation_m": 5.549523938,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 45,
+            "code": "ucc:f2:east-stair-20",
+            "name": "East stair point 20 (floors 1-2)",
+            "display_name": "East stair point 20 (floors 1-2)",
+            "x": 38.7,
+            "y": 57.25,
+            "floor": 1,
+            "elevation_m": 5.707142836,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 46,
+            "code": "ucc:f2:east-stair-21",
+            "name": "East stair point 21 (floors 1-2)",
+            "display_name": "East stair point 21 (floors 1-2)",
+            "x": 38.7,
+            "y": 56.949999999999996,
+            "floor": 1,
+            "elevation_m": 5.864762001,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 47,
+            "code": "ucc:f2:east-stair-22",
+            "name": "East stair point 22 (floors 1-2)",
+            "display_name": "East stair point 22 (floors 1-2)",
+            "x": 38.7,
+            "y": 56.65,
+            "floor": 1,
+            "elevation_m": 6.022380899,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 48,
+            "code": "ucc:f2:east-stair-23",
+            "name": "East stair point 23 (floors 1-2)",
+            "display_name": "East stair point 23 (floors 1-2)",
+            "x": 38.7,
+            "y": 56.349999999999994,
+            "floor": 1,
+            "elevation_m": 6.180000064,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 49,
+            "code": "ucc:f2:east-stair-24",
+            "name": "East stair point 24 (floors 1-2)",
+            "display_name": "East stair point 24 (floors 1-2)",
+            "x": 38.7,
+            "y": 55.9,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 50,
+            "code": "ucc:f2:north-corridor",
+            "name": "Second-floor north circulation",
+            "display_name": "Second-floor north circulation",
+            "x": 38.7,
+            "y": 54.7,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 51,
+            "code": "ucc:f2:mixed-corridor-turn",
+            "name": "Mixed reality corridor turn",
+            "display_name": "Mixed reality corridor turn",
+            "x": 46.604,
+            "y": 54.7,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 54,
+            "code": "ucc:f2:mixed-reality-outside",
+            "name": "D14 corridor stand",
+            "display_name": "D14 corridor stand",
+            "x": 46.604,
+            "y": 54.205,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 55,
+            "code": "ucc:f2:mixed-reality-door",
+            "name": "D14 doorway centre",
+            "display_name": "D14 doorway centre",
+            "x": 46.604,
+            "y": 53.605,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 56,
+            "code": "ucc:f2:mixed-reality-entrance",
+            "name": "Mixed Reality Laboratory (floor 2)",
+            "display_name": "Mixed Reality Laboratory (floor 2)",
+            "x": 46.604,
+            "y": 53.005,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          }
+        ]
+      },
+      "position": [
+        46.604,
+        6.18,
+        -53.005
+      ],
+      "finalErrorMetres": 0,
+      "samples": [
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "ready"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "ready"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.078,3.500,-0.214",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.206,3.500,-0.566",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.334,3.500,-0.919",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.462,3.500,-1.271",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.590,3.500,-1.624",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.718,3.500,-1.976",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.847,3.500,-2.328",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.975,3.500,-2.681",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.103,3.500,-3.033",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.231,3.500,-3.385",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.359,3.500,-3.738",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.487,3.500,-4.090",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.616,3.500,-4.443",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.744,3.500,-4.796",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.872,3.500,-5.148",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.001,3.500,-5.503",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.128,3.500,-5.853",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.256,3.500,-6.205",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.384,3.500,-6.557",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.513,3.500,-6.910",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.641,3.500,-7.262",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.769,3.500,-7.614",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.897,3.500,-7.967",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.025,3.500,-8.319",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.149,3.500,-8.661",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.274,3.500,-9.004",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.402,3.500,-9.357",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.530,3.500,-9.709",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.659,3.350,-10.062",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.787,3.350,-10.414",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.915,3.350,-10.766",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.043,3.350,-11.119",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.171,3.350,-11.471",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.299,3.350,-11.823",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.428,3.350,-12.176",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.556,3.350,-12.528",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.684,3.350,-12.881",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.812,3.350,-13.233",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.940,3.350,-13.586",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.068,3.350,-13.938",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.197,3.350,-14.290",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.325,3.350,-14.643",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.453,3.350,-14.995",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.581,3.350,-15.348",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.709,3.350,-15.700",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.838,3.350,-16.054",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.965,3.350,-16.405",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.183,3.350,-16.700",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.435,3.350,-16.978",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.687,3.350,-17.254",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.940,3.350,-17.531",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.193,3.350,-17.808",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.445,3.350,-18.085",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.698,3.350,-18.362",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.952,3.350,-18.641",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.203,3.350,-18.916",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.456,3.350,-19.193",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.709,3.350,-19.471",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.961,3.350,-19.748",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.214,3.350,-20.025",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.468,3.350,-20.304",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.719,3.350,-20.579",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.967,3.350,-20.851",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.214,3.350,-21.122",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.463,3.350,-21.395",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.716,3.350,-21.672",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.968,3.350,-21.949",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.222,3.350,-22.227",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.474,3.350,-22.504",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.728,3.350,-22.782",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.979,3.350,-23.057",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.232,3.350,-23.335",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.484,3.350,-23.612",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.738,3.350,-23.890",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.989,3.350,-24.166",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.244,3.350,-24.444",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.495,3.350,-24.720",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.748,3.350,-24.998",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.000,3.350,-25.275",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.249,3.350,-25.548",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.492,3.350,-25.814",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.735,3.350,-26.080",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.982,3.350,-26.352",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.235,3.350,-26.629",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.496,3.350,-26.915",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.740,3.350,-27.183",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.993,3.350,-27.460",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.246,3.350,-27.737",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.500,3.350,-28.016",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.752,3.350,-28.293",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.003,3.350,-28.568",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.256,3.350,-28.845",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.509,3.350,-29.122",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.761,3.350,-29.399",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.014,3.350,-29.677",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.269,3.350,-29.956",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.520,3.350,-30.232",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.773,3.350,-30.509",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.024,3.350,-30.785",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.276,3.350,-31.061",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.529,3.350,-31.338",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.781,3.350,-31.615",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.035,3.350,-31.893",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.286,3.350,-32.169",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.538,3.350,-32.445",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.790,3.500,-32.721",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.042,3.500,-32.998",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.295,3.500,-33.276",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.571,3.500,-33.524",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.926,3.500,-33.642",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.270,3.500,-33.757",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.626,3.500,-33.875",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.982,3.500,-33.994",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.086,3.500,-34.344",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.177,3.500,-34.707",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.268,3.500,-35.072",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.359,3.500,-35.435",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.450,3.500,-35.799",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.617,3.500,-36.117",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.883,3.500,-36.383",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.207,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.582,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.957,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.334,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.707,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.082,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.458,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.833,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.207,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.582,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.957,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-36.808",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.183",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.558",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.933",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.308",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.683",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.058",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.433",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.808",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.183",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.558",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.933",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.308",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.683",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.058",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.433",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.808",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.183",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.558",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.933",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.308",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.683",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.071",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.433",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.808",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.183",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.558",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.933",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.308",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.681",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.343,-48.034",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.185,-48.369",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.185,-48.704",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.028,-49.045",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,2.870,-49.390",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.829,2.870,-49.689",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.584,2.870,-49.960",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.331,2.870,-50.241",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.080,2.870,-50.519",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.827,2.870,-50.799",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.578,2.870,-51.075",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.333,2.870,-51.346",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.088,2.870,-51.617",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.844,2.870,-51.888",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.002,2.870,-52.060",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.356,2.870,-52.198",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.691,2.870,-52.329",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.032,2.870,-52.462",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.368,2.870,-52.593",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.709,2.870,-52.726",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.061,2.870,-52.864",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.397,2.870,-52.995",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.738,2.870,-53.128",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "29.076,2.870,-53.260",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "29.427,2.870,-53.397",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "29.778,2.870,-53.533",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "30.126,2.870,-53.669",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "30.474,2.870,-53.805",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "30.825,2.870,-53.942",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "31.174,2.870,-54.078",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "31.525,2.870,-54.215",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "31.879,2.870,-54.353",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "32.240,2.870,-54.403",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "32.602,2.870,-54.407",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "32.981,2.870,-54.411",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "33.365,2.870,-54.416",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "33.734,2.870,-54.420",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "34.097,2.870,-54.424",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "34.466,2.870,-54.428",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "34.832,2.870,-54.432",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "35.194,2.870,-54.436",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "35.556,2.870,-54.441",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "35.918,2.870,-54.445",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.298,2.870,-54.449",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-54.762",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-55.139",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-55.515",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-55.894",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-56.200",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.185,-56.530",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.343,-56.847",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.500,-57.164",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.658,-57.485",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.816,-57.805",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.973,-58.127",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,4.131,-58.450",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,4.289,-58.769",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,4.446,-59.106",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.448,4.604,-59.403",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.766,4.604,-59.575",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "37.083,4.604,-59.747",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "37.410,4.604,-59.924",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "37.716,4.604,-59.906",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.051,4.604,-59.717",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.371,4.604,-59.536",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,4.604,-59.350",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,4.761,-59.050",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,4.919,-58.733",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.077,-58.408",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.234,-58.090",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.392,-57.772",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.550,-57.456",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.707,-57.132",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.865,-56.817",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-56.493",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-56.125",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-55.763",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-55.403",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-55.031",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "38.721,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "39.095,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "39.459,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "39.825,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "40.185,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "40.563,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "40.942,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "41.318,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "41.680,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "42.045,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "42.422,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "42.794,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "43.166,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "43.546,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "43.927,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "44.301,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "44.669,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "45.044,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "45.406,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "45.769,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.146,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.529,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-54.426",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-54.046",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-53.675",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-53.315",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-53.005",
+          "floor": "2",
+          "state": "arrived"
+        },
+        {
+          "position": "46.604,6.180,-53.005",
+          "floor": "2",
+          "state": "arrived"
+        },
+        {
+          "position": "46.604,6.180,-53.005",
+          "floor": "2",
+          "state": "arrived"
+        },
+        {
+          "position": "46.604,6.180,-53.005",
+          "floor": "2",
+          "state": "arrived"
+        }
+      ]
+    },
+    {
+      "direction": "return",
+      "route": {
+        "path": [
+          "Mixed Reality Laboratory (floor 2)",
+          "D14 doorway centre",
+          "D14 corridor stand",
+          "Mixed reality corridor turn",
+          "Second-floor north circulation",
+          "East stair point 24 (floors 1-2)",
+          "East stair point 23 (floors 1-2)",
+          "East stair point 22 (floors 1-2)",
+          "East stair point 21 (floors 1-2)",
+          "East stair point 20 (floors 1-2)",
+          "East stair point 19 (floors 1-2)",
+          "East stair point 18 (floors 1-2)",
+          "East stair point 17 (floors 1-2)",
+          "East stair point 16 (floors 1-2)",
+          "East stair point 15 (floors 1-2)",
+          "East stair point 14 (floors 1-2)",
+          "East stair point 13 (floors 1-2)",
+          "East stair point 12 (floors 1-2)",
+          "East stair point 11 (floors 1-2)",
+          "East stair point 10 (floors 1-2)",
+          "East stair point 9 (floors 1-2)",
+          "East stair point 8 (floors 1-2)",
+          "East stair point 7 (floors 1-2)",
+          "East stair point 6 (floors 1-2)",
+          "East stair point 5 (floors 1-2)",
+          "East stair point 4 (floors 1-2)",
+          "East stair point 3 (floors 1-2)",
+          "East stair point 2 (floors 1-2)",
+          "East stair point 1 (floors 1-2)",
+          "East stair point 0 (floors 1-2)",
+          "North circulation / east stair junction",
+          "North circulation west",
+          "Elevator and Restroom Hall",
+          "Hall steps / Block A arrival",
+          "Hall steps tread 3",
+          "Hall steps tread 2",
+          "Hall steps tread 1",
+          "Hall corridor north",
+          "Hall corridor south",
+          "Hall junction",
+          "ICETEX doorway",
+          "ICETEX approach",
+          "South circulation",
+          "Access courtyard",
+          "Hall Acceso"
+        ],
+        "steps": [
+          {
+            "origin_name": "Mixed Reality Laboratory (floor 2)",
+            "destination_name": "D14 doorway centre",
+            "kind": "corridor",
+            "distance": 0.5999999999999943,
+            "origin_id": 56,
+            "destination_id": 55,
+            "path_id": 54,
+            "connection_code": "ucc:f2:e034",
+            "origin_display_name": "Mixed Reality Laboratory (floor 2)",
+            "destination_display_name": "D14 doorway centre"
+          },
+          {
+            "origin_name": "D14 doorway centre",
+            "destination_name": "D14 corridor stand",
+            "kind": "corridor",
+            "distance": 0.6000000000000014,
+            "origin_id": 55,
+            "destination_id": 54,
+            "path_id": 53,
+            "connection_code": "ucc:f2:e033",
+            "origin_display_name": "D14 doorway centre",
+            "destination_display_name": "D14 corridor stand"
+          },
+          {
+            "origin_name": "D14 corridor stand",
+            "destination_name": "Mixed reality corridor turn",
+            "kind": "corridor",
+            "distance": 0.49500000000000455,
+            "origin_id": 54,
+            "destination_id": 51,
+            "path_id": 52,
+            "connection_code": "ucc:f2:e032",
+            "origin_display_name": "D14 corridor stand",
+            "destination_display_name": "Mixed reality corridor turn"
+          },
+          {
+            "origin_name": "Mixed reality corridor turn",
+            "destination_name": "Second-floor north circulation",
+            "kind": "corridor",
+            "distance": 7.903999999999996,
+            "origin_id": 51,
+            "destination_id": 50,
+            "path_id": 49,
+            "connection_code": "ucc:f2:e029",
+            "origin_display_name": "Mixed reality corridor turn",
+            "destination_display_name": "Second-floor north circulation"
+          },
+          {
+            "origin_name": "Second-floor north circulation",
+            "destination_name": "East stair point 24 (floors 1-2)",
+            "kind": "corridor",
+            "distance": 1.1999999999999957,
+            "origin_id": 50,
+            "destination_id": 49,
+            "path_id": 48,
+            "connection_code": "ucc:f2:e028",
+            "origin_display_name": "Second-floor north circulation",
+            "destination_display_name": "East stair point 24 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 24 (floors 1-2)",
+            "destination_name": "East stair point 23 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.4500000000000003,
+            "origin_id": 49,
+            "destination_id": 48,
+            "path_id": 47,
+            "connection_code": "ucc:f2:e027",
+            "origin_display_name": "East stair point 24 (floors 1-2)",
+            "destination_display_name": "East stair point 23 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 23 (floors 1-2)",
+            "destination_name": "East stair point 22 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388861182983153,
+            "origin_id": 48,
+            "destination_id": 47,
+            "path_id": 46,
+            "connection_code": "ucc:f2:e026",
+            "origin_display_name": "East stair point 23 (floors 1-2)",
+            "destination_display_name": "East stair point 22 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 22 (floors 1-2)",
+            "destination_name": "East stair point 21 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888599411414555,
+            "origin_id": 47,
+            "destination_id": 46,
+            "path_id": 45,
+            "connection_code": "ucc:f2:e025",
+            "origin_display_name": "East stair point 22 (floors 1-2)",
+            "destination_display_name": "East stair point 21 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 21 (floors 1-2)",
+            "destination_name": "East stair point 20 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388861182983153,
+            "origin_id": 46,
+            "destination_id": 45,
+            "path_id": 44,
+            "connection_code": "ucc:f2:e024",
+            "origin_display_name": "East stair point 21 (floors 1-2)",
+            "destination_display_name": "East stair point 20 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 20 (floors 1-2)",
+            "destination_name": "East stair point 19 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888599411414555,
+            "origin_id": 45,
+            "destination_id": 44,
+            "path_id": 43,
+            "connection_code": "ucc:f2:e023",
+            "origin_display_name": "East stair point 20 (floors 1-2)",
+            "destination_display_name": "East stair point 19 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 19 (floors 1-2)",
+            "destination_name": "East stair point 18 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.338886118298309,
+            "origin_id": 44,
+            "destination_id": 43,
+            "path_id": 42,
+            "connection_code": "ucc:f2:e022",
+            "origin_display_name": "East stair point 19 (floors 1-2)",
+            "destination_display_name": "East stair point 18 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 18 (floors 1-2)",
+            "destination_name": "East stair point 17 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888611876342484,
+            "origin_id": 43,
+            "destination_id": 42,
+            "path_id": 41,
+            "connection_code": "ucc:f2:e021",
+            "origin_display_name": "East stair point 18 (floors 1-2)",
+            "destination_display_name": "East stair point 17 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 17 (floors 1-2)",
+            "destination_name": "East stair point 16 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.338885993649037,
+            "origin_id": 42,
+            "destination_id": 41,
+            "path_id": 40,
+            "connection_code": "ucc:f2:e020",
+            "origin_display_name": "East stair point 17 (floors 1-2)",
+            "destination_display_name": "East stair point 16 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 16 (floors 1-2)",
+            "destination_name": "East stair point 15 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888605643876735,
+            "origin_id": 41,
+            "destination_id": 40,
+            "path_id": 39,
+            "connection_code": "ucc:f2:e019",
+            "origin_display_name": "East stair point 16 (floors 1-2)",
+            "destination_display_name": "East stair point 15 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 15 (floors 1-2)",
+            "destination_name": "East stair point 14 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888611876341856,
+            "origin_id": 40,
+            "destination_id": 39,
+            "path_id": 38,
+            "connection_code": "ucc:f2:e018",
+            "origin_display_name": "East stair point 15 (floors 1-2)",
+            "destination_display_name": "East stair point 14 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 14 (floors 1-2)",
+            "destination_name": "East stair point 13 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860559736585,
+            "origin_id": 39,
+            "destination_id": 38,
+            "path_id": 37,
+            "connection_code": "ucc:f2:e017",
+            "origin_display_name": "East stair point 14 (floors 1-2)",
+            "destination_display_name": "East stair point 13 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 13 (floors 1-2)",
+            "destination_name": "East stair point 12 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 1.3209844813622948,
+            "origin_id": 38,
+            "destination_id": 37,
+            "path_id": 36,
+            "connection_code": "ucc:f2:e016",
+            "origin_display_name": "East stair point 13 (floors 1-2)",
+            "destination_display_name": "East stair point 12 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 12 (floors 1-2)",
+            "destination_name": "East stair point 11 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 1.3647344063956137,
+            "origin_id": 37,
+            "destination_id": 36,
+            "path_id": 35,
+            "connection_code": "ucc:f2:e015",
+            "origin_display_name": "East stair point 12 (floors 1-2)",
+            "destination_display_name": "East stair point 11 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 11 (floors 1-2)",
+            "destination_name": "East stair point 10 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860564387611,
+            "origin_id": 36,
+            "destination_id": 35,
+            "path_id": 34,
+            "connection_code": "ucc:f2:e014",
+            "origin_display_name": "East stair point 11 (floors 1-2)",
+            "destination_display_name": "East stair point 10 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 10 (floors 1-2)",
+            "destination_name": "East stair point 9 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860559736585,
+            "origin_id": 35,
+            "destination_id": 34,
+            "path_id": 33,
+            "connection_code": "ucc:f2:e013",
+            "origin_display_name": "East stair point 10 (floors 1-2)",
+            "destination_display_name": "East stair point 9 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 9 (floors 1-2)",
+            "destination_name": "East stair point 8 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860564387615,
+            "origin_id": 34,
+            "destination_id": 33,
+            "path_id": 32,
+            "connection_code": "ucc:f2:e012",
+            "origin_display_name": "East stair point 9 (floors 1-2)",
+            "destination_display_name": "East stair point 8 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 8 (floors 1-2)",
+            "destination_name": "East stair point 7 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860559736583,
+            "origin_id": 33,
+            "destination_id": 32,
+            "path_id": 31,
+            "connection_code": "ucc:f2:e011",
+            "origin_display_name": "East stair point 8 (floors 1-2)",
+            "destination_display_name": "East stair point 7 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 7 (floors 1-2)",
+            "destination_name": "East stair point 6 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888608760108463,
+            "origin_id": 32,
+            "destination_id": 31,
+            "path_id": 30,
+            "connection_code": "ucc:f2:e010",
+            "origin_display_name": "East stair point 7 (floors 1-2)",
+            "destination_display_name": "East stair point 6 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 6 (floors 1-2)",
+            "destination_name": "East stair point 5 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888605597365223,
+            "origin_id": 31,
+            "destination_id": 30,
+            "path_id": 29,
+            "connection_code": "ucc:f2:e009",
+            "origin_display_name": "East stair point 6 (floors 1-2)",
+            "destination_display_name": "East stair point 5 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 5 (floors 1-2)",
+            "destination_name": "East stair point 4 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888605643876757,
+            "origin_id": 30,
+            "destination_id": 29,
+            "path_id": 28,
+            "connection_code": "ucc:f2:e008",
+            "origin_display_name": "East stair point 5 (floors 1-2)",
+            "destination_display_name": "East stair point 4 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 4 (floors 1-2)",
+            "destination_name": "East stair point 3 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.33888607178736707,
+            "origin_id": 29,
+            "destination_id": 28,
+            "path_id": 27,
+            "connection_code": "ucc:f2:e007",
+            "origin_display_name": "East stair point 4 (floors 1-2)",
+            "destination_display_name": "East stair point 3 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 3 (floors 1-2)",
+            "destination_name": "East stair point 2 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860559736583,
+            "origin_id": 28,
+            "destination_id": 27,
+            "path_id": 26,
+            "connection_code": "ucc:f2:e006",
+            "origin_display_name": "East stair point 3 (floors 1-2)",
+            "destination_display_name": "East stair point 2 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 2 (floors 1-2)",
+            "destination_name": "East stair point 1 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.3388860643456185,
+            "origin_id": 27,
+            "destination_id": 26,
+            "path_id": 25,
+            "connection_code": "ucc:f2:e005",
+            "origin_display_name": "East stair point 2 (floors 1-2)",
+            "destination_display_name": "East stair point 1 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 1 (floors 1-2)",
+            "destination_name": "East stair point 0 (floors 1-2)",
+            "kind": "stairs",
+            "distance": 0.47680579305670023,
+            "origin_id": 26,
+            "destination_id": 25,
+            "path_id": 24,
+            "connection_code": "ucc:f2:e004",
+            "origin_display_name": "East stair point 1 (floors 1-2)",
+            "destination_display_name": "East stair point 0 (floors 1-2)"
+          },
+          {
+            "origin_name": "East stair point 0 (floors 1-2)",
+            "destination_name": "North circulation / east stair junction",
+            "kind": "corridor",
+            "distance": 1.4503046458492008,
+            "origin_id": 25,
+            "destination_id": 24,
+            "path_id": 23,
+            "connection_code": "ucc:f2:e003",
+            "origin_display_name": "East stair point 0 (floors 1-2)",
+            "destination_display_name": "North circulation / east stair junction"
+          },
+          {
+            "origin_name": "North circulation / east stair junction",
+            "destination_name": "North circulation west",
+            "kind": "corridor",
+            "distance": 4.350283856051716,
+            "origin_id": 24,
+            "destination_id": 15,
+            "path_id": 21,
+            "connection_code": "ucc:f2:e001",
+            "origin_display_name": "North circulation / east stair junction",
+            "destination_display_name": "North circulation west"
+          },
+          {
+            "origin_name": "North circulation west",
+            "destination_name": "Elevator and Restroom Hall",
+            "kind": "corridor",
+            "distance": 6.687136906030862,
+            "origin_id": 15,
+            "destination_id": 10,
+            "path_id": 13,
+            "connection_code": "ucc:floor1:e13",
+            "origin_display_name": "North circulation west",
+            "destination_display_name": "Elevator and Restroom Hall"
+          },
+          {
+            "origin_name": "Elevator and Restroom Hall",
+            "destination_name": "Hall steps / Block A arrival",
+            "kind": "corridor",
+            "distance": 3.3277319603597877,
+            "origin_id": 10,
+            "destination_id": 23,
+            "path_id": 9,
+            "connection_code": "ucc:floor1:e09",
+            "origin_display_name": "Elevator and Restroom Hall",
+            "destination_display_name": "Hall steps / Block A arrival"
+          },
+          {
+            "origin_name": "Hall steps / Block A arrival",
+            "destination_name": "Hall steps tread 3",
+            "kind": "stairs",
+            "distance": 0.5194528371276881,
+            "origin_id": 23,
+            "destination_id": 22,
+            "path_id": 20,
+            "connection_code": "ucc:floor1:hall:e4",
+            "origin_display_name": "Hall steps / Block A arrival",
+            "destination_display_name": "Hall steps tread 3"
+          },
+          {
+            "origin_name": "Hall steps tread 3",
+            "destination_name": "Hall steps tread 2",
+            "kind": "stairs",
+            "distance": 0.4814885772269146,
+            "origin_id": 22,
+            "destination_id": 21,
+            "path_id": 19,
+            "connection_code": "ucc:floor1:hall:e3",
+            "origin_display_name": "Hall steps tread 3",
+            "destination_display_name": "Hall steps tread 2"
+          },
+          {
+            "origin_name": "Hall steps tread 2",
+            "destination_name": "Hall steps tread 1",
+            "kind": "stairs",
+            "distance": 0.48621625846941213,
+            "origin_id": 21,
+            "destination_id": 20,
+            "path_id": 18,
+            "connection_code": "ucc:floor1:hall:e2",
+            "origin_display_name": "Hall steps tread 2",
+            "destination_display_name": "Hall steps tread 1"
+          },
+          {
+            "origin_name": "Hall steps tread 1",
+            "destination_name": "Hall corridor north",
+            "kind": "stairs",
+            "distance": 0.514690440944848,
+            "origin_id": 20,
+            "destination_id": 9,
+            "path_id": 17,
+            "connection_code": "ucc:floor1:hall:e1",
+            "origin_display_name": "Hall steps tread 1",
+            "destination_display_name": "Hall corridor north"
+          },
+          {
+            "origin_name": "Hall corridor north",
+            "destination_name": "Hall corridor south",
+            "kind": "corridor",
+            "distance": 11.100000000000001,
+            "origin_id": 9,
+            "destination_id": 8,
+            "path_id": 8,
+            "connection_code": "ucc:floor1:e08",
+            "origin_display_name": "Hall corridor north",
+            "destination_display_name": "Hall corridor south"
+          },
+          {
+            "origin_name": "Hall corridor south",
+            "destination_name": "Hall junction",
+            "kind": "corridor",
+            "distance": 4,
+            "origin_id": 8,
+            "destination_id": 7,
+            "path_id": 7,
+            "connection_code": "ucc:floor1:e07",
+            "origin_display_name": "Hall corridor south",
+            "destination_display_name": "Hall junction"
+          },
+          {
+            "origin_name": "Hall junction",
+            "destination_name": "ICETEX doorway",
+            "kind": "corridor",
+            "distance": 0.7071067811865476,
+            "origin_id": 7,
+            "destination_id": 5,
+            "path_id": 6,
+            "connection_code": "ucc:floor1:e06",
+            "origin_display_name": "Hall junction",
+            "destination_display_name": "ICETEX doorway"
+          },
+          {
+            "origin_name": "ICETEX doorway",
+            "destination_name": "ICETEX approach",
+            "kind": "corridor",
+            "distance": 2.0615528128088303,
+            "origin_id": 5,
+            "destination_id": 4,
+            "path_id": 4,
+            "connection_code": "ucc:floor1:e04",
+            "origin_display_name": "ICETEX doorway",
+            "destination_display_name": "ICETEX approach"
+          },
+          {
+            "origin_name": "ICETEX approach",
+            "destination_name": "South circulation",
+            "kind": "corridor",
+            "distance": 1.5811388300841898,
+            "origin_id": 4,
+            "destination_id": 3,
+            "path_id": 3,
+            "connection_code": "ucc:floor1:e03",
+            "origin_display_name": "ICETEX approach",
+            "destination_display_name": "South circulation"
+          },
+          {
+            "origin_name": "South circulation",
+            "destination_name": "Access courtyard",
+            "kind": "outdoor",
+            "distance": 23.00592315035413,
+            "origin_id": 3,
+            "destination_id": 2,
+            "path_id": 2,
+            "connection_code": "ucc:floor1:e02",
+            "origin_display_name": "South circulation",
+            "destination_display_name": "Access courtyard"
+          },
+          {
+            "origin_name": "Access courtyard",
+            "destination_name": "Hall Acceso",
+            "kind": "outdoor",
+            "distance": 17.5576906226303,
+            "origin_id": 2,
+            "destination_id": 1,
+            "path_id": 1,
+            "connection_code": "ucc:floor1:e01",
+            "origin_display_name": "Access courtyard",
+            "destination_display_name": "Hall Acceso"
+          }
+        ],
+        "distance": 99.01996366359555,
+        "origin_name": "Mixed Reality Laboratory (floor 2)",
+        "destination_name": "Hall Acceso",
+        "waypoints": [
+          {
+            "id": 56,
+            "code": "ucc:f2:mixed-reality-entrance",
+            "name": "Mixed Reality Laboratory (floor 2)",
+            "display_name": "Mixed Reality Laboratory (floor 2)",
+            "x": 46.604,
+            "y": 53.005,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 55,
+            "code": "ucc:f2:mixed-reality-door",
+            "name": "D14 doorway centre",
+            "display_name": "D14 doorway centre",
+            "x": 46.604,
+            "y": 53.605,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 54,
+            "code": "ucc:f2:mixed-reality-outside",
+            "name": "D14 corridor stand",
+            "display_name": "D14 corridor stand",
+            "x": 46.604,
+            "y": 54.205,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 51,
+            "code": "ucc:f2:mixed-corridor-turn",
+            "name": "Mixed reality corridor turn",
+            "display_name": "Mixed reality corridor turn",
+            "x": 46.604,
+            "y": 54.7,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 50,
+            "code": "ucc:f2:north-corridor",
+            "name": "Second-floor north circulation",
+            "display_name": "Second-floor north circulation",
+            "x": 38.7,
+            "y": 54.7,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 49,
+            "code": "ucc:f2:east-stair-24",
+            "name": "East stair point 24 (floors 1-2)",
+            "display_name": "East stair point 24 (floors 1-2)",
+            "x": 38.7,
+            "y": 55.9,
+            "floor": 2,
+            "elevation_m": 6.18,
+            "block_code": null,
+            "floor_code": "ucc-second-floor"
+          },
+          {
+            "id": 48,
+            "code": "ucc:f2:east-stair-23",
+            "name": "East stair point 23 (floors 1-2)",
+            "display_name": "East stair point 23 (floors 1-2)",
+            "x": 38.7,
+            "y": 56.349999999999994,
+            "floor": 1,
+            "elevation_m": 6.180000064,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 47,
+            "code": "ucc:f2:east-stair-22",
+            "name": "East stair point 22 (floors 1-2)",
+            "display_name": "East stair point 22 (floors 1-2)",
+            "x": 38.7,
+            "y": 56.65,
+            "floor": 1,
+            "elevation_m": 6.022380899,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 46,
+            "code": "ucc:f2:east-stair-21",
+            "name": "East stair point 21 (floors 1-2)",
+            "display_name": "East stair point 21 (floors 1-2)",
+            "x": 38.7,
+            "y": 56.949999999999996,
+            "floor": 1,
+            "elevation_m": 5.864762001,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 45,
+            "code": "ucc:f2:east-stair-20",
+            "name": "East stair point 20 (floors 1-2)",
+            "display_name": "East stair point 20 (floors 1-2)",
+            "x": 38.7,
+            "y": 57.25,
+            "floor": 1,
+            "elevation_m": 5.707142836,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 44,
+            "code": "ucc:f2:east-stair-19",
+            "name": "East stair point 19 (floors 1-2)",
+            "display_name": "East stair point 19 (floors 1-2)",
+            "x": 38.7,
+            "y": 57.55,
+            "floor": 1,
+            "elevation_m": 5.549523938,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 43,
+            "code": "ucc:f2:east-stair-18",
+            "name": "East stair point 18 (floors 1-2)",
+            "display_name": "East stair point 18 (floors 1-2)",
+            "x": 38.7,
+            "y": 57.849999999999994,
+            "floor": 1,
+            "elevation_m": 5.391904773,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 42,
+            "code": "ucc:f2:east-stair-17",
+            "name": "East stair point 17 (floors 1-2)",
+            "display_name": "East stair point 17 (floors 1-2)",
+            "x": 38.7,
+            "y": 58.15,
+            "floor": 1,
+            "elevation_m": 5.234285607,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 41,
+            "code": "ucc:f2:east-stair-16",
+            "name": "East stair point 16 (floors 1-2)",
+            "display_name": "East stair point 16 (floors 1-2)",
+            "x": 38.7,
+            "y": 58.449999999999996,
+            "floor": 1,
+            "elevation_m": 5.07666671,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 40,
+            "code": "ucc:f2:east-stair-15",
+            "name": "East stair point 15 (floors 1-2)",
+            "display_name": "East stair point 15 (floors 1-2)",
+            "x": 38.7,
+            "y": 58.75,
+            "floor": 1,
+            "elevation_m": 4.919047678,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 39,
+            "code": "ucc:f2:east-stair-14",
+            "name": "East stair point 14 (floors 1-2)",
+            "display_name": "East stair point 14 (floors 1-2)",
+            "x": 38.7,
+            "y": 59.05,
+            "floor": 1,
+            "elevation_m": 4.761428512,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 38,
+            "code": "ucc:f2:east-stair-13",
+            "name": "East stair point 13 (floors 1-2)",
+            "display_name": "East stair point 13 (floors 1-2)",
+            "x": 38.7,
+            "y": 59.35,
+            "floor": 1,
+            "elevation_m": 4.603809481,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 37,
+            "code": "ucc:f2:east-stair-12",
+            "name": "East stair point 12 (floors 1-2)",
+            "display_name": "East stair point 12 (floors 1-2)",
+            "x": 37.55,
+            "y": 60,
+            "floor": 1,
+            "elevation_m": 4.603809481,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 36,
+            "code": "ucc:f2:east-stair-11",
+            "name": "East stair point 11 (floors 1-2)",
+            "display_name": "East stair point 11 (floors 1-2)",
+            "x": 36.35,
+            "y": 59.35,
+            "floor": 1,
+            "elevation_m": 4.603809481,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 35,
+            "code": "ucc:f2:east-stair-10",
+            "name": "East stair point 10 (floors 1-2)",
+            "display_name": "East stair point 10 (floors 1-2)",
+            "x": 36.35,
+            "y": 59.050000000000004,
+            "floor": 1,
+            "elevation_m": 4.446190449,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 34,
+            "code": "ucc:f2:east-stair-09",
+            "name": "East stair point 9 (floors 1-2)",
+            "display_name": "East stair point 9 (floors 1-2)",
+            "x": 36.35,
+            "y": 58.75,
+            "floor": 1,
+            "elevation_m": 4.288571418,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 33,
+            "code": "ucc:f2:east-stair-08",
+            "name": "East stair point 8 (floors 1-2)",
+            "display_name": "East stair point 8 (floors 1-2)",
+            "x": 36.35,
+            "y": 58.45,
+            "floor": 1,
+            "elevation_m": 4.130952386,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 32,
+            "code": "ucc:f2:east-stair-07",
+            "name": "East stair point 7 (floors 1-2)",
+            "display_name": "East stair point 7 (floors 1-2)",
+            "x": 36.35,
+            "y": 58.15,
+            "floor": 1,
+            "elevation_m": 3.973333355,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 31,
+            "code": "ucc:f2:east-stair-06",
+            "name": "East stair point 6 (floors 1-2)",
+            "display_name": "East stair point 6 (floors 1-2)",
+            "x": 36.35,
+            "y": 57.85,
+            "floor": 1,
+            "elevation_m": 3.815714256,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 30,
+            "code": "ucc:f2:east-stair-05",
+            "name": "East stair point 5 (floors 1-2)",
+            "display_name": "East stair point 5 (floors 1-2)",
+            "x": 36.35,
+            "y": 57.550000000000004,
+            "floor": 1,
+            "elevation_m": 3.658095225,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 29,
+            "code": "ucc:f2:east-stair-04",
+            "name": "East stair point 4 (floors 1-2)",
+            "display_name": "East stair point 4 (floors 1-2)",
+            "x": 36.35,
+            "y": 57.25,
+            "floor": 1,
+            "elevation_m": 3.500476193,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 28,
+            "code": "ucc:f2:east-stair-03",
+            "name": "East stair point 3 (floors 1-2)",
+            "display_name": "East stair point 3 (floors 1-2)",
+            "x": 36.35,
+            "y": 56.95,
+            "floor": 1,
+            "elevation_m": 3.342857128,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 27,
+            "code": "ucc:f2:east-stair-02",
+            "name": "East stair point 2 (floors 1-2)",
+            "display_name": "East stair point 2 (floors 1-2)",
+            "x": 36.35,
+            "y": 56.65,
+            "floor": 1,
+            "elevation_m": 3.185238097,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 26,
+            "code": "ucc:f2:east-stair-01",
+            "name": "East stair point 1 (floors 1-2)",
+            "display_name": "East stair point 1 (floors 1-2)",
+            "x": 36.35,
+            "y": 56.35,
+            "floor": 1,
+            "elevation_m": 3.027619048,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 25,
+            "code": "ucc:f2:east-stair-00",
+            "name": "East stair point 0 (floors 1-2)",
+            "display_name": "East stair point 0 (floors 1-2)",
+            "x": 36.35,
+            "y": 55.9,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 24,
+            "code": "ucc:f2:north-junction",
+            "name": "North circulation / east stair junction",
+            "display_name": "North circulation / east stair junction",
+            "x": 36.35,
+            "y": 54.4496953541508,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 15,
+            "code": "ucc:floor1:p15",
+            "name": "North circulation west",
+            "display_name": "North circulation west",
+            "x": 32,
+            "y": 54.4,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 10,
+            "code": "ucc:floor1:p10",
+            "name": "Elevator and Restroom Hall",
+            "display_name": "Elevator and Restroom Hall",
+            "x": 25.77,
+            "y": 51.97,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 23,
+            "code": "ucc:floor1:hall-after",
+            "name": "Hall steps / Block A arrival",
+            "display_name": "Hall steps / Block A arrival",
+            "x": 28,
+            "y": 49.5,
+            "floor": 1,
+            "elevation_m": 2.87,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 22,
+            "code": "ucc:floor1:hall-tread-03",
+            "name": "Hall steps tread 3",
+            "display_name": "Hall steps tread 3",
+            "x": 28,
+            "y": 49.004999999999995,
+            "floor": 1,
+            "elevation_m": 3.0275,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 21,
+            "code": "ucc:floor1:hall-tread-02",
+            "name": "Hall steps tread 2",
+            "display_name": "Hall steps tread 2",
+            "x": 28,
+            "y": 48.55,
+            "floor": 1,
+            "elevation_m": 3.185,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 20,
+            "code": "ucc:floor1:hall-tread-01",
+            "name": "Hall steps tread 1",
+            "display_name": "Hall steps tread 1",
+            "x": 28,
+            "y": 48.09,
+            "floor": 1,
+            "elevation_m": 3.3425,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 9,
+            "code": "ucc:floor1:p09",
+            "name": "Hall corridor north",
+            "display_name": "Hall corridor north",
+            "x": 28,
+            "y": 47.6,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 8,
+            "code": "ucc:floor1:p08",
+            "name": "Hall corridor south",
+            "display_name": "Hall corridor south",
+            "x": 28,
+            "y": 36.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 7,
+            "code": "ucc:floor1:p07",
+            "name": "Hall junction",
+            "display_name": "Hall junction",
+            "x": 24,
+            "y": 36.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 5,
+            "code": "ucc:floor1:p05",
+            "name": "ICETEX doorway",
+            "display_name": "ICETEX doorway",
+            "x": 23.5,
+            "y": 36,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 4,
+            "code": "ucc:floor1:p04",
+            "name": "ICETEX approach",
+            "display_name": "ICETEX approach",
+            "x": 23,
+            "y": 34,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 3,
+            "code": "ucc:floor1:p03",
+            "name": "South circulation",
+            "display_name": "South circulation",
+            "x": 21.5,
+            "y": 33.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 2,
+            "code": "ucc:floor1:p02",
+            "name": "Access courtyard",
+            "display_name": "Access courtyard",
+            "x": 6,
+            "y": 16.5,
+            "floor": 1,
+            "elevation_m": 3.35,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 1,
+            "code": "ucc:floor1:p01",
+            "name": "Hall Acceso",
+            "display_name": "Hall Acceso",
+            "x": 0,
+            "y": 0,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          }
+        ]
+      },
+      "position": [
+        0,
+        3.5,
+        0
+      ],
+      "finalErrorMetres": 0,
+      "samples": [
+        {
+          "position": "46.604,6.180,-53.005",
+          "floor": "2",
+          "state": "ready"
+        },
+        {
+          "position": "46.604,6.180,-53.005",
+          "floor": "2",
+          "state": "ready"
+        },
+        {
+          "position": "46.604,6.180,-53.005",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-53.186",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-53.563",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-53.921",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-54.273",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.604,6.180,-54.647",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "46.293,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "45.932,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "45.572,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "45.195,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "44.811,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "44.443,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "44.082,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "43.716,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "43.347,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "42.972,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "42.589,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "42.217,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "41.845,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "41.472,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "41.095,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "40.712,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "40.344,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "39.972,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "39.592,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "39.217,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "38.848,6.180,-54.700",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-54.914",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-55.285",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-55.664",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-56.028",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.180,-56.374",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,6.022,-56.694",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.865,-57.010",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.707,-57.344",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.550,-57.669",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.392,-57.984",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,5.234,-58.300",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,4.919,-58.606",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,4.761,-58.929",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.700,4.604,-59.268",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.463,4.604,-59.484",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "38.145,4.604,-59.664",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "37.816,4.604,-59.850",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "37.498,4.604,-59.972",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "37.181,4.604,-59.800",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.849,4.604,-59.620",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.513,4.604,-59.438",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,4.604,-59.216",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,4.446,-58.917",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,4.131,-58.597",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.973,-58.270",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.816,-57.944",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.658,-57.616",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.500,-57.286",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.343,-56.964",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.185,-56.634",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,3.028,-56.295",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-55.929",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-55.571",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-55.205",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-54.840",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "36.350,2.870,-54.465",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "35.998,2.870,-54.446",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "35.624,2.870,-54.441",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "35.264,2.870,-54.437",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "34.893,2.870,-54.433",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "34.513,2.870,-54.429",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "34.145,2.870,-54.425",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "33.768,2.870,-54.420",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "33.390,2.870,-54.416",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "33.017,2.870,-54.412",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "32.644,2.870,-54.407",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "32.271,2.870,-54.403",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "31.910,2.870,-54.365",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "31.558,2.870,-54.228",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "31.205,2.870,-54.090",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "30.856,2.870,-53.954",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "30.513,2.870,-53.820",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "30.170,2.870,-53.686",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "29.828,2.870,-53.553",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "29.475,2.870,-53.415",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "29.120,2.870,-53.277",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.770,2.870,-53.140",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.427,2.870,-53.006",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.081,2.870,-52.871",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.728,2.870,-52.734",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.382,2.870,-52.599",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.031,2.870,-52.462",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.691,2.870,-52.329",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.346,2.870,-52.195",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.003,2.870,-52.061",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.857,2.870,-51.874",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.100,2.870,-51.605",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.344,2.870,-51.335",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.598,2.870,-51.053",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.847,2.870,-50.778",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.095,2.870,-50.502",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.349,2.870,-50.221",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.594,2.870,-49.949",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.845,2.870,-49.672",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,2.870,-49.391",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.028,-49.038",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.185,-48.694",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.185,-48.359",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.343,-48.009",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.655",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-47.288",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.913",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.538",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-46.163",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.788",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.413",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-45.038",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.663",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-44.288",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.913",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.538",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-43.162",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.788",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.410",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-42.038",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.677",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-41.300",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.933",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.559",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-40.184",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.808",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.433",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-39.058",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.684",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-38.309",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.934",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.558",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-37.184",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "28.000,3.500,-36.809",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.937,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.563,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "27.188,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.810,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.437,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "26.063,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.687,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "25.313,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.937,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.568,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "24.187,3.500,-36.500",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.881,3.500,-36.381",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.617,3.500,-36.117",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.449,3.500,-35.797",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.358,3.500,-35.434",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.266,3.500,-35.065",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.176,3.500,-34.706",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "23.084,3.500,-34.336",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.980,3.500,-33.993",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.624,3.500,-33.875",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "22.265,3.500,-33.755",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.911,3.500,-33.637",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.556,3.500,-33.519",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.287,3.500,-33.267",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "21.036,3.500,-32.991",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.783,3.500,-32.714",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.537,3.350,-32.444",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.286,3.350,-32.168",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "20.034,3.350,-31.892",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.788,3.350,-31.622",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.535,3.350,-31.344",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.282,3.350,-31.068",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "19.027,3.350,-30.787",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.775,3.350,-30.512",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.524,3.350,-30.236",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.272,3.350,-29.959",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "18.018,3.350,-29.681",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.766,3.350,-29.404",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.511,3.350,-29.125",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.261,3.350,-28.850",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "17.008,3.350,-28.573",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.762,3.350,-28.304",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.515,3.350,-28.033",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.264,3.350,-27.758",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "16.009,3.350,-27.478",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.759,3.350,-27.203",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.507,3.350,-26.927",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "15.254,3.350,-26.649",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.999,3.350,-26.370",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.749,3.350,-26.095",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.496,3.350,-25.818",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "14.243,3.350,-25.541",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.990,3.350,-25.263",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.737,3.350,-24.985",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.485,3.350,-24.709",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "13.232,3.350,-24.432",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.979,3.350,-24.154",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.727,3.350,-23.878",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.474,3.350,-23.601",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "12.221,3.350,-23.323",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.969,3.350,-23.047",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.716,3.350,-22.769",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.464,3.350,-22.493",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "11.210,3.350,-22.215",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.956,3.350,-21.936",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.705,3.350,-21.660",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.453,3.350,-21.384",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "10.201,3.350,-21.107",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.944,3.350,-20.826",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.695,3.350,-20.553",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.441,3.350,-20.274",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "9.190,3.350,-19.999",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.937,3.350,-19.722",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.684,3.350,-19.444",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.432,3.350,-19.167",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "8.179,3.350,-18.890",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.934,3.350,-18.621",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.688,3.350,-18.352",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.426,3.350,-18.064",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "7.180,3.350,-17.794",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.930,3.350,-17.520",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.677,3.350,-17.243",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.425,3.350,-16.966",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "6.172,3.350,-16.689",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.964,3.350,-16.402",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.836,3.350,-16.049",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.708,3.350,-15.697",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.580,3.350,-15.344",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.452,3.350,-14.993",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.324,3.350,-14.640",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.195,3.350,-14.287",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "5.067,3.350,-13.936",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.939,3.350,-13.582",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.811,3.350,-13.231",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.683,3.350,-12.878",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.555,3.350,-12.526",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.427,3.350,-12.173",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.299,3.350,-11.821",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.170,3.350,-11.469",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "4.042,3.350,-11.116",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.914,3.350,-10.763",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.786,3.350,-10.411",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.658,3.350,-10.059",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.530,3.500,-9.707",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.401,3.500,-9.354",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.273,3.500,-9.002",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.145,3.500,-8.649",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "3.017,3.500,-8.297",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.889,3.500,-7.944",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.761,3.500,-7.592",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.632,3.500,-7.239",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.504,3.500,-6.887",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.376,3.500,-6.535",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.248,3.500,-6.182",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "2.120,3.500,-5.830",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.992,3.500,-5.477",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.864,3.500,-5.125",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.735,3.500,-4.771",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.607,3.500,-4.420",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.479,3.500,-4.068",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.351,3.500,-3.714",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.223,3.500,-3.363",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "1.095,3.500,-3.010",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.964,3.500,-2.651",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.838,3.500,-2.306",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.710,3.500,-1.952",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.582,3.500,-1.600",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.454,3.500,-1.248",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.326,3.500,-0.896",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.198,3.500,-0.544",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.069,3.500,-0.191",
+          "floor": "1",
+          "state": "walking"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "floor": "1",
+          "state": "arrived"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

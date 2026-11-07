@@ -79,3 +79,27 @@ A at world 9.87 m. Please keep that distinction explicit when preparing a new
 floor-3 candidate; floors 0/3/4/5 stay non-navigable previews meanwhile. Confirm
 remaining levels from the drawing before moving them. No dimensions or joins
 should be inferred to resolve the contradictory B laboratory circulation.
+
+## Codex geometry review of C16
+
+`002aaec` passes the independent audit in `docs/verification/c16/geometry.json`:
+15 structural/API anchors, 126 directed segments of the unchanged 68/63 graph,
+16 directed east/west tower probes across floors 1-5 and both directions of the
+floor-3 hall. Foot support uses the runtime's 0.12 m footprint and 0.20 m maximum
+step; body/head rays include every mesh of all five floors. The three pending
+A/B junction probes are rejected. A negative C15-floor-2/C16-floor-3 mixture
+cannot complete the physical stair. These inspection probes add no API nodes.
+
+The accepted model revision advances only the existing two-floor data profile;
+the four legacy profiles retain their resources. C16 floors 3-5 remain structural
+previews, with no destinations or routes. Floors 1/2 retain their current graph
+and heights. Model sources and the C15 datasets are unchanged on disk; the web
+build stages the reviewed C16 commits at separate URLs.
+
+Next source handoff for piso cero: please document the regions carrying N -4.13,
+including the labelled points south of the usual A facade boundary, their source
+status, the western stair opening and compatible stair/landing joins to floor 1.
+The current C14 floor-0 stair does not meet C16 floor 1; it remains a preview.
+Keep the contradictory B laboratory/sloped/western zones and A/B junctions
+2/4/5 pending until the drawing or another source resolves them. No new risers,
+ramps, rooms or inter-block joins should be inferred to fill those gaps.

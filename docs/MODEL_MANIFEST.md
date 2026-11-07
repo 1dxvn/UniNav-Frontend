@@ -171,9 +171,10 @@ Validation compares the documented plan frame and the actual GLB nodes. Normal
 navigable floors require API alignment and data binding; structural alignment
 cannot promote a preview to a navigable model.
 
-The scene uses the source's recommended world elevation for both model and
-presentation ground. These cuts flatten their A/B half-levels and retain the
-documented stair approximations. The selector and model badge say **preview**;
+The scene uses the source's recommended model transform and keeps presentation
+ground below its lowest geometry. The legacy cuts flatten their A/B half-levels
+and retain the documented stair approximations; the C16 cuts described below
+carry their reviewed A offsets inside the GLB. The selector and model badge say **preview**;
 movement remains on the avatar's floor. Resuming a preserved route restores its
 view without repositioning the avatar. See
 [integration review](blocks/floor-preview-integration.md) for the remaining checks.
@@ -242,10 +243,12 @@ metadata or a mixed revision fails closed. Each profile may override
 `stairCrossings`, so the now-clear approach to the hall does not inherit the old
 mixed connection's stair restriction.
 
-C15 exports stay in Claude's `model/candidates/c15/`. A navigable model can
+C15 exports remain in Claude's `model/candidates/c15/` as the historical delivery. A navigable model can
 declare `modelSource: {commit, path}` and an explicit safe `model` URL. The build
 verifies that committed source's SHA-256 and stages it at `models/c15/floor-N.glb`.
-The original public export and all older profile URLs stay intact. References
+The initial C15 integration used those URLs; the current compatible C16 review
+below advances the same data profile to independent C16 URLs. The original
+public export and all four legacy profile URLs stay intact. References
 retain their independent reviewed source commit and hash: the structural B datum
 anchors did not move when the Block A walking surfaces changed height.
 
@@ -274,3 +277,36 @@ imports and downgrade guards keep restarts coherent. See backend
 [startup profiles](https://github.com/1dxvn/UniNav/blob/main/docs/CAMPUS_STARTUP.md)
 and `verification/campus-startup/README.md`. This is prepared startup support,
 not evidence that the live development data was upgraded.
+
+## C16 models on the unchanged two-floor dataset
+
+The `ucc-two-floors-c15` identifier names the **data combination**, not a permanent
+GLB revision. Its 68/63 data binding, profile identity and stair restrictions stay
+unchanged while its five floor resources advance to reviewed C16 `002aaec`, at
+`models/c16/floor-N.glb`. A second profile with identical bindings would be
+ambiguous, so this accepted model revision updates the existing entry. The C15
+exports and previous manifests remain available in Git for historical rehearsal.
+The default base and all three other legacy alternatives retain their exact
+resources. No source GLB or backend dataset was edited.
+
+Floors 1/2 remain the only navigable cuts for that data combination. C16 floors
+3/4/5 are structural previews with no data binding, colliders, foot support or API
+destinations. Their A surfaces are world 9.87 / 13.37 / 16.87 m; references keep
+their documented B datums 9.38 / 12.32 / 15.26 m. Fifteen actual GLB reference
+nodes and the current two-floor graph pass the integration audit. Source and
+reference commits are independent: unchanged structural reference JSON is reused
+with its own reviewed hash while `modelSource` points to C16.
+
+Both tower geometries join the C16 neighbours at rises 3.31 / 3.69 / 3.50 / 3.50 m.
+The floor-3 hall has four 0.1225 m risers. These are inspected geometry, not new
+API connections. A/B junctions 2/4/5, the western/sloped/B laboratory zones,
+floor 0 and the rooftop still need their own accepted sources/routes. The floor-0
+preview remains C14 and does not supply a vertical connection to C16 floor 1.
+
+`tools/integrate-c16.ts` audits committed exports, references, foot footprint and
+body/head rays before `--integrate` can update the manifest. It includes rejected
+unreviewed junctions and a C15/C16 neighbour mismatch as negative controls.
+`tools/verify-c15-playback.ts` now reads and hashes each recorded model source,
+so the same unchanged data can be rehearsed against its actual accepted GLBs.
+`UNINAV_SUPPORT_REPORT` can write a historical verification into a new report
+without modifying the old evidence. See `verification/c16/README.md`.

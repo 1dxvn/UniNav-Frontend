@@ -7,8 +7,22 @@ import { sha256 } from "../src/scene/modelManifest.ts";
 import type { RouteResponse } from "../src/api/types.ts";
 
 const output=process.env.UNINAV_VERIFY_DIR ?? "docs/verification/c15",supports:Mesh[]=[],outdoors:Mesh[]=[],hashes:string[]=[];
+const reports=await Promise.all((await readdir(output)).filter(p=>p.endsWith("-walks.json")).map(async file=>({file,report:JSON.parse(await readFile(`${output}/${file}`,"utf8"))})));
+const models=reports[0]?.report.models as {url:string;hash:string;source:{commit:string;path:string}}[];
+if(!models || models.length<2)throw new Error("Playback requires both served model sources.");
+const committedModels=new Map<string,Buffer>();
+for(const model of models){
+  const source=model.source;
+  if(!source || !/^[a-f0-9]{7,40}$/.test(source.commit) || !/^model\/candidates\/[a-zA-Z0-9_-]+\/floor-[1-5]\.glb$/.test(source.path))throw new Error("Invalid committed playback source.");
+  const bytes=await committedRepositoryAsset(source.commit,source.path);
+  if(await sha256(bytes)!==model.hash || committedModels.has(source.path))throw new Error("Recorded model source/hash differs or is duplicated.");
+  committedModels.set(source.path,bytes);
+}
+const walkingModels=[1,2].map(floor=>{
+  const selected=models.filter(m=>m.source.path.endsWith(`/floor-${floor}.glb`));if(selected.length!==1)throw new Error("Playback needs one model per walking floor.");return selected[0];
+});
 for(const floor of [1,2]){
-  const bytes=await committedRepositoryAsset("3177ca7",`model/candidates/c15/floor-${floor}.glb`);hashes.push(await sha256(bytes));
+  const source=walkingModels[floor-1].source,bytes=committedModels.get(source.path)!;hashes.push(await sha256(bytes));
   const root=new Group();root.position.y=floor===1 ? 3.5:6.44;root.add((await parseModelGeometry(bytes)).scene);root.updateMatrixWorld(true);
   for(const name of floor===1 ? ["Floor_Slab","Stair_A_East_1","Stair_A_West_1","Site"]:["P2_Floor_Slab","P2_Stair_A_East_1","P2_Stair_A_West_1"]){
     const node=root.getObjectByName(name);if(!(node instanceof Mesh))throw new Error(`Missing support ${name}`);(name==="Site" ? outdoors:supports).push(node);
@@ -45,9 +59,8 @@ function check(samples:Sample[],route?:RouteResponse){
   if(!checked)throw new Error("No browser samples.");return {samples:checked,outdoorSamples,nosingQuantizationSamples,maxFootErrorMetres:maxFootError,maxDistanceFromGraphMetres:maxGraphDistance};
 }
 const results=[];
-for(const file of (await readdir(output)).filter(p=>p.endsWith("-walks.json"))){
-  const report=JSON.parse(await readFile(`${output}/${file}`,"utf8"));
-  if(report.profile!=="ucc-two-floors-c15" || !hashes.every((h,i)=>h===report.models[i].hash))throw new Error(`Wrong served source ${file}`);
+for(const {file,report} of reports){
+  if(report.profile!=="ucc-two-floors-c15" || JSON.stringify(report.models)!==JSON.stringify(models) || !hashes.every((h,i)=>h===walkingModels[i].hash))throw new Error(`Wrong served source ${file}`);
   for(const run of report.runs)results.push({file,direction:run.direction,finalErrorMetres:run.finalErrorMetres,...check(run.samples,run.route)});
 }
 if(results.length!==14)throw new Error(`Expected fourteen journeys; got ${results.length}.`);
@@ -57,5 +70,5 @@ const replan=check(interaction.playback);
 const outdoorReport=JSON.parse(await readFile(`${output}/outdoor-manual.json`,"utf8"));
 if(outdoorReport.profile!=="ucc-two-floors-c15" || outdoorReport.runs.length!==2)throw new Error("Both outdoor keyboard directions are required.");
 const outdoorManual=outdoorReport.runs.map((r:{reverse:boolean;route:RouteResponse;samples:Sample[]})=>({reverse:r.reverse,...check(r.samples,r.route)}));
-await writeFile(`${output}/browser-support.json`,JSON.stringify({commit:"3177ca7",hashes,results,manual,replan,outdoorManual,coordinateResolutionMetres:0.001,note:"Independent downward rays test recorded feet and four footprint offsets. At nosings only, X/Z rounding is resolved within the 0.5 mm half-cell and counted separately; vertical error must still be <=1 mm. Site is included only on outdoor route segments; interior holes cannot borrow its support. Pending laboratory heights still represent the flat candidate, not confirmed physical survey levels."},null,2));
+await writeFile(process.env.UNINAV_SUPPORT_REPORT ?? `${output}/browser-support.json`,JSON.stringify({models,hashes,results,manual,replan,outdoorManual,coordinateResolutionMetres:0.001,note:"Independent downward rays test recorded feet and four footprint offsets against each recorded committed model source. At nosings only, X/Z rounding is resolved within the 0.5 mm half-cell and counted separately; vertical error must still be <=1 mm. Site is included only on outdoor route segments; interior holes cannot borrow its support. Pending laboratory heights still represent the flat candidate, not confirmed physical survey levels."},null,2));
 console.log(JSON.stringify({journeys:results.length,samples:results.reduce((s,r)=>s+r.samples,0),manual,replan,outdoorManual,maxFootErrorMetres:Math.max(...results.map(r=>r.maxFootErrorMetres))},null,2));
