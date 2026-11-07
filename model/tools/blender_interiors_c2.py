@@ -13,7 +13,8 @@ X = json.load(open(os.path.join(DATA, "extras.json"), encoding="utf-8"))
 TEXSZ = json.load(open(os.path.join(TEX, "textures.json"), encoding="utf-8"))
 G = {}; exec(open(globals().get("GRAPH_FILE") or os.path.join(MODEL_DIR, "..", "..", "scripts", "ucc_floor1_data.py"), encoding="utf-8").read(), G)
 PL = {r[0]: (r[1], r[2]) for r in G["PLACES"]}
-col = bpy.data.collections["UCC_Piso1"]
+col = bpy.data.collections[globals().get("TARGET_COLLECTION") or "UCC_Piso1"]
+PFX = globals().get("NAME_PREFIX") or ""
 log = []
 
 def bsdf(m): return next(n for n in m.node_tree.nodes if n.type == "BSDF_PRINCIPLED")
@@ -47,6 +48,7 @@ M = {
 SZ = {"Floor_Wet": TEXSZ["floor_wet.jpg"], "Floor_Vinyl": TEXSZ["floor_vinyl.jpg"], "Floor_Wood": TEXSZ["floor_wood.jpg"]}
 
 def new_object(name, mats):
+    name = PFX + name
     old = bpy.data.objects.get(name)
     if old:
         me_old = old.data; bpy.data.objects.remove(old, do_unlink=True)
@@ -135,13 +137,17 @@ def build_item(k, kind):
         k.box(0, 0, 1.40, 0.48, 0.20, 0.22, "Furniture_Metal")
         for sy in (-0.28, 0.28): k.box(0.78, sy, 0.06, 0.06, 0.20, 1.10, "Furniture_Metal")
         k.box(0.80, 0, 0.14, 0.62, 1.00, 1.10, "Furniture_Dark")
+    elif kind == "class":
+        k.box(0, 0, 0.60, 0.45, 0.70, 0.73, "Furniture_Wood")
+        for sx in (-0.27, 0.27): k.box(sx, 0, 0.03, 0.40, 0.0, 0.70, "Furniture_Metal")
+        chair(k, 0, -0.48, math.pi / 2)
     elif kind == "store":
         k.box(0, 0, 1.20, 0.50, 0.0, 1.80, "Locker_Blue")
         for sx in (-0.2, 0.2): k.box(sx, -0.252, 0.012, 0.012, 0.05, 1.75, "Furniture_Dark")
         k.box(0, -0.252, 1.18, 0.012, 0.92, 0.93, "Furniture_Dark")
 
 # ---------------------------------------------------------------- 1. shaped furniture, in 20 m cells
-for o in [o for o in col.objects if o.name.startswith("Furniture_")]:
+for o in [o for o in col.objects if o.name.startswith(PFX + "Furniture_")]:
     me_old = o.data; bpy.data.objects.remove(o, do_unlink=True)
     if me_old.users == 0: bpy.data.meshes.remove(me_old)
 FMATS = ["Furniture_Wood", "Furniture_Seat", "Furniture_Lab", "Furniture_Felt", "Furniture_Metal", "Furniture_Dark", "Locker_Blue"]
@@ -168,7 +174,7 @@ SIGNS = [("ICETEX", "ICETEX doorway", "ICETEX approach", "sign_icetex.jpg"),
          ("Morphology Laboratory", "Laboratory corridor east", "Laboratory corridor west", "sign_morfologia.jpg"),
          ("Elevator and Restroom Hall", "Hall corridor north", "Hall corridor south", "sign_ascensores.jpg"),
          ("Preclinic / Dentistry Coordination", "Preclinic storeroom", "North circulation east", "sign_preclinica.jpg")]
-for o in [o for o in col.objects if o.name.startswith("Sign_")]:
+for o in ([o for o in col.objects if o.name.startswith("Sign_")] if not PFX else []):
     me_old = o.data; bpy.data.objects.remove(o, do_unlink=True)
     if me_old.users == 0: bpy.data.meshes.remove(me_old)
 def sign(name, img, cx, cy, face_dx, face_dy, z0=2.25, w=1.2, h=0.3):
@@ -188,10 +194,10 @@ def sign(name, img, cx, cy, face_dx, face_dy, z0=2.25, w=1.2, h=0.3):
     for f in quads:
         for loop, uv in zip(f.loops, ((0, 0), (1, 0), (1, 1), (0, 1))): loop[uvl].uv = uv
     bm.to_mesh(me); bm.free(); log.append((ob.name, len(me.polygons)))
-for dest, at, came_from, img in SIGNS:
+for dest, at, came_from, img in (SIGNS if not PFX else []):
     (ax, ay), (bx, by) = PL[at], PL[came_from]
     sign(dest.split(" /")[0].split(" ")[0], img, ax, ay, bx - ax, by - ay)   # readable while approaching
-sign("Acceso", "sign_acceso.jpg", PL["Hall Acceso"][0] + 0.6, PL["Hall Acceso"][1] + 1.6, 0.0, -1.0, z0=2.45)
+None if PFX else sign("Acceso", "sign_acceso.jpg", PL["Hall Acceso"][0] + 0.6, PL["Hall Acceso"][1] + 1.6, 0.0, -1.0, z0=2.45)
 
 for row in log: print(row)
 tot = sum(sum(len(p.vertices) - 2 for p in o.data.polygons) for o in col.objects if o.type == "MESH")

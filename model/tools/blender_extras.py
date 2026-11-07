@@ -4,7 +4,8 @@ from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 MODEL_DIR = os.path.dirname(bpy.data.filepath)
 X = json.load(open(os.path.join(globals().get("DATA_DIR") or os.path.join(MODEL_DIR, "tools", "data"), "extras.json"), encoding="utf-8"))
-col = bpy.data.collections["UCC_Piso1"]
+col = bpy.data.collections[globals().get("TARGET_COLLECTION") or "UCC_Piso1"]
+PFX = globals().get("NAME_PREFIX") or ""
 
 def add_prism(bm, rings, z0, z1, mi):
     rings = [[Vector((p[0], p[1])) for p in r] for r in rings if len(r) >= 3]
@@ -24,6 +25,7 @@ def add_prism(bm, rings, z0, z1, mi):
             except ValueError: pass
 
 def build(name, items, mats):
+    name = PFX + name
     old = bpy.data.objects.get(name)
     if old:
         me_old = old.data; bpy.data.objects.remove(old, do_unlink=True); bpy.data.meshes.remove(me_old)
@@ -51,7 +53,7 @@ for a in X["arcs"]:
 build("Door_Swings", items, ["Swing_Line"])
 build("Fixtures", [([f["poly"]], 0.0, f["height"], f["mat"]) for f in X["fixtures"]], ["Fixture", "Furniture_Metal"])
 # Furniture in 20 m cells: the runtime raycasts every mesh, and small bounding boxes keep that cheap.
-for o in [o for o in col.objects if o.name == "Furniture" or o.name.startswith("Furniture_")]:
+for o in [o for o in col.objects if o.name == PFX + "Furniture" or o.name.startswith(PFX + "Furniture_")]:
     me_old = o.data; bpy.data.objects.remove(o, do_unlink=True)
     if me_old.users == 0: bpy.data.meshes.remove(me_old)
 cells = {}

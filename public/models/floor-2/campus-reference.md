@@ -53,9 +53,22 @@ Filtered out as annotation: 462 small filled bars at the room-label anchors (roo
   - Communications office, internships coordination, staff room.
   - Two light wells (VACIO).
 
+## Detail (C8)
+
+- **Doors and fixtures:**
+  - `P2_Doors` and `P2_Door_Swings`: 11 detected doorways get an open leaf and a flat swing arc. On this sheet most doorways are not drawn as gaps between wall ends, so the others remain plain openings.
+  - `P2_Fixtures`: 14 sanitary fixtures from the `sanitarios` blocks.
+- **Furniture (illustrative), `P2_Furniture_<i>_<j>`:**
+  - Classrooms get rows of student desks with chairs. These are AULA 201, 206 B, 207 B and 220.
+  - Laboratories get lab benches with stools.
+  - The Medicine dean's office gets a desk.
+  - Rooms whose label falls outside a closed room polygon stay empty.
+- **Floor zones, `P2_Floor_Zones`:** vinyl in labs and classrooms, laminate in offices.
+- **Routes:** this floor has no API routes yet, so leaves and furniture were placed without a route-clearance check. When Codex adds paths, rerun `extras.py` with the floor-2 graph to keep them clear (`model/tools/README.md`).
+
 ## Not yet in this version
 
-- No door leaves, swing arcs, furniture, floor zones or signs. Openings are the gaps between walls.
+- No signs.
 - No API places or paths for this floor (Codex).
 - No hole in the slab over the stair flights.
 - The A/B half-level (26 cm) and the ramps between them are flattened.

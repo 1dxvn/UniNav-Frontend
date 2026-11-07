@@ -7,6 +7,7 @@ from shapely.ops import unary_union
 from shapely import affinity
 
 WING, DXF, GRAPH, OUT = sys.argv[1:5]
+CLASSROOMS = len(sys.argv) > 5 and sys.argv[5] == "classrooms"   # AULA labels get student desks (other floors)
 W = json.load(open(WING, encoding="utf-8"))
 O = tuple(W["origin_cad"])
 def polys(key): return [Polygon(p["outer"], p["holes"]).buffer(0) for p in W[key]]
@@ -19,6 +20,8 @@ g = {}
 exec(open(GRAPH, encoding="utf-8").read(), g)
 P = {row[0]: (row[1], row[2]) for row in g["PLACES"]}
 routes = unary_union([LineString([P[a], P[b]]) for a, b, _ in g["PATHS"]])
+NO_ROUTES = routes.is_empty   # floors without API paths yet
+def route_dist(geom): return 99.0 if NO_ROUTES else geom.distance(routes)
 LEAF_CLEAR, FURN_CLEAR = 0.40, 1.00
 
 # --- cafeteria / locales slab (glass-walled block at the top left)
@@ -74,7 +77,7 @@ for op in openings:
             geom = unary_union([p["leaf"] for p in parts])
             if not free_tol.contains(geom) or geom.intersects(solid_in):
                 continue
-            clr = geom.distance(routes)
+            clr = route_dist(geom)
             if clr < LEAF_CLEAR:
                 continue
             if best is None or clr > best[0]:
@@ -110,7 +113,7 @@ def area_near(pt):
     return best[0] if best[1].distance(pt) < 1.5 else 12.0
 
 openings_zone = unary_union([Point(op["center"]).buffer(0.85) for op in openings])
-taken = [solid, openings_zone, routes.buffer(FURN_CLEAR)]
+taken = [solid, openings_zone] + ([] if NO_ROUTES else [routes.buffer(FURN_CLEAR)])
 
 # --- CAD fixtures (sanitarios blocks, lavabo, turnstiles)
 doc = ezdxf.readfile(DXF); msp = doc.modelspace()
@@ -145,7 +148,7 @@ turn = unary_union([LineString(p).buffer(0.04) for p in pts if len(p) > 1]).inte
 for t in getattr(turn, "geoms", [turn]):
     if t.geom_type == "Polygon" and t.area > 0.01:
         fixtures.append({"poly": [list(c) for c in t.convex_hull.exterior.coords[:-1]], "height": 1.0, "mat": "Furniture_Metal", "src": "torniquete"})
-fixtures = [f for f in fixtures if Polygon(f["poly"]).distance(routes) >= 0.7]
+fixtures = [f for f in fixtures if route_dist(Polygon(f["poly"])) >= 0.7]
 if fixtures:
     taken.append(unary_union([Polygon(f["poly"]).buffer(0.3) for f in fixtures]))
 
@@ -161,8 +164,9 @@ KITS = {
     "clinic": (2.8, 2.6, 7, [B(0, 0, 1.90, 0.70, 0.60, "Furniture_Seat"), B(0.9, 0.7, 0.60, 0.50, 0.90, "Furniture_Lab")]),
     "gym": (2.6, 2.4, 8, [B(0, 0, 1.80, 0.75, 1.10, "Furniture_Metal")]),
     "store": (1.8, 1.6, 4, [B(0, 0, 1.20, 0.50, 1.80, "Furniture_Metal")]),
+    "class": (1.15, 1.35, 1.7, [B(0, 0, 0.60, 0.45, 0.73, "Furniture_Wood"), B(0, -0.48, 0.42, 0.42, 0.86, "Furniture_Seat")]),
 }
-PROGRAMME = [
+PROGRAMME = ([(r"^AULA|SALON", "class")] if CLASSROOMS else []) + [
     (r"CAFETERIA", "cafe"), (r"LABORATORIO|AULA|OSTEOTECA", "lab"), (r"JUEGOS DE SALON", "pool"),
     (r"^SALA$|^ESPERA$|^ICETEX$|CUB.CULOS", "wait"), (r"PRECLINICA|PRIMEROS", "clinic"), (r"GIMNASIO", "gym"),
     (r"ARCHIVO|BODEGA|ALMACEN|LOCKERS", "store"),
