@@ -1,0 +1,17 @@
+{
+  "profile": "ucc-two-floors",
+  "reports": [
+    {
+      "mode": "automatic",
+      "samples": 79,
+      "maxFootErrorMetres": 1.1444091807533141e-7
+    },
+    {
+      "mode": "manual",
+      "samples": 118,
+      "maxFootErrorMetres": 1.1444091807533141e-7
+    }
+  ],
+  "coordinateResolutionMetres": 0.001,
+  "fixtureOnly": true
+}

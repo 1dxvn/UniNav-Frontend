@@ -53,6 +53,40 @@ whose required model is missing. The unrelated sample campus retains graph mode.
 
 ## Reproducible builds during modelling
 
+The manifest keeps the original 19-place / 16-path binding as its base and adds
+`profiles`, including `ucc-two-floors` for the prepared 64-place / 59-path dataset.
+Selection checks all navigable model bindings together. The expanded profile also
+requires explicit place/connection codes, floor codes and finite `elevation_m`
+values from the API. `effective_elevation_m` alone cannot satisfy this contract.
+A partial or stale UCC dataset is rejected; unrelated sample data keeps graph mode.
+The model badge exposes the selected profile in `data-profile`.
+
+`tools/prepare-floor2-profile.ts` obtains the actual serialized API snapshot using
+the disposable backend fixture's `--snapshot-json` mode. It opens no port and
+never touches a development database. Its first-floor binding includes the new
+incident edges. Floor 2 uses the committed API reference and C13 export in
+`a6d3f11`. The build stages assets from every profile, rejecting conflicting bytes
+at a shared URL before replacing the last build. Baseline refresh preserves the
+profile declarations; changed shared geometry needs coherent updates to all users.
+
+Before importing into any existing deployment, run this read-only check:
+
+```powershell
+$env:UNINAV_TEST_URL = 'http://127.0.0.1:8001'
+node --experimental-strip-types tools/check-campus-profile.ts
+```
+
+`--require-expanded` also fails unless the expanded profile is already active.
+This check does not approve physical levels or stop/restart any service. The
+existing 8001 process still serves the older API contract and 19/16 dataset.
+Do not import the expanded dataset behind it. Public acceptance also requires
+resolving the first-floor hall steps and Block B laboratory stair documented in
+`docs/blocks/vertical-connections.md`; C13 still flattens those areas.
+
+The directory retains every destination. Scene labels prioritize the selected
+destination and nearer labels, hiding overlapping rectangles until the view has
+space. Measurements are cached and refreshed after fonts, viewport or data change.
+
 `npm run build` stages only manifest-declared reviewed assets in a temporary public
 directory, then runs Vite. If a working GLB or reference differs, it reads the exact
 reviewed bytes from `sourceCommit` and verifies the hash before replacing `dist`.
@@ -138,10 +172,11 @@ substeps of at most 0.06 m. Floor changes follow graph endpoint metadata.
 Nearby stair components retain adjacent navigable floor models even after route
 cancellation; preview resources cannot supply that requirement.
 
-The first supported vertical browser rehearsal uses a disposable API dataset
-and test-specific manifest/reference bindings. It does not promote the public
-floor-2 preview or import routes into the development database. See
-`verification/h2-stair-support/README.md` for its exact scope and remaining work.
+The first supported vertical rehearsal used disposable data and test-specific
+bindings (`verification/h2-stair-support/README.md`). The expanded profile now
+runs against the same shipped manifest, references and models, without resource
+overrides. Its data remains disposable; the public floor-2 view remains a preview
+while the live API selects the base profile. See `verification/h2-profiles/README.md`.
 
 Backend `15f467c` provides stable identities, repeated visible labels, ID/position
 waypoints and scoped versioned imports; see `UniNav/docs/CAMPUS_DATASETS.md`.

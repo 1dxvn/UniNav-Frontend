@@ -12,6 +12,7 @@ import { dataFingerprint, parseManifest, requiredModels, sha256, type CampusMani
 import { ModelStore } from "./modelStore.ts";
 import type { CampusCatalog } from "./catalog.ts";
 import { supportColliders, supportedStep } from "./walkSupport.ts";
+import { selectModelProfile } from "./modelProfiles.ts";
 
 interface LoadedCampusModel {
   entry: ModelEntry; reference?: CampusReference; root: THREE.Group;
@@ -33,7 +34,7 @@ interface SceneEvents {
   floor: (floor: number) => void;
   model: (message: string, loaded: boolean, detail?: string) => void;
   view: (overview: boolean, top: boolean) => void;
-  resources: (state: { overview: boolean; preview: boolean; loaded: string[]; visible: string[]; colliders: number }) => void;
+  resources: (state: { overview: boolean; preview: boolean; loaded: string[]; visible: string[]; colliders: number; profile:string }) => void;
 }
 export class CampusScene {
   private readonly renderer: THREE.WebGLRenderer;
@@ -49,6 +50,7 @@ export class CampusScene {
   private readonly body = new THREE.Group();
   private readonly destinationRing: THREE.Mesh;
   private readonly labels = new Map<number, HTMLButtonElement>();
+  private readonly labelSizes = new Map<number,{width:number;height:number}>();
   private readonly floorGroups = new Map<number, THREE.Group>();
   private readonly keys = new Set<string>();
   private readonly abort = new AbortController();
@@ -56,6 +58,8 @@ export class CampusScene {
   private places: Building[] = [];
   private paths: CampusPath[] = [];
   private manifest: CampusManifest | null = null;
+  private profile="base";
+  private catalogMatched=false;
   private models: ModelStore<LoadedCampusModel> | null = null;
   private routeGeneration = 0;
   private segments: WalkSegment[] = [];
@@ -120,6 +124,7 @@ export class CampusScene {
     ground.receiveShadow = true;
     this.scene.add(ground);
     this.makeAvatar();
+    void document.fonts.ready.then(()=>{if(!this.abort.signal.aborted)this.labelSizes.clear();});
     this.avatar.visible = false;
     this.destinationRing = new THREE.Mesh(new THREE.TorusGeometry(0.9, 0.065, 8, 48), new THREE.MeshStandardMaterial({ color: 0x0e8b75, emissive: 0x075c4d, emissiveIntensity: 0.4 }));
     this.destinationRing.rotation.x = -Math.PI / 2;
@@ -181,6 +186,7 @@ export class CampusScene {
     this.floorGroups.clear();
     this.labels.forEach((label) => label.remove());
     this.labels.clear();
+    this.labelSizes.clear();
     this.places = places;
     this.paths = paths;
     this.segments = walkSegments(places, paths);
@@ -353,6 +359,8 @@ export class CampusScene {
   }
   async loadModel(): Promise<void> {
     this.manifest = null;
+    this.catalogMatched=false;
+    this.profile="base";
     this.models?.dispose(); this.models = null;
     disposeGroup(this.modelGroup);
     disposeGroup(this.referenceGroup);
@@ -363,7 +371,9 @@ export class CampusScene {
     const response = await fetch(`${import.meta.env.BASE_URL}models/campus-manifest.json`, { cache:"no-cache" });
     if (response.status === 404) { this.events.model("Campus model manifest pending",false); return; }
     if (!response.ok) throw new Error("Could not read the campus model manifest.");
-    this.manifest = parseManifest(await response.json());
+    const selected=await selectModelProfile(parseManifest(await response.json()),this.places,this.paths);
+    this.manifest=selected.manifest;this.profile=selected.profile;this.catalogMatched=selected.recognized;
+    if(selected.error){this.applyModels(false);throw new Error(selected.error);}
     const entries = this.manifest.models;
     this.models = new ModelStore((id) => this.loadModelEntry(entries.find((entry) => entry.id === id)!), (model) => {
       model.root.removeFromParent(); model.pins.removeFromParent();
@@ -373,7 +383,7 @@ export class CampusScene {
   }
   getCatalog(): CampusCatalog | null {
     // The unrelated sample API must not acquire the UCC inventory.
-    return this.manifest?.models.some((entry) => entry.binding?.placeNames.every((name) => this.places.some((place) => place.name === name))) ? this.manifest.catalog : null;
+    return this.manifest && this.catalogMatched ? this.manifest.catalog:null;
   }
   floorPresentation(floor: number): "navigable" | "preview" | "pending" {
     if (!this.getCatalog()) return "pending";
@@ -485,7 +495,7 @@ export class CampusScene {
     else if (preview) this.events.model(`Preview only · ${floorModels.reduce((sum,model) => sum+model.references,0)} structural references aligned`,true,"Inspection only. Routes and vertical connections are pending. The model flattens documented half-levels.");
     else if (floorModels.length) this.events.model(`${floorModels.map((model) => model.entry.label).join(" + ")} · ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true);
     else if (this.manifest) this.events.model("Floor model pending",false);
-    this.events.resources({ overview:this.overview,preview,loaded:loaded.map((model) => model.entry.id),visible:active.map((model) => model.entry.id),colliders:this.colliders.length });
+    this.events.resources({ overview:this.overview,preview,loaded:loaded.map((model) => model.entry.id),visible:active.map((model) => model.entry.id),colliders:this.colliders.length,profile:this.profile });
     if (fit) this.resetView();
   }
   exportView(): void {
@@ -520,7 +530,7 @@ export class CampusScene {
         const target=this.waypoints[this.index];
         const direction=target.position.clone().sub(this.avatar.position);
         const advanced=advanceWalk(this.avatar.position,this.avatarFloor,target,WALK_SPEED*delta/count);
-        const next=target.kind==="stairs" ? supportedStep(this.avatar.position,advanced.position,this.supports) : advanced.position;
+        const next=target.kind==="stairs" && this.getCatalog() ? supportedStep(this.avatar.position,advanced.position,this.supports) : advanced.position;
         if (!next || this.collides(this.avatar.position,next)) { this.state="blocked"; this.emit(); break; }
         this.avatar.position.copy(next); moved=true;
         if (direction.x*direction.x+direction.z*direction.z>0.001) this.face(direction,delta/count);
@@ -542,7 +552,7 @@ export class CampusScene {
       for (let i=0;modelsReady && i<count;i++) {
         const next=this.avatar.position.clone().addScaledVector(direction,WALK_SPEED*delta/count);
         const step=manualStep(this.avatar.position,next,this.segments,this.avatarFloor,
-          (from,expected) => supportedStep(from,expected,this.supports),(from,to) => this.collides(from,to));
+          (from,expected) => this.getCatalog() ? supportedStep(from,expected,this.supports):expected,(from,to) => this.collides(from,to));
         if (!step) break;
         this.avatar.position.copy(step.position); this.face(direction,delta/count); moved=true;
         if (step.floor!==this.avatarFloor) { this.avatarFloor=step.floor; this.setFloor(step.floor,false,true); }
@@ -559,14 +569,26 @@ export class CampusScene {
       const direction = new THREE.Vector3(0, 0, -1).project(this.camera).sub(zero);
       axis.style.transform = `rotate(${Math.atan2(direction.x, direction.y) * 180 / Math.PI}deg)`;
     }
+    // Measure as a batch only when labels/fonts/layout change, before position
+    // writes. Prefer the destination, then hide overlapping labels as we zoom.
+    const unmeasured=[...this.labels].filter(([id])=>!this.labelSizes.has(id));
+    for(const [,label] of unmeasured)label.hidden=false;
+    for(const [id,label] of unmeasured)this.labelSizes.set(id,{width:label.offsetWidth || 150,height:label.offsetHeight || 27});
+    const candidates:{id:number;label:HTMLButtonElement;x:number;y:number;depth:number;selected:boolean}[]=[];
     this.labels.forEach((label, id) => {
       const place = this.places.find((candidate) => candidate.id === id)!;
       projection.copy(toScenePosition(place)).y += 0.6;
       projection.project(this.camera);
       const visible = !this.overview && this.labelsVisible && place.floor === this.viewFloor && Math.abs(projection.x) < 0.92 && Math.abs(projection.y) < 0.9 && projection.z < 1;
-      label.hidden = !visible;
-      if (visible) { label.style.left = `${(projection.x * 0.5 + 0.5) * this.container.clientWidth}px`; label.style.top = `${(-projection.y * 0.5 + 0.5) * this.container.clientHeight}px`; }
+      label.hidden=true;
+      if(visible)candidates.push({id,label,x:(projection.x*0.5+0.5)*this.container.clientWidth,y:(-projection.y*0.5+0.5)*this.container.clientHeight,depth:projection.z,selected:label.classList.contains("selected")});
     });
+    const occupied:{left:number;top:number;right:number;bottom:number}[]=[];
+    for(const p of candidates.sort((a,b)=>Number(b.selected)-Number(a.selected) || a.depth-b.depth)){
+      const size=this.labelSizes.get(p.id)!,box={left:p.x-size.width/2,right:p.x+size.width/2,top:p.y-size.height*1.6,bottom:p.y-size.height*0.6};
+      if(occupied.some(b=>box.left<b.right+6 && box.right>b.left-6 && box.top<b.bottom+6 && box.bottom>b.top-6))continue;
+      occupied.push(box);p.label.hidden=false;p.label.style.left=`${p.x}px`;p.label.style.top=`${p.y}px`;
+    }
     this.destinationRing.scale.setScalar(1 + Math.sin(this.clock.elapsedTime * 2) * 0.06);
     this.lastEmission += delta;
     if (this.lastEmission > 0.12) { this.lastEmission = 0; this.emit(); }
@@ -577,6 +599,7 @@ export class CampusScene {
     this.body.quaternion.slerp(target, Math.min(delta * 10, 1));
   }
   private resize(): void {
+    this.labelSizes.clear();
     const width = Math.max(this.container.clientWidth, 1), height = Math.max(this.container.clientHeight, 1);
     const aspect = width / height;
     Object.assign(this.camera, { left: -this.frustum * aspect, right: this.frustum * aspect, top: this.frustum, bottom: -this.frustum });

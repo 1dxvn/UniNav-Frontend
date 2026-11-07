@@ -24,7 +24,7 @@ const baseline: ModelEntry = { id:"ucc-first-floor",label:"UCC · First floor",f
     binding:{ placeNames,sha256:await dataFingerprint(placeNames,places,paths) } };
 const models = previous?.models.map((entry) => entry.id === baseline.id ? baseline : entry) ?? [];
 if (!models.some((entry) => entry.id === baseline.id)) models.push(baseline);
-const manifest: CampusManifest = { version:1,catalog,models };
+const manifest: CampusManifest = { ...previous,version:1,catalog,models };
 parseManifest(manifest);
 await writeFile("public/models/campus-manifest.json",JSON.stringify(manifest,null,2)+"\n");
 console.log(`Prepared ${manifest.models.length} model entries; catalogue ${catalog.revision}. Review and rehearse before publishing.`);

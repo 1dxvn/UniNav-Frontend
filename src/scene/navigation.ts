@@ -64,6 +64,7 @@ export function manualStep(from: Vector3,desired: Vector3,segments: WalkSegment[
     let currentT=segmentProgress(from,s.a,s.b),nextT=segmentProgress(next,s.a,s.b);
     if (s.path.kind==="stairs") {
       const flatA=s.a.clone().setY(0),flatB=s.b.clone().setY(0);
+      if(flatA.distanceToSquared(flatB)<0.00000001)continue;
       currentT=segmentProgress(from.clone().setY(0),flatA,flatB);
       nextT=segmentProgress(next.clone().setY(0),flatA,flatB);
       const t=Math.max(0,Math.min(1,nextT));

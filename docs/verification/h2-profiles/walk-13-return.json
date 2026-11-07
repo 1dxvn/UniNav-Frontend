@@ -1,0 +1,63 @@
+{
+  "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+  "origin": "Morphology Laboratory",
+  "destination": "Hall Acceso",
+  "route": {
+    "path": [
+      "Morphology Laboratory",
+      "Laboratory corridor east",
+      "Laboratory corridor west",
+      "South circulation",
+      "Access courtyard",
+      "Hall Acceso"
+    ],
+    "steps": [
+      {
+        "origin_name": "Morphology Laboratory",
+        "destination_name": "Laboratory corridor east",
+        "kind": "corridor",
+        "distance": 5.515840824389333
+      },
+      {
+        "origin_name": "Laboratory corridor east",
+        "destination_name": "Laboratory corridor west",
+        "kind": "corridor",
+        "distance": 5.220153254455275
+      },
+      {
+        "origin_name": "Laboratory corridor west",
+        "destination_name": "South circulation",
+        "kind": "corridor",
+        "distance": 20
+      },
+      {
+        "origin_name": "South circulation",
+        "destination_name": "Access courtyard",
+        "kind": "outdoor",
+        "distance": 23.005434140654682
+      },
+      {
+        "origin_name": "Access courtyard",
+        "destination_name": "Hall Acceso",
+        "kind": "outdoor",
+        "distance": 17.55704986607944
+      }
+    ],
+    "distance": 71.29847808557872,
+    "origin_name": "Morphology Laboratory",
+    "destination_name": "Hall Acceso"
+  },
+  "finalPosition": [
+    0,
+    3.5,
+    0
+  ],
+  "finalErrorMetres": 0,
+  "samples": 198,
+  "maxCentreLineErrorMetres": 0.0006581045602217414,
+  "states": [
+    "ready",
+    "walking",
+    "arrived"
+  ]
+}

@@ -68,3 +68,17 @@ test("sample API: sign in, walk an unsmoothed turn twice, pause and manually ove
   expect(errors).toEqual([]);
   expect(uccPreviews).toEqual([]);
 });
+
+test("sample API: graph-only stairs still guide across floors without UCC model resources",async({page,request})=>{
+  const places=await(await request.get("/buildings")).json() as {id:number;name:string;x:number;y:number;floor:number;building_type:string|null}[];
+  test.skip(!places.some(p=>p.name==="Main Entrance"),"Requires the original sample campus.");
+  const entrance=places.find(p=>p.name==="Main Entrance")!,target=places.find(p=>p.floor===1 && !["waypoint","reference","stairs","elevator"].includes(p.building_type ?? ""))!;
+  const models:string[]=[];page.on("request",r=>{if(r.url().endsWith(".glb"))models.push(r.url());});
+  await page.goto("/app/");await expect(page.locator("#model-status")).toHaveAttribute("data-profile","sample");
+  await page.locator("#open-login").click();await page.getByLabel("Username",{exact:true}).fill("student");await page.getByLabel("Password",{exact:true}).fill("demo1234");await page.locator("#login-submit").click();await expect(page.locator("#session-user")).toHaveText("student");
+  await page.locator("#origin").selectOption(String(entrance.id));await page.locator("#search").fill(target.name);await page.locator("#place-list button").first().click();
+  const response=page.waitForResponse(r=>r.url().endsWith("/routes/calculate"));await page.locator("#calculate").click();const route=await(await response).json();expect(route.steps.some((s:{kind:string})=>s.kind==="stairs")).toBe(true);
+  await expect(page.locator("#travel-status")).toHaveAttribute("data-state","ready");await page.locator("#follow").click();await expect(page.locator("#travel-status")).toHaveAttribute("data-state","arrived",{timeout:60000});
+  const final=(await page.locator("#travel-status").getAttribute("data-position"))!.split(",").map(Number);expect(Math.hypot(final[0]-target.x,final[1]-target.floor*3.5,final[2]+target.y)).toBeLessThan(0.001);expect(models).toEqual([]);
+  await mkdir(evidence,{recursive:true});await writeFile(`${evidence}/sample-stairs.json`,JSON.stringify({route,final,modelRequests:models},null,2));
+});

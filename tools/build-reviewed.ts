@@ -11,16 +11,20 @@ const manifest = parseManifest(JSON.parse(manifestBytes.toString("utf8")));
 // Stage reviewed exports without changing Claude's sources or live public files.
 // Resolve and verify all assets before Vite replaces the last working dist.
 const assets = new Map<string,Uint8Array>([["models/campus-manifest.json",manifestBytes]]);
-for (const entry of manifest.models.filter((entry) => entry.state === "ready")) {
+function stage(path:string,bytes:Uint8Array){
+  const previous=assets.get(path);if(previous && !Buffer.from(previous).equals(Buffer.from(bytes)))throw new Error(`Conflicting reviewed asset across model profiles: ${path}.`);
+  assets.set(path,bytes);
+}
+for (const entry of [...manifest.models,...(manifest.profiles ?? []).flatMap(p=>p.models)].filter((entry) => entry.state === "ready")) {
   if (entry.kind === "exterior") {
-    assets.set(entry.model!,await reviewedAsset(entry,entry.model!,entry.modelSha256!));
+    stage(entry.model!,await reviewedAsset(entry,entry.model!,entry.modelSha256!));
     continue;
   }
   const referenceBytes = await reviewedAsset(entry,entry.reference!,entry.referenceSha256!);
   const reference = parseReference(JSON.parse(referenceBytes.toString("utf8")));
   const path = posix.join(posix.dirname(entry.reference!),reference.model);
-  assets.set(entry.reference!,referenceBytes);
-  assets.set(path,await reviewedAsset(entry,path,entry.modelSha256!));
+  stage(entry.reference!,referenceBytes);
+  stage(path,await reviewedAsset(entry,path,entry.modelSha256!));
 }
 const directory = await mkdtemp(join(tmpdir(),"uninav-reviewed-build-"));
 try {

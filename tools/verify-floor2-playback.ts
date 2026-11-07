@@ -33,7 +33,8 @@ for(const file of (await readdir(output)).filter(f=>f.endsWith("-walks.json"))){
   }
 }
 if(results.length!==6)throw new Error("Six complete journeys are required.");
-const candidate=JSON.parse(await readFile(`${output}/dataset-candidate.json`,"utf8")),ready=JSON.parse(await readFile("../data/datasets/ucc-second-floor.json","utf8"));
+const candidateDir=process.env.UNINAV_CANDIDATE_DIR ?? output;
+const candidate=JSON.parse(await readFile(`${candidateDir}/dataset-candidate.json`,"utf8")),ready=JSON.parse(await readFile("../data/datasets/ucc-second-floor.json","utf8"));
 if(JSON.stringify(candidate.places)!==JSON.stringify(ready.places) || JSON.stringify(candidate.paths)!==JSON.stringify(ready.paths))throw new Error("Ready dataset differs from the browser-rehearsed graph.");
 await writeFile(`${output}/browser-support.json`,JSON.stringify({results,readyGraphMatchesRehearsal:true,coordinateResolutionMetres:0.001,note:"Support checks cover the newly added scope, including stairs and floor 2. Legacy approach uses its existing flat-model convention; all observed positions are checked against the route."},null,2));
 console.log(JSON.stringify(results,null,2));

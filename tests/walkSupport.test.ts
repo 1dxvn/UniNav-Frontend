@@ -58,3 +58,8 @@ test("only navigable models can declare reviewed foot support nodes",async () =>
   preview.supportNodes=["P2_Floor_Slab"];
   assert.throws(()=>parseManifest(manifest),/Only navigable/);
 });
+test("keyboard cannot jump a storey along a zero-plan-length graph stair",()=>{
+  const vertical=places.slice(0,2).map((p,i)=>({...p,x:0,y:0,floor:i+1,elevation_m:i ? 6.44:3.5}));
+  const segments=walkSegments(vertical,[paths[0]]);
+  assert.equal(manualStep(new Vector3(0,6.44,0),new Vector3(0.02,6.44,0),segments,2,(_a,b)=>b,()=>false),undefined);
+});

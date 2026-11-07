@@ -12,7 +12,8 @@ export interface ModelEntry {
   binding?: { placeNames: string[]; sha256: string };
   supportNodes?: string[];
 }
-export interface CampusManifest { version: 1; catalog: CampusCatalog; models: ModelEntry[] }
+export interface ModelProfile { id:string; label:string; requiresExplicitPositions:true; models:ModelEntry[] }
+export interface CampusManifest { version: 1; catalog: CampusCatalog; models: ModelEntry[]; identityPlaceNames?:string[]; profiles?:ModelProfile[] }
 const hashPattern = /^[a-f0-9]{64}$/;
 const compare = (a: string,b: string) => a < b ? -1 : a > b ? 1 : 0;
 export function parseManifest(value: unknown): CampusManifest {
@@ -20,6 +21,18 @@ export function parseManifest(value: unknown): CampusManifest {
   const manifest = value as CampusManifest;
   if (manifest.version !== 1 || !Array.isArray(manifest.models)) throw new Error("Unsupported model manifest.");
   parseCatalog(manifest.catalog);
+  if(manifest.identityPlaceNames!==undefined && (!Array.isArray(manifest.identityPlaceNames) || manifest.identityPlaceNames.length<3 ||
+    new Set(manifest.identityPlaceNames).size!==manifest.identityPlaceNames.length || manifest.identityPlaceNames.some(n=>typeof n!=="string" || !n.trim()))) throw new Error("Campus identity needs three distinct source place names.");
+  if(manifest.profiles!==undefined){
+    if(!Array.isArray(manifest.profiles) || !manifest.identityPlaceNames)throw new Error("Model profiles require a source identity.");
+    const profileIds=new Set<string>();
+    for(const profile of manifest.profiles){
+      if(!profile || !/^[a-zA-Z0-9_-]+$/.test(profile.id) || ["base","sample","incompatible"].includes(profile.id) || profileIds.has(profile.id) || !profile.label?.trim() || profile.requiresExplicitPositions!==true)throw new Error("Invalid or duplicate model profile.");
+      profileIds.add(profile.id);
+      parseManifest({version:1,catalog:manifest.catalog,models:profile.models});
+      if(!profile.models.some(m=>m.state==="ready" && m.binding && m.kind!=="floor-preview" && m.kind!=="exterior"))throw new Error("A model profile needs a navigable data binding.");
+    }
+  }
   const ids = new Set<string>();
   for (const entry of manifest.models) {
     if (!entry || typeof entry.id !== "string" || !/^[a-zA-Z0-9_-]+$/.test(entry.id) || ids.has(entry.id) || !entry.label?.trim() || !entry.revision?.trim() ||

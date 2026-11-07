@@ -1,0 +1,74 @@
+{
+  "path": [
+    "Main Entrance",
+    "Reception",
+    "Restrooms F0"
+  ],
+  "steps": [
+    {
+      "origin_name": "Main Entrance",
+      "destination_name": "Reception",
+      "kind": "corridor",
+      "distance": 12,
+      "origin_id": 1,
+      "destination_id": 2,
+      "path_id": 1,
+      "connection_code": "legacy-path:1",
+      "origin_display_name": "Main Entrance",
+      "destination_display_name": "Reception"
+    },
+    {
+      "origin_name": "Reception",
+      "destination_name": "Restrooms F0",
+      "kind": "corridor",
+      "distance": 12,
+      "origin_id": 2,
+      "destination_id": 3,
+      "path_id": 2,
+      "connection_code": "legacy-path:2",
+      "origin_display_name": "Reception",
+      "destination_display_name": "Restrooms F0"
+    }
+  ],
+  "distance": 24,
+  "origin_name": "Main Entrance",
+  "destination_name": "Restrooms F0",
+  "waypoints": [
+    {
+      "id": 1,
+      "code": "legacy-place:1",
+      "name": "Main Entrance",
+      "display_name": "Main Entrance",
+      "x": 0,
+      "y": 0,
+      "floor": 0,
+      "elevation_m": 0,
+      "block_code": null,
+      "floor_code": null
+    },
+    {
+      "id": 2,
+      "code": "legacy-place:2",
+      "name": "Reception",
+      "display_name": "Reception",
+      "x": 12,
+      "y": 0,
+      "floor": 0,
+      "elevation_m": 0,
+      "block_code": null,
+      "floor_code": null
+    },
+    {
+      "id": 3,
+      "code": "legacy-place:3",
+      "name": "Restrooms F0",
+      "display_name": "Restrooms F0",
+      "x": 12,
+      "y": -12,
+      "floor": 0,
+      "elevation_m": 0,
+      "block_code": null,
+      "floor_code": null
+    }
+  ]
+}

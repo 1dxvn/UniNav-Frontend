@@ -142,6 +142,7 @@ try {
       ui.modelStatus.dataset.loadedModels = JSON.stringify(state.loaded);
       ui.modelStatus.dataset.visibleModels = JSON.stringify(state.visible);
       ui.modelStatus.dataset.colliders = String(state.colliders);
+      ui.modelStatus.dataset.profile = state.profile;
     },
   });
 } catch (error) {
