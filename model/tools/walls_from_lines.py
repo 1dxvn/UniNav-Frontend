@@ -57,14 +57,21 @@ walls = walls.difference(unary_union(polys(W["columns"])))
 # long for is_tag, and the label anchor may sit up to ~1 m from it. Such a bar is a solid hatch, it stands alone in its
 # room (it touches no wall, column or glass) and a label anchor lies within 1.1 m. Without this test it became a
 # free-standing wall in the middle of the room. Layer-01 partitions (not hatched) are never taken for tags.
+# Bars behind rotated text ("LABORATORIO BIOLOGIA MOLECULAR", "HALL DE ACCESO") reach 0.6 x 6 m; they count when a
+# text of the drawing (any layer) is written on the bar itself.
 others = unary_union(polys(W["columns"]) + polys(W["glass"]))
 parts = [p for p in getattr(walls, "geoms", [walls]) if p.geom_type == "Polygon"]
+text_pts = [Point(e.dxf.insert.x + dx - O[0], e.dxf.insert.y + dy - O[1]) for e in msp.query("TEXT MTEXT")
+            if BUILD.contains(Point(e.dxf.insert.x + dx - O[0], e.dxf.insert.y + dy - O[1]))]
 def long_tag(i, p):
     mrr = p.minimum_rotated_rectangle; c = list(mrr.exterior.coords)
     a = LineString(c[0:2]).length; b = LineString(c[1:3]).length
-    if not (0.18 <= min(a, b) <= 0.45 and 1.2 <= max(a, b) < 3.0 and p.area > 0.9 * mrr.area): return False
+    fill = p.area / mrr.area        # two lines of text give two side-by-side bars of different length (fill ~0.8)
     if p.intersection(hatched).area < 0.9 * p.area: return False
-    if not any(p.distance(q) < 1.1 for q in anchors) or p.distance(others) < 0.03: return False
+    if fill > 0.9 and 0.18 <= min(a, b) <= 0.45 and 1.2 <= max(a, b) < 3.0 and any(p.distance(q) < 1.1 for q in anchors): pass
+    elif fill > 0.7 and 0.18 <= min(a, b) <= 0.6 and 1.2 <= max(a, b) <= 6.0 and any(p.buffer(0.1).contains(q) for q in text_pts): pass
+    else: return False
+    if p.distance(others) < 0.03: return False
     return all(p.distance(o) >= 0.03 for j, o in enumerate(parts) if j != i)
 long_tags = [p for i, p in enumerate(parts) if long_tag(i, p)]
 # Door-type tags ("P-7", "P-10"): a 0.25 x 0.54 m frame on layer 01 around the code, drawn next to each door, often

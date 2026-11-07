@@ -29,7 +29,7 @@ for key in FLOORS:
                     if g.index not in seen: seen.add(g.index); stack.append(g)
         vs = {v for f in isl for v in f.verts}
         xs = [v.co.x for v in vs]; ys = [v.co.y for v in vs]
-        if max(max(xs) - min(xs), max(ys) - min(ys)) > 3.2: continue
+        if max(max(xs) - min(xs), max(ys) - min(ys)) > 6.5: continue          # tag bars reach 6 m
         cx, cy = sum(xs) / len(xs), sum(ys) / len(ys)
         if any(inside(cx, cy, t) for t in tags) and not any(inside(cx, cy, w) for w in walls):
             drop.append((isl, vs))
