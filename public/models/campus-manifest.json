@@ -3,8 +3,8 @@
   "catalog": {
     "version": 1,
     "id": "ucc-pasto",
-    "revision": "dwg-a35f892",
-    "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg",
+    "revision": "dwg-a35f892-identities-b36d328",
+    "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg; UniNav-Frontend/docs/blocks/level-zones.md @b36d328; user confirmation 2026-11-07 16:07: Block A north bar, Block B south body",
     "integrated_dataset": {
       "id": "ucc-first-floor",
       "revision": "ucc-first-floor-3809907",
@@ -17,8 +17,8 @@
       {
         "id": "A",
         "name": "Block A",
-        "identity_evidence": "derived",
-        "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg",
+        "identity_evidence": "confirmed",
+        "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg; UniNav-Frontend/docs/blocks/level-zones.md @b36d328; user confirmation 2026-11-07 16:07: Block A north bar, Block B south body",
         "floors": [
           {
             "id": "A-0",
@@ -73,8 +73,8 @@
       {
         "id": "B",
         "name": "Block B",
-        "identity_evidence": "derived",
-        "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg",
+        "identity_evidence": "confirmed",
+        "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg; UniNav-Frontend/docs/blocks/level-zones.md @b36d328; user confirmation 2026-11-07 16:07: Block A north bar, Block B south body",
         "floors": [
           {
             "id": "B-0",
@@ -132,8 +132,8 @@
       "PLANTA AZOTEA CUBIERTAS"
     ],
     "notes": [
-      "Block A as the north bar and Block B as the south body remain derived identities awaiting physical confirmation. Place assignments are not changed.",
-      "Sheet level values are documented; attribution to blocks is derived. The current C2 model remains a flat slab at scene elevation 3.5 m.",
+      "The user confirmed Block A as the north bar and Block B as the south body on 2026-11-07; recorded by Claude in level-zones.md @b36d328. Identity confirmation does not certify every height, room or accessibility condition.",
+      "Sheet level values and local level zones remain documented/derived from their sources. Identity confirmation does not make one datum valid throughout a floor. The historical C2 profile remains a flat slab at scene elevation 3.5 m.",
       "Block B ground-floor clinic also contains N -4.13; first-floor ramps have intermediate levels. A single floor datum does not describe every point.",
       "Plan (x,y) maps to scene (x,elevation,-y). Plan +Y is not geographic north. Survey datums must be reconciled with each exported model before navigation is enabled."
     ]
@@ -292,7 +292,7 @@
   "profiles": [
     {
       "id": "ucc-three-floors-c16",
-      "label": "UCC three floors with C16 models",
+      "label": "UCC three floors with C17 ramp",
       "requiresExplicitPositions": true,
       "models": [
         {
@@ -509,11 +509,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C16-floor-2-002aaec",
+          "revision": "C17-floor-2-ramp-0f6a862",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "b099eb799e1dbaf23fee818601b64499113fea401062add809c2b8d57de43f44",
+          "modelSha256": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
           "supportNodes": [
             "P2_Floor_Slab",
             "P2_Stair_A_East_1",
@@ -569,11 +569,12 @@
             ],
             "sha256": "caa68d32f0b46b435479979611cbbae6da4a09f388bde573edcf398fbcdd431d"
           },
-          "model": "models/c16/floor-2.glb",
+          "model": "models/c17/floor-2.glb",
           "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-2.glb"
-          }
+            "commit": "0f6a862",
+            "path": "model/candidates/c17/floor-2.glb"
+          },
+          "sourceDocument": "model/candidates/c17/README.md @0f6a862; drawn A/B ramp, world6.44 to6.18; step-free geometry, accessibility not certified. No new API connection."
         }
       ],
       "stairCrossings": [
@@ -641,7 +642,7 @@
     },
     {
       "id": "ucc-two-floors-c15",
-      "label": "UCC · two-floor data with C16 models",
+      "label": "UCC two-floor data with C17 ramp",
       "requiresExplicitPositions": true,
       "models": [
         {
@@ -832,11 +833,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C16-floor-2-002aaec",
+          "revision": "C17-floor-2-ramp-0f6a862",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "b099eb799e1dbaf23fee818601b64499113fea401062add809c2b8d57de43f44",
+          "modelSha256": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
           "supportNodes": [
             "P2_Floor_Slab",
             "P2_Stair_A_East_1",
@@ -867,11 +868,12 @@
             ],
             "sha256": "a71ad3d8304012b6aa7edd065895b6b884d7a55be420a0c54a3385c0773a32a4"
           },
-          "model": "models/c16/floor-2.glb",
+          "model": "models/c17/floor-2.glb",
           "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-2.glb"
-          }
+            "commit": "0f6a862",
+            "path": "model/candidates/c17/floor-2.glb"
+          },
+          "sourceDocument": "model/candidates/c17/README.md @0f6a862; drawn A/B ramp, world6.44 to6.18; step-free geometry, accessibility not certified. No new API connection."
         }
       ],
       "stairCrossings": [

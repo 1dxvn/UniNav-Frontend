@@ -1,0 +1,25 @@
+{
+  "publicSourceMerge": "9bdf8d79abd0d9b773bbbf386b467d7c09ce9976",
+  "reviewedSourceHead": "995119f4c81d00e80f8d92f7d572445b8d8f421e",
+  "sourceFiles": [
+    "docs/blocks/dwg-inventory.md",
+    "docs/blocks/level-zones.json",
+    "docs/blocks/level-zones.md",
+    "docs/model-review/README.md",
+    "docs/model-review/after-c17/checks.json",
+    "docs/model-review/after-c17/ramp-from-a-after.png",
+    "docs/model-review/after-c17/ramp-from-a-before.png",
+    "docs/model-review/after-c17/ramp-from-b-after.png",
+    "docs/model-review/after-c17/ramp-from-b-before.png",
+    "model/campus.blend",
+    "model/candidates/c17/README.md",
+    "model/candidates/c17/floor-2.glb",
+    "model/tools/blender_real_levels.py",
+    "model/tools/data/c17/slabs.json",
+    "model/tools/real_levels_c17.json",
+    "model/tools/real_levels_check.ts",
+    "model/tools/real_levels_slabs.py"
+  ],
+  "pisoCeroDeliveryExcluded": true,
+  "sourceBytesCopiedFromOriginalCommits": true
+}

@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-11-07T22:01:26.583453+00:00",
+  "foreign": {
+    "CONTINUIDAD.md": "ec92de42a3e27a2e950aeb779708c1ef142d376ef35aa7d4d6a730d11596b089",
+    "scripts/codex_continuity.py": "a558ee4572062ba7dd2eba2af02264a1bc10abfb9c5f73c3a4721a3430152ec2",
+    "tests/unit/test_codex_continuity.py": "7d086a05a7533999d395752c758b5cc4ff4a55d9385da2d664395516e17c9bc5",
+    "scripts/seed.py": "64c37d037a2d22d8ed11c93e388cbf34dbcd2475694c6578d61ae6e0ff450cc2"
+  },
+  "githubLogin": "1dxvn",
+  "identityEmail": "hugo.burgos@campusucc.edu.co",
+  "realDatabase": [
+    19,
+    16
+  ],
+  "services": {
+    "8000": {
+      "/health": 200,
+      "/app/": 200,
+      "/docs": 200,
+      "/openapi.json": 200
+    },
+    "8001": {
+      "/health": 200,
+      "/app/": 200,
+      "/docs": 200,
+      "/openapi.json": 200
+    }
+  },
+  "reviewedC17SourceCommits": [
+    "995119f4c81d00e80f8d92f7d572445b8d8f421e|1dxvn|hugo.burgos@campusucc.edu.co|1dxvn|hugo.burgos@campusucc.edu.co",
+    "9f8634007c902d2fe9867bc8ac4d5bc41f74ba7e|1dxvn|hugo.burgos@campusucc.edu.co|1dxvn|hugo.burgos@campusucc.edu.co",
+    "51e85864eda263c19cf51734036cfc54236e0f16|1dxvn|hugo.burgos@campusucc.edu.co|1dxvn|hugo.burgos@campusucc.edu.co",
+    "0f6a862d0209c10572a9229c445ad365f9f3e748|1dxvn|hugo.burgos@campusucc.edu.co|1dxvn|hugo.burgos@campusucc.edu.co",
+    "b36d328550c4962f7429cf2f70dfbd778c5dbf32|1dxvn|hugo.burgos@campusucc.edu.co|1dxvn|hugo.burgos@campusucc.edu.co"
+  ],
+  "claudeWorkingSources": {
+    "docs/blocks/dwg-inventory.md": "381209af11faedfabe4bd9091deabcbb294f5962fdf6134b4d804b86b9595d55",
+    "docs/blocks/level-zones.json": "a6e65d6d021607d5b263d2839831eaf9da6d8d4ee7f8d833208838d4725c2a35",
+    "docs/blocks/level-zones.md": "b179f7b94b4d115ecac83b4bb01cedeed4eccab87a32d7bf20a66348e44c3090",
+    "docs/model-review/README.md": "f099783a1c01d66e969777c1129bf25a396fc92fa437fedb897f10ad240d1e49",
+    "docs/model-review/after-c17/checks.json": "6b85412e3fb3c5e54e7fa164384c3b8589cb6982b3065131eb8901700a79bbf0",
+    "docs/model-review/after-c17/ramp-from-a-after.png": "824ecd1298553d2b7d357edb308be3f62e5b8fe609ba27111623a45f1bb08634",
+    "docs/model-review/after-c17/ramp-from-a-before.png": "9b076e1869dc44d9c93a0ef33e7180124d79aebb9b50452ee134c145f2ed7c44",
+    "docs/model-review/after-c17/ramp-from-b-after.png": "07e3cd89f5d0ea2d96469aa106c3bc54da7026ec8d4fa1c8e3417783e4982021",
+    "docs/model-review/after-c17/ramp-from-b-before.png": "928756b8612c9b9c331edaff521e6651c59ec21d5f9f5b2e44e1813c45a170cc",
+    "model/campus.blend": "8f9c4f5a020a293d792d18d975c2e166a30a77ee762a38a28b8d0a07d641ab92",
+    "model/candidates/c17/README.md": "0a4016cf86d5b776b789633c162cb655b04faa07ec5fd88f5a6a2979dee48263",
+    "model/candidates/c17/floor-2.glb": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
+    "model/tools/blender_real_levels.py": "fbb007ebf1207386322aaa29503c0d46636f32304c32d00bec298a70c4090a85",
+    "model/tools/data/c17/slabs.json": "192441dda620df86b91f28c284eb5896a1ec1b30141da33047c8e5735347c384",
+    "model/tools/real_levels_c17.json": "1d23a59401d726d7df9777ca2c53069b4ddb9db0c6559c380421af9e82abd2d7",
+    "model/tools/real_levels_check.ts": "756b0308b5d83f989a71021944fe2976cb3894853f6c15328b6c4536b87ad3dc",
+    "model/tools/real_levels_slabs.py": "071c99eac356debc87c97dc72d16ec204db0da02b7e871a4d03944a1be41fb11"
+  },
+  "pisoCeroDeliveryExcluded": true
+}

@@ -24,12 +24,12 @@ test("partial third-floor metadata cannot select an older compatible profile",as
 
 test("unreviewed third-floor GLB fails closed and recovers on retry",async({page,request})=>{
   const manifest=await(await request.get("/app/models/campus-manifest.json")).json(),profile=manifest.profiles.find((p:{id:string})=>p.id==="ucc-three-floors-c16"),model=profile.models.find((m:{id:string})=>m.id==="ucc-third-floor");
-  const wrong=await(await request.get("/app/models/c16/floor-2.glb")).body();
+  const second=profile.models.find((m:{floors:number[]})=>m.floors.includes(2)),wrongResponse=await request.get(`/app/${second.model}`);expect(wrongResponse.ok()).toBe(true);const wrong=await wrongResponse.body();
   await page.route(`**/${model.model}`,r=>r.fulfill({body:wrong,contentType:"model/gltf-binary"}));
-  await page.goto("/app/");await expect(page.locator("#model-status")).toHaveAttribute("data-profile",profile.id);await page.locator("#isometric").click();await page.locator("#floor").selectOption("3");
+  await page.goto("/app/");await expect(page.locator("#model-status")).toHaveAttribute("data-profile",profile.id);await expect(page.locator("#model-status")).toHaveAttribute("data-view","campus");await page.locator("#isometric").click();await page.locator("#floor").selectOption("3");
   await expect(page.locator("#model-status")).toHaveAttribute("title",/Model export changed/);await expect(page.locator("#model-status")).not.toHaveClass(/verified/);
   const before=await page.locator("#travel-status").getAttribute("data-position");await page.locator("canvas").focus();await page.keyboard.down("w");await page.waitForTimeout(100);await page.keyboard.up("w");expect(await page.locator("#travel-status").getAttribute("data-position")).toBe(before);
   const rejected=await page.locator("#model-status").getAttribute("title");
-  await page.unroute(`**/${model.model}`);await page.reload();await page.locator("#isometric").click();await page.locator("#floor").selectOption("3");await expect(page.locator("#model-status")).toContainText("3 references aligned");await expect(page.locator("#model-status")).toHaveClass(/verified/);
+  await page.unroute(`**/${model.model}`);await page.reload();await expect(page.locator("#model-status")).toHaveAttribute("data-view","campus");await page.locator("#isometric").click();await page.locator("#floor").selectOption("3");await expect(page.locator("#model-status")).toContainText("3 references aligned");await expect(page.locator("#model-status")).toHaveClass(/verified/);
   await mkdir(output,{recursive:true});await writeFile(`${output}/wrong-model.json`,JSON.stringify({profile:profile.id,substitution:"floor2 GLB at floor3 URL",rejected,blockedMovementPosition:before,recovered:await page.locator("#model-status").innerText()},null,2));
 });

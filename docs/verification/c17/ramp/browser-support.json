@@ -1,0 +1,61 @@
+{
+  "source": {
+    "commit": "0f6a862",
+    "path": "model/candidates/c17/floor-2.glb",
+    "hash": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de"
+  },
+  "results": [
+    {
+      "profile": "ucc-two-floors-c15",
+      "guided": [
+        {
+          "samples": 11,
+          "maxFootErrorMetres": 0.00032083875069854884
+        },
+        {
+          "samples": 11,
+          "maxFootErrorMetres": 0.000373971399604045
+        }
+      ],
+      "manual": {
+        "samples": 45,
+        "maxFootErrorMetres": 0.000555845932844079
+      },
+      "beforeReplan": {
+        "samples": 11,
+        "maxFootErrorMetres": 0.0005441488215858215
+      },
+      "replan": {
+        "samples": 7,
+        "maxFootErrorMetres": 0.0000977434127538146
+      }
+    },
+    {
+      "profile": "ucc-three-floors-c16",
+      "guided": [
+        {
+          "samples": 11,
+          "maxFootErrorMetres": 0.0003623111185913075
+        },
+        {
+          "samples": 10,
+          "maxFootErrorMetres": 0.0004252256977466118
+        }
+      ],
+      "manual": {
+        "samples": 46,
+        "maxFootErrorMetres": 0.0004881771071474361
+      },
+      "beforeReplan": {
+        "samples": 11,
+        "maxFootErrorMetres": 0.0004631192668087536
+      },
+      "replan": {
+        "samples": 7,
+        "maxFootErrorMetres": 0.00014257984653287537
+      }
+    }
+  ],
+  "coordinateResolutionMetres": 0.001,
+  "note": "Independent rays against the committed C17 slab and its analytical source ramp profile; four footprint offsets. These are disconnected temporary graph fixtures, not public destinations or accessibility certification."
+}
