@@ -6,18 +6,20 @@
 # - flat meshes are cut along the zone boundaries and each face moves with its own zone;
 # - the slab is rebuilt from data/<candidate>/slabs.json, each piece 0.2 m thick at its own level;
 # - each A stair moves as one piece, by the offset at its centre;
-# - the A stairs are rebuilt with stair_rise (from this floor's Block A to the next floor's Block A).
-# Copies are named "<name>__<candidate>"; the export strips the suffix. Pending zones keep their flat height.
+# - the A stairs are rebuilt with stair_rise (from this floor's Block A to the next floor's Block A);
+# - where the floor has a "ramp", every vertex inside it moves linearly from 0.00 (south edge) to a_offset (north edge).
+# Config: CONFIG (path relative to model/tools, default real_levels.json). Floors marked "from" are reused from another
+# candidate and not rebuilt. Copies are named "<name>__<candidate>"; the export strips the suffix. Pending zones keep their flat height.
 import bpy, bmesh, json, os, struct
 from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 
 BASE = os.path.dirname(os.path.dirname(bpy.data.filepath)); TOOLS = os.path.join(BASE, "model", "tools")
-CFG = json.load(open(os.path.join(TOOLS, "real_levels.json"), encoding="utf-8")); CAND = CFG["candidate"]
+CFG = json.load(open(os.path.join(TOOLS, globals().get("CONFIG") or "real_levels.json"), encoding="utf-8")); CAND = CFG["candidate"]
 SL = json.load(open(os.path.join(TOOLS, "data", CAND, "slabs.json"), encoding="utf-8"))["floors"]
 TEX = json.load(open(os.path.join(BASE, "model", "textures", "textures.json"))); TX, TY = TEX["tiles.jpg"]
 SUF = "__" + CAND
-FLOORS = globals().get("FLOORS") or list(CFG["floors"])
+FLOORS = globals().get("FLOORS") or [k for k, f in CFG["floors"].items() if not f.get("from")]
 
 def inside(x, y, ring):
     hit = False
@@ -31,8 +33,15 @@ def near_outline(x, y, fid):
     k = (fid, round(x, 2), round(y, 2))
     if k not in _cache: _cache[k] = any(in_outline(x + dx, y + dy, fid) for dx, dy in ((0, 0), (0.3, 0), (-0.3, 0), (0, 0.3), (0, -0.3)))
     return _cache[k]
+def in_ramp(x, y, fid):
+    r = CFG["floors"][fid].get("ramp")
+    return bool(r) and r["x"][0] <= x <= r["x"][1] and r["y"][0] <= y <= r["y"][1]
+def ramp_offset(y, fid):
+    f = CFG["floors"][fid]; (y0, y1) = f["ramp"]["y"]
+    return f["a_offset"] * min(1.0, max(0.0, (y - y0) / (y1 - y0)))
 def zone_offset(x, y, fid):
     f = CFG["floors"][fid]; h = f["hall"]
+    if in_ramp(x, y, fid): return ramp_offset(y, fid)
     if h and h["x"][0] <= x <= h["x"][1] and h["nosings"][0] <= y <= h["nosings"][-1]:
         return f["a_offset"] * sum(1 for n in h["nosings"] if y >= n) / len(h["nosings"])
     if y >= f["a_y"] and x >= f["a_x"]: return f["a_offset"]
@@ -48,30 +57,39 @@ def split_offset(o, fid, use_outline=True):
     planes = [((0, f["a_y"], 0), (0, 1, 0)), ((f["a_x"], 0, 0), (1, 0, 0))]
     if f["hall"]:
         planes += [((f["hall"]["x"][0], 0, 0), (1, 0, 0)), ((f["hall"]["x"][1], 0, 0), (1, 0, 0))] + [((0, n, 0), (0, 1, 0)) for n in f["hall"]["nosings"]]
+    if f.get("ramp"):
+        planes += [((f["ramp"]["x"][0], 0, 0), (1, 0, 0)), ((f["ramp"]["x"][1], 0, 0), (1, 0, 0)), ((0, f["ramp"]["y"][0], 0), (0, 1, 0)), ((0, f["ramp"]["y"][1], 0), (0, 1, 0))]
     for co, no in planes:
         bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:], plane_co=co, plane_no=no, dist=1e-5)
-    fo = lambda fc: (offset if use_outline else zone_offset)(fc.calc_center_median().x, fc.calc_center_median().y, fid)
-    offs = {fc: fo(fc) for fc in bm.faces}
-    cut = [e for e in bm.edges if len({round(offs[fc], 4) for fc in e.link_faces}) > 1]
+    def key(fc):                                           # a face inside a ramp slopes with it; any other face moves as one
+        c = fc.calc_center_median()
+        return "ramp" if in_ramp(c.x, c.y, fid) else round((offset if use_outline else zone_offset)(c.x, c.y, fid), 4)
+    keys = {fc: key(fc) for fc in bm.faces}
+    cut = [e for e in bm.edges if len({keys[fc] for fc in e.link_faces}) > 1]
     if cut: bmesh.ops.split_edges(bm, edges=cut)
     target = {}
     for fc in bm.faces:
-        dz = fo(fc)
-        for v in fc.verts: target[v] = min(target[v], dz) if v in target else dz
+        k = key(fc)
+        for v in fc.verts:
+            dz = ramp_offset(v.co.y, fid) if k == "ramp" else k
+            target[v] = min(target[v], dz) if v in target else dz
     moved = 0
     for v, dz in target.items():
         if dz: v.co.z += dz; moved += 1
     bm.to_mesh(me); bm.free(); me.update()
     return moved
 
+def piece_top(p, y):
+    r = p.get("ramp")
+    return p["top"] if not r else r["a"] * min(1.0, max(0.0, (y - r["y0"]) / (r["y1"] - r["y0"])))
 def build_slab(ob, pieces):
     me = ob.data; bm = bmesh.new()
     for p in pieces:
-        top = p["top"]; bottom = top - 0.2                   # a 0.2 m slab at its own level (a block down to the datum would invade the floor below)
+        # each piece is 0.2 m thick at its own level (a block down to the datum would invade the floor below); a ramp slopes
         for r in p["rings"]:
             rr = [[Vector((q[0], q[1])) for q in ring] for ring in [r["outer"]] + r["holes"] if len(ring) >= 3]
-            vb = [[bm.verts.new((v.x, v.y, bottom)) for v in ring] for ring in rr]
-            vt = [[bm.verts.new((v.x, v.y, top)) for v in ring] for ring in rr]
+            vb = [[bm.verts.new((v.x, v.y, piece_top(p, v.y) - 0.2)) for v in ring] for ring in rr]
+            vt = [[bm.verts.new((v.x, v.y, piece_top(p, v.y))) for v in ring] for ring in rr]
             fb = [v for ring in vb for v in ring]; ft = [v for ring in vt for v in ring]
             for tri in tessellate_polygon([[v.to_3d() for v in ring] for ring in rr]):
                 try: bm.faces.new([ft[i] for i in tri]); bm.faces.new([fb[i] for i in reversed(tri)])

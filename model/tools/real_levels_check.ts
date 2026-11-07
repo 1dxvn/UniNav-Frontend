@@ -4,15 +4,18 @@
 // every mesh of every floor. Walks:
 //   - floor 1: hall descent, the 16 API edges with the proposed hall split, Codex's two-floor graph (as for C15);
 //   - floor 3: hall ascent (28, 47.6) -> (28, 49.6) over the four 0.1225 m risers;
+//   - floors with a "ramp" (C17: floor 2): down and up the ramp at three x positions, in steps of 1/10 of its length;
 //   - A stairs, both towers: 1 -> 2, 2 -> 3, 3 -> 4, 4 -> 5 with the configured rises (top must land on the next A floor);
 //   - a straight line along the Block A north corridor on floors 2-5 between the two stair arrivals: inspection of
 //     support only, since the straight line meets the elevator-hall walls (it is not a route).
-// Usage (from UniNav-Frontend): node --experimental-strip-types model/tools/real_levels_check.ts [out.json]
+// Floors marked "from" load that candidate's GLB (reused, not rebuilt).
+// Usage (from UniNav-Frontend): node --experimental-strip-types model/tools/real_levels_check.ts [out.json] [config.json]
+//   (config defaults to model/tools/real_levels.json)
 import { readFile, writeFile } from "node:fs/promises";
 import { Group, Mesh, Raycaster, Vector3, type Object3D } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-const CFG = JSON.parse(await readFile("model/tools/real_levels.json", "utf8")); const CAND = CFG.candidate as string;
+const CFG = JSON.parse(await readFile(process.argv[3] ?? "model/tools/real_levels.json", "utf8")); const CAND = CFG.candidate as string;
 function withoutImages(glb: Buffer): ArrayBuffer {
   const n = glb.readUInt32LE(12); const json = JSON.parse(glb.subarray(20, 20 + n).toString("utf8"));
   delete json.images; delete json.textures; delete json.samplers;
@@ -28,12 +31,14 @@ async function load(path: string, y: number): Promise<Object3D[]> {
   const out: Object3D[] = []; root.traverse((o) => { if (o instanceof Mesh) out.push(o); }); return out;
 }
 const ALL: Object3D[] = [];
-for (const [fid, f] of Object.entries<any>(CFG.floors)) ALL.push(...await load(`model/candidates/${CAND}/floor-${fid}.glb`, f.datum_world));
+for (const [fid, f] of Object.entries<any>(CFG.floors)) ALL.push(...await load(`model/candidates/${f.from ?? CAND}/floor-${fid}.glb`, f.datum_world));
 const SUPPORT = ALL.filter((m) => /Floor_Slab|Stair_A/.test(m.name));
 const OUTDOOR = [...SUPPORT, ...ALL.filter((m) => /^Site/.test(m.name))];
 
 function height(fid: string, x: number, y: number): number {
-  const f = CFG.floors[fid]; const h = f.hall;
+  const f = CFG.floors[fid]; const h = f.hall, r = f.ramp;
+  if (r && x >= r.x[0] && x <= r.x[1] && y >= r.y[0] && y <= r.y[1])
+    return f.datum_world + f.a_offset * (y - r.y[0]) / (r.y[1] - r.y[0]);
   if (h && x >= h.x[0] && x <= h.x[1] && y >= h.nosings[0] && y <= h.nosings[h.nosings.length - 1])
     return f.datum_world + f.a_offset * h.nosings.filter((n: number) => y >= n).length / h.nosings.length;
   return f.datum_world + (y >= f.a_y && x >= f.a_x ? f.a_offset : 0);
@@ -110,6 +115,16 @@ for (const e of ds.paths) {
 // floor 3 hall ascent (B -> A)
 const hall3 = hallWalk("3", 47.6, 49.6);
 results.push(walk("floor 3 hall ascent", hall3), walk("floor 3 hall descent", [...hall3].reverse()));
+// ramps (B -> A down, A -> B up), each split into 10 segments so the expected height is checked at ±0.03 m
+// (on floor 2 the x 27.8 lane stops 0.15 m south of the ramp: the B corridor beyond it is x 28.1-30.0, and a wall at
+// x 27.42-28.11 starts at y 47.32)
+for (const [fid, f] of Object.entries<any>(CFG.floors)) if (f.ramp) for (const [x, out] of [[27.8, 0.15], [28.55, 0.4], [29.3, 0.4]]) {
+  const [y0, y1] = f.ramp.y as [number, number];
+  const pts: P[] = [{ x, y: y0 - out, h: height(fid, x, y0 - out) }];
+  for (let k = 0; k <= 10; k++) { const y = y0 + (y1 - y0) * k / 10; pts.push({ x, y, h: height(fid, x, y) }); }
+  pts.push({ x, y: y1 + 0.4, h: height(fid, x, y1 + 0.4) });
+  results.push(walk(`floor ${fid} ramp down B -> A at x ${x}`, pts), walk(`floor ${fid} ramp up A -> B at x ${x}`, [...pts].reverse()));
+}
 // A stairs, both towers, every floor pair
 const STAIRS = { West: { a: 14.65, b: 18.05 }, East: { a: 36.35, b: 38.7 } };
 for (const [lo, hi] of [["1", "2"], ["2", "3"], ["3", "4"], ["4", "5"]]) for (const [nm, s] of Object.entries(STAIRS)) {
