@@ -6,8 +6,11 @@ from shapely.ops import unary_union
 from shapely.validation import make_valid
 
 SRC, OUT = sys.argv[1], sys.argv[2]
-ORIGIN = (5915.0, -1792.0)            # entrance threshold, HALL ACCESO
-CROP = box(5905, -1800, 5992, -1724)  # first-floor wing, CAD metres
+# Optional third argument "dx,dy": the shift that registers another floor sheet onto the first-floor sheet
+# (data/grid_axes.json, "to_first_floor"). Output coordinates are always first-floor plan coordinates.
+SHIFT = tuple(float(v) for v in sys.argv[3].split(",")) if len(sys.argv) > 3 else (0.0, 0.0)
+ORIGIN = (5915.0 - SHIFT[0], -1792.0 - SHIFT[1])            # entrance threshold, HALL ACCESO (in this sheet)
+CROP = box(5905 - SHIFT[0], -1800 - SHIFT[1], 5992 - SHIFT[0], -1724 - SHIFT[1])  # wing crop, CAD metres of this sheet
 
 doc = ezdxf.readfile(SRC); msp = doc.modelspace()
 loc = lambda x, y: (round(x - ORIGIN[0], 3), round(y - ORIGIN[1], 3))
@@ -39,9 +42,12 @@ for e in msp.query('LWPOLYLINE[layer=="06"]'):
     if len(pts) >= 3:
         g = make_valid(Polygon(pts))
         if 0.01 < g.area < 3 and g.intersects(CROP): columns.append(g)
+glass_lines = []
 for e in msp.query('LINE[layer=="VIDRIO"]'):
     s = LineString([(e.dxf.start.x, e.dxf.start.y), (e.dxf.end.x, e.dxf.end.y)])
-    if s.length > 0.05 and s.intersects(CROP): glass.append(s.intersection(CROP).buffer(0.04, cap_style=2))
+    if s.length > 0.05 and s.intersects(CROP):
+        s = s.intersection(CROP); glass.append(s.buffer(0.04, cap_style=2))
+        if s.geom_type == "LineString": glass_lines.append([loc(*s.coords[0]), loc(*s.coords[-1])])
 
 wall_u = unary_union(walls); col_u = unary_union(columns); glass_u = unary_union(glass).difference(wall_u)
 solid = unary_union([wall_u, col_u, glass_u])
@@ -75,7 +81,7 @@ for e in msp.query("TEXT MTEXT"):
         if t: labels.append({"text": t, "xy": loc(p.x, p.y)})
 
 data = {
-    "origin_cad": ORIGIN, "units": "m", "crop_cad": list(CROP.bounds),
+    "origin_cad": ORIGIN, "units": "m", "crop_cad": list(CROP.bounds), "sheet_shift": SHIFT, "glass_lines": glass_lines,
     "walls": to_local(wall_u), "columns": to_local(col_u), "glass": to_local(glass_u),
     "ramps": to_local(unary_union(flat(ramps))), "footprint": to_local(foot),
     "site": to_local(CROP), "labels": labels,

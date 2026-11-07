@@ -23,6 +23,9 @@ These scripts rebuild the Block B first-floor model from the DWG. The output is 
 | 6d. Floor registration and inventory | `python grid_axes.py <dxf> data/grid_axes.json`; `python inventory.py <dxf> data/grid_axes.json data/inventory.json out.png` | sheet shifts, `docs/blocks/dwg-inventory.md` data |
 | 6e. Exterior massing data | `python exterior_extract.py <dxf> data/grid_axes.json data/exterior.json` | outlines and glazing per floor and block |
 | 6f. Exterior (Blender) | `exec(open("model/tools/blender_exterior.py").read())`, then export only the collection `Exterior` | `public/models/blocks/campus-exterior.glb` |
+| 6g. Other floors (data) | `python extract.py <dxf> data/floor2/wing.json "0.022,149.221"`, then `python walls_from_lines.py <dxf> data/floor2/wing.json "0.022,149.221"`. The shift comes from `grid_axes.json` | `data/floor2/wing.json` |
+| 6h. Other floors (Blender) | `FLOOR_ID = "2"; WING = ".../data/floor2/wing.json"; REFS = {...}` then `exec(open("model/tools/blender_floor.py").read())`. Export the `UCC_Piso2` collection with `use_active_scene=True` | `public/models/floor-2/campus.glb` |
+| 6i. Block A stairs (Blender) | `exec(open("model/tools/blender_stairs.py").read())`, then export the first floor to `model/candidates/` (never over the pinned `public/models/campus.glb`) | `Stair_A_West`, `Stair_A_East` |
 | 7. Export | glTF: selection = collections `UCC_Piso1` and `References`, Y up, no cameras or lights | `public/models/campus.glb` |
 | 8. Review captures (Blender) | `OUT_DIR = "..."` then `exec(open("model/tools/blender_review_renders.py").read())` | `docs/model-review/<rev>/blender-*.png` |
 
