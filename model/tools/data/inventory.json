@@ -1,0 +1,430 @@
+{
+ "PISO CERO": {
+  "shift_cad_to_first_floor": [
+   0.021999999999934516,
+   -121.4849999999999
+  ],
+  "footprint_bbox_plan": [
+   15.7,
+   12.0,
+   70.3,
+   67.7
+  ],
+  "footprint_area_m2": 1367.6,
+  "levels": [
+   "N - 2.93",
+   "N - 2.94",
+   "N - 4.13"
+  ],
+  "blocks": [
+   [
+    "BLOQUE A",
+    59.64,
+    45.8
+   ]
+  ],
+  "elevators": [
+   [
+    "ASENSOR",
+    24.12,
+    55.15
+   ],
+   [
+    "ASENSOR",
+    26.38,
+    55.14
+   ]
+  ],
+  "halls": [
+   [
+    "HALL ACCESO BODEGA",
+    19.7,
+    42.92
+   ],
+   [
+    "HALL CLINICA",
+    43.22,
+    34.56
+   ],
+   [
+    "HALL ACCESO",
+    55.11,
+    36.34
+   ],
+   [
+    "HALL RX",
+    60.36,
+    35.55
+   ]
+  ],
+  "rooms_A": [],
+  "rooms_B": [],
+  "n_labels": 581
+ },
+ "PRIMER PISO": {
+  "shift_cad_to_first_floor": [
+   0.0,
+   0.0
+  ],
+  "footprint_bbox_plan": [
+   -9.3,
+   -7.7,
+   70.3,
+   67.7
+  ],
+  "footprint_area_m2": 2236.1,
+  "levels": [
+   "N - 0.63",
+   "N -0.90",
+   "N 0.00",
+   "N 1.19"
+  ],
+  "blocks": [
+   [
+    "BLOQUE 002 PISO 1",
+    28.51,
+    43.03
+   ]
+  ],
+  "elevators": [
+   [
+    "ASENSOR",
+    24.37,
+    55.43
+   ],
+   [
+    "HALL ASCENSORES",
+    25.77,
+    51.97
+   ],
+   [
+    "ASENSOR",
+    26.8,
+    55.43
+   ]
+  ],
+  "halls": [
+   [
+    "ACCESO",
+    1.2,
+    0.92
+   ],
+   [
+    "ACCESO",
+    1.95,
+    -3.62
+   ],
+   [
+    "HALL ACCESO",
+    2.85,
+    5.06
+   ],
+   [
+    "HALL ASCENSORES",
+    25.77,
+    51.97
+   ]
+  ],
+  "rooms_A": [],
+  "rooms_B": [],
+  "n_labels": 486
+ },
+ "SEGUNDO PISO": {
+  "shift_cad_to_first_floor": [
+   0.021999999999934516,
+   149.221
+  ],
+  "footprint_bbox_plan": [
+   -31.2,
+   7.3,
+   81.0,
+   78.1
+  ],
+  "footprint_area_m2": 2825.9,
+  "levels": [
+   "N +1.70",
+   "N +2.68",
+   "N +2.94"
+  ],
+  "blocks": [
+   [
+    "BLOQUE B PISO 2",
+    28.48,
+    46.72
+   ]
+  ],
+  "elevators": [
+   [
+    "ASENSOR",
+    24.42,
+    55.54
+   ],
+   [
+    "HALL ASCENSORES",
+    25.83,
+    53.09
+   ],
+   [
+    "ASENSOR",
+    26.85,
+    55.54
+   ]
+  ],
+  "halls": [
+   [
+    "HALL ASCENSORES",
+    25.83,
+    53.09
+   ],
+   [
+    "HALL",
+    31.62,
+    22.44
+   ],
+   [
+    "HALL DE ACCESO",
+    47.12,
+    58.83
+   ],
+   [
+    "HALL",
+    53.52,
+    55.27
+   ]
+  ],
+  "rooms_A": [],
+  "rooms_B": [
+   "AULA No 203 B",
+   "AULA No 203 B SEGUNDO PISO",
+   "AULA No 204 B",
+   "AULA No 205 B",
+   "AULA No 206 B",
+   "AULA No 207 B",
+   "AULA No 219 B",
+   "AULAS: 201B, 202B, 204B, 205B, 206B, 207B, 210B, 212B, SALA DE PROYECCION SOCIAL, PROGRAMA DE MEDICINA, OFICINAS DE COMUNICACION E INTERNACION EGRESADOS SEGUNDO PISO"
+  ],
+  "n_labels": 381
+ },
+ "TERCER PISO": {
+  "shift_cad_to_first_floor": [
+   0.021999999999934516,
+   286.1300000000001
+  ],
+  "footprint_bbox_plan": [
+   12.0,
+   14.6,
+   70.3,
+   67.1
+  ],
+  "footprint_area_m2": 1518.4,
+  "levels": [
+   "N +4.64",
+   "N +5.88",
+   "N +6.37"
+  ],
+  "blocks": [],
+  "elevators": [
+   [
+    "ASENSOR",
+    24.39,
+    55.54
+   ],
+   [
+    "HALL ASCENSORES",
+    25.83,
+    53.09
+   ],
+   [
+    "ASENSOR",
+    26.82,
+    55.54
+   ]
+  ],
+  "halls": [
+   [
+    "HALL HEMEROTECA",
+    15.4,
+    53.97
+   ],
+   [
+    "HALL ASCENSORES",
+    25.83,
+    53.09
+   ]
+  ],
+  "rooms_A": [
+   "AULA 308 A",
+   "AULA 309 A",
+   "AULA 310 A",
+   "AULA 311 A",
+   "AULA 312 A"
+  ],
+  "rooms_B": [
+   "AULA No 307 B",
+   "AULA No 308 B",
+   "AULA No 316 B",
+   "AULA No 318 B",
+   "LABORATORIOS DE PROCEDIMIENTOS INDUSTRIALES, OFICINA DE LABORATORIOS, ASEO, AULAS No 301B, 302B, 304B, 305B, SALA DE AUDIENCIAS, PROGRAMA DE INGENIERIA INDUSTRIAL, SALA DE PROFESORES TERCER PISO"
+  ],
+  "n_labels": 321
+ },
+ "CUARTO PISO": {
+  "shift_cad_to_first_floor": [
+   198.4459999999999,
+   -121.4849999999999
+  ],
+  "footprint_bbox_plan": [
+   -31.2,
+   6.9,
+   81.9,
+   78.1
+  ],
+  "footprint_area_m2": 3108.1,
+  "levels": [
+   "N +7.58",
+   "N +8.82",
+   "N +9.87"
+  ],
+  "blocks": [],
+  "elevators": [
+   [
+    "ASENSOR",
+    24.39,
+    55.4
+   ],
+   [
+    "HALL ASCENSORES",
+    25.83,
+    52.94
+   ],
+   [
+    "ASENSOR",
+    26.82,
+    55.4
+   ]
+  ],
+  "halls": [
+   [
+    "HALL",
+    -0.14,
+    54.93
+   ],
+   [
+    "HALL",
+    2.2,
+    58.04
+   ],
+   [
+    "HALL ACCESO",
+    17.92,
+    52.65
+   ],
+   [
+    "HALL ASCENSORES",
+    25.83,
+    52.94
+   ]
+  ],
+  "rooms_A": [
+   "AULA 420 A",
+   "AULA 421 A",
+   "AULA 422 A",
+   "AULA 423 A",
+   "AULA 424 A",
+   "AULAS No 420A, 421A, 422A, 423A, 424A, CENTRO DE INVESTIGACION SOCIOJURIDICO CUARTO PISO"
+  ],
+  "rooms_B": [
+   "AULA 402 B",
+   "AULA No 414B",
+   "AULAS No 401B, 402B, 403B, 404B, 405B, 406B, 407B, 408B, OFICINA DE INVESTIGACION JEFE DE INVESTIGACION, BAÑO HOMBRES CUARTO PISO"
+  ],
+  "n_labels": 348
+ },
+ "QUINTO PISO": {
+  "shift_cad_to_first_floor": [
+   198.4459999999999,
+   6.949000000000069
+  ],
+  "footprint_bbox_plan": [
+   -31.2,
+   6.3,
+   81.5,
+   78.1
+  ],
+  "footprint_area_m2": 3015.8,
+  "levels": [
+   "N +10.52",
+   "N +11.76",
+   "N +13.37"
+  ],
+  "blocks": [],
+  "elevators": [
+   [
+    "ASENSOR",
+    24.39,
+    55.51
+   ],
+   [
+    "HALL ASCENSORES",
+    26.49,
+    52.72
+   ],
+   [
+    "ASENSOR",
+    26.82,
+    55.51
+   ]
+  ],
+  "halls": [
+   [
+    "HALL ASCENSORES",
+    26.49,
+    52.72
+   ],
+   [
+    "HALL LAB",
+    55.57,
+    36.23
+   ]
+  ],
+  "rooms_A": [
+   "AULA 501 A",
+   "AULA 502 A",
+   "AULA 503 A",
+   "AULA 511 A",
+   "AULA 512 A",
+   "AULA 513 A",
+   "AULA 514 A",
+   "AULA 515 A",
+   "AULA 517 A",
+   "AULA 518 A",
+   "AULAS No 501A, 502A, 503A, 504A, 511A, 512A, 513A, 514A, 515A, SALA DE DOCENTES DERECHO QUINTO PISO"
+  ],
+  "rooms_B": [
+   "AUDITORIO URCUNINA AULA 608B",
+   "AULA No 509B, LABORATORIO DE PROCEDIMIENTO DE PAPA QUINTO PISO",
+   "AULAS No 501B, 502B, 504B, 505B, 506B, 507B, 508B, BODEGAS 1 Y 2  QUINTO PISO"
+  ],
+  "n_labels": 277
+ },
+ "AZOTEA CANCHAS SINTETICAS": {
+  "shift_cad_to_first_floor": [
+   198.4459999999999,
+   149.221
+  ],
+  "footprint_bbox_plan": [
+   -31.2,
+   10.2,
+   70.5,
+   78.1
+  ],
+  "footprint_area_m2": 910.4,
+  "levels": [],
+  "blocks": [],
+  "elevators": [],
+  "halls": [],
+  "rooms_A": [],
+  "rooms_B": [],
+  "n_labels": 90
+ }
+}
