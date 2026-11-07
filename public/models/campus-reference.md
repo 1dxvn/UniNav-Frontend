@@ -42,6 +42,19 @@ Positions come from the room labels on the plan, so each one is inside its room.
 
 Waypoints for the path graph still need to go at corridor turns so straight segments don't cross walls.
 
+### Preclinic access
+
+The PRECLINICA room (x 54.8 → 57.8, y 48.5 → 53.5) has no door of its own onto a corridor. In the DWG it is entered through the room to its east (PRECLINICA ALMACEN):
+
+| Step | Plan (x, y) | Doorway width in the model |
+| --- | --- | --- |
+| North circulation, in front of the storeroom | 58.26, 54.70 | — |
+| Storeroom doorway in the glass partition | 58.26, 53.51 | 1.00 m |
+| Inside the storeroom | 58.26, 51.68 | — |
+| Preclinic doorway (east partition) | 57.80, 51.68 | 1.18 m |
+
+The north circulation joins HALL ASCENSORES through (32.0, 54.4). Every segment keeps at least 0.42 m from walls, columns and glass, and the door leaves of both doorways open away from the path.
+
 ## Dimension check
 
 - The dimension near the elevators reads **4.312 m**. Its definition points are CAD (5940.67, -1730.69) → (5944.98, -1730.68), 4.31 m apart in drawing units. In plan coordinates that is (25.67, 61.31) → (29.98, 61.32).

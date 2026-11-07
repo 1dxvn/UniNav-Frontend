@@ -103,6 +103,26 @@
       "from": "Laboratory corridor east",
       "to": "Morphology Laboratory",
       "minimumWallClearanceMetres": 0.38227243557162405
+    },
+    {
+      "from": "Elevator and Restroom Hall",
+      "to": "North circulation west",
+      "minimumWallClearanceMetres": 0.6315673552264415
+    },
+    {
+      "from": "North circulation west",
+      "to": "North circulation east",
+      "minimumWallClearanceMetres": 0.9865078294563764
+    },
+    {
+      "from": "North circulation east",
+      "to": "Preclinic storeroom",
+      "minimumWallClearanceMetres": 0.42299819946288864
+    },
+    {
+      "from": "Preclinic storeroom",
+      "to": "Preclinic / Dentistry Coordination",
+      "minimumWallClearanceMetres": 0.48438040918140973
     }
   ]
 }
