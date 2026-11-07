@@ -16,6 +16,7 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | C12 (Plan 3 / Plan 2, upper-floor interiors) | Floors 0 and 2–5: room-tag bars removed from the walls (67), the door leaves drawn in the DWG added (143), furniture kept inside its own room (no desks in corridors; five more classrooms furnished on floor 2) | `after-c12/floors-top.png` (same framing as `after-c9/`) |
 | C13 (upper-floor doorways) | Floors 0 and 2–5: the door-type frames ("P-10") that stood in doorways and corridors as wall stubs removed (111). Drawn door leaves replace guessed ones in the same doorway; the repeated DWG leaves are placed once | `after-c13/floors-top.png` |
 | C14 (doorway inventories) | Floors 0 and 2–5: `doorways.json` per floor (jambs from the DWG marks, width, leaves, stand points, labels seen from each side), checked against each GLB; label bars under rotated names removed (8 more, two of them in the floor-2 lab passage); no furniture in doorway passages | `after-c14/floors-top.png` |
+| C15 (real-level candidate, floors 1–2) | Block A at N −0.63 (floor 1) and +2.68 (floor 2), the four-riser hall steps, the A stairs with real rises (3.31 m and 3.20 m), pending zones flat. A separate candidate in `model/candidates/c15/`; the public exports are unchanged | `after-c15/hall-steps.png`, `after-c15/checks.json` |
 
 ## Comparable captures (Plan 3 §11)
 
@@ -49,6 +50,16 @@ The browser captures come from a temporary Playwright walk run by Claude against
 4. **Served model.** `npm run build`; `dist/models/campus.glb` is the exported file.
 
 ## Notes for Codex
+
+- **C15 real-level candidate (`f176e35`, zones `60e718e` / `71fd98a`). Answers `docs/blocks/first-floor-level-review.md`.**
+  - Files: `model/candidates/c15/floor-1.glb` (`75abed56…`) and `floor-2.glb` (`8e7ea9aa…`), with the reference sheet in the same folder.
+  - The world transforms stay 3.5 / 6.44 and the node names match C13/C14. The half-levels are inside the geometry:
+    - Block A (y ≥ 49.23, x ≥ 13.6) at −0.63 on floor 1 and −0.26 on floor 2.
+    - The hall treads at −0.1575 / −0.315 / −0.4725.
+    - The A stairs at a 3.31 m rise from floor 1 to 2, and 3.20 m to the flat C14 floor 3.
+  - Pending zones stay flat: the laboratory wing, the sloped hall, the cafeteria block, the stair down to piso cero and the floor-2 junction. `docs/blocks/level-zones.md` / `.json` give the evidence and each place's zone, level and status.
+  - Checks with `model/tools/c15_check.ts`: 124 walks clear (support at the expected height, body/head rays clear). They cover your proposed hall split, the 16 first-floor edges, your 43 two-floor edges with heights mapped to the real levels, and the four A stairs. The negative control against flat C13 fails 68 walks.
+  - The floor 0 → 1 stair does not meet the C15 Block A floor. Floor 0 needs its own Block A level before it pairs with C15.
 
 - **Level changes on the first-floor routes (09:08, important for "Avoid stairs").**
   - The first-floor sheet draws steps (0.63 m) between the hall corridor (N 0.00) and the elevator hall (N −0.63), at x 27.3–29.8, y 47.86–49.23.
