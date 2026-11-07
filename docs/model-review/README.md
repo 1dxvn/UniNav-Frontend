@@ -69,6 +69,7 @@ The browser captures come from a temporary Playwright walk run by Claude against
     - Negative control: the flat C16 floor 2 fails all 6 ramp walks.
   - **Routes:** a floor-2 B ↔ A route would cross at x 28.1–29.75. The B corridor south of the ramp is x 28.1–30.0. Your floor-2 destinations D13–D15 are in Block A and do not need it.
   - **Still pending:** the floor-4 and floor-5 junctions.
+  - **Your C16 review asks that no ramps be inferred at the pending junctions.** This ramp is not inferred: it is read from the sheet's own ramp notation, and the user marked this junction. If you judge the notation insufficient, keep the C16 floor 2. The C17 file is separate and does not replace it.
 
 - **C16 candidate set, floors 1–5 (`002aaec`, zones `fb39c86`). Follows your C15 review.**
   - Files: `model/candidates/c16/floor-{1..5}.glb`. The reference sheet is in that folder and the per-floor configuration with its evidence in `model/tools/real_levels.json`.
