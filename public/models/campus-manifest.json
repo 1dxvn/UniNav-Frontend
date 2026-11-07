@@ -291,6 +291,355 @@
   ],
   "profiles": [
     {
+      "id": "ucc-three-floors-c16",
+      "label": "UCC three floors with C16 models",
+      "requiresExplicitPositions": true,
+      "models": [
+        {
+          "id": "ucc-first-floor",
+          "label": "UCC · First floor",
+          "floors": [
+            1
+          ],
+          "state": "ready",
+          "revision": "C16-floor-1-002aaec",
+          "sourceCommit": "a6d3f11",
+          "reference": "models/campus-reference.json",
+          "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
+          "modelSha256": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c",
+          "supportNodes": [
+            "Floor_Slab",
+            "Stair_A_West_1",
+            "Stair_A_East_1"
+          ],
+          "binding": {
+            "placeNames": [
+              "Access courtyard",
+              "East stair point 0 (floors 1-2)",
+              "East stair point 1 (floors 1-2)",
+              "East stair point 10 (floors 1-2)",
+              "East stair point 11 (floors 1-2)",
+              "East stair point 12 (floors 1-2)",
+              "East stair point 13 (floors 1-2)",
+              "East stair point 14 (floors 1-2)",
+              "East stair point 15 (floors 1-2)",
+              "East stair point 16 (floors 1-2)",
+              "East stair point 17 (floors 1-2)",
+              "East stair point 18 (floors 1-2)",
+              "East stair point 19 (floors 1-2)",
+              "East stair point 2 (floors 1-2)",
+              "East stair point 20 (floors 1-2)",
+              "East stair point 21 (floors 1-2)",
+              "East stair point 22 (floors 1-2)",
+              "East stair point 23 (floors 1-2)",
+              "East stair point 3 (floors 1-2)",
+              "East stair point 4 (floors 1-2)",
+              "East stair point 5 (floors 1-2)",
+              "East stair point 6 (floors 1-2)",
+              "East stair point 7 (floors 1-2)",
+              "East stair point 8 (floors 1-2)",
+              "East stair point 9 (floors 1-2)",
+              "Elevator and Restroom Hall",
+              "Hall Acceso",
+              "Hall corridor north",
+              "Hall corridor south",
+              "Hall junction",
+              "Hall steps / Block A arrival",
+              "Hall steps tread 1",
+              "Hall steps tread 2",
+              "Hall steps tread 3",
+              "ICETEX",
+              "ICETEX approach",
+              "ICETEX column reference",
+              "ICETEX doorway",
+              "Laboratory corridor east",
+              "Laboratory corridor west",
+              "Lockers column reference",
+              "Morphology Laboratory",
+              "North circulation / east stair junction",
+              "North circulation east",
+              "North circulation west",
+              "Preclinic / Dentistry Coordination",
+              "Preclinic storeroom",
+              "South circulation"
+            ],
+            "sha256": "6f9e18d7b6a08cfb5730393152679569106bcfbb08e8dfafc1735d480628e082"
+          },
+          "model": "models/c16/floor-1.glb",
+          "modelSource": {
+            "commit": "002aaec",
+            "path": "model/candidates/c16/floor-1.glb"
+          },
+          "outdoorSupportNodes": [
+            "Site"
+          ]
+        },
+        {
+          "id": "campus-exterior",
+          "kind": "exterior",
+          "navigable": false,
+          "label": "Campus overview",
+          "floors": [],
+          "state": "ready",
+          "revision": "C5-31c5d68",
+          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
+          "model": "models/blocks/campus-exterior.glb",
+          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "transform": {
+            "scale": 1,
+            "rotationYDegrees": 0,
+            "translation": [
+              0,
+              3.5,
+              0
+            ]
+          },
+          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+        },
+        {
+          "id": "ucc-floor-0-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 0 preview",
+          "floors": [
+            0
+          ],
+          "state": "ready",
+          "revision": "C14-ucc-floor-0-preview-389cfd9",
+          "sourceCommit": "389cfd9",
+          "reference": "models/floor-0/campus-reference.json",
+          "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
+          "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
+          "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        },
+        {
+          "id": "ucc-third-floor",
+          "kind": "floor",
+          "label": "UCC third floor",
+          "floors": [
+            3
+          ],
+          "state": "ready",
+          "revision": "C16-third-floor-navigation-v1",
+          "sourceCommit": "72d1aaa91188fe70ecc3fb26f70d96f035d68b43",
+          "reference": "models/c16/floor-3-navigation-reference.json",
+          "referenceSha256": "1535d24623825443a9924633f53d0963211b845e3ca458167fbcd4653f50a3dd",
+          "modelSha256": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d",
+          "sourceDocument": "docs/blocks/floor3-navigation.md @72d1aaa; three north-bar laboratory entrances; C16 physical A level. Other rooms and A/B transitions remain pending.",
+          "model": "models/c16/floor-3.glb",
+          "modelSource": {
+            "commit": "002aaec",
+            "path": "model/candidates/c16/floor-3.glb"
+          },
+          "supportNodes": [
+            "P3_Floor_Slab",
+            "P3_Stair_A_East_1",
+            "P3_Stair_A_West_1"
+          ],
+          "binding": {
+            "placeNames": [
+              "Computer Laboratory 1 (floor 3)",
+              "Computer Laboratory 2 (floor 3)",
+              "Computer Laboratory 3 (floor 3)",
+              "East stair point 24 (floors 2-3)",
+              "Floor 3 D13 corridor stand",
+              "Floor 3 D13 doorway centre",
+              "Floor 3 D14 corridor stand",
+              "Floor 3 D14 doorway centre",
+              "Floor 3 D15 corridor stand",
+              "Floor 3 D15 doorway centre",
+              "P3_REF_1_Column_28_20",
+              "P3_REF_2_Column_21_62",
+              "P3_REF_3_Column_70_62",
+              "Third-floor corridor near Computer Lab 1",
+              "Third-floor corridor near Computer Lab 2",
+              "Third-floor corridor near Computer Lab 3",
+              "Third-floor north circulation"
+            ],
+            "sha256": "3ae0294edfe395d155e23719c3dcc74ef8e6d0678df0d0fe70d4f16d8eedd85e"
+          }
+        },
+        {
+          "id": "ucc-floor-4-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 4 preview",
+          "floors": [
+            4
+          ],
+          "state": "ready",
+          "revision": "C16-floor-4-002aaec",
+          "sourceCommit": "389cfd9",
+          "reference": "models/floor-4/campus-reference.json",
+          "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
+          "modelSha256": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf",
+          "sourceDocument": "model/candidates/c16/README.md @002aaec; docs/blocks/level-zones.md @fb39c86; Block A physical level, structural B datum anchors. Pending western and A/B junctions remain unresolved; inspection only, no API destinations or routes.",
+          "model": "models/c16/floor-4.glb",
+          "modelSource": {
+            "commit": "002aaec",
+            "path": "model/candidates/c16/floor-4.glb"
+          }
+        },
+        {
+          "id": "ucc-floor-5-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 5 preview",
+          "floors": [
+            5
+          ],
+          "state": "ready",
+          "revision": "C16-floor-5-002aaec",
+          "sourceCommit": "389cfd9",
+          "reference": "models/floor-5/campus-reference.json",
+          "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
+          "modelSha256": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d",
+          "sourceDocument": "model/candidates/c16/README.md @002aaec; docs/blocks/level-zones.md @fb39c86; Block A physical level, structural B datum anchors. Pending western and A/B junctions remain unresolved; inspection only, no API destinations or routes.",
+          "model": "models/c16/floor-5.glb",
+          "modelSource": {
+            "commit": "002aaec",
+            "path": "model/candidates/c16/floor-5.glb"
+          }
+        },
+        {
+          "id": "ucc-second-floor",
+          "label": "UCC · Second floor",
+          "floors": [
+            2
+          ],
+          "state": "ready",
+          "kind": "floor",
+          "revision": "C16-floor-2-002aaec",
+          "sourceCommit": "389cfd9",
+          "reference": "models/floor-2/campus-navigation-reference.json",
+          "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
+          "modelSha256": "b099eb799e1dbaf23fee818601b64499113fea401062add809c2b8d57de43f44",
+          "supportNodes": [
+            "P2_Floor_Slab",
+            "P2_Stair_A_East_1",
+            "P2_Stair_A_West_1"
+          ],
+          "binding": {
+            "placeNames": [
+              "D13 corridor stand",
+              "D13 doorway centre",
+              "D13 interior stand",
+              "D14 corridor stand",
+              "D14 doorway centre",
+              "D15 corridor stand",
+              "D15 doorway centre",
+              "East stair point 0 (floors 2-3)",
+              "East stair point 1 (floors 2-3)",
+              "East stair point 10 (floors 2-3)",
+              "East stair point 11 (floors 2-3)",
+              "East stair point 12 (floors 2-3)",
+              "East stair point 13 (floors 2-3)",
+              "East stair point 14 (floors 2-3)",
+              "East stair point 15 (floors 2-3)",
+              "East stair point 16 (floors 2-3)",
+              "East stair point 17 (floors 2-3)",
+              "East stair point 18 (floors 2-3)",
+              "East stair point 19 (floors 2-3)",
+              "East stair point 2 (floors 2-3)",
+              "East stair point 20 (floors 2-3)",
+              "East stair point 21 (floors 2-3)",
+              "East stair point 22 (floors 2-3)",
+              "East stair point 23 (floors 2-3)",
+              "East stair point 24 (floors 1-2)",
+              "East stair point 3 (floors 2-3)",
+              "East stair point 4 (floors 2-3)",
+              "East stair point 5 (floors 2-3)",
+              "East stair point 6 (floors 2-3)",
+              "East stair point 7 (floors 2-3)",
+              "East stair point 8 (floors 2-3)",
+              "East stair point 9 (floors 2-3)",
+              "Medical Research Centre (floor 2)",
+              "Medical research corridor turn",
+              "Medical research interior turn 1",
+              "Medical research interior turn 2",
+              "Mixed Reality Laboratory (floor 2)",
+              "Mixed reality corridor turn",
+              "Molecular Biology Laboratory (floor 2)",
+              "Molecular biology corridor turn",
+              "P2_REF_1_Column_South",
+              "P2_REF_2_Column_NorthWest",
+              "P2_REF_3_Column_NorthEast",
+              "Second-floor north circulation",
+              "Third-floor stair approach on floor 2"
+            ],
+            "sha256": "caa68d32f0b46b435479979611cbbae6da4a09f388bde573edcf398fbcdd431d"
+          },
+          "model": "models/c16/floor-2.glb",
+          "modelSource": {
+            "commit": "002aaec",
+            "path": "model/candidates/c16/floor-2.glb"
+          }
+        }
+      ],
+      "stairCrossings": [
+        {
+          "connectionCode": "ucc:floor1:hall:e1",
+          "originName": "Hall corridor north",
+          "destinationName": "Hall steps tread 1",
+          "source": "model/candidates/c15/README.md @3177ca7; measured hall nosings",
+          "planBounds": [
+            27.33,
+            47.86,
+            29.79,
+            49.23
+          ]
+        },
+        {
+          "connectionCode": "ucc:floor1:hall:e2",
+          "originName": "Hall steps tread 1",
+          "destinationName": "Hall steps tread 2",
+          "source": "model/candidates/c15/README.md @3177ca7; measured hall nosings",
+          "planBounds": [
+            27.33,
+            47.86,
+            29.79,
+            49.23
+          ]
+        },
+        {
+          "connectionCode": "ucc:floor1:hall:e3",
+          "originName": "Hall steps tread 2",
+          "destinationName": "Hall steps tread 3",
+          "source": "model/candidates/c15/README.md @3177ca7; measured hall nosings",
+          "planBounds": [
+            27.33,
+            47.86,
+            29.79,
+            49.23
+          ]
+        },
+        {
+          "connectionCode": "ucc:floor1:hall:e4",
+          "originName": "Hall steps tread 3",
+          "destinationName": "Hall steps / Block A arrival",
+          "source": "model/candidates/c15/README.md @3177ca7; measured hall nosings",
+          "planBounds": [
+            27.33,
+            47.86,
+            29.79,
+            49.23
+          ]
+        },
+        {
+          "connectionCode": "ucc:floor1:e10",
+          "originName": "South circulation",
+          "destinationName": "Laboratory corridor west",
+          "source": "docs/blocks/vertical-connections.md @ b9648f5 (hall risers); 31e9c27 / 68c7a36 (B and route crossings)",
+          "planBounds": [
+            36.5,
+            32.1,
+            39,
+            34
+          ]
+        }
+      ]
+    },
+    {
       "id": "ucc-two-floors-c15",
       "label": "UCC · two-floor data with C16 models",
       "requiresExplicitPositions": true,

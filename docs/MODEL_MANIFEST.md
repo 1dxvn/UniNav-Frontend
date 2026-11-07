@@ -310,3 +310,26 @@ unreviewed junctions and a C15/C16 neighbour mismatch as negative controls.
 so the same unchanged data can be rehearsed against its actual accepted GLBs.
 `UNINAV_SUPPORT_REPORT` can write a historical verification into a new report
 without modifying the old evidence. See `verification/c16/README.md`.
+
+## Three-floor C16 profile
+
+`ucc-three-floors-c16` binds the prepared 110-place / 102-connection API. The
+five historical combinations retain their exact manifest entries. Only this
+new profile promotes C16 floor 3 from inspection to navigation, with three
+source-backed computer laboratory entrances and the east 2-to-3 stair. It
+declares `P3_Floor_Slab` and both tower support nodes; floors 0/4/5 remain
+non-navigable previews. Existing C16 GLB URLs and hashes are shared unchanged.
+
+`models/c16/floor-3-navigation-reference.json @72d1aaa` is owned integration
+data, using API alignment with the three unchanged structural markers at
+world 9.38. Walking A surfaces use explicit world 9.87. `modelSource` remains
+C16 `002aaec`. Rebinding floors 1/2/3 includes the new corridor and stair edges,
+so a partial contract cannot fall back to the two-floor combination. The build
+checks 42 ready model entries across six combinations before replacing `dist`.
+
+`tools/prepare-floor3-profile.ts` takes an actual temporary FastAPI snapshot;
+`tools/prepare-floor3.ts` audits source doors, labels, support and body/head
+clearance; `tools/verify-floor3-playback.ts` independently inspects recorded
+browser positions against committed walking surfaces. None modifies Claude's
+geometry, the real database, the sample or the running user services.
+See `blocks/floor3-navigation.md` and `verification/floor3/`.

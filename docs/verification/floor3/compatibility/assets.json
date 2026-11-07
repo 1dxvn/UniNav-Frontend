@@ -1,0 +1,292 @@
+{
+  "results": [
+    {
+      "profile": "base",
+      "id": "ucc-first-floor",
+      "reference": "models/campus-reference.json",
+      "url": "models/campus.glb",
+      "hash": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "profile": "base",
+      "id": "campus-exterior",
+      "url": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "profile": "base",
+      "id": "ucc-floor-0-preview",
+      "reference": "models/floor-0/campus-reference.json",
+      "url": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "profile": "base",
+      "id": "ucc-floor-2-preview",
+      "reference": "models/floor-2/campus-reference.json",
+      "url": "models/floor-2/campus.glb",
+      "hash": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6"
+    },
+    {
+      "profile": "base",
+      "id": "ucc-floor-3-preview",
+      "reference": "models/floor-3/campus-reference.json",
+      "url": "models/floor-3/campus.glb",
+      "hash": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "profile": "base",
+      "id": "ucc-floor-4-preview",
+      "reference": "models/floor-4/campus-reference.json",
+      "url": "models/floor-4/campus.glb",
+      "hash": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06"
+    },
+    {
+      "profile": "base",
+      "id": "ucc-floor-5-preview",
+      "reference": "models/floor-5/campus-reference.json",
+      "url": "models/floor-5/campus.glb",
+      "hash": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592"
+    },
+    {
+      "profile": "ucc-three-floors-c16",
+      "id": "ucc-first-floor",
+      "reference": "models/campus-reference.json",
+      "url": "models/c16/floor-1.glb",
+      "hash": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c"
+    },
+    {
+      "profile": "ucc-three-floors-c16",
+      "id": "campus-exterior",
+      "url": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "profile": "ucc-three-floors-c16",
+      "id": "ucc-floor-0-preview",
+      "reference": "models/floor-0/campus-reference.json",
+      "url": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "profile": "ucc-three-floors-c16",
+      "id": "ucc-third-floor",
+      "reference": "models/c16/floor-3-navigation-reference.json",
+      "url": "models/c16/floor-3.glb",
+      "hash": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d"
+    },
+    {
+      "profile": "ucc-three-floors-c16",
+      "id": "ucc-floor-4-preview",
+      "reference": "models/floor-4/campus-reference.json",
+      "url": "models/c16/floor-4.glb",
+      "hash": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf"
+    },
+    {
+      "profile": "ucc-three-floors-c16",
+      "id": "ucc-floor-5-preview",
+      "reference": "models/floor-5/campus-reference.json",
+      "url": "models/c16/floor-5.glb",
+      "hash": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d"
+    },
+    {
+      "profile": "ucc-three-floors-c16",
+      "id": "ucc-second-floor",
+      "reference": "models/floor-2/campus-navigation-reference.json",
+      "url": "models/c16/floor-2.glb",
+      "hash": "b099eb799e1dbaf23fee818601b64499113fea401062add809c2b8d57de43f44"
+    },
+    {
+      "profile": "ucc-two-floors-c15",
+      "id": "ucc-first-floor",
+      "reference": "models/campus-reference.json",
+      "url": "models/c16/floor-1.glb",
+      "hash": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c"
+    },
+    {
+      "profile": "ucc-two-floors-c15",
+      "id": "campus-exterior",
+      "url": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "profile": "ucc-two-floors-c15",
+      "id": "ucc-floor-0-preview",
+      "reference": "models/floor-0/campus-reference.json",
+      "url": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "profile": "ucc-two-floors-c15",
+      "id": "ucc-floor-3-preview",
+      "reference": "models/floor-3/campus-reference.json",
+      "url": "models/c16/floor-3.glb",
+      "hash": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d"
+    },
+    {
+      "profile": "ucc-two-floors-c15",
+      "id": "ucc-floor-4-preview",
+      "reference": "models/floor-4/campus-reference.json",
+      "url": "models/c16/floor-4.glb",
+      "hash": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf"
+    },
+    {
+      "profile": "ucc-two-floors-c15",
+      "id": "ucc-floor-5-preview",
+      "reference": "models/floor-5/campus-reference.json",
+      "url": "models/c16/floor-5.glb",
+      "hash": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d"
+    },
+    {
+      "profile": "ucc-two-floors-c15",
+      "id": "ucc-second-floor",
+      "reference": "models/floor-2/campus-navigation-reference.json",
+      "url": "models/c16/floor-2.glb",
+      "hash": "b099eb799e1dbaf23fee818601b64499113fea401062add809c2b8d57de43f44"
+    },
+    {
+      "profile": "ucc-first-floor-stair-review",
+      "id": "ucc-first-floor",
+      "reference": "models/campus-reference.json",
+      "url": "models/campus.glb",
+      "hash": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "profile": "ucc-first-floor-stair-review",
+      "id": "campus-exterior",
+      "url": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "profile": "ucc-first-floor-stair-review",
+      "id": "ucc-floor-0-preview",
+      "reference": "models/floor-0/campus-reference.json",
+      "url": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "profile": "ucc-first-floor-stair-review",
+      "id": "ucc-floor-2-preview",
+      "reference": "models/floor-2/campus-reference.json",
+      "url": "models/floor-2/campus.glb",
+      "hash": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6"
+    },
+    {
+      "profile": "ucc-first-floor-stair-review",
+      "id": "ucc-floor-3-preview",
+      "reference": "models/floor-3/campus-reference.json",
+      "url": "models/floor-3/campus.glb",
+      "hash": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "profile": "ucc-first-floor-stair-review",
+      "id": "ucc-floor-4-preview",
+      "reference": "models/floor-4/campus-reference.json",
+      "url": "models/floor-4/campus.glb",
+      "hash": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06"
+    },
+    {
+      "profile": "ucc-first-floor-stair-review",
+      "id": "ucc-floor-5-preview",
+      "reference": "models/floor-5/campus-reference.json",
+      "url": "models/floor-5/campus.glb",
+      "hash": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592"
+    },
+    {
+      "profile": "ucc-two-floors-stair-review",
+      "id": "ucc-first-floor",
+      "reference": "models/campus-reference.json",
+      "url": "models/campus.glb",
+      "hash": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "profile": "ucc-two-floors-stair-review",
+      "id": "campus-exterior",
+      "url": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "profile": "ucc-two-floors-stair-review",
+      "id": "ucc-floor-0-preview",
+      "reference": "models/floor-0/campus-reference.json",
+      "url": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "profile": "ucc-two-floors-stair-review",
+      "id": "ucc-floor-3-preview",
+      "reference": "models/floor-3/campus-reference.json",
+      "url": "models/floor-3/campus.glb",
+      "hash": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "profile": "ucc-two-floors-stair-review",
+      "id": "ucc-floor-4-preview",
+      "reference": "models/floor-4/campus-reference.json",
+      "url": "models/floor-4/campus.glb",
+      "hash": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06"
+    },
+    {
+      "profile": "ucc-two-floors-stair-review",
+      "id": "ucc-floor-5-preview",
+      "reference": "models/floor-5/campus-reference.json",
+      "url": "models/floor-5/campus.glb",
+      "hash": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592"
+    },
+    {
+      "profile": "ucc-two-floors-stair-review",
+      "id": "ucc-second-floor",
+      "reference": "models/floor-2/campus-navigation-reference.json",
+      "url": "models/floor-2/campus.glb",
+      "hash": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6"
+    },
+    {
+      "profile": "ucc-two-floors",
+      "id": "ucc-first-floor",
+      "reference": "models/campus-reference.json",
+      "url": "models/campus.glb",
+      "hash": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "profile": "ucc-two-floors",
+      "id": "campus-exterior",
+      "url": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "profile": "ucc-two-floors",
+      "id": "ucc-floor-0-preview",
+      "reference": "models/floor-0/campus-reference.json",
+      "url": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "profile": "ucc-two-floors",
+      "id": "ucc-floor-3-preview",
+      "reference": "models/floor-3/campus-reference.json",
+      "url": "models/floor-3/campus.glb",
+      "hash": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "profile": "ucc-two-floors",
+      "id": "ucc-floor-4-preview",
+      "reference": "models/floor-4/campus-reference.json",
+      "url": "models/floor-4/campus.glb",
+      "hash": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06"
+    },
+    {
+      "profile": "ucc-two-floors",
+      "id": "ucc-floor-5-preview",
+      "reference": "models/floor-5/campus-reference.json",
+      "url": "models/floor-5/campus.glb",
+      "hash": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592"
+    },
+    {
+      "profile": "ucc-two-floors",
+      "id": "ucc-second-floor",
+      "reference": "models/floor-2/campus-navigation-reference.json",
+      "url": "models/floor-2/campus.glb",
+      "hash": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6"
+    }
+  ]
+}
