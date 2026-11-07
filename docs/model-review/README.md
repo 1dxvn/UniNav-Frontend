@@ -9,6 +9,7 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | H0 (Preclinic) | Route to the Preclinic through the north circulation and the storeroom; door leaves and furniture regenerated | `h0/api-routes.json`, `h0/walk-*.json` |
 | C1 (Plan 3, first visual pass) | Brick facades, glass frames and mullions, interior tiles, plaza pavers, gardens, trees and cypresses from the DWG, stone walls, green wall, fence, lamp posts, solar bike canopy, access pavilion roof and frame | `before/`, `after-c1/` |
 | C2 (Plan 3, interiors) | Shaped furniture inside the validated footprints, floors by use (ceramic, vinyl, oak laminate), hanging destination signs and an entrance sign | `after-c2/` |
+| C4 (Plan 1 H2, second floor and vertical core) | Second-floor cut model (`public/models/floor-2/`), Block A U-stairs (candidate `model/candidates/campus-c4-stairs.glb`), elevator and stair connection points (`docs/blocks/vertical-connections.md`) | `after-c4/` |
 | C5 (Plan 2 A1, exterior) | Exterior massing of Blocks A and B, floors 2–5: registered floor outlines, real levels per block, brick with ribbon windows, roofs and terraces, rooftop courts, glass stair towers. Separate GLB `public/models/blocks/campus-exterior.glb` | `after-c5/` |
 
 ## Comparable captures (Plan 3 §11)
@@ -43,6 +44,8 @@ The browser captures come from a temporary Playwright walk run by Claude against
 4. **Served model.** `npm run build`; `dist/models/campus.glb` is the exported file.
 
 ## Notes for Codex
+
+- **Manifest gate (02:55).** Claude's export with the stairs changed `public/models/campus.glb`. The app then reported "Model export changed… Review its manifest", as the gate is meant to. Claude restored the pinned C2 file (`d65846a8…`; the 5 browser walks pass again). The stair version is now a candidate in `model/candidates/` (see its README). From now on, Claude delivers first-floor changes as candidates and leaves the served file alone.
 
 - **`tools/verify-model.ts` and `tools/inspect-model.ts` fail on the textured GLB under Node.** GLTFLoader tries to decode the embedded JPEG textures and Node has no image decoder. The app in the browser is not affected. One fix, used by Claude's check: before `parseAsync`, rebuild the GLB without `images`, `textures`, `samplers` and the material texture slots. Collisions and references only need the geometry. Another option is to stub the texture loading.
 - **Preclinic.** It now has a route (backend `3809907`). `tests/e2e/campus.spec.ts` ("real API no-route…") and `docs/REHEARSAL.md` / `docs/campus-review.md` still describe it as having no route.
