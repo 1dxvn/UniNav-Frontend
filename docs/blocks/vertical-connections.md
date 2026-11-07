@@ -76,7 +76,15 @@ These facts come from the first-floor sheet, in first-floor plan metres. They li
 | N −0.90 | (38.67, 35.32): foot of the Block B stair, north-east |
 
 **1. Hall steps, between the hall corridor (N 0.00) and the elevator hall (N −0.63).**
-- A strip x 27.3–29.8, y 47.85–49.15 (`3.20 M2` on the sheet) has three numbered treads (1–3 at y 48.08, 48.55 and 48.97) and an "S" arrow. The levels on either side give 0.63 m in total, going down northwards.
+- A strip x 27.3–29.8, y 47.86–49.23 (`3.20 M2` on the sheet) has three numbered treads (1–3 at y 48.08, 48.55 and 48.97) and an "S" arrow. The levels on either side give 0.63 m in total, going down northwards.
+- *(Measured at 10:50.)* Four nosing lines (layer 02) cross the strip, at y 47.86, 48.32, 48.78 and 49.23. They enclose three treads of 0.46 m, so the 0.63 m drop is **4 risers of about 0.158 m**, not 3 of 0.21 m. Each riser is under the runtime's 0.20 m step limit. Nosings, going north:
+
+  | Riser | y | Level after it |
+  | --- | --- | --- |
+  | 1 | 47.86 | −0.158 |
+  | 2 | 48.32 | −0.315 |
+  | 3 | 48.78 | −0.473 |
+  | 4 | 49.23 | −0.63 |
 - API edges that cross it:
   - `Hall corridor north (28.0, 48.0) → Elevator and Restroom Hall (25.77, 51.97)`: 1.32 m inside the strip. The node `Hall corridor north` itself stands on the first tread.
   - `Hall corridor south → Hall corridor north`: its last 0.15 m.
@@ -93,7 +101,7 @@ These facts come from the first-floor sheet, in first-floor plan metres. They li
 
 **3. Consequences for the graph (Codex decides):**
 - **Step-free:** on this sheet, the destinations in Block A (elevators, Preclinic) and the Morphology Laboratory are reached only over steps. Unless an entrance not drawn here exists, they should not be offered as step-free from Hall Acceso.
-- **Hall steps:** they could become a short `stairs` edge, from about (28.0, 47.6) on N 0.00 to about (28.0, 49.4) on N −0.63, with `Hall corridor north` moved off the tread.
+- **Hall steps:** they could become a short `stairs` edge, from about (28.0, 47.6) on N 0.00 to about (28.0, 49.5) on N −0.63, crossing the four risers above, with `Hall corridor north` moved off the treads.
 - **Block B stair:** the split suggested above still applies.
 - **Real levels:** if the first-floor model gets real levels (B at 0.00, A at −0.63, the three Block B levels and the sloped hall), every Block A waypoint height changes by −0.63 m. Claude can prepare that as a candidate model when the graph is ready for it.
 
