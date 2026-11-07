@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "status": "model-request-not-navigation-data",
+  "navigationEnabled": false,
+  "source": {
+    "commit": "de3815e",
+    "path": "docs/blocks/level-zones.json",
+    "sha256": "fbaf4200cdaa2a31ec8e8b4503059b478330dacbb59e388b2f2d38b575a1e6d6"
+  },
+  "frame": {
+    "planConvention": "(x,y) to (x,worldY,-y); +Y is drawing axis, not geographic north",
+    "worldOffsetFromSheetDatum": 3.5,
+    "modelTranslation": [
+      0,
+      0.56,
+      0
+    ]
+  },
+  "endpointLevels": {
+    "id": "A-east-tower-0-1",
+    "levels": [
+      -4.13,
+      -0.63
+    ],
+    "rise": 3.5,
+    "risers": 21,
+    "world": [
+      -0.63,
+      2.87
+    ],
+    "status": "confirmed; C14 floor-0 stair (2.94 m from world 0.56) does not meet C16"
+  },
+  "regions": [
+    {
+      "id": "A-bar",
+      "rule": "footprint north of the facade band y 49.02-49.16, x 15.7-69",
+      "level": -4.13,
+      "status": "confirmed at the east tower; extent derived"
+    },
+    {
+      "id": "B-east-clinic",
+      "rule": "south of the facade band, east of B stair risers 1-6 (x 36.9-38.4) and west stair risers 1-6 (x 36.0-37.9)",
+      "level": -4.13,
+      "status": "confirmed at (39.21, 35.15) and (48.48, 39.70); extent derived; open to the A bar at x 39.66-41.08, 42.37-50.43, 53.08-59.57, 62.26-70.4; southern rooms (y < 30) pending"
+    },
+    {
+      "id": "B-west-southwest",
+      "rule": "south of the facade band, west of those flights",
+      "level": -2.94,
+      "status": "confirmed at the B stair landing and the compressors; extent derived; west/east boundary between y 36 and 47.6 pending"
+    },
+    {
+      "id": "west-stair-landing",
+      "bounds": [
+        25.6,
+        47.6,
+        36,
+        49
+      ],
+      "level": null,
+      "status": "pending: no label"
+    }
+  ],
+  "pendingJoins": [
+    {
+      "id": "B-stair-south-flight",
+      "risers": "7-9 drawn, cut",
+      "levels": [
+        -2.94,
+        -0.9
+      ],
+      "status": "derived; floor-1 -0.90 area is pending (flat in C16)"
+    },
+    {
+      "id": "elevators",
+      "xy": [
+        [
+          24.12,
+          55.15
+        ],
+        [
+          26.38,
+          55.14
+        ]
+      ],
+      "levels": [
+        -4.13,
+        -0.63
+      ],
+      "status": "confirmed"
+    },
+    {
+      "id": "west-stair",
+      "risers": "1-6, landing PASILLO, 7-18; floor-1 sheet draws 15-18 to x 20.74",
+      "levels": [
+        -4.13,
+        null,
+        null
+      ],
+      "status": "pending: landing and floor-1 arrival unlabelled; 7-18 would be 0.245 m to N 0.00 or 0.1925 m to N -0.63"
+    },
+    {
+      "id": "south-west-ramp",
+      "xy": [
+        19.14,
+        18.94
+      ],
+      "levels": [
+        -2.94,
+        null
+      ],
+      "status": "pending: top unlabelled"
+    },
+    {
+      "id": "east-yard-stair",
+      "risers": "1-4",
+      "levels": [
+        -4.13,
+        -2.93
+      ],
+      "status": "pending: 0.30 m per numbered riser, outside the footprint"
+    }
+  ],
+  "requiredCandidate": {
+    "separateGLB": true,
+    "sourceExportAndReferenceSheet": true,
+    "preserveReferenceNodes": [
+      {
+        "buildingName": "P0_REF_1_Column_21_62",
+        "nodeName": "P0_REF_1_Column_21_62",
+        "planPosition": [
+          21.23,
+          62.23
+        ],
+        "position": [
+          21.23,
+          0,
+          -62.23
+        ]
+      },
+      {
+        "buildingName": "P0_REF_2_Column_47_37",
+        "nodeName": "P0_REF_2_Column_47_37",
+        "planPosition": [
+          47.01,
+          36.83
+        ],
+        "position": [
+          47.01,
+          0,
+          -36.83
+        ]
+      },
+      {
+        "buildingName": "P0_REF_3_Column_33_62",
+        "nodeName": "P0_REF_3_Column_33_62",
+        "planPosition": [
+          33.32,
+          62.37
+        ],
+        "position": [
+          33.32,
+          0,
+          -62.37
+        ]
+      }
+    ],
+    "preserveExistingPreview": true,
+    "physicalAandClinic": {
+      "sheetLevel": -4.13,
+      "worldLevel": -0.63,
+      "localOffset": -1.19,
+      "extent": "C18 confirmed markers and derived zones only; ambiguous boundaries and southern rooms remain explicitly pending"
+    },
+    "eastTower": {
+      "rise": 3.5,
+      "footWorld": -0.63,
+      "topWorld": 2.87,
+      "layoutStatus": "C18 proposes compatible 21-riser tower layout; confirm actual plan centre line, return flight, landing and exported support surfaces before any API graph is accepted"
+    },
+    "blockedUntilModelReview": [
+      "B south flight to floor1 pending laboratory level",
+      "west stair landing and opening",
+      "south-west ramp top",
+      "east-yard contradictory steps",
+      "southern rooms and unresolved B level boundary",
+      "elevator movement without reviewed shafts/doors/stops"
+    ]
+  },
+  "runtimeChecks": {
+    "maxStepHeightMetres": 0.2,
+    "footprintRadiusMetres": 0.12,
+    "bodyRadiusMetres": 0.22,
+    "headHeightMetres": 1.8,
+    "initialAnchorToleranceMetres": 0.15,
+    "recordedFootToleranceMetres": 0.001
+  },
+  "existingPreview": {
+    "modelURL": "models/floor-0/campus.glb",
+    "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
+    "sourceCommit": "389cfd9",
+    "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e"
+  },
+  "upperNeighbour": {
+    "commit": "002aaec",
+    "path": "model/candidates/c16/floor-1.glb",
+    "sha256": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c"
+  }
+}
