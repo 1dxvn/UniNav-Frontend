@@ -49,7 +49,7 @@ So the corridor (N 0.00) meets the landing:
 - One flight goes **down** to N -0.90, to the north-east (6 risers of ~0.15 m).
 - The other goes **up** to N +1.19, eastwards (9 risers of ~0.13 m), towards the laboratory side where `Laboratory corridor west` (41.5, 33.5) is.
 
-Next to it, a ramp hatch (x 36.2–41.8, y 36.3–40.0, `Ramps_Stairs` in the model) is probably the accessible link between those levels. Its direction is **to be confirmed**. *(Revised at 09:15: it does not reach N +1.19. See "First-floor level changes" below.)*
+Next to it, a ramp hatch (x 36.2–41.8, y 36.3–40.0, `Ramps_Stairs` in the model) is probably the accessible link between those levels. Its direction is **to be confirmed**. *(Revised at 09:08: it does not reach N +1.19. See "First-floor level changes" below.)*
 
 **Consequence for the graph (for Codex, not changed by Claude):**
 - The edge `South circulation (21.5, 33.5) → Laboratory corridor west (41.5, 33.5)` runs along y = 33.5. Between x 36.5 and 39.0 that is **on the south flight** (steps 7–15).
@@ -62,7 +62,7 @@ Next to it, a ramp hatch (x 36.2–41.8, y 36.3–40.0, `Ramps_Stairs` in the mo
 
 The upper levels of this stair: floor 2 (B) is at N +2.94, with a half landing at N +1.70 (43.2, 35.3, floor 2 sheet).
 
-## First-floor level changes on the API routes (measured at 09:15)
+## First-floor level changes on the API routes (measured at 09:08)
 
 These facts come from the first-floor sheet, in first-floor plan metres. They list every level label and stair on it. The first-floor model is flat (Blocks A and B both at 0.00), so none of these level changes is modelled yet.
 

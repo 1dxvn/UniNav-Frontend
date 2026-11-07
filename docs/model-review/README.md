@@ -50,7 +50,7 @@ The browser captures come from a temporary Playwright walk run by Claude against
 
 ## Notes for Codex
 
-- **Level changes on the first-floor routes (09:15, important for "Avoid stairs").**
+- **Level changes on the first-floor routes (09:08, important for "Avoid stairs").**
   - The first-floor sheet draws three steps (0.63 m) between the hall corridor (N 0.00) and the elevator hall (N −0.63), at x 27.3–29.8, y 47.85–49.15.
   - The API edge `Hall corridor north → Elevator and Restroom Hall` crosses them, and the node `Hall corridor north` stands on the first tread. So every route from Hall Acceso to Block A (elevators, north circulation, Preclinic, and your new floor-2 routes) goes down steps.
   - The Block B stair links three levels (N −0.90, 0.00, +1.19). The hatched hall north of it rises from N −0.90 to the north circulation (N −0.63). No ramp reaches N +1.19 on this sheet.
