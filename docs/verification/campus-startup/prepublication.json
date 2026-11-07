@@ -1,0 +1,92 @@
+{
+  "checkedAt": "2026-11-07T20:20:59.643419+00:00",
+  "foreign": {
+    "CONTINUIDAD.md": "ec92de42a3e27a2e950aeb779708c1ef142d376ef35aa7d4d6a730d11596b089",
+    "scripts/codex_continuity.py": "a558ee4572062ba7dd2eba2af02264a1bc10abfb9c5f73c3a4721a3430152ec2",
+    "tests/unit/test_codex_continuity.py": "7d086a05a7533999d395752c758b5cc4ff4a55d9385da2d664395516e17c9bc5",
+    "scripts/seed.py": "64c37d037a2d22d8ed11c93e388cbf34dbcd2475694c6578d61ae6e0ff450cc2"
+  },
+  "realCounts": {
+    "buildings": 19,
+    "paths": 16
+  },
+  "realPoints": [
+    [
+      "ucc:floor1:p02",
+      6.0,
+      16.5,
+      3.5
+    ],
+    [
+      "ucc:floor1:p09",
+      28.0,
+      48.0,
+      3.5
+    ]
+  ],
+  "services": {
+    "8000": {
+      "/health": {
+        "status": 200,
+        "body": {
+          "status": "ok",
+          "buildings": 21,
+          "edges": 50
+        }
+      },
+      "/app/": {
+        "status": 200,
+        "body": null
+      },
+      "/docs": {
+        "status": 200,
+        "body": null
+      },
+      "/openapi.json": {
+        "status": 200,
+        "body": null
+      }
+    },
+    "8001": {
+      "/health": {
+        "status": 200,
+        "body": {
+          "status": "ok",
+          "buildings": 19,
+          "edges": 32
+        }
+      },
+      "/app/": {
+        "status": 200,
+        "body": null
+      },
+      "/docs": {
+        "status": 200,
+        "body": null
+      },
+      "/openapi.json": {
+        "status": 200,
+        "body": null
+      }
+    }
+  },
+  "git": {
+    "UniNav": {
+      "head": "64dc58a723525d0e68662ba8510333bfeddade7a",
+      "remote": "71a6f8da0247da0866cdb955be9ea3508484238d",
+      "name": "1dxvn",
+      "email": "hugo.burgos@campusucc.edu.co"
+    },
+    "UniNav-Frontend": {
+      "head": "90ec9900d9b95c998db006262e862802d4ae2c99",
+      "remote": "aeca8406740c80bac580182cc6ad40fa2cc32db2",
+      "name": "1dxvn",
+      "email": "hugo.burgos@campusucc.edu.co"
+    }
+  },
+  "authentication": {
+    "login": "1dxvn",
+    "verifiedAuthorAndCommitterEmail": "hugo.burgos@campusucc.edu.co"
+  },
+  "realActivationPending": true
+}

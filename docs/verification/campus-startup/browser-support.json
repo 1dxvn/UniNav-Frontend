@@ -1,0 +1,194 @@
+{
+  "commit": "3177ca7",
+  "hashes": [
+    "75abed56ea985341f82f11585a26c981308db3aaf68f14c2e7303e239d6976cf",
+    "8e7ea9aafb940d145010bc9ed34152d2022e1446f7034ffb7f74eddd8dae1760"
+  ],
+  "results": [
+    {
+      "file": "medical-research-arrival-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 284,
+      "outdoorSamples": 111,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.13975135393257548
+    },
+    {
+      "file": "medical-research-arrival-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 285,
+      "outdoorSamples": 113,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.13967257624613988
+    },
+    {
+      "file": "mixed-reality-entrance-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 272,
+      "outdoorSamples": 112,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.1389155306780752
+    },
+    {
+      "file": "mixed-reality-entrance-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 272,
+      "outdoorSamples": 113,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.14090007704894142
+    },
+    {
+      "file": "molecular-biology-entrance-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 272,
+      "outdoorSamples": 112,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.1385186318389896
+    },
+    {
+      "file": "molecular-biology-entrance-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 276,
+      "outdoorSamples": 114,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.1397243144664187
+    },
+    {
+      "file": "p06-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 140,
+      "outdoorSamples": 111,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 5.9604645663569045e-9,
+      "maxDistanceFromGraphMetres": 0.13986649200110088
+    },
+    {
+      "file": "p06-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 141,
+      "outdoorSamples": 113,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 5.9604645663569045e-9,
+      "maxDistanceFromGraphMetres": 0.13982479811310744
+    },
+    {
+      "file": "p10-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 181,
+      "outdoorSamples": 111,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.1401392923161377
+    },
+    {
+      "file": "p10-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 183,
+      "outdoorSamples": 114,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.14002430600369514
+    },
+    {
+      "file": "p13-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 197,
+      "outdoorSamples": 112,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 5.9604645663569045e-9,
+      "maxDistanceFromGraphMetres": 0.14054530169604046
+    },
+    {
+      "file": "p13-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 197,
+      "outdoorSamples": 113,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 5.9604645663569045e-9,
+      "maxDistanceFromGraphMetres": 0.14036041418279668
+    },
+    {
+      "file": "p14-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 279,
+      "outdoorSamples": 111,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.13989395768210755
+    },
+    {
+      "file": "p14-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 280,
+      "outdoorSamples": 111,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.1400786608546263
+    }
+  ],
+  "manual": [
+    {
+      "name": "hall",
+      "samples": 30,
+      "outdoorSamples": 0,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0
+    },
+    {
+      "name": "vertical",
+      "samples": 252,
+      "outdoorSamples": 0,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.00047640800476056455,
+      "maxDistanceFromGraphMetres": 0
+    }
+  ],
+  "replan": {
+    "samples": 78,
+    "outdoorSamples": 0,
+    "nosingQuantizationSamples": 0,
+    "maxFootErrorMetres": 0.00047640800476056455,
+    "maxDistanceFromGraphMetres": 0
+  },
+  "outdoorManual": [
+    {
+      "reverse": false,
+      "samples": 626,
+      "outdoorSamples": 626,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 5.9604645663569045e-9,
+      "maxDistanceFromGraphMetres": 0.19899167028040085
+    },
+    {
+      "reverse": true,
+      "samples": 651,
+      "outdoorSamples": 651,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 5.9604645663569045e-9,
+      "maxDistanceFromGraphMetres": 0.19805989680137012
+    }
+  ],
+  "coordinateResolutionMetres": 0.001,
+  "note": "Independent downward rays test recorded feet and four footprint offsets. At nosings only, X/Z rounding is resolved within the 0.5 mm half-cell and counted separately; vertical error must still be <=1 mm. Site is included only on outdoor route segments; interior holes cannot borrow its support. Pending laboratory heights still represent the flat candidate, not confirmed physical survey levels."
+}

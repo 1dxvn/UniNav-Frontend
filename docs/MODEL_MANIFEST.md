@@ -264,3 +264,13 @@ outdoor surfaces; interior holes and stair wells cannot borrow their support.
 The presentation ground stays below the model's lowest visible surface.
 See `verification/c15/README.md` for the disposable API/browser rehearsal and
 remaining activation work.
+
+The backend now has a versioned startup registry for all five reviewed
+combinations. `scripts.run_campus --profile ucc-two-floors-c15 --database <review.db>
+--port 0` rehearses the actual launcher against an explicit isolated file.
+The default remains the old baseline and the existing 8001 service remains
+untouched. Input payload hashes, in-memory patch composition, atomic scoped
+imports and downgrade guards keep restarts coherent. See backend
+[startup profiles](https://github.com/1dxvn/UniNav/blob/main/docs/CAMPUS_STARTUP.md)
+and `verification/campus-startup/README.md`. This is prepared startup support,
+not evidence that the live development data was upgraded.

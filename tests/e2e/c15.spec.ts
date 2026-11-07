@@ -7,7 +7,8 @@ import { test } from "./isolated-campus.ts";
 
 const output=process.env.UNINAV_EVIDENCE_DIR ?? "docs/verification/c15";
 const datasets=["ucc-first-floor-c15.json","ucc-second-floor-c15.json"].map(p=>fileURLToPath(new URL(`../../../data/datasets/${p}`,import.meta.url)));
-test.use({navigationDataset:datasets});
+const launcher=process.env.UNINAV_C15_STARTUP==="1";
+test.use(launcher ? {campusProfile:"ucc-two-floors-c15"}:{navigationDataset:datasets});
 const codes=["ucc:floor1:p06","ucc:floor1:p13","ucc:floor1:p10","ucc:floor1:p14","ucc:f2:mixed-reality-entrance","ucc:f2:molecular-biology-entrance","ucc:f2:medical-research-arrival"];
 async function pos(page:Page){return (await page.locator("#travel-status").getAttribute("data-position"))!.split(",").map(Number);}
 async function login(page:Page){await page.locator("#open-login").click();await page.getByLabel("Username",{exact:true}).fill("student");await page.getByLabel("Password",{exact:true}).fill("demo1234");await page.locator("#login-submit").click();await expect(page.locator("#session-user")).toHaveText("student");}
@@ -23,7 +24,7 @@ for(const code of codes)test(`C15 shipped profile: ${code} round trip`,async({pa
     const bytes=await(await request.get(`/app/${m.model}`)).body(),hash=await sha256(bytes);expect(hash).toBe(m.modelSha256);models.push({url:m.model,hash,source:m.modelSource});
   }
   const places=await(await request.get("/buildings")).json() as Building[],destination=places.find(p=>p.code===code)!,entry=places.find(p=>p.code==="ucc:floor1:p01")!;
-  expect(places).toHaveLength(69);const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
+  expect(places).toHaveLength(launcher ? 68:69);const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
   await page.goto("/app/");await expect(page.locator("#model-status")).toHaveAttribute("data-profile","ucc-two-floors-c15");await expect(page.locator("#model-status")).toContainText("3 references aligned");await login(page);
   await page.locator("#origin").selectOption(String(entry.id));const runs=[];
   for(const direction of ["outbound","return"]){
@@ -35,7 +36,7 @@ for(const code of codes)test(`C15 shipped profile: ${code} round trip`,async({pa
     expect(await page.locator("#floor").inputValue()).toBe(String(dest.floor));const positions=await samples(page);expect(JSON.stringify(positions)).not.toContain('"state":"blocked"');
     runs.push({direction,route,position,finalErrorMetres:error,samples:positions});await page.screenshot({path:`${output}/${code.split(":").at(-1)}-${direction}.png`});
   }
-  expect(errors).toEqual([]);await writeFile(`${output}/${code.split(":").at(-1)}-walks.json`,JSON.stringify({profile:profile.id,models,scope:"isolated FastAPI with two scoped C15 revisions and shipped manifest; no browser model overrides",runs,errors},null,2));
+  expect(errors).toEqual([]);await writeFile(`${output}/${code.split(":").at(-1)}-walks.json`,JSON.stringify({profile:profile.id,models,scope:launcher ? "production scripts.run_campus launcher and versioned profile on an isolated database; shipped manifest without overrides":"isolated FastAPI with two scoped C15 revisions and shipped manifest; no browser model overrides",runs,errors},null,2));
 });
 
 test("C15 selects new stair restrictions, preserves clear hall approach and fails closed on partial data",async({page,request})=>{

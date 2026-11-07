@@ -1,0 +1,130 @@
+{
+  "checkedAt": "2026-11-07T20:27:59.303882+00:00",
+  "build": "index-C7kyba8H.js",
+  "unitTests": 42,
+  "apiTests": 55,
+  "cliTests": 7,
+  "browserPassed": 16,
+  "browserCases": {
+    "c15.spec.ts :: C15 shipped profile: ucc:floor1:p06 round trip": "passed",
+    "c15.spec.ts :: C15 shipped profile: ucc:floor1:p13 round trip": "passed",
+    "c15.spec.ts :: C15 shipped profile: ucc:floor1:p10 round trip": "passed",
+    "c15.spec.ts :: C15 shipped profile: ucc:floor1:p14 round trip": "passed",
+    "c15.spec.ts :: C15 shipped profile: ucc:f2:mixed-reality-entrance round trip": "passed",
+    "c15.spec.ts :: C15 shipped profile: ucc:f2:molecular-biology-entrance round trip": "passed",
+    "c15.spec.ts :: C15 shipped profile: ucc:f2:medical-research-arrival round trip": "passed",
+    "c15.spec.ts :: C15 selects new stair restrictions, preserves clear hall approach and fails closed on partial data": "passed",
+    "c15.spec.ts :: C15 supports keyboard hall and vertical stairs, pause/replan and repeated floor views": "passed",
+    "campus-startup.spec.ts :: base :: production launcher serves its reviewed API and model profile": "passed",
+    "campus-startup.spec.ts :: ucc-two-floors :: production launcher serves its reviewed API and model profile": "passed",
+    "campus-startup.spec.ts :: ucc-first-floor-stair-review :: production launcher serves its reviewed API and model profile": "passed",
+    "campus-startup.spec.ts :: ucc-two-floors-stair-review :: production launcher serves its reviewed API and model profile": "passed",
+    "campus-startup.spec.ts :: ucc-two-floors-c15 :: production launcher serves its reviewed API and model profile": "passed",
+    "c15-assets.spec.ts :: C15 refuses the flat legacy export even when its old reference anchors still align": "passed",
+    "c15-assets.spec.ts :: C15 keyboard approach follows Site and slab in both directions": "passed"
+  },
+  "apiRouteComparisonsAcrossProfiles": 116,
+  "automaticArrivals": 14,
+  "automaticFinalErrorMetres": 0,
+  "supportedBrowserPositions": 4896,
+  "resourcesVerified": 35,
+  "manifestUnchangedFrom": "aeca840",
+  "realCounts": {
+    "buildings": 19,
+    "paths": 16
+  },
+  "services": {
+    "8000": {
+      "/health": {
+        "status": 200,
+        "body": {
+          "status": "ok",
+          "buildings": 21,
+          "edges": 50
+        }
+      },
+      "/app/": {
+        "status": 200,
+        "body": null
+      },
+      "/docs": {
+        "status": 200,
+        "body": null
+      },
+      "/openapi.json": {
+        "status": 200,
+        "body": null
+      }
+    },
+    "8001": {
+      "/health": {
+        "status": 200,
+        "body": {
+          "status": "ok",
+          "buildings": 19,
+          "edges": 32
+        }
+      },
+      "/app/": {
+        "status": 200,
+        "body": null
+      },
+      "/docs": {
+        "status": 200,
+        "body": null
+      },
+      "/openapi.json": {
+        "status": 200,
+        "body": null
+      }
+    }
+  },
+  "foreignHashesUnchanged": true,
+  "performance": {
+    "baseline": {
+      "buffers": 579,
+      "textures": 10
+    },
+    "cycles": [
+      {
+        "buffers": 579,
+        "textures": 10
+      },
+      {
+        "buffers": 579,
+        "textures": 10
+      }
+    ],
+    "metrics": {
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "averageFps": 144
+    }
+  },
+  "c16ReceivedNotIntegrated": {
+    "sourceCommit": "002aaec",
+    "noteCommit": "90ec990",
+    "files": [
+      {
+        "path": "model/candidates/c16/floor-1.glb",
+        "sha256": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c"
+      },
+      {
+        "path": "model/candidates/c16/floor-2.glb",
+        "sha256": "b099eb799e1dbaf23fee818601b64499113fea401062add809c2b8d57de43f44"
+      },
+      {
+        "path": "model/candidates/c16/floor-3.glb",
+        "sha256": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d"
+      },
+      {
+        "path": "model/candidates/c16/floor-4.glb",
+        "sha256": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf"
+      },
+      {
+        "path": "model/candidates/c16/floor-5.glb",
+        "sha256": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d"
+      }
+    ]
+  },
+  "publicActivationPending": true
+}

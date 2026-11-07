@@ -4,7 +4,7 @@ import { mkdir,writeFile } from "node:fs/promises";
 import { test } from "./isolated-campus.ts";
 import type { Building,RouteResponse } from "../../src/api/types.ts";
 
-test.use({navigationDataset:["ucc-first-floor-c15.json","ucc-second-floor-c15.json"].map(p=>fileURLToPath(new URL(`../../../data/datasets/${p}`,import.meta.url)))});
+test.use(process.env.UNINAV_C15_STARTUP==="1" ? {campusProfile:"ucc-two-floors-c15"}:{navigationDataset:["ucc-first-floor-c15.json","ucc-second-floor-c15.json"].map(p=>fileURLToPath(new URL(`../../../data/datasets/${p}`,import.meta.url)))});
 test("C15 refuses the flat legacy export even when its old reference anchors still align",async({page,request})=>{
   const bytes=await(await request.get("/app/models/campus.glb")).body();
   await page.route("**/models/c15/floor-1.glb",r=>r.fulfill({body:bytes,contentType:"model/gltf-binary"}));
