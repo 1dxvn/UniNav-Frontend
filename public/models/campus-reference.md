@@ -59,6 +59,10 @@ There is no section drawing yet. Every height below is an assumption for the mod
 | Walls (cut height) | 0.00 → 2.80 |
 | Columns | 0.00 → 2.80 |
 | Glass partitions | 0.00 → 2.60 |
+| Door leaves | 0.00 → 2.10, 4.4 cm thick |
+| Desks, tables | 0.75; lab benches 0.90; seats 0.45–0.62 |
+| Lockers, shelving | 1.80; gym machines 1.10; turnstiles 1.00 |
+| Sanitary fixtures | 0.45 (WC, urinals); 0.85 (washbasins) |
 | Storey height | 3.5 m, the backend convention, still unchecked against the building |
 
 ## How the geometry was built
@@ -69,15 +73,31 @@ There is no section drawing yet. Every height below is an assumption for the mod
 | `Ramps_Stairs` | Pattern hatches on `linea de corte` (the two striped ramps and the stairs) |
 | `Columns` | Closed polylines on layer `06` |
 | `Glass` | Lines on layer `VIDRIO`, 8 cm thick |
-| `Floor_Slab` | The walls, columns and glass merged, with gaps up to 9 m closed |
+| `Floor_Slab` | The walls, columns and glass merged, with gaps up to 9 m closed, plus the outline of the glass-walled CAFETERIA / LOCAL 1–4 block (plan x -6.7 → 13.5, y 42.4 → 63.6) |
+| `Doors` | One leaf per doorway, drawn **open at 90°**. Doorways are the 0.65–1.9 m gaps between wall or glass ends; gaps over 1.25 m get two leaves. Glass partitions get glass leaves |
+| `Door_Swings` | Thin swing arcs on the floor (2–8 mm high), as on a plan |
+| `Fixtures` | CAD blocks on layer `sanitarios` (WC, urinals, washbasins) and the `Lavabo` block |
+| `Furniture` | **Illustrative**, not from the drawing (see below) |
 | `Site` | The crop rectangle |
 
-Materials: `Wall_Cut` white, `Wall_Cap` near-black on wall tops, `Column` terracotta, `Glass` translucent blue, `Floor_Interior` warm light grey, `Site_Plaza` dark grey-green, `Ramp_Stairs` mid grey.
+Materials: `Wall_Cut` white, `Wall_Cap` near-black on wall tops, `Column` terracotta, `Glass` translucent blue, `Floor_Interior` warm light grey, `Site_Plaza` dark grey-green, `Ramp_Stairs` mid grey, `Door_Wood` brown, `Swing_Line` dark grey, `Fixture` white, `Furniture_Wood` light wood, `Furniture_Seat` blue-grey, `Furniture_Lab` off-white, `Furniture_Felt` green, `Furniture_Metal` grey.
+
+## Doors and furniture
+
+- The DWG draws almost no door leaves inside this wing (only a few at the entrance), so the door hinge side is **inferred**. Each leaf is placed open at 90° on the side that keeps it inside free space and farthest from the API route centre lines.
+- The DWG has no furniture in these rooms. `Furniture` is a plausible layout derived from the room name on the plan: café tables in CAFETERIA, lab benches with stools in the laboratories and AULA 112/113, a desk and chair in each office, waiting benches at ICETEX / SALA ESPERA, pool tables in JUEGOS DE SALON, locker banks in AREA DE LOCKERS, shelving in ARCHIVO and BODEGA. Positions are not surveyed. Circulation areas and halls are left empty.
+- The runtime treats every mesh as a collision obstacle. To keep routes walkable:
+  - Furniture stays at least 1.0 m from every API route centre line and 0.85 m from every doorway.
+  - Door leaves stay at least 0.40 m from route centre lines. Measured minimum: 0.50 m.
+  - CAD fixtures closer than 0.7 m to a route are left out, which removes the HALL ACCESO turnstiles from the entrance lane.
+  - Checked by casting the same rays as `collides()` in `src/scene/campus.ts` (two body heights, ±0.22 m) along all 12 API edges in both directions: no edge is blocked.
+- If new API routes are added through rooms with furniture, regenerate the layout or move the pieces in `model/campus.blend`.
 
 ## Known gaps in this version
 
-- The large glass-walled room at the top left (plan x -10 → 10, y 40 → 60) has no floor slab yet.
-- There are no door leaves, only openings. There is no furniture, by design.
+- Furniture is illustrative, and door hinge sides are inferred.
+- Some doorways are not detected: gaps wider than 1.9 m, and openings that are not between two wall ends.
+- A solid hatch in the BAÑOS / VESTIER block near plan (25.5, 2) is read as a full-height wall block.
 - Plazas and gardens are a flat base without paving or level changes.
 - Single floor only.
 
