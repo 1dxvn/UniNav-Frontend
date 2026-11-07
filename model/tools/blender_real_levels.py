@@ -7,7 +7,11 @@
 # - the slab is rebuilt from data/<candidate>/slabs.json, each piece 0.2 m thick at its own level;
 # - each A stair moves as one piece, by the offset at its centre;
 # - the A stairs are rebuilt with stair_rise (from this floor's Block A to the next floor's Block A);
-# - where the floor has a "ramp", every vertex inside it moves linearly from 0.00 (south edge) to a_offset (north edge).
+# - where the floor has a "ramp", every vertex inside it moves linearly from 0.00 (south edge) to a_offset (north edge);
+# - "a_polys" add polygon zones at a_offset (C18: the piso cero clinic south of the facade);
+# - "top_from": storey-height objects (max z >= 2.4: walls, columns, glass) keep their bottoms at this floor's offsets
+#   and move their upper part (z > 1.0) by the zone offset of the floor named there (the floor above), so they stay under
+#   its slab; elevated flat meshes (glass frame tops) follow it too. Without the key the result is the same as before.
 # Config: CONFIG (path relative to model/tools, default real_levels.json). Floors marked "from" are reused from another
 # candidate and not rebuilt. Copies are named "<name>__<candidate>"; the export strips the suffix. Pending zones keep their flat height.
 import bpy, bmesh, json, os, struct
@@ -39,9 +43,12 @@ def in_ramp(x, y, fid):
 def ramp_offset(y, fid):
     f = CFG["floors"][fid]; (y0, y1) = f["ramp"]["y"]
     return f["a_offset"] * min(1.0, max(0.0, (y - y0) / (y1 - y0)))
+def in_apoly(x, y, fid):
+    return next((z for z in CFG["floors"][fid].get("a_polys", []) if inside(x, y, z["poly"])), None)
 def zone_offset(x, y, fid):
     f = CFG["floors"][fid]; h = f["hall"]
     if in_ramp(x, y, fid): return ramp_offset(y, fid)
+    if in_apoly(x, y, fid): return f["a_offset"]
     if h and h["x"][0] <= x <= h["x"][1] and h["nosings"][0] <= y <= h["nosings"][-1]:
         return f["a_offset"] * sum(1 for n in h["nosings"] if y >= n) / len(h["nosings"])
     if y >= f["a_y"] and x >= f["a_x"]: return f["a_offset"]
@@ -49,21 +56,30 @@ def zone_offset(x, y, fid):
 def offset(x, y, fid):
     dz = zone_offset(x, y, fid)
     return dz if dz and near_outline(x, y, fid) else 0.0
+def top_offset(x, y, fid):                                 # offset for the upper part of storey-height objects
+    f = CFG["floors"][fid]
+    if not f.get("top_from"): return offset(x, y, fid)
+    return zone_offset(x, y, f["top_from"]) if near_outline(x, y, fid) else 0.0
 def low_offset(x, y, fid):
     return min(offset(x + dx, y + dy, fid) for dx in (-0.35, 0, 0.35) for dy in (-0.35, 0, 0.35))
 
-def split_offset(o, fid, use_outline=True):
+def split_offset(o, fid, use_outline=True, elevated=False):
     f = CFG["floors"][fid]; me = o.data; bm = bmesh.new(); bm.from_mesh(me)
     planes = [((0, f["a_y"], 0), (0, 1, 0)), ((f["a_x"], 0, 0), (1, 0, 0))]
     if f["hall"]:
         planes += [((f["hall"]["x"][0], 0, 0), (1, 0, 0)), ((f["hall"]["x"][1], 0, 0), (1, 0, 0))] + [((0, n, 0), (0, 1, 0)) for n in f["hall"]["nosings"]]
     if f.get("ramp"):
         planes += [((f["ramp"]["x"][0], 0, 0), (1, 0, 0)), ((f["ramp"]["x"][1], 0, 0), (1, 0, 0)), ((0, f["ramp"]["y"][0], 0), (0, 1, 0)), ((0, f["ramp"]["y"][1], 0), (0, 1, 0))]
+    for z in f.get("a_polys", []):
+        ring = z["poly"]
+        for (x0, y0), (x1, y1) in zip(ring, ring[1:] + ring[:1]):
+            n = Vector((-(y1 - y0), x1 - x0, 0)); n.normalize(); planes.append(((x0, y0, 0), tuple(n)))
     for co, no in planes:
         bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:], plane_co=co, plane_no=no, dist=1e-5)
     def key(fc):                                           # a face inside a ramp slopes with it; any other face moves as one
         c = fc.calc_center_median()
-        return "ramp" if in_ramp(c.x, c.y, fid) else round((offset if use_outline else zone_offset)(c.x, c.y, fid), 4)
+        fn = top_offset if elevated else (offset if use_outline else zone_offset)
+        return "ramp" if in_ramp(c.x, c.y, fid) else round(fn(c.x, c.y, fid), 4)
     keys = {fc: key(fc) for fc in bm.faces}
     cut = [e for e in bm.edges if len({keys[fc] for fc in e.link_faces}) > 1]
     if cut: bmesh.ops.split_edges(bm, edges=cut)
@@ -150,15 +166,16 @@ for fid in FLOORS:
         me = o.data; zs = [v.co.z for v in me.vertices]
         if not zs: continue
         if max(zs) - min(zs) < 0.25:
-            moved += split_offset(o, fid, use_outline=(base != "Site")); continue
+            moved += split_offset(o, fid, use_outline=(base != "Site"), elevated=min(zs) > 1.0); continue
         if "Stair_A" in base:                                  # a stair moves as one piece, by the offset at its centre
             xs = [v.co.x for v in me.vertices]; ys = [v.co.y for v in me.vertices]
             dz = offset((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2, fid)
             for v in me.vertices: v.co.z += dz
             moved += len(me.vertices) if dz else 0; me.update(); continue
+        stretch = max(zs) >= 2.4                                # storey-height: the upper part follows the slab above
         for v in me.vertices:
             x, y, z = v.co
-            dz = offset(x, y, fid) if z > 1.0 else low_offset(x, y, fid)
+            dz = (top_offset(x, y, fid) if stretch else offset(x, y, fid)) if z > 1.0 else low_offset(x, y, fid)
             if dz: v.co.z = z + dz; moved += 1
         me.update()
     build_slab(bpy.data.objects[f["prefix"] + "Floor_Slab" + SUF], SL[fid]["pieces"])

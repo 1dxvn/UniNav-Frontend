@@ -1,0 +1,263 @@
+{
+ "about": "C18: piso cero at its real levels, built for Codex's request docs/blocks/floor0-candidate-request.md on the sources of docs/blocks/level-zones.md (\"Piso cero\"). Only floor 0 is built. Floors 1, 3, 4, 5 are the C16 GLBs and floor 2 the C17 GLB, unchanged, for the checks. Block A and the east clinic go to N -4.13 (local -1.19 from the B datum, world -0.63). The west and pending parts stay at N -2.94 (local 0). The east tower is rebuilt with a 3.50 m rise to C16 floor 1.",
+ "candidate": "c18",
+ "floors": {
+  "0": {
+   "datum_world": 0.56,
+   "a_offset": -1.19,
+   "a_y": 49.085,
+   "a_x": 13.6,
+   "a_polys": [
+    {
+     "id": "B-east-clinic",
+     "note": "Waiting room, halls and clinic east of the drawn flights. West edge: the waiting-room wall at x 36.3 and the west-stair foot at x 37.85. B stair: the foot at x 38.6, the bodega wall at x 39.25. South edge: the hall's diagonal walls and the glass at y 34.3. Rooms south of it are pending and stay at 0",
+     "poly": [
+      [
+       37.85,
+       49.085
+      ],
+      [
+       37.85,
+       47.6
+      ],
+      [
+       36.3,
+       47.6
+      ],
+      [
+       36.3,
+       35.66
+      ],
+      [
+       38.6,
+       35.66
+      ],
+      [
+       38.6,
+       33.9
+      ],
+      [
+       39.25,
+       33.9
+      ],
+      [
+       39.25,
+       31.8
+      ],
+      [
+       42.0,
+       30.4
+      ],
+      [
+       46.5,
+       32.0
+      ],
+      [
+       52.2,
+       34.0
+      ],
+      [
+       52.2,
+       34.3
+      ],
+      [
+       75.0,
+       34.3
+      ],
+      [
+       75.0,
+       49.085
+      ]
+     ]
+    }
+   ],
+   "top_from": "1",
+   "top_from_note": "Storey-height objects (walls, columns, glass) keep their bottoms at this floor's level. Their upper part follows the zone offset of the floor above (C16 floor 1: Block A -0.63, the hall treads, B 0.00), so they stay under its slab",
+   "slab": "floor0/wing.json",
+   "slab_key": "footprint",
+   "outline": "floor0/wing.json",
+   "hall": null,
+   "collection": "UCC_Piso0",
+   "extra_collections": [],
+   "prefix": "P0_",
+   "stair_rise": 3.5,
+   "towers": [
+    "East"
+   ],
+   "walks": {
+    "A: east tower foot -> elevator hall": [
+     [
+      36.35,
+      55.9
+     ],
+     [
+      33.0,
+      53.0
+     ],
+     [
+      26.4,
+      52.8
+     ]
+    ],
+    "A -> waiting room through the facade opening (x 39.66-40.55)": [
+     [
+      36.35,
+      55.9
+     ],
+     [
+      39.95,
+      54.6
+     ],
+     [
+      39.95,
+      50.0
+     ],
+     [
+      40.05,
+      48.2
+     ],
+     [
+      39.5,
+      45.5
+     ]
+    ],
+    "A -> clinic corridor through the gap x 42.5-43.8": [
+     [
+      36.35,
+      55.9
+     ],
+     [
+      39.95,
+      54.6
+     ],
+     [
+      39.95,
+      50.6
+     ],
+     [
+      43.1,
+      50.6
+     ],
+     [
+      43.1,
+      47.8
+     ],
+     [
+      48.5,
+      46.0
+     ]
+    ]
+   },
+   "evidence": "N -4.13 at (37.04, 55.91) east tower, (39.21, 35.15) B stair foot, (48.48, 39.70) clinic; N -2.94 at (35.64, 34.01) B stair landing, (20.00, 15.33) compressors; N -0.63 at (36.59, 55.72) at the same tower on the first-floor sheet"
+  },
+  "1": {
+   "datum_world": 3.5,
+   "a_offset": -0.63,
+   "a_y": 49.23,
+   "a_x": 13.6,
+   "slab": "floor1_slab_wells.json",
+   "outline": "extras.json",
+   "hall": {
+    "x": [
+     27.33,
+     29.79
+    ],
+    "nosings": [
+     47.86,
+     48.32,
+     48.78,
+     49.23
+    ]
+   },
+   "collection": "UCC_Piso1",
+   "extra_collections": [
+    "References"
+   ],
+   "prefix": "",
+   "stair_rise": 3.31,
+   "evidence": "A N -0.63 at (28.08, 50.16), (36.59, 55.72), (14.77, 56.15); B N 0.00 at (26.09, 34.08), (28.23, 47.71)",
+   "from": "c16"
+  },
+  "2": {
+   "datum_world": 6.44,
+   "a_offset": -0.26,
+   "a_y": 49.23,
+   "a_x": 13.6,
+   "slab": "floor2/wing.json",
+   "outline": "floor2/wing.json",
+   "hall": null,
+   "collection": "UCC_Piso2",
+   "extra_collections": [],
+   "prefix": "P2_",
+   "stair_rise": 3.69,
+   "evidence": "A N +2.68 at (38.07, 55.33), (15.67, 54.02); B N +2.94 at (28.99, 34.04); the hall transition is drawn without nosings (pending); junction ramp: strip x 27.353-29.753, y 47.906-49.275, no treads, arrow along x 28.57 with its head at y 47.906 and 'S' at (28.41, 49.87): up from A (+2.68) to B (+2.94), about 19 %",
+   "ramp": {
+    "x": [
+     27.353,
+     29.753
+    ],
+    "y": [
+     47.906,
+     49.275
+    ]
+   },
+   "from": "c17"
+  },
+  "3": {
+   "datum_world": 9.38,
+   "a_offset": 0.49,
+   "a_y": 49.28,
+   "a_x": 13.6,
+   "slab": "floor3/wing.json",
+   "outline": "floor3/wing.json",
+   "hall": {
+    "x": [
+     27.35,
+     29.75
+    ],
+    "nosings": [
+     47.91,
+     48.37,
+     48.83,
+     49.28
+    ]
+   },
+   "collection": "UCC_Piso3",
+   "extra_collections": [],
+   "prefix": "P3_",
+   "stair_rise": 3.5,
+   "evidence": "A N +6.37 at (38.6, 55.14), (17.9, 55.24); B N +5.88 at (35.46, 35.09); hall: treads 1-3 between four nosings, 4 risers of 0.1225 m up northwards",
+   "from": "c16"
+  },
+  "4": {
+   "datum_world": 12.32,
+   "a_offset": 1.05,
+   "a_y": 49.19,
+   "a_x": 13.6,
+   "slab": "floor4/wing.json",
+   "outline": "floor4/wing.json",
+   "hall": null,
+   "collection": "UCC_Piso4",
+   "extra_collections": [],
+   "prefix": "P4_",
+   "stair_rise": 3.5,
+   "evidence": "A N +9.87 at (39.32, 55.14), (17.89, 55.59); B N +8.82 at (35.46, 35.05); hall drawn with four nosings, which would give 0.2625 m risers for 1.05 m (contradictory, pending)",
+   "from": "c16"
+  },
+  "5": {
+   "datum_world": 15.26,
+   "a_offset": 1.61,
+   "a_y": 49.23,
+   "a_x": 13.6,
+   "slab": "floor5/wing.json",
+   "outline": "floor5/wing.json",
+   "hall": null,
+   "collection": "UCC_Piso5",
+   "extra_collections": [],
+   "prefix": "P5_",
+   "stair_rise": null,
+   "evidence": "A N +13.37 at (17.89, 55.68), (39.76, 56.03); B N +11.76 at (35.66, 35.06); the A/B junction (1.61 m) is not drawn (pending)",
+   "from": "c16"
+  }
+ }
+}

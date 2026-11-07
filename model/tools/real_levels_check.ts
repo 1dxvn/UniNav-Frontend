@@ -6,9 +6,11 @@
 //   - floor 3: hall ascent (28, 47.6) -> (28, 49.6) over the four 0.1225 m risers;
 //   - floors with a "ramp" (C17: floor 2): down and up the ramp at three x positions, in steps of 1/10 of its length;
 //   - A stairs, both towers: 1 -> 2, 2 -> 3, 3 -> 4, 4 -> 5 with the configured rises (top must land on the next A floor);
+//     0 -> 1 too when floor 0 is in the set, for the towers listed in its "towers";
+//   - each floor's "walks" (named plan waypoints), at the zone heights, in both directions;
 //   - a straight line along the Block A north corridor on floors 2-5 between the two stair arrivals: inspection of
 //     support only, since the straight line meets the elevator-hall walls (it is not a route).
-// Floors marked "from" load that candidate's GLB (reused, not rebuilt).
+// Floors marked "from" load that candidate's GLB (reused, not rebuilt); "glb" names a file directly (negative controls).
 // Usage (from UniNav-Frontend): node --experimental-strip-types model/tools/real_levels_check.ts [out.json] [config.json]
 //   (config defaults to model/tools/real_levels.json)
 import { readFile, writeFile } from "node:fs/promises";
@@ -31,12 +33,15 @@ async function load(path: string, y: number): Promise<Object3D[]> {
   const out: Object3D[] = []; root.traverse((o) => { if (o instanceof Mesh) out.push(o); }); return out;
 }
 const ALL: Object3D[] = [];
-for (const [fid, f] of Object.entries<any>(CFG.floors)) ALL.push(...await load(`model/candidates/${f.from ?? CAND}/floor-${fid}.glb`, f.datum_world));
+for (const [fid, f] of Object.entries<any>(CFG.floors)) ALL.push(...await load(f.glb ?? `model/candidates/${f.from ?? CAND}/floor-${fid}.glb`, f.datum_world));
 const SUPPORT = ALL.filter((m) => /Floor_Slab|Stair_A/.test(m.name));
 const OUTDOOR = [...SUPPORT, ...ALL.filter((m) => /^Site/.test(m.name))];
 
 function height(fid: string, x: number, y: number): number {
   const f = CFG.floors[fid]; const h = f.hall, r = f.ramp;
+  const inPoly = (ring: number[][]) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < xi + (y - yi) * (xj - xi) / (yj - yi)) c = !c; } return c; };
+  if ((f.a_polys ?? []).some((z: any) => inPoly(z.poly))) return f.datum_world + f.a_offset;
   if (r && x >= r.x[0] && x <= r.x[1] && y >= r.y[0] && y <= r.y[1])
     return f.datum_world + f.a_offset * (y - r.y[0]) / (r.y[1] - r.y[0]);
   if (h && x >= h.x[0] && x <= h.x[1] && y >= h.nosings[0] && y <= h.nosings[h.nosings.length - 1])
@@ -127,13 +132,20 @@ for (const [fid, f] of Object.entries<any>(CFG.floors)) if (f.ramp) for (const [
 }
 // A stairs, both towers, every floor pair
 const STAIRS = { West: { a: 14.65, b: 18.05 }, East: { a: 36.35, b: 38.7 } };
-for (const [lo, hi] of [["1", "2"], ["2", "3"], ["3", "4"], ["4", "5"]]) for (const [nm, s] of Object.entries(STAIRS)) {
+const pairs = [["1", "2"], ["2", "3"], ["3", "4"], ["4", "5"]]; if (CFG.floors["0"]) pairs.unshift(["0", "1"]);
+for (const [lo, hi] of pairs) for (const [nm, s] of Object.entries(STAIRS)) {
+  if (CFG.floors[lo].towers && !CFG.floors[lo].towers.includes(nm)) continue;
   const base = aWorld(lo), rise = aWorld(hi) - base, R = rise / 21, pts: P[] = [{ x: s.a, y: 55.9, h: base }];
   for (let k = 1; k <= 10; k++) pts.push({ x: s.a, y: 56.2 + (k - 0.5) * 0.3, h: base + k * R });
   pts.push({ x: s.a, y: 59.9, h: base + 11 * R }, { x: s.b, y: 59.9, h: base + 11 * R });
   for (let j = 0; j < 10; j++) pts.push({ x: s.b, y: 59.2 - (j + 0.5) * 0.3, h: base + (12 + j) * R });
   pts.push({ x: s.b, y: 55.9, h: base + rise });
   results.push(walk(`stair ${nm} ${lo} -> ${hi} (rise ${rise.toFixed(2)})`, pts));
+}
+// configured walks per floor, both directions
+for (const [fid, f] of Object.entries<any>(CFG.floors)) for (const [name, wp] of Object.entries<number[][]>(f.walks ?? {})) {
+  const pts: P[] = wp.map(([x, y]) => ({ x, y, h: height(fid, x, y) }));
+  results.push(walk(`floor ${fid}: ${name}`, pts), walk(`floor ${fid}: ${name} (return)`, [...pts].reverse()));
 }
 // Block A north corridor on floors 2-5, between the two stair arrivals
 const corridor: Result[] = [];

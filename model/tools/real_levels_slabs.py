@@ -1,6 +1,7 @@
 """Slab pieces for the real-level candidate set described in real_levels.json (C16: floors 1-5).
 
-Per floor: Block A (footprint with y >= a_y and x >= a_x) at a_offset from the floor's Block B datum; where the sheet
+Per floor: Block A (footprint with y >= a_y and x >= a_x, plus any "a_polys" zones) at a_offset from the floor's Block B
+datum; where the sheet
 draws hall steps, the treads between the nosings at a_offset x k/4; where it draws a ramp, one sloped piece from 0.00 at
 its south edge to a_offset at its north edge; the rest (Block B and the pending zones) at 0.00. Floors marked "from"
 (reused from another candidate) are skipped. Also writes each floor's full outline (no stair wells) for the "inside the
@@ -27,9 +28,10 @@ def load(path, key, holes=True):
 out = {"candidate": CFG["candidate"], "floors": {}}
 for fid, f in CFG["floors"].items():
     if f.get("from"): continue
-    foot = load(f["slab"], "footprint_with_wells")
+    foot = load(f["slab"], f.get("slab_key", "footprint_with_wells"))
     outline = load(f["outline"], "footprint", holes=False)
     a_zone = box(f["a_x"], f["a_y"], 200, 200)
+    for z in f.get("a_polys", []): a_zone = a_zone.union(Polygon(z["poly"]).buffer(0))
     pieces, strip = [], None
     if f["hall"]:
         (sx0, sx1), nos = f["hall"]["x"], f["hall"]["nosings"]
