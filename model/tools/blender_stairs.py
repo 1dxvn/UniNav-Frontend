@@ -11,7 +11,9 @@ STAIRS = {  # name: (flight 1 x-range, flight 2 x-range, landing centre, landing
     "Stair_A_East": ((35.3, 37.4), (37.6, 39.8), (37.55, 59.2), 2.25),
 }
 Y0, TREAD, YL = 56.2, 0.30, 59.2
-col = bpy.data.collections["UCC_Piso1"]
+col = bpy.data.collections[globals().get("TARGET_COLLECTION") or "UCC_Piso1"]
+PFX = globals().get("NAME_PREFIX") or ""
+ONLY = globals().get("ONLY_STAIRS")   # e.g. ["Stair_A_East"] where a tower is outside the floor
 mat_step = bpy.data.materials.get("Stair_Tread") or bpy.data.materials.new("Stair_Tread")
 mat_step.use_nodes = True
 b = next(n for n in mat_step.node_tree.nodes if n.type == "BSDF_PRINCIPLED")
@@ -24,6 +26,8 @@ def box(bm, x0, x1, y0, y1, z0, z1, mi):
 
 points = {}
 for name, ((a0, a1), (b0, b1), (cx, cy), rl) in STAIRS.items():
+    if ONLY and name not in ONLY: continue
+    name = PFX + name
     old = bpy.data.objects.get(name)
     if old:
         me_old = old.data; bpy.data.objects.remove(old, do_unlink=True)

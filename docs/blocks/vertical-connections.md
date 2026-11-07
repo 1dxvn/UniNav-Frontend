@@ -62,6 +62,23 @@ Next to it, a ramp hatch (x 36.2–41.8, y 36.3–40.0, `Ramps_Stairs` in the mo
 
 The upper levels of this stair: floor 2 (B) is at N +2.94, with a half landing at N +1.70 (43.2, 35.3, floor 2 sheet).
 
+## Stairs on the other floors (C10)
+
+The glass stair towers run through the whole of Block A, and the floor sheets are registered on the same structural grid, so the same U-stairs repeat.
+
+| Floor model | Stairs | Rise to the next model |
+| --- | --- | --- |
+| `floor-0/campus.glb` | `P0_Stair_A_East` only (the west tower is outside the piso cero plan) | 2.94 m → floor 1 |
+| `floor-2/campus.glb` | `P2_Stair_A_West`, `P2_Stair_A_East` | 2.94 m → floor 3 |
+| `floor-3/campus.glb` | `P3_Stair_A_West`, `P3_Stair_A_East` | 2.94 m → floor 4 |
+| `floor-4/campus.glb` | `P4_Stair_A_West`, `P4_Stair_A_East` | 2.94 m → floor 5 |
+| `floor-5/campus.glb` | none (the towers continue to the rooftop courts; no rooftop model yet) | |
+
+- **Floor 1:** the stairs are in the candidate `model/candidates/campus-c4-stairs.glb`.
+- **Points:** bottom, landing and top are the same (x, y) on every floor. The bottom is on floor N and the top on floor N+1.
+- **Rise:** 2.94 m is the model-to-model offset, the Block B storey. The real Block A storeys are 3.31 / 3.69 / 3.50 / 3.50 m (`docs/blocks/dwg-inventory.md` §4).
+- **Assumption:** the same flight layout on every floor is an approximation. Only the first-floor flights were measured.
+
 ## Model delivery state
 
 | File | Content | State |
