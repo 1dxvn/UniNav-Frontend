@@ -1,0 +1,18 @@
+{
+  "destination": "Morphology Laboratory",
+  "route": [
+    "Hall Acceso",
+    "Access courtyard",
+    "South circulation",
+    "Laboratory corridor west",
+    "Laboratory corridor east",
+    "Morphology Laboratory"
+  ],
+  "finalPosition": [
+    42.96,
+    3.5,
+    -27.77
+  ],
+  "samples": 175,
+  "maxCentreLineErrorMetres": 0.0006520198622756811
+}

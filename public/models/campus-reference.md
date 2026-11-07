@@ -15,7 +15,7 @@ First usable version of the UCC first floor (Bloque B) as a cut architectural mo
 
 - Plan coordinates `(x, y)` in metres = `CAD − origin`. Use these as `x`, `y` for places in FastAPI.
 - Blender is Z-up: plan `(x, y)` → Blender `(x, y, z)`.
-- The glTF export is Y-up: plan `(x, y)` → Three.js `(x, height, -y)`. This matches `toScenePosition` in `src/scene/campusScene.ts`, so the GLB needs no extra transform.
+- The glTF export is Y-up: plan `(x, y)` → Three.js `(x, height, -y)`. This matches `toScenePosition` in `src/scene/coordinates.ts`, so the GLB needs no extra horizontal transform.
 
 ## Reference points
 

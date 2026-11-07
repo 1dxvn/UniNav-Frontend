@@ -1,0 +1,108 @@
+{
+  "model": "campus.glb",
+  "floor": 1,
+  "transform": {
+    "scale": 1,
+    "rotationYDegrees": 0,
+    "translation": [
+      0,
+      3.5,
+      0
+    ]
+  },
+  "references": [
+    {
+      "name": "Hall Acceso",
+      "documentedErrorMetres": 0,
+      "glbErrorMetres": 0,
+      "position": [
+        0,
+        3.5,
+        0
+      ]
+    },
+    {
+      "name": "ICETEX column reference",
+      "documentedErrorMetres": 0,
+      "glbErrorMetres": 5.117953404757962e-7,
+      "position": [
+        27.26,
+        3.5,
+        -41.77
+      ]
+    },
+    {
+      "name": "Lockers column reference",
+      "documentedErrorMetres": 0,
+      "glbErrorMetres": 0.0000018374015155952338,
+      "position": [
+        46.97,
+        3.5,
+        -36.94
+      ]
+    }
+  ],
+  "minimumWallClearanceMetres": 0.38227243557162405,
+  "edges": [
+    {
+      "from": "Hall Acceso",
+      "to": "Access courtyard",
+      "minimumWallClearanceMetres": 0.45019947967948365
+    },
+    {
+      "from": "Access courtyard",
+      "to": "South circulation",
+      "minimumWallClearanceMetres": 0.683920676133198
+    },
+    {
+      "from": "South circulation",
+      "to": "ICETEX approach",
+      "minimumWallClearanceMetres": 0.661548960799346
+    },
+    {
+      "from": "ICETEX approach",
+      "to": "ICETEX doorway",
+      "minimumWallClearanceMetres": 0.44482590522491017
+    },
+    {
+      "from": "ICETEX doorway",
+      "to": "ICETEX",
+      "minimumWallClearanceMetres": 0.48574135473348296
+    },
+    {
+      "from": "ICETEX doorway",
+      "to": "Hall junction",
+      "minimumWallClearanceMetres": 0.4532595853492948
+    },
+    {
+      "from": "Hall junction",
+      "to": "Hall corridor south",
+      "minimumWallClearanceMetres": 0.4442535681555617
+    },
+    {
+      "from": "Hall corridor south",
+      "to": "Hall corridor north",
+      "minimumWallClearanceMetres": 0.4900007950788273
+    },
+    {
+      "from": "Hall corridor north",
+      "to": "Elevator and Restroom Hall",
+      "minimumWallClearanceMetres": 0.9787599832900918
+    },
+    {
+      "from": "South circulation",
+      "to": "Laboratory corridor west",
+      "minimumWallClearanceMetres": 0.4440013690278483
+    },
+    {
+      "from": "Laboratory corridor west",
+      "to": "Laboratory corridor east",
+      "minimumWallClearanceMetres": 0.5218435773915523
+    },
+    {
+      "from": "Laboratory corridor east",
+      "to": "Morphology Laboratory",
+      "minimumWallClearanceMetres": 0.38227243557162405
+    }
+  ]
+}

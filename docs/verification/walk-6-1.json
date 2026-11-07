@@ -1,0 +1,18 @@
+{
+  "destination": "ICETEX",
+  "route": [
+    "Hall Acceso",
+    "Access courtyard",
+    "South circulation",
+    "ICETEX approach",
+    "ICETEX doorway",
+    "ICETEX"
+  ],
+  "finalPosition": [
+    24.55,
+    3.5,
+    -41.78
+  ],
+  "samples": 127,
+  "maxCentreLineErrorMetres": 0.0006085518714578145
+}

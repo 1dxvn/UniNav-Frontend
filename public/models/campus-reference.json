@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "label": "UCC · Block B · First floor",
+  "floor": 1,
+  "model": "campus.glb",
+  "transform": { "scale": 1, "rotationYDegrees": 0, "translation": [0, 3.5, 0] },
+  "references": [
+    { "buildingName": "Hall Acceso", "nodeName": "REF_1_Entrance_HallAcceso", "position": [0, 0, 0] },
+    { "buildingName": "ICETEX column reference", "nodeName": "REF_2_Column_Icetex", "position": [27.26, 0, -41.77] },
+    { "buildingName": "Lockers column reference", "nodeName": "REF_3_Column_Lockers", "position": [46.97, 0, -36.94] }
+  ]
+}

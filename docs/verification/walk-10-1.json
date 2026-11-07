@@ -1,0 +1,21 @@
+{
+  "destination": "Elevator and Restroom Hall",
+  "route": [
+    "Hall Acceso",
+    "Access courtyard",
+    "South circulation",
+    "ICETEX approach",
+    "ICETEX doorway",
+    "Hall junction",
+    "Hall corridor south",
+    "Hall corridor north",
+    "Elevator and Restroom Hall"
+  ],
+  "finalPosition": [
+    25.77,
+    3.5,
+    -51.97
+  ],
+  "samples": 155,
+  "maxCentreLineErrorMetres": 0.0006520198622762796
+}
