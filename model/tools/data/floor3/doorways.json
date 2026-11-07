@@ -1,0 +1,923 @@
+{
+ "source": "DWG frame marks on layer 02 (jambs), wing.json/extras.json of this floor",
+ "frame": "first-floor plan metres (x east, y north); glTF (x, h, -y)",
+ "marks": 34,
+ "unpaired_marks": [
+  [
+   70.259,
+   53.384
+  ],
+  [
+   70.259,
+   55.345
+  ]
+ ],
+ "doorways": [
+  {
+   "jambs": [
+    [
+     31.631,
+     30.681
+    ],
+    [
+     30.634,
+     30.654
+    ]
+   ],
+   "center": [
+    31.133,
+    30.668
+   ],
+   "width": 0.997,
+   "stand": [
+    [
+     31.149,
+     30.068
+    ],
+    [
+     31.117,
+     31.268
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "BAÑO HOMBRES",
+      "distance": 2.06
+     }
+    ],
+    []
+   ],
+   "leaves": [],
+   "id": "D01",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     45.299,
+     31.785
+    ],
+    [
+     46.218,
+     32.124
+    ]
+   ],
+   "center": [
+    45.758,
+    31.954
+   ],
+   "width": 0.98,
+   "stand": [
+    [
+     45.55,
+     32.517
+    ],
+    [
+     45.966,
+     31.391
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "CIRCULACIÓN",
+      "distance": 4.02
+     }
+    ],
+    [
+     {
+      "label": "AULA No 308 B",
+      "distance": 4.88
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      46.206,
+      32.104
+     ],
+     [
+      46.539,
+      31.202
+     ]
+    ]
+   ],
+   "id": "D02",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     47.627,
+     32.644
+    ],
+    [
+     46.708,
+     32.305
+    ]
+   ],
+   "center": [
+    47.168,
+    32.474
+   ],
+   "width": 0.98,
+   "stand": [
+    [
+     47.376,
+     31.911
+    ],
+    [
+     46.96,
+     33.037
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "AULA No 307 B",
+      "distance": 4.45
+     }
+    ],
+    [
+     {
+      "label": "CIRCULACIÓN",
+      "distance": 3
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      47.064,
+      31.395
+     ],
+     [
+      46.731,
+      32.297
+     ]
+    ]
+   ],
+   "id": "D03",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     58.278,
+     35.966
+    ],
+    [
+     58.278,
+     34.745
+    ]
+   ],
+   "center": [
+    58.278,
+    35.356
+   ],
+   "width": 1.221,
+   "stand": [
+    [
+     58.878,
+     35.356
+    ],
+    [
+     57.678,
+     35.356
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "DE BIOPROCESOS",
+      "distance": 2.72
+     },
+     {
+      "label": "LABORATORIO",
+      "distance": 3.04
+     }
+    ],
+    [
+     {
+      "label": "CIRCULACIÓN",
+      "distance": 10.09
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      58.263,
+      34.759
+     ],
+     [
+      57.052,
+      34.759
+     ]
+    ]
+   ],
+   "id": "D04",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     51.853,
+     36.936
+    ],
+    [
+     50.882,
+     36.936
+    ]
+   ],
+   "center": [
+    51.368,
+    36.936
+   ],
+   "width": 0.971,
+   "stand": [
+    [
+     51.368,
+     36.336
+    ],
+    [
+     51.368,
+     37.536
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "CIRCULACIÓN",
+      "distance": 3.78
+     }
+    ],
+    [
+     {
+      "label": "DE LA FISICA",
+      "distance": 4.05
+     },
+     {
+      "label": "LAB. DE APLICACION",
+      "distance": 4.29
+     },
+     {
+      "label": "BODEGA",
+      "distance": 9.06
+     },
+     {
+      "label": "LABORATORIO",
+      "distance": 9.51
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      51.84,
+      36.95
+     ],
+     [
+      51.84,
+      37.912
+     ]
+    ]
+   ],
+   "id": "D05",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     53.203,
+     36.936
+    ],
+    [
+     52.412,
+     36.936
+    ]
+   ],
+   "center": [
+    52.808,
+    36.936
+   ],
+   "width": 0.791,
+   "stand": [
+    [
+     52.808,
+     36.336
+    ],
+    [
+     52.808,
+     37.536
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "CIRCULACIÓN",
+      "distance": 5.22
+     },
+     {
+      "label": "AULA No 307 B",
+      "distance": 8.18
+     },
+     {
+      "label": "BODEGA",
+      "distance": 10.91
+     },
+     {
+      "label": "LABORATORIO",
+      "distance": 11.37
+     }
+    ],
+    [
+     {
+      "label": "A LA QUIMICA",
+      "distance": 6.17
+     },
+     {
+      "label": "LAB. DE APLICACION",
+      "distance": 6.69
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      52.426,
+      36.95
+     ],
+     [
+      52.426,
+      37.732
+     ]
+    ]
+   ],
+   "id": "D06",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     34.243,
+     52.349
+    ],
+    [
+     33.322,
+     52.349
+    ]
+   ],
+   "center": [
+    33.782,
+    52.349
+   ],
+   "width": 0.921,
+   "stand": [
+    [
+     33.782,
+     51.749
+    ],
+    [
+     33.782,
+     52.949
+    ]
+   ],
+   "visible_labels": [
+    [],
+    [
+     {
+      "label": "HALL ASCENSORES",
+      "distance": 7.95
+     },
+     {
+      "label": "Y BAÑOS",
+      "distance": 8.27
+     },
+     {
+      "label": "CUARTO TECNICO",
+      "distance": 8.29
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      33.335,
+      51.424
+     ],
+     [
+      33.335,
+      52.335
+     ]
+    ]
+   ],
+   "id": "D07",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     59.594,
+     52.937
+    ],
+    [
+     60.56,
+     52.937
+    ]
+   ],
+   "center": [
+    60.077,
+    52.937
+   ],
+   "width": 0.966,
+   "stand": [
+    [
+     60.077,
+     53.537
+    ],
+    [
+     60.077,
+     52.337
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "LABORATORIO INFORMATICA 3",
+      "distance": 8.09
+     },
+     {
+      "label": "BALCON",
+      "distance": 11.27
+     }
+    ],
+    [
+     {
+      "label": "AULA 312 A",
+      "distance": 5.38
+     },
+     {
+      "label": "LABORATORIO INFORMATICA 5",
+      "distance": 5.76
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      60.546,
+      52.923
+     ],
+     [
+      60.545,
+      51.966
+     ]
+    ]
+   ],
+   "id": "D08",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     50.33,
+     52.949
+    ],
+    [
+     51.301,
+     52.949
+    ]
+   ],
+   "center": [
+    50.815,
+    52.949
+   ],
+   "width": 0.971,
+   "stand": [
+    [
+     50.815,
+     53.549
+    ],
+    [
+     50.815,
+     52.349
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "AULA 309 A",
+      "distance": 7.17
+     },
+     {
+      "label": "LABORATORIO INFORMATICA 2",
+      "distance": 7.96
+     }
+    ],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      51.287,
+      52.964
+     ],
+     [
+      51.286,
+      53.925
+     ]
+    ]
+   ],
+   "id": "D09",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     68.879,
+     52.969
+    ],
+    [
+     69.87,
+     52.969
+    ]
+   ],
+   "center": [
+    69.374,
+    52.969
+   ],
+   "width": 0.991,
+   "stand": [
+    [
+     69.374,
+     53.869
+    ],
+    [
+     69.374,
+     52.369
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "BALCON",
+      "distance": 2.01
+     }
+    ],
+    [
+     {
+      "label": "AULA 311 A",
+      "distance": 4.56
+     },
+     {
+      "label": "LABORATORIO INFORMATICA 4",
+      "distance": 4.91
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      69.855,
+      51.973
+     ],
+     [
+      69.856,
+      52.955
+     ]
+    ]
+   ],
+   "id": "D10",
+   "through": "P3_Glass at (69.59, 53.44), 0.45 m"
+  },
+  {
+   "jambs": [
+    [
+     -5.536,
+     54.199
+    ],
+    [
+     -6.157,
+     54.199
+    ]
+   ],
+   "center": [
+    -5.847,
+    54.199
+   ],
+   "width": 0.621,
+   "stand": [
+    [
+     -5.847,
+     53.599
+    ],
+    [
+     -5.847,
+     54.799
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "COORDINADOR",
+      "distance": 1.79
+     }
+    ],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      -6.144,
+      54.214
+     ],
+     [
+      -6.144,
+      54.825
+     ]
+    ]
+   ],
+   "id": "D11",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     24.148,
+     56.875
+    ],
+    [
+     24.148,
+     56.015
+    ]
+   ],
+   "center": [
+    24.148,
+    56.445
+   ],
+   "width": 0.86,
+   "stand": [
+    [
+     24.748,
+     56.445
+    ],
+    [
+     23.548,
+     56.445
+    ]
+   ],
+   "visible_labels": [
+    [],
+    [
+     {
+      "label": "BAÑO MUJERES",
+      "distance": 4.63
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      23.264,
+      56.035
+     ],
+     [
+      24.128,
+      56.035
+     ]
+    ]
+   ],
+   "id": "D12",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     62.35,
+     56.554
+    ],
+    [
+     61.379,
+     56.554
+    ]
+   ],
+   "center": [
+    61.864,
+    56.554
+   ],
+   "width": 0.971,
+   "stand": [
+    [
+     61.864,
+     55.954
+    ],
+    [
+     61.864,
+     57.154
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "BALCON",
+      "distance": 9.58
+     }
+    ],
+    [
+     {
+      "label": "AULA 310 A",
+      "distance": 3.33
+     },
+     {
+      "label": "LABORATORIO INFORMATICA 3",
+      "distance": 4.06
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      61.393,
+      57.53
+     ],
+     [
+      61.392,
+      56.569
+     ]
+    ]
+   ],
+   "id": "D13",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     53.13,
+     56.559
+    ],
+    [
+     52.159,
+     56.559
+    ]
+   ],
+   "center": [
+    52.644,
+    56.559
+   ],
+   "width": 0.971,
+   "stand": [
+    [
+     52.644,
+     55.959
+    ],
+    [
+     52.644,
+     57.159
+    ]
+   ],
+   "visible_labels": [
+    [],
+    [
+     {
+      "label": "AULA 309 A",
+      "distance": 3.18
+     },
+     {
+      "label": "LABORATORIO INFORMATICA 2",
+      "distance": 3.91
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      52.172,
+      56.574
+     ],
+     [
+      52.173,
+      57.535
+     ]
+    ]
+   ],
+   "id": "D14",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     44,
+     56.569
+    ],
+    [
+     43.029,
+     56.569
+    ]
+   ],
+   "center": [
+    43.514,
+    56.569
+   ],
+   "width": 0.971,
+   "stand": [
+    [
+     43.514,
+     55.969
+    ],
+    [
+     43.514,
+     57.169
+    ]
+   ],
+   "visible_labels": [
+    [],
+    [
+     {
+      "label": "AULA 308 A",
+      "distance": 6.66
+     },
+     {
+      "label": "LABORATORIO INFORMATICA 1",
+      "distance": 6.95
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      43.043,
+      55.593
+     ],
+     [
+      43.042,
+      56.555
+     ]
+    ]
+   ],
+   "id": "D15",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     -2.555,
+     58.571
+    ],
+    [
+     -3.176,
+     58.571
+    ]
+   ],
+   "center": [
+    -2.866,
+    58.571
+   ],
+   "width": 0.621,
+   "stand": [
+    [
+     -2.866,
+     57.971
+    ],
+    [
+     -2.866,
+     59.171
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "HEMEROTECA",
+      "distance": 9.74
+     }
+    ],
+    [
+     {
+      "label": "CUARTO DE ESTUDIO",
+      "distance": 3.54
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      -3.162,
+      58.586
+     ],
+     [
+      -3.162,
+      59.197
+     ]
+    ]
+   ],
+   "id": "D16",
+   "through": "clear"
+  }
+ ],
+ "glb": {
+  "path": "models/floor-3/campus.glb",
+  "sha256": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+ }
+}

@@ -1,0 +1,2526 @@
+{
+ "source": "DWG frame marks on layer 02 (jambs), wing.json/extras.json of this floor",
+ "frame": "first-floor plan metres (x east, y north); glTF (x, h, -y)",
+ "marks": 115,
+ "unpaired_marks": [
+  [
+   36.45,
+   47.721
+  ],
+  [
+   36.524,
+   45.03
+  ],
+  [
+   36.598,
+   42.276
+  ],
+  [
+   36.716,
+   39.243
+  ],
+  [
+   36.781,
+   36.819
+  ],
+  [
+   45.559,
+   62.525
+  ],
+  [
+   48.419,
+   53.2
+  ],
+  [
+   70.259,
+   50.6
+  ],
+  [
+   70.259,
+   52.741
+  ],
+  [
+   62.599,
+   35.519
+  ],
+  [
+   62.599,
+   36.37
+  ],
+  [
+   62.599,
+   34.054
+  ],
+  [
+   62.599,
+   34.905
+  ],
+  [
+   62.089,
+   32.215
+  ],
+  [
+   61.218,
+   32.215
+  ],
+  [
+   59.439,
+   32.215
+  ],
+  [
+   58.568,
+   32.215
+  ],
+  [
+   37.474,
+   19.855
+  ],
+  [
+   37.664,
+   19.371
+  ],
+  [
+   41.404,
+   37.203
+  ],
+  [
+   41.404,
+   39.618
+  ],
+  [
+   48.891,
+   62.525
+  ],
+  [
+   45.505,
+   62.59
+  ],
+  [
+   57.912,
+   60.275
+  ],
+  [
+   25.618,
+   51.66
+  ],
+  [
+   25.66,
+   51.646
+  ],
+  [
+   51.944,
+   56.34
+  ],
+  [
+   34.934,
+   51.646
+  ],
+  [
+   34.939,
+   51.681
+  ],
+  [
+   27.642,
+   51.66
+  ],
+  [
+   27.6,
+   51.646
+  ]
+ ],
+ "doorways": [
+  {
+   "jambs": [
+    [
+     24.249,
+     13.997
+    ],
+    [
+     25.106,
+     14.02
+    ]
+   ],
+   "center": [
+    24.677,
+    14.009
+   ],
+   "width": 0.857,
+   "stand": [
+    [
+     24.661,
+     14.609
+    ],
+    [
+     24.693,
+     13.409
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "COMPRESORES",
+      "distance": 4.48
+     }
+    ],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      25.091,
+      14.034
+     ],
+     [
+      25.068,
+      14.88
+     ]
+    ]
+   ],
+   "id": "D01",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     26.965,
+     14.07
+    ],
+    [
+     26.118,
+     14.047
+    ]
+   ],
+   "center": [
+    26.542,
+    14.059
+   ],
+   "width": 0.847,
+   "stand": [
+    [
+     26.558,
+     13.459
+    ],
+    [
+     26.526,
+     14.659
+    ]
+   ],
+   "visible_labels": [
+    [],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      26.132,
+      14.062
+     ],
+     [
+      26.109,
+      14.908
+     ]
+    ]
+   ],
+   "id": "D02",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     27.403,
+     14.082
+    ],
+    [
+     28.265,
+     14.105
+    ]
+   ],
+   "center": [
+    27.834,
+    14.093
+   ],
+   "width": 0.862,
+   "stand": [
+    [
+     27.818,
+     14.693
+    ],
+    [
+     27.85,
+     13.493
+    ]
+   ],
+   "visible_labels": [
+    [],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      28.227,
+      14.965
+     ],
+     [
+      28.25,
+      14.119
+     ]
+    ]
+   ],
+   "id": "D03",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     40.297,
+     24.491
+    ],
+    [
+     40.611,
+     23.563
+    ]
+   ],
+   "center": [
+    40.454,
+    24.027
+   ],
+   "width": 0.979,
+   "stand": [
+    [
+     41.022,
+     24.22
+    ],
+    [
+     39.886,
+     23.834
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "AREA LIMPIA",
+      "distance": 1.74
+     },
+     {
+      "label": "ASEO",
+      "distance": 1.83
+     }
+    ],
+    [
+     {
+      "label": "ESTUDIANTES",
+      "distance": 1.39
+     },
+     {
+      "label": "POSGRADO",
+      "distance": 1.48
+     },
+     {
+      "label": "LOCKERS",
+      "distance": 1.54
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D04",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     38.277,
+     26.612
+    ],
+    [
+     38.253,
+     27.474
+    ]
+   ],
+   "center": [
+    38.265,
+    27.043
+   ],
+   "width": 0.862,
+   "stand": [
+    [
+     37.665,
+     27.027
+    ],
+    [
+     38.865,
+     27.059
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "PASILLO",
+      "distance": 1.66
+     }
+    ],
+    [
+     {
+      "label": "LOCKERS",
+      "distance": 0.96
+     },
+     {
+      "label": "DOCENTES",
+      "distance": 1.49
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D05",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     48.993,
+     28.321
+    ],
+    [
+     48.197,
+     28.034
+    ]
+   ],
+   "center": [
+    48.595,
+    28.178
+   ],
+   "width": 0.846,
+   "stand": [
+    [
+     48.799,
+     27.614
+    ],
+    [
+     48.391,
+     28.742
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "CLINICAS",
+      "distance": 3.79
+     },
+     {
+      "label": "ARCHIVO HISTORIAS",
+      "distance": 4.08
+     }
+    ],
+    [
+     {
+      "label": "DE HISTORIAS CLINICAS",
+      "distance": 4.97
+     },
+     {
+      "label": "SALA DE CONSULTAS",
+      "distance": 5
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      48.228,
+      28.02
+     ],
+     [
+      48.505,
+      27.25
+     ]
+    ]
+   ],
+   "id": "D06",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     47.513,
+     29.131
+    ],
+    [
+     47.8,
+     28.335
+    ]
+   ],
+   "center": [
+    47.656,
+    28.733
+   ],
+   "width": 0.846,
+   "stand": [
+    [
+     48.22,
+     28.937
+    ],
+    [
+     47.092,
+     28.529
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "DE HISTORIAS CLINICAS",
+      "distance": 4.93
+     },
+     {
+      "label": "SALA DE CONSULTAS",
+      "distance": 4.98
+     }
+    ],
+    [
+     {
+      "label": "DENTALES 3D - TERCERIZADOR",
+      "distance": 1.48
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      46.715,
+      28.821
+     ],
+     [
+      47.507,
+      29.105
+     ]
+    ]
+   ],
+   "id": "D07",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     38.501,
+     29.76
+    ],
+    [
+     39.158,
+     29.778
+    ]
+   ],
+   "center": [
+    38.829,
+    29.769
+   ],
+   "width": 0.657,
+   "stand": [
+    [
+     38.813,
+     30.369
+    ],
+    [
+     38.845,
+     29.169
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "wc",
+      "distance": 0.41
+     },
+     {
+      "label": "BODEGA",
+      "distance": 3.26
+     },
+     {
+      "label": "HALL CLINICA",
+      "distance": 6.08
+     }
+    ],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      39.141,
+      29.763
+     ],
+     [
+      39.158,
+      29.117
+     ]
+    ]
+   ],
+   "id": "D08",
+   "through": "P0_Fixtures at (38.62, 29.17), 0.45 m"
+  },
+  {
+   "jambs": [
+    [
+     40.327,
+     29.809
+    ],
+    [
+     39.67,
+     29.792
+    ]
+   ],
+   "center": [
+    39.999,
+    29.8
+   ],
+   "width": 0.657,
+   "stand": [
+    [
+     40.015,
+     29.2
+    ],
+    [
+     39.983,
+     30.4
+    ]
+   ],
+   "visible_labels": [
+    [],
+    [
+     {
+      "label": "wc",
+      "distance": 1.49
+     },
+     {
+      "label": "HALL CLINICA",
+      "distance": 5.27
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      39.688,
+      29.778
+     ],
+     [
+      39.705,
+      29.131
+     ]
+    ]
+   ],
+   "id": "D09",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     54.076,
+     30.078
+    ],
+    [
+     54.804,
+     29.999
+    ]
+   ],
+   "center": [
+    54.44,
+    30.038
+   ],
+   "width": 0.732,
+   "stand": [
+    [
+     54.505,
+     30.635
+    ],
+    [
+     54.375,
+     29.441
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "DE POSGRADO",
+      "distance": 2.85
+     },
+     {
+      "label": "AREA DE ESTUDIOS",
+      "distance": 3.14
+     }
+    ],
+    [
+     {
+      "label": "PATIO",
+      "distance": 2.12
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      54.093,
+      29.345
+     ],
+     [
+      54.093,
+      30.063
+     ]
+    ]
+   ],
+   "id": "D10",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     41.812,
+     30.297
+    ],
+    [
+     40.984,
+     29.998
+    ]
+   ],
+   "center": [
+    41.398,
+    30.148
+   ],
+   "width": 0.88,
+   "stand": [
+    [
+     41.602,
+     29.584
+    ],
+    [
+     41.194,
+     30.712
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "AREA INSUMOS ESTUDIANTES",
+      "distance": 2.38
+     }
+    ],
+    [
+     {
+      "label": "wc",
+      "distance": 1.55
+     },
+     {
+      "label": "HALL CLINICA",
+      "distance": 4.35
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      41.294,
+      29.201
+     ],
+     [
+      41.009,
+      29.992
+     ]
+    ]
+   ],
+   "id": "D11",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     17.925,
+     31.618
+    ],
+    [
+     17.905,
+     32.36
+    ]
+   ],
+   "center": [
+    17.915,
+    31.989
+   ],
+   "width": 0.742,
+   "stand": [
+    [
+     17.315,
+     31.973
+    ],
+    [
+     18.515,
+     32.005
+    ]
+   ],
+   "visible_labels": [
+    [],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      17.91,
+      31.632
+     ],
+     [
+      17.179,
+      31.61
+     ]
+    ]
+   ],
+   "id": "D12",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     47.681,
+     32.412
+    ],
+    [
+     46.771,
+     32.083
+    ]
+   ],
+   "center": [
+    47.226,
+    32.247
+   ],
+   "width": 0.968,
+   "stand": [
+    [
+     47.43,
+     31.683
+    ],
+    [
+     47.022,
+     32.811
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "DE HISTORIAS CLINICAS",
+      "distance": 4.11
+     },
+     {
+      "label": "SALA DE CONSULTAS",
+      "distance": 4.35
+     },
+     {
+      "label": "DENTALES 3D - TERCERIZADOR",
+      "distance": 4.5
+     }
+    ],
+    [
+     {
+      "label": "HALL CLINICA",
+      "distance": 4.19
+     },
+     {
+      "label": "wc",
+      "distance": 7.73
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      46.799,
+      32.076
+     ],
+     [
+      47.112,
+      31.206
+     ]
+    ]
+   ],
+   "id": "D13",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     39.167,
+     32.178
+    ],
+    [
+     39.15,
+     32.8
+    ]
+   ],
+   "center": [
+    39.159,
+    32.489
+   ],
+   "width": 0.622,
+   "stand": [
+    [
+     38.559,
+     32.472
+    ],
+    [
+     39.759,
+     32.506
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "BODEGA",
+      "distance": 1.22
+     },
+     {
+      "label": "wc",
+      "distance": 2.41
+     },
+     {
+      "label": "PASILLO",
+      "distance": 3.95
+     }
+    ],
+    [
+     {
+      "label": "wc",
+      "distance": 2.49
+     },
+     {
+      "label": "HALL CLINICA",
+      "distance": 4.03
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D14",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     21.239,
+     33.94
+    ],
+    [
+     21.264,
+     33.018
+    ]
+   ],
+   "center": [
+    21.251,
+    33.479
+   ],
+   "width": 0.922,
+   "stand": [
+    [
+     21.851,
+     33.495
+    ],
+    [
+     20.651,
+     33.463
+    ]
+   ],
+   "visible_labels": [
+    [],
+    [
+     {
+      "label": "HALL ACCESO BODEGA",
+      "distance": 9.51
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      20.314,
+      33.901
+     ],
+     [
+      21.225,
+      33.925
+     ]
+    ]
+   ],
+   "id": "D15",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     17.877,
+     33.387
+    ],
+    [
+     17.856,
+     34.179
+    ]
+   ],
+   "center": [
+    17.867,
+    33.783
+   ],
+   "width": 0.792,
+   "stand": [
+    [
+     17.267,
+     33.767
+    ],
+    [
+     18.467,
+     33.799
+    ]
+   ],
+   "visible_labels": [
+    [],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      17.862,
+      33.401
+     ],
+     [
+      17.131,
+      33.38
+     ]
+    ]
+   ],
+   "id": "D16",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     53.415,
+     34.245
+    ],
+    [
+     52.519,
+     34.245
+    ]
+   ],
+   "center": [
+    52.967,
+    34.245
+   ],
+   "width": 0.897,
+   "stand": [
+    [
+     52.967,
+     33.645
+    ],
+    [
+     52.967,
+     34.845
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "DE POSGRADO",
+      "distance": 1.82
+     },
+     {
+      "label": "AREA DE ESTUDIOS",
+      "distance": 2.12
+     }
+    ],
+    [
+     {
+      "label": "A UNIDADES",
+      "distance": 2.32
+     },
+     {
+      "label": "HALL ACCESO",
+      "distance": 2.61
+     },
+     {
+      "label": "CLINICA",
+      "distance": 5.21
+     },
+     {
+      "label": "AREA DE POSTGRADO",
+      "distance": 6.12
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      52.836,
+      33.444
+     ],
+     [
+      52.535,
+      34.229
+     ]
+    ]
+   ],
+   "id": "D17",
+   "through": "P0_Doors_1 at (52.75, 33.74), 0.45 m"
+  },
+  {
+   "jambs": [
+    [
+     58.294,
+     34.439
+    ],
+    [
+     58.294,
+     35.4
+    ]
+   ],
+   "center": [
+    58.294,
+    34.92
+   ],
+   "width": 0.961,
+   "stand": [
+    [
+     57.694,
+     34.92
+    ],
+    null
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "HALL ACCESO",
+      "distance": 2.95
+     },
+     {
+      "label": "A UNIDADES",
+      "distance": 3.11
+     },
+     {
+      "label": "CLINICA",
+      "distance": 6.99
+     },
+     {
+      "label": "AREA DE POSTGRADO",
+      "distance": 7.54
+     }
+    ],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      58.229,
+      34.455
+     ],
+     [
+      57.269,
+      34.455
+     ]
+    ]
+   ],
+   "id": "D18",
+   "through": "no stand point on one side"
+  },
+  {
+   "jambs": [
+    [
+     17.821,
+     35.487
+    ],
+    [
+     17.802,
+     36.198
+    ]
+   ],
+   "center": [
+    17.811,
+    35.842
+   ],
+   "width": 0.712,
+   "stand": [
+    [
+     17.211,
+     35.826
+    ],
+    [
+     18.411,
+     35.858
+    ]
+   ],
+   "visible_labels": [
+    [],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      17.105,
+      35.48
+     ],
+     [
+      17.806,
+      35.5
+     ]
+    ]
+   ],
+   "id": "D19",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     19.251,
+     36.296
+    ],
+    [
+     18.609,
+     36.279
+    ]
+   ],
+   "center": [
+    18.93,
+    36.288
+   ],
+   "width": 0.642,
+   "stand": [
+    [
+     18.946,
+     35.688
+    ],
+    [
+     18.914,
+     36.888
+    ]
+   ],
+   "visible_labels": [
+    [],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      19.236,
+      36.31
+     ],
+     [
+      19.222,
+      36.942
+     ]
+    ]
+   ],
+   "id": "D20",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     19.569,
+     36.3
+    ],
+    [
+     20.491,
+     36.325
+    ]
+   ],
+   "center": [
+    20.03,
+    36.312
+   ],
+   "width": 0.922,
+   "stand": [
+    [
+     20.014,
+     36.912
+    ],
+    [
+     20.046,
+     35.712
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "HALL ACCESO BODEGA",
+      "distance": 6.02
+     },
+     {
+      "label": "JARDIN",
+      "distance": 6.73
+     }
+    ],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      19.583,
+      36.314
+     ],
+     [
+      19.558,
+      37.225
+     ]
+    ]
+   ],
+   "id": "D21",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     45.78,
+     36.693
+    ],
+    [
+     46.738,
+     36.693
+    ]
+   ],
+   "center": [
+    46.259,
+    36.693
+   ],
+   "width": 0.958,
+   "stand": [
+    [
+     46.259,
+     37.293
+    ],
+    [
+     46.259,
+     36.093
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "CLINICA",
+      "distance": 7.23
+     },
+     {
+      "label": "AREA DE POSTGRADO",
+      "distance": 7.83
+     },
+     {
+      "label": "A UNIDADES",
+      "distance": 8.66
+     }
+    ],
+    [
+     {
+      "label": "HALL CLINICA",
+      "distance": 3.4
+     },
+     {
+      "label": "wc",
+      "distance": 8.86
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      46.72,
+      36.677
+     ],
+     [
+      46.72,
+      35.751
+     ]
+    ]
+   ],
+   "id": "D22",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     30.763,
+     42.927
+    ],
+    [
+     30.745,
+     43.599
+    ]
+   ],
+   "center": [
+    30.754,
+    43.263
+   ],
+   "width": 0.672,
+   "stand": [
+    [
+     30.154,
+     43.247
+    ],
+    [
+     31.354,
+     43.279
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "WC",
+      "distance": 0.43
+     }
+    ],
+    [
+     {
+      "label": "VESTIER",
+      "distance": 0.63
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D23",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     32.332,
+     42.969
+    ],
+    [
+     32.314,
+     43.641
+    ]
+   ],
+   "center": [
+    32.323,
+    43.305
+   ],
+   "width": 0.672,
+   "stand": [
+    [
+     31.723,
+     43.289
+    ],
+    [
+     32.923,
+     43.321
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "VESTIER",
+      "distance": 0.35
+     },
+     {
+      "label": "WC",
+      "distance": 1.61
+     }
+    ],
+    [
+     {
+      "label": "AREA LIMPIA",
+      "distance": 3.37
+     },
+     {
+      "label": "AREA",
+      "distance": 3.87
+     },
+     {
+      "label": "CONTAMINADA",
+      "distance": 4.73
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D24",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     29.934,
+     43.849
+    ],
+    [
+     29.908,
+     44.816
+    ]
+   ],
+   "center": [
+    29.921,
+    44.333
+   ],
+   "width": 0.967,
+   "stand": [
+    [
+     29.321,
+     44.317
+    ],
+    [
+     30.521,
+     44.349
+    ]
+   ],
+   "visible_labels": [
+    [],
+    [
+     {
+      "label": "AREA LIMPIA",
+      "distance": 4.59
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D25",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     32.281,
+     44.88
+    ],
+    [
+     32.307,
+     43.928
+    ]
+   ],
+   "center": [
+    32.294,
+    44.404
+   ],
+   "width": 0.952,
+   "stand": [
+    [
+     32.894,
+     44.42
+    ],
+    [
+     31.694,
+     44.388
+    ]
+   ],
+   "visible_labels": [
+    [],
+    []
+   ],
+   "leaves": [],
+   "id": "D26",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     33.387,
+     43.937
+    ],
+    [
+     33.36,
+     44.909
+    ]
+   ],
+   "center": [
+    33.374,
+    44.423
+   ],
+   "width": 0.972,
+   "stand": [
+    [
+     32.774,
+     44.407
+    ],
+    [
+     33.974,
+     44.439
+    ]
+   ],
+   "visible_labels": [
+    [],
+    [
+     {
+      "label": "AREA LIMPIA",
+      "distance": 1.89
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D27",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     33.919,
+     51.66
+    ],
+    [
+     34.84,
+     51.66
+    ]
+   ],
+   "center": [
+    34.379,
+    51.66
+   ],
+   "width": 0.921,
+   "stand": [
+    [
+     34.379,
+     52.26
+    ],
+    [
+     34.379,
+     51.06
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "CUIDADO CRITICO",
+      "distance": 2.14
+     },
+     {
+      "label": "UNIDAD DE",
+      "distance": 2.62
+     },
+     {
+      "label": "CIRCULACION",
+      "distance": 4.22
+     }
+    ],
+    [
+     {
+      "label": "UNIDAD DE",
+      "distance": 2.48
+     },
+     {
+      "label": "CUIDADO CRITICO",
+      "distance": 2.86
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      34.826,
+      50.734
+     ],
+     [
+      34.826,
+      51.646
+     ]
+    ],
+    [
+     [
+      34.952,
+      50.734
+     ],
+     [
+      34.952,
+      51.646
+     ]
+    ]
+   ],
+   "id": "D28",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     38.659,
+     51.66
+    ],
+    [
+     39.58,
+     51.66
+    ]
+   ],
+   "center": [
+    39.119,
+    51.66
+   ],
+   "width": 0.921,
+   "stand": [
+    [
+     39.119,
+     52.26
+    ],
+    [
+     39.119,
+     51.06
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "CIRCULACION",
+      "distance": 2.96
+     },
+     {
+      "label": "CAFETIN",
+      "distance": 5.82
+     }
+    ],
+    [
+     {
+      "label": "UNIDAD DE",
+      "distance": 2.43
+     },
+     {
+      "label": "CUIDADO CRITICO",
+      "distance": 2.8
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      39.566,
+      50.734
+     ],
+     [
+      39.566,
+      51.646
+     ]
+    ]
+   ],
+   "id": "D29",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     26.59,
+     51.66
+    ],
+    [
+     25.665,
+     51.681
+    ]
+   ],
+   "center": [
+    26.127,
+    51.67
+   ],
+   "width": 0.926,
+   "stand": [
+    [
+     26.114,
+     51.07
+    ],
+    [
+     26.14,
+     52.27
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "CLINICA",
+      "distance": 0.54
+     }
+    ],
+    [
+     {
+      "label": "ASENSOR",
+      "distance": 3.51
+     },
+     {
+      "label": "CIRCULACION",
+      "distance": 11.85
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      26.576,
+      50.734
+     ],
+     [
+      26.576,
+      51.646
+     ]
+    ],
+    [
+     [
+      26.703,
+      50.734
+     ],
+     [
+      26.703,
+      51.646
+     ]
+    ]
+   ],
+   "id": "D30",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     26.689,
+     51.66
+    ],
+    [
+     27.595,
+     51.681
+    ]
+   ],
+   "center": [
+    27.142,
+    51.67
+   ],
+   "width": 0.906,
+   "stand": [
+    [
+     27.128,
+     52.27
+    ],
+    [
+     27.156,
+     51.07
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "BODEGA DE",
+      "distance": 1.48
+     },
+     {
+      "label": "ASENSOR",
+      "distance": 2.97
+     },
+     {
+      "label": "CIRCULACION",
+      "distance": 10.89
+     }
+    ],
+    [
+     {
+      "label": "TALLER",
+      "distance": 0.35
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      26.576,
+      50.734
+     ],
+     [
+      26.576,
+      51.646
+     ]
+    ],
+    [
+     [
+      26.703,
+      50.734
+     ],
+     [
+      26.703,
+      51.646
+     ]
+    ]
+   ],
+   "id": "D31",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     48.37,
+     53.15
+    ],
+    [
+     46.799,
+     53.15
+    ]
+   ],
+   "center": [
+    47.584,
+    53.15
+   ],
+   "width": 1.571,
+   "stand": [
+    [
+     47.584,
+     52.55
+    ],
+    [
+     47.584,
+     53.75
+    ]
+   ],
+   "visible_labels": [
+    [],
+    [
+     {
+      "label": "ENFERMERIA",
+      "distance": 3.97
+     },
+     {
+      "label": "CONTROL",
+      "distance": 4.15
+     },
+     {
+      "label": "BODEGA",
+      "distance": 5.59
+     },
+     {
+      "label": "LABORATORIO DE SIMULACIÓN CLÍNICA",
+      "distance": 6.57
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D32",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     42.779,
+     53.2
+    ],
+    [
+     42.779,
+     54.121
+    ]
+   ],
+   "center": [
+    42.779,
+    53.66
+   ],
+   "width": 0.921,
+   "stand": [
+    [
+     42.179,
+     53.66
+    ],
+    [
+     43.379,
+     53.66
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "BODEGA",
+      "distance": 0.82
+     }
+    ],
+    [
+     {
+      "label": "OFICINA",
+      "distance": 2.52
+     },
+     {
+      "label": "ADMINISTRATIVA",
+      "distance": 2.76
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D33",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     45.483,
+     54.121
+    ],
+    [
+     45.483,
+     53.2
+    ]
+   ],
+   "center": [
+    45.483,
+    53.66
+   ],
+   "width": 0.921,
+   "stand": [
+    [
+     46.083,
+     53.66
+    ],
+    [
+     44.883,
+     53.66
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "ENFERMERIA",
+      "distance": 5.31
+     },
+     {
+      "label": "CONTROL",
+      "distance": 5.54
+     },
+     {
+      "label": "LABORATORIO DE SIMULACIÓN CLÍNICA",
+      "distance": 6.76
+     }
+    ],
+    [
+     {
+      "label": "OFICINA",
+      "distance": 2.06
+     },
+     {
+      "label": "ADMINISTRATIVA",
+      "distance": 2.38
+     },
+     {
+      "label": "BODEGA",
+      "distance": 2.95
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      45.443,
+      53.22
+     ],
+     [
+      44.458,
+      53.22
+     ]
+    ]
+   ],
+   "id": "D34",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     39.709,
+     56.218
+    ],
+    [
+     40.53,
+     56.218
+    ]
+   ],
+   "center": [
+    40.12,
+    56.218
+   ],
+   "width": 0.82,
+   "stand": [
+    [
+     40.12,
+     56.818
+    ],
+    [
+     40.12,
+     55.618
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "CAFETIN",
+      "distance": 1.21
+     }
+    ],
+    [
+     {
+      "label": "CIRCULACION",
+      "distance": 2.53
+     },
+     {
+      "label": "SALA DE ESPERA",
+      "distance": 9.31
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      39.655,
+      56.303
+     ],
+     [
+      39.655,
+      57.192
+     ]
+    ]
+   ],
+   "id": "D35",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     55.646,
+     56.329
+    ],
+    [
+     54.775,
+     56.329
+    ]
+   ],
+   "center": [
+    55.211,
+    56.329
+   ],
+   "width": 0.871,
+   "stand": [
+    [
+     55.211,
+     55.729
+    ],
+    [
+     55.211,
+     56.929
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "SALA  DE",
+      "distance": 1.41
+     },
+     {
+      "label": "DEBRIEFING",
+      "distance": 1.74
+     }
+    ],
+    [
+     {
+      "label": "LABORATORIO DE SIMULACIÓN CLÍNICA",
+      "distance": 8.62
+     },
+     {
+      "label": "N2",
+      "distance": 9.52
+     },
+     {
+      "label": "AREA MULTIFUNCIONAL",
+      "distance": 11.51
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      54.792,
+      55.473
+     ],
+     [
+      54.792,
+      56.314
+     ]
+    ]
+   ],
+   "id": "D36",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     57.617,
+     58.564
+    ],
+    [
+     56.693,
+     58.549
+    ]
+   ],
+   "center": [
+    57.155,
+    58.557
+   ],
+   "width": 0.924,
+   "stand": [
+    [
+     57.164,
+     57.957
+    ],
+    [
+     57.146,
+     59.157
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "UNIDAD DE CUIDADO CRITICO",
+      "distance": 2.7
+     }
+    ],
+    [
+     {
+      "label": "LABORATORIO DE SIMULACIÓN CLÍNICA",
+      "distance": 9.93
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      56.702,
+      57.638
+     ],
+     [
+      56.702,
+      58.549
+     ]
+    ],
+    [
+     [
+      57.603,
+      57.638
+     ],
+     [
+      57.603,
+      58.549
+     ]
+    ]
+   ],
+   "id": "D37",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     53.924,
+     62.195
+    ],
+    [
+     54.848,
+     62.21
+    ]
+   ],
+   "center": [
+    54.386,
+    62.203
+   ],
+   "width": 0.924,
+   "stand": [
+    [
+     54.377,
+     62.803
+    ],
+    [
+     54.395,
+     61.603
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "N2",
+      "distance": 3.61
+     },
+     {
+      "label": "AREA MULTIFUNCIONAL",
+      "distance": 4.66
+     }
+    ],
+    [
+     {
+      "label": "N2",
+      "distance": 5.32
+     },
+     {
+      "label": "CONTROL",
+      "distance": 6.6
+     },
+     {
+      "label": "ENFERMERIA",
+      "distance": 6.64
+     },
+     {
+      "label": "LABORATORIO DE SIMULACIÓN CLÍNICA",
+      "distance": 7.23
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      54.839,
+      62.21
+     ],
+     [
+      54.839,
+      63.121
+     ]
+    ],
+    [
+     [
+      53.938,
+      62.21
+     ],
+     [
+      53.938,
+      63.121
+     ]
+    ]
+   ],
+   "id": "D38",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     56.524,
+     62.195
+    ],
+    [
+     57.448,
+     62.21
+    ]
+   ],
+   "center": [
+    56.986,
+    62.203
+   ],
+   "width": 0.924,
+   "stand": [
+    [
+     56.977,
+     62.803
+    ],
+    [
+     56.995,
+     61.603
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "N3",
+      "distance": 4.41
+     },
+     {
+      "label": "AREA MULTIFUNCIONAL",
+      "distance": 5.46
+     }
+    ],
+    [
+     {
+      "label": "N2",
+      "distance": 2.84
+     },
+     {
+      "label": "ENFERMERIA",
+      "distance": 8.32
+     },
+     {
+      "label": "LABORATORIO DE SIMULACIÓN CLÍNICA",
+      "distance": 9.8
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      57.439,
+      62.21
+     ],
+     [
+      57.439,
+      63.121
+     ]
+    ],
+    [
+     [
+      56.537,
+      62.21
+     ],
+     [
+      56.537,
+      63.121
+     ]
+    ]
+   ],
+   "id": "D39",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     46.984,
+     62.574
+    ],
+    [
+     47.912,
+     62.574
+    ]
+   ],
+   "center": [
+    47.448,
+    62.574
+   ],
+   "width": 0.929,
+   "stand": [
+    [
+     47.448,
+     63.174
+    ],
+    [
+     47.448,
+     61.974
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "AREA MULTIFUNCIONAL",
+      "distance": 4.33
+     }
+    ],
+    [
+     {
+      "label": "LABORATORIO DE SIMULACIÓN CLÍNICA",
+      "distance": 1.67
+     },
+     {
+      "label": "ENFERMERIA",
+      "distance": 6.89
+     },
+     {
+      "label": "CONTROL",
+      "distance": 7.18
+     }
+    ]
+   ],
+   "leaves": [
+    [
+     [
+      47.899,
+      62.589
+     ],
+     [
+      47.899,
+      63.5
+     ]
+    ],
+    [
+     [
+      46.997,
+      62.589
+     ],
+     [
+      46.997,
+      63.5
+     ]
+    ]
+   ],
+   "id": "D40",
+   "through": "clear"
+  },
+  {
+   "jambs": [
+    [
+     42.422,
+     63.771
+    ],
+    [
+     42.422,
+     62.82
+    ]
+   ],
+   "center": [
+    42.422,
+    63.295
+   ],
+   "width": 0.951,
+   "stand": [
+    [
+     43.022,
+     63.295
+    ],
+    null
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "SALA DE DEBRIEFING N2",
+      "distance": 4.4
+     },
+     {
+      "label": "ENFERMERIA",
+      "distance": 10.72
+     },
+     {
+      "label": "CONTROL",
+      "distance": 11.05
+     }
+    ],
+    []
+   ],
+   "leaves": [
+    [
+     [
+      42.437,
+      62.836
+     ],
+     [
+      43.378,
+      62.836
+     ]
+    ]
+   ],
+   "id": "D41",
+   "through": "no stand point on one side"
+  },
+  {
+   "jambs": [
+    [
+     62.413,
+     65.983
+    ],
+    [
+     61.932,
+     65.503
+    ]
+   ],
+   "center": [
+    62.172,
+    65.743
+   ],
+   "width": 0.68,
+   "stand": [
+    [
+     62.596,
+     65.319
+    ],
+    [
+     61.748,
+     66.167
+    ]
+   ],
+   "visible_labels": [
+    [
+     {
+      "label": "N2",
+      "distance": 5.74
+     },
+     {
+      "label": "AUDITORIO",
+      "distance": 7.87
+     }
+    ],
+    [
+     {
+      "label": "CONTROL",
+      "distance": 1.37
+     }
+    ]
+   ],
+   "leaves": [],
+   "id": "D42",
+   "through": "clear"
+  }
+ ],
+ "glb": {
+  "path": "models/floor-0/campus.glb",
+  "sha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+ }
+}
