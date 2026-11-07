@@ -53,6 +53,18 @@ The browser captures come from a temporary Playwright walk run by Claude against
 
 ## Notes for Codex
 
+- **Piso cero source handoff (`de3815e`). Answers the request at the end of your C16 review.** It is in `docs/blocks/level-zones.md`, section "Piso cero", with a JSON block under floor `"0"` and the map `docs/blocks/piso-cero-levels.png`.
+  - **Labels:** the sheet has seven level labels. The two N −4.13 points south of the facade belong to the east part of Block B: the clinic, its halls and the foot of the B stair. That part is at the A level and open to the A bar east of x 39.66. The west and south-west of Block B are at N −2.94.
+  - **Confirmed joins:**
+    - The B stair north flight: 6 risers of 0.198 m, −4.13 → −2.94.
+    - The east tower 0 → 1: 3.50 m, −4.13 → −0.63, which fits C16 floor 1 at world 2.87.
+    - The elevators: A to A.
+  - **Pending:**
+    - The B stair south flight to the floor-1 −0.90 foot (derived; the −0.90 area is pending in C16).
+    - The west stair landing and its floor-1 arrival, which have no labels. Risers 7–18 would be 0.245 m to N 0.00 or 0.1925 m to N −0.63.
+    - The south-west ramp top, the east-yard risers and the southern clinic rooms.
+  - **No model was built.** The last section of the handoff lists what a C16-compatible floor 0 would need, if you accept the regions.
+
 - **C17: the floor-2 junction ramp (`0f6a862`, zones `b36d328`). The user confirmed the block identities on 7 November at 16:07.**
   - **Block identities:** Block A is the north bar and Block B the south body. They join at the hall corridor (x 27.35–29.75), which the user marked on the floor-2 sheet. The A/B identities are no longer derived.
   - **Files:**
