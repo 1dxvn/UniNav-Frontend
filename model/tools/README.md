@@ -18,6 +18,8 @@ These scripts rebuild the Block B first-floor model from the DWG. The output is 
 | 4. Procedural textures | `python textures.py ../textures` | `model/textures/*.jpg`, `textures.json` |
 | 5. Doors, swings, fixtures, furniture (Blender) | `NO_EXPORT = True` then `exec(open("model/tools/blender_extras.py").read())` | objects in `UCC_Piso1` |
 | 6. Materials, UVs and site (Blender, first visual pass) | `exec(open("model/tools/blender_visual_c1.py").read())` | brick, frames, vegetation, canopies |
+| 6b. Floor and sign textures | `python textures_c2.py ../textures` | `floor_*.jpg`, `sign_*.jpg` |
+| 6c. Interiors (Blender, second visual pass) | `exec(open("model/tools/blender_interiors_c2.py").read())` | shaped `Furniture_*`, `Floor_Zones`, `Sign_*` |
 | 7. Export | glTF: selection = collections `UCC_Piso1` and `References`, Y up, no cameras or lights | `public/models/campus.glb` |
 | 8. Review captures (Blender) | `OUT_DIR = "..."` then `exec(open("model/tools/blender_review_renders.py").read())` | `docs/model-review/<rev>/blender-*.png` |
 

@@ -169,7 +169,7 @@ PROGRAMME = [
     (r"JEFE|E-LEARNING|CONTABILIDAD|TESORERIA|MERCADEO|INFRAESTRUCTURA|ANALISTA|SECRETARIA|DECANATURA|COORDINACION|CORRESPONDECIA|RECEPCI|VIGILANTES|ADMINISTRATIVO|AMI \d|AUX\. DARC|^DARC$|LOCAL \d|POSGRADO", "office"),
 ]
 used_rooms = {}
-furniture, report = [], []
+furniture, report, items = [], [], []
 for text, pt in labels:
     kind = next((k for rx, k in PROGRAMME if re.search(rx, text)), None)
     if kind is None:
@@ -230,7 +230,7 @@ for text, pt in labels:
         foot_all = unary_union([wp[1] for wp in world])
         if not zone.contains(foot_all) or any(t.intersects(foot_all.buffer(0.2)) for t in taken + local):
             return None
-        return foot_all, world
+        return foot_all, world, (x, y, ang)
     best_plan = []
     for ang in (base, base + math.pi / 2):
         for lattice in (0, 0.5):
@@ -242,40 +242,68 @@ for text, pt in labels:
                 if r: plan.append(r); local.append(r[0])
             if len(plan) > len(best_plan): best_plan = plan
     placed = 0
-    for foot_all, world in best_plan:
+    for foot_all, world, (ix, iy, iang) in best_plan:
         taken.append(foot_all)
         for p, fp in world:
             furniture.append({"poly": [list(q) for q in fp.exterior.coords[:-1]],
                               "height": p["s"][2] if p["t"] == "box" else p["h"], "mat": p["mat"], "room": text})
+        # Pose of the whole item, so Blender can build shaped pieces inside the same footprint.
+        items.append({"kind": kind, "x": ix, "y": iy, "ang": iang, "room": text,
+                      "footprint": [list(q) for q in foot_all.convex_hull.exterior.coords[:-1]]})
         placed += 1
     report.append((text, kind, placed))
-    continue
-    for _ in ():
-        world = []
-        world = []
-        for p in parts:
-            lx, ly = p["c"]
-            wx, wy = x + lx * ca - ly * sa, y + lx * sa + ly * ca
-            if p["t"] == "box":
-                fp = affinity.rotate(box(-p["s"][0] / 2, -p["s"][1] / 2, p["s"][0] / 2, p["s"][1] / 2), ang, origin=(0, 0), use_radians=True)
-            else:
-                fp = Point(0, 0).buffer(p["r"], 3)
-            world.append((p, affinity.translate(fp, wx, wy)))
-        foot_all = unary_union([wp[1] for wp in world])
-        if not zone.contains(foot_all) or any(t.intersects(foot_all.buffer(0.2)) for t in taken):
-            continue
-        taken.append(foot_all)
-        for p, fp in world:
-            furniture.append({"poly": [list(q) for q in fp.exterior.coords[:-1]],
-                              "height": p["s"][2] if p["t"] == "box" else p["h"], "mat": p["mat"], "room": text})
-        placed += 1
-    report.append((text, kind, placed))
+
+# --- floor zones by use (flat overlays in Blender): wet rooms, laboratories/clinics, offices
+ZONE_RX = [(r"^BA.O|^WC$|DUCHA|VESTIER|^ASEO", "wet"), (r"LABORATORIO|AULA|OSTEOTECA|PRECLINICA|PRIMEROS", "lab")]
+zone_geoms = {"wet": [], "lab": [], "office": []}
+for text, pt in labels:
+    kind = next((k for rx, k in ZONE_RX if re.search(rx, text)), None)
+    if kind is None and any(re.search(rx, text) for rx, k in PROGRAMME if k == "office"):
+        kind = "office"
+    if kind is None:
+        continue
+    room = next((r for r in rooms if r.contains(pt)), None)
+    if room is None:
+        continue
+    a = area_near(pt)
+    if 0.55 * a <= room.area <= 1.6 * a:
+        zone_geoms[kind].append(room)          # closed room matching its label: use all of it
+        continue
+    # Open room: clip it with a rectangle aligned to the nearby walls, sized from the labelled area,
+    # so the floor change reads as a straight edge instead of leaking into the corridor as a disc.
+    disc = pt.buffer(max(3.0, math.sqrt(a)))
+    hist = {}
+    for ringc in [room.exterior] + list(room.interiors):
+        cc = list(ringc.coords)
+        for p0, p1 in zip(cc, cc[1:]):
+            seg = LineString([p0, p1])
+            if not seg.intersects(disc): continue
+            t = round((math.degrees(math.atan2(p1[1] - p0[1], p1[0] - p0[0])) % 90) / 3) * 3 % 90
+            hist[t] = hist.get(t, 0) + seg.intersection(disc).length
+    ang = math.radians(max(hist, key=hist.get)) if hist else 0.0
+    half = math.sqrt(a) * 0.62
+    rect = affinity.rotate(box(-half, -half, half, half), ang, origin=(0, 0), use_radians=True)
+    z = room.intersection(affinity.translate(rect, pt.x, pt.y))
+    if z.area > 0.4 * a:
+        zone_geoms[kind].append(z)
+zones = []
+claimed = None
+for kind in ("wet", "lab", "office"):
+    g = unary_union(zone_geoms[kind]) if zone_geoms[kind] else None
+    if g is None or g.is_empty: continue
+    if claimed is not None: g = g.difference(claimed)
+    claimed = g if claimed is None else unary_union([claimed, g])
+    for p in getattr(g, "geoms", [g]):
+        if p.geom_type == "Polygon" and p.area > 0.5:
+            zones.append({"kind": kind, "outer": [list(c) for c in p.exterior.coords[:-1]], "holes": [[list(c) for c in i.coords[:-1]] for i in p.interiors]})
+report.append(("zones", {k: round(sum(Polygon(z["outer"]).area for z in zones if z["kind"] == k), 1) for k in ("wet", "lab", "office")}))
 
 def ring(p): return {"outer": [list(c) for c in p.exterior.coords[:-1]], "holes": [[list(c) for c in i.coords[:-1]] for i in p.interiors]}
 json.dump({"footprint": [ring(p) for p in getattr(foot2, "geoms", [foot2])],
            "cafe_slab": ring(cafe),
            "openings": [{k: v for k, v in op.items() if k != "poly"} for op in openings],
-           "doors": doors, "arcs": arcs, "fixtures": fixtures, "furniture": furniture},
+           "doors": doors, "arcs": arcs, "fixtures": fixtures, "furniture": furniture,
+           "items": items, "zones": zones},
           open(OUT, "w", encoding="utf-8"))
 print("openings", len(openings), "with leaf", sum(o["door"] for o in openings), "leaves", len(doors))
 print("fixtures", len(fixtures), "furniture parts", len(furniture))

@@ -22,5 +22,37 @@
   "stone.jpg": [
     1.5,
     1.5
+  ],
+  "floor_wet.jpg": [
+    1.2,
+    1.2
+  ],
+  "floor_vinyl.jpg": [
+    2.0,
+    2.0
+  ],
+  "floor_wood.jpg": [
+    2.0,
+    2.0
+  ],
+  "sign_icetex.jpg": [
+    1.2,
+    0.3
+  ],
+  "sign_morfologia.jpg": [
+    1.2,
+    0.3
+  ],
+  "sign_ascensores.jpg": [
+    1.2,
+    0.3
+  ],
+  "sign_preclinica.jpg": [
+    1.2,
+    0.3
+  ],
+  "sign_acceso.jpg": [
+    1.2,
+    0.3
   ]
 }

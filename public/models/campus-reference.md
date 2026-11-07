@@ -77,6 +77,9 @@ There is no section drawing yet. Every height below is an assumption for the mod
 | Lockers, shelving | 1.80; gym machines 1.10; turnstiles 1.00 |
 | Sanitary fixtures | 0.45 (WC, urinals); 0.85 (washbasins) |
 | Glass frames | bottom rail 0.00 → 0.07, mullions every ~1.25 m, top rail 2.50 → 2.62 |
+| Desk monitor / lab upstand | 1.05 / 1.25 |
+| Floor overlays | +0.008 |
+| Hanging signs | 2.25 → 2.55 (entrance 2.45 → 2.75), rods up to +0.45 |
 | Grass beds | -0.16 → -0.12 (4 cm above the paving) |
 | Stone walls / planters | -0.15 → 0.55 / -0.15 → 0.45 |
 | Green wall | -0.15 → 3.30 |
@@ -100,7 +103,9 @@ There is no section drawing yet. Every height below is an assumption for the mod
 | `Doors` | One leaf per doorway, drawn **open at 90°**. Doorways are the 0.65–1.9 m gaps between wall or glass ends; gaps over 1.25 m get two leaves. Glass partitions get glass leaves |
 | `Door_Swings` | Thin swing arcs on the floor (2–8 mm high), as on a plan |
 | `Fixtures` | CAD blocks on layer `sanitarios` (WC, urinals, washbasins) and the `Lavabo` block |
-| `Furniture_<i>_<j>` | **Illustrative**, not from the drawing (see below). Split into 20 m cells |
+| `Furniture_<i>_<j>` | **Illustrative**, not from the drawing (see below). Split into 20 m cells. Shaped pieces, each within the footprint validated against the routes: desks with monitor and swivel chair, lab benches with cabinets, upstand and stools, café tables with four chairs, waiting benches with backs, pool tables on legs, treadmills, and blue lockers with door lines |
+| `Floor_Zones` | Flat floor overlays 8 mm above the slab, by room use from the plan labels. Wet rooms (BAÑO, WC, DUCHA, VESTIER, ASEO) get 30 cm ceramic. Laboratories, classrooms, the Preclinic and first aid get grey vinyl. Offices get an oak laminate. A closed room gets the whole room; an open room gets a rectangle aligned to its walls and sized from the plan area |
+| `Sign_ICETEX`, `Sign_Morphology`, `Sign_Elevator`, `Sign_Preclinic`, `Sign_Acceso` | Double-sided hanging signs (1.2 × 0.3 m, 2.25–2.55 m; entrance 2.45–2.75 m) above the last waypoint before each confirmed destination. Each faces the approach so it reads while walking in |
 | `Site` | The crop rectangle, concrete pavers |
 | `Glass_Frames_Top`, `Glass_Frames_Base`, `Glass_Mullions_<i>_<j>` | One frame per `VIDRIO` segment of the DWG: rails and mullions about every 1.25 m |
 | `Deco_Grass` | Gardens labelled JARDIN with a matching area, plus planting beds around the DWG vegetation |
@@ -121,7 +126,10 @@ Materials:
 - **Floors and site:** `Floor_Interior` is 60 cm porcelain tiles and `Site_Plaza` is 50 cm concrete pavers. `Grass`, `Stone_Wall`, `Green_Wall` and `Planter` cover the planted and stone areas.
 - **Vegetation:** `Trunk`, `Foliage_A`, `Foliage_B`, `Foliage_Dark`, `Shrub` and `Shrub_Flower`.
 - **Metal and canopies:** `Metal_Light` for the canopy frames and fence, `Metal_Dark` for the lamp posts, `Solar_Panel`, and `Canopy_Translucent` (alpha 0.16).
-- **Interiors:** `Ramp_Stairs`, `Door_Wood`, `Swing_Line`, `Fixture`, plus `Furniture_Wood`, `Furniture_Seat`, `Furniture_Lab`, `Furniture_Felt` and `Furniture_Metal` for the furniture.
+- **Interiors:** `Ramp_Stairs`, `Door_Wood`, `Swing_Line` and `Fixture`.
+- **Furniture:** `Furniture_Wood`, `Furniture_Seat`, `Furniture_Lab`, `Furniture_Felt`, `Furniture_Metal`, `Furniture_Dark` and `Locker_Blue`.
+- **Floors by use:** `Floor_Wet`, `Floor_Vinyl` and `Floor_Wood`.
+- **Signs:** one `Sign_*` material per sign, using a text texture.
 
 Textures are tileable JPEGs generated procedurally (`model/textures/`, real size in `textures.json`). They are embedded in the GLB, and UVs are in metres divided by the texture size.
 
@@ -134,7 +142,8 @@ Palette inspiration comes from the photos in `public/referenciasMaps/`: terracot
   - Tree crowns start at ≥ 2.0 m.
 - `Canopy_*` objects are high (≥ 3.15 m) and can be hidden for an unobstructed top view; the access roof covers the start of the route.
 - Some objects sit wholly above or below the body-height rays (0.45 m and 1.2 m): crowns, top and base rails, swing arcs, grass, site and the canopy roof. Their bounding boxes let the runtime skip them cheaply. Furniture, mullions and trees are split into cells for the same reason.
-  - Measured: **1.73 ms** per `collides()` call, against 3.35 ms for the previous GLB.
+  - Measured: **1.73 ms** per `collides()` call, against 3.35 ms for the previous GLB. After the interiors pass (C2) it is 1.78 ms, with 137 meshes and 73,644 triangles.
+- `Floor_Zones` and `Sign_*` sit outside the body-height band, at +0.008 m and above 2.25 m.
 
 ## Doors and furniture
 
