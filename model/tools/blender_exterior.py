@@ -151,8 +151,8 @@ ob = bpy.data.meshes.new("Ext_A_Stair_Towers"); obj = bpy.data.objects.new("Ext_
 for m in MATS_T: ob.materials.append(M[m])
 bm = bmesh.new()
 z0, z1 = LEVELS["A"]["SEGUNDO PISO"] - 0.25, LEVELS["A"]["ROOF"] + 1.5
-R, SEG = 3.1, 12
-for cx, cy in ((16.42, 59.2), (37.93, 59.2)):
+SEG = 12
+for cx, cy, R in ((16.35, 59.2, 2.85), (37.55, 59.2, 2.4)):
     angs = [math.pi * k / SEG for k in range(SEG + 1)]
     ring = [(cx + R * math.cos(a), cy + R * math.sin(a)) for a in angs]
     outer = [(cx + (R + 0.08) * math.cos(a), cy + (R + 0.08) * math.sin(a)) for a in angs]

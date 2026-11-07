@@ -18,7 +18,7 @@
 | `Ext_A_Roof`, `Ext_B_Roof` | Roofs and terraces: the part of each storey not covered by the storey above, with parapet and coping | top of each storey |
 | `Ext_A_Rooftop` | Glazed rooftop volume from the `PLANTA AZOTEA CANCHAS SINTETICAS` sheet | 17.12 → 20.38 |
 | `Ext_A_Courts` | Synthetic courts on the open roof of A, with net posts | 16.90 (+6 m posts) |
-| `Ext_A_Stair_Towers` | The two round glass stair towers of A | 2.43 → 18.37 |
+| `Ext_A_Stair_Towers` | The two round glass stair towers of A, half cylinders centred (16.35, 59.2) r 2.85 and (37.55, 59.2) r 2.4, around the measured stair landings | 2.43 → 18.37 |
 
 How each storey is built:
 - **Outline:** each storey is the closing of that floor's cut walls, columns and glass. It is split between A and B at plan y = 47.
@@ -30,7 +30,7 @@ How each storey is built:
 - The split between A and B is a straight line at y = 47 (see the inventory). The block identity still needs the user's confirmation.
 - **Not from the DWG:**
   - Sill and head heights, parapet height (0.9 m), courts and posts.
-  - The radius of the stair glazing: about 3.1 m around the DWG stair arcs (r 1.41 m at (16.42, 59.2) and (37.93, 59.2)).
+  - The radius of the stair glazing: 2.85 m (west) and 2.4 m (east), measured on the first-floor glazing arcs and rounded.
 - The B roof (14.70) assumes one more 2.94 m storey above the fifth floor. A's roof (16.87) and rooftop (20.38) come from the section marks.
 - The ground floor (piso cero, N -4.13 / -2.94) is not included. It lies below the plaza level of the model.
 
