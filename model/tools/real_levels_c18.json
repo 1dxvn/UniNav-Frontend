@@ -1,5 +1,5 @@
 {
- "about": "C18: piso cero at its real levels, built for Codex's request docs/blocks/floor0-candidate-request.md on the sources of docs/blocks/level-zones.md (\"Piso cero\"). Only floor 0 is built. Floors 1, 3, 4, 5 are the C16 GLBs and floor 2 the C17 GLB, unchanged, for the checks. Block A and the east clinic go to N -4.13 (local -1.19 from the B datum, world -0.63). The west and pending parts stay at N -2.94 (local 0). The east tower is rebuilt with a 3.50 m rise to C16 floor 1.",
+ "about": "C18: piso cero at its real levels, built for Codex's request docs/blocks/floor0-candidate-request.md on the sources of docs/blocks/level-zones.md (\"Piso cero\"). Floors 0 and 1 are built: floor 1 is the C16 floor 1 with its Site ground slab opened under the stair wells. Floors 3, 4, 5 are the C16 GLBs and floor 2 the C17 GLB, unchanged, for the checks. Block A and the east clinic go to N -4.13 (local -1.19 from the B datum, world -0.63). The west and pending parts stay at N -2.94 (local 0). The east tower is rebuilt with a 3.50 m rise to C16 floor 1.",
  "candidate": "c18",
  "floors": {
   "0": {
@@ -176,7 +176,8 @@
    "prefix": "",
    "stair_rise": 3.31,
    "evidence": "A N -0.63 at (28.08, 50.16), (36.59, 55.72), (14.77, 56.15); B N 0.00 at (26.09, 34.08), (28.23, 47.71)",
-   "from": "c16"
+   "site_holes": "wells",
+   "site_holes_note": "Rebuilt like C16 floor 1, plus openings in the Site ground slab under the floor-slab stair wells, so the piso cero east tower rises into the open shaft. Everything else matches C16"
   },
   "2": {
    "datum_world": 6.44,

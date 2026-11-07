@@ -16,6 +16,7 @@ This candidate is a model handoff, not navigation data.
 | Item | Value |
 | --- | --- |
 | GLB | `model/candidates/c18/floor-0.glb`, SHA-256 `a9eba61e…` |
+| Floor-1 companion | `model/candidates/c18/floor-1.glb`, SHA-256 `b1df2d79…`. This is C16 floor 1 (`15745b7e…`) with its `Site` ground slab opened under the floor-slab stair well (`site_holes: "wells"`). In C16, that 0.2 m ground slab passes under the whole building, including the east tower shaft (world 2.52–2.72), and caps the stair rising from piso cero. The other 140 meshes are vertex-identical to C16 |
 | World translation | `(0, 0.56, 0)`, unchanged from C14 (the B datum, N −2.94) |
 | Block A and the east clinic | N −4.13: local −1.19, world −0.63 |
 | B west, south-west and every pending area | N −2.94: local 0.00, world 0.56 |
@@ -79,7 +80,9 @@ Each of these keeps local 0.00 and gets no geometry. No route should cross the e
 
 ## Checks
 
-`model/tools/real_levels_check.ts` with `model/tools/real_levels_c18.json`, in `docs/model-review/after-c18/checks.json`. The C18 floor 0 is loaded with C16 floors 1, 3, 4 and 5 and C17 floor 2; body and head rays run against every mesh of all six floors.
+`model/tools/real_levels_check.ts` with `model/tools/real_levels_c18.json`, in `docs/model-review/after-c18/checks.json`. The C18 floors 0 and 1 are loaded with C16 floors 3, 4 and 5 and C17 floor 2; body and head rays run against every mesh of all six floors.
+
+The C16 `Site` slab inside the shaft was found by the integration audit (`tools/prepare-floor0.ts`), which casts the body rays along the sloped stair direction. The horizontal rays of this checker pass under it, so the floor-1 companion was added.
 
 | Walk | Result |
 | --- | --- |

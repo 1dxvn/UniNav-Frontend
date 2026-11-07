@@ -11,7 +11,9 @@
 # - "a_polys" add polygon zones at a_offset (C18: the piso cero clinic south of the facade);
 # - "top_from": storey-height objects (max z >= 2.4: walls, columns, glass) keep their bottoms at this floor's offsets
 #   and move their upper part (z > 1.0) by the zone offset of the floor named there (the floor above), so they stay under
-#   its slab; elevated flat meshes (glass frame tops) follow it too. Without the key the result is the same as before.
+#   its slab; elevated flat meshes (glass frame tops) follow it too. Without the key the result is the same as before;
+# - "site_holes": "wells" opens the floor's Site ground slab under every hole of its rebuilt floor slab (the stair wells),
+#   so a stair rising from the floor below is not capped by the ground layer (C18: floor 1 over the piso cero tower).
 # Config: CONFIG (path relative to model/tools, default real_levels.json). Floors marked "from" are reused from another
 # candidate and not rebuilt. Copies are named "<name>__<candidate>"; the export strips the suffix. Pending zones keep their flat height.
 import bpy, bmesh, json, os, struct
@@ -121,6 +123,17 @@ def build_slab(ob, pieces):
         for li in poly.loop_indices:
             co = me.vertices[me.loops[li].vertex_index].co; uv.data[li].uv = (co.x / TX, co.y / TY)
 
+def cut_site_holes(o, holes):
+    me = o.data; bm = bmesh.new(); bm.from_mesh(me)
+    for ring in holes:
+        for (x0, y0), (x1, y1) in zip(ring, ring[1:] + ring[:1]):
+            n = Vector((-(y1 - y0), x1 - x0, 0))
+            if n.length < 1e-6: continue
+            n.normalize(); bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:], plane_co=(x0, y0, 0), plane_no=n, dist=1e-5)
+    gone = [fc for fc in bm.faces if any(inside(fc.calc_center_median().x, fc.calc_center_median().y, ring) for ring in holes)]
+    bmesh.ops.delete(bm, geom=gone, context="FACES"); bm.to_mesh(me); bm.free(); me.update()
+    print(f"{o.name}: removed {len(gone)} faces under {len(holes)} slab holes")
+
 # --- scene and collections, rebuilt from scratch
 scn = bpy.data.scenes.get(CAND.upper()) or bpy.data.scenes.new(CAND.upper())
 win = bpy.context.window; prev = win.scene
@@ -179,6 +192,8 @@ for fid in FLOORS:
             if dz: v.co.z = z + dz; moved += 1
         me.update()
     build_slab(bpy.data.objects[f["prefix"] + "Floor_Slab" + SUF], SL[fid]["pieces"])
+    if f.get("site_holes") == "wells" and bpy.data.objects.get(f["prefix"] + "Site" + SUF):
+        cut_site_holes(bpy.data.objects[f["prefix"] + "Site" + SUF], [h for pc in SL[fid]["pieces"] for r in pc["rings"] for h in r["holes"]])
     report[fid] = moved
 
 # --- export
