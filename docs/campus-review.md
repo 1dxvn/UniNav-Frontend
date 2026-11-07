@@ -49,6 +49,29 @@ Node inspection now bypasses image decoding with a GLTFLoader texture plugin.
 It preserves geometry and material sidedness; it does not modify the GLB.
 Browser captures independently check the actual embedded textures and materials.
 
+## C2 interior model and runtime presentation
+
+Claude's C2 revision (`efd05d1`, evidence in `0eef46e`) adds shaped furniture,
+floor materials by use and destination signs. Its GLB SHA-256 is
+`d65846a8b614062d63e60a339da6e9c9ce29e8ffae2d01a90fbd16611e6a356e`.
+Codex's matching evidence is in `verification/c2/`; C1 evidence is preserved.
+
+The runtime hides `Canopy_*` overhead objects in top view and restores them in 3D.
+Transparent materials no longer write opaque depth, and grass does not cast
+shadows. The floor selection and camera controls preserve the avatar's position.
+Collision rays still consider every obstacle, including hidden meshes; cached
+world bounds only reject meshes outside the swept body volume.
+
+Replacing or rejecting a model releases its shared textures, materials and geometry.
+Disposing the scene also releases its ground, destination ring and shadow resources.
+A failed GLB load explicitly shows the graph preview and clears the alignment
+badge. The browser rehearsal checks recovery after the resource becomes available.
+
+`before-*` and `after-*` captures use the same C2 model, viewport and camera controls.
+The frame report names the actual renderer, so hardware results can be distinguished
+from the software-rendered functional checks. See `verification/c2/README.md` for
+the measured results and their limits.
+
 ## Limits to keep visible
 
 Heights and plaza levels remain the model's documented approximations. Three

@@ -10,7 +10,7 @@ export default defineConfig({
     viewport: { width: 1440, height: 1000 },
     launchOptions: {
       executablePath: process.env.UNINAV_BROWSER ?? (existsSync(brave) ? brave : undefined),
-      args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
+      args: process.env.UNINAV_RENDERER === "hardware" ? [] : ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
     },
     screenshot: "only-on-failure", trace: "retain-on-failure",
   },

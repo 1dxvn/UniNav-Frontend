@@ -3,7 +3,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import type { Building, RouteResponse } from "../../src/api/types.ts";
 
-const evidence = "docs/verification/h0";
+const evidence = process.env.UNINAV_EVIDENCE_DIR ?? "docs/verification/h0";
 const sha256 = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 let modelHash: string;
 test.beforeAll(async ({ request }) => {

@@ -165,8 +165,10 @@ async function loadCampus(): Promise<void> {
     ui.modelStatus.textContent = "Sample campus · real floor model pending";
     try { await scene.loadModel(); }
     catch (error) {
-      ui.modelStatus.textContent = "Sample campus · real-floor data is not loaded";
+      ui.modelStatus.textContent = "Model unavailable · using graph preview";
       ui.modelStatus.title = error instanceof Error ? error.message : String(error);
+      ui.modelStatus.classList.remove("verified");
+      element("references").hidden = true;
     }
   } catch (error) {
     ui.status.textContent = "Campus connection unavailable";

@@ -5,6 +5,9 @@ import type { Building, CampusPath } from "../api/types.ts";
 import { FLOOR_HEIGHT, toScenePosition, WALK_SPEED } from "./coordinates.ts";
 import { canWalk, routingStart, walkSegments, type WalkSegment } from "./navigation.ts";
 import { parseReference, referenceMatrix, validateAlignment, validateModelNodes, type CampusReference } from "./modelReference.ts";
+import { modelColliders, modelCollision, type ModelCollider } from "./modelCollision.ts";
+import { prepareModelPresentation, setModelTopView } from "./modelPresentation.ts";
+import { disposeGroup } from "./dispose.ts";
 
 export type TravelState = "idle" | "ready" | "walking" | "paused" | "arrived" | "blocked";
 export interface TravelUpdate {
@@ -21,16 +24,6 @@ interface SceneEvents {
   floor: (floor: number) => void;
   model: (message: string, loaded: boolean) => void;
 }
-function disposeGroup(group: THREE.Group): void {
-  group.traverse((object) => {
-    if (object instanceof THREE.Mesh || object instanceof THREE.Line) {
-      object.geometry.dispose();
-      (Array.isArray(object.material) ? object.material : [object.material]).forEach((material) => material.dispose());
-    }
-  });
-  group.clear();
-}
-
 export class CampusScene {
   private readonly renderer: THREE.WebGLRenderer;
   private readonly scene = new THREE.Scene();
@@ -61,7 +54,7 @@ export class CampusScene {
   private topView = false;
   private labelsVisible = true;
   private reference: CampusReference | null = null;
-  private collisionMeshes: THREE.Object3D[] = [];
+  private colliders: ModelCollider[] = [];
   private lastEmission = 0;
   private walkTime = 0;
 
@@ -264,7 +257,12 @@ export class CampusScene {
   clearRoute(): void { disposeGroup(this.routeGroup); this.waypoints = []; this.index = 1; this.totalLength = 0; this.state = "idle"; }
   toggleLabels(): boolean { this.labelsVisible = !this.labelsVisible; return this.labelsVisible; }
   toggleReferences(): boolean { this.referenceGroup.visible = !this.referenceGroup.visible; return this.referenceGroup.visible; }
-  setTopView(top: boolean): void { this.topView = top; this.resetView(); }
+  setTopView(top: boolean): void {
+    this.topView = top;
+    setModelTopView(this.modelGroup, top);
+    this.renderer.shadowMap.needsUpdate = true;
+    this.resetView();
+  }
   zoom(amount: number): void { this.camera.zoom = THREE.MathUtils.clamp(this.camera.zoom * amount, 0.45, 4); this.camera.updateProjectionMatrix(); }
 
   resetView(): void {
@@ -282,6 +280,12 @@ export class CampusScene {
     this.resize();
   }
   async loadModel(): Promise<void> {
+    disposeGroup(this.modelGroup);
+    disposeGroup(this.referenceGroup);
+    this.reference = null;
+    this.colliders = [];
+    this.setFloor(this.viewFloor, false);
+    this.events.model("Loading campus model…", false);
     const response = await fetch(`${import.meta.env.BASE_URL}models/campus-reference.json`, { cache: "no-cache" });
     if (response.status === 404) { this.events.model("Sample campus · real floor model pending", false); return; }
     if (!response.ok) throw new Error("Could not read the campus model references.");
@@ -292,18 +296,12 @@ export class CampusScene {
     root.applyMatrix4(referenceMatrix(reference));
     root.add(gltf.scene);
     root.updateMatrixWorld(true);
-    validateModelNodes(reference, root);
-    const collisionMeshes: THREE.Object3D[] = [];
-    gltf.scene.traverse((object) => {
-      if (object instanceof THREE.Mesh) {
-        object.castShadow = !/^(Site|Floor_Slab|Ramps_Stairs|Glass)/.test(object.name);
-        object.receiveShadow = true;
-        collisionMeshes.push(object);
-      }
-    });
-    disposeGroup(this.modelGroup);
+    try { validateModelNodes(reference, root); }
+    catch (error) { disposeGroup(root); throw error; }
+    prepareModelPresentation(root);
+    setModelTopView(root, this.topView);
     this.modelGroup.add(root);
-    this.collisionMeshes = collisionMeshes;
+    this.colliders = modelColliders(root);
     this.reference = reference;
     disposeGroup(this.referenceGroup);
     for (const [index, point] of aligned.entries()) {
@@ -322,16 +320,8 @@ export class CampusScene {
     link.click();
   }
   private collides(from: THREE.Vector3, to: THREE.Vector3): boolean {
-    if (!this.collisionMeshes.length || this.reference?.floor !== this.avatarFloor) return false;
-    const direction = to.clone().sub(from);
-    const distance = direction.length();
-    if (distance < 0.0001) return false;
-    direction.normalize();
-    for (const height of [0.45, 1.2]) for (const offset of [-0.22, 0, 0.22]) {
-      const start = from.clone().add(new THREE.Vector3(-direction.z * offset, height, direction.x * offset));
-      if (new THREE.Raycaster(start, direction, 0, distance + 0.25).intersectObjects(this.collisionMeshes, false).length) return true;
-    }
-    return false;
+    if (this.reference?.floor !== this.avatarFloor) return false;
+    return !!modelCollision(from, to, this.colliders);
   }
   private remaining(): number {
     if (this.index >= this.waypoints.length) return 0;
@@ -408,7 +398,8 @@ export class CampusScene {
   }
   dispose(): void {
     this.renderer.setAnimationLoop(null); this.abort.abort(); this.resizeObserver.disconnect(); this.controls.dispose();
-    [this.campus, this.routeGroup, this.modelGroup, this.referenceGroup, this.avatar].forEach(disposeGroup);
+    disposeGroup(this.scene);
+    this.colliders = [];
     this.renderer.dispose(); this.labels.forEach((label) => label.remove());
   }
 }

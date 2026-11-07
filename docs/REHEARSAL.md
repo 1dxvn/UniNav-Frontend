@@ -29,6 +29,9 @@ continues along the current graph edge before following the API response.
 
 ## Verification evidence
 
+- `verification/c2/`: latest interior-model rehearsal, comparable general/top
+  views before and after the runtime presentation changes, and GPU frame cadence.
+  The earlier `verification/h0/` evidence below records C1 and is kept intact.
 - `verification/h0/revision.json`: exact GLB SHA-256, API URL and catalogue counts.
 - `verification/h0/*-top.png`, `*-3d.png`, `*-arrival.png`: current model and routes.
 - `verification/h0/model-alignment.json`: references, wall clearance and collision
@@ -38,13 +41,23 @@ continues along the current graph edge before following the API response.
 - `verification/sample-first-route.png`: earlier sample-campus integration check.
 
 Run `npm test` for graph and calibration guards. With the real backend running,
-set `UNINAV_TEST_URL=http://127.0.0.1:8001` and run `npm run test:e2e`.
+set `UNINAV_TEST_URL=http://127.0.0.1:8001`, choose a revision-specific
+`UNINAV_EVIDENCE_DIR` (for example `docs/verification/c2`), and run
+`npm run test:e2e`. This preserves earlier revision snapshots.
 `node --experimental-strip-types tools/verify-model.ts` rechecks the actual GLB
 against the running API. The offline graph-drafting tool is never imported by the app;
 runtime paths always come from FastAPI. For H0 reports, set
 `UNINAV_VERIFY_DIR=docs/verification/h0`. Node tools inspect geometry using empty
 texture placeholders; the browser loads and renders the original embedded images.
 The tools verify the exported/served hash before checking the geometry.
+Use the same directory in `UNINAV_VERIFY_DIR` for a later revision.
+
+Playwright defaults to software rendering for portable functional tests. Set
+`UNINAV_RENDERER=hardware` to use the local GPU, and `UNINAV_REQUIRE_FPS=1` to
+require at least 30 FPS in the presentation test. That test records the actual
+renderer, viewport and measured frame intervals in `after-performance.json`.
+`tools/benchmark-collisions.ts` compares the original body rays with the current
+bounds filter on samples from the actual model and graph.
 
 The no-route browser check uses `tests/serve_campus.py` from the backend in a new
 temporary database and on an OS-assigned free port. Its synthetic isolated

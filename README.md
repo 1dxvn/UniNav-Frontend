@@ -84,6 +84,12 @@ an OS-assigned free port, using `../venv/Scripts/python.exe` and the backend's
 then removes its process and files. `UNINAV_TEST_PYTHON` can override the interpreter.
 It never inserts test destinations into the running campus or sample database.
 
+Set `UNINAV_EVIDENCE_DIR` to a folder for the model revision under review, such as
+`docs/verification/c2`, to preserve older screenshots and walk reports. The
+presentation test can use `UNINAV_RENDERER=hardware` and `UNINAV_REQUIRE_FPS=1`
+to check the 30 FPS target against the actual GPU. Software rendering remains the
+default for functional tests. See [the C2 evidence](docs/verification/c2/README.md).
+
 `node --experimental-strip-types tools/verify-model.ts` checks actual GLB anchors
 and clearance for every API edge. `tools/prepare-campus-graph.ts` is an offline
 geometry check and graph-drafting aid only; the app never imports it.
