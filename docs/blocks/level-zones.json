@@ -1,0 +1,407 @@
+{
+ "version": 1,
+ "source": "PLANOS UCC 2025 - B.dxf, first-floor and second-floor sheets (registered); docs/blocks/vertical-connections.md",
+ "datum": "Sheet N levels; floor-1 Block B datum N 0.00 = world Y 3.5; floor-2 Block B datum N +2.94 = world Y 6.44",
+ "floors": {
+  "1": {
+   "zones": [
+    {
+     "id": "B-west-body",
+     "rule": "footprint, y < 49.0, 13.6 <= x < 36.4, minus other zones",
+     "level": 0.0,
+     "status": "confirmed"
+    },
+    {
+     "id": "access",
+     "rule": "y < 20, x < 13.6",
+     "level": 0.0,
+     "status": "derived"
+    },
+    {
+     "id": "A-north-bar",
+     "rule": "footprint, y >= 49.0, x >= 13.6",
+     "level": -0.63,
+     "status": "confirmed"
+    },
+    {
+     "id": "hall-steps",
+     "bounds": [
+      27.3,
+      47.86,
+      29.8,
+      49.23
+     ],
+     "levels": [
+      0.0,
+      -0.1575,
+      -0.315,
+      -0.4725,
+      -0.63
+     ],
+     "nosingY": [
+      47.86,
+      48.32,
+      48.78,
+      49.23
+     ],
+     "status": "confirmed"
+    },
+    {
+     "id": "B-stair-north-flight",
+     "bounds": [
+      36.4,
+      34.0,
+      39.2,
+      36.0
+     ],
+     "levels": [
+      -0.9,
+      0.0
+     ],
+     "risers": 6,
+     "status": "confirmed"
+    },
+    {
+     "id": "B-stair-landing",
+     "bounds": [
+      35.9,
+      32.1,
+      36.4,
+      36.0
+     ],
+     "level": 0.0,
+     "status": "confirmed"
+    },
+    {
+     "id": "B-stair-south-flight",
+     "bounds": [
+      36.4,
+      32.1,
+      39.2,
+      34.0
+     ],
+     "levels": [
+      0.0,
+      1.19
+     ],
+     "risers": 9,
+     "status": "confirmed"
+    },
+    {
+     "id": "sloped-hall",
+     "bounds": [
+      36.3,
+      36.0,
+      42.7,
+      49.0
+     ],
+     "levels": [
+      -0.9,
+      -0.63
+     ],
+     "status": "derived, profile unknown"
+    },
+    {
+     "id": "east-B-laboratory-wing",
+     "rule": "footprint, y < 49.0, x >= 39.2, minus sloped hall",
+     "level": null,
+     "status": "pending: stair top (+1.19) and foot (-0.90) open into the same drawn circulation"
+    },
+    {
+     "id": "west-glass-block",
+     "rule": "x < 13.6, y > 41.5",
+     "level": null,
+     "status": "pending"
+    },
+    {
+     "id": "west-stair-to-piso-cero",
+     "bounds": [
+      20.8,
+      47.6,
+      25.3,
+      49.2
+     ],
+     "level": null,
+     "status": "pending (opening)"
+    }
+   ],
+   "places": [
+    {
+     "place": "Hall Acceso",
+     "plan": [
+      0,
+      0
+     ],
+     "zone": "access",
+     "level": 0.0,
+     "status": "derived"
+    },
+    {
+     "place": "Access courtyard",
+     "plan": [
+      6,
+      16.5
+     ],
+     "zone": "access",
+     "level": 0.0,
+     "status": "derived"
+    },
+    {
+     "place": "South circulation",
+     "plan": [
+      21.5,
+      33.5
+     ],
+     "zone": "B-west-body",
+     "level": 0.0,
+     "status": "confirmed (level label within 4.6 m)"
+    },
+    {
+     "place": "ICETEX approach",
+     "plan": [
+      23,
+      34
+     ],
+     "zone": "B-west-body",
+     "level": 0.0,
+     "status": "confirmed (level label within 3.1 m)"
+    },
+    {
+     "place": "ICETEX doorway",
+     "plan": [
+      23.5,
+      36
+     ],
+     "zone": "B-west-body",
+     "level": 0.0,
+     "status": "confirmed (level label within 3.2 m)"
+    },
+    {
+     "place": "ICETEX",
+     "plan": [
+      24.55,
+      41.78
+     ],
+     "zone": "B-west-body",
+     "level": 0.0,
+     "status": "derived (same zone, nearest level label 7.0 m away, no step drawn between)"
+    },
+    {
+     "place": "Hall junction",
+     "plan": [
+      24,
+      36.5
+     ],
+     "zone": "B-west-body",
+     "level": 0.0,
+     "status": "confirmed (level label within 3.2 m)"
+    },
+    {
+     "place": "Hall corridor south",
+     "plan": [
+      28,
+      36.5
+     ],
+     "zone": "B-west-body",
+     "level": 0.0,
+     "status": "confirmed (level label within 3.1 m)"
+    },
+    {
+     "place": "Hall corridor north",
+     "plan": [
+      28,
+      48
+     ],
+     "zone": "hall-steps",
+     "level": null,
+     "status": "confirmed",
+     "note": "stands on the first hall tread; move to (28.0, 47.6), N 0.00, as proposed"
+    },
+    {
+     "place": "Elevator and Restroom Hall",
+     "plan": [
+      25.77,
+      51.97
+     ],
+     "zone": "A-north-bar",
+     "level": -0.63,
+     "status": "confirmed (level label within 2.9 m)"
+    },
+    {
+     "place": "Laboratory corridor west",
+     "plan": [
+      41.5,
+      33.5
+     ],
+     "zone": "east-B-laboratory-wing",
+     "level": null,
+     "status": "pending"
+    },
+    {
+     "place": "Laboratory corridor east",
+     "plan": [
+      46.5,
+      32
+     ],
+     "zone": "east-B-laboratory-wing",
+     "level": null,
+     "status": "pending"
+    },
+    {
+     "place": "Morphology Laboratory",
+     "plan": [
+      42.96,
+      27.77
+     ],
+     "zone": "east-B-laboratory-wing",
+     "level": null,
+     "status": "pending"
+    },
+    {
+     "place": "Preclinic / Dentistry Coordination",
+     "plan": [
+      56.84,
+      51.96
+     ],
+     "zone": "A-north-bar",
+     "level": -0.63,
+     "status": "derived (same zone, nearest level label 20.6 m away, no step drawn between)"
+    },
+    {
+     "place": "North circulation west",
+     "plan": [
+      32,
+      54.4
+     ],
+     "zone": "A-north-bar",
+     "level": -0.63,
+     "status": "confirmed (level label within 4.8 m)"
+    },
+    {
+     "place": "North circulation east",
+     "plan": [
+      58.26,
+      54.7
+     ],
+     "zone": "A-north-bar",
+     "level": -0.63,
+     "status": "derived (same zone, nearest level label 21.7 m away, no step drawn between)"
+    },
+    {
+     "place": "Preclinic storeroom",
+     "plan": [
+      58.26,
+      51.68
+     ],
+     "zone": "A-north-bar",
+     "level": -0.63,
+     "status": "derived (same zone, nearest level label 22.0 m away, no step drawn between)"
+    },
+    {
+     "place": "ICETEX column reference",
+     "plan": [
+      27.26,
+      41.77
+     ],
+     "zone": "B-west-body",
+     "level": 0.0,
+     "status": "derived (same zone, nearest level label 6.0 m away, no step drawn between)"
+    },
+    {
+     "place": "Lockers column reference",
+     "plan": [
+      46.97,
+      36.94
+     ],
+     "zone": "east-B-laboratory-wing",
+     "level": null,
+     "status": "pending"
+    }
+   ]
+  },
+  "2": {
+   "zones": [
+    {
+     "id": "A-north-bar",
+     "rule": "footprint, y >= 49.0, x >= 13.6",
+     "level": 2.68,
+     "status": "confirmed"
+    },
+    {
+     "id": "B-body",
+     "rule": "footprint, y < 49.0",
+     "level": 2.94,
+     "status": "confirmed at (28.99, 34.04); extent derived"
+    },
+    {
+     "id": "A-B-junction",
+     "rule": "along y ~ 49",
+     "level": null,
+     "status": "pending: 0.26 m difference, no numbered steps"
+    },
+    {
+     "id": "west-block-library",
+     "rule": "x < 13.6",
+     "level": null,
+     "status": "pending"
+    }
+   ],
+   "places": [
+    {
+     "place": "Mixed Reality Laboratory (D14 inside stand)",
+     "plan": [
+      46.604,
+      53.005
+     ],
+     "zone": "A-north-bar",
+     "level": 2.68,
+     "status": "confirmed"
+    },
+    {
+     "place": "Molecular Biology Laboratory (D15 inside stand)",
+     "plan": [
+      47.122,
+      56.675
+     ],
+     "zone": "A-north-bar",
+     "level": 2.68,
+     "status": "confirmed"
+    },
+    {
+     "place": "Medical Research Centre arrival",
+     "plan": [
+      38.569,
+      51.782
+     ],
+     "zone": "A-north-bar",
+     "level": 2.68,
+     "status": "confirmed"
+    },
+    {
+     "place": "East stair top (floor 2)",
+     "plan": [
+      38.7,
+      55.9
+     ],
+     "zone": "A-north-bar",
+     "level": 2.68,
+     "status": "confirmed"
+    }
+   ]
+  }
+ },
+ "stairs": {
+  "floor1-to-2": {
+   "rise": 3.31,
+   "risers": 21,
+   "foot": -0.63,
+   "top": 2.68,
+   "status": "confirmed levels"
+  },
+  "floor2-to-3": {
+   "rise_in_c15": 3.2,
+   "real_rise": 3.69,
+   "status": "joined to flat C14 floor 3 until it gets real levels"
+  }
+ }
+}
