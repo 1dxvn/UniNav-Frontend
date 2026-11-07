@@ -52,7 +52,10 @@ Effect on the current model:
 | Elevator and Restroom Hall | Junction, A side |
 | Preclinic | A |
 
-**To confirm by the user:** that the north bar is Block A, and that it is the "BLOQUE A" of the photos.
+**Confirmed by the user (7 November 2026, 16:07):** the university is divided into two blocks.
+- Block A is the north bar, with the round stair towers, the elevator hall and the restrooms.
+- Block B is the south body.
+- They join at the hall corridor (x 27.35–29.75, y ≈ 47.9–49.3), where the floor-2 sheet writes "BLOQUE B PISO 2".
 
 ## 3. Floors and main spaces
 
