@@ -35,13 +35,32 @@ Both stairs were measured on the first-floor sheet:
   - Waypoints at the foot and head of each flight keep the avatar on the treads, from (x, 56.2) to (x, 59.2) along the flight centre line.
   - The first-floor north circulation (y ≈ 54.4–54.7) passes 1.2–1.5 m south of the stair feet. Connect each bottom point to that corridor with a short edge.
 
-## Block B stair (not modelled yet)
+## Block B first-floor stair (measured at 03:45): it lies on an API route
 
-The levels place the Block B stair around plan (35–40, 33–35):
-- **Floor 1 (B):** N 0.00 / +1.19 (ramp), N -0.90.
-- **Floor 2 (B):** N +2.94, with a half landing at N +1.70.
+Measured on the first-floor sheet: a U-stair at x 36.4–39.2, y 32.1–36.1.
 
-Its flights still have to be measured before it can be modelled and connected.
+| Part | Geometry | Level |
+| --- | --- | --- |
+| North flight, steps 1–6 | y 34.0–36.0, numbered from x 38.2 westwards to 36.6 (arrow ←) | N -0.90 at step 1 (38.7, 35.3) |
+| West landing | x ≈ 35.9–36.4, open to the B corridor | N 0.00 (35.9, 34.7), the same as the B corridor |
+| South flight, steps 7–15 | y 32.1–34.0, numbered from x 36.5 eastwards to 39.0 (arrow →) | N +1.19 at the top (39.5, 33.5) |
+
+So the corridor (N 0.00) meets the landing:
+- One flight goes **down** to N -0.90, to the north-east (6 risers of ~0.15 m).
+- The other goes **up** to N +1.19, eastwards (9 risers of ~0.13 m), towards the laboratory side where `Laboratory corridor west` (41.5, 33.5) is.
+
+Next to it, a ramp hatch (x 36.2–41.8, y 36.3–40.0, `Ramps_Stairs` in the model) is probably the accessible link between those levels. Its direction is **to be confirmed**.
+
+**Consequence for the graph (for Codex, not changed by Claude):**
+- The edge `South circulation (21.5, 33.5) → Laboratory corridor west (41.5, 33.5)` runs along y = 33.5. Between x 36.5 and 39.0 that is **on the south flight** (steps 7–15).
+- The real route to the Morphology Laboratory therefore climbs 9 steps, from N 0.00 to N +1.19. Today it is typed `corridor` and is offered with "Avoid stairs".
+- **Suggested:**
+  - Split that edge at the landing (≈ 36.0, 33.1) and at the top of the flight (≈ 39.4, 33.1).
+  - Type the middle part `stairs`.
+  - Add a ramp alternative once its direction is confirmed.
+- The first-floor model keeps a flat slab there, and Claude did not add steps. Solid treads up to 1.19 m would block the current flat walk at y 33.5. Treads can be added, for example in a candidate, once the graph is split and the runtime handles height along a `stairs` edge.
+
+The upper levels of this stair: floor 2 (B) is at N +2.94, with a half landing at N +1.70 (43.2, 35.3, floor 2 sheet).
 
 ## Model delivery state
 

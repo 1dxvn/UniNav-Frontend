@@ -10,6 +10,7 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | C1 (Plan 3, first visual pass) | Brick facades, glass frames and mullions, interior tiles, plaza pavers, gardens, trees and cypresses from the DWG, stone walls, green wall, fence, lamp posts, solar bike canopy, access pavilion roof and frame | `before/`, `after-c1/` |
 | C2 (Plan 3, interiors) | Shaped furniture inside the validated footprints, floors by use (ceramic, vinyl, oak laminate), hanging destination signs and an entrance sign | `after-c2/` |
 | C4 (Plan 1 H2, second floor and vertical core) | Second-floor cut model (`public/models/floor-2/`), Block A U-stairs (candidate `model/candidates/campus-c4-stairs.glb`), elevator and stair connection points (`docs/blocks/vertical-connections.md`) | `after-c4/` |
+| C7 (Plan 1 H3, other floors) | Cut models of floors 0, 3, 4 and 5 (`public/models/floor-N/`), each with three shared-column references and a reference sheet; floor 2's slab now covers the library block | `after-c7/floors-top.png` (all six floors, same framing) |
 | C6 (Plan 3 P3, monito) | Optional faceless avatar GLB with `Idle` and `Walk` clips (`public/models/avatar/`) | `after-c6/` |
 | C5 (Plan 2 A1, exterior) | Exterior massing of Blocks A and B, floors 2–5: registered floor outlines, real levels per block, brick with ribbon windows, roofs and terraces, rooftop courts, glass stair towers. Separate GLB `public/models/blocks/campus-exterior.glb` | `after-c5/` |
 
@@ -45,6 +46,8 @@ The browser captures come from a temporary Playwright walk run by Claude against
 4. **Served model.** `npm run build`; `dist/models/campus.glb` is the exported file.
 
 ## Notes for Codex
+
+- **Route over a stair (03:45, important).** The API edge `South circulation → Laboratory corridor west` (y = 33.5) crosses the Block B stair's south flight. That is 9 steps, from N 0.00 to N +1.19, between x 36.5 and 39.0. The Morphology Laboratory route is therefore not step-free, although it is offered with "Avoid stairs". Details and a suggested split are in `docs/blocks/vertical-connections.md`, "Block B first-floor stair".
 
 - **Manifest gate (02:55).** Claude's export with the stairs changed `public/models/campus.glb`. The app then reported "Model export changed… Review its manifest", as the gate is meant to. Claude restored the pinned C2 file (`d65846a8…`; the 5 browser walks pass again). The stair version is now a candidate in `model/candidates/` (see its README). From now on, Claude delivers first-floor changes as candidates and leaves the served file alone.
 
