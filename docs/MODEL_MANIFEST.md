@@ -20,6 +20,20 @@ entry is `ucc-first-floor`, reviewed export `efd05d1`. It deliberately keeps the
 combined first-floor area together while physical block assignments are pending.
 Several independent model entries may share a software floor number.
 
+The `campus-exterior` entry has `kind: "exterior"`, `navigable: false`, no floor
+assignment or graph binding, a direct model path and the documented transform.
+It uses reviewed C5 commit `31c5d68`, scale 1, rotation 0 and translation
+`[0, 3.5, 0]`. Its source document preserves block-identity and facade
+approximations. It has no API reference nodes of its own: the base first-floor
+anchors remain validated separately and the overview badge identifies them as such.
+
+The exterior is requested only in Campus view. It never contributes collision
+meshes, route waypoints or destinations. Floor selection, destination selection
+and route planning leave the overview; guidance keeps it disabled until cancelled.
+Returning to a floor releases the exterior and preserves the avatar's position.
+If the exterior is missing or its hash changes, the verified first floor stays
+usable and the overview can be retried.
+
 The data binding includes the named scope's coordinates/elevations and incident
 graph edges, types, directions and weights. Database row IDs and API ordering do
 not affect it. Disconnected test-only places do not affect it. A changed graph can
@@ -84,6 +98,6 @@ The backend catalogue is read-only metadata; it is not a migration of `Building`
 or the name-keyed graph. Stable place/connection identifiers, repeated visible
 names, ID-based route waypoints and non-destructive versioned campus seeds remain
 to implement. This delivery prepares the resource side and source inventory.
-The new exterior GLB needs a distinct non-navigable overview entry and controls;
-it is not yet integrated by this floor loader. Further floors need documented
+The exterior is integrated as a non-navigable overview with separate controls.
+Further floors need documented
 doors, elevations, vertical waypoints, matching exports and physical rehearsals.

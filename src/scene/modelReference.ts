@@ -32,10 +32,14 @@ export function parseReference(value: unknown): CampusReference {
 }
 
 export function referenceMatrix(reference: CampusReference): Matrix4 {
+  return transformMatrix(reference.transform);
+}
+
+export function transformMatrix(transform: CampusReference["transform"]): Matrix4 {
   return new Matrix4().compose(
-    new Vector3(...reference.transform.translation),
-    new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), reference.transform.rotationYDegrees * Math.PI / 180),
-    new Vector3().setScalar(reference.transform.scale),
+    new Vector3(...transform.translation),
+    new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), transform.rotationYDegrees * Math.PI / 180),
+    new Vector3().setScalar(transform.scale),
   );
 }
 

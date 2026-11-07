@@ -4,6 +4,9 @@ A TypeScript / Three.js campus explorer connected to the UniNav FastAPI backend.
 The UCC Bloque B first-floor GLB is supplied by Claude; all runtime routes come
 from FastAPI. The app supports sign-in and registration, search, floor selection,
 step-free graph filtering, keyboard movement, guidance, pause/resume and arrival.
+The initial Campus view shows the reviewed exterior massing. **3D floor** and
+**Top floor** expose the navigable cutaway; planning a route switches to it.
+The exterior is visual only and adds no destinations or collision obstacles.
 
 ## Start the real-floor demo
 

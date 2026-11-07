@@ -9,6 +9,7 @@ test.beforeEach(async ({ request }) => {
 test("observing a pending floor preserves avatar position and restores the cached first floor", async ({ page }) => {
   await page.goto("/app/");
   await expect(page.locator("#model-status")).toContainText("3 references aligned");
+  await page.locator("#isometric").click();
   const position = await page.locator("#travel-status").getAttribute("data-position");
   let reloads = 0;
   page.on("request",(request) => { if (request.url().endsWith("/campus.glb")) reloads++; });

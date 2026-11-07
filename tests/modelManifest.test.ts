@@ -7,6 +7,7 @@ import { toScenePosition } from "../src/scene/coordinates.ts";
 import type { Building, CampusPath } from "../src/api/types.ts";
 
 const manifest = parseManifest(JSON.parse(await readFile(new URL("../public/models/campus-manifest.json",import.meta.url),"utf8")));
+const floorModel = manifest.models.find((entry) => entry.id === "ucc-first-floor")!;
 const place = (id: number,name: string,x: number): Building => ({ id,name,x,y:0,floor:1,faculty:null,building_type:null });
 const places = [place(1,"A",0),place(2,"B",1),place(3,"C",2)];
 const edge: CampusPath = { id:1,source_id:1,target_id:2,source_name:"A",target_name:"B",weight:1,kind:"corridor",bidirectional:true };
@@ -31,15 +32,25 @@ test("data bindings ignore row IDs/order and isolated extras, but reject changed
 });
 
 test("manifest rejects unsafe paths, missing review hashes and duplicate model IDs", () => {
-  const unsafe = structuredClone(manifest); unsafe.models[0].reference = "models/../secret.json";
+  const unsafe = structuredClone(manifest); unsafe.models.find((entry) => entry.id === floorModel.id)!.reference = "models/../secret.json";
   assert.throws(() => parseManifest(unsafe),/references, hashes/);
-  const unhashed = structuredClone(manifest); delete unhashed.models[0].modelSha256;
+  const unhashed = structuredClone(manifest); delete unhashed.models.find((entry) => entry.id === floorModel.id)!.modelSha256;
   assert.throws(() => parseManifest(unhashed),/references, hashes/);
-  assert.throws(() => parseManifest({ ...manifest,models:[...manifest.models,manifest.models[0]] }),/duplicate model/);
-  const ready = manifest.models[0];
+  assert.throws(() => parseManifest({ ...manifest,models:[...manifest.models,floorModel] }),/duplicate model/);
+  const ready = floorModel;
   const expanded = { ...manifest,models:[ready,{ ...ready,id:"second",floors:[2] },{ ...ready,id:"third",floors:[3] }] };
   assert.deepEqual(requiredModels(expanded,2,1,[]).map((m) => m.id),[ready.id,"second"]);
   assert.equal(requiredModels(expanded,2,1,[3]).length,3);
+});
+
+test("exterior resources are required only by overview and cannot declare navigation bindings", () => {
+  const exterior = manifest.models.find((entry) => entry.kind === "exterior")!;
+  assert.ok(exterior);
+  assert.equal(requiredModels(manifest,1,1,[]).some((entry) => entry.id === exterior.id),false);
+  assert.equal(requiredModels(manifest,1,1,[],true).some((entry) => entry.id === exterior.id),true);
+  assert.throws(() => parseManifest({ ...manifest,models:[{ ...exterior,floors:[1] }] }),/non-navigable/);
+  assert.throws(() => parseManifest({ ...manifest,models:[{ ...exterior,binding:floorModel.binding }] }),/non-navigable/);
+  assert.throws(() => parseManifest({ ...manifest,models:[{ ...exterior,transform:{ ...exterior.transform,scale:0 } }] }),/non-navigable/);
 });
 
 test("model store reuses resources needed by the avatar and route and releases unused floors", async () => {

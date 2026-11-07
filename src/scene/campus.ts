@@ -4,7 +4,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import type { Building, CampusPath } from "../api/types.ts";
 import { FLOOR_HEIGHT, toScenePosition, WALK_SPEED } from "./coordinates.ts";
 import { canWalk, routingStart, walkSegments, type WalkSegment } from "./navigation.ts";
-import { parseReference, referenceMatrix, validateAlignment, validateModelNodes, type CampusReference } from "./modelReference.ts";
+import { parseReference, referenceMatrix, transformMatrix, validateAlignment, validateModelNodes, type CampusReference } from "./modelReference.ts";
 import { modelColliders, modelCollision, type ModelCollider } from "./modelCollision.ts";
 import { prepareModelPresentation, setModelTopView } from "./modelPresentation.ts";
 import { disposeGroup } from "./dispose.ts";
@@ -13,7 +13,7 @@ import { ModelStore } from "./modelStore.ts";
 import type { CampusCatalog } from "./catalog.ts";
 
 interface LoadedCampusModel {
-  entry: ModelEntry; reference: CampusReference; root: THREE.Group;
+  entry: ModelEntry; reference?: CampusReference; root: THREE.Group;
   pins: THREE.Group; colliders: ModelCollider[]; references: number;
 }
 
@@ -31,6 +31,8 @@ interface SceneEvents {
   select: (place: Building) => void;
   floor: (floor: number) => void;
   model: (message: string, loaded: boolean, detail?: string) => void;
+  view: (overview: boolean, top: boolean) => void;
+  resources: (state: { overview: boolean; loaded: string[]; visible: string[]; colliders: number }) => void;
 }
 export class CampusScene {
   private readonly renderer: THREE.WebGLRenderer;
@@ -64,6 +66,9 @@ export class CampusScene {
   private avatarFloor = 0;
   private frustum = 35;
   private topView = false;
+  private overview = false;
+  private overviewError: string | null = null;
+  private destinationFloor: number | undefined;
   private labelsVisible = true;
   private colliders: ModelCollider[] = [];
   private lastEmission = 0;
@@ -221,13 +226,16 @@ export class CampusScene {
   }
 
   setFloor(floor: number, fit = true): void {
+    this.overviewError = null;
+    if (this.overview) this.keys.clear();
+    this.overview = false;
     this.viewFloor = floor;
     this.renderer.shadowMap.needsUpdate = true;
     const ground = this.scene.getObjectByName("presentation-ground");
     if (ground) ground.position.y = floor * FLOOR_HEIGHT - 0.5;
     this.applyModels(fit);
-    this.avatar.visible = this.places.length > 0 && this.avatarFloor === floor;
     this.events.floor(floor);
+    this.events.view(false,this.topView);
     if (this.manifest) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
   }
   setOrigin(place: Building): void {
@@ -240,11 +248,16 @@ export class CampusScene {
   }
   getRoutingStart(): ReturnType<typeof routingStart> { return routingStart(this.avatar.position, this.places, this.segments, this.avatarFloor); }
   setDestination(place: Building | undefined): void {
+    this.destinationFloor = place?.floor;
     this.labels.forEach((label, id) => label.classList.toggle("selected", id === place?.id));
-    this.destinationRing.visible = !!place;
+    this.destinationRing.visible = !!place && !this.overview && place.floor === this.viewFloor;
     if (place) this.destinationRing.position.copy(toScenePosition(place)).y += 0.12;
   }
   async showRoute(points: THREE.Vector3[]): Promise<void> {
+    this.overviewError = null;
+    this.overview = false;
+    this.events.view(false,this.topView);
+    this.applyModels(false);
     this.clearRoute();
     const generation = this.routeGeneration;
     this.waypoints = points.filter((point, index) => index === 0 || point.distanceTo(points[index - 1]) > 0.001).map((point) => point.clone());
@@ -279,24 +292,49 @@ export class CampusScene {
   toggleLabels(): boolean { this.labelsVisible = !this.labelsVisible; return this.labelsVisible; }
   toggleReferences(): boolean { this.referenceGroup.visible = !this.referenceGroup.visible; return this.referenceGroup.visible; }
   setTopView(top: boolean): void {
+    this.overviewError = null;
+    this.overview = false;
     this.topView = top;
+    this.applyModels(false);
     setModelTopView(this.modelGroup, top);
     this.renderer.shadowMap.needsUpdate = true;
     this.resetView();
+    this.events.view(false,top);
+    if (this.manifest) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
+  }
+  hasOverview(): boolean {
+    return !!this.getCatalog() && !!this.manifest?.models.some((entry) => entry.kind === "exterior" && entry.state === "ready") &&
+      !!this.models?.values().some((model) => model.entry.kind !== "exterior");
+  }
+  async setOverview(enabled: boolean): Promise<void> {
+    if (enabled && (!this.hasOverview() || ["ready","walking","paused"].includes(this.state))) return;
+    this.overviewError = null;
+    this.overview = enabled; this.topView = false; this.keys.clear();
+    this.applyModels(true); this.events.view(enabled,false);
+    try {
+      await this.syncModels(true);
+      if (this.overview && !this.models?.values().some((model) => model.entry.kind === "exterior")) throw new Error("Campus exterior is unavailable.");
+    } catch (error) {
+      this.overviewError = error instanceof Error ? error.message : String(error);
+      this.overview = false; this.applyModels(true); this.events.view(false,false);
+      await this.syncModels();
+      this.events.model("Exterior unavailable · floor view",true,String(error));
+    }
   }
   zoom(amount: number): void { this.camera.zoom = THREE.MathUtils.clamp(this.camera.zoom * amount, 0.45, 4); this.camera.updateProjectionMatrix(); }
 
   resetView(): void {
-    const points = this.places.filter((place) => place.floor === this.viewFloor).map(toScenePosition);
+    const points = this.places.filter((place) => this.overview || place.floor === this.viewFloor).map(toScenePosition);
     const bounds = points.length ? new THREE.Box3().setFromPoints(points).expandByScalar(5) : new THREE.Box3(new THREE.Vector3(-20, 0, -15), new THREE.Vector3(20, 0, 15));
-    for (const model of this.models?.values() ?? []) if (model.entry.floors.includes(this.viewFloor)) bounds.union(new THREE.Box3().setFromObject(model.root));
+    for (const model of this.models?.values() ?? []) if (model.root.visible) bounds.union(new THREE.Box3().setFromObject(model.root));
     const center = bounds.getCenter(new THREE.Vector3());
     const size = bounds.getSize(new THREE.Vector3());
     const aspect = this.container.clientWidth / Math.max(this.container.clientHeight, 1);
     this.frustum = Math.max(18, size.z * 0.75, (size.x + size.z * (this.topView ? 0 : 0.35)) / aspect * 0.64);
+    if (this.overview) this.frustum = Math.max(this.frustum,size.y*0.8+size.z*0.55);
     this.camera.zoom = 1;
     this.controls.target.copy(center);
-    this.camera.position.copy(center).add(this.topView ? new THREE.Vector3(0, 85, 0.001) : new THREE.Vector3(24, 55, 42));
+    this.camera.position.copy(center).add(this.topView ? new THREE.Vector3(0, 85, 0.001) : this.overview ? new THREE.Vector3(45, 50, 70) : new THREE.Vector3(24, 55, 42));
     this.controls.update();
     this.resize();
   }
@@ -324,6 +362,18 @@ export class CampusScene {
     return this.manifest?.models.some((entry) => entry.binding?.placeNames.every((name) => this.places.some((place) => place.name === name))) ? this.manifest.catalog : null;
   }
   private async loadModelEntry(entry: ModelEntry): Promise<LoadedCampusModel> {
+    if (entry.kind === "exterior") {
+      const modelURL = new URL(entry.model!,new URL(import.meta.env.BASE_URL,location.href));
+      const resource = await fetch(modelURL,{ cache:"no-cache" });
+      if (!resource.ok) throw new Error("Could not load the campus exterior.");
+      const bytes = await resource.arrayBuffer();
+      if (await sha256(new Uint8Array(bytes)) !== entry.modelSha256) throw new Error("Campus exterior export changed. Review the manifest.");
+      const gltf = await new GLTFLoader().parseAsync(bytes,new URL(".",modelURL).href);
+      const root = new THREE.Group(); root.applyMatrix4(transformMatrix(entry.transform!)); root.add(gltf.scene); root.updateMatrixWorld(true);
+      prepareModelPresentation(root);
+      // Exterior geometry has no navigation references and never becomes a collider.
+      return { entry,root,pins:new THREE.Group(),colliders:[],references:0 };
+    }
     if (!entry.binding || await dataFingerprint(entry.binding.placeNames,this.places,this.paths) !== entry.binding.sha256) throw new Error(`Model data revision differs: ${entry.label}. Reload compatible campus data.`);
     const referenceURL = new URL(entry.reference!,new URL(import.meta.env.BASE_URL,location.href));
     const response = await fetch(referenceURL,{ cache:"no-cache" });
@@ -361,7 +411,7 @@ export class CampusScene {
   private async syncModels(strict = false): Promise<void> {
     const store = this.models, manifest = this.manifest;
     if (!store || !manifest) return;
-    const required = requiredModels(manifest,this.viewFloor,this.avatarFloor,this.routeFloors());
+    const required = requiredModels(manifest,this.viewFloor,this.avatarFloor,this.routeFloors(),this.overview);
     const missing = required.some((entry) => !store.values().some((model) => model.entry.id === entry.id));
     if (missing) this.events.model("Loading campus model…",false);
     const result = await store.sync(required.map((entry) => entry.id));
@@ -375,18 +425,28 @@ export class CampusScene {
   }
   private applyModels(fit: boolean): void {
     const loaded = this.models?.values() ?? [];
-    const active = loaded.filter((model) => model.entry.floors.includes(this.viewFloor));
+    const floor = this.overview ? this.manifest?.catalog.integrated_dataset.legacy_floor : this.viewFloor;
+    const floorModels = loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.floors.includes(floor!));
+    const exteriorModels = this.overview ? loaded.filter((model) => model.entry.kind === "exterior") : [];
+    const active = [...floorModels,...exteriorModels];
     for (const model of loaded) {
       if (model.root.parent !== this.modelGroup) this.modelGroup.add(model.root);
       if (model.pins.parent !== this.referenceGroup) this.referenceGroup.add(model.pins);
-      model.root.visible = model.pins.visible = active.includes(model);
+      model.root.visible = active.includes(model);
+      model.pins.visible = !this.overview && floorModels.includes(model);
       setModelTopView(model.root,this.topView);
     }
-    this.colliders = loaded.filter((model) => model.entry.floors.includes(this.avatarFloor)).flatMap((model) => model.colliders);
-    this.floorGroups.forEach((group,level) => { group.visible = level === this.viewFloor && !active.length; });
+    this.colliders = loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.floors.includes(this.avatarFloor)).flatMap((model) => model.colliders);
+    this.floorGroups.forEach((group,level) => { group.visible = !this.overview && level === this.viewFloor && !floorModels.length; });
     this.modelGroup.visible = !!active.length;
-    if (active.length) this.events.model(`${active.map((model) => model.entry.label).join(" + ")} · ${active.reduce((sum,model) => sum+model.references,0)} references aligned`,true);
+    this.routeGroup.visible = !this.overview;
+    this.avatar.visible = this.places.length > 0 && this.avatarFloor === this.viewFloor && !this.overview;
+    this.destinationRing.visible = this.destinationFloor === this.viewFloor && !this.overview;
+    if (this.overview && exteriorModels.length) this.events.model(`Campus overview · First floor: ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true,"Exterior follows the documented first-floor frame. Block identities and facade details retain their documented approximations.");
+    else if (floorModels.length && this.overviewError) this.events.model("Exterior unavailable · floor view",true,this.overviewError);
+    else if (floorModels.length) this.events.model(`${floorModels.map((model) => model.entry.label).join(" + ")} · ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true);
     else if (this.manifest) this.events.model("Floor model pending",false);
+    this.events.resources({ overview:this.overview,loaded:loaded.map((model) => model.entry.id),visible:active.map((model) => model.entry.id),colliders:this.colliders.length });
     if (fit) this.resetView();
   }
   exportView(): void {
@@ -452,7 +512,7 @@ export class CampusScene {
       const place = this.places.find((candidate) => candidate.id === id)!;
       projection.copy(toScenePosition(place)).y += 0.6;
       projection.project(this.camera);
-      const visible = this.labelsVisible && place.floor === this.viewFloor && Math.abs(projection.x) < 0.92 && Math.abs(projection.y) < 0.9 && projection.z < 1;
+      const visible = !this.overview && this.labelsVisible && place.floor === this.viewFloor && Math.abs(projection.x) < 0.92 && Math.abs(projection.y) < 0.9 && projection.z < 1;
       label.hidden = !visible;
       if (visible) { label.style.left = `${(projection.x * 0.5 + 0.5) * this.container.clientWidth}px`; label.style.top = `${(-projection.y * 0.5 + 0.5) * this.container.clientHeight}px`; }
     });

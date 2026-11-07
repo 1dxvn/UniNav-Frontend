@@ -104,6 +104,7 @@ summary { padding: 3px 0; }
 .view-switch { position: absolute; display: flex; top: 28px; right: 26px; padding: 4px; background: #f8faf5e6; border: 1px solid #d9e1d5; border-radius: 9px; z-index: 2; }
 .view-switch button { border: 0; background: none; font-size: 10px; padding: 9px 14px; border-radius: 6px; color: #85947c; }
 .view-switch button.active { background: #fff; color: #385d45; box-shadow: 0 1px 5px #2d4c3212; }
+.view-switch button:disabled { opacity: .45; cursor: not-allowed; }
 .place-label { position: absolute; background: #ffffffed; border: 1px solid #d9e2d4; border-radius: 6px; padding: 7px 10px; font-size: 9px; color: #53694c; transform: translate(-50%,-160%); box-shadow: 0 4px 14px #18391b0b; white-space: nowrap; z-index: 1; }
 .place-label::after { content: ''; width: 5px; height: 5px; background: #719868; position: absolute; left: calc(50% - 2px); bottom: -10px; border: 2px solid #e9eeeb; border-radius: 50%; }
 .place-label:hover, .place-label.selected { background: #245e49; color: white; border-color: #245e49; }

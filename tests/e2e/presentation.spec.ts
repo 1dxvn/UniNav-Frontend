@@ -12,6 +12,7 @@ test("campus presentation: comparable views and measured frame cadence", async (
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/app/");
   await expect(page.locator("#model-status")).toContainText("3 references aligned");
+  await page.locator("#isometric").click();
   await page.locator("#labels").click();
   await page.locator("#reset-view").click();
   await page.screenshot({ path: `${output}/${stage}-general.png`, fullPage: true });

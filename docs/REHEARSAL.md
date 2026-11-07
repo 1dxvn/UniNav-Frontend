@@ -9,8 +9,9 @@ The real floor uses its own `uninav-campus.db`; the original sample is unchanged
 
 ## One minute
 
-1. **0–10 sec:** Show the UCC first-floor cutaway. The green model badge confirms
-   three aligned references. Drag to orbit, scroll to zoom; reset fits the model.
+1. **0–10 sec:** Show the campus exterior in the initial **Campus** view. Drag to
+   orbit and scroll to zoom. Switch to **3D floor** to inspect the first-floor
+   cutaway; its green badge confirms three aligned references.
 2. **10–20 sec:** Select Hall Acceso as the start. Search ICETEX, select it, enable
    Avoid stairs, and find the route. Show its corners in top view.
 3. **20–40 sec:** Start walking. Pause once and resume. The avatar crosses the
@@ -29,6 +30,8 @@ continues along the current graph edge before following the API response.
 
 ## Verification evidence
 
+- `verification/c5/`: current exterior overview, resource fallback/recovery,
+  floor restoration, frame cadence, load timings, heap estimate and round trips.
 - `verification/c2/`: latest interior-model rehearsal, comparable general/top
   views before and after the runtime presentation changes, and GPU frame cadence.
   The earlier `verification/h0/` evidence below records C1 and is kept intact.
@@ -47,7 +50,8 @@ set `UNINAV_TEST_URL=http://127.0.0.1:8001`, choose a revision-specific
 `node --experimental-strip-types tools/verify-model.ts` rechecks the actual GLB
 against the running API. The offline graph-drafting tool is never imported by the app;
 runtime paths always come from FastAPI. For H0 reports, set
-`UNINAV_VERIFY_DIR=docs/verification/h0`. Node tools inspect geometry using empty
+`UNINAV_VERIFY_DIR=docs/verification/h0`. Set `UNINAV_MODEL_ROOT=dist/models`
+to check the reviewed deployed model. Node tools inspect geometry using empty
 texture placeholders; the browser loads and renders the original embedded images.
 The tools verify the exported/served hash before checking the geometry.
 Use the same directory in `UNINAV_VERIFY_DIR` for a later revision.
@@ -66,6 +70,11 @@ successful route before testing an expired session. No service already running
 on ports 8000 or 8001 is stopped or replaced.
 
 ## Keep these limits clear
+
+Campus view adds the documented exterior massing; the upper volumes do not add
+navigable floors or rooms. Their block assignments and facade approximations
+retain the source document's evidence status. Choose a destination or open a
+floor to walk; Campus view preserves the avatar's position.
 
 One real floor, four connected destinations. Preclinic's access is documented and
 connected; this is not yet a complete inventory of every room in B.

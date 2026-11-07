@@ -1,11 +1,14 @@
 import type { Building, CampusPath } from "../api/types.ts";
 import { parseCatalog, type CampusCatalog } from "./catalog.ts";
 import { toScenePosition } from "./coordinates.ts";
+import type { CampusReference } from "./modelReference.ts";
 
 export interface ModelEntry {
   id: string; label: string; floors: number[]; state: "ready" | "pending";
   revision: string; reference?: string; modelSha256?: string;
   sourceCommit?: string; referenceSha256?: string;
+  kind?: "floor" | "exterior"; navigable?: false;
+  model?: string; transform?: CampusReference["transform"]; sourceDocument?: string;
   binding?: { placeNames: string[]; sha256: string };
 }
 export interface CampusManifest { version: 1; catalog: CampusCatalog; models: ModelEntry[] }
@@ -19,9 +22,20 @@ export function parseManifest(value: unknown): CampusManifest {
   const ids = new Set<string>();
   for (const entry of manifest.models) {
     if (!entry || typeof entry.id !== "string" || !/^[a-zA-Z0-9_-]+$/.test(entry.id) || ids.has(entry.id) || !entry.label?.trim() || !entry.revision?.trim() ||
-      !["ready","pending"].includes(entry.state) || !Array.isArray(entry.floors) || !entry.floors.length ||
+      !["ready","pending"].includes(entry.state) || ![undefined,"floor","exterior"].includes(entry.kind) ||
+      !Array.isArray(entry.floors) || (entry.kind !== "exterior" && !entry.floors.length) ||
       entry.floors.some((f) => !Number.isInteger(f) || f < 0 || f > 7) || new Set(entry.floors).size !== entry.floors.length) throw new Error("Invalid or duplicate model entry.");
     ids.add(entry.id);
+    if (entry.kind === "exterior") {
+      const t = entry.transform;
+      if (entry.floors.length || entry.navigable !== false || entry.binding ||
+        (entry.state === "ready" && (!/^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.glb$/.test(entry.model ?? "") ||
+        !/^[a-f0-9]{7,40}$/.test(entry.sourceCommit ?? "") || !hashPattern.test(entry.modelSha256 ?? "") ||
+        !t || !Number.isFinite(t.scale) || t.scale <= 0 || !Number.isFinite(t.rotationYDegrees) ||
+        !Array.isArray(t.translation) || t.translation.length !== 3 || t.translation.some((v) => !Number.isFinite(v)) ||
+        typeof entry.sourceDocument !== "string" || !entry.sourceDocument.trim()))) throw new Error("Exterior entries need a reviewed transform and must remain non-navigable.");
+      continue;
+    }
     if (entry.state === "ready" && (!entry.reference || !/^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.json$/.test(entry.reference) ||
       !/^[a-f0-9]{7,40}$/.test(entry.sourceCommit ?? "") || !hashPattern.test(entry.referenceSha256 ?? "") ||
       !hashPattern.test(entry.modelSha256 ?? "") || !entry.binding || !hashPattern.test(entry.binding.sha256) ||
@@ -56,7 +70,8 @@ export async function dataFingerprint(placeNames: string[], places: Building[], 
   return sha256(new TextEncoder().encode(JSON.stringify({ points,connections })));
 }
 
-export function requiredModels(manifest: CampusManifest, viewFloor: number, avatarFloor: number, routeFloors: number[]): ModelEntry[] {
+export function requiredModels(manifest: CampusManifest, viewFloor: number, avatarFloor: number, routeFloors: number[], overview = false): ModelEntry[] {
   const required = new Set([viewFloor,avatarFloor,...routeFloors]);
-  return manifest.models.filter((entry) => entry.state === "ready" && entry.floors.some((floor) => required.has(floor)));
+  if (overview) required.add(manifest.catalog.integrated_dataset.legacy_floor);
+  return manifest.models.filter((entry) => entry.state === "ready" && (entry.kind === "exterior" ? overview : entry.floors.some((floor) => required.has(floor))));
 }

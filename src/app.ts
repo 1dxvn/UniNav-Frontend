@@ -34,6 +34,7 @@ let currentRoute: RouteResponse | null = null;
 let travelState: TravelState = "idle";
 let revision = 0, loading = false, signedIn = false, registerMode = false, pendingNavigation = false;
 let scene: CampusScene | null = null;
+let overviewVisible = false;
 
 function showError(target: HTMLElement, error: unknown): void {
   target.textContent = error instanceof Error ? error.message : String(error);
@@ -110,13 +111,14 @@ function updateTravel(update: TravelUpdate): void {
   };
   if (changed || ui.travelStatus.textContent !== title[update.state]) ui.travelStatus.textContent = title[update.state];
   ui.travelStatus.dataset.state = update.state;
-  ui.travelDetail.textContent = update.state === "idle" ? "W A S D to walk · Drag to orbit · Scroll to zoom" :
+  ui.travelDetail.textContent = update.state === "idle" ? (overviewVisible ? "Choose a destination or open a floor to start walking." : "W A S D to walk · Drag to orbit · Scroll to zoom") :
     update.state === "blocked" ? "Model geometry obstructs this route. Check the corridor alignment." :
     update.state === "arrived" ? `${floorName(update.floor)} · Choose another place to keep exploring.` :
     `${update.remaining.toFixed(1)} m remaining · ${floorName(update.floor)} · Esc to cancel`;
   ui.progress.value = update.progress;
   ui.follow.textContent = update.state === "walking" ? "Pause walking Ⅱ" : update.state === "paused" ? "Resume walking →" : update.state === "arrived" ? "Destination reached ✓" : "Start walking →";
   ui.follow.disabled = ["idle", "arrived", "blocked"].includes(update.state);
+  element<HTMLButtonElement>("campus-overview").disabled = ["ready","walking","paused"].includes(update.state);
   if (update.state === "idle" && currentRoute) { currentRoute = null; ui.card.hidden = true; revision++; }
   if (update.state === "blocked" && changed) showError(ui.routeError, "The model blocks the calculated corridor. Cancel and check the reference points or graph.");
   const activeStep = Math.max(0, update.waypoint - 2);
@@ -130,6 +132,13 @@ try {
     travel: updateTravel, select: selectDestination,
     floor: (floor) => { ui.floor.value = String(floor); element("floor-title").textContent = floorName(floor); },
     model: (message, loaded, detail) => { ui.modelStatus.textContent = message; ui.modelStatus.title = detail ?? ""; ui.modelStatus.classList.toggle("verified", loaded); element("references").hidden = !loaded; },
+    view: syncViewControls,
+    resources: (state) => {
+      ui.modelStatus.dataset.view = state.overview ? "campus" : "floor";
+      ui.modelStatus.dataset.loadedModels = JSON.stringify(state.loaded);
+      ui.modelStatus.dataset.visibleModels = JSON.stringify(state.visible);
+      ui.modelStatus.dataset.colliders = String(state.colliders);
+    },
   });
 } catch (error) {
   ui.loading.querySelector("h3")!.textContent = "3D rendering is unavailable";
@@ -177,6 +186,9 @@ async function loadCampus(): Promise<void> {
       ui.floor.replaceChildren(...levels.map((level) => new Option(`${String(level).padStart(2,"0")}${places.some((place) => place.floor === level) ? "" : " · model pending"}`,String(level))));
       ui.floor.value = observed;
     }
+    const overview = element("campus-overview");
+    overview.hidden = !scene.hasOverview();
+    if (!overview.hidden) await scene.setOverview(true);
   } catch (error) {
     ui.status.textContent = "Campus connection unavailable";
     ui.loading.querySelector("h3")!.textContent = "Let's reconnect";
@@ -272,11 +284,16 @@ ui.loginForm.addEventListener("submit", async (event) => {
 });
 function viewMode(top: boolean): void {
   scene?.setTopView(top);
-  element("top-view").classList.toggle("active", top);
-  element("isometric").classList.toggle("active", !top);
-  element("top-view").setAttribute("aria-pressed", String(top));
-  element("isometric").setAttribute("aria-pressed", String(!top));
 }
+function syncViewControls(overview: boolean, top: boolean): void {
+  overviewVisible = overview;
+  for (const [id,active] of [["campus-overview",overview],["top-view",!overview&&top],["isometric",!overview&&!top]] as const) {
+    element(id).classList.toggle("active",active); element(id).setAttribute("aria-pressed",String(active));
+  }
+  element("floor-title").textContent = overview ? "Campus overview" : floorName(Number(ui.floor.value));
+  ui.floor.closest<HTMLElement>(".floor-control")!.hidden = overview;
+}
+element("campus-overview").addEventListener("click",() => { void scene?.setOverview(true); });
 element("top-view").addEventListener("click", () => viewMode(true));
 element("isometric").addEventListener("click", () => viewMode(false));
 element("zoom-in").addEventListener("click", () => scene?.zoom(1.2));

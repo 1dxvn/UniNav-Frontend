@@ -74,6 +74,19 @@ the measured results and their limits.
 
 ## Limits to keep visible
 
+The C5 exterior is now integrated as the initial Campus overview. Source commit
+`31c5d68` and its hash are fixed in the manifest, independently of C2. It uses
+the documented first-floor frame at translation `(0, 3.5, 0)`. Campus view shows
+the base model and exterior; selecting a destination or floor, or planning a
+route, restores the cutaway and releases the exterior. Collision meshes remain
+the 137 C2 navigation meshes. The exterior contributes none.
+
+Evidence is in `verification/c5/`, including the restored floor, fallback/retry,
+resource loading and render measurements. The model has 48 exterior meshes and
+31,106 triangles, with a minimum local height of 2.43 m. Its upper floors, court
+posts, facade proportions and derived block identities retain Claude's documented
+approximations. The overview does not establish navigation through those volumes.
+
 Heights and plaza levels remain the model's documented approximations. Three
 reference pins establish registration; the movement checks separately establish
 body clearance on the routes. No furniture or model geometry was changed here.

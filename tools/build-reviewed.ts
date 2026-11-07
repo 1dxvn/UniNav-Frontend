@@ -12,6 +12,10 @@ const manifest = parseManifest(JSON.parse(manifestBytes.toString("utf8")));
 // Resolve and verify all assets before Vite replaces the last working dist.
 const assets = new Map<string,Uint8Array>([["models/campus-manifest.json",manifestBytes]]);
 for (const entry of manifest.models.filter((entry) => entry.state === "ready")) {
+  if (entry.kind === "exterior") {
+    assets.set(entry.model!,await reviewedAsset(entry,entry.model!,entry.modelSha256!));
+    continue;
+  }
   const referenceBytes = await reviewedAsset(entry,entry.reference!,entry.referenceSha256!);
   const reference = parseReference(JSON.parse(referenceBytes.toString("utf8")));
   const path = posix.join(posix.dirname(entry.reference!),reference.model);
