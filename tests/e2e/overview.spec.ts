@@ -82,7 +82,7 @@ test("a changed exterior export is rejected while the verified floor stays usabl
   await page.goto("/app/");
   await expect(page.locator("#model-status")).toHaveText("Exterior unavailable · floor view");
   await expect(page.locator("#model-status")).toHaveAttribute("title",/exterior export changed/);
-  await expect(page.locator("#model-status")).toHaveAttribute("data-colliders","137");
+  await expect(page.locator("#model-status")).toHaveAttribute("data-colliders","141");
   await expect(page.locator("#isometric")).toHaveAttribute("aria-pressed","true");
 });
 

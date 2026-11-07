@@ -16,7 +16,7 @@ Survey datums are applied only with matching geometry and verified connections.
 
 Each independent floor model has a stable ID, label, floor, revision, reference
 path, source Git commit, reference SHA-256, GLB SHA-256 and data binding. The current
-entry is `ucc-first-floor`, reviewed export `efd05d1`. It deliberately keeps the
+entry is `ucc-first-floor`, reviewed export C11 `9ac3795`. It deliberately keeps the
 combined first-floor area together while physical block assignments are pending.
 Several independent model entries may share a software floor number.
 
@@ -97,7 +97,7 @@ rehearsal.
 Floors 0, 2, 3, 4 and 5 are available for inspection. Their entries use
 `kind: floor-preview`, `navigable: false`, exactly one floor, reviewed hashes and
 a source document. They cannot declare a graph binding or satisfy an avatar/route
-model requirement. Only the observed preview is loaded, alongside C2 for the
+model requirement. Only the observed preview is loaded, alongside the reviewed first floor for the
 avatar; leaving it disposes its resources. Previews add zero collision meshes.
 The unrelated sample API never loads these UCC resources.
 

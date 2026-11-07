@@ -3,7 +3,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import type { Building, RouteResponse } from "../../src/api/types.ts";
 import { test } from "./isolated-campus.ts";
 
-test("versioned API: stable waypoint IDs guide a real C2 walk", async ({ page, request }) => {
+test("versioned API: stable waypoint IDs guide a reviewed first-floor walk", async ({ page, request }) => {
   const evidence = process.env.UNINAV_EVIDENCE_DIR ?? "docs/verification/h1-routing";
   await mkdir(evidence, { recursive: true });
   const errors: string[] = [];

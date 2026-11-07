@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-11-07T09:21:59.748Z",
+  "modelSha256": "41e225fec86f15303276342555be4924d24e1cef79826cfd696f433ca9cee645",
+  "meshes": 141,
+  "rayHeights": [
+    0.45,
+    1.2,
+    1.8
+  ],
+  "routeSamples": 128,
+  "timedCallsPerImplementation": 640,
+  "mismatches": 0,
+  "originalMeanMsPerCall": 2.85506515625,
+  "optimizedMeanMsPerCall": 3.3976295312500007,
+  "speedup": 0.8403109079404577
+}

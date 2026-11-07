@@ -146,11 +146,11 @@
         1
       ],
       "state": "ready",
-      "revision": "C2-efd05d1",
-      "sourceCommit": "efd05d1",
+      "revision": "C11-9ac3795",
+      "sourceCommit": "9ac3795",
       "reference": "models/campus-reference.json",
       "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-      "modelSha256": "d65846a8b614062d63e60a339da6e9c9ce29e8ffae2d01a90fbd16611e6a356e",
+      "modelSha256": "41e225fec86f15303276342555be4924d24e1cef79826cfd696f433ca9cee645",
       "binding": {
         "placeNames": [
           "Access courtyard",

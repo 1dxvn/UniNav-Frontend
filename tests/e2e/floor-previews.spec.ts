@@ -41,7 +41,7 @@ test("five structural previews preserve the actor and release GPU buffers on eac
       await expect(page.locator("#travel-detail")).toContainText("routes on this floor are pending");
       await expect(page.locator("#model-status")).toHaveAttribute("data-visible-models",JSON.stringify([id]));
       await expect(page.locator("#model-status")).toHaveAttribute("data-loaded-models",JSON.stringify(["ucc-first-floor",id]));
-      await expect(page.locator("#model-status")).toHaveAttribute("data-colliders","137");
+      await expect(page.locator("#model-status")).toHaveAttribute("data-colliders","141");
       expect(await page.locator("#travel-status").getAttribute("data-position")).toBe(position);
       expect(await page.locator("#origin option").count()).toBe(originOptions);
       // Hidden actor stays on its real floor, even if movement keys are pressed.
@@ -112,7 +112,7 @@ test("a changed preview is rejected and returning to the first floor recovers", 
   await page.locator("#floor").selectOption("2");
   await expect(page.locator("#model-status")).toHaveText("Floor preview unavailable · choose another floor");
   await expect(page.locator("#model-status")).toHaveAttribute("title",/Model export changed/);
-  await expect(page.locator("#model-status")).toHaveAttribute("data-colliders","137");
+  await expect(page.locator("#model-status")).toHaveAttribute("data-colliders","141");
   await page.locator("#floor").selectOption("1");
   await expect(page.locator("#model-status")).toContainText("3 references aligned");
   await page.unroute("**/models/floor-2/campus.glb");

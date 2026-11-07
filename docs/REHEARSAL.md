@@ -74,11 +74,12 @@ on ports 8000 or 8001 is stopped or replaced.
 Campus view adds the documented exterior massing; the upper volumes do not add
 navigable floors or rooms. Their block assignments and facade approximations
 retain the source document's evidence status. Choose a destination or open a
-floor to walk; Campus view preserves the avatar's position.
+floor to inspect; Campus view preserves the avatar's position. Floors 0/2/3/4/5
+are previews only. Movement remains on the reviewed first floor.
 
 One real floor, four connected destinations. Preclinic's access is documented and
 connected; this is not yet a complete inventory of every room in B.
 Vertical dimensions and plaza levels are approximate, as recorded by Claude.
 The plan's +Y axis is not geographic north. Avoid stairs filters the graph; it
-does not certify physical accessibility. The assistant/chat and other floors are
-outside this overnight delivery. All model geometry remains Claude's work.
+does not certify physical accessibility. Further navigable floors and application
+functions remain pending in the three plans. All model geometry remains Claude's work.

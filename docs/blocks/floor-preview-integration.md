@@ -38,9 +38,9 @@ explicit approximation. Stair meshes in a preview do not establish a route.
   furniture/door clearance using that graph: C8/C9 furniture was exported before
   route data existed. The presence of a label is insufficient to infer its access.
 
-Previews remain explicitly non-navigable and add zero collision meshes. C2 keeps
-its reviewed model, data binding and four destinations. Observing a preview must
-preserve the avatar, active route and C2 collision resources. Only the selected
+Previews remain explicitly non-navigable and add zero collision meshes. C11 keeps
+the original first-floor data binding and four destinations. Observing a preview must
+preserve the avatar, active route and first-floor collision resources. Only the selected
 preview is cached; leaving it releases its GPU resources.
 
 Source hashes, extracted anchors, geometry counts and slab probes are recorded

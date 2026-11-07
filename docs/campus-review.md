@@ -75,11 +75,11 @@ the measured results and their limits.
 ## Limits to keep visible
 
 The C5 exterior is now integrated as the initial Campus overview. Source commit
-`31c5d68` and its hash are fixed in the manifest, independently of C2. It uses
+`31c5d68` and its hash are fixed in the manifest, independently of the floor review. It uses
 the documented first-floor frame at translation `(0, 3.5, 0)`. Campus view shows
 the base model and exterior; selecting a destination or floor, or planning a
 route, restores the cutaway and releases the exterior. Collision meshes remain
-the 137 C2 navigation meshes. The exterior contributes none.
+the 141 C11 navigation meshes. The exterior contributes none.
 
 Evidence is in `verification/c5/`, including the restored floor, fallback/retry,
 resource loading and render measurements. The model has 48 exterior meshes and
