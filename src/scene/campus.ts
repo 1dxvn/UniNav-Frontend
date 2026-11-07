@@ -17,7 +17,7 @@ import { routeUsesStairs } from "./routeConstraints.ts";
 
 interface LoadedCampusModel {
   entry: ModelEntry; reference?: CampusReference; root: THREE.Group;
-  pins: THREE.Group; colliders: ModelCollider[]; supports: ModelCollider[]; references: number;
+  pins: THREE.Group; colliders: ModelCollider[]; supports: ModelCollider[]; outdoorSupports:ModelCollider[]; references: number;
 }
 
 export type TravelState = "idle" | "ready" | "walking" | "paused" | "arrived" | "blocked";
@@ -80,6 +80,7 @@ export class CampusScene {
   private labelsVisible = true;
   private colliders: ModelCollider[] = [];
   private supports: ModelCollider[] = [];
+  private outdoorSupports:ModelCollider[]=[];
   private lastEmission = 0;
   private walkTime = 0;
 
@@ -370,6 +371,7 @@ export class CampusScene {
     disposeGroup(this.referenceGroup);
     this.colliders = [];
     this.supports = [];
+    this.outdoorSupports=[];
     this.setFloor(this.viewFloor, false);
     this.events.model("Loading campus model…", false);
     const response = await fetch(`${import.meta.env.BASE_URL}models/campus-manifest.json`, { cache:"no-cache" });
@@ -405,7 +407,7 @@ export class CampusScene {
       const root = new THREE.Group(); root.applyMatrix4(transformMatrix(entry.transform!)); root.add(gltf.scene); root.updateMatrixWorld(true);
       prepareModelPresentation(root);
       // Exterior geometry has no navigation references and never becomes a collider.
-      return { entry,root,pins:new THREE.Group(),colliders:[],supports:[],references:0 };
+      return { entry,root,pins:new THREE.Group(),colliders:[],supports:[],outdoorSupports:[],references:0 };
     }
     const preview = entry.kind === "floor-preview";
     if (!preview && (!entry.binding || await dataFingerprint(entry.binding.placeNames,this.places,this.paths) !== entry.binding.sha256)) throw new Error(`Model data revision differs: ${entry.label}. Reload compatible campus data.`);
@@ -418,7 +420,7 @@ export class CampusScene {
     if (preview !== (reference.alignment === "structural")) throw new Error("Structural references are reserved for non-navigable floor previews.");
     if (entry.floors.length !== 1 || entry.floors[0] !== reference.floor) throw new Error("Model floor and reference floor differ.");
     const aligned = validateAlignment(reference, this.places);
-    const modelURL = new URL(reference.model,referenceURL);
+    const modelURL = entry.model ? new URL(entry.model,new URL(import.meta.env.BASE_URL,location.href)):new URL(reference.model,referenceURL);
     const resource = await fetch(modelURL,{ cache:"no-cache" });
     if (!resource.ok) throw new Error(`Could not load ${entry.label}.`);
     const bytes = await resource.arrayBuffer();
@@ -438,10 +440,10 @@ export class CampusScene {
       pin.position.copy(point.position).y += 0.8;
       pins.add(pin);
     }
-    let supports:ModelCollider[]=[];
-    try { supports=preview ? [] : supportColliders(root,entry.supportNodes ?? []); }
+    let supports:ModelCollider[]=[],outdoorSupports:ModelCollider[]=[];
+    try { supports=preview ? [] : supportColliders(root,entry.supportNodes ?? []);outdoorSupports=preview ? []:supportColliders(root,entry.outdoorSupportNodes ?? []); }
     catch (error) { disposeGroup(root); disposeGroup(pins); throw error; }
-    return { entry,reference,root,pins,colliders:preview ? [] : modelColliders(root),supports,references:aligned.length };
+    return { entry,reference,root,pins,colliders:preview ? [] : modelColliders(root),supports,outdoorSupports,references:aligned.length };
   }
   private routeFloors(): number[] {
     return [...new Set(this.waypoints.map((point) => point.floor))];
@@ -482,13 +484,15 @@ export class CampusScene {
     }
     const preview = floorModels.some((model) => model.entry.kind === "floor-preview");
     const ground = this.scene.getObjectByName("presentation-ground");
-    if (ground) ground.position.y = (floorModels[0]?.reference?.transform.translation[1] ?? this.viewFloor * FLOOR_HEIGHT) - 0.5;
+    if (ground) ground.position.y = Math.min((floorModels[0]?.reference?.transform.translation[1] ?? this.viewFloor * FLOOR_HEIGHT) - 0.5,
+      ...floorModels.map(m=>new THREE.Box3().setFromObject(m.root).min.y-0.05));
     // Retain both sides of vertical transitions, including overhead geometry.
     // The swept bounds in modelCollision discard distant floors per movement.
     const collisionFloors=new Set(this.movementFloors());
     const walkingModels=loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.kind !== "floor-preview" && model.entry.floors.some((floor) => collisionFloors.has(floor)));
     this.colliders = walkingModels.flatMap((model) => model.colliders);
     this.supports = walkingModels.flatMap((model) => model.supports);
+    this.outdoorSupports=walkingModels.flatMap(m=>m.outdoorSupports);
     this.floorGroups.forEach((group,level) => { group.visible = !this.overview && level === this.viewFloor && !floorModels.length; });
     this.modelGroup.visible = !!active.length;
     this.routeGroup.visible = !this.overview && !preview;
@@ -535,7 +539,8 @@ export class CampusScene {
         const target=this.waypoints[this.index];
         const direction=target.position.clone().sub(this.avatar.position);
         const advanced=advanceWalk(this.avatar.position,this.avatarFloor,target,WALK_SPEED*delta/count);
-        const next=target.kind==="stairs" && this.getCatalog() ? supportedStep(this.avatar.position,advanced.position,this.supports) : advanced.position;
+        const stepSupport=target.kind==="stairs" || (target.kind==="outdoor" && this.outdoorSupports.length>0);
+        const next=stepSupport && this.getCatalog() ? supportedStep(this.avatar.position,advanced.position,target.kind==="outdoor" ? [...this.supports,...this.outdoorSupports]:this.supports) : advanced.position;
         if (!next || this.collides(this.avatar.position,next)) { this.state="blocked"; this.emit(); break; }
         this.avatar.position.copy(next); moved=true;
         if (direction.x*direction.x+direction.z*direction.z>0.001) this.face(direction,delta/count);
@@ -557,7 +562,8 @@ export class CampusScene {
       for (let i=0;modelsReady && i<count;i++) {
         const next=this.avatar.position.clone().addScaledVector(direction,WALK_SPEED*delta/count);
         const step=manualStep(this.avatar.position,next,this.segments,this.avatarFloor,
-          (from,expected) => this.getCatalog() ? supportedStep(from,expected,this.supports):expected,(from,to) => this.collides(from,to));
+          (from,expected,kind) => this.getCatalog() && (kind!=="outdoor" || this.outdoorSupports.length>0)
+            ? supportedStep(from,expected,kind==="outdoor" ? [...this.supports,...this.outdoorSupports]:this.supports):expected,(from,to) => this.collides(from,to));
         if (!step) break;
         this.avatar.position.copy(step.position); this.face(direction,delta/count); moved=true;
         if (step.floor!==this.avatarFloor) { this.avatarFloor=step.floor; this.setFloor(step.floor,false,true); }
@@ -617,6 +623,7 @@ export class CampusScene {
     disposeGroup(this.scene);
     this.colliders = [];
     this.supports = [];
+    this.outdoorSupports=[];
     this.renderer.dispose(); this.labels.forEach((label) => label.remove());
   }
 }

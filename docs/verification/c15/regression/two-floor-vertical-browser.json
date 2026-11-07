@@ -1,0 +1,408 @@
+{
+  "modelSourceCommit": "389cfd9",
+  "modelHash": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6",
+  "lowerModelHash": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+  "profile": "ucc-two-floors",
+  "paused": [
+    36.35,
+    4.34,
+    -57.975
+  ],
+  "finalPosition": [
+    47.122,
+    6.44,
+    -56.675
+  ],
+  "samples": [
+    {
+      "position": "36.350,3.500,-55.900",
+      "floor": "1",
+      "state": "ready"
+    },
+    {
+      "position": "36.350,3.500,-55.900",
+      "floor": "1",
+      "state": "ready"
+    },
+    {
+      "position": "36.350,3.500,-55.900",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.640,-56.232",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.780,-56.570",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.920,-56.912",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.060,-57.250",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.200,-57.588",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.340,-57.930",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.340,-57.975",
+      "floor": "1",
+      "state": "paused"
+    },
+    {
+      "position": "36.350,4.340,-57.975",
+      "floor": "1",
+      "state": "paused"
+    },
+    {
+      "position": "36.350,4.340,-57.975",
+      "floor": "1",
+      "state": "paused"
+    },
+    {
+      "position": "36.350,4.340,-57.975",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.558,4.340,-57.975",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.599,4.340,-57.975",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.599,4.340,-57.975",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.599,4.340,-57.975",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.599,4.340,-57.975",
+      "floor": "1",
+      "state": "ready"
+    },
+    {
+      "position": "36.599,4.340,-57.975",
+      "floor": "1",
+      "state": "ready"
+    },
+    {
+      "position": "36.599,4.340,-57.975",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.580,4.340,-57.965",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.340,-57.941",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.480,-58.276",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.760,-58.608",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.900,-58.940",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,5.040,-59.287",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.613,5.040,-59.493",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.940,5.040,-59.670",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "37.267,5.040,-59.847",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "37.588,5.040,-59.978",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "37.914,5.040,-59.794",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.237,5.040,-59.612",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.568,5.040,-59.424",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.180,-59.157",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.320,-58.841",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.460,-58.508",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.600,-58.184",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.740,-57.862",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.880,-57.531",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.020,-57.204",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.160,-56.858",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.300,-56.534",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.440,-56.196",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.440,-55.832",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.440,-55.453",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.440,-55.079",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.440,-54.708",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "39.040,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "39.420,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "39.784,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "40.153,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "40.514,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "40.894,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "41.270,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "41.635,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "41.999,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "42.371,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "42.745,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "43.120,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "43.500,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "43.864,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "44.244,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "44.622,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "44.995,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "45.365,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "45.734,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "46.111,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "46.483,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "46.852,6.440,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.440,-54.785",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.440,-55.151",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.440,-55.501",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.440,-55.865",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.440,-56.236",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.440,-56.595",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.440,-56.675",
+      "floor": "2",
+      "state": "arrived"
+    },
+    {
+      "position": "47.122,6.440,-56.675",
+      "floor": "2",
+      "state": "arrived"
+    },
+    {
+      "position": "47.122,6.440,-56.675",
+      "floor": "2",
+      "state": "arrived"
+    }
+  ]
+}

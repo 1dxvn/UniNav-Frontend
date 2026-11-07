@@ -44,3 +44,20 @@ test("profile schema validates nested models and distinct profile identifiers",a
   const invalid=structuredClone(manifest);invalid.profiles![0].models[0].reference="models/../private.json";
   assert.throws(()=>parseManifest(invalid),/references, hashes/);
 });
+test("profile-specific stair footprints replace the legacy crossings only after the data matches",async()=>{
+  const f=await fixture(),crossing={connectionCode:"stairs:new",originName:"A",destinationName:"B",source:"Reviewed new flight"};
+  f.manifest.stairCrossings=[{...crossing,connectionCode:"stairs:old"}];f.manifest.profiles![0].stairCrossings=[crossing];
+  assert.deepEqual((await selectModelProfile(f.manifest,f.expanded,f.edges)).manifest.stairCrossings,[crossing]);
+  assert.equal((await selectModelProfile(f.manifest,f.old,[f.edge])).manifest.stairCrossings![0].connectionCode,"stairs:old");
+  f.manifest.profiles![0].stairCrossings![0].originName="Unbound place";
+  assert.throws(()=>parseManifest(f.manifest),/endpoints must belong/);
+});
+test("candidate sources and exterior-only foot support require safe committed declarations",()=>{
+  const manifest=structuredClone(source),candidate=manifest.profiles!.find(p=>p.id==="ucc-two-floors-c15")!.models.find(m=>m.id==="ucc-first-floor")!;
+  assert.equal(candidate.outdoorSupportNodes![0],"Site");assert.ok(parseManifest(manifest));
+  for(const bad of [{commit:"HEAD",path:"model/candidates/c15/floor-1.glb"},{commit:"3177ca7",path:"model/candidates/../floor-1.glb"}]){
+    candidate.modelSource=bad;assert.throws(()=>parseManifest(manifest),/committed source/);
+  }
+  candidate.modelSource={commit:"3177ca7",path:"model/candidates/c15/floor-1.glb"};candidate.outdoorSupportNodes=candidate.supportNodes;
+  assert.throws(()=>parseManifest(manifest),/Outdoor support/);
+});

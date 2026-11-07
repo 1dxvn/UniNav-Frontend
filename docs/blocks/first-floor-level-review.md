@@ -48,4 +48,34 @@ no step-free link to the laboratory at +1.19. The south-east polygon is a roof.
 Codex will validate the committed candidate's reference nodes, slab/tread support,
 clearance, graph weights, both algorithms, round trips and manual/pause/replan
 behavior before changing the active resources or development database. The
-separate C14 doorway export still awaits its own integration review.
+separate C14 doorway export is already integrated in the preserved four profiles.
+
+## Codex review of C15, 7 November
+
+Committed `3177ca7` is reviewed as an independent two-floor profile. The hall
+before-point, three tread centres and after-point pass support/body/head checks
+in both directions. The original e09 row is retargeted after the stairs, removing
+the bypass without deleting its identity. A uses world 2.87 / 6.18 m and the
+structural references retain the B datum. All 126 directed graph checks and four
+east/west tower inspection probes pass; the west probes create no API route.
+Seven destinations completed fourteen temporary-API browser arrivals at 0 m
+final error. Evidence: `docs/verification/c15/`. Public data stays at 19/16.
+
+The Site top is world 3.35 m, 0.15 m below the B slab. The prepared courtyard
+node uses that **model-only** placement, documented separately from the derived
+physical access-zone datum. Site supports outdoor connections only and cannot
+cover interior holes or stair wells. No export was changed by Codex.
+
+Unresolved laboratory B / circulation / Lockers levels remain pending and flat
+in the prepared data. The known e10 stair classification remains conservative;
+no physical +1.19 split is activated against the flat laboratory model. The
+west block, sloped hall and floor-2 A/B junction remain pending as documented.
+
+Before upper vertical routes, the next model handoff needs source-backed zones,
+unchanged structural references and compatible adjacent exports. In particular,
+the current C15 floor-2 stair ends at the flat floor-3 world 9.38 m; its 3.20 m
+rise is an inspection approximation. The documented physical rise is 3.69 m to
+A at world 9.87 m. Please keep that distinction explicit when preparing a new
+floor-3 candidate; floors 0/3/4/5 stay non-navigable previews meanwhile. Confirm
+remaining levels from the drawing before moving them. No dimensions or joins
+should be inferred to resolve the contradictory B laboratory circulation.

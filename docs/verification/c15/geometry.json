@@ -1,0 +1,1902 @@
+{
+  "commit": "3177ca7",
+  "sources": [
+    {
+      "path": "model/candidates/c15/floor-1.glb",
+      "commit": "3177ca7",
+      "sha256": "75abed56ea985341f82f11585a26c981308db3aaf68f14c2e7303e239d6976cf",
+      "workingMatches": true
+    },
+    {
+      "path": "model/candidates/c15/floor-2.glb",
+      "commit": "3177ca7",
+      "sha256": "8e7ea9aafb940d145010bc9ed34152d2022e1446f7034ffb7f74eddd8dae1760",
+      "workingMatches": true
+    }
+  ],
+  "references": [
+    {
+      "path": "models/campus-reference.json",
+      "anchors": [
+        {
+          "name": "Hall Acceso",
+          "error": 0
+        },
+        {
+          "name": "ICETEX column reference",
+          "error": 0
+        },
+        {
+          "name": "Lockers column reference",
+          "error": 0
+        }
+      ]
+    },
+    {
+      "path": "models/floor-2/campus-navigation-reference.json",
+      "anchors": [
+        {
+          "name": "P2_REF_1_Column_South",
+          "error": 0
+        },
+        {
+          "name": "P2_REF_2_Column_NorthWest",
+          "error": 0
+        },
+        {
+          "name": "P2_REF_3_Column_NorthEast",
+          "error": 0
+        }
+      ]
+    }
+  ],
+  "pending": [
+    {
+      "code": "ucc:floor1:p11",
+      "name": "Laboratory corridor west",
+      "status": "pending",
+      "modelElevation": 3.5
+    },
+    {
+      "code": "ucc:floor1:p12",
+      "name": "Laboratory corridor east",
+      "status": "pending",
+      "modelElevation": 3.5
+    },
+    {
+      "code": "ucc:floor1:p13",
+      "name": "Morphology Laboratory",
+      "status": "pending",
+      "modelElevation": 3.5
+    },
+    {
+      "code": "ucc:floor1:p19",
+      "name": "Lockers column reference",
+      "status": "pending",
+      "modelElevation": 3.5
+    }
+  ],
+  "places": 68,
+  "paths": 63,
+  "checks": [
+    {
+      "code": "ucc:floor1:e01",
+      "from": "Hall Acceso",
+      "to": "Access courtyard",
+      "reverse": false,
+      "samples": 502,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        6,
+        3.3499999940395355,
+        -16.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e01",
+      "from": "Access courtyard",
+      "to": "Hall Acceso",
+      "reverse": true,
+      "samples": 502,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        0,
+        3.5,
+        0
+      ]
+    },
+    {
+      "code": "ucc:floor1:e02",
+      "from": "Access courtyard",
+      "to": "South circulation",
+      "reverse": false,
+      "samples": 658,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        21.5,
+        3.5,
+        -33.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e02",
+      "from": "South circulation",
+      "to": "Access courtyard",
+      "reverse": true,
+      "samples": 658,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        6,
+        3.3499999940395355,
+        -16.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e03",
+      "from": "South circulation",
+      "to": "ICETEX approach",
+      "reverse": false,
+      "samples": 46,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        23,
+        3.5,
+        -34
+      ]
+    },
+    {
+      "code": "ucc:floor1:e03",
+      "from": "ICETEX approach",
+      "to": "South circulation",
+      "reverse": true,
+      "samples": 46,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        21.5,
+        3.5,
+        -33.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e04",
+      "from": "ICETEX approach",
+      "to": "ICETEX doorway",
+      "reverse": false,
+      "samples": 59,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        23.5,
+        3.5,
+        -36
+      ]
+    },
+    {
+      "code": "ucc:floor1:e04",
+      "from": "ICETEX doorway",
+      "to": "ICETEX approach",
+      "reverse": true,
+      "samples": 59,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        23,
+        3.5,
+        -34
+      ]
+    },
+    {
+      "code": "ucc:floor1:e05",
+      "from": "ICETEX doorway",
+      "to": "ICETEX",
+      "reverse": false,
+      "samples": 168,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        24.55,
+        3.5,
+        -41.78
+      ]
+    },
+    {
+      "code": "ucc:floor1:e05",
+      "from": "ICETEX",
+      "to": "ICETEX doorway",
+      "reverse": true,
+      "samples": 168,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        23.5,
+        3.5,
+        -36
+      ]
+    },
+    {
+      "code": "ucc:floor1:e06",
+      "from": "ICETEX doorway",
+      "to": "Hall junction",
+      "reverse": false,
+      "samples": 21,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        24,
+        3.5,
+        -36.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e06",
+      "from": "Hall junction",
+      "to": "ICETEX doorway",
+      "reverse": true,
+      "samples": 21,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        23.5,
+        3.5,
+        -36
+      ]
+    },
+    {
+      "code": "ucc:floor1:e07",
+      "from": "Hall junction",
+      "to": "Hall corridor south",
+      "reverse": false,
+      "samples": 115,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.5,
+        -36.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e07",
+      "from": "Hall corridor south",
+      "to": "Hall junction",
+      "reverse": true,
+      "samples": 115,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        24,
+        3.5,
+        -36.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e08",
+      "from": "Hall corridor south",
+      "to": "Hall corridor north",
+      "reverse": false,
+      "samples": 318,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.5,
+        -47.6
+      ]
+    },
+    {
+      "code": "ucc:floor1:e08",
+      "from": "Hall corridor north",
+      "to": "Hall corridor south",
+      "reverse": true,
+      "samples": 318,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.5,
+        -36.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e09",
+      "from": "Hall steps / Block A arrival",
+      "to": "Elevator and Restroom Hall",
+      "reverse": false,
+      "samples": 96,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        25.77,
+        2.87,
+        -51.97
+      ]
+    },
+    {
+      "code": "ucc:floor1:e09",
+      "from": "Elevator and Restroom Hall",
+      "to": "Hall steps / Block A arrival",
+      "reverse": true,
+      "samples": 96,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        2.87,
+        -49.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e10",
+      "from": "South circulation",
+      "to": "Laboratory corridor west",
+      "reverse": false,
+      "samples": 572,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        41.5,
+        3.5,
+        -33.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e10",
+      "from": "Laboratory corridor west",
+      "to": "South circulation",
+      "reverse": true,
+      "samples": 572,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        21.5,
+        3.5,
+        -33.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e11",
+      "from": "Laboratory corridor west",
+      "to": "Laboratory corridor east",
+      "reverse": false,
+      "samples": 150,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.5,
+        3.5,
+        -32
+      ]
+    },
+    {
+      "code": "ucc:floor1:e11",
+      "from": "Laboratory corridor east",
+      "to": "Laboratory corridor west",
+      "reverse": true,
+      "samples": 150,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        41.5,
+        3.5,
+        -33.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:e12",
+      "from": "Laboratory corridor east",
+      "to": "Morphology Laboratory",
+      "reverse": false,
+      "samples": 158,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        42.96,
+        3.5,
+        -27.77
+      ]
+    },
+    {
+      "code": "ucc:floor1:e12",
+      "from": "Morphology Laboratory",
+      "to": "Laboratory corridor east",
+      "reverse": true,
+      "samples": 158,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.5,
+        3.5,
+        -32
+      ]
+    },
+    {
+      "code": "ucc:floor1:e13",
+      "from": "Elevator and Restroom Hall",
+      "to": "North circulation west",
+      "reverse": false,
+      "samples": 192,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        32,
+        2.87,
+        -54.4
+      ]
+    },
+    {
+      "code": "ucc:floor1:e13",
+      "from": "North circulation west",
+      "to": "Elevator and Restroom Hall",
+      "reverse": true,
+      "samples": 192,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        25.77,
+        2.87,
+        -51.97
+      ]
+    },
+    {
+      "code": "ucc:floor1:e14",
+      "from": "North circulation west",
+      "to": "North circulation east",
+      "reverse": false,
+      "samples": 751,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:floor1:e14",
+      "from": "North circulation east",
+      "to": "North circulation west",
+      "reverse": true,
+      "samples": 751,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        32,
+        2.87,
+        -54.4
+      ]
+    },
+    {
+      "code": "ucc:floor1:e15",
+      "from": "North circulation east",
+      "to": "Preclinic storeroom",
+      "reverse": false,
+      "samples": 87,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -51.68
+      ]
+    },
+    {
+      "code": "ucc:floor1:e15",
+      "from": "Preclinic storeroom",
+      "to": "North circulation east",
+      "reverse": true,
+      "samples": 87,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:floor1:e16",
+      "from": "Preclinic storeroom",
+      "to": "Preclinic / Dentistry Coordination",
+      "reverse": false,
+      "samples": 42,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        56.84,
+        2.87,
+        -51.96
+      ]
+    },
+    {
+      "code": "ucc:floor1:e16",
+      "from": "Preclinic / Dentistry Coordination",
+      "to": "Preclinic storeroom",
+      "reverse": true,
+      "samples": 42,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -51.68
+      ]
+    },
+    {
+      "code": "ucc:floor1:hall:e1",
+      "from": "Hall corridor north",
+      "to": "Hall steps tread 1",
+      "reverse": false,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.342500001192093,
+        -48.09
+      ]
+    },
+    {
+      "code": "ucc:floor1:hall:e1",
+      "from": "Hall steps tread 1",
+      "to": "Hall corridor north",
+      "reverse": true,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.5,
+        -47.6
+      ]
+    },
+    {
+      "code": "ucc:floor1:hall:e2",
+      "from": "Hall steps tread 1",
+      "to": "Hall steps tread 2",
+      "reverse": false,
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.185000002384186,
+        -48.55
+      ]
+    },
+    {
+      "code": "ucc:floor1:hall:e2",
+      "from": "Hall steps tread 2",
+      "to": "Hall steps tread 1",
+      "reverse": true,
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.342500001192093,
+        -48.09
+      ]
+    },
+    {
+      "code": "ucc:floor1:hall:e3",
+      "from": "Hall steps tread 2",
+      "to": "Hall steps tread 3",
+      "reverse": false,
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.0275000035762787,
+        -49.004999999999995
+      ]
+    },
+    {
+      "code": "ucc:floor1:hall:e3",
+      "from": "Hall steps tread 3",
+      "to": "Hall steps tread 2",
+      "reverse": true,
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.185000002384186,
+        -48.55
+      ]
+    },
+    {
+      "code": "ucc:floor1:hall:e4",
+      "from": "Hall steps tread 3",
+      "to": "Hall steps / Block A arrival",
+      "reverse": false,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        2.8700000047683716,
+        -49.5
+      ]
+    },
+    {
+      "code": "ucc:floor1:hall:e4",
+      "from": "Hall steps / Block A arrival",
+      "to": "Hall steps tread 3",
+      "reverse": true,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        28,
+        3.0275000035762787,
+        -49.004999999999995
+      ]
+    },
+    {
+      "code": "ucc:f2:e001",
+      "from": "North circulation west",
+      "to": "North circulation / east stair junction",
+      "reverse": false,
+      "samples": 125,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        2.87,
+        -54.4496953541508
+      ]
+    },
+    {
+      "code": "ucc:f2:e001",
+      "from": "North circulation / east stair junction",
+      "to": "North circulation west",
+      "reverse": true,
+      "samples": 125,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        32,
+        2.87,
+        -54.4
+      ]
+    },
+    {
+      "code": "ucc:f2:e002",
+      "from": "North circulation / east stair junction",
+      "to": "North circulation east",
+      "reverse": false,
+      "samples": 627,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        58.26,
+        2.87,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e002",
+      "from": "North circulation east",
+      "to": "North circulation / east stair junction",
+      "reverse": true,
+      "samples": 627,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        2.87,
+        -54.4496953541508
+      ]
+    },
+    {
+      "code": "ucc:f2:e003",
+      "from": "North circulation / east stair junction",
+      "to": "East stair point 0 (floors 1-2)",
+      "reverse": false,
+      "samples": 42,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        2.87,
+        -55.9
+      ]
+    },
+    {
+      "code": "ucc:f2:e003",
+      "from": "East stair point 0 (floors 1-2)",
+      "to": "North circulation / east stair junction",
+      "reverse": true,
+      "samples": 42,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        2.87,
+        -54.4496953541508
+      ]
+    },
+    {
+      "code": "ucc:f2:e004",
+      "from": "East stair point 0 (floors 1-2)",
+      "to": "East stair point 1 (floors 1-2)",
+      "reverse": false,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.027619034051895,
+        -56.35
+      ]
+    },
+    {
+      "code": "ucc:f2:e004",
+      "from": "East stair point 1 (floors 1-2)",
+      "to": "East stair point 0 (floors 1-2)",
+      "reverse": true,
+      "samples": 14,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        2.8700000047683716,
+        -55.9
+      ]
+    },
+    {
+      "code": "ucc:f2:e005",
+      "from": "East stair point 1 (floors 1-2)",
+      "to": "East stair point 2 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.185238093137741,
+        -56.65
+      ]
+    },
+    {
+      "code": "ucc:f2:e005",
+      "from": "East stair point 2 (floors 1-2)",
+      "to": "East stair point 1 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.027619034051895,
+        -56.35
+      ]
+    },
+    {
+      "code": "ucc:f2:e006",
+      "from": "East stair point 2 (floors 1-2)",
+      "to": "East stair point 3 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.342857152223587,
+        -56.95
+      ]
+    },
+    {
+      "code": "ucc:f2:e006",
+      "from": "East stair point 3 (floors 1-2)",
+      "to": "East stair point 2 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.185238093137741,
+        -56.65
+      ]
+    },
+    {
+      "code": "ucc:f2:e007",
+      "from": "East stair point 3 (floors 1-2)",
+      "to": "East stair point 4 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.5004761767340824,
+        -57.25
+      ]
+    },
+    {
+      "code": "ucc:f2:e007",
+      "from": "East stair point 4 (floors 1-2)",
+      "to": "East stair point 3 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.342857152223587,
+        -56.95
+      ]
+    },
+    {
+      "code": "ucc:f2:e008",
+      "from": "East stair point 4 (floors 1-2)",
+      "to": "East stair point 5 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.6580952405929565,
+        -57.550000000000004
+      ]
+    },
+    {
+      "code": "ucc:f2:e008",
+      "from": "East stair point 5 (floors 1-2)",
+      "to": "East stair point 4 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.5004761767340824,
+        -57.25
+      ]
+    },
+    {
+      "code": "ucc:f2:e009",
+      "from": "East stair point 5 (floors 1-2)",
+      "to": "East stair point 6 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.8157142996788025,
+        -57.85
+      ]
+    },
+    {
+      "code": "ucc:f2:e009",
+      "from": "East stair point 6 (floors 1-2)",
+      "to": "East stair point 5 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.6580952405929565,
+        -57.550000000000004
+      ]
+    },
+    {
+      "code": "ucc:f2:e010",
+      "from": "East stair point 6 (floors 1-2)",
+      "to": "East stair point 7 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.9733333587646484,
+        -58.15
+      ]
+    },
+    {
+      "code": "ucc:f2:e010",
+      "from": "East stair point 7 (floors 1-2)",
+      "to": "East stair point 6 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.8157142996788025,
+        -57.85
+      ]
+    },
+    {
+      "code": "ucc:f2:e011",
+      "from": "East stair point 7 (floors 1-2)",
+      "to": "East stair point 8 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        4.13095235824585,
+        -58.45
+      ]
+    },
+    {
+      "code": "ucc:f2:e011",
+      "from": "East stair point 8 (floors 1-2)",
+      "to": "East stair point 7 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        3.9733333587646484,
+        -58.15
+      ]
+    },
+    {
+      "code": "ucc:f2:e012",
+      "from": "East stair point 8 (floors 1-2)",
+      "to": "East stair point 9 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        4.28857147693634,
+        -58.75
+      ]
+    },
+    {
+      "code": "ucc:f2:e012",
+      "from": "East stair point 9 (floors 1-2)",
+      "to": "East stair point 8 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        4.13095235824585,
+        -58.45
+      ]
+    },
+    {
+      "code": "ucc:f2:e013",
+      "from": "East stair point 9 (floors 1-2)",
+      "to": "East stair point 10 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        4.4461904764175415,
+        -59.050000000000004
+      ]
+    },
+    {
+      "code": "ucc:f2:e013",
+      "from": "East stair point 10 (floors 1-2)",
+      "to": "East stair point 9 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        4.28857147693634,
+        -58.75
+      ]
+    },
+    {
+      "code": "ucc:f2:e014",
+      "from": "East stair point 10 (floors 1-2)",
+      "to": "East stair point 11 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        4.603809475898743,
+        -59.35
+      ]
+    },
+    {
+      "code": "ucc:f2:e014",
+      "from": "East stair point 11 (floors 1-2)",
+      "to": "East stair point 10 (floors 1-2)",
+      "reverse": true,
+      "samples": 11,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        4.4461904764175415,
+        -59.050000000000004
+      ]
+    },
+    {
+      "code": "ucc:f2:e015",
+      "from": "East stair point 11 (floors 1-2)",
+      "to": "East stair point 12 (floors 1-2)",
+      "reverse": false,
+      "samples": 39,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        37.55,
+        4.603809475898743,
+        -60
+      ]
+    },
+    {
+      "code": "ucc:f2:e015",
+      "from": "East stair point 12 (floors 1-2)",
+      "to": "East stair point 11 (floors 1-2)",
+      "reverse": true,
+      "samples": 39,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        36.35,
+        4.603809475898743,
+        -59.35
+      ]
+    },
+    {
+      "code": "ucc:f2:e016",
+      "from": "East stair point 12 (floors 1-2)",
+      "to": "East stair point 13 (floors 1-2)",
+      "reverse": false,
+      "samples": 38,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        4.603809475898743,
+        -59.35
+      ]
+    },
+    {
+      "code": "ucc:f2:e016",
+      "from": "East stair point 13 (floors 1-2)",
+      "to": "East stair point 12 (floors 1-2)",
+      "reverse": true,
+      "samples": 38,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        37.55,
+        4.603809475898743,
+        -60
+      ]
+    },
+    {
+      "code": "ucc:f2:e017",
+      "from": "East stair point 13 (floors 1-2)",
+      "to": "East stair point 14 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        4.761428594589233,
+        -59.05
+      ]
+    },
+    {
+      "code": "ucc:f2:e017",
+      "from": "East stair point 14 (floors 1-2)",
+      "to": "East stair point 13 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        4.603809475898743,
+        -59.35
+      ]
+    },
+    {
+      "code": "ucc:f2:e018",
+      "from": "East stair point 14 (floors 1-2)",
+      "to": "East stair point 15 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        4.919047713279724,
+        -58.75
+      ]
+    },
+    {
+      "code": "ucc:f2:e018",
+      "from": "East stair point 15 (floors 1-2)",
+      "to": "East stair point 14 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        4.761428594589233,
+        -59.05
+      ]
+    },
+    {
+      "code": "ucc:f2:e019",
+      "from": "East stair point 15 (floors 1-2)",
+      "to": "East stair point 16 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.076666712760925,
+        -58.449999999999996
+      ]
+    },
+    {
+      "code": "ucc:f2:e019",
+      "from": "East stair point 16 (floors 1-2)",
+      "to": "East stair point 15 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        4.919047713279724,
+        -58.75
+      ]
+    },
+    {
+      "code": "ucc:f2:e020",
+      "from": "East stair point 16 (floors 1-2)",
+      "to": "East stair point 17 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.2342857122421265,
+        -58.15
+      ]
+    },
+    {
+      "code": "ucc:f2:e020",
+      "from": "East stair point 17 (floors 1-2)",
+      "to": "East stair point 16 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.076666712760925,
+        -58.449999999999996
+      ]
+    },
+    {
+      "code": "ucc:f2:e021",
+      "from": "East stair point 17 (floors 1-2)",
+      "to": "East stair point 18 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.391904711723328,
+        -57.849999999999994
+      ]
+    },
+    {
+      "code": "ucc:f2:e021",
+      "from": "East stair point 18 (floors 1-2)",
+      "to": "East stair point 17 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.2342857122421265,
+        -58.15
+      ]
+    },
+    {
+      "code": "ucc:f2:e022",
+      "from": "East stair point 18 (floors 1-2)",
+      "to": "East stair point 19 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.549523591995239,
+        -57.55
+      ]
+    },
+    {
+      "code": "ucc:f2:e022",
+      "from": "East stair point 19 (floors 1-2)",
+      "to": "East stair point 18 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.391904711723328,
+        -57.849999999999994
+      ]
+    },
+    {
+      "code": "ucc:f2:e023",
+      "from": "East stair point 19 (floors 1-2)",
+      "to": "East stair point 20 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.7071428298950195,
+        -57.25
+      ]
+    },
+    {
+      "code": "ucc:f2:e023",
+      "from": "East stair point 20 (floors 1-2)",
+      "to": "East stair point 19 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.549523591995239,
+        -57.55
+      ]
+    },
+    {
+      "code": "ucc:f2:e024",
+      "from": "East stair point 20 (floors 1-2)",
+      "to": "East stair point 21 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.864761829376221,
+        -56.949999999999996
+      ]
+    },
+    {
+      "code": "ucc:f2:e024",
+      "from": "East stair point 21 (floors 1-2)",
+      "to": "East stair point 20 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.7071428298950195,
+        -57.25
+      ]
+    },
+    {
+      "code": "ucc:f2:e025",
+      "from": "East stair point 21 (floors 1-2)",
+      "to": "East stair point 22 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        6.022380828857422,
+        -56.65
+      ]
+    },
+    {
+      "code": "ucc:f2:e025",
+      "from": "East stair point 22 (floors 1-2)",
+      "to": "East stair point 21 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        5.864761829376221,
+        -56.949999999999996
+      ]
+    },
+    {
+      "code": "ucc:f2:e026",
+      "from": "East stair point 22 (floors 1-2)",
+      "to": "East stair point 23 (floors 1-2)",
+      "reverse": false,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        6.1800000095367436,
+        -56.349999999999994
+      ]
+    },
+    {
+      "code": "ucc:f2:e026",
+      "from": "East stair point 23 (floors 1-2)",
+      "to": "East stair point 22 (floors 1-2)",
+      "reverse": true,
+      "samples": 10,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        6.022380828857422,
+        -56.65
+      ]
+    },
+    {
+      "code": "ucc:f2:e027",
+      "from": "East stair point 23 (floors 1-2)",
+      "to": "East stair point 24 (floors 1-2)",
+      "reverse": false,
+      "samples": 13,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        6.1800000095367436,
+        -55.9
+      ]
+    },
+    {
+      "code": "ucc:f2:e027",
+      "from": "East stair point 24 (floors 1-2)",
+      "to": "East stair point 23 (floors 1-2)",
+      "reverse": true,
+      "samples": 13,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        6.1800000095367436,
+        -56.349999999999994
+      ]
+    },
+    {
+      "code": "ucc:f2:e028",
+      "from": "East stair point 24 (floors 1-2)",
+      "to": "Second-floor north circulation",
+      "reverse": false,
+      "samples": 35,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e028",
+      "from": "Second-floor north circulation",
+      "to": "East stair point 24 (floors 1-2)",
+      "reverse": true,
+      "samples": 35,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        6.18,
+        -55.9
+      ]
+    },
+    {
+      "code": "ucc:f2:e029",
+      "from": "Second-floor north circulation",
+      "to": "Mixed reality corridor turn",
+      "reverse": false,
+      "samples": 226,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e029",
+      "from": "Mixed reality corridor turn",
+      "to": "Second-floor north circulation",
+      "reverse": true,
+      "samples": 226,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e030",
+      "from": "Mixed reality corridor turn",
+      "to": "Molecular biology corridor turn",
+      "reverse": false,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e030",
+      "from": "Molecular biology corridor turn",
+      "to": "Mixed reality corridor turn",
+      "reverse": true,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e031",
+      "from": "Second-floor north circulation",
+      "to": "Medical research corridor turn",
+      "reverse": false,
+      "samples": 109,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e031",
+      "from": "Medical research corridor turn",
+      "to": "Second-floor north circulation",
+      "reverse": true,
+      "samples": 109,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.7,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e032",
+      "from": "Mixed reality corridor turn",
+      "to": "D14 corridor stand",
+      "reverse": false,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.205
+      ]
+    },
+    {
+      "code": "ucc:f2:e032",
+      "from": "D14 corridor stand",
+      "to": "Mixed reality corridor turn",
+      "reverse": true,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e033",
+      "from": "D14 corridor stand",
+      "to": "D14 doorway centre",
+      "reverse": false,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -53.605
+      ]
+    },
+    {
+      "code": "ucc:f2:e033",
+      "from": "D14 doorway centre",
+      "to": "D14 corridor stand",
+      "reverse": true,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -54.205
+      ]
+    },
+    {
+      "code": "ucc:f2:e034",
+      "from": "D14 doorway centre",
+      "to": "Mixed Reality Laboratory (floor 2)",
+      "reverse": false,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -53.005
+      ]
+    },
+    {
+      "code": "ucc:f2:e034",
+      "from": "Mixed Reality Laboratory (floor 2)",
+      "to": "D14 doorway centre",
+      "reverse": true,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        46.604,
+        6.18,
+        -53.605
+      ]
+    },
+    {
+      "code": "ucc:f2:e035",
+      "from": "Molecular biology corridor turn",
+      "to": "D15 corridor stand",
+      "reverse": false,
+      "samples": 23,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -55.475
+      ]
+    },
+    {
+      "code": "ucc:f2:e035",
+      "from": "D15 corridor stand",
+      "to": "Molecular biology corridor turn",
+      "reverse": true,
+      "samples": 23,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e036",
+      "from": "D15 corridor stand",
+      "to": "D15 doorway centre",
+      "reverse": false,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -56.075
+      ]
+    },
+    {
+      "code": "ucc:f2:e036",
+      "from": "D15 doorway centre",
+      "to": "D15 corridor stand",
+      "reverse": true,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -55.475
+      ]
+    },
+    {
+      "code": "ucc:f2:e037",
+      "from": "D15 doorway centre",
+      "to": "Molecular Biology Laboratory (floor 2)",
+      "reverse": false,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -56.675
+      ]
+    },
+    {
+      "code": "ucc:f2:e037",
+      "from": "Molecular Biology Laboratory (floor 2)",
+      "to": "D15 doorway centre",
+      "reverse": true,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        47.122,
+        6.18,
+        -56.075
+      ]
+    },
+    {
+      "code": "ucc:f2:e038",
+      "from": "Medical research corridor turn",
+      "to": "D13 corridor stand",
+      "reverse": false,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -54.18
+      ]
+    },
+    {
+      "code": "ucc:f2:e038",
+      "from": "D13 corridor stand",
+      "to": "Medical research corridor turn",
+      "reverse": true,
+      "samples": 15,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -54.7
+      ]
+    },
+    {
+      "code": "ucc:f2:e039",
+      "from": "D13 corridor stand",
+      "to": "D13 doorway centre",
+      "reverse": false,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -53.58
+      ]
+    },
+    {
+      "code": "ucc:f2:e039",
+      "from": "D13 doorway centre",
+      "to": "D13 corridor stand",
+      "reverse": true,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -54.18
+      ]
+    },
+    {
+      "code": "ucc:f2:e040",
+      "from": "D13 doorway centre",
+      "to": "D13 interior stand",
+      "reverse": false,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -52.98
+      ]
+    },
+    {
+      "code": "ucc:f2:e040",
+      "from": "D13 interior stand",
+      "to": "D13 doorway centre",
+      "reverse": true,
+      "samples": 18,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -53.58
+      ]
+    },
+    {
+      "code": "ucc:f2:e041",
+      "from": "D13 interior stand",
+      "to": "Medical research interior turn 1",
+      "reverse": false,
+      "samples": 86,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -50
+      ]
+    },
+    {
+      "code": "ucc:f2:e041",
+      "from": "Medical research interior turn 1",
+      "to": "D13 interior stand",
+      "reverse": true,
+      "samples": 86,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -52.98
+      ]
+    },
+    {
+      "code": "ucc:f2:e042",
+      "from": "Medical research interior turn 1",
+      "to": "Medical research interior turn 2",
+      "reverse": false,
+      "samples": 105,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.569,
+        6.18,
+        -50
+      ]
+    },
+    {
+      "code": "ucc:f2:e042",
+      "from": "Medical research interior turn 2",
+      "to": "Medical research interior turn 1",
+      "reverse": true,
+      "samples": 105,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        34.916,
+        6.18,
+        -50
+      ]
+    },
+    {
+      "code": "ucc:f2:e043",
+      "from": "Medical research interior turn 2",
+      "to": "Medical Research Centre (floor 2)",
+      "reverse": false,
+      "samples": 51,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.569,
+        6.18,
+        -51.782
+      ]
+    },
+    {
+      "code": "ucc:f2:e043",
+      "from": "Medical Research Centre (floor 2)",
+      "to": "Medical research interior turn 2",
+      "reverse": true,
+      "samples": 51,
+      "firstBlocker": null,
+      "unsupported": false,
+      "lastPosition": [
+        38.569,
+        6.18,
+        -50
+      ]
+    }
+  ],
+  "towerProbes": [
+    {
+      "tower": "east",
+      "reverse": false,
+      "samples": 305,
+      "unsupported": false,
+      "firstBlocker": null,
+      "lastPosition": [
+        38.7,
+        6.1800000095367436,
+        -55.9
+      ],
+      "scope": "inspection only, no added API path"
+    },
+    {
+      "tower": "east",
+      "reverse": true,
+      "samples": 305,
+      "unsupported": false,
+      "firstBlocker": null,
+      "lastPosition": [
+        36.35,
+        2.8700000047683716,
+        -55.9
+      ],
+      "scope": "inspection only, no added API path"
+    },
+    {
+      "tower": "west",
+      "reverse": false,
+      "samples": 334,
+      "unsupported": false,
+      "firstBlocker": null,
+      "lastPosition": [
+        18.05000000000001,
+        6.1800000095367436,
+        -55.9
+      ],
+      "scope": "inspection only, no added API path"
+    },
+    {
+      "tower": "west",
+      "reverse": true,
+      "samples": 334,
+      "unsupported": false,
+      "firstBlocker": null,
+      "lastPosition": [
+        14.65,
+        2.8700000047683716,
+        -55.9
+      ],
+      "scope": "inspection only, no added API path"
+    }
+  ],
+  "modelOnlyPendingZones": true
+}

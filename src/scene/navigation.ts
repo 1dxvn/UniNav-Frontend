@@ -54,15 +54,16 @@ export function nearbyStairFloors(position: Vector3,floor: number,networks: Stai
 // Graph-constrained keyboard movement. Stepped motion needs reviewed support;
 // ordinary same-floor movement preserves the existing graph-only fallback.
 export function manualStep(from: Vector3,desired: Vector3,segments: WalkSegment[],floor: number,
-  support:(from:Vector3,expected:Vector3)=>Vector3|undefined,blocked:(from:Vector3,to:Vector3)=>boolean): { position:Vector3; floor:number } | undefined {
+  support:(from:Vector3,expected:Vector3,kind?:CampusPath["kind"])=>Vector3|undefined,blocked:(from:Vector3,to:Vector3)=>boolean): { position:Vector3; floor:number } | undefined {
   const options=segments.filter((s) => s.path.kind==="stairs" ? s.source.floor===floor || s.target.floor===floor : s.source.floor===floor && s.target.floor===floor)
     .map((s) => ({ s,current:projectOnSegment(from,s.a,s.b) })).filter(({current}) => current.distance<=CORRIDOR_RADIUS+0.001)
     .sort((a,b) => a.current.distance-b.current.distance);
   for (const {s,current} of options) {
-    if (s.path.kind!=="stairs" && Math.abs(from.y-current.point.y)>0.03) continue;
+    const stepped=s.path.kind==="stairs" || s.path.kind==="outdoor";
+    if (!stepped && Math.abs(from.y-current.point.y)>0.03) continue;
     const next=desired.clone();
     let currentT=segmentProgress(from,s.a,s.b),nextT=segmentProgress(next,s.a,s.b);
-    if (s.path.kind==="stairs") {
+    if (stepped) {
       const flatA=s.a.clone().setY(0),flatB=s.b.clone().setY(0);
       if(flatA.distanceToSquared(flatB)<0.00000001)continue;
       currentT=segmentProgress(from.clone().setY(0),flatA,flatB);
@@ -72,7 +73,7 @@ export function manualStep(from: Vector3,desired: Vector3,segments: WalkSegment[
     }
     const projection=projectOnSegment(next,s.a,s.b);
     if (projection.distance>CORRIDOR_RADIUS || (!s.path.bidirectional && nextT<currentT-0.00001)) continue;
-    const position=s.path.kind==="stairs" ? support(from,next) : next;
+    const position=stepped ? support(from,next,s.path.kind) : next;
     if (!position || blocked(from,position)) continue;
     let nextFloor=floor;
     if (s.path.kind==="stairs") {

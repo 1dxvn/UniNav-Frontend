@@ -1,0 +1,157 @@
+{
+  "route": {
+    "path": [
+      "Main Entrance",
+      "Reception",
+      "Stairs F0",
+      "Stairs F1",
+      "Classroom 102",
+      "Classroom 101"
+    ],
+    "steps": [
+      {
+        "origin_name": "Main Entrance",
+        "destination_name": "Reception",
+        "kind": "corridor",
+        "distance": 12,
+        "origin_id": 1,
+        "destination_id": 2,
+        "path_id": 1,
+        "connection_code": "legacy-path:1",
+        "origin_display_name": "Main Entrance",
+        "destination_display_name": "Reception"
+      },
+      {
+        "origin_name": "Reception",
+        "destination_name": "Stairs F0",
+        "kind": "corridor",
+        "distance": 15.264337522473747,
+        "origin_id": 2,
+        "destination_id": 5,
+        "path_id": 3,
+        "connection_code": "legacy-path:3",
+        "origin_display_name": "Reception",
+        "destination_display_name": "Stairs F0"
+      },
+      {
+        "origin_name": "Stairs F0",
+        "destination_name": "Stairs F1",
+        "kind": "stairs",
+        "distance": 8,
+        "origin_id": 5,
+        "destination_id": 10,
+        "path_id": 19,
+        "connection_code": "legacy-path:19",
+        "origin_display_name": "Stairs F0",
+        "destination_display_name": "Stairs F1"
+      },
+      {
+        "origin_name": "Stairs F1",
+        "destination_name": "Classroom 102",
+        "kind": "corridor",
+        "distance": 9.433981132056603,
+        "origin_id": 10,
+        "destination_id": 8,
+        "path_id": 7,
+        "connection_code": "legacy-path:7",
+        "origin_display_name": "Stairs F1",
+        "destination_display_name": "Classroom 102"
+      },
+      {
+        "origin_name": "Classroom 102",
+        "destination_name": "Classroom 101",
+        "kind": "corridor",
+        "distance": 10,
+        "origin_id": 8,
+        "destination_id": 7,
+        "path_id": 8,
+        "connection_code": "legacy-path:8",
+        "origin_display_name": "Classroom 102",
+        "destination_display_name": "Classroom 101"
+      }
+    ],
+    "distance": 54.69831865453035,
+    "origin_name": "Main Entrance",
+    "destination_name": "Classroom 101",
+    "waypoints": [
+      {
+        "id": 1,
+        "code": "legacy-place:1",
+        "name": "Main Entrance",
+        "display_name": "Main Entrance",
+        "x": 0,
+        "y": 0,
+        "floor": 0,
+        "elevation_m": 0,
+        "block_code": null,
+        "floor_code": null
+      },
+      {
+        "id": 2,
+        "code": "legacy-place:2",
+        "name": "Reception",
+        "display_name": "Reception",
+        "x": 12,
+        "y": 0,
+        "floor": 0,
+        "elevation_m": 0,
+        "block_code": null,
+        "floor_code": null
+      },
+      {
+        "id": 5,
+        "code": "legacy-place:5",
+        "name": "Stairs F0",
+        "display_name": "Stairs F0",
+        "x": 25,
+        "y": 8,
+        "floor": 0,
+        "elevation_m": 0,
+        "block_code": null,
+        "floor_code": null
+      },
+      {
+        "id": 10,
+        "code": "legacy-place:10",
+        "name": "Stairs F1",
+        "display_name": "Stairs F1",
+        "x": 25,
+        "y": 8,
+        "floor": 1,
+        "elevation_m": 3.5,
+        "block_code": null,
+        "floor_code": null
+      },
+      {
+        "id": 8,
+        "code": "legacy-place:8",
+        "name": "Classroom 102",
+        "display_name": "Classroom 102",
+        "x": 20,
+        "y": 0,
+        "floor": 1,
+        "elevation_m": 3.5,
+        "block_code": null,
+        "floor_code": null
+      },
+      {
+        "id": 7,
+        "code": "legacy-place:7",
+        "name": "Classroom 101",
+        "display_name": "Classroom 101",
+        "x": 10,
+        "y": 0,
+        "floor": 1,
+        "elevation_m": 3.5,
+        "block_code": null,
+        "floor_code": null
+      }
+    ]
+  },
+  "final": [
+    10,
+    3.5,
+    0
+  ],
+  "modelRequests": []
+}

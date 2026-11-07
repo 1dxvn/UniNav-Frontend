@@ -1,0 +1,2686 @@
+{
+  "profile": "ucc-first-floor-stair-review",
+  "physicalLevelsStillFlattened": true,
+  "runs": [
+    {
+      "origin": "Hall Acceso",
+      "destination": "Morphology Laboratory",
+      "route": {
+        "path": [
+          "Hall Acceso",
+          "Access courtyard",
+          "South circulation",
+          "Laboratory corridor west",
+          "Laboratory corridor east",
+          "Morphology Laboratory"
+        ],
+        "steps": [
+          {
+            "origin_name": "Hall Acceso",
+            "destination_name": "Access courtyard",
+            "kind": "outdoor",
+            "distance": 17.55704986607944,
+            "origin_id": 1,
+            "destination_id": 2,
+            "path_id": 1,
+            "connection_code": "ucc:floor1:e01",
+            "origin_display_name": "Hall Acceso",
+            "destination_display_name": "Access courtyard"
+          },
+          {
+            "origin_name": "Access courtyard",
+            "destination_name": "South circulation",
+            "kind": "outdoor",
+            "distance": 23.005434140654682,
+            "origin_id": 2,
+            "destination_id": 3,
+            "path_id": 2,
+            "connection_code": "ucc:floor1:e02",
+            "origin_display_name": "Access courtyard",
+            "destination_display_name": "South circulation"
+          },
+          {
+            "origin_name": "South circulation",
+            "destination_name": "Laboratory corridor west",
+            "kind": "stairs",
+            "distance": 20,
+            "origin_id": 3,
+            "destination_id": 11,
+            "path_id": 10,
+            "connection_code": "ucc:floor1:e10",
+            "origin_display_name": "South circulation",
+            "destination_display_name": "Laboratory corridor west"
+          },
+          {
+            "origin_name": "Laboratory corridor west",
+            "destination_name": "Laboratory corridor east",
+            "kind": "corridor",
+            "distance": 5.220153254455275,
+            "origin_id": 11,
+            "destination_id": 12,
+            "path_id": 11,
+            "connection_code": "ucc:floor1:e11",
+            "origin_display_name": "Laboratory corridor west",
+            "destination_display_name": "Laboratory corridor east"
+          },
+          {
+            "origin_name": "Laboratory corridor east",
+            "destination_name": "Morphology Laboratory",
+            "kind": "corridor",
+            "distance": 5.515840824389333,
+            "origin_id": 12,
+            "destination_id": 13,
+            "path_id": 12,
+            "connection_code": "ucc:floor1:e12",
+            "origin_display_name": "Laboratory corridor east",
+            "destination_display_name": "Morphology Laboratory"
+          }
+        ],
+        "distance": 71.29847808557872,
+        "origin_name": "Hall Acceso",
+        "destination_name": "Morphology Laboratory",
+        "waypoints": [
+          {
+            "id": 1,
+            "code": "ucc:floor1:p01",
+            "name": "Hall Acceso",
+            "display_name": "Hall Acceso",
+            "x": 0,
+            "y": 0,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 2,
+            "code": "ucc:floor1:p02",
+            "name": "Access courtyard",
+            "display_name": "Access courtyard",
+            "x": 6,
+            "y": 16.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 3,
+            "code": "ucc:floor1:p03",
+            "name": "South circulation",
+            "display_name": "South circulation",
+            "x": 21.5,
+            "y": 33.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 11,
+            "code": "ucc:floor1:p11",
+            "name": "Laboratory corridor west",
+            "display_name": "Laboratory corridor west",
+            "x": 41.5,
+            "y": 33.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 12,
+            "code": "ucc:floor1:p12",
+            "name": "Laboratory corridor east",
+            "display_name": "Laboratory corridor east",
+            "x": 46.5,
+            "y": 32,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 13,
+            "code": "ucc:floor1:p13",
+            "name": "Morphology Laboratory",
+            "display_name": "Morphology Laboratory",
+            "x": 42.96,
+            "y": 27.77,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          }
+        ]
+      },
+      "samples": [
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "ready"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "ready"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "walking"
+        },
+        {
+          "position": "0.126,3.500,-0.347",
+          "state": "walking"
+        },
+        {
+          "position": "0.254,3.500,-0.700",
+          "state": "walking"
+        },
+        {
+          "position": "0.383,3.500,-1.052",
+          "state": "walking"
+        },
+        {
+          "position": "0.511,3.500,-1.405",
+          "state": "walking"
+        },
+        {
+          "position": "0.639,3.500,-1.757",
+          "state": "walking"
+        },
+        {
+          "position": "0.767,3.500,-2.109",
+          "state": "walking"
+        },
+        {
+          "position": "0.895,3.500,-2.462",
+          "state": "walking"
+        },
+        {
+          "position": "1.023,3.500,-2.814",
+          "state": "walking"
+        },
+        {
+          "position": "1.152,3.500,-3.167",
+          "state": "walking"
+        },
+        {
+          "position": "1.280,3.500,-3.519",
+          "state": "walking"
+        },
+        {
+          "position": "1.408,3.500,-3.872",
+          "state": "walking"
+        },
+        {
+          "position": "1.536,3.500,-4.224",
+          "state": "walking"
+        },
+        {
+          "position": "1.664,3.500,-4.576",
+          "state": "walking"
+        },
+        {
+          "position": "1.792,3.500,-4.929",
+          "state": "walking"
+        },
+        {
+          "position": "1.920,3.500,-5.281",
+          "state": "walking"
+        },
+        {
+          "position": "2.049,3.500,-5.634",
+          "state": "walking"
+        },
+        {
+          "position": "2.177,3.500,-5.986",
+          "state": "walking"
+        },
+        {
+          "position": "2.305,3.500,-6.339",
+          "state": "walking"
+        },
+        {
+          "position": "2.433,3.500,-6.691",
+          "state": "walking"
+        },
+        {
+          "position": "2.561,3.500,-7.043",
+          "state": "walking"
+        },
+        {
+          "position": "2.689,3.500,-7.396",
+          "state": "walking"
+        },
+        {
+          "position": "2.818,3.500,-7.749",
+          "state": "walking"
+        },
+        {
+          "position": "2.946,3.500,-8.101",
+          "state": "walking"
+        },
+        {
+          "position": "3.074,3.500,-8.453",
+          "state": "walking"
+        },
+        {
+          "position": "3.202,3.500,-8.806",
+          "state": "walking"
+        },
+        {
+          "position": "3.330,3.500,-9.158",
+          "state": "walking"
+        },
+        {
+          "position": "3.458,3.500,-9.510",
+          "state": "walking"
+        },
+        {
+          "position": "3.586,3.500,-9.863",
+          "state": "walking"
+        },
+        {
+          "position": "3.715,3.500,-10.215",
+          "state": "walking"
+        },
+        {
+          "position": "3.843,3.500,-10.568",
+          "state": "walking"
+        },
+        {
+          "position": "3.971,3.500,-10.921",
+          "state": "walking"
+        },
+        {
+          "position": "4.099,3.500,-11.273",
+          "state": "walking"
+        },
+        {
+          "position": "4.227,3.500,-11.625",
+          "state": "walking"
+        },
+        {
+          "position": "4.355,3.500,-11.978",
+          "state": "walking"
+        },
+        {
+          "position": "4.484,3.500,-12.330",
+          "state": "walking"
+        },
+        {
+          "position": "4.612,3.500,-12.682",
+          "state": "walking"
+        },
+        {
+          "position": "4.740,3.500,-13.035",
+          "state": "walking"
+        },
+        {
+          "position": "4.863,3.500,-13.374",
+          "state": "walking"
+        },
+        {
+          "position": "4.989,3.500,-13.720",
+          "state": "walking"
+        },
+        {
+          "position": "5.117,3.500,-14.072",
+          "state": "walking"
+        },
+        {
+          "position": "5.245,3.500,-14.425",
+          "state": "walking"
+        },
+        {
+          "position": "5.374,3.500,-14.777",
+          "state": "walking"
+        },
+        {
+          "position": "5.502,3.500,-15.130",
+          "state": "walking"
+        },
+        {
+          "position": "5.630,3.500,-15.482",
+          "state": "walking"
+        },
+        {
+          "position": "5.758,3.500,-15.835",
+          "state": "walking"
+        },
+        {
+          "position": "5.886,3.500,-16.187",
+          "state": "walking"
+        },
+        {
+          "position": "6.028,3.500,-16.531",
+          "state": "walking"
+        },
+        {
+          "position": "6.281,3.500,-16.808",
+          "state": "walking"
+        },
+        {
+          "position": "6.534,3.500,-17.085",
+          "state": "walking"
+        },
+        {
+          "position": "6.786,3.500,-17.362",
+          "state": "walking"
+        },
+        {
+          "position": "7.039,3.500,-17.639",
+          "state": "walking"
+        },
+        {
+          "position": "7.291,3.500,-17.916",
+          "state": "walking"
+        },
+        {
+          "position": "7.544,3.500,-18.194",
+          "state": "walking"
+        },
+        {
+          "position": "7.797,3.500,-18.471",
+          "state": "walking"
+        },
+        {
+          "position": "8.050,3.500,-18.748",
+          "state": "walking"
+        },
+        {
+          "position": "8.302,3.500,-19.025",
+          "state": "walking"
+        },
+        {
+          "position": "8.555,3.500,-19.302",
+          "state": "walking"
+        },
+        {
+          "position": "8.808,3.500,-19.579",
+          "state": "walking"
+        },
+        {
+          "position": "9.060,3.500,-19.857",
+          "state": "walking"
+        },
+        {
+          "position": "9.313,3.500,-20.133",
+          "state": "walking"
+        },
+        {
+          "position": "9.566,3.500,-20.411",
+          "state": "walking"
+        },
+        {
+          "position": "9.818,3.500,-20.687",
+          "state": "walking"
+        },
+        {
+          "position": "10.071,3.500,-20.965",
+          "state": "walking"
+        },
+        {
+          "position": "10.323,3.500,-21.242",
+          "state": "walking"
+        },
+        {
+          "position": "10.576,3.500,-21.519",
+          "state": "walking"
+        },
+        {
+          "position": "10.829,3.500,-21.796",
+          "state": "walking"
+        },
+        {
+          "position": "11.082,3.500,-22.073",
+          "state": "walking"
+        },
+        {
+          "position": "11.334,3.500,-22.350",
+          "state": "walking"
+        },
+        {
+          "position": "11.587,3.500,-22.627",
+          "state": "walking"
+        },
+        {
+          "position": "11.839,3.500,-22.904",
+          "state": "walking"
+        },
+        {
+          "position": "12.092,3.500,-23.182",
+          "state": "walking"
+        },
+        {
+          "position": "12.345,3.500,-23.459",
+          "state": "walking"
+        },
+        {
+          "position": "12.597,3.500,-23.736",
+          "state": "walking"
+        },
+        {
+          "position": "12.850,3.500,-24.013",
+          "state": "walking"
+        },
+        {
+          "position": "13.103,3.500,-24.290",
+          "state": "walking"
+        },
+        {
+          "position": "13.355,3.500,-24.567",
+          "state": "walking"
+        },
+        {
+          "position": "13.608,3.500,-24.845",
+          "state": "walking"
+        },
+        {
+          "position": "13.861,3.500,-25.121",
+          "state": "walking"
+        },
+        {
+          "position": "14.114,3.500,-25.399",
+          "state": "walking"
+        },
+        {
+          "position": "14.366,3.500,-25.676",
+          "state": "walking"
+        },
+        {
+          "position": "14.619,3.500,-25.953",
+          "state": "walking"
+        },
+        {
+          "position": "14.871,3.500,-26.230",
+          "state": "walking"
+        },
+        {
+          "position": "15.118,3.500,-26.500",
+          "state": "walking"
+        },
+        {
+          "position": "15.370,3.500,-26.777",
+          "state": "walking"
+        },
+        {
+          "position": "15.623,3.500,-27.055",
+          "state": "walking"
+        },
+        {
+          "position": "15.868,3.500,-27.323",
+          "state": "walking"
+        },
+        {
+          "position": "16.121,3.500,-27.600",
+          "state": "walking"
+        },
+        {
+          "position": "16.374,3.500,-27.878",
+          "state": "walking"
+        },
+        {
+          "position": "16.626,3.500,-28.154",
+          "state": "walking"
+        },
+        {
+          "position": "16.878,3.500,-28.431",
+          "state": "walking"
+        },
+        {
+          "position": "17.131,3.500,-28.709",
+          "state": "walking"
+        },
+        {
+          "position": "17.384,3.500,-28.986",
+          "state": "walking"
+        },
+        {
+          "position": "17.639,3.500,-29.266",
+          "state": "walking"
+        },
+        {
+          "position": "17.889,3.500,-29.540",
+          "state": "walking"
+        },
+        {
+          "position": "18.142,3.500,-29.817",
+          "state": "walking"
+        },
+        {
+          "position": "18.395,3.500,-30.094",
+          "state": "walking"
+        },
+        {
+          "position": "18.648,3.500,-30.372",
+          "state": "walking"
+        },
+        {
+          "position": "18.906,3.500,-30.654",
+          "state": "walking"
+        },
+        {
+          "position": "19.158,3.500,-30.931",
+          "state": "walking"
+        },
+        {
+          "position": "19.406,3.500,-31.203",
+          "state": "walking"
+        },
+        {
+          "position": "19.649,3.500,-31.470",
+          "state": "walking"
+        },
+        {
+          "position": "19.897,3.500,-31.741",
+          "state": "walking"
+        },
+        {
+          "position": "20.149,3.500,-32.019",
+          "state": "walking"
+        },
+        {
+          "position": "20.403,3.500,-32.297",
+          "state": "walking"
+        },
+        {
+          "position": "20.655,3.500,-32.573",
+          "state": "walking"
+        },
+        {
+          "position": "20.907,3.500,-32.850",
+          "state": "walking"
+        },
+        {
+          "position": "21.160,3.500,-33.128",
+          "state": "walking"
+        },
+        {
+          "position": "21.413,3.500,-33.404",
+          "state": "walking"
+        },
+        {
+          "position": "21.730,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "22.106,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "22.480,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "22.855,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "23.230,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "23.605,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "23.980,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "24.340,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "24.709,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "25.084,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "25.458,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "25.834,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "26.209,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "26.583,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "26.959,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "27.333,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "27.709,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "28.083,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "28.458,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "28.833,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "29.209,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "29.583,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "29.959,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "30.334,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "30.709,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "31.084,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "31.459,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "31.834,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "32.209,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "32.583,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "32.959,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "33.334,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "33.709,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "34.084,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "34.459,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "34.833,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "35.209,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "35.584,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "35.959,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "36.334,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "36.696,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "37.058,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "37.438,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "37.813,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "38.188,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "38.563,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "38.925,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "39.294,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "39.667,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "40.042,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "40.417,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "40.792,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "41.167,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "41.540,3.500,-33.488",
+          "state": "walking"
+        },
+        {
+          "position": "41.899,3.500,-33.380",
+          "state": "walking"
+        },
+        {
+          "position": "42.258,3.500,-33.273",
+          "state": "walking"
+        },
+        {
+          "position": "42.617,3.500,-33.165",
+          "state": "walking"
+        },
+        {
+          "position": "42.963,3.500,-33.061",
+          "state": "walking"
+        },
+        {
+          "position": "43.316,3.500,-32.955",
+          "state": "walking"
+        },
+        {
+          "position": "43.676,3.500,-32.847",
+          "state": "walking"
+        },
+        {
+          "position": "44.034,3.500,-32.740",
+          "state": "walking"
+        },
+        {
+          "position": "44.394,3.500,-32.632",
+          "state": "walking"
+        },
+        {
+          "position": "44.753,3.500,-32.524",
+          "state": "walking"
+        },
+        {
+          "position": "45.112,3.500,-32.416",
+          "state": "walking"
+        },
+        {
+          "position": "45.471,3.500,-32.309",
+          "state": "walking"
+        },
+        {
+          "position": "45.830,3.500,-32.201",
+          "state": "walking"
+        },
+        {
+          "position": "46.190,3.500,-32.093",
+          "state": "walking"
+        },
+        {
+          "position": "46.473,3.500,-31.968",
+          "state": "walking"
+        },
+        {
+          "position": "46.233,3.500,-31.681",
+          "state": "walking"
+        },
+        {
+          "position": "45.990,3.500,-31.391",
+          "state": "walking"
+        },
+        {
+          "position": "45.751,3.500,-31.106",
+          "state": "walking"
+        },
+        {
+          "position": "45.511,3.500,-30.818",
+          "state": "walking"
+        },
+        {
+          "position": "45.279,3.500,-30.541",
+          "state": "walking"
+        },
+        {
+          "position": "45.045,3.500,-30.261",
+          "state": "walking"
+        },
+        {
+          "position": "44.810,3.500,-29.980",
+          "state": "walking"
+        },
+        {
+          "position": "44.575,3.500,-29.699",
+          "state": "walking"
+        },
+        {
+          "position": "44.334,3.500,-29.412",
+          "state": "walking"
+        },
+        {
+          "position": "44.093,3.500,-29.124",
+          "state": "walking"
+        },
+        {
+          "position": "43.853,3.500,-28.837",
+          "state": "walking"
+        },
+        {
+          "position": "43.612,3.500,-28.549",
+          "state": "walking"
+        },
+        {
+          "position": "43.371,3.500,-28.262",
+          "state": "walking"
+        },
+        {
+          "position": "43.131,3.500,-27.974",
+          "state": "walking"
+        },
+        {
+          "position": "42.960,3.500,-27.770",
+          "state": "arrived"
+        },
+        {
+          "position": "42.960,3.500,-27.770",
+          "state": "arrived"
+        },
+        {
+          "position": "42.960,3.500,-27.770",
+          "state": "arrived"
+        },
+        {
+          "position": "42.960,3.500,-27.770",
+          "state": "arrived"
+        },
+        {
+          "position": "42.960,3.500,-27.770",
+          "state": "arrived"
+        }
+      ],
+      "finalErrorMetres": 0
+    },
+    {
+      "origin": "Morphology Laboratory",
+      "destination": "Hall Acceso",
+      "route": {
+        "path": [
+          "Morphology Laboratory",
+          "Laboratory corridor east",
+          "Laboratory corridor west",
+          "South circulation",
+          "Access courtyard",
+          "Hall Acceso"
+        ],
+        "steps": [
+          {
+            "origin_name": "Morphology Laboratory",
+            "destination_name": "Laboratory corridor east",
+            "kind": "corridor",
+            "distance": 5.515840824389333,
+            "origin_id": 13,
+            "destination_id": 12,
+            "path_id": 12,
+            "connection_code": "ucc:floor1:e12",
+            "origin_display_name": "Morphology Laboratory",
+            "destination_display_name": "Laboratory corridor east"
+          },
+          {
+            "origin_name": "Laboratory corridor east",
+            "destination_name": "Laboratory corridor west",
+            "kind": "corridor",
+            "distance": 5.220153254455275,
+            "origin_id": 12,
+            "destination_id": 11,
+            "path_id": 11,
+            "connection_code": "ucc:floor1:e11",
+            "origin_display_name": "Laboratory corridor east",
+            "destination_display_name": "Laboratory corridor west"
+          },
+          {
+            "origin_name": "Laboratory corridor west",
+            "destination_name": "South circulation",
+            "kind": "stairs",
+            "distance": 20,
+            "origin_id": 11,
+            "destination_id": 3,
+            "path_id": 10,
+            "connection_code": "ucc:floor1:e10",
+            "origin_display_name": "Laboratory corridor west",
+            "destination_display_name": "South circulation"
+          },
+          {
+            "origin_name": "South circulation",
+            "destination_name": "Access courtyard",
+            "kind": "outdoor",
+            "distance": 23.005434140654682,
+            "origin_id": 3,
+            "destination_id": 2,
+            "path_id": 2,
+            "connection_code": "ucc:floor1:e02",
+            "origin_display_name": "South circulation",
+            "destination_display_name": "Access courtyard"
+          },
+          {
+            "origin_name": "Access courtyard",
+            "destination_name": "Hall Acceso",
+            "kind": "outdoor",
+            "distance": 17.55704986607944,
+            "origin_id": 2,
+            "destination_id": 1,
+            "path_id": 1,
+            "connection_code": "ucc:floor1:e01",
+            "origin_display_name": "Access courtyard",
+            "destination_display_name": "Hall Acceso"
+          }
+        ],
+        "distance": 71.29847808557872,
+        "origin_name": "Morphology Laboratory",
+        "destination_name": "Hall Acceso",
+        "waypoints": [
+          {
+            "id": 13,
+            "code": "ucc:floor1:p13",
+            "name": "Morphology Laboratory",
+            "display_name": "Morphology Laboratory",
+            "x": 42.96,
+            "y": 27.77,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 12,
+            "code": "ucc:floor1:p12",
+            "name": "Laboratory corridor east",
+            "display_name": "Laboratory corridor east",
+            "x": 46.5,
+            "y": 32,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 11,
+            "code": "ucc:floor1:p11",
+            "name": "Laboratory corridor west",
+            "display_name": "Laboratory corridor west",
+            "x": 41.5,
+            "y": 33.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 3,
+            "code": "ucc:floor1:p03",
+            "name": "South circulation",
+            "display_name": "South circulation",
+            "x": 21.5,
+            "y": 33.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 2,
+            "code": "ucc:floor1:p02",
+            "name": "Access courtyard",
+            "display_name": "Access courtyard",
+            "x": 6,
+            "y": 16.5,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          },
+          {
+            "id": 1,
+            "code": "ucc:floor1:p01",
+            "name": "Hall Acceso",
+            "display_name": "Hall Acceso",
+            "x": 0,
+            "y": 0,
+            "floor": 1,
+            "elevation_m": 3.5,
+            "block_code": null,
+            "floor_code": "ucc-first-floor"
+          }
+        ]
+      },
+      "samples": [
+        {
+          "position": "42.960,3.500,-27.770",
+          "state": "ready"
+        },
+        {
+          "position": "42.960,3.500,-27.770",
+          "state": "ready"
+        },
+        {
+          "position": "42.960,3.500,-27.770",
+          "state": "walking"
+        },
+        {
+          "position": "42.960,3.500,-27.770",
+          "state": "walking"
+        },
+        {
+          "position": "42.975,3.500,-27.788",
+          "state": "walking"
+        },
+        {
+          "position": "42.975,3.500,-27.788",
+          "state": "walking"
+        },
+        {
+          "position": "43.214,3.500,-28.073",
+          "state": "walking"
+        },
+        {
+          "position": "43.214,3.500,-28.073",
+          "state": "walking"
+        },
+        {
+          "position": "43.459,3.500,-28.366",
+          "state": "walking"
+        },
+        {
+          "position": "43.459,3.500,-28.366",
+          "state": "walking"
+        },
+        {
+          "position": "43.695,3.500,-28.648",
+          "state": "walking"
+        },
+        {
+          "position": "43.695,3.500,-28.648",
+          "state": "walking"
+        },
+        {
+          "position": "43.936,3.500,-28.936",
+          "state": "walking"
+        },
+        {
+          "position": "43.936,3.500,-28.936",
+          "state": "walking"
+        },
+        {
+          "position": "44.176,3.500,-29.224",
+          "state": "walking"
+        },
+        {
+          "position": "44.176,3.500,-29.224",
+          "state": "walking"
+        },
+        {
+          "position": "44.417,3.500,-29.511",
+          "state": "walking"
+        },
+        {
+          "position": "44.417,3.500,-29.511",
+          "state": "walking"
+        },
+        {
+          "position": "44.658,3.500,-29.799",
+          "state": "walking"
+        },
+        {
+          "position": "44.658,3.500,-29.799",
+          "state": "walking"
+        },
+        {
+          "position": "44.898,3.500,-30.086",
+          "state": "walking"
+        },
+        {
+          "position": "44.898,3.500,-30.086",
+          "state": "walking"
+        },
+        {
+          "position": "45.139,3.500,-30.374",
+          "state": "walking"
+        },
+        {
+          "position": "45.139,3.500,-30.374",
+          "state": "walking"
+        },
+        {
+          "position": "45.380,3.500,-30.661",
+          "state": "walking"
+        },
+        {
+          "position": "45.380,3.500,-30.661",
+          "state": "walking"
+        },
+        {
+          "position": "45.622,3.500,-30.951",
+          "state": "walking"
+        },
+        {
+          "position": "45.622,3.500,-30.951",
+          "state": "walking"
+        },
+        {
+          "position": "45.861,3.500,-31.237",
+          "state": "walking"
+        },
+        {
+          "position": "45.861,3.500,-31.237",
+          "state": "walking"
+        },
+        {
+          "position": "46.102,3.500,-31.524",
+          "state": "walking"
+        },
+        {
+          "position": "46.102,3.500,-31.524",
+          "state": "walking"
+        },
+        {
+          "position": "46.342,3.500,-31.812",
+          "state": "walking"
+        },
+        {
+          "position": "46.342,3.500,-31.812",
+          "state": "walking"
+        },
+        {
+          "position": "46.395,3.500,-32.032",
+          "state": "walking"
+        },
+        {
+          "position": "46.395,3.500,-32.032",
+          "state": "walking"
+        },
+        {
+          "position": "46.049,3.500,-32.135",
+          "state": "walking"
+        },
+        {
+          "position": "46.049,3.500,-32.135",
+          "state": "walking"
+        },
+        {
+          "position": "45.690,3.500,-32.243",
+          "state": "walking"
+        },
+        {
+          "position": "45.690,3.500,-32.243",
+          "state": "walking"
+        },
+        {
+          "position": "45.330,3.500,-32.351",
+          "state": "walking"
+        },
+        {
+          "position": "45.330,3.500,-32.351",
+          "state": "walking"
+        },
+        {
+          "position": "44.971,3.500,-32.459",
+          "state": "walking"
+        },
+        {
+          "position": "44.971,3.500,-32.459",
+          "state": "walking"
+        },
+        {
+          "position": "44.612,3.500,-32.566",
+          "state": "walking"
+        },
+        {
+          "position": "44.612,3.500,-32.566",
+          "state": "walking"
+        },
+        {
+          "position": "44.253,3.500,-32.674",
+          "state": "walking"
+        },
+        {
+          "position": "44.253,3.500,-32.674",
+          "state": "walking"
+        },
+        {
+          "position": "43.894,3.500,-32.782",
+          "state": "walking"
+        },
+        {
+          "position": "43.894,3.500,-32.782",
+          "state": "walking"
+        },
+        {
+          "position": "43.535,3.500,-32.890",
+          "state": "walking"
+        },
+        {
+          "position": "43.535,3.500,-32.890",
+          "state": "walking"
+        },
+        {
+          "position": "43.175,3.500,-32.997",
+          "state": "walking"
+        },
+        {
+          "position": "43.175,3.500,-32.997",
+          "state": "walking"
+        },
+        {
+          "position": "42.816,3.500,-33.105",
+          "state": "walking"
+        },
+        {
+          "position": "42.816,3.500,-33.105",
+          "state": "walking"
+        },
+        {
+          "position": "42.455,3.500,-33.214",
+          "state": "walking"
+        },
+        {
+          "position": "42.455,3.500,-33.214",
+          "state": "walking"
+        },
+        {
+          "position": "42.098,3.500,-33.321",
+          "state": "walking"
+        },
+        {
+          "position": "42.098,3.500,-33.321",
+          "state": "walking"
+        },
+        {
+          "position": "41.738,3.500,-33.428",
+          "state": "walking"
+        },
+        {
+          "position": "41.738,3.500,-33.428",
+          "state": "walking"
+        },
+        {
+          "position": "41.375,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "41.375,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "41.000,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "41.000,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "40.624,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "40.624,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "40.250,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "40.250,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "39.875,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "39.875,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "39.500,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "39.500,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "39.125,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "39.125,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "38.750,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "38.750,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "38.375,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "38.375,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "37.999,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "37.999,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "37.624,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "37.624,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "37.250,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "37.250,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "36.875,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "36.875,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "36.499,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "36.499,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "36.125,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "36.125,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "35.749,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "35.749,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "35.375,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "35.375,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "34.998,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "34.998,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "34.611,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "34.611,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "34.250,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "34.250,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "33.874,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "33.874,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "33.498,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "33.498,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "33.125,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "33.125,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "32.750,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "32.750,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "32.374,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "32.374,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "31.999,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "31.999,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "31.625,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "31.625,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "31.249,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "31.249,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "30.875,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "30.875,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "30.499,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "30.499,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "30.124,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "30.124,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "29.750,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "29.750,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "29.374,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "29.374,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "28.999,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "28.999,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "28.624,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "28.624,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "28.249,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "28.249,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "27.874,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "27.874,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "27.499,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "27.499,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "27.124,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "27.124,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "26.749,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "26.749,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "26.374,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "26.374,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "26.000,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "26.000,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "25.624,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "25.624,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "25.250,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "25.250,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "24.874,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "24.874,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "24.499,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "24.499,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "24.124,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "24.124,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "23.748,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "23.748,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "23.374,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "23.374,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "23.000,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "23.000,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "22.639,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "22.639,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "22.270,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "22.270,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "21.895,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "21.895,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "21.520,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "21.520,3.500,-33.500",
+          "state": "walking"
+        },
+        {
+          "position": "21.261,3.500,-33.238",
+          "state": "walking"
+        },
+        {
+          "position": "21.261,3.500,-33.238",
+          "state": "walking"
+        },
+        {
+          "position": "21.009,3.500,-32.961",
+          "state": "walking"
+        },
+        {
+          "position": "21.009,3.500,-32.961",
+          "state": "walking"
+        },
+        {
+          "position": "20.756,3.500,-32.684",
+          "state": "walking"
+        },
+        {
+          "position": "20.756,3.500,-32.684",
+          "state": "walking"
+        },
+        {
+          "position": "20.504,3.500,-32.407",
+          "state": "walking"
+        },
+        {
+          "position": "20.504,3.500,-32.407",
+          "state": "walking"
+        },
+        {
+          "position": "20.251,3.500,-32.130",
+          "state": "walking"
+        },
+        {
+          "position": "20.251,3.500,-32.130",
+          "state": "walking"
+        },
+        {
+          "position": "19.998,3.500,-31.853",
+          "state": "walking"
+        },
+        {
+          "position": "19.998,3.500,-31.853",
+          "state": "walking"
+        },
+        {
+          "position": "19.746,3.500,-31.576",
+          "state": "walking"
+        },
+        {
+          "position": "19.746,3.500,-31.576",
+          "state": "walking"
+        },
+        {
+          "position": "19.493,3.500,-31.298",
+          "state": "walking"
+        },
+        {
+          "position": "19.493,3.500,-31.298",
+          "state": "walking"
+        },
+        {
+          "position": "19.240,3.500,-31.021",
+          "state": "walking"
+        },
+        {
+          "position": "19.240,3.500,-31.021",
+          "state": "walking"
+        },
+        {
+          "position": "18.987,3.500,-30.744",
+          "state": "walking"
+        },
+        {
+          "position": "18.987,3.500,-30.744",
+          "state": "walking"
+        },
+        {
+          "position": "18.734,3.500,-30.467",
+          "state": "walking"
+        },
+        {
+          "position": "18.734,3.500,-30.467",
+          "state": "walking"
+        },
+        {
+          "position": "18.482,3.500,-30.190",
+          "state": "walking"
+        },
+        {
+          "position": "18.482,3.500,-30.190",
+          "state": "walking"
+        },
+        {
+          "position": "18.225,3.500,-29.908",
+          "state": "walking"
+        },
+        {
+          "position": "18.225,3.500,-29.908",
+          "state": "walking"
+        },
+        {
+          "position": "17.974,3.500,-29.633",
+          "state": "walking"
+        },
+        {
+          "position": "17.974,3.500,-29.633",
+          "state": "walking"
+        },
+        {
+          "position": "17.724,3.500,-29.359",
+          "state": "walking"
+        },
+        {
+          "position": "17.724,3.500,-29.359",
+          "state": "walking"
+        },
+        {
+          "position": "17.471,3.500,-29.082",
+          "state": "walking"
+        },
+        {
+          "position": "17.471,3.500,-29.082",
+          "state": "walking"
+        },
+        {
+          "position": "17.219,3.500,-28.804",
+          "state": "walking"
+        },
+        {
+          "position": "17.219,3.500,-28.804",
+          "state": "walking"
+        },
+        {
+          "position": "16.966,3.500,-28.527",
+          "state": "walking"
+        },
+        {
+          "position": "16.966,3.500,-28.527",
+          "state": "walking"
+        },
+        {
+          "position": "16.713,3.500,-28.250",
+          "state": "walking"
+        },
+        {
+          "position": "16.713,3.500,-28.250",
+          "state": "walking"
+        },
+        {
+          "position": "16.461,3.500,-27.973",
+          "state": "walking"
+        },
+        {
+          "position": "16.461,3.500,-27.973",
+          "state": "walking"
+        },
+        {
+          "position": "16.207,3.500,-27.695",
+          "state": "walking"
+        },
+        {
+          "position": "16.207,3.500,-27.695",
+          "state": "walking"
+        },
+        {
+          "position": "15.956,3.500,-27.419",
+          "state": "walking"
+        },
+        {
+          "position": "15.956,3.500,-27.419",
+          "state": "walking"
+        },
+        {
+          "position": "15.703,3.500,-27.142",
+          "state": "walking"
+        },
+        {
+          "position": "15.703,3.500,-27.142",
+          "state": "walking"
+        },
+        {
+          "position": "15.450,3.500,-26.865",
+          "state": "walking"
+        },
+        {
+          "position": "15.450,3.500,-26.865",
+          "state": "walking"
+        },
+        {
+          "position": "15.198,3.500,-26.588",
+          "state": "walking"
+        },
+        {
+          "position": "15.198,3.500,-26.588",
+          "state": "walking"
+        },
+        {
+          "position": "14.945,3.500,-26.311",
+          "state": "walking"
+        },
+        {
+          "position": "14.945,3.500,-26.311",
+          "state": "walking"
+        },
+        {
+          "position": "14.692,3.500,-26.033",
+          "state": "walking"
+        },
+        {
+          "position": "14.692,3.500,-26.033",
+          "state": "walking"
+        },
+        {
+          "position": "14.440,3.500,-25.756",
+          "state": "walking"
+        },
+        {
+          "position": "14.440,3.500,-25.756",
+          "state": "walking"
+        },
+        {
+          "position": "14.193,3.500,-25.486",
+          "state": "walking"
+        },
+        {
+          "position": "14.193,3.500,-25.486",
+          "state": "walking"
+        },
+        {
+          "position": "13.948,3.500,-25.217",
+          "state": "walking"
+        },
+        {
+          "position": "13.948,3.500,-25.217",
+          "state": "walking"
+        },
+        {
+          "position": "13.696,3.500,-24.940",
+          "state": "walking"
+        },
+        {
+          "position": "13.696,3.500,-24.940",
+          "state": "walking"
+        },
+        {
+          "position": "13.443,3.500,-24.663",
+          "state": "walking"
+        },
+        {
+          "position": "13.443,3.500,-24.663",
+          "state": "walking"
+        },
+        {
+          "position": "13.188,3.500,-24.383",
+          "state": "walking"
+        },
+        {
+          "position": "13.188,3.500,-24.383",
+          "state": "walking"
+        },
+        {
+          "position": "12.938,3.500,-24.109",
+          "state": "walking"
+        },
+        {
+          "position": "12.938,3.500,-24.109",
+          "state": "walking"
+        },
+        {
+          "position": "12.685,3.500,-23.832",
+          "state": "walking"
+        },
+        {
+          "position": "12.685,3.500,-23.832",
+          "state": "walking"
+        },
+        {
+          "position": "12.432,3.500,-23.555",
+          "state": "walking"
+        },
+        {
+          "position": "12.432,3.500,-23.555",
+          "state": "walking"
+        },
+        {
+          "position": "12.180,3.500,-23.278",
+          "state": "walking"
+        },
+        {
+          "position": "12.180,3.500,-23.278",
+          "state": "walking"
+        },
+        {
+          "position": "11.927,3.500,-23.001",
+          "state": "walking"
+        },
+        {
+          "position": "11.927,3.500,-23.001",
+          "state": "walking"
+        },
+        {
+          "position": "11.674,3.500,-22.723",
+          "state": "walking"
+        },
+        {
+          "position": "11.674,3.500,-22.723",
+          "state": "walking"
+        },
+        {
+          "position": "11.422,3.500,-22.446",
+          "state": "walking"
+        },
+        {
+          "position": "11.422,3.500,-22.446",
+          "state": "walking"
+        },
+        {
+          "position": "11.169,3.500,-22.169",
+          "state": "walking"
+        },
+        {
+          "position": "11.169,3.500,-22.169",
+          "state": "walking"
+        },
+        {
+          "position": "10.916,3.500,-21.892",
+          "state": "walking"
+        },
+        {
+          "position": "10.916,3.500,-21.892",
+          "state": "walking"
+        },
+        {
+          "position": "10.664,3.500,-21.615",
+          "state": "walking"
+        },
+        {
+          "position": "10.664,3.500,-21.615",
+          "state": "walking"
+        },
+        {
+          "position": "10.411,3.500,-21.338",
+          "state": "walking"
+        },
+        {
+          "position": "10.411,3.500,-21.338",
+          "state": "walking"
+        },
+        {
+          "position": "10.158,3.500,-21.061",
+          "state": "walking"
+        },
+        {
+          "position": "10.158,3.500,-21.061",
+          "state": "walking"
+        },
+        {
+          "position": "9.906,3.500,-20.784",
+          "state": "walking"
+        },
+        {
+          "position": "9.906,3.500,-20.784",
+          "state": "walking"
+        },
+        {
+          "position": "9.653,3.500,-20.506",
+          "state": "walking"
+        },
+        {
+          "position": "9.653,3.500,-20.506",
+          "state": "walking"
+        },
+        {
+          "position": "9.400,3.500,-20.229",
+          "state": "walking"
+        },
+        {
+          "position": "9.400,3.500,-20.229",
+          "state": "walking"
+        },
+        {
+          "position": "9.148,3.500,-19.952",
+          "state": "walking"
+        },
+        {
+          "position": "9.148,3.500,-19.952",
+          "state": "walking"
+        },
+        {
+          "position": "8.895,3.500,-19.675",
+          "state": "walking"
+        },
+        {
+          "position": "8.895,3.500,-19.675",
+          "state": "walking"
+        },
+        {
+          "position": "8.642,3.500,-19.398",
+          "state": "walking"
+        },
+        {
+          "position": "8.642,3.500,-19.398",
+          "state": "walking"
+        },
+        {
+          "position": "8.390,3.500,-19.121",
+          "state": "walking"
+        },
+        {
+          "position": "8.390,3.500,-19.121",
+          "state": "walking"
+        },
+        {
+          "position": "8.137,3.500,-18.844",
+          "state": "walking"
+        },
+        {
+          "position": "8.137,3.500,-18.844",
+          "state": "walking"
+        },
+        {
+          "position": "7.884,3.500,-18.567",
+          "state": "walking"
+        },
+        {
+          "position": "7.884,3.500,-18.567",
+          "state": "walking"
+        },
+        {
+          "position": "7.632,3.500,-18.290",
+          "state": "walking"
+        },
+        {
+          "position": "7.632,3.500,-18.290",
+          "state": "walking"
+        },
+        {
+          "position": "7.379,3.500,-18.013",
+          "state": "walking"
+        },
+        {
+          "position": "7.379,3.500,-18.013",
+          "state": "walking"
+        },
+        {
+          "position": "7.126,3.500,-17.735",
+          "state": "walking"
+        },
+        {
+          "position": "7.126,3.500,-17.735",
+          "state": "walking"
+        },
+        {
+          "position": "6.874,3.500,-17.458",
+          "state": "walking"
+        },
+        {
+          "position": "6.874,3.500,-17.458",
+          "state": "walking"
+        },
+        {
+          "position": "6.621,3.500,-17.181",
+          "state": "walking"
+        },
+        {
+          "position": "6.621,3.500,-17.181",
+          "state": "walking"
+        },
+        {
+          "position": "6.368,3.500,-16.904",
+          "state": "walking"
+        },
+        {
+          "position": "6.368,3.500,-16.904",
+          "state": "walking"
+        },
+        {
+          "position": "6.116,3.500,-16.627",
+          "state": "walking"
+        },
+        {
+          "position": "6.116,3.500,-16.627",
+          "state": "walking"
+        },
+        {
+          "position": "5.936,3.500,-16.324",
+          "state": "walking"
+        },
+        {
+          "position": "5.936,3.500,-16.324",
+          "state": "walking"
+        },
+        {
+          "position": "5.808,3.500,-15.971",
+          "state": "walking"
+        },
+        {
+          "position": "5.808,3.500,-15.971",
+          "state": "walking"
+        },
+        {
+          "position": "5.679,3.500,-15.618",
+          "state": "walking"
+        },
+        {
+          "position": "5.679,3.500,-15.618",
+          "state": "walking"
+        },
+        {
+          "position": "5.551,3.500,-15.267",
+          "state": "walking"
+        },
+        {
+          "position": "5.551,3.500,-15.267",
+          "state": "walking"
+        },
+        {
+          "position": "5.423,3.500,-14.914",
+          "state": "walking"
+        },
+        {
+          "position": "5.423,3.500,-14.914",
+          "state": "walking"
+        },
+        {
+          "position": "5.295,3.500,-14.562",
+          "state": "walking"
+        },
+        {
+          "position": "5.295,3.500,-14.562",
+          "state": "walking"
+        },
+        {
+          "position": "5.167,3.500,-14.209",
+          "state": "walking"
+        },
+        {
+          "position": "5.167,3.500,-14.209",
+          "state": "walking"
+        },
+        {
+          "position": "5.039,3.500,-13.857",
+          "state": "walking"
+        },
+        {
+          "position": "5.039,3.500,-13.857",
+          "state": "walking"
+        },
+        {
+          "position": "4.911,3.500,-13.504",
+          "state": "walking"
+        },
+        {
+          "position": "4.911,3.500,-13.504",
+          "state": "walking"
+        },
+        {
+          "position": "4.783,3.500,-13.152",
+          "state": "walking"
+        },
+        {
+          "position": "4.783,3.500,-13.152",
+          "state": "walking"
+        },
+        {
+          "position": "4.654,3.500,-12.800",
+          "state": "walking"
+        },
+        {
+          "position": "4.654,3.500,-12.800",
+          "state": "walking"
+        },
+        {
+          "position": "4.526,3.500,-12.447",
+          "state": "walking"
+        },
+        {
+          "position": "4.526,3.500,-12.447",
+          "state": "walking"
+        },
+        {
+          "position": "4.398,3.500,-12.095",
+          "state": "walking"
+        },
+        {
+          "position": "4.398,3.500,-12.095",
+          "state": "walking"
+        },
+        {
+          "position": "4.270,3.500,-11.742",
+          "state": "walking"
+        },
+        {
+          "position": "4.270,3.500,-11.742",
+          "state": "walking"
+        },
+        {
+          "position": "4.139,3.500,-11.383",
+          "state": "walking"
+        },
+        {
+          "position": "4.139,3.500,-11.383",
+          "state": "walking"
+        },
+        {
+          "position": "4.014,3.500,-11.037",
+          "state": "walking"
+        },
+        {
+          "position": "4.014,3.500,-11.037",
+          "state": "walking"
+        },
+        {
+          "position": "3.885,3.500,-10.685",
+          "state": "walking"
+        },
+        {
+          "position": "3.885,3.500,-10.685",
+          "state": "walking"
+        },
+        {
+          "position": "3.757,3.500,-10.332",
+          "state": "walking"
+        },
+        {
+          "position": "3.757,3.500,-10.332",
+          "state": "walking"
+        },
+        {
+          "position": "3.629,3.500,-9.980",
+          "state": "walking"
+        },
+        {
+          "position": "3.629,3.500,-9.980",
+          "state": "walking"
+        },
+        {
+          "position": "3.501,3.500,-9.628",
+          "state": "walking"
+        },
+        {
+          "position": "3.501,3.500,-9.628",
+          "state": "walking"
+        },
+        {
+          "position": "3.373,3.500,-9.275",
+          "state": "walking"
+        },
+        {
+          "position": "3.373,3.500,-9.275",
+          "state": "walking"
+        },
+        {
+          "position": "3.245,3.500,-8.923",
+          "state": "walking"
+        },
+        {
+          "position": "3.245,3.500,-8.923",
+          "state": "walking"
+        },
+        {
+          "position": "3.116,3.500,-8.570",
+          "state": "walking"
+        },
+        {
+          "position": "3.116,3.500,-8.570",
+          "state": "walking"
+        },
+        {
+          "position": "2.988,3.500,-8.218",
+          "state": "walking"
+        },
+        {
+          "position": "2.988,3.500,-8.218",
+          "state": "walking"
+        },
+        {
+          "position": "2.860,3.500,-7.866",
+          "state": "walking"
+        },
+        {
+          "position": "2.860,3.500,-7.866",
+          "state": "walking"
+        },
+        {
+          "position": "2.732,3.500,-7.513",
+          "state": "walking"
+        },
+        {
+          "position": "2.732,3.500,-7.513",
+          "state": "walking"
+        },
+        {
+          "position": "2.604,3.500,-7.161",
+          "state": "walking"
+        },
+        {
+          "position": "2.604,3.500,-7.161",
+          "state": "walking"
+        },
+        {
+          "position": "2.476,3.500,-6.808",
+          "state": "walking"
+        },
+        {
+          "position": "2.476,3.500,-6.808",
+          "state": "walking"
+        },
+        {
+          "position": "2.348,3.500,-6.456",
+          "state": "walking"
+        },
+        {
+          "position": "2.348,3.500,-6.456",
+          "state": "walking"
+        },
+        {
+          "position": "2.219,3.500,-6.104",
+          "state": "walking"
+        },
+        {
+          "position": "2.219,3.500,-6.104",
+          "state": "walking"
+        },
+        {
+          "position": "2.095,3.500,-5.760",
+          "state": "walking"
+        },
+        {
+          "position": "2.095,3.500,-5.760",
+          "state": "walking"
+        },
+        {
+          "position": "1.970,3.500,-5.418",
+          "state": "walking"
+        },
+        {
+          "position": "1.970,3.500,-5.418",
+          "state": "walking"
+        },
+        {
+          "position": "1.842,3.500,-5.066",
+          "state": "walking"
+        },
+        {
+          "position": "1.842,3.500,-5.066",
+          "state": "walking"
+        },
+        {
+          "position": "1.714,3.500,-4.714",
+          "state": "walking"
+        },
+        {
+          "position": "1.714,3.500,-4.714",
+          "state": "walking"
+        },
+        {
+          "position": "1.586,3.500,-4.361",
+          "state": "walking"
+        },
+        {
+          "position": "1.586,3.500,-4.361",
+          "state": "walking"
+        },
+        {
+          "position": "1.458,3.500,-4.008",
+          "state": "walking"
+        },
+        {
+          "position": "1.458,3.500,-4.008",
+          "state": "walking"
+        },
+        {
+          "position": "1.329,3.500,-3.656",
+          "state": "walking"
+        },
+        {
+          "position": "1.329,3.500,-3.656",
+          "state": "walking"
+        },
+        {
+          "position": "1.201,3.500,-3.303",
+          "state": "walking"
+        },
+        {
+          "position": "1.201,3.500,-3.303",
+          "state": "walking"
+        },
+        {
+          "position": "1.073,3.500,-2.951",
+          "state": "walking"
+        },
+        {
+          "position": "1.073,3.500,-2.951",
+          "state": "walking"
+        },
+        {
+          "position": "0.945,3.500,-2.599",
+          "state": "walking"
+        },
+        {
+          "position": "0.945,3.500,-2.599",
+          "state": "walking"
+        },
+        {
+          "position": "0.817,3.500,-2.246",
+          "state": "walking"
+        },
+        {
+          "position": "0.817,3.500,-2.246",
+          "state": "walking"
+        },
+        {
+          "position": "0.689,3.500,-1.894",
+          "state": "walking"
+        },
+        {
+          "position": "0.689,3.500,-1.894",
+          "state": "walking"
+        },
+        {
+          "position": "0.560,3.500,-1.541",
+          "state": "walking"
+        },
+        {
+          "position": "0.560,3.500,-1.541",
+          "state": "walking"
+        },
+        {
+          "position": "0.432,3.500,-1.189",
+          "state": "walking"
+        },
+        {
+          "position": "0.432,3.500,-1.189",
+          "state": "walking"
+        },
+        {
+          "position": "0.304,3.500,-0.836",
+          "state": "walking"
+        },
+        {
+          "position": "0.304,3.500,-0.836",
+          "state": "walking"
+        },
+        {
+          "position": "0.176,3.500,-0.484",
+          "state": "walking"
+        },
+        {
+          "position": "0.176,3.500,-0.484",
+          "state": "walking"
+        },
+        {
+          "position": "0.051,3.500,-0.140",
+          "state": "walking"
+        },
+        {
+          "position": "0.051,3.500,-0.140",
+          "state": "walking"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "arrived"
+        },
+        {
+          "position": "0.000,3.500,0.000",
+          "state": "arrived"
+        }
+      ],
+      "finalErrorMetres": 0
+    }
+  ]
+}

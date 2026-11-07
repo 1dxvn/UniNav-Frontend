@@ -63,3 +63,11 @@ test("keyboard cannot jump a storey along a zero-plan-length graph stair",()=>{
   const segments=walkSegments(vertical,[paths[0]]);
   assert.equal(manualStep(new Vector3(0,6.44,0),new Vector3(0.02,6.44,0),segments,2,(_a,b)=>b,()=>false),undefined);
 });
+test("outdoor walking follows explicitly supplied ground without changing the metadata floor",()=>{
+  const outdoorPlaces=places.slice(0,2).map((p,i)=>({...p,x:i,y:0,elevation_m:i ? 3.35:3.5}));
+  const segments=walkSegments(outdoorPlaces,[{...paths[0],kind:"outdoor",bidirectional:true}]);
+  const kinds:unknown[]=[];
+  const step=manualStep(new Vector3(0.5,3.35,0),new Vector3(0.55,3.35,0),segments,1,(_from,p,kind)=>{kinds.push(kind);return p.setY(3.35);},()=>false)!;
+  assert.equal(step.position.y,3.35);assert.equal(step.floor,1);assert.deepEqual(kinds,["outdoor"]);
+  assert.equal(manualStep(step.position,new Vector3(0.6,3.35,0),segments,1,()=>undefined,()=>false),undefined);
+});

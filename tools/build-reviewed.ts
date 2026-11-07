@@ -22,7 +22,7 @@ for (const entry of [...manifest.models,...(manifest.profiles ?? []).flatMap(p=>
   }
   const referenceBytes = await reviewedAsset(entry,entry.reference!,entry.referenceSha256!);
   const reference = parseReference(JSON.parse(referenceBytes.toString("utf8")));
-  const path = posix.join(posix.dirname(entry.reference!),reference.model);
+  const path = entry.model ?? posix.join(posix.dirname(entry.reference!),reference.model);
   stage(entry.reference!,referenceBytes);
   stage(path,await reviewedAsset(entry,path,entry.modelSha256!));
 }

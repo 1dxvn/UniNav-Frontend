@@ -1,0 +1,448 @@
+{
+  "scope": "ucc:floor1",
+  "revision": "c15-first-floor-v1",
+  "source": "C15 3177ca7; model/candidates/c15/README.md; level-zones @71fd98a; B datum world 3.5 m; Block A confirmed/derived levels; pending zones explicitly retain model-only flat heights",
+  "places": [
+    {
+      "code": "ucc:floor1:p01",
+      "name": "Hall Acceso",
+      "display_name": "Hall Acceso",
+      "x": 0,
+      "y": 0,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "entrance",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 level-zones access: N 0; derived; world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p02",
+      "name": "Access courtyard",
+      "display_name": "Access courtyard",
+      "x": 6,
+      "y": 16.5,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.35,
+      "elevation_source": "C15 Site mesh top at world 3.35 (0.15 m below B slab); model-only placement, not a surveyed N -0.15 level; access-zone physical datum remains derived",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p03",
+      "name": "South circulation",
+      "display_name": "South circulation",
+      "x": 21.5,
+      "y": 33.5,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 level-zones B-west-body: N 0; confirmed (level label within 4.6 m); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p04",
+      "name": "ICETEX approach",
+      "display_name": "ICETEX approach",
+      "x": 23,
+      "y": 34,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 level-zones B-west-body: N 0; confirmed (level label within 3.1 m); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p05",
+      "name": "ICETEX doorway",
+      "display_name": "ICETEX doorway",
+      "x": 23.5,
+      "y": 36,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 level-zones B-west-body: N 0; confirmed (level label within 3.2 m); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p06",
+      "name": "ICETEX",
+      "display_name": "ICETEX",
+      "x": 24.55,
+      "y": 41.78,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "service",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 level-zones B-west-body: N 0; derived (same zone, nearest level label 7.0 m away, no step drawn between); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p07",
+      "name": "Hall junction",
+      "display_name": "Hall junction",
+      "x": 24,
+      "y": 36.5,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 level-zones B-west-body: N 0; confirmed (level label within 3.2 m); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p08",
+      "name": "Hall corridor south",
+      "display_name": "Hall corridor south",
+      "x": 28,
+      "y": 36.5,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 level-zones B-west-body: N 0; confirmed (level label within 3.1 m); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p09",
+      "name": "Hall corridor north",
+      "display_name": "Hall corridor north",
+      "x": 28,
+      "y": 47.6,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 README hall before-point (28,47.6), off the treads, N 0.00; stable place ID retained",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p10",
+      "name": "Elevator and Restroom Hall",
+      "display_name": "Elevator and Restroom Hall",
+      "x": 25.77,
+      "y": 51.97,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "service",
+      "elevation_m": 2.87,
+      "elevation_source": "C15 level-zones A-north-bar: N -0.63; confirmed (level label within 2.9 m); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p11",
+      "name": "Laboratory corridor west",
+      "display_name": "Laboratory corridor west",
+      "x": 41.5,
+      "y": 33.5,
+      "floor": 1,
+      "faculty": "Health Sciences",
+      "building_type": "waypoint",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 pending physical level (east-B-laboratory-wing); model-only flat world Y 3.5 retained; no physical height inferred",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p12",
+      "name": "Laboratory corridor east",
+      "display_name": "Laboratory corridor east",
+      "x": 46.5,
+      "y": 32,
+      "floor": 1,
+      "faculty": "Health Sciences",
+      "building_type": "waypoint",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 pending physical level (east-B-laboratory-wing); model-only flat world Y 3.5 retained; no physical height inferred",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p13",
+      "name": "Morphology Laboratory",
+      "display_name": "Morphology Laboratory",
+      "x": 42.96,
+      "y": 27.77,
+      "floor": 1,
+      "faculty": "Health Sciences",
+      "building_type": "laboratory",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 pending physical level (east-B-laboratory-wing); model-only flat world Y 3.5 retained; no physical height inferred",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p14",
+      "name": "Preclinic / Dentistry Coordination",
+      "display_name": "Preclinic / Dentistry Coordination",
+      "x": 56.84,
+      "y": 51.96,
+      "floor": 1,
+      "faculty": "Health Sciences",
+      "building_type": "clinic",
+      "elevation_m": 2.87,
+      "elevation_source": "C15 level-zones A-north-bar: N -0.63; derived (same zone, nearest level label 20.6 m away, no step drawn between); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p15",
+      "name": "North circulation west",
+      "display_name": "North circulation west",
+      "x": 32,
+      "y": 54.4,
+      "floor": 1,
+      "faculty": "Health Sciences",
+      "building_type": "waypoint",
+      "elevation_m": 2.87,
+      "elevation_source": "C15 level-zones A-north-bar: N -0.63; confirmed (level label within 4.8 m); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p16",
+      "name": "North circulation east",
+      "display_name": "North circulation east",
+      "x": 58.26,
+      "y": 54.7,
+      "floor": 1,
+      "faculty": "Health Sciences",
+      "building_type": "waypoint",
+      "elevation_m": 2.87,
+      "elevation_source": "C15 level-zones A-north-bar: N -0.63; derived (same zone, nearest level label 21.7 m away, no step drawn between); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p17",
+      "name": "Preclinic storeroom",
+      "display_name": "Preclinic storeroom",
+      "x": 58.26,
+      "y": 51.68,
+      "floor": 1,
+      "faculty": "Health Sciences",
+      "building_type": "waypoint",
+      "elevation_m": 2.87,
+      "elevation_source": "C15 level-zones A-north-bar: N -0.63; derived (same zone, nearest level label 22.0 m away, no step drawn between); world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p18",
+      "name": "ICETEX column reference",
+      "display_name": "ICETEX column reference",
+      "x": 27.26,
+      "y": 41.77,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "reference",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 structural reference at unchanged B datum; derived (same zone, nearest level label 6.0 m away, no step drawn between); not a walking-floor elevation",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:p19",
+      "name": "Lockers column reference",
+      "display_name": "Lockers column reference",
+      "x": 46.97,
+      "y": 36.94,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "reference",
+      "elevation_m": 3.5,
+      "elevation_source": "C15 structural reference at unchanged B datum; pending; not a walking-floor elevation",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:hall-tread-01",
+      "name": "Hall steps tread 1",
+      "display_name": "Hall steps tread 1",
+      "x": 28,
+      "y": 48.09,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.3425,
+      "elevation_source": "C15 measured hall nosings/tread centres and documented after-point; four 0.1575 m risers; world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:hall-tread-02",
+      "name": "Hall steps tread 2",
+      "display_name": "Hall steps tread 2",
+      "x": 28,
+      "y": 48.55,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.185,
+      "elevation_source": "C15 measured hall nosings/tread centres and documented after-point; four 0.1575 m risers; world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:hall-tread-03",
+      "name": "Hall steps tread 3",
+      "display_name": "Hall steps tread 3",
+      "x": 28,
+      "y": 49.004999999999995,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 3.0275,
+      "elevation_source": "C15 measured hall nosings/tread centres and documented after-point; four 0.1575 m risers; world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    },
+    {
+      "code": "ucc:floor1:hall-after",
+      "name": "Hall steps / Block A arrival",
+      "display_name": "Hall steps / Block A arrival",
+      "x": 28,
+      "y": 49.5,
+      "floor": 1,
+      "faculty": "Administration",
+      "building_type": "waypoint",
+      "elevation_m": 2.87,
+      "elevation_source": "C15 measured hall nosings/tread centres and documented after-point; four 0.1575 m risers; world B datum 3.5",
+      "floor_code": "ucc-first-floor"
+    }
+  ],
+  "paths": [
+    {
+      "code": "ucc:floor1:e01",
+      "source_code": "ucc:floor1:p01",
+      "target_code": "ucc:floor1:p02",
+      "kind": "outdoor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e02",
+      "source_code": "ucc:floor1:p02",
+      "target_code": "ucc:floor1:p03",
+      "kind": "outdoor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e03",
+      "source_code": "ucc:floor1:p03",
+      "target_code": "ucc:floor1:p04",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e04",
+      "source_code": "ucc:floor1:p04",
+      "target_code": "ucc:floor1:p05",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e05",
+      "source_code": "ucc:floor1:p05",
+      "target_code": "ucc:floor1:p06",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e06",
+      "source_code": "ucc:floor1:p05",
+      "target_code": "ucc:floor1:p07",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e07",
+      "source_code": "ucc:floor1:p07",
+      "target_code": "ucc:floor1:p08",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e08",
+      "source_code": "ucc:floor1:p08",
+      "target_code": "ucc:floor1:p09",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e09",
+      "source_code": "ucc:floor1:hall-after",
+      "target_code": "ucc:floor1:p10",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e10",
+      "source_code": "ucc:floor1:p03",
+      "target_code": "ucc:floor1:p11",
+      "kind": "stairs",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e11",
+      "source_code": "ucc:floor1:p11",
+      "target_code": "ucc:floor1:p12",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e12",
+      "source_code": "ucc:floor1:p12",
+      "target_code": "ucc:floor1:p13",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e13",
+      "source_code": "ucc:floor1:p10",
+      "target_code": "ucc:floor1:p15",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e14",
+      "source_code": "ucc:floor1:p15",
+      "target_code": "ucc:floor1:p16",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e15",
+      "source_code": "ucc:floor1:p16",
+      "target_code": "ucc:floor1:p17",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:e16",
+      "source_code": "ucc:floor1:p17",
+      "target_code": "ucc:floor1:p14",
+      "kind": "corridor",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:hall:e1",
+      "source_code": "ucc:floor1:p09",
+      "target_code": "ucc:floor1:hall-tread-01",
+      "kind": "stairs",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:hall:e2",
+      "source_code": "ucc:floor1:hall-tread-01",
+      "target_code": "ucc:floor1:hall-tread-02",
+      "kind": "stairs",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:hall:e3",
+      "source_code": "ucc:floor1:hall-tread-02",
+      "target_code": "ucc:floor1:hall-tread-03",
+      "kind": "stairs",
+      "bidirectional": true
+    },
+    {
+      "code": "ucc:floor1:hall:e4",
+      "source_code": "ucc:floor1:hall-tread-03",
+      "target_code": "ucc:floor1:hall-after",
+      "kind": "stairs",
+      "bidirectional": true
+    }
+  ]
+}

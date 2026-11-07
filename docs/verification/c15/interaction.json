@@ -1,0 +1,1774 @@
+{
+  "manual": [
+    {
+      "name": "hall",
+      "arrivals": [
+        {
+          "direction": "forward",
+          "position": [
+            28,
+            2.87,
+            -49.519
+          ],
+          "error": 0.01899999999999835
+        },
+        {
+          "direction": "reverse",
+          "position": [
+            28,
+            3.5,
+            -47.557
+          ],
+          "error": 0.04299999999999926
+        }
+      ],
+      "samples": [
+        {
+          "position": "28.000,3.500,-47.850",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.343,-47.871",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.343,-48.058",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.343,-48.058",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.343,-48.308",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.343,-48.308",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.185,-48.513",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.185,-48.551",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.185,-48.738",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.028,-48.846",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.028,-49.009",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.028,-49.111",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,2.870,-49.290",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,2.870,-49.374",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,2.870,-49.519",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,2.870,-49.436",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,2.870,-49.269",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.028,-49.144",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.028,-48.998",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.028,-48.896",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.185,-48.771",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.185,-48.605",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.185,-48.542",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.343,-48.316",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.343,-48.275",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.343,-48.087",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.343,-48.087",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.500,-47.810",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.500,-47.810",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.500,-47.557",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "28.000,3.500,-47.557",
+          "floor": "1",
+          "state": "idle"
+        }
+      ]
+    },
+    {
+      "name": "vertical",
+      "arrivals": [
+        {
+          "direction": "forward",
+          "position": [
+            38.709,
+            6.18,
+            -55.836
+          ],
+          "error": 0.0646297145282262
+        },
+        {
+          "direction": "reverse",
+          "position": [
+            36.381,
+            2.87,
+            -55.895
+          ],
+          "error": 0.031400636936213255
+        }
+      ],
+      "samples": [
+        {
+          "position": "36.350,2.870,-55.900",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,2.870,-56.186",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,2.870,-56.186",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.028,-56.369",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.028,-56.419",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.185,-56.640",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.185,-56.687",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.343,-56.933",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.343,-56.933",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.500,-57.179",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.500,-57.179",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.500,-57.304",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.658,-57.434",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.658,-57.524",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.658,-57.690",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.816,-57.776",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.816,-57.909",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.816,-57.909",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.973,-58.125",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,3.973,-58.125",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,4.131,-58.385",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,4.131,-58.385",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,4.131,-58.513",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,4.289,-58.617",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,4.289,-58.734",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,4.289,-58.866",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,4.446,-59.049",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,4.446,-59.120",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,4.604,-59.303",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.414,4.604,-59.319",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.604,4.604,-59.510",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.604,4.604,-59.587",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.604,4.604,-59.587",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.842,4.604,-59.745",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.909,4.604,-59.812",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.909,4.604,-59.886",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.004,4.604,-59.936",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.166,4.604,-60.099",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.166,4.604,-60.234",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.166,4.604,-60.234",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.358,4.604,-60.117",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.458,4.604,-60.017",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.458,4.604,-59.947",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.494,4.604,-59.961",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.616,4.604,-60.083",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.616,4.604,-60.156",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.593,4.604,-60.156",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.443,4.604,-60.006",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.443,4.604,-59.934",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.443,4.604,-59.934",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.612,4.604,-60.083",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.612,4.604,-60.156",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.612,4.604,-60.156",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.364,4.604,-59.986",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.364,4.604,-59.986",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.364,4.604,-59.915",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.471,4.604,-59.967",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.585,4.604,-60.081",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.585,4.604,-60.159",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.538,4.604,-60.159",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.382,4.604,-60.004",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.382,4.604,-59.928",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.382,4.604,-59.928",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.582,4.604,-60.083",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.582,4.604,-60.138",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.582,4.604,-60.164",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.582,4.604,-59.954",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.582,4.604,-59.954",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.802,4.604,-59.774",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.837,4.604,-59.739",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.837,4.604,-59.661",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.945,4.604,-59.576",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.081,4.604,-59.439",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.081,4.604,-59.369",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.129,4.604,-59.369",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.374,4.604,-59.369",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.392,4.604,-59.369",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.639,4.604,-59.369",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.658,4.604,-59.369",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.906,4.761,-59.148",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.906,4.761,-59.124",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.906,4.761,-59.079",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.761,-59.079",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.761,-59.079",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.919,-58.820",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.919,-58.820",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.919,-58.702",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.919,-58.655",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.077,-58.445",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.077,-58.395",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.234,-58.192",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.234,-58.116",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.392,-57.873",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.392,-57.873",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.550,-57.576",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.550,-57.576",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.707,-57.272",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.707,-57.272",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.865,-57.015",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.865,-56.988",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.022,-56.758",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.022,-56.679",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.022,-56.502",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-56.368",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-56.237",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-56.056",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-55.953",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-55.836",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-55.953",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-56.099",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-56.242",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-56.324",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.180,-56.499",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.022,-56.594",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,6.022,-56.747",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.865,-56.897",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.865,-56.977",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.707,-57.178",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.707,-57.252",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.707,-57.273",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.550,-57.519",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.550,-57.519",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.392,-57.750",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.392,-57.776",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.392,-57.928",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.392,-57.928",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.392,-57.780",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.392,-57.873",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.392,-57.873",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.234,-58.131",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.234,-58.131",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.077,-58.365",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.077,-58.394",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,5.077,-58.545",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.919,-58.690",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.919,-58.804",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.761,-58.968",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.761,-59.080",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.761,-59.106",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.604,-59.320",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.709,4.604,-59.320",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.495,4.604,-59.482",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.441,4.604,-59.536",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.441,4.604,-59.611",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.332,4.604,-59.676",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.184,4.604,-59.824",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.184,4.604,-59.899",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "38.184,4.604,-59.899",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.944,4.604,-60.118",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.944,4.604,-60.144",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.944,4.604,-60.193",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.774,4.604,-60.044",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.707,4.604,-59.978",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.707,4.604,-59.906",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.633,4.604,-59.960",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-60.072",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-60.149",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-60.104",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-59.938",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-60.054",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-60.101",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-59.927",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-59.927",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-60.092",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-60.001",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-59.931",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-60.049",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.521,4.604,-60.049",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.243,4.604,-59.847",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.225,4.604,-59.828",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.225,4.604,-59.758",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "37.075,4.604,-59.652",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.949,4.604,-59.526",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.949,4.604,-59.455",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.949,4.604,-59.455",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.658,4.604,-59.232",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.658,4.604,-59.232",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.658,4.446,-59.158",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.513,4.604,-59.251",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.383",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.463",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.440",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.292",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.411",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.411",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.271",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.289",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.435",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.317",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.291",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.404",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.604,-59.404",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.446,-59.123",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.446,-59.123",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.446,-58.972",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.446,-59.072",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.446,-59.072",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.289,-58.788",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.289,-58.762",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.131,-58.534",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,4.131,-58.466",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.973,-58.279",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.973,-58.222",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.973,-58.091",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.973,-58.091",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.973,-58.217",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.973,-58.103",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.973,-58.103",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.816,-57.867",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.816,-57.867",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.658,-57.562",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.658,-57.562",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.500,-57.350",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.500,-57.325",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.500,-57.195",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.500,-57.195",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.343,-56.987",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.343,-56.922",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.185,-56.704",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.185,-56.661",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.028,-56.462",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.028,-56.372",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,3.028,-56.323",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,2.870,-56.141",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,2.870,-56.073",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,2.870,-55.895",
+          "floor": "1",
+          "state": "idle"
+        },
+        {
+          "position": "36.381,2.870,-55.895",
+          "floor": "1",
+          "state": "idle"
+        }
+      ]
+    }
+  ],
+  "paused": [
+    36.35,
+    3.973,
+    -58.103
+  ],
+  "beforeReplan": [
+    36.663,
+    3.973,
+    -58.103
+  ],
+  "playback": [
+    {
+      "position": "36.350,2.870,-55.900",
+      "floor": "1",
+      "state": "ready"
+    },
+    {
+      "position": "36.350,2.870,-55.900",
+      "floor": "1",
+      "state": "ready"
+    },
+    {
+      "position": "36.350,2.870,-55.900",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.028,-56.204",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.185,-56.531",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.343,-56.869",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.500,-57.206",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.658,-57.536",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.816,-57.867",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,3.973,-58.103",
+      "floor": "1",
+      "state": "paused"
+    },
+    {
+      "position": "36.350,3.973,-58.103",
+      "floor": "1",
+      "state": "paused"
+    },
+    {
+      "position": "36.350,3.973,-58.103",
+      "floor": "1",
+      "state": "paused"
+    },
+    {
+      "position": "36.350,3.973,-58.103",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.375,3.973,-58.103",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.663,3.973,-58.103",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.663,3.973,-58.103",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.663,3.973,-58.103",
+      "floor": "1",
+      "state": "idle"
+    },
+    {
+      "position": "36.663,3.973,-58.103",
+      "floor": "1",
+      "state": "ready"
+    },
+    {
+      "position": "36.663,3.973,-58.103",
+      "floor": "1",
+      "state": "ready"
+    },
+    {
+      "position": "36.663,3.973,-58.103",
+      "floor": "1",
+      "state": "ready"
+    },
+    {
+      "position": "36.663,3.973,-58.103",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.436,3.973,-58.137",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.131,-58.391",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.289,-58.717",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.446,-59.035",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,4.604,-59.350",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.668,4.604,-59.522",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "36.993,4.604,-59.698",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "37.322,4.604,-59.877",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "37.650,4.604,-59.943",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "37.978,4.604,-59.758",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.303,4.604,-59.574",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.632,4.604,-59.388",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,4.761,-59.102",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,4.919,-58.780",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.077,-58.473",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.234,-58.150",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.392,-57.828",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.550,-57.505",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.707,-57.193",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,5.865,-56.875",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.022,-56.571",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.180,-56.233",
+      "floor": "1",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.180,-55.851",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.180,-55.470",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.180,-55.104",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,6.180,-54.732",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "39.028,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "39.400,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "39.763,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "40.129,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "40.494,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "40.858,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "41.239,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "41.606,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "41.992,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "42.360,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "42.726,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "43.088,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "43.456,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "43.835,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "44.206,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "44.585,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "44.956,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "45.319,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "45.685,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "46.048,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "46.420,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "46.785,6.180,-54.700",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.180,-54.725",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.180,-55.087",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.180,-55.448",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.180,-55.807",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.180,-56.165",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.180,-56.528",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "47.122,6.180,-56.675",
+      "floor": "2",
+      "state": "arrived"
+    },
+    {
+      "position": "47.122,6.180,-56.675",
+      "floor": "2",
+      "state": "arrived"
+    },
+    {
+      "position": "47.122,6.180,-56.675",
+      "floor": "2",
+      "state": "arrived"
+    },
+    {
+      "position": "47.122,6.180,-56.675",
+      "floor": "2",
+      "state": "arrived"
+    }
+  ],
+  "finalPosition": [
+    47.122,
+    6.18,
+    -56.675
+  ],
+  "baseline": {
+    "buffers": 583,
+    "textures": 10
+  },
+  "cycles": [
+    {
+      "buffers": 583,
+      "textures": 10
+    },
+    {
+      "buffers": 583,
+      "textures": 10
+    }
+  ],
+  "metrics": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "averageFps": 144
+  }
+}

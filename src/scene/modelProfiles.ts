@@ -19,7 +19,7 @@ async function compatible(models:ModelEntry[],places:Building[],paths:CampusPath
 export interface ProfileSelection {manifest:CampusManifest;profile:string;recognized:boolean;error?:string}
 export async function selectModelProfile(source:CampusManifest,places:Building[],paths:CampusPath[]):Promise<ProfileSelection>{
   for(const p of source.profiles ?? [])if(explicitContract(p.models,places,paths) && await compatible(p.models,places,paths))return {
-    manifest:{version:1,catalog:source.catalog,models:p.models,stairCrossings:source.stairCrossings},profile:p.id,recognized:true};
+    manifest:{version:1,catalog:source.catalog,models:p.models,stairCrossings:p.stairCrossings ?? source.stairCrossings},profile:p.id,recognized:true};
   if(await compatible(source.models,places,paths))return {manifest:{version:1,catalog:source.catalog,models:source.models,stairCrossings:source.stairCrossings},profile:"base",recognized:true};
   const recognized=source.identityPlaceNames?.some(n=>places.some(p=>p.name===n)) ?? source.models.some(m=>m.binding?.placeNames.every(n=>places.some(p=>p.name===n)));
   return {manifest:{version:1,catalog:source.catalog,models:recognized ? source.models:[]},profile:recognized ? "incompatible":"sample",recognized,

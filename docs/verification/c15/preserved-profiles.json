@@ -1,0 +1,183 @@
+{
+  "previousProfileCount": 4,
+  "currentProfileCount": 5,
+  "previousProfilesUnchanged": true,
+  "resourceEntriesVerified": 35,
+  "assets": [
+    {
+      "id": "ucc-first-floor",
+      "asset": "models/campus.glb",
+      "hash": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "id": "campus-exterior",
+      "asset": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "id": "ucc-floor-0-preview",
+      "asset": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "id": "ucc-floor-2-preview",
+      "asset": "models/floor-2/campus.glb",
+      "hash": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6"
+    },
+    {
+      "id": "ucc-floor-3-preview",
+      "asset": "models/floor-3/campus.glb",
+      "hash": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "id": "ucc-floor-4-preview",
+      "asset": "models/floor-4/campus.glb",
+      "hash": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06"
+    },
+    {
+      "id": "ucc-floor-5-preview",
+      "asset": "models/floor-5/campus.glb",
+      "hash": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592"
+    },
+    {
+      "id": "ucc-first-floor",
+      "asset": "models/c15/floor-1.glb",
+      "hash": "75abed56ea985341f82f11585a26c981308db3aaf68f14c2e7303e239d6976cf"
+    },
+    {
+      "id": "campus-exterior",
+      "asset": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "id": "ucc-floor-0-preview",
+      "asset": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "id": "ucc-floor-3-preview",
+      "asset": "models/floor-3/campus.glb",
+      "hash": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "id": "ucc-floor-4-preview",
+      "asset": "models/floor-4/campus.glb",
+      "hash": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06"
+    },
+    {
+      "id": "ucc-floor-5-preview",
+      "asset": "models/floor-5/campus.glb",
+      "hash": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592"
+    },
+    {
+      "id": "ucc-second-floor",
+      "asset": "models/c15/floor-2.glb",
+      "hash": "8e7ea9aafb940d145010bc9ed34152d2022e1446f7034ffb7f74eddd8dae1760"
+    },
+    {
+      "id": "ucc-first-floor",
+      "asset": "models/campus.glb",
+      "hash": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "id": "campus-exterior",
+      "asset": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "id": "ucc-floor-0-preview",
+      "asset": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "id": "ucc-floor-2-preview",
+      "asset": "models/floor-2/campus.glb",
+      "hash": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6"
+    },
+    {
+      "id": "ucc-floor-3-preview",
+      "asset": "models/floor-3/campus.glb",
+      "hash": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "id": "ucc-floor-4-preview",
+      "asset": "models/floor-4/campus.glb",
+      "hash": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06"
+    },
+    {
+      "id": "ucc-floor-5-preview",
+      "asset": "models/floor-5/campus.glb",
+      "hash": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592"
+    },
+    {
+      "id": "ucc-first-floor",
+      "asset": "models/campus.glb",
+      "hash": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "id": "campus-exterior",
+      "asset": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "id": "ucc-floor-0-preview",
+      "asset": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "id": "ucc-floor-3-preview",
+      "asset": "models/floor-3/campus.glb",
+      "hash": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "id": "ucc-floor-4-preview",
+      "asset": "models/floor-4/campus.glb",
+      "hash": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06"
+    },
+    {
+      "id": "ucc-floor-5-preview",
+      "asset": "models/floor-5/campus.glb",
+      "hash": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592"
+    },
+    {
+      "id": "ucc-second-floor",
+      "asset": "models/floor-2/campus.glb",
+      "hash": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6"
+    },
+    {
+      "id": "ucc-first-floor",
+      "asset": "models/campus.glb",
+      "hash": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d"
+    },
+    {
+      "id": "campus-exterior",
+      "asset": "models/blocks/campus-exterior.glb",
+      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+    },
+    {
+      "id": "ucc-floor-0-preview",
+      "asset": "models/floor-0/campus.glb",
+      "hash": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d"
+    },
+    {
+      "id": "ucc-floor-3-preview",
+      "asset": "models/floor-3/campus.glb",
+      "hash": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72"
+    },
+    {
+      "id": "ucc-floor-4-preview",
+      "asset": "models/floor-4/campus.glb",
+      "hash": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06"
+    },
+    {
+      "id": "ucc-floor-5-preview",
+      "asset": "models/floor-5/campus.glb",
+      "hash": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592"
+    },
+    {
+      "id": "ucc-second-floor",
+      "asset": "models/floor-2/campus.glb",
+      "hash": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6"
+    }
+  ]
+}

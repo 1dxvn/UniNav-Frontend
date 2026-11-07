@@ -11,8 +11,10 @@ export interface ModelEntry {
   model?: string; transform?: CampusReference["transform"]; sourceDocument?: string;
   binding?: { placeNames: string[]; sha256: string };
   supportNodes?: string[];
+  outdoorSupportNodes?:string[];
+  modelSource?:{commit:string;path:string};
 }
-export interface ModelProfile { id:string; label:string; requiresExplicitPositions:true; models:ModelEntry[] }
+export interface ModelProfile { id:string; label:string; requiresExplicitPositions:true; models:ModelEntry[]; stairCrossings?:StairCrossing[] }
 export interface StairCrossing { connectionCode:string; originName:string; destinationName:string; source:string; planBounds?:[number,number,number,number] }
 export interface CampusManifest { version: 1; catalog: CampusCatalog; models: ModelEntry[]; identityPlaceNames?:string[]; profiles?:ModelProfile[]; stairCrossings?:StairCrossing[] }
 const hashPattern = /^[a-f0-9]{64}$/;
@@ -42,7 +44,7 @@ export function parseManifest(value: unknown): CampusManifest {
     for(const profile of manifest.profiles){
       if(!profile || !/^[a-zA-Z0-9_-]+$/.test(profile.id) || ["base","sample","incompatible"].includes(profile.id) || profileIds.has(profile.id) || !profile.label?.trim() || profile.requiresExplicitPositions!==true)throw new Error("Invalid or duplicate model profile.");
       profileIds.add(profile.id);
-      parseManifest({version:1,catalog:manifest.catalog,models:profile.models});
+      parseManifest({version:1,catalog:manifest.catalog,models:profile.models,stairCrossings:profile.stairCrossings});
       if(!profile.models.some(m=>m.state==="ready" && m.binding && m.kind!=="floor-preview" && m.kind!=="exterior"))throw new Error("A model profile needs a navigable data binding.");
     }
   }
@@ -53,9 +55,16 @@ export function parseManifest(value: unknown): CampusManifest {
       !Array.isArray(entry.floors) || (entry.kind !== "exterior" && !entry.floors.length) ||
       entry.floors.some((f) => !Number.isInteger(f) || f < 0 || f > 7) || new Set(entry.floors).size !== entry.floors.length) throw new Error("Invalid or duplicate model entry.");
     ids.add(entry.id);
+    if(entry.modelSource!==undefined && (!entry.modelSource || entry.kind==="exterior" || !/^[a-f0-9]{7,40}$/.test(entry.modelSource.commit) ||
+      !/^model\/candidates\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+\.glb$/.test(entry.modelSource.path) ||
+      !/^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.glb$/.test(entry.model ?? "")))throw new Error("Candidate models need a committed source path and an explicit safe model URL.");
+    if(entry.model!==undefined && entry.kind!=="exterior" && !/^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.glb$/.test(entry.model))throw new Error("Invalid floor model URL.");
     if (entry.supportNodes !== undefined && (entry.kind === "floor-preview" || entry.kind === "exterior" ||
       !Array.isArray(entry.supportNodes) || !entry.supportNodes.length || new Set(entry.supportNodes).size !== entry.supportNodes.length ||
       entry.supportNodes.some((name) => typeof name !== "string" || !name.trim()))) throw new Error("Only navigable floors can declare distinct walking surface nodes.");
+    if(entry.outdoorSupportNodes!==undefined && (entry.kind==="floor-preview" || entry.kind==="exterior" || !entry.supportNodes ||
+      !Array.isArray(entry.outdoorSupportNodes) || !entry.outdoorSupportNodes.length || new Set(entry.outdoorSupportNodes).size!==entry.outdoorSupportNodes.length ||
+      entry.outdoorSupportNodes.some(n=>typeof n!=="string" || !n.trim() || entry.supportNodes!.includes(n))))throw new Error("Outdoor support needs distinct reviewed nodes on a navigable floor.");
     if (entry.kind === "exterior") {
       const t = entry.transform;
       if (entry.floors.length || entry.navigable !== false || entry.binding ||

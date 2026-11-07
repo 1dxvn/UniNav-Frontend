@@ -196,7 +196,8 @@ The three selected floor-2 doorway facts now cite their committed inventory,
 SHA-256 `18fc3d7c…`, rather than a working snapshot. Other inventory entries
 remain drawing facts: the known floor-0 toilet/door-leaf and balcony-glass probe
 exceptions do not become accepted entrances. Structural previews create no API
-destinations. The first-floor hall/B levels still await physical candidate models.
+destinations. The C15 hall and Block A levels have a separate prepared profile;
+the B laboratory levels remain unresolved. The live API continues to select C14.
 
 Browser playback verification reads the recorded source revision and checks its
 model hashes, including the unchanged lower model. Visual audits may change
@@ -231,3 +232,35 @@ need confirmed destinations, door/turn coordinates, vertical waypoints, coherent
 elevations and full clearance/support rehearsals. The measured B laboratory stair
 still needs matching geometry/data. Preview delivery does not complete H2 or the
 three plans.
+
+## C15 levels and independent model URLs
+
+`ucc-two-floors-c15` binds exactly the two prepared C15 dataset revisions
+(68 places / 63 bidirectional connections). The four older combinations are
+preserved. Dataset coordinates and topology select the profile; partial elevation
+metadata or a mixed revision fails closed. Each profile may override
+`stairCrossings`, so the now-clear approach to the hall does not inherit the old
+mixed connection's stair restriction.
+
+C15 exports stay in Claude's `model/candidates/c15/`. A navigable model can
+declare `modelSource: {commit, path}` and an explicit safe `model` URL. The build
+verifies that committed source's SHA-256 and stages it at `models/c15/floor-N.glb`.
+The original public export and all older profile URLs stay intact. References
+retain their independent reviewed source commit and hash: the structural B datum
+anchors did not move when the Block A walking surfaces changed height.
+
+The hall now has four 0.1575 m risers, floor-1 A at world 2.87 m and floor-2 A at
+6.18 m. The graph contains the three measured tread centres plus the after-point.
+It retargets the original e09 connection atomically, preserving its row ID while
+removing the old direct bypass. Floors 0/3/4/5 remain previews with their existing
+approximations; C15 enables no routes to them. Laboratory B, the sloped hall,
+western block and upper A/B junction keep their explicit pending status.
+
+C15 declares `outdoorSupportNodes: ["Site"]` separately from interior slabs and
+stair support. Only outdoor connections may use that mesh. Its top is 0.15 m
+below the B slab, so the courtyard node uses world 3.35 m as a **model-only**
+placement, not a surveyed level. Guided and keyboard movement sample those
+outdoor surfaces; interior holes and stair wells cannot borrow their support.
+The presentation ground stays below the model's lowest visible surface.
+See `verification/c15/README.md` for the disposable API/browser rehearsal and
+remaining activation work.
