@@ -493,13 +493,16 @@
    "joins": [
     {
      "id": "B-stair-north-flight",
-     "risers": "1-6",
+     "risers": "treads 1-6 numbered between 7 drawn riser lines",
      "levels": [
       -4.13,
       -2.94
      ],
-     "riser": 0.198,
-     "status": "confirmed"
+     "riser": [
+      0.198,
+      0.17
+     ],
+     "status": "levels confirmed; 6 or 7 risers (corrected at C18, the first note said 6)"
     },
     {
      "id": "B-stair-south-flight",

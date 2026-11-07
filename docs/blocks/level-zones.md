@@ -122,7 +122,7 @@ The sheet has only these seven labels.
 
 | Element | Drawn | Levels | Status | Join to C16 floor 1 |
 | --- | --- | --- | --- | --- |
-| **B stair, north flight** | risers 1–6 at x 38.40 → 36.87, y ≈ 34.2, rising west ("S" at (38.87, 34.87)) | N −4.13 (east foot) → −2.94 (landing): 6 risers of 0.198 m | **confirmed** (labels at both ends) | — (inside piso cero) |
+| **B stair, north flight** | treads numbered 1–6 at x 38.40 → 36.87, y ≈ 34.2, rising west ("S" at (38.87, 34.87)), between 7 drawn riser lines at x 38.60, 38.30 … 36.80 | N −4.13 (east foot) → −2.94 (landing): 6 or 7 risers, 0.198 or 0.170 m (corrected at C18: the first note said 6) | levels **confirmed** (labels at both ends); riser count **ambiguous** | — (inside piso cero) |
 | **B stair, south flight** | risers 7–9 at x 36.49 → 37.11, y ≈ 32.4, rising east from the landing ("S" at (35.99, 33.0)); cut above 9 | N −2.94 → the floor-1 foot of the B stair at N −0.90 (2.04 m) | **derived**: the riser count above 9 is not drawn on either sheet | Not compatible yet: in C16 the floor-1 −0.90 area is part of the pending laboratory zone and stays flat at 0.00 |
 | **A east tower** | risers 1–10 at x ≈ 37.45, y 56.3–59.2, rising north ("S" at (36.45, 55.89)) | N −4.13 → −0.63 (floor 1, label at (36.59, 55.72) at the same tower): rise 3.50 m | **confirmed** (labels at both ends) | Compatible as a 3.50 m flight with the tower layout of floors 3–5: 21 risers of 0.1667 m, foot at world −0.63 (3.5 − 4.13), top at world 2.87, the C16 floor-1 Block A. The C14 floor-0 stair rises 2.94 m from world 0.56 and does not meet C16 |
 | **A west tower** | no flight on piso cero | — | — | The west tower starts on floor 1 |
