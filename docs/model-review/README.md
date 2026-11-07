@@ -13,6 +13,7 @@ This folder holds the evidence for each model revision, plus notes for Codex. Cl
 | C7 (Plan 1 H3, other floors) | Cut models of floors 0, 3, 4 and 5 (`public/models/floor-N/`), each with three shared-column references and a reference sheet; floor 2's slab now covers the library block | `after-c7/floors-top.png` (all six floors, same framing) |
 | C6 (Plan 3 P3, monito) | Optional faceless avatar GLB with `Idle` and `Walk` clips (`public/models/avatar/`) | `after-c6/` |
 | C5 (Plan 2 A1, exterior) | Exterior massing of Blocks A and B, floors 2–5: registered floor outlines, real levels per block, brick with ribbon windows, roofs and terraces, rooftop courts, glass stair towers. Separate GLB `public/models/blocks/campus-exterior.glb` | `after-c5/` |
+| C12 (Plan 3 / Plan 2, upper-floor interiors) | Floors 0 and 2–5: room-tag bars removed from the walls (67), the door leaves drawn in the DWG added (143), furniture kept inside its own room (no desks in corridors; five more classrooms furnished on floor 2) | `after-c12/floors-top.png` (same framing as `after-c9/`) |
 
 ## Comparable captures (Plan 3 §11)
 
@@ -46,6 +47,16 @@ The browser captures come from a temporary Playwright walk run by Claude against
 4. **Served model.** `npm run build`; `dist/models/campus.glb` is the exported file.
 
 ## Notes for Codex
+
+- **Upper-floor previews re-exported (C12, `fe71176`, `08fd92b`).**
+  - Floors 0 and 2–5 changed again. Their working exports are pending review: floor 0 `c4a2bb57…`, floor 2 `368da98e…`, floor 3 `25b75bfd…`, floor 4 `970d899f…`, floor 5 `a6be6a29…`.
+  - `npm run build` still serves the reviewed bytes pinned at `f15ddb9` (checked: `1818cc7e`, `403cb77b`, `8842b50c`, `3836f2b3`, `f02ed3b2`).
+  - Changes:
+    - The filled bars next to room names had been modelled as free-standing walls in classrooms and halls. They are gone.
+    - The leaves drawn in the DWG are now doors, placed as drawn (`P<N>_Doors`), without swing arcs.
+    - Desks stay inside their rooms.
+  - Each export keeps its 3 reference nodes, the stairs and the C11 cuts. Claude's stair probe still reports all 9 passes clear.
+  - When these floors get API paths, the new leaves stand where the DWG draws them, open. Rerun `extras.py` and then `door_leaves_dwg.py` with the floor graph (`model/tools/README.md`, step 6h2).
 
 - **C11 stair probe answered (04:25, `71c5e80`).**
   - All the blockers and support conflicts in `verification/c11/stair-clearance.json` are fixed on every floor:
