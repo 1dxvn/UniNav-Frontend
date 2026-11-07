@@ -103,3 +103,15 @@ non-navigable previews. Current acceptance evidence is in `verification/c13/`;
 The independent floor-2 source audit is in `blocks/floor2-access-review.md`.
 It separates CAD labels from unaccepted free-point candidates and shows why
 actual doors and turns are needed. It adds no API destinations or connections.
+
+## Floor-2 graph under review
+
+The supported east stair now has a candidate connection to the original north
+circulation and three source destinations: mixed reality (D14), molecular biology
+(D15) and the medical research centre (D13). See
+`blocks/floor2-route-review.md` and `verification/h2-floor2-candidate/`.
+Committed C13 `a2dbda0` passes all 86 directed graph checks and the six full
+browser arrivals. The newer working GLB `44fbeda2` also passed those checks;
+its source set remains pending a separate model review. The prepared backend
+dataset and API reference do not change public `dist`, the active C13 manifest
+or either development database. This is not a completed public floor integration.

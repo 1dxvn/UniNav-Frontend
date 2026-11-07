@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "source": "Claude DWG jamb extraction, working doorways.json SHA256 18fc3d7c1f37ac43fd1e331c9d59db342620d74b62188d19d756db6fe1677f6f (2026-11-07); selected integration facts, independently checked against each reviewed GLB. Not a claim that all other doorways are accepted.",
+  "frame": "Registered first-floor plan metres; plan +Y is not geographic north.",
+  "doorways": [
+    {
+      "jambs": [
+        [
+          35.383,
+          53.58
+        ],
+        [
+          34.449,
+          53.58
+        ]
+      ],
+      "center": [
+        34.916,
+        53.58
+      ],
+      "width": 0.934,
+      "stand": [
+        [
+          34.916,
+          52.98
+        ],
+        [
+          34.916,
+          54.18
+        ]
+      ],
+      "visible_labels": [
+        [],
+        [
+          {
+            "label": "CIRCULACION",
+            "distance": 4.43
+          },
+          {
+            "label": "HALL ASCENSORES",
+            "distance": 9.15
+          }
+        ]
+      ],
+      "leaves": [
+        [
+          [
+            34.462,
+            52.624
+          ],
+          [
+            34.462,
+            53.565
+          ]
+        ]
+      ],
+      "id": "D13",
+      "through": "clear"
+    },
+    {
+      "jambs": [
+        [
+          46.119,
+          53.605
+        ],
+        [
+          47.09,
+          53.605
+        ]
+      ],
+      "center": [
+        46.604,
+        53.605
+      ],
+      "width": 0.971,
+      "stand": [
+        [
+          46.604,
+          54.205
+        ],
+        [
+          46.604,
+          53.005
+        ]
+      ],
+      "visible_labels": [
+        [
+          {
+            "label": "CIRCULACION",
+            "distance": 7.79
+          },
+          {
+            "label": "LABORATORIO BIOLOGIA MOLECULAR",
+            "distance": 11
+          }
+        ],
+        [
+          {
+            "label": "LABORATORIO",
+            "distance": 1.99
+          },
+          {
+            "label": "REAL LIDAD",
+            "distance": 2.22
+          },
+          {
+            "label": "MIXTA",
+            "distance": 2.45
+          }
+        ]
+      ],
+      "leaves": [
+        [
+          [
+            47.076,
+            52.629
+          ],
+          [
+            47.076,
+            53.59
+          ]
+        ]
+      ],
+      "id": "D14",
+      "through": "clear"
+    },
+    {
+      "jambs": [
+        [
+          46.569,
+          56.075
+        ],
+        [
+          47.675,
+          56.075
+        ]
+      ],
+      "center": [
+        47.122,
+        56.075
+      ],
+      "width": 1.106,
+      "stand": [
+        [
+          47.122,
+          56.675
+        ],
+        [
+          47.122,
+          55.475
+        ]
+      ],
+      "visible_labels": [
+        [
+          {
+            "label": "LABORATORIO BIOLOGIA MOLECULAR",
+            "distance": 8.52
+          }
+        ],
+        [
+          {
+            "label": "CIRCULACION",
+            "distance": 8.13
+          }
+        ]
+      ],
+      "leaves": [
+        [
+          [
+            47.661,
+            56.089
+          ],
+          [
+            47.661,
+            57.186
+          ]
+        ]
+      ],
+      "id": "D15",
+      "through": "clear"
+    }
+  ]
+}
