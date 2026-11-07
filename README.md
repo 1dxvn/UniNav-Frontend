@@ -22,9 +22,9 @@ Open <http://127.0.0.1:8001/>. Sign in with `student` / `demo1234`.
 The real floor uses the backend's separate `uninav-campus.db`, seeded idempotently.
 `python main.py` still uses the original sample database and port 8000.
 
-Three destinations are connected: ICETEX, Morphology Laboratory, and Elevator and
-Restroom Hall. Preclinic is available as an intentional no-route case while its
-actual doorway awaits confirmation. See [the one-minute rehearsal](docs/REHEARSAL.md).
+Four destinations are connected: ICETEX, Morphology Laboratory, Elevator and
+Restroom Hall, and Preclinic / Dentistry Coordination. Preclinic uses the north
+circulation and storeroom. See [the one-minute rehearsal](docs/REHEARSAL.md).
 
 ## Development
 
@@ -78,6 +78,11 @@ With the real backend running, set `UNINAV_TEST_URL=http://127.0.0.1:8001` and r
 `npm run test:e2e`. Playwright uses an installed Brave on this Windows machine,
 `UNINAV_BROWSER` if supplied, or its Chromium (`npx playwright install chromium`).
 The sample test runs when the configured API contains the original sample campus.
+The no-route and expired-session test starts a separate real FastAPI instance on
+an OS-assigned free port, using `../venv/Scripts/python.exe` and the backend's
+`tests.serve_campus`. It creates an isolated destination in a temporary database,
+then removes its process and files. `UNINAV_TEST_PYTHON` can override the interpreter.
+It never inserts test destinations into the running campus or sample database.
 
 `node --experimental-strip-types tools/verify-model.ts` checks actual GLB anchors
 and clearance for every API edge. `tools/prepare-campus-graph.ts` is an offline

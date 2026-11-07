@@ -1,0 +1,325 @@
+{
+  "checkedAt": "2026-11-07T07:15:03.444Z",
+  "model": "campus.glb",
+  "modelSha256": "3c4e28b313fb6c6009cda2193e0a8717a3b040043cc4402fbbf21a192b043aea",
+  "geometryOnlyTextureLoading": true,
+  "floor": 1,
+  "transform": {
+    "scale": 1,
+    "rotationYDegrees": 0,
+    "translation": [
+      0,
+      3.5,
+      0
+    ]
+  },
+  "references": [
+    {
+      "name": "Hall Acceso",
+      "documentedErrorMetres": 0,
+      "glbErrorMetres": 0,
+      "position": [
+        0,
+        3.5,
+        0
+      ]
+    },
+    {
+      "name": "ICETEX column reference",
+      "documentedErrorMetres": 0,
+      "glbErrorMetres": 5.117953404757962e-7,
+      "position": [
+        27.26,
+        3.5,
+        -41.77
+      ]
+    },
+    {
+      "name": "Lockers column reference",
+      "documentedErrorMetres": 0,
+      "glbErrorMetres": 0.0000018374015155952338,
+      "position": [
+        46.97,
+        3.5,
+        -36.94
+      ]
+    }
+  ],
+  "minimumWallClearanceMetres": 0.3559631384184632,
+  "edges": [
+    {
+      "from": "Hall Acceso",
+      "to": "Access courtyard",
+      "minimumWallClearanceMetres": 0.45019947967948365
+    },
+    {
+      "from": "Access courtyard",
+      "to": "South circulation",
+      "minimumWallClearanceMetres": 0.6557331493184966
+    },
+    {
+      "from": "South circulation",
+      "to": "ICETEX approach",
+      "minimumWallClearanceMetres": 0.640155449670339
+    },
+    {
+      "from": "ICETEX approach",
+      "to": "ICETEX doorway",
+      "minimumWallClearanceMetres": 0.417604957847414
+    },
+    {
+      "from": "ICETEX doorway",
+      "to": "ICETEX",
+      "minimumWallClearanceMetres": 0.45697865711447283
+    },
+    {
+      "from": "ICETEX doorway",
+      "to": "Hall junction",
+      "minimumWallClearanceMetres": 0.4255096907996302
+    },
+    {
+      "from": "Hall junction",
+      "to": "Hall corridor south",
+      "minimumWallClearanceMetres": 0.4442535681555617
+    },
+    {
+      "from": "Hall corridor south",
+      "to": "Hall corridor north",
+      "minimumWallClearanceMetres": 0.4900007950788273
+    },
+    {
+      "from": "Hall corridor north",
+      "to": "Elevator and Restroom Hall",
+      "minimumWallClearanceMetres": 0.9787599832900918
+    },
+    {
+      "from": "South circulation",
+      "to": "Laboratory corridor west",
+      "minimumWallClearanceMetres": 0.43068097771325237
+    },
+    {
+      "from": "Laboratory corridor west",
+      "to": "Laboratory corridor east",
+      "minimumWallClearanceMetres": 0.4949121390180181
+    },
+    {
+      "from": "Laboratory corridor east",
+      "to": "Morphology Laboratory",
+      "minimumWallClearanceMetres": 0.3559631384184632
+    },
+    {
+      "from": "Elevator and Restroom Hall",
+      "to": "North circulation west",
+      "minimumWallClearanceMetres": 0.6315673552264415
+    },
+    {
+      "from": "North circulation west",
+      "to": "North circulation east",
+      "minimumWallClearanceMetres": 0.9718183829303939
+    },
+    {
+      "from": "North circulation east",
+      "to": "Preclinic storeroom",
+      "minimumWallClearanceMetres": 0.40818191528320114
+    },
+    {
+      "from": "Preclinic storeroom",
+      "to": "Preclinic / Dentistry Coordination",
+      "minimumWallClearanceMetres": 0.4573642952651717
+    }
+  ],
+  "collisionChecks": [
+    {
+      "from": "Hall Acceso",
+      "to": "Access courtyard",
+      "samples": 176,
+      "blocked": false
+    },
+    {
+      "from": "Access courtyard",
+      "to": "Hall Acceso",
+      "samples": 176,
+      "blocked": false
+    },
+    {
+      "from": "Access courtyard",
+      "to": "South circulation",
+      "samples": 231,
+      "blocked": false
+    },
+    {
+      "from": "South circulation",
+      "to": "Access courtyard",
+      "samples": 231,
+      "blocked": false
+    },
+    {
+      "from": "South circulation",
+      "to": "ICETEX approach",
+      "samples": 16,
+      "blocked": false
+    },
+    {
+      "from": "ICETEX approach",
+      "to": "South circulation",
+      "samples": 16,
+      "blocked": false
+    },
+    {
+      "from": "ICETEX approach",
+      "to": "ICETEX doorway",
+      "samples": 21,
+      "blocked": false
+    },
+    {
+      "from": "ICETEX doorway",
+      "to": "ICETEX approach",
+      "samples": 21,
+      "blocked": false
+    },
+    {
+      "from": "ICETEX doorway",
+      "to": "ICETEX",
+      "samples": 59,
+      "blocked": false
+    },
+    {
+      "from": "ICETEX",
+      "to": "ICETEX doorway",
+      "samples": 59,
+      "blocked": false
+    },
+    {
+      "from": "ICETEX doorway",
+      "to": "Hall junction",
+      "samples": 8,
+      "blocked": false
+    },
+    {
+      "from": "Hall junction",
+      "to": "ICETEX doorway",
+      "samples": 8,
+      "blocked": false
+    },
+    {
+      "from": "Hall junction",
+      "to": "Hall corridor south",
+      "samples": 40,
+      "blocked": false
+    },
+    {
+      "from": "Hall corridor south",
+      "to": "Hall junction",
+      "samples": 40,
+      "blocked": false
+    },
+    {
+      "from": "Hall corridor south",
+      "to": "Hall corridor north",
+      "samples": 115,
+      "blocked": false
+    },
+    {
+      "from": "Hall corridor north",
+      "to": "Hall corridor south",
+      "samples": 115,
+      "blocked": false
+    },
+    {
+      "from": "Hall corridor north",
+      "to": "Elevator and Restroom Hall",
+      "samples": 46,
+      "blocked": false
+    },
+    {
+      "from": "Elevator and Restroom Hall",
+      "to": "Hall corridor north",
+      "samples": 46,
+      "blocked": false
+    },
+    {
+      "from": "South circulation",
+      "to": "Laboratory corridor west",
+      "samples": 200,
+      "blocked": false
+    },
+    {
+      "from": "Laboratory corridor west",
+      "to": "South circulation",
+      "samples": 200,
+      "blocked": false
+    },
+    {
+      "from": "Laboratory corridor west",
+      "to": "Laboratory corridor east",
+      "samples": 53,
+      "blocked": false
+    },
+    {
+      "from": "Laboratory corridor east",
+      "to": "Laboratory corridor west",
+      "samples": 53,
+      "blocked": false
+    },
+    {
+      "from": "Laboratory corridor east",
+      "to": "Morphology Laboratory",
+      "samples": 56,
+      "blocked": false
+    },
+    {
+      "from": "Morphology Laboratory",
+      "to": "Laboratory corridor east",
+      "samples": 56,
+      "blocked": false
+    },
+    {
+      "from": "Elevator and Restroom Hall",
+      "to": "North circulation west",
+      "samples": 67,
+      "blocked": false
+    },
+    {
+      "from": "North circulation west",
+      "to": "Elevator and Restroom Hall",
+      "samples": 67,
+      "blocked": false
+    },
+    {
+      "from": "North circulation west",
+      "to": "North circulation east",
+      "samples": 263,
+      "blocked": false
+    },
+    {
+      "from": "North circulation east",
+      "to": "North circulation west",
+      "samples": 263,
+      "blocked": false
+    },
+    {
+      "from": "North circulation east",
+      "to": "Preclinic storeroom",
+      "samples": 31,
+      "blocked": false
+    },
+    {
+      "from": "Preclinic storeroom",
+      "to": "North circulation east",
+      "samples": 31,
+      "blocked": false
+    },
+    {
+      "from": "Preclinic storeroom",
+      "to": "Preclinic / Dentistry Coordination",
+      "samples": 15,
+      "blocked": false
+    },
+    {
+      "from": "Preclinic / Dentistry Coordination",
+      "to": "Preclinic storeroom",
+      "samples": 15,
+      "blocked": false
+    }
+  ]
+}

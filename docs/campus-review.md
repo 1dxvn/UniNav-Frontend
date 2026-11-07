@@ -17,17 +17,37 @@ The access path goes from Hall Acceso through the open access courtyard to the
 south circulation. Corridor nodes preserve the narrow door near `(23.5, 36)`
 and the lab approach through `(41.5, 33.5)` and `(46.5, 32)`.
 
-## Geometry question: Preclinic
+## Confirmed Preclinic access
 
-No connected free passage was found to the suggested Preclinic interior point
-`(56.84, 51.96)`, with 0.38 m centre-line clearance from the delivered walls,
-columns and glass. The location remains in the API, without a connection.
-The frontend displays the real API's no-route error for it.
+Backend `3809907` connects Preclinic / Dentistry Coordination at `(56.84, 51.96)`
+through Elevator and Restroom Hall → North circulation west → North circulation
+east → Preclinic storeroom. The doorway is in the east partition; the storeroom
+opens to the north circulation. Claude documented both in
+`public/models/campus-reference.md`. Hall Acceso → Preclinic is 102.4 m.
 
-Please confirm its actual doorway and corridor access against the DWG/DXF. Only
-Claude should adjust the model if the export closed an opening. The release's three
-reachable destinations are ICETEX, Morphology Laboratory, and Elevator and Restroom
-Hall. The isolated Preclinic does not block the agreed three-destination demo.
+The current regression walks ICETEX, Morphology Laboratory, Elevator and Restroom
+Hall and Preclinic **in both directions** against the real API and GLB. The
+synthetic isolated destination for the no-route case lives only in a temporary
+test database. No invented room is added to `uninav-campus.db`.
+
+## H0 and the textured C1 model
+
+Claude's visual revision `1dfa410` adds brick, framed glass, interior tiles and the
+landscaped plaza. `docs/model-review/` holds Claude's comparable before/after
+images. Codex's current browser and geometry evidence is in `verification/h0/`,
+separate from the historical initial-integration images above.
+
+The reviewed GLB SHA-256 is
+`3c4e28b313fb6c6009cda2193e0a8717a3b040043cc4402fbbf21a192b043aea`.
+`revision.json` records the served model and the 19-place, 16-path catalogue;
+the browser suite checks that the file stays unchanged throughout the walks.
+`model-alignment.json` reports a maximum GLB anchor error below 0.000002 m,
+minimum wall/column/glass centre-line clearance of 0.35596 m, and 32 directed
+edge checks without a collision against any mesh at the runtime body heights.
+
+Node inspection now bypasses image decoding with a GLTFLoader texture plugin.
+It preserves geometry and material sidedness; it does not modify the GLB.
+Browser captures independently check the actual embedded textures and materials.
 
 ## Limits to keep visible
 
