@@ -53,10 +53,29 @@ thin = [f for f in thin if not (is_tag(f) or is_block(f))]
 W["blocks_034x138"] += [[[round(x, 3), round(y, 3)] for x, y in list(f.exterior.coords)[:-1]] for f in tag_faces]
 walls = unary_union([hatched] + thin)
 walls = walls.difference(unary_union(polys(W["columns"])))
+# Long tag bars: under long room names ("AULA No 205 B", "HALL ASCENSORES") the filled tag bar is 1.2-3 m long, too
+# long for is_tag, and the label anchor may sit up to ~1 m from it. Such a bar is a solid hatch, it stands alone in its
+# room (it touches no wall, column or glass) and a label anchor lies within 1.1 m. Without this test it became a
+# free-standing wall in the middle of the room. Layer-01 partitions (not hatched) are never taken for tags.
+others = unary_union(polys(W["columns"]) + polys(W["glass"]))
+parts = [p for p in getattr(walls, "geoms", [walls]) if p.geom_type == "Polygon"]
+def long_tag(i, p):
+    mrr = p.minimum_rotated_rectangle; c = list(mrr.exterior.coords)
+    a = LineString(c[0:2]).length; b = LineString(c[1:3]).length
+    if not (0.18 <= min(a, b) <= 0.45 and 1.2 <= max(a, b) < 3.0 and p.area > 0.9 * mrr.area): return False
+    if p.intersection(hatched).area < 0.9 * p.area: return False
+    if not any(p.distance(q) < 1.1 for q in anchors) or p.distance(others) < 0.03: return False
+    return all(p.distance(o) >= 0.03 for j, o in enumerate(parts) if j != i)
+long_tags = [p for i, p in enumerate(parts) if long_tag(i, p)]
+walls_out = walls      # the footprint below still uses all solids, so removing the bars leaves the slab unchanged
+if long_tags:
+    walls_out = unary_union([p for p in parts if not any(p is t for t in long_tags)])
+    W["blocks_034x138"] += [[[round(x, 3), round(y, 3)] for x, y in list(p.exterior.coords)[:-1]] for p in long_tags]
+print("long tag bars kept out of the walls:", len(long_tags))
 print("repeated 0.34 x 1.38 m blocks kept out of the walls:", len(W.get("blocks_034x138", [])))
 def ring(p): return {"outer": [[round(x, 3), round(y, 3)] for x, y in list(p.exterior.coords)[:-1]], "holes": [[[round(x, 3), round(y, 3)] for x, y in list(i.coords)[:-1]] for i in p.interiors]}
 before = hatched.area
-W["walls"] = [ring(p) for p in getattr(walls, "geoms", [walls]) if p.geom_type == "Polygon" and p.area > 0.01]
+W["walls"] = [ring(p) for p in getattr(walls_out, "geoms", [walls_out]) if p.geom_type == "Polygon" and p.area > 0.01]
 W["columns"] = [r for r in W["columns"] if BUILD.contains(Polygon(r["outer"]).representative_point())]
 W["glass"] = [r for r in W["glass"] if BUILD.contains(Polygon(r["outer"]).representative_point())]
 W["glass_lines"] = [g for g in W.get("glass_lines", []) if BUILD.contains(LineString(g).centroid)]
