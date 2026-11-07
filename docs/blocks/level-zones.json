@@ -334,10 +334,12 @@
      "status": "confirmed at (28.99, 34.04); extent derived"
     },
     {
-     "id": "A-B-junction",
-     "rule": "along y ~ 49",
-     "level": null,
-     "status": "pending: 0.26 m difference, no numbered steps"
+     "id": "A-B-junction-ramp",
+     "bounds": [27.35, 47.906, 29.75, 49.275],
+     "levels": [2.94, 2.68],
+     "levelsAt": "south edge y 47.906 (Block B), north edge y 49.275 (Block A)",
+     "slope": 0.19,
+     "status": "drawn: ramp notation (arrow from A to B, 'S' at the A end, no treads)"
     },
     {
      "id": "west-block-library",

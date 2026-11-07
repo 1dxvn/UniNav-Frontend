@@ -4,7 +4,10 @@ Prepared by Claude, 7 November 2026, in answer to `docs/blocks/first-floor-level
 
 - **confirmed:** level labels on the sheet.
 - **derived:** continuous with a confirmed zone, with no step drawn between them.
+- **drawn:** the sheet draws the element by convention (for example, a ramp arrow), with the levels at both ends confirmed.
 - **pending:** not established. A pending zone keeps its current flat height and gets no guessed level.
+
+**Block identity: confirmed by the user** (7 November 2026, 16:07). Block A is the north bar and Block B the south body. They join at the hall corridor, x 27.35–29.75.
 
 Machine-readable zones and place assignments are in `docs/blocks/level-zones.json`. The Block A boundary is y = 49.23: the north bar's south facade line and the last hall nosing. The candidate built on these zones is `model/candidates/c15/`.
 
@@ -30,11 +33,11 @@ Machine-readable zones and place assignments are in `docs/blocks/level-zones.jso
 | --- | --- | --- | --- | --- |
 | A north bar | footprint with y ≥ 49.23 and x ≥ 13.6 | N +2.68 | confirmed | N +2.68 at (38.07, 55.33) and (15.67, 54.02); the sections give Block A's floor 2 at N +2.68 |
 | B body | footprint with y < 49.23 | N +2.94 | confirmed at (28.99, 34.04) | Extent beyond that label: derived |
-| A/B junction | along y ≈ 49 | 0.26 m difference | **pending** | No numbered steps; only an "S" mark at (28.41, 49.87) |
+| A/B junction: ramp | x 27.35–29.75, y 47.906–49.275 | N +2.68 (north) → +2.94 (south) | **drawn** (ramp notation) | The strip is drawn between two edges with no tread lines and no step numbers. One arrow runs along its centre (x ≈ 28.57) from the A side to the B side, with its head at y 47.906. The text "S" (*sube*, up) is at the A end, at (28.41, 49.87). On floors 3 and 4 the same strip has numbered treads, so the floor-2 strip reads as a ramp. Rise 0.26 m over 1.37 m: a slope of about 19 %, steeper than the usual accessibility limits |
 | West block (library) | x < 13.6 | — | **pending** | No label |
 | B stair half landing | (43.24, 35.35) | N +1.70 | confirmed | Not modelled |
 
-Codex's three floor-2 destinations, Mixed Reality (D14), Molecular Biology (D15) and Medical Research (D13), and the east-stair arrival are all in Block A. Their routes do not cross the pending floor-2 junction.
+Codex's three floor-2 destinations, Mixed Reality (D14), Molecular Biology (D15) and Medical Research (D13), and the east-stair arrival are all in Block A. Their routes do not cross the floor-2 junction ramp.
 
 ## Neighbouring models and transforms that change together
 
