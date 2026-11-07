@@ -1,0 +1,12 @@
+{
+  "publicCommit": "396c0fc8488a35d195dcf23a88d22368696c83f0",
+  "localMerge": "3460480d1a63b7ae7219c4da64f8c51564abf95e",
+  "parentRemote": "569628abc182a9d1425c2ed0d7d3130c218921e6",
+  "ownFiles": [
+    "data/campus-catalog.json",
+    "docs/CAMPUS_DATASETS.md",
+    "docs/CAMPUS_STARTUP.md",
+    "tests/api/test_catalog.py"
+  ],
+  "continuityExcluded": true
+}

@@ -1,0 +1,5609 @@
+{
+  "manual": [
+    {
+      "name": "floor2-3 east stair",
+      "arrivals": [
+        {
+          "direction": "forward",
+          "position": [
+            38.725,
+            9.87,
+            -55.849
+          ],
+          "error": 0.05679788728465282
+        },
+        {
+          "direction": "reverse",
+          "position": [
+            36.375,
+            6.18,
+            -55.955
+          ],
+          "error": 0.060415229867972015
+        }
+      ],
+      "samples": [
+        {
+          "position": "36.350,6.180,-55.900",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.180,-55.900",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.180,-55.900",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.356,-56.370",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.783",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.783",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.783",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.679",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.356,-56.406",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.356,-56.406",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.510",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.728",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.728",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.517",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.517",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.760",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.760",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.736",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.552",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.552",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.552",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.750",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.750",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.543",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.543",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.606",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.745",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.745",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.537",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.537",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.783",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.783",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.595",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.595",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.531,-56.659",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.707,-56.937",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.707,-56.937",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.883,-57.168",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.883,-57.278",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.883,-57.278",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.545",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.621",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.602",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.461",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.461",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.661",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.661",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.469",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.469",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.630",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.234,-57.707",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.648",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.435",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.435",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.661",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.661",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.447",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.447",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.640",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.640",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.485",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.485",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.234,-57.714",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.234,-57.714",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.426",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,6.883,-57.346",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.486",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.672",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.672",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.452",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.452",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.651",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.651",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.459",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.459",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.623",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.623",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.436",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.436",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.559",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.632",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.543",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.474",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.640",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.674",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.510",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.464",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.555",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.666",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.608",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.427",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.427",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.660",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.660",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.465",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.465",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.657",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.657",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.566",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.419",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.419",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.615",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.059,-57.615",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.234,-57.895",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.234,-57.895",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.410,-58.083",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.410,-58.195",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.410,-58.249",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.586,-58.491",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.586,-58.491",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.724",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.832",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.832",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.611",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.611",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.847",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.847",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.746",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.604",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.604",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.888",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.888",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.888",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.586,-58.528",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.586,-58.350",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.586,-58.350",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.586,-58.350",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.586,-58.558",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.710",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.710",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.761,-58.727",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.937,-59.033",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,7.937,-59.033",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,8.113,-59.346",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,8.113,-59.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,8.113,-59.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,8.113,-59.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,8.113,-59.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.350,8.113,-59.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.366,8.113,-59.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.656,8.113,-59.564",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.846,8.113,-59.755",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.846,8.113,-59.876",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.846,8.113,-59.876",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.846,8.113,-59.876",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.846,8.113,-59.876",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.846,8.113,-59.876",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.905,8.113,-59.876",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.212,8.113,-60.048",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.328,8.113,-60.165",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.328,8.113,-60.363",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.328,8.113,-60.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.328,8.113,-60.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.328,8.113,-60.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.328,8.113,-60.392",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.498,8.113,-60.294",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.700,8.113,-60.093",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.700,8.113,-60.005",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.700,8.113,-59.897",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.700,8.113,-59.897",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.700,8.113,-59.897",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.439,8.113,-60.039",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.367,8.113,-60.111",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.367,8.113,-60.258",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.367,8.113,-60.258",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.367,8.113,-60.258",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.396,8.113,-60.258",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.757,8.113,-60.212",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.017,8.113,-59.952",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.160,8.113,-59.810",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.160,8.113,-59.639",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.160,8.113,-59.574",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.160,8.113,-59.574",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.160,8.113,-59.574",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.109,8.113,-59.574",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.790,8.113,-59.691",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.517,8.113,-59.964",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.258,8.113,-60.223",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.057,8.113,-60.424",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.057,8.113,-60.424",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.057,8.113,-60.437",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.057,8.113,-60.437",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.057,8.113,-60.437",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.057,8.113,-60.437",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.406,8.113,-60.396",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.669,8.113,-60.133",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.669,8.113,-60.133",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.669,8.113,-60.037",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.669,8.113,-60.037",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.669,8.113,-60.037",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.412,8.113,-59.936",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.263,8.113,-59.787",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.263,8.113,-59.697",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.263,8.113,-59.697",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.377,8.113,-59.732",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.633,8.113,-59.988",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.657,8.113,-60.012",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.657,8.113,-60.112",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.657,8.113,-60.112",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.536,8.113,-60.071",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.386,8.113,-59.921",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.386,8.113,-59.835",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.386,8.113,-59.835",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.525,8.113,-59.850",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.722,8.113,-60.048",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.722,8.113,-60.137",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.722,8.113,-60.169",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.722,8.113,-60.169",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.553,8.113,-60.071",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.404,8.113,-59.922",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.404,8.113,-59.814",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.404,8.113,-59.814",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.404,8.113,-59.814",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.694,8.113,-59.923",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.838,8.113,-60.066",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.838,8.113,-60.172",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.838,8.113,-60.172",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.838,8.113,-60.172",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.581,8.113,-60.172",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.324,8.113,-59.915",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.242,8.113,-59.832",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.242,8.113,-59.696",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.242,8.113,-59.696",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.242,8.113,-59.696",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.486,8.113,-59.858",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.544,8.113,-59.916",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.544,8.113,-60.003",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.544,8.113,-60.003",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.752,8.113,-59.930",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.899,8.113,-59.783",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.899,8.113,-59.718",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.899,8.113,-59.718",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.143,8.113,-59.521",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.162,8.113,-59.503",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.162,8.113,-59.427",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.298,8.113,-59.336",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.429,8.113,-59.206",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.429,8.289,-59.094",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.429,8.289,-59.094",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.656,8.113,-59.257",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.770,8.113,-59.371",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.770,8.113,-59.460",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.770,8.113,-59.460",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.601,8.113,-59.343",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.436,8.289,-59.179",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.436,8.289,-59.050",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.436,8.289,-59.050",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.568,8.289,-59.050",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.846,8.113,-59.288",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.965,8.113,-59.407",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.965,8.113,-59.519",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.965,8.113,-59.519",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.911,8.113,-59.519",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.644,8.113,-59.287",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.644,8.113,-59.287",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.644,8.289,-59.193",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.644,8.289,-59.193",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.902,8.113,-59.353",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "39.085,8.113,-59.535",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "39.085,8.113,-59.641",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "39.085,8.113,-59.641",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "39.085,8.113,-59.641",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.976,8.113,-59.623",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.749,8.113,-59.396",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.749,8.113,-59.349",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.749,8.113,-59.269",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.724,8.113,-59.269",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.531,8.113,-59.428",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.531,8.113,-59.547",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.531,8.113,-59.573",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.531,8.113,-59.573",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.789,8.113,-59.404",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.871,8.113,-59.322",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.871,8.113,-59.210",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.871,8.113,-59.210",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.711,8.113,-59.287",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.548,8.113,-59.450",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.548,8.113,-59.573",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.548,8.113,-59.573",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.656,8.113,-59.520",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.823,8.113,-59.352",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.823,8.113,-59.266",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.823,8.113,-59.266",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.665,8.113,-59.347",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.589,8.113,-59.422",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.589,8.113,-59.537",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.589,8.113,-59.537",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.803,8.113,-59.378",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.898,8.113,-59.283",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.898,8.289,-59.041",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.898,8.289,-59.041",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.898,8.289,-59.041",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.898,8.289,-59.041",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.754,8.289,-59.094",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.527,8.113,-59.321",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.527,8.113,-59.379",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.527,8.113,-59.406",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.552,8.113,-59.406",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.838,8.289,-59.180",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.875,8.289,-59.143",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.875,8.289,-59.027",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.875,8.289,-59.027",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.875,8.289,-59.027",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.587,8.289,-59.178",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.484,8.113,-59.281",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.484,8.113,-59.367",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.484,8.113,-59.367",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.113,-59.367",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.113,-59.367",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.113,-59.211",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.967",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.967",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.110",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.146",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.122",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.464,-58.899",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.464,-58.899",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.135",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.113,-59.212",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.113,-59.212",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.962",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.923",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.048",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.128",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.034",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.956",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.956",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.176",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.113,-59.278",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.113,-59.278",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.998",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.998",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.998",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.998",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.998",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.913",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.464,-58.726",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.464,-58.726",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.640,-58.414",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.640,-58.414",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.816,-58.246",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.816,-58.123",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.816,-58.123",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.991,-57.906",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.991,-57.773",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.991,-57.773",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.991,-57.884",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.816,-58.144",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.816,-58.144",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.991,-57.865",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.991,-57.828",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.167,-57.690",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.167,-57.539",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.167,-57.539",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.218",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.218",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.162",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.519,-56.919",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.519,-56.919",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.519,-56.823",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.597",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.597",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.597",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.538",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.290",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.290",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.225",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.858",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.805",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.805",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.976",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.976",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.799",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.799",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.937",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.097",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.097",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.888",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.787",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.787",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.787",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.905",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.207",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.207",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.207",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.912",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.849",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.849",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.873",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.259",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.563",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.563",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.563",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.428",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.066",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.676",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.644",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.644",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.644",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.644",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-55.814",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.127",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.127",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.127",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.190",
+          "floor": "3",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.484",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.484",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.484",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.260",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.260",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.260",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.471",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.471",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.274",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.237",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.237",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.526",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.526",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.465",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.247",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.247",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.247",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.247",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.580",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.580",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.580",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.378",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.175",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.175",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.272",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.462",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.462",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.462",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.351",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.224",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.224",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.453",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.453",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.268",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.200",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.318",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.442",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.421",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.065",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.065",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.182",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.379",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.870,-56.379",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.659",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.694",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.694,-56.719",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.519,-56.972",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.519,-56.972",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.186",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.311",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.252",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.519,-57.099",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.191",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.167,-57.411",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.167,-57.411",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.209",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.519,-57.074",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.519,-57.097",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.323",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.323",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.137",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.137",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.354",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.354",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.172",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.172",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.356",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.356",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.145",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.145",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.333",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.333",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.118",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.118",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.301",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.343,-57.301",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.167,-57.563",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,9.167,-57.563",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.991,-57.855",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.991,-57.890",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.816,-58.074",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.816,-58.159",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.816,-58.256",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.640,-58.450",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.640,-58.450",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.464,-58.769",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.464,-58.769",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-58.979",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.087",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.289,-59.145",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.113,-59.356",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.725,8.113,-59.356",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.483,8.113,-59.547",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.439,8.113,-59.591",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.439,8.113,-59.714",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.439,8.113,-59.714",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.198,8.113,-59.903",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.158,8.113,-59.943",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.158,8.113,-60.026",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "38.158,8.113,-60.026",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.876,8.113,-60.026",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.876,8.113,-60.026",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.591,8.113,-60.026",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.591,8.113,-60.026",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.418,8.113,-59.897",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.337,8.113,-59.817",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.337,8.113,-59.741",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.287,8.113,-59.741",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.077,8.113,-59.530",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.077,8.113,-59.465",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "37.077,8.113,-59.465",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.882,8.113,-59.313",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.818,8.113,-59.249",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.818,7.937,-59.172",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.750,8.113,-59.188",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.536,8.113,-59.402",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.536,8.113,-59.482",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.536,8.113,-59.482",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.344,8.113,-59.357",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.286,8.113,-59.299",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.286,8.113,-59.211",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.330,8.113,-59.211",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.488,8.113,-59.369",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.488,8.113,-59.447",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.488,8.113,-59.447",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.257,8.113,-59.268",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.257,8.113,-59.268",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.257,8.113,-59.183",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.354,8.113,-59.201",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.515,8.113,-59.362",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.515,8.113,-59.443",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.515,8.113,-59.443",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.359,8.113,-59.366",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.256,8.113,-59.263",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.256,7.937,-59.175",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.256,7.937,-59.175",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.374,8.113,-59.237",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.558,8.113,-59.421",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.558,8.113,-59.505",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.558,8.113,-59.505",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.346,8.113,-59.340",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.303,8.113,-59.297",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.303,8.113,-59.211",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.399,8.113,-59.307",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.450,8.113,-59.358",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.450,8.113,-59.438",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.450,8.113,-59.438",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.258,8.113,-59.297",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.258,8.113,-59.214",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.258,8.113,-59.214",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.406,8.113,-59.304",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.480,8.113,-59.378",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.480,8.113,-59.456",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.430,8.113,-59.456",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.256,8.113,-59.283",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.256,8.113,-59.192",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.256,8.113,-59.192",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.454,8.113,-59.343",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.494,8.113,-59.384",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.494,8.113,-59.459",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.431,8.113,-59.442",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.265,8.113,-59.276",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.265,8.113,-59.198",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.265,8.113,-59.198",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.463,8.113,-59.370",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.463,8.113,-59.370",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.463,8.113,-59.584",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.463,8.113,-59.584",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.222,8.113,-59.446",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.125,8.113,-59.349",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.125,8.113,-59.263",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.125,8.113,-59.263",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.125,8.113,-59.263",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.426,8.113,-59.447",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.446,8.113,-59.468",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.446,8.113,-59.559",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.396,8.113,-59.559",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.187,8.113,-59.377",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.187,8.113,-59.292",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.187,8.113,-59.292",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.363,8.113,-59.391",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.435,8.113,-59.463",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.435,8.113,-59.544",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.435,8.113,-59.544",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.221,8.113,-59.412",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.145,8.113,-59.336",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.145,8.113,-59.252",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.201,8.113,-59.252",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.416,8.113,-59.467",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.416,8.113,-59.552",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.416,8.113,-59.552",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.253,8.113,-59.413",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.212,8.113,-59.372",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.212,8.113,-59.302",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.313,8.113,-59.353",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.416,8.113,-59.456",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.416,8.113,-59.534",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.369,8.113,-59.534",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.165,8.113,-59.357",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.165,8.113,-59.282",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.165,8.113,-59.282",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.385,8.113,-59.429",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.404,8.113,-59.448",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.404,8.113,-59.522",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.259,8.113,-59.424",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.186,8.113,-59.351",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.186,8.113,-59.279",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.186,8.113,-59.279",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.432,8.113,-59.448",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.432,8.113,-59.498",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.432,8.113,-59.526",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.233,8.113,-59.399",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.195,8.113,-59.361",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.195,8.113,-59.290",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.323,8.113,-59.379",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.431",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.505",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.396",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.283",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.394",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.423",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.282",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.282",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.451",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.451",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.247",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.247",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.401",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,8.113,-59.401",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.937,-59.092",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.937,-59.057",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.937,-58.974",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.761,-58.757",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.761,-58.757",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.586,-58.464",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.586,-58.425",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.586,-58.330",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.410,-58.103",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.410,-58.103",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.856",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.817",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.817",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.481",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.481",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.643",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.643",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.538",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.426",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.523",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.629",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.570",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.463",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.553",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.648",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.519",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.480",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.706",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.706",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.578",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.475",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.559",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.630",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.496",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.458",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.458",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.667",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.667",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.473",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.473",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.670",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.670",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.504",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.883,-57.248",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.883,-57.248",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.883,-57.248",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.499",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.655",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.655",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.457",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.883,-57.279",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.883,-57.279",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.446",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.669",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.669",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.669",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.418",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.418",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.418",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.524",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.717",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.717",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.647",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.424",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.424",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.424",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.727",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.727",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.727",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.443",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.443",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.443",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.723",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.723",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.723",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.423",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.423",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.423",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.702",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.234,-57.702",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.565",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.422",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.422",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.619",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.619",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.457",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.419",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.441",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.623",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.623",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.449",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.449",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.687",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.687",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.545",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.469",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.596",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.671",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.671",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.478",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.478",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.671",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.671",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.467",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.522",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.646",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.533",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,7.059,-57.499",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.883,-57.344",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.883,-57.220",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.883,-57.159",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.707,-56.933",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.707,-56.933",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.531,-56.628",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.531,-56.628",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.356,-56.487",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.356,-56.353",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.356,-56.353",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-56.005",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-56.005",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.823",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.823",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-56.022",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-56.022",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.813",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.813",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.960",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.903",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.780",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.885",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.960",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.792",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.792",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.965",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.965",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.768",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.768",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.981",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.981",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.790",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.790",
+          "floor": "2",
+          "state": "idle"
+        },
+        {
+          "position": "36.375,6.180,-55.955",
+          "floor": "2",
+          "state": "idle"
+        }
+      ]
+    }
+  ],
+  "paused": [
+    36.35,
+    7.41,
+    -58.248
+  ],
+  "beforeReplan": [
+    36.645,
+    7.41,
+    -58.248
+  ],
+  "initialRoute": {
+    "path": [
+      "East stair point 0 (floors 2-3)",
+      "East stair point 1 (floors 2-3)",
+      "East stair point 2 (floors 2-3)",
+      "East stair point 3 (floors 2-3)",
+      "East stair point 4 (floors 2-3)",
+      "East stair point 5 (floors 2-3)",
+      "East stair point 6 (floors 2-3)",
+      "East stair point 7 (floors 2-3)",
+      "East stair point 8 (floors 2-3)",
+      "East stair point 9 (floors 2-3)",
+      "East stair point 10 (floors 2-3)",
+      "East stair point 11 (floors 2-3)",
+      "East stair point 12 (floors 2-3)",
+      "East stair point 13 (floors 2-3)",
+      "East stair point 14 (floors 2-3)",
+      "East stair point 15 (floors 2-3)",
+      "East stair point 16 (floors 2-3)",
+      "East stair point 17 (floors 2-3)",
+      "East stair point 18 (floors 2-3)",
+      "East stair point 19 (floors 2-3)",
+      "East stair point 20 (floors 2-3)",
+      "East stair point 21 (floors 2-3)",
+      "East stair point 22 (floors 2-3)",
+      "East stair point 23 (floors 2-3)",
+      "East stair point 24 (floors 2-3)",
+      "Third-floor north circulation",
+      "Third-floor corridor near Computer Lab 1",
+      "Floor 3 D15 corridor stand",
+      "Floor 3 D15 doorway centre",
+      "Computer Laboratory 1 (floor 3)"
+    ],
+    "steps": [
+      {
+        "origin_name": "East stair point 0 (floors 2-3)",
+        "destination_name": "East stair point 1 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.4830895468797608,
+        "origin_id": 70,
+        "destination_id": 71,
+        "path_id": 66,
+        "connection_code": "ucc:f3:e003",
+        "origin_display_name": "East stair point 0 (floors 2-3)",
+        "destination_display_name": "East stair point 1 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 1 (floors 2-3)",
+        "destination_name": "East stair point 2 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767155571877983,
+        "origin_id": 71,
+        "destination_id": 72,
+        "path_id": 67,
+        "connection_code": "ucc:f3:e004",
+        "origin_display_name": "East stair point 1 (floors 2-3)",
+        "destination_display_name": "East stair point 2 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 2 (floors 2-3)",
+        "destination_name": "East stair point 3 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154611612683,
+        "origin_id": 72,
+        "destination_id": 73,
+        "path_id": 68,
+        "connection_code": "ucc:f3:e005",
+        "origin_display_name": "East stair point 2 (floors 2-3)",
+        "destination_display_name": "East stair point 3 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 3 (floors 2-3)",
+        "destination_name": "East stair point 4 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767156481603656,
+        "origin_id": 73,
+        "destination_id": 74,
+        "path_id": 69,
+        "connection_code": "ucc:f3:e006",
+        "origin_display_name": "East stair point 3 (floors 2-3)",
+        "destination_display_name": "East stair point 4 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 4 (floors 2-3)",
+        "destination_name": "East stair point 5 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476715461161273,
+        "origin_id": 74,
+        "destination_id": 75,
+        "path_id": 70,
+        "connection_code": "ucc:f3:e007",
+        "origin_display_name": "East stair point 4 (floors 2-3)",
+        "destination_display_name": "East stair point 5 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 5 (floors 2-3)",
+        "destination_name": "East stair point 6 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154561071806,
+        "origin_id": 75,
+        "destination_id": 76,
+        "path_id": 71,
+        "connection_code": "ucc:f3:e008",
+        "origin_display_name": "East stair point 5 (floors 2-3)",
+        "destination_display_name": "East stair point 6 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 6 (floors 2-3)",
+        "destination_name": "East stair point 7 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767158402135767,
+        "origin_id": 76,
+        "destination_id": 77,
+        "path_id": 72,
+        "connection_code": "ucc:f3:e009",
+        "origin_display_name": "East stair point 6 (floors 2-3)",
+        "destination_display_name": "East stair point 7 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 7 (floors 2-3)",
+        "destination_name": "East stair point 8 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154561072416,
+        "origin_id": 77,
+        "destination_id": 78,
+        "path_id": 73,
+        "connection_code": "ucc:f3:e010",
+        "origin_display_name": "East stair point 7 (floors 2-3)",
+        "destination_display_name": "East stair point 8 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 8 (floors 2-3)",
+        "destination_name": "East stair point 9 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154662152383,
+        "origin_id": 78,
+        "destination_id": 79,
+        "path_id": 74,
+        "connection_code": "ucc:f3:e011",
+        "origin_display_name": "East stair point 8 (floors 2-3)",
+        "destination_display_name": "East stair point 9 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 9 (floors 2-3)",
+        "destination_name": "East stair point 10 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154561072416,
+        "origin_id": 79,
+        "destination_id": 80,
+        "path_id": 75,
+        "connection_code": "ucc:f3:e012",
+        "origin_display_name": "East stair point 9 (floors 2-3)",
+        "destination_display_name": "East stair point 10 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 10 (floors 2-3)",
+        "destination_name": "East stair point 11 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476715461161216,
+        "origin_id": 80,
+        "destination_id": 81,
+        "path_id": 76,
+        "connection_code": "ucc:f3:e013",
+        "origin_display_name": "East stair point 10 (floors 2-3)",
+        "destination_display_name": "East stair point 11 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 11 (floors 2-3)",
+        "destination_name": "East stair point 12 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 1.3647344063956137,
+        "origin_id": 81,
+        "destination_id": 82,
+        "path_id": 77,
+        "connection_code": "ucc:f3:e014",
+        "origin_display_name": "East stair point 11 (floors 2-3)",
+        "destination_display_name": "East stair point 12 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 12 (floors 2-3)",
+        "destination_name": "East stair point 13 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 1.3209844813622948,
+        "origin_id": 82,
+        "destination_id": 83,
+        "path_id": 78,
+        "connection_code": "ucc:f3:e015",
+        "origin_display_name": "East stair point 12 (floors 2-3)",
+        "destination_display_name": "East stair point 13 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 13 (floors 2-3)",
+        "destination_name": "East stair point 14 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154561072416,
+        "origin_id": 83,
+        "destination_id": 84,
+        "path_id": 79,
+        "connection_code": "ucc:f3:e016",
+        "origin_display_name": "East stair point 13 (floors 2-3)",
+        "destination_display_name": "East stair point 14 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 14 (floors 2-3)",
+        "destination_name": "East stair point 15 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476716219266063,
+        "origin_id": 84,
+        "destination_id": 85,
+        "path_id": 80,
+        "connection_code": "ucc:f3:e017",
+        "origin_display_name": "East stair point 14 (floors 2-3)",
+        "destination_display_name": "East stair point 15 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 15 (floors 2-3)",
+        "destination_name": "East stair point 16 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476715461161264,
+        "origin_id": 85,
+        "destination_id": 86,
+        "path_id": 81,
+        "connection_code": "ucc:f3:e018",
+        "origin_display_name": "East stair point 15 (floors 2-3)",
+        "destination_display_name": "East stair point 16 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 16 (floors 2-3)",
+        "destination_name": "East stair point 17 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767147030568424,
+        "origin_id": 86,
+        "destination_id": 87,
+        "path_id": 82,
+        "connection_code": "ucc:f3:e019",
+        "origin_display_name": "East stair point 16 (floors 2-3)",
+        "destination_display_name": "East stair point 17 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 17 (floors 2-3)",
+        "destination_name": "East stair point 18 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476716219266124,
+        "origin_id": 87,
+        "destination_id": 88,
+        "path_id": 83,
+        "connection_code": "ucc:f3:e020",
+        "origin_display_name": "East stair point 17 (floors 2-3)",
+        "destination_display_name": "East stair point 18 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 18 (floors 2-3)",
+        "destination_name": "East stair point 19 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476716209157994,
+        "origin_id": 88,
+        "destination_id": 89,
+        "path_id": 84,
+        "connection_code": "ucc:f3:e021",
+        "origin_display_name": "East stair point 18 (floors 2-3)",
+        "destination_display_name": "East stair point 19 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 19 (floors 2-3)",
+        "destination_name": "East stair point 20 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.347671470811087,
+        "origin_id": 89,
+        "destination_id": 90,
+        "path_id": 85,
+        "connection_code": "ucc:f3:e022",
+        "origin_display_name": "East stair point 19 (floors 2-3)",
+        "destination_display_name": "East stair point 20 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 20 (floors 2-3)",
+        "destination_name": "East stair point 21 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767162142120894,
+        "origin_id": 90,
+        "destination_id": 91,
+        "path_id": 86,
+        "connection_code": "ucc:f3:e023",
+        "origin_display_name": "East stair point 20 (floors 2-3)",
+        "destination_display_name": "East stair point 21 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 21 (floors 2-3)",
+        "destination_name": "East stair point 22 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.347671470811087,
+        "origin_id": 91,
+        "destination_id": 92,
+        "path_id": 87,
+        "connection_code": "ucc:f3:e024",
+        "origin_display_name": "East stair point 21 (floors 2-3)",
+        "destination_display_name": "East stair point 22 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 22 (floors 2-3)",
+        "destination_name": "East stair point 23 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767162091580556,
+        "origin_id": 92,
+        "destination_id": 93,
+        "path_id": 88,
+        "connection_code": "ucc:f3:e025",
+        "origin_display_name": "East stair point 22 (floors 2-3)",
+        "destination_display_name": "East stair point 23 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 23 (floors 2-3)",
+        "destination_name": "East stair point 24 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.45000000000000134,
+        "origin_id": 93,
+        "destination_id": 94,
+        "path_id": 89,
+        "connection_code": "ucc:f3:e026",
+        "origin_display_name": "East stair point 23 (floors 2-3)",
+        "destination_display_name": "East stair point 24 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 24 (floors 2-3)",
+        "destination_name": "Third-floor north circulation",
+        "kind": "corridor",
+        "distance": 1.1999999999999957,
+        "origin_id": 94,
+        "destination_id": 95,
+        "path_id": 90,
+        "connection_code": "ucc:f3:e027",
+        "origin_display_name": "East stair point 24 (floors 2-3)",
+        "destination_display_name": "Third-floor north circulation"
+      },
+      {
+        "origin_name": "Third-floor north circulation",
+        "destination_name": "Third-floor corridor near Computer Lab 1",
+        "kind": "corridor",
+        "distance": 4.814,
+        "origin_id": 95,
+        "destination_id": 96,
+        "path_id": 91,
+        "connection_code": "ucc:f3:e028",
+        "origin_display_name": "Third-floor north circulation",
+        "destination_display_name": "Third-floor corridor near Computer Lab 1"
+      },
+      {
+        "origin_name": "Third-floor corridor near Computer Lab 1",
+        "destination_name": "Floor 3 D15 corridor stand",
+        "kind": "corridor",
+        "distance": 1.2689999999999984,
+        "origin_id": 96,
+        "destination_id": 97,
+        "path_id": 92,
+        "connection_code": "ucc:f3:e029",
+        "origin_display_name": "Third-floor corridor near Computer Lab 1",
+        "destination_display_name": "Floor 3 D15 corridor stand"
+      },
+      {
+        "origin_name": "Floor 3 D15 corridor stand",
+        "destination_name": "Floor 3 D15 doorway centre",
+        "kind": "corridor",
+        "distance": 0.6000000000000014,
+        "origin_id": 97,
+        "destination_id": 98,
+        "path_id": 93,
+        "connection_code": "ucc:f3:e030",
+        "origin_display_name": "Floor 3 D15 corridor stand",
+        "destination_display_name": "Floor 3 D15 doorway centre"
+      },
+      {
+        "origin_name": "Floor 3 D15 doorway centre",
+        "destination_name": "Computer Laboratory 1 (floor 3)",
+        "kind": "corridor",
+        "distance": 0.5999999999999943,
+        "origin_id": 98,
+        "destination_id": 99,
+        "path_id": 94,
+        "connection_code": "ucc:f3:e031",
+        "origin_display_name": "Floor 3 D15 doorway centre",
+        "destination_display_name": "Computer Lab 1 · 308A"
+      }
+    ],
+    "distance": 19.055239571756637,
+    "origin_name": "East stair point 0 (floors 2-3)",
+    "destination_name": "Computer Laboratory 1 (floor 3)",
+    "waypoints": [
+      {
+        "id": 70,
+        "code": "ucc:f3:east-stair-00",
+        "name": "East stair point 0 (floors 2-3)",
+        "display_name": "East stair point 0 (floors 2-3)",
+        "x": 36.35,
+        "y": 55.9,
+        "floor": 2,
+        "elevation_m": 6.18,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 71,
+        "code": "ucc:f3:east-stair-01",
+        "name": "East stair point 1 (floors 2-3)",
+        "display_name": "East stair point 1 (floors 2-3)",
+        "x": 36.35,
+        "y": 56.35,
+        "floor": 2,
+        "elevation_m": 6.355714286,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 72,
+        "code": "ucc:f3:east-stair-02",
+        "name": "East stair point 2 (floors 2-3)",
+        "display_name": "East stair point 2 (floors 2-3)",
+        "x": 36.35,
+        "y": 56.65,
+        "floor": 2,
+        "elevation_m": 6.531428573,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 73,
+        "code": "ucc:f3:east-stair-03",
+        "name": "East stair point 3 (floors 2-3)",
+        "display_name": "East stair point 3 (floors 2-3)",
+        "x": 36.35,
+        "y": 56.95,
+        "floor": 2,
+        "elevation_m": 6.707142841,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 74,
+        "code": "ucc:f3:east-stair-04",
+        "name": "East stair point 4 (floors 2-3)",
+        "display_name": "East stair point 4 (floors 2-3)",
+        "x": 36.35,
+        "y": 57.25,
+        "floor": 2,
+        "elevation_m": 6.882857146,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 75,
+        "code": "ucc:f3:east-stair-05",
+        "name": "East stair point 5 (floors 2-3)",
+        "display_name": "East stair point 5 (floors 2-3)",
+        "x": 36.35,
+        "y": 57.550000000000004,
+        "floor": 2,
+        "elevation_m": 7.058571414,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 76,
+        "code": "ucc:f3:east-stair-06",
+        "name": "East stair point 6 (floors 2-3)",
+        "display_name": "East stair point 6 (floors 2-3)",
+        "x": 36.35,
+        "y": 57.85,
+        "floor": 2,
+        "elevation_m": 7.234285681,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 77,
+        "code": "ucc:f3:east-stair-07",
+        "name": "East stair point 7 (floors 2-3)",
+        "display_name": "East stair point 7 (floors 2-3)",
+        "x": 36.35,
+        "y": 58.15,
+        "floor": 2,
+        "elevation_m": 7.410000024,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 78,
+        "code": "ucc:f3:east-stair-08",
+        "name": "East stair point 8 (floors 2-3)",
+        "display_name": "East stair point 8 (floors 2-3)",
+        "x": 36.35,
+        "y": 58.45,
+        "floor": 2,
+        "elevation_m": 7.585714291,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 79,
+        "code": "ucc:f3:east-stair-09",
+        "name": "East stair point 9 (floors 2-3)",
+        "display_name": "East stair point 9 (floors 2-3)",
+        "x": 36.35,
+        "y": 58.75,
+        "floor": 2,
+        "elevation_m": 7.76142856,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 80,
+        "code": "ucc:f3:east-stair-10",
+        "name": "East stair point 10 (floors 2-3)",
+        "display_name": "East stair point 10 (floors 2-3)",
+        "x": 36.35,
+        "y": 59.050000000000004,
+        "floor": 2,
+        "elevation_m": 7.937142827,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 81,
+        "code": "ucc:f3:east-stair-11",
+        "name": "East stair point 11 (floors 2-3)",
+        "display_name": "East stair point 11 (floors 2-3)",
+        "x": 36.35,
+        "y": 59.35,
+        "floor": 2,
+        "elevation_m": 8.112857095,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 82,
+        "code": "ucc:f3:east-stair-12",
+        "name": "East stair point 12 (floors 2-3)",
+        "display_name": "East stair point 12 (floors 2-3)",
+        "x": 37.55,
+        "y": 60,
+        "floor": 2,
+        "elevation_m": 8.112857095,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 83,
+        "code": "ucc:f3:east-stair-13",
+        "name": "East stair point 13 (floors 2-3)",
+        "display_name": "East stair point 13 (floors 2-3)",
+        "x": 38.7,
+        "y": 59.35,
+        "floor": 2,
+        "elevation_m": 8.112857095,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 84,
+        "code": "ucc:f3:east-stair-14",
+        "name": "East stair point 14 (floors 2-3)",
+        "display_name": "East stair point 14 (floors 2-3)",
+        "x": 38.7,
+        "y": 59.05,
+        "floor": 2,
+        "elevation_m": 8.288571362,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 85,
+        "code": "ucc:f3:east-stair-15",
+        "name": "East stair point 15 (floors 2-3)",
+        "display_name": "East stair point 15 (floors 2-3)",
+        "x": 38.7,
+        "y": 58.75,
+        "floor": 2,
+        "elevation_m": 8.46428578,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 86,
+        "code": "ucc:f3:east-stair-16",
+        "name": "East stair point 16 (floors 2-3)",
+        "display_name": "East stair point 16 (floors 2-3)",
+        "x": 38.7,
+        "y": 58.449999999999996,
+        "floor": 2,
+        "elevation_m": 8.640000048,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 87,
+        "code": "ucc:f3:east-stair-17",
+        "name": "East stair point 17 (floors 2-3)",
+        "display_name": "East stair point 17 (floors 2-3)",
+        "x": 38.7,
+        "y": 58.15,
+        "floor": 2,
+        "elevation_m": 8.815714166,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 88,
+        "code": "ucc:f3:east-stair-18",
+        "name": "East stair point 18 (floors 2-3)",
+        "display_name": "East stair point 18 (floors 2-3)",
+        "x": 38.7,
+        "y": 57.849999999999994,
+        "floor": 2,
+        "elevation_m": 8.991428584,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 89,
+        "code": "ucc:f3:east-stair-19",
+        "name": "East stair point 19 (floors 2-3)",
+        "display_name": "East stair point 19 (floors 2-3)",
+        "x": 38.7,
+        "y": 57.55,
+        "floor": 2,
+        "elevation_m": 9.167143,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 90,
+        "code": "ucc:f3:east-stair-20",
+        "name": "East stair point 20 (floors 2-3)",
+        "display_name": "East stair point 20 (floors 2-3)",
+        "x": 38.7,
+        "y": 57.25,
+        "floor": 2,
+        "elevation_m": 9.342857119,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 91,
+        "code": "ucc:f3:east-stair-21",
+        "name": "East stair point 21 (floors 2-3)",
+        "display_name": "East stair point 21 (floors 2-3)",
+        "x": 38.7,
+        "y": 56.949999999999996,
+        "floor": 2,
+        "elevation_m": 9.518571536,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 92,
+        "code": "ucc:f3:east-stair-22",
+        "name": "East stair point 22 (floors 2-3)",
+        "display_name": "East stair point 22 (floors 2-3)",
+        "x": 38.7,
+        "y": 56.65,
+        "floor": 2,
+        "elevation_m": 9.694285655,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 93,
+        "code": "ucc:f3:east-stair-23",
+        "name": "East stair point 23 (floors 2-3)",
+        "display_name": "East stair point 23 (floors 2-3)",
+        "x": 38.7,
+        "y": 56.349999999999994,
+        "floor": 2,
+        "elevation_m": 9.870000071,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 94,
+        "code": "ucc:f3:east-stair-24",
+        "name": "East stair point 24 (floors 2-3)",
+        "display_name": "East stair point 24 (floors 2-3)",
+        "x": 38.7,
+        "y": 55.9,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 95,
+        "code": "ucc:f3:north-corridor",
+        "name": "Third-floor north circulation",
+        "display_name": "Third-floor north circulation",
+        "x": 38.7,
+        "y": 54.7,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 96,
+        "code": "ucc:f3:lab-1-corridor-turn",
+        "name": "Third-floor corridor near Computer Lab 1",
+        "display_name": "Third-floor corridor near Computer Lab 1",
+        "x": 43.514,
+        "y": 54.7,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 97,
+        "code": "ucc:f3:lab-1-outside",
+        "name": "Floor 3 D15 corridor stand",
+        "display_name": "Floor 3 D15 corridor stand",
+        "x": 43.514,
+        "y": 55.969,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 98,
+        "code": "ucc:f3:lab-1-door",
+        "name": "Floor 3 D15 doorway centre",
+        "display_name": "Floor 3 D15 doorway centre",
+        "x": 43.514,
+        "y": 56.569,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 99,
+        "code": "ucc:f3:computer-lab-1-entrance",
+        "name": "Computer Laboratory 1 (floor 3)",
+        "display_name": "Computer Lab 1 · 308A",
+        "x": 43.514,
+        "y": 57.169,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      }
+    ]
+  },
+  "beforeReplanSamples": [
+    {
+      "position": "36.350,6.180,-55.900",
+      "floor": "2",
+      "state": "ready"
+    },
+    {
+      "position": "36.350,6.180,-55.900",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,6.180,-55.919",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,6.356,-56.245",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,6.531,-56.541",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,6.707,-56.842",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,6.883,-57.148",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,7.059,-57.448",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,7.234,-57.775",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,7.410,-58.086",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,7.410,-58.248",
+      "floor": "2",
+      "state": "paused"
+    },
+    {
+      "position": "36.350,7.410,-58.248",
+      "floor": "2",
+      "state": "paused"
+    },
+    {
+      "position": "36.350,7.410,-58.248",
+      "floor": "2",
+      "state": "paused"
+    },
+    {
+      "position": "36.350,7.410,-58.248",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "36.376,7.410,-58.248",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "36.645,7.410,-58.248",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "36.645,7.410,-58.248",
+      "floor": "2",
+      "state": "idle"
+    }
+  ],
+  "route": {
+    "path": [
+      "East stair point 7 (floors 2-3)",
+      "East stair point 8 (floors 2-3)",
+      "East stair point 9 (floors 2-3)",
+      "East stair point 10 (floors 2-3)",
+      "East stair point 11 (floors 2-3)",
+      "East stair point 12 (floors 2-3)",
+      "East stair point 13 (floors 2-3)",
+      "East stair point 14 (floors 2-3)",
+      "East stair point 15 (floors 2-3)",
+      "East stair point 16 (floors 2-3)",
+      "East stair point 17 (floors 2-3)",
+      "East stair point 18 (floors 2-3)",
+      "East stair point 19 (floors 2-3)",
+      "East stair point 20 (floors 2-3)",
+      "East stair point 21 (floors 2-3)",
+      "East stair point 22 (floors 2-3)",
+      "East stair point 23 (floors 2-3)",
+      "East stair point 24 (floors 2-3)",
+      "Third-floor north circulation",
+      "Third-floor corridor near Computer Lab 1",
+      "Floor 3 D15 corridor stand",
+      "Floor 3 D15 doorway centre",
+      "Computer Laboratory 1 (floor 3)"
+    ],
+    "steps": [
+      {
+        "origin_name": "East stair point 7 (floors 2-3)",
+        "destination_name": "East stair point 8 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154561072416,
+        "origin_id": 77,
+        "destination_id": 78,
+        "path_id": 73,
+        "connection_code": "ucc:f3:e010",
+        "origin_display_name": "East stair point 7 (floors 2-3)",
+        "destination_display_name": "East stair point 8 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 8 (floors 2-3)",
+        "destination_name": "East stair point 9 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154662152383,
+        "origin_id": 78,
+        "destination_id": 79,
+        "path_id": 74,
+        "connection_code": "ucc:f3:e011",
+        "origin_display_name": "East stair point 8 (floors 2-3)",
+        "destination_display_name": "East stair point 9 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 9 (floors 2-3)",
+        "destination_name": "East stair point 10 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154561072416,
+        "origin_id": 79,
+        "destination_id": 80,
+        "path_id": 75,
+        "connection_code": "ucc:f3:e012",
+        "origin_display_name": "East stair point 9 (floors 2-3)",
+        "destination_display_name": "East stair point 10 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 10 (floors 2-3)",
+        "destination_name": "East stair point 11 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476715461161216,
+        "origin_id": 80,
+        "destination_id": 81,
+        "path_id": 76,
+        "connection_code": "ucc:f3:e013",
+        "origin_display_name": "East stair point 10 (floors 2-3)",
+        "destination_display_name": "East stair point 11 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 11 (floors 2-3)",
+        "destination_name": "East stair point 12 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 1.3647344063956137,
+        "origin_id": 81,
+        "destination_id": 82,
+        "path_id": 77,
+        "connection_code": "ucc:f3:e014",
+        "origin_display_name": "East stair point 11 (floors 2-3)",
+        "destination_display_name": "East stair point 12 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 12 (floors 2-3)",
+        "destination_name": "East stair point 13 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 1.3209844813622948,
+        "origin_id": 82,
+        "destination_id": 83,
+        "path_id": 78,
+        "connection_code": "ucc:f3:e015",
+        "origin_display_name": "East stair point 12 (floors 2-3)",
+        "destination_display_name": "East stair point 13 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 13 (floors 2-3)",
+        "destination_name": "East stair point 14 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767154561072416,
+        "origin_id": 83,
+        "destination_id": 84,
+        "path_id": 79,
+        "connection_code": "ucc:f3:e016",
+        "origin_display_name": "East stair point 13 (floors 2-3)",
+        "destination_display_name": "East stair point 14 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 14 (floors 2-3)",
+        "destination_name": "East stair point 15 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476716219266063,
+        "origin_id": 84,
+        "destination_id": 85,
+        "path_id": 80,
+        "connection_code": "ucc:f3:e017",
+        "origin_display_name": "East stair point 14 (floors 2-3)",
+        "destination_display_name": "East stair point 15 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 15 (floors 2-3)",
+        "destination_name": "East stair point 16 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476715461161264,
+        "origin_id": 85,
+        "destination_id": 86,
+        "path_id": 81,
+        "connection_code": "ucc:f3:e018",
+        "origin_display_name": "East stair point 15 (floors 2-3)",
+        "destination_display_name": "East stair point 16 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 16 (floors 2-3)",
+        "destination_name": "East stair point 17 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767147030568424,
+        "origin_id": 86,
+        "destination_id": 87,
+        "path_id": 82,
+        "connection_code": "ucc:f3:e019",
+        "origin_display_name": "East stair point 16 (floors 2-3)",
+        "destination_display_name": "East stair point 17 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 17 (floors 2-3)",
+        "destination_name": "East stair point 18 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476716219266124,
+        "origin_id": 87,
+        "destination_id": 88,
+        "path_id": 83,
+        "connection_code": "ucc:f3:e020",
+        "origin_display_name": "East stair point 17 (floors 2-3)",
+        "destination_display_name": "East stair point 18 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 18 (floors 2-3)",
+        "destination_name": "East stair point 19 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.3476716209157994,
+        "origin_id": 88,
+        "destination_id": 89,
+        "path_id": 84,
+        "connection_code": "ucc:f3:e021",
+        "origin_display_name": "East stair point 18 (floors 2-3)",
+        "destination_display_name": "East stair point 19 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 19 (floors 2-3)",
+        "destination_name": "East stair point 20 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.347671470811087,
+        "origin_id": 89,
+        "destination_id": 90,
+        "path_id": 85,
+        "connection_code": "ucc:f3:e022",
+        "origin_display_name": "East stair point 19 (floors 2-3)",
+        "destination_display_name": "East stair point 20 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 20 (floors 2-3)",
+        "destination_name": "East stair point 21 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767162142120894,
+        "origin_id": 90,
+        "destination_id": 91,
+        "path_id": 86,
+        "connection_code": "ucc:f3:e023",
+        "origin_display_name": "East stair point 20 (floors 2-3)",
+        "destination_display_name": "East stair point 21 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 21 (floors 2-3)",
+        "destination_name": "East stair point 22 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.347671470811087,
+        "origin_id": 91,
+        "destination_id": 92,
+        "path_id": 87,
+        "connection_code": "ucc:f3:e024",
+        "origin_display_name": "East stair point 21 (floors 2-3)",
+        "destination_display_name": "East stair point 22 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 22 (floors 2-3)",
+        "destination_name": "East stair point 23 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.34767162091580556,
+        "origin_id": 92,
+        "destination_id": 93,
+        "path_id": 88,
+        "connection_code": "ucc:f3:e025",
+        "origin_display_name": "East stair point 22 (floors 2-3)",
+        "destination_display_name": "East stair point 23 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 23 (floors 2-3)",
+        "destination_name": "East stair point 24 (floors 2-3)",
+        "kind": "stairs",
+        "distance": 0.45000000000000134,
+        "origin_id": 93,
+        "destination_id": 94,
+        "path_id": 89,
+        "connection_code": "ucc:f3:e026",
+        "origin_display_name": "East stair point 23 (floors 2-3)",
+        "destination_display_name": "East stair point 24 (floors 2-3)"
+      },
+      {
+        "origin_name": "East stair point 24 (floors 2-3)",
+        "destination_name": "Third-floor north circulation",
+        "kind": "corridor",
+        "distance": 1.1999999999999957,
+        "origin_id": 94,
+        "destination_id": 95,
+        "path_id": 90,
+        "connection_code": "ucc:f3:e027",
+        "origin_display_name": "East stair point 24 (floors 2-3)",
+        "destination_display_name": "Third-floor north circulation"
+      },
+      {
+        "origin_name": "Third-floor north circulation",
+        "destination_name": "Third-floor corridor near Computer Lab 1",
+        "kind": "corridor",
+        "distance": 4.814,
+        "origin_id": 95,
+        "destination_id": 96,
+        "path_id": 91,
+        "connection_code": "ucc:f3:e028",
+        "origin_display_name": "Third-floor north circulation",
+        "destination_display_name": "Third-floor corridor near Computer Lab 1"
+      },
+      {
+        "origin_name": "Third-floor corridor near Computer Lab 1",
+        "destination_name": "Floor 3 D15 corridor stand",
+        "kind": "corridor",
+        "distance": 1.2689999999999984,
+        "origin_id": 96,
+        "destination_id": 97,
+        "path_id": 92,
+        "connection_code": "ucc:f3:e029",
+        "origin_display_name": "Third-floor corridor near Computer Lab 1",
+        "destination_display_name": "Floor 3 D15 corridor stand"
+      },
+      {
+        "origin_name": "Floor 3 D15 corridor stand",
+        "destination_name": "Floor 3 D15 doorway centre",
+        "kind": "corridor",
+        "distance": 0.6000000000000014,
+        "origin_id": 97,
+        "destination_id": 98,
+        "path_id": 93,
+        "connection_code": "ucc:f3:e030",
+        "origin_display_name": "Floor 3 D15 corridor stand",
+        "destination_display_name": "Floor 3 D15 doorway centre"
+      },
+      {
+        "origin_name": "Floor 3 D15 doorway centre",
+        "destination_name": "Computer Laboratory 1 (floor 3)",
+        "kind": "corridor",
+        "distance": 0.5999999999999943,
+        "origin_id": 98,
+        "destination_id": 99,
+        "path_id": 94,
+        "connection_code": "ucc:f3:e031",
+        "origin_display_name": "Floor 3 D15 doorway centre",
+        "destination_display_name": "Computer Lab 1 · 308A"
+      }
+    ],
+    "distance": 16.486120682477736,
+    "origin_name": "East stair point 7 (floors 2-3)",
+    "destination_name": "Computer Laboratory 1 (floor 3)",
+    "waypoints": [
+      {
+        "id": 77,
+        "code": "ucc:f3:east-stair-07",
+        "name": "East stair point 7 (floors 2-3)",
+        "display_name": "East stair point 7 (floors 2-3)",
+        "x": 36.35,
+        "y": 58.15,
+        "floor": 2,
+        "elevation_m": 7.410000024,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 78,
+        "code": "ucc:f3:east-stair-08",
+        "name": "East stair point 8 (floors 2-3)",
+        "display_name": "East stair point 8 (floors 2-3)",
+        "x": 36.35,
+        "y": 58.45,
+        "floor": 2,
+        "elevation_m": 7.585714291,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 79,
+        "code": "ucc:f3:east-stair-09",
+        "name": "East stair point 9 (floors 2-3)",
+        "display_name": "East stair point 9 (floors 2-3)",
+        "x": 36.35,
+        "y": 58.75,
+        "floor": 2,
+        "elevation_m": 7.76142856,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 80,
+        "code": "ucc:f3:east-stair-10",
+        "name": "East stair point 10 (floors 2-3)",
+        "display_name": "East stair point 10 (floors 2-3)",
+        "x": 36.35,
+        "y": 59.050000000000004,
+        "floor": 2,
+        "elevation_m": 7.937142827,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 81,
+        "code": "ucc:f3:east-stair-11",
+        "name": "East stair point 11 (floors 2-3)",
+        "display_name": "East stair point 11 (floors 2-3)",
+        "x": 36.35,
+        "y": 59.35,
+        "floor": 2,
+        "elevation_m": 8.112857095,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 82,
+        "code": "ucc:f3:east-stair-12",
+        "name": "East stair point 12 (floors 2-3)",
+        "display_name": "East stair point 12 (floors 2-3)",
+        "x": 37.55,
+        "y": 60,
+        "floor": 2,
+        "elevation_m": 8.112857095,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 83,
+        "code": "ucc:f3:east-stair-13",
+        "name": "East stair point 13 (floors 2-3)",
+        "display_name": "East stair point 13 (floors 2-3)",
+        "x": 38.7,
+        "y": 59.35,
+        "floor": 2,
+        "elevation_m": 8.112857095,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 84,
+        "code": "ucc:f3:east-stair-14",
+        "name": "East stair point 14 (floors 2-3)",
+        "display_name": "East stair point 14 (floors 2-3)",
+        "x": 38.7,
+        "y": 59.05,
+        "floor": 2,
+        "elevation_m": 8.288571362,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 85,
+        "code": "ucc:f3:east-stair-15",
+        "name": "East stair point 15 (floors 2-3)",
+        "display_name": "East stair point 15 (floors 2-3)",
+        "x": 38.7,
+        "y": 58.75,
+        "floor": 2,
+        "elevation_m": 8.46428578,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 86,
+        "code": "ucc:f3:east-stair-16",
+        "name": "East stair point 16 (floors 2-3)",
+        "display_name": "East stair point 16 (floors 2-3)",
+        "x": 38.7,
+        "y": 58.449999999999996,
+        "floor": 2,
+        "elevation_m": 8.640000048,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 87,
+        "code": "ucc:f3:east-stair-17",
+        "name": "East stair point 17 (floors 2-3)",
+        "display_name": "East stair point 17 (floors 2-3)",
+        "x": 38.7,
+        "y": 58.15,
+        "floor": 2,
+        "elevation_m": 8.815714166,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 88,
+        "code": "ucc:f3:east-stair-18",
+        "name": "East stair point 18 (floors 2-3)",
+        "display_name": "East stair point 18 (floors 2-3)",
+        "x": 38.7,
+        "y": 57.849999999999994,
+        "floor": 2,
+        "elevation_m": 8.991428584,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 89,
+        "code": "ucc:f3:east-stair-19",
+        "name": "East stair point 19 (floors 2-3)",
+        "display_name": "East stair point 19 (floors 2-3)",
+        "x": 38.7,
+        "y": 57.55,
+        "floor": 2,
+        "elevation_m": 9.167143,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 90,
+        "code": "ucc:f3:east-stair-20",
+        "name": "East stair point 20 (floors 2-3)",
+        "display_name": "East stair point 20 (floors 2-3)",
+        "x": 38.7,
+        "y": 57.25,
+        "floor": 2,
+        "elevation_m": 9.342857119,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 91,
+        "code": "ucc:f3:east-stair-21",
+        "name": "East stair point 21 (floors 2-3)",
+        "display_name": "East stair point 21 (floors 2-3)",
+        "x": 38.7,
+        "y": 56.949999999999996,
+        "floor": 2,
+        "elevation_m": 9.518571536,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 92,
+        "code": "ucc:f3:east-stair-22",
+        "name": "East stair point 22 (floors 2-3)",
+        "display_name": "East stair point 22 (floors 2-3)",
+        "x": 38.7,
+        "y": 56.65,
+        "floor": 2,
+        "elevation_m": 9.694285655,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 93,
+        "code": "ucc:f3:east-stair-23",
+        "name": "East stair point 23 (floors 2-3)",
+        "display_name": "East stair point 23 (floors 2-3)",
+        "x": 38.7,
+        "y": 56.349999999999994,
+        "floor": 2,
+        "elevation_m": 9.870000071,
+        "block_code": "A",
+        "floor_code": "ucc-second-floor"
+      },
+      {
+        "id": 94,
+        "code": "ucc:f3:east-stair-24",
+        "name": "East stair point 24 (floors 2-3)",
+        "display_name": "East stair point 24 (floors 2-3)",
+        "x": 38.7,
+        "y": 55.9,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 95,
+        "code": "ucc:f3:north-corridor",
+        "name": "Third-floor north circulation",
+        "display_name": "Third-floor north circulation",
+        "x": 38.7,
+        "y": 54.7,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 96,
+        "code": "ucc:f3:lab-1-corridor-turn",
+        "name": "Third-floor corridor near Computer Lab 1",
+        "display_name": "Third-floor corridor near Computer Lab 1",
+        "x": 43.514,
+        "y": 54.7,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 97,
+        "code": "ucc:f3:lab-1-outside",
+        "name": "Floor 3 D15 corridor stand",
+        "display_name": "Floor 3 D15 corridor stand",
+        "x": 43.514,
+        "y": 55.969,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 98,
+        "code": "ucc:f3:lab-1-door",
+        "name": "Floor 3 D15 doorway centre",
+        "display_name": "Floor 3 D15 doorway centre",
+        "x": 43.514,
+        "y": 56.569,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      },
+      {
+        "id": 99,
+        "code": "ucc:f3:computer-lab-1-entrance",
+        "name": "Computer Laboratory 1 (floor 3)",
+        "display_name": "Computer Lab 1 · 308A",
+        "x": 43.514,
+        "y": 57.169,
+        "floor": 3,
+        "elevation_m": 9.87,
+        "block_code": "A",
+        "floor_code": "ucc-third-floor"
+      }
+    ]
+  },
+  "playback": [
+    {
+      "position": "36.645,7.410,-58.248",
+      "floor": "2",
+      "state": "ready"
+    },
+    {
+      "position": "36.645,7.410,-58.248",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,7.410,-58.198",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,7.586,-58.507",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,7.761,-58.834",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.350,7.937,-59.143",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.466,8.113,-59.413",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "36.798,8.113,-59.593",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "37.126,8.113,-59.770",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "37.451,8.113,-59.947",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "37.775,8.113,-59.873",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.090,8.113,-59.695",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.426,8.113,-59.505",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,8.113,-59.325",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,8.289,-58.992",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,8.464,-58.697",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,8.640,-58.398",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,8.816,-58.091",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,8.991,-57.767",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,9.167,-57.473",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,9.343,-57.156",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,9.519,-56.833",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,9.694,-56.518",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,9.870,-56.178",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,9.870,-55.800",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,9.870,-55.438",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,9.870,-55.071",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "38.700,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "39.079,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "39.440,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "39.811,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "40.193,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "40.575,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "40.946,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "41.308,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "41.674,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "42.040,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "42.406,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "42.769,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "43.146,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "43.514,9.870,-54.700",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "43.514,9.870,-55.083",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "43.514,9.870,-55.457",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "43.514,9.870,-55.823",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "43.514,9.870,-56.169",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "43.514,9.870,-56.540",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "43.514,9.870,-56.881",
+      "floor": "3",
+      "state": "walking"
+    },
+    {
+      "position": "43.514,9.870,-57.169",
+      "floor": "3",
+      "state": "arrived"
+    },
+    {
+      "position": "43.514,9.870,-57.169",
+      "floor": "3",
+      "state": "arrived"
+    },
+    {
+      "position": "43.514,9.870,-57.169",
+      "floor": "3",
+      "state": "arrived"
+    },
+    {
+      "position": "43.514,9.870,-57.169",
+      "floor": "3",
+      "state": "arrived"
+    }
+  ],
+  "finalPosition": [
+    43.514,
+    9.87,
+    -57.169
+  ],
+  "baseline": {
+    "buffers": 953,
+    "textures": 10
+  },
+  "cycles": [
+    {
+      "buffers": 953,
+      "textures": 10
+    },
+    {
+      "buffers": 953,
+      "textures": 10
+    }
+  ],
+  "metrics": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "averageFps": 144.00212843792568
+  }
+}

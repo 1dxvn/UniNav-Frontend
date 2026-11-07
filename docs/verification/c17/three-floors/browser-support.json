@@ -1,0 +1,149 @@
+{
+  "models": [
+    {
+      "url": "models/c16/floor-1.glb",
+      "hash": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-1.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-3.glb",
+      "hash": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-3.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-4.glb",
+      "hash": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-4.glb"
+      }
+    },
+    {
+      "url": "models/c16/floor-5.glb",
+      "hash": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d",
+      "source": {
+        "commit": "002aaec",
+        "path": "model/candidates/c16/floor-5.glb"
+      }
+    },
+    {
+      "url": "models/c17/floor-2.glb",
+      "hash": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
+      "source": {
+        "commit": "0f6a862",
+        "path": "model/candidates/c17/floor-2.glb"
+      }
+    }
+  ],
+  "hashes": [
+    "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c",
+    "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
+    "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d"
+  ],
+  "results": [
+    {
+      "file": "computer-lab-1-entrance-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 307,
+      "outdoorSamples": 112,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.1389248181296895
+    },
+    {
+      "file": "computer-lab-1-entrance-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 304,
+      "outdoorSamples": 112,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.1405779775524766
+    },
+    {
+      "file": "computer-lab-2-entrance-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 334,
+      "outdoorSamples": 112,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.13904036282347582
+    },
+    {
+      "file": "computer-lab-2-entrance-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 328,
+      "outdoorSamples": 111,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.13960318008988593
+    },
+    {
+      "file": "computer-lab-3-entrance-walks.json",
+      "direction": "outbound",
+      "finalErrorMetres": 0,
+      "samples": 357,
+      "outdoorSamples": 112,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.13958477849116152
+    },
+    {
+      "file": "computer-lab-3-entrance-walks.json",
+      "direction": "return",
+      "finalErrorMetres": 0,
+      "samples": 356,
+      "outdoorSamples": 114,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004999988079070761,
+      "maxDistanceFromGraphMetres": 0.14012479144344323
+    }
+  ],
+  "manual": [
+    {
+      "name": "floor2-3 east stair",
+      "samples": 776,
+      "outdoorSamples": 0,
+      "nosingQuantizationSamples": 0,
+      "maxFootErrorMetres": 0.0004286804199207239,
+      "maxDistanceFromGraphMetres": 0
+    }
+  ],
+  "beforeReplan": {
+    "samples": 17,
+    "outdoorSamples": 0,
+    "nosingQuantizationSamples": 0,
+    "maxFootErrorMetres": 0.00042857044935296074,
+    "maxDistanceFromGraphMetres": 0
+  },
+  "initialAutomatic": {
+    "samples": 13,
+    "outdoorSamples": 0,
+    "nosingQuantizationSamples": 0,
+    "maxFootErrorMetres": 0.00042857044935296074,
+    "maxDistanceFromGraphMetres": 0.05471913094434334
+  },
+  "replan": {
+    "samples": 51,
+    "outdoorSamples": 0,
+    "nosingQuantizationSamples": 0,
+    "maxFootErrorMetres": 0.0004286804199207239,
+    "maxDistanceFromGraphMetres": 0.06695973444906793
+  },
+  "replanConnectorStart": [
+    36.645,
+    7.41,
+    -58.248
+  ],
+  "coordinateResolutionMetres": 0.001,
+  "note": "Independent downward rays test recorded feet and four footprint offsets against each recorded committed model source. At nosings only, X/Z rounding is resolved within the 0.5 mm half-cell and counted separately; vertical error must still be <=1 mm. Site is included only on outdoor route segments; interior holes cannot borrow its support. Free keyboard motion is checked against geometry, not the API centre line. Automatic motion is also checked against its route; after replan that includes the connector from the retained manual position to the API start waypoint. Pending B laboratory heights still represent the flat candidate, not confirmed physical survey levels."
+}

@@ -59,7 +59,7 @@ export function manualStep(from: Vector3,desired: Vector3,segments: WalkSegment[
     .map((s) => ({ s,current:projectOnSegment(from,s.a,s.b) })).filter(({current}) => current.distance<=CORRIDOR_RADIUS+0.001)
     .sort((a,b) => a.current.distance-b.current.distance);
   for (const {s,current} of options) {
-    const stepped=s.path.kind==="stairs" || s.path.kind==="outdoor";
+    const stepped=s.path.kind==="stairs" || s.path.kind==="ramp" || s.path.kind==="outdoor";
     if (!stepped && Math.abs(from.y-current.point.y)>0.03) continue;
     const next=desired.clone();
     let currentT=segmentProgress(from,s.a,s.b),nextT=segmentProgress(next,s.a,s.b);

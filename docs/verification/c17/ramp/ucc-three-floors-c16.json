@@ -1,0 +1,1019 @@
+{
+  "fixtureOnly": true,
+  "productionDataProfile": "ucc-three-floors-c16",
+  "testProfile": "test-c17-three",
+  "source": {
+    "commit": "0f6a862",
+    "path": "model/candidates/c17/floor-2.glb"
+  },
+  "hash": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
+  "scope": "Actual temporary FastAPI; only test ramp data bindings are overridden, GLB and references are shipped resources. No public ramp edge, room or accessibility status is added.",
+  "guided": [
+    {
+      "route": {
+        "path": [
+          "C17 ramp B-side (test only)",
+          "C17 ramp point 1 (test only)",
+          "C17 ramp point 2 (test only)",
+          "C17 ramp point 3 (test only)",
+          "C17 ramp point 4 (test only)",
+          "C17 ramp A-side (test only)"
+        ],
+        "steps": [
+          {
+            "origin_name": "C17 ramp B-side (test only)",
+            "destination_name": "C17 ramp point 1 (test only)",
+            "kind": "ramp",
+            "distance": 0.3999999999999986,
+            "origin_id": 111,
+            "destination_id": 112,
+            "path_id": 103,
+            "connection_code": "test:c17-ramp:e0",
+            "origin_display_name": "C17 ramp B-side (test only)",
+            "destination_display_name": "C17 ramp point 1 (test only)"
+          },
+          {
+            "origin_name": "C17 ramp point 1 (test only)",
+            "destination_name": "C17 ramp point 2 (test only)",
+            "kind": "ramp",
+            "distance": 0.4644902821612334,
+            "origin_id": 112,
+            "destination_id": 113,
+            "path_id": 104,
+            "connection_code": "test:c17-ramp:e1",
+            "origin_display_name": "C17 ramp point 1 (test only)",
+            "destination_display_name": "C17 ramp point 2 (test only)"
+          },
+          {
+            "origin_name": "C17 ramp point 2 (test only)",
+            "destination_name": "C17 ramp point 3 (test only)",
+            "kind": "ramp",
+            "distance": 0.4644902821612332,
+            "origin_id": 113,
+            "destination_id": 114,
+            "path_id": 105,
+            "connection_code": "test:c17-ramp:e2",
+            "origin_display_name": "C17 ramp point 2 (test only)",
+            "destination_display_name": "C17 ramp point 3 (test only)"
+          },
+          {
+            "origin_name": "C17 ramp point 3 (test only)",
+            "destination_name": "C17 ramp point 4 (test only)",
+            "kind": "ramp",
+            "distance": 0.4644902821612334,
+            "origin_id": 114,
+            "destination_id": 115,
+            "path_id": 106,
+            "connection_code": "test:c17-ramp:e3",
+            "origin_display_name": "C17 ramp point 3 (test only)",
+            "destination_display_name": "C17 ramp point 4 (test only)"
+          },
+          {
+            "origin_name": "C17 ramp point 4 (test only)",
+            "destination_name": "C17 ramp A-side (test only)",
+            "kind": "ramp",
+            "distance": 0.3999999999999986,
+            "origin_id": 115,
+            "destination_id": 116,
+            "path_id": 107,
+            "connection_code": "test:c17-ramp:e4",
+            "origin_display_name": "C17 ramp point 4 (test only)",
+            "destination_display_name": "C17 ramp A-side (test only)"
+          }
+        ],
+        "distance": 2.193470846483697,
+        "origin_name": "C17 ramp B-side (test only)",
+        "destination_name": "C17 ramp A-side (test only)",
+        "waypoints": [
+          {
+            "id": 111,
+            "code": "test:c17-ramp:p0",
+            "name": "C17 ramp B-side (test only)",
+            "display_name": "C17 ramp B-side (test only)",
+            "x": 28.55,
+            "y": 47.506,
+            "floor": 2,
+            "elevation_m": 6.44,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 112,
+            "code": "test:c17-ramp:p1",
+            "name": "C17 ramp point 1 (test only)",
+            "display_name": "C17 ramp point 1 (test only)",
+            "x": 28.55,
+            "y": 47.906,
+            "floor": 2,
+            "elevation_m": 6.44,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 113,
+            "code": "test:c17-ramp:p2",
+            "name": "C17 ramp point 2 (test only)",
+            "display_name": "C17 ramp point 2 (test only)",
+            "x": 28.55,
+            "y": 48.36233333333333,
+            "floor": 2,
+            "elevation_m": 6.3533333333333335,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 114,
+            "code": "test:c17-ramp:p3",
+            "name": "C17 ramp point 3 (test only)",
+            "display_name": "C17 ramp point 3 (test only)",
+            "x": 28.55,
+            "y": 48.818666666666665,
+            "floor": 2,
+            "elevation_m": 6.2666666666666675,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 115,
+            "code": "test:c17-ramp:p4",
+            "name": "C17 ramp point 4 (test only)",
+            "display_name": "C17 ramp point 4 (test only)",
+            "x": 28.55,
+            "y": 49.275,
+            "floor": 2,
+            "elevation_m": 6.180000000000001,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 116,
+            "code": "test:c17-ramp:p5",
+            "name": "C17 ramp A-side (test only)",
+            "display_name": "C17 ramp A-side (test only)",
+            "x": 28.55,
+            "y": 49.675,
+            "floor": 2,
+            "elevation_m": 6.180000000000001,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          }
+        ]
+      },
+      "position": [
+        28.55,
+        6.18,
+        -49.675
+      ],
+      "error": 8.881784197001252e-16,
+      "samples": [
+        {
+          "position": "28.550,6.440,-47.506",
+          "floor": "2",
+          "state": "ready"
+        },
+        {
+          "position": "28.550,6.440,-47.506",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.440,-47.528",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.440,-47.900",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.375,-48.248",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.304,-48.624",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.236,-48.979",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.180,-49.334",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.180,-49.675",
+          "floor": "2",
+          "state": "arrived"
+        },
+        {
+          "position": "28.550,6.180,-49.675",
+          "floor": "2",
+          "state": "arrived"
+        },
+        {
+          "position": "28.550,6.180,-49.675",
+          "floor": "2",
+          "state": "arrived"
+        }
+      ]
+    },
+    {
+      "route": {
+        "path": [
+          "C17 ramp A-side (test only)",
+          "C17 ramp point 4 (test only)",
+          "C17 ramp point 3 (test only)",
+          "C17 ramp point 2 (test only)",
+          "C17 ramp point 1 (test only)",
+          "C17 ramp B-side (test only)"
+        ],
+        "steps": [
+          {
+            "origin_name": "C17 ramp A-side (test only)",
+            "destination_name": "C17 ramp point 4 (test only)",
+            "kind": "ramp",
+            "distance": 0.3999999999999986,
+            "origin_id": 116,
+            "destination_id": 115,
+            "path_id": 107,
+            "connection_code": "test:c17-ramp:e4",
+            "origin_display_name": "C17 ramp A-side (test only)",
+            "destination_display_name": "C17 ramp point 4 (test only)"
+          },
+          {
+            "origin_name": "C17 ramp point 4 (test only)",
+            "destination_name": "C17 ramp point 3 (test only)",
+            "kind": "ramp",
+            "distance": 0.4644902821612334,
+            "origin_id": 115,
+            "destination_id": 114,
+            "path_id": 106,
+            "connection_code": "test:c17-ramp:e3",
+            "origin_display_name": "C17 ramp point 4 (test only)",
+            "destination_display_name": "C17 ramp point 3 (test only)"
+          },
+          {
+            "origin_name": "C17 ramp point 3 (test only)",
+            "destination_name": "C17 ramp point 2 (test only)",
+            "kind": "ramp",
+            "distance": 0.4644902821612332,
+            "origin_id": 114,
+            "destination_id": 113,
+            "path_id": 105,
+            "connection_code": "test:c17-ramp:e2",
+            "origin_display_name": "C17 ramp point 3 (test only)",
+            "destination_display_name": "C17 ramp point 2 (test only)"
+          },
+          {
+            "origin_name": "C17 ramp point 2 (test only)",
+            "destination_name": "C17 ramp point 1 (test only)",
+            "kind": "ramp",
+            "distance": 0.4644902821612334,
+            "origin_id": 113,
+            "destination_id": 112,
+            "path_id": 104,
+            "connection_code": "test:c17-ramp:e1",
+            "origin_display_name": "C17 ramp point 2 (test only)",
+            "destination_display_name": "C17 ramp point 1 (test only)"
+          },
+          {
+            "origin_name": "C17 ramp point 1 (test only)",
+            "destination_name": "C17 ramp B-side (test only)",
+            "kind": "ramp",
+            "distance": 0.3999999999999986,
+            "origin_id": 112,
+            "destination_id": 111,
+            "path_id": 103,
+            "connection_code": "test:c17-ramp:e0",
+            "origin_display_name": "C17 ramp point 1 (test only)",
+            "destination_display_name": "C17 ramp B-side (test only)"
+          }
+        ],
+        "distance": 2.193470846483697,
+        "origin_name": "C17 ramp A-side (test only)",
+        "destination_name": "C17 ramp B-side (test only)",
+        "waypoints": [
+          {
+            "id": 116,
+            "code": "test:c17-ramp:p5",
+            "name": "C17 ramp A-side (test only)",
+            "display_name": "C17 ramp A-side (test only)",
+            "x": 28.55,
+            "y": 49.675,
+            "floor": 2,
+            "elevation_m": 6.180000000000001,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 115,
+            "code": "test:c17-ramp:p4",
+            "name": "C17 ramp point 4 (test only)",
+            "display_name": "C17 ramp point 4 (test only)",
+            "x": 28.55,
+            "y": 49.275,
+            "floor": 2,
+            "elevation_m": 6.180000000000001,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 114,
+            "code": "test:c17-ramp:p3",
+            "name": "C17 ramp point 3 (test only)",
+            "display_name": "C17 ramp point 3 (test only)",
+            "x": 28.55,
+            "y": 48.818666666666665,
+            "floor": 2,
+            "elevation_m": 6.2666666666666675,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 113,
+            "code": "test:c17-ramp:p2",
+            "name": "C17 ramp point 2 (test only)",
+            "display_name": "C17 ramp point 2 (test only)",
+            "x": 28.55,
+            "y": 48.36233333333333,
+            "floor": 2,
+            "elevation_m": 6.3533333333333335,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 112,
+            "code": "test:c17-ramp:p1",
+            "name": "C17 ramp point 1 (test only)",
+            "display_name": "C17 ramp point 1 (test only)",
+            "x": 28.55,
+            "y": 47.906,
+            "floor": 2,
+            "elevation_m": 6.44,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          },
+          {
+            "id": 111,
+            "code": "test:c17-ramp:p0",
+            "name": "C17 ramp B-side (test only)",
+            "display_name": "C17 ramp B-side (test only)",
+            "x": 28.55,
+            "y": 47.506,
+            "floor": 2,
+            "elevation_m": 6.44,
+            "block_code": null,
+            "floor_code": "test-c17-floor2"
+          }
+        ]
+      },
+      "position": [
+        28.55,
+        6.44,
+        -47.506
+      ],
+      "error": 0,
+      "samples": [
+        {
+          "position": "28.550,6.180,-49.675",
+          "floor": "2",
+          "state": "ready"
+        },
+        {
+          "position": "28.550,6.180,-49.675",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.180,-49.571",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.192,-49.214",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.262,-48.841",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.330,-48.485",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.400,-48.115",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.440,-47.773",
+          "floor": "2",
+          "state": "walking"
+        },
+        {
+          "position": "28.550,6.440,-47.506",
+          "floor": "2",
+          "state": "arrived"
+        },
+        {
+          "position": "28.550,6.440,-47.506",
+          "floor": "2",
+          "state": "arrived"
+        }
+      ]
+    }
+  ],
+  "manual": [
+    {
+      "position": [
+        28.55,
+        6.18,
+        -49.713
+      ],
+      "error": 0.03800000000000381
+    },
+    {
+      "position": [
+        28.55,
+        6.44,
+        -47.495
+      ],
+      "error": 0.011000000000002785
+    }
+  ],
+  "manualSamples": [
+    {
+      "position": "28.550,6.440,-47.675",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.440,-47.675",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.440,-47.866",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.424,-47.991",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.405,-48.090",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.372,-48.262",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.367,-48.291",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.328,-48.494",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.328,-48.494",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.284,-48.727",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.281,-48.745",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.241,-48.955",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.227,-49.027",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.208,-49.125",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.328",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.328",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.542",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.563",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.721",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.626",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.626",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.760",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.643",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.619",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.713",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.713",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.497",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.457",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.180,-49.318",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.197,-49.186",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.202,-49.161",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.231,-49.004",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.231,-49.004",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.273,-48.784",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.289,-48.701",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.310,-48.591",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.348,-48.391",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.348,-48.391",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.389,-48.173",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.389,-48.173",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.427,-47.976",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.440,-47.898",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.440,-47.781",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.440,-47.627",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.440,-47.627",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.440,-47.495",
+      "floor": "2",
+      "state": "idle"
+    }
+  ],
+  "initialRoute": {
+    "path": [
+      "C17 ramp B-side (test only)",
+      "C17 ramp point 1 (test only)",
+      "C17 ramp point 2 (test only)",
+      "C17 ramp point 3 (test only)",
+      "C17 ramp point 4 (test only)",
+      "C17 ramp A-side (test only)"
+    ],
+    "steps": [
+      {
+        "origin_name": "C17 ramp B-side (test only)",
+        "destination_name": "C17 ramp point 1 (test only)",
+        "kind": "ramp",
+        "distance": 0.3999999999999986,
+        "origin_id": 111,
+        "destination_id": 112,
+        "path_id": 103,
+        "connection_code": "test:c17-ramp:e0",
+        "origin_display_name": "C17 ramp B-side (test only)",
+        "destination_display_name": "C17 ramp point 1 (test only)"
+      },
+      {
+        "origin_name": "C17 ramp point 1 (test only)",
+        "destination_name": "C17 ramp point 2 (test only)",
+        "kind": "ramp",
+        "distance": 0.4644902821612334,
+        "origin_id": 112,
+        "destination_id": 113,
+        "path_id": 104,
+        "connection_code": "test:c17-ramp:e1",
+        "origin_display_name": "C17 ramp point 1 (test only)",
+        "destination_display_name": "C17 ramp point 2 (test only)"
+      },
+      {
+        "origin_name": "C17 ramp point 2 (test only)",
+        "destination_name": "C17 ramp point 3 (test only)",
+        "kind": "ramp",
+        "distance": 0.4644902821612332,
+        "origin_id": 113,
+        "destination_id": 114,
+        "path_id": 105,
+        "connection_code": "test:c17-ramp:e2",
+        "origin_display_name": "C17 ramp point 2 (test only)",
+        "destination_display_name": "C17 ramp point 3 (test only)"
+      },
+      {
+        "origin_name": "C17 ramp point 3 (test only)",
+        "destination_name": "C17 ramp point 4 (test only)",
+        "kind": "ramp",
+        "distance": 0.4644902821612334,
+        "origin_id": 114,
+        "destination_id": 115,
+        "path_id": 106,
+        "connection_code": "test:c17-ramp:e3",
+        "origin_display_name": "C17 ramp point 3 (test only)",
+        "destination_display_name": "C17 ramp point 4 (test only)"
+      },
+      {
+        "origin_name": "C17 ramp point 4 (test only)",
+        "destination_name": "C17 ramp A-side (test only)",
+        "kind": "ramp",
+        "distance": 0.3999999999999986,
+        "origin_id": 115,
+        "destination_id": 116,
+        "path_id": 107,
+        "connection_code": "test:c17-ramp:e4",
+        "origin_display_name": "C17 ramp point 4 (test only)",
+        "destination_display_name": "C17 ramp A-side (test only)"
+      }
+    ],
+    "distance": 2.193470846483697,
+    "origin_name": "C17 ramp B-side (test only)",
+    "destination_name": "C17 ramp A-side (test only)",
+    "waypoints": [
+      {
+        "id": 111,
+        "code": "test:c17-ramp:p0",
+        "name": "C17 ramp B-side (test only)",
+        "display_name": "C17 ramp B-side (test only)",
+        "x": 28.55,
+        "y": 47.506,
+        "floor": 2,
+        "elevation_m": 6.44,
+        "block_code": null,
+        "floor_code": "test-c17-floor2"
+      },
+      {
+        "id": 112,
+        "code": "test:c17-ramp:p1",
+        "name": "C17 ramp point 1 (test only)",
+        "display_name": "C17 ramp point 1 (test only)",
+        "x": 28.55,
+        "y": 47.906,
+        "floor": 2,
+        "elevation_m": 6.44,
+        "block_code": null,
+        "floor_code": "test-c17-floor2"
+      },
+      {
+        "id": 113,
+        "code": "test:c17-ramp:p2",
+        "name": "C17 ramp point 2 (test only)",
+        "display_name": "C17 ramp point 2 (test only)",
+        "x": 28.55,
+        "y": 48.36233333333333,
+        "floor": 2,
+        "elevation_m": 6.3533333333333335,
+        "block_code": null,
+        "floor_code": "test-c17-floor2"
+      },
+      {
+        "id": 114,
+        "code": "test:c17-ramp:p3",
+        "name": "C17 ramp point 3 (test only)",
+        "display_name": "C17 ramp point 3 (test only)",
+        "x": 28.55,
+        "y": 48.818666666666665,
+        "floor": 2,
+        "elevation_m": 6.2666666666666675,
+        "block_code": null,
+        "floor_code": "test-c17-floor2"
+      },
+      {
+        "id": 115,
+        "code": "test:c17-ramp:p4",
+        "name": "C17 ramp point 4 (test only)",
+        "display_name": "C17 ramp point 4 (test only)",
+        "x": 28.55,
+        "y": 49.275,
+        "floor": 2,
+        "elevation_m": 6.180000000000001,
+        "block_code": null,
+        "floor_code": "test-c17-floor2"
+      },
+      {
+        "id": 116,
+        "code": "test:c17-ramp:p5",
+        "name": "C17 ramp A-side (test only)",
+        "display_name": "C17 ramp A-side (test only)",
+        "x": 28.55,
+        "y": 49.675,
+        "floor": 2,
+        "elevation_m": 6.180000000000001,
+        "block_code": null,
+        "floor_code": "test-c17-floor2"
+      }
+    ]
+  },
+  "beforeReplan": [
+    {
+      "position": "28.550,6.440,-47.506",
+      "floor": "2",
+      "state": "ready"
+    },
+    {
+      "position": "28.550,6.440,-47.506",
+      "floor": "2",
+      "state": "ready"
+    },
+    {
+      "position": "28.550,6.440,-47.506",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "28.550,6.440,-47.786",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "28.550,6.396,-48.136",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "28.550,6.334,-48.466",
+      "floor": "2",
+      "state": "paused"
+    },
+    {
+      "position": "28.550,6.334,-48.466",
+      "floor": "2",
+      "state": "paused"
+    },
+    {
+      "position": "28.550,6.334,-48.466",
+      "floor": "2",
+      "state": "paused"
+    },
+    {
+      "position": "28.550,6.334,-48.466",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.306,-48.614",
+      "floor": "2",
+      "state": "idle"
+    },
+    {
+      "position": "28.550,6.290,-48.696",
+      "floor": "2",
+      "state": "idle"
+    }
+  ],
+  "paused": [
+    28.55,
+    6.334,
+    -48.466
+  ],
+  "retained": [
+    28.55,
+    6.29,
+    -48.696
+  ],
+  "route": {
+    "path": [
+      "C17 ramp point 3 (test only)",
+      "C17 ramp point 4 (test only)",
+      "C17 ramp A-side (test only)"
+    ],
+    "steps": [
+      {
+        "origin_name": "C17 ramp point 3 (test only)",
+        "destination_name": "C17 ramp point 4 (test only)",
+        "kind": "ramp",
+        "distance": 0.4644902821612334,
+        "origin_id": 114,
+        "destination_id": 115,
+        "path_id": 106,
+        "connection_code": "test:c17-ramp:e3",
+        "origin_display_name": "C17 ramp point 3 (test only)",
+        "destination_display_name": "C17 ramp point 4 (test only)"
+      },
+      {
+        "origin_name": "C17 ramp point 4 (test only)",
+        "destination_name": "C17 ramp A-side (test only)",
+        "kind": "ramp",
+        "distance": 0.3999999999999986,
+        "origin_id": 115,
+        "destination_id": 116,
+        "path_id": 107,
+        "connection_code": "test:c17-ramp:e4",
+        "origin_display_name": "C17 ramp point 4 (test only)",
+        "destination_display_name": "C17 ramp A-side (test only)"
+      }
+    ],
+    "distance": 0.8644902821612319,
+    "origin_name": "C17 ramp point 3 (test only)",
+    "destination_name": "C17 ramp A-side (test only)",
+    "waypoints": [
+      {
+        "id": 114,
+        "code": "test:c17-ramp:p3",
+        "name": "C17 ramp point 3 (test only)",
+        "display_name": "C17 ramp point 3 (test only)",
+        "x": 28.55,
+        "y": 48.818666666666665,
+        "floor": 2,
+        "elevation_m": 6.2666666666666675,
+        "block_code": null,
+        "floor_code": "test-c17-floor2"
+      },
+      {
+        "id": 115,
+        "code": "test:c17-ramp:p4",
+        "name": "C17 ramp point 4 (test only)",
+        "display_name": "C17 ramp point 4 (test only)",
+        "x": 28.55,
+        "y": 49.275,
+        "floor": 2,
+        "elevation_m": 6.180000000000001,
+        "block_code": null,
+        "floor_code": "test-c17-floor2"
+      },
+      {
+        "id": 116,
+        "code": "test:c17-ramp:p5",
+        "name": "C17 ramp A-side (test only)",
+        "display_name": "C17 ramp A-side (test only)",
+        "x": 28.55,
+        "y": 49.675,
+        "floor": 2,
+        "elevation_m": 6.180000000000001,
+        "block_code": null,
+        "floor_code": "test-c17-floor2"
+      }
+    ]
+  },
+  "playback": [
+    {
+      "position": "28.550,6.290,-48.696",
+      "floor": "2",
+      "state": "ready"
+    },
+    {
+      "position": "28.550,6.290,-48.696",
+      "floor": "2",
+      "state": "ready"
+    },
+    {
+      "position": "28.550,6.290,-48.696",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "28.550,6.245,-48.932",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "28.550,6.180,-49.300",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "28.550,6.180,-49.671",
+      "floor": "2",
+      "state": "walking"
+    },
+    {
+      "position": "28.550,6.180,-49.675",
+      "floor": "2",
+      "state": "arrived"
+    }
+  ],
+  "finalPosition": [
+    28.55,
+    6.18,
+    -49.675
+  ],
+  "errors": []
+}

@@ -31,9 +31,13 @@ test("C15 keyboard approach follows Site and slab in both directions",async({pag
     for(const [index,target] of route.slice(1).entries()){
       const start=route[index],vx=target.x-start.x,vz=-target.y+start.y,length=Math.hypot(vx,vz);let stalled=0;
       for(let guard=0;;guard++){
-        const p=await position(),distance=Math.hypot(target.x-p[0],-target.y-p[2]);if(distance<.065)break;if(guard>700 || stalled>30)throw new Error(`Outdoor keyboard stalled: ${p} -> ${target.name}`);
+        const p=await position(),distance=Math.hypot(target.x-p[0],-target.y-p[2]),heightError=Math.abs(p[1]-target.elevation_m!);if(Math.hypot(distance,heightError)<.065)break;if(guard>700 || stalled>30)throw new Error(`Outdoor keyboard stalled: ${p} -> ${target.name}`);
         const progress=Math.max(0,Math.min(1,((p[0]-start.x)*vx+(p[2]+start.y)*vz)/(length*length)));
-        const ahead=Math.min(1,progress+.22/length),dx=start.x+vx*ahead-p[0],dz=-start.y+vz*ahead-p[2];
+        // Hall Acceso is exactly on the slab/Site boundary. Approach its centre
+        // from the segment's interior (3.5 cm), rather than drifting past it
+        // onto Site. Keep the existing 3D arrival tolerance and support checks.
+        const end=target.code==="ucc:floor1:p01" ? 1-.035/length:1;
+        const ahead=Math.min(end,progress+.22/length),dx=start.x+vx*ahead-p[0],dz=-start.y+vz*ahead-p[2];
         const scale=Math.max(Math.abs(dx),Math.abs(dz));await page.locator("canvas").focus();
         // Follow a nearby point on the API centre line; aiming only at the distant
         // endpoint lets frame-quantized axis pulses drift sideways into glass.

@@ -333,3 +333,31 @@ clearance; `tools/verify-floor3-playback.ts` independently inspects recorded
 browser positions against committed walking surfaces. None modifies Claude's
 geometry, the real database, the sample or the running user services.
 See `blocks/floor3-navigation.md` and `verification/floor3/`.
+
+## C17 ramp on both compatible profiles
+
+The two data profiles `ucc-two-floors-c15` and `ucc-three-floors-c16` retain their
+68/63 and 110/102 data bindings and replace only floor 2 with C17 `0f6a862`, at
+`models/c17/floor-2.glb`. Floors 1/3/4/5 reuse the same C16 sources. The four older
+model combinations and every dataset payload remain unchanged. Reference JSON,
+structural markers, transforms, support node names and stair restrictions stay
+the same. The shared catalogue separately records confirmed A/B identities from
+`level-zones.md @b36d328`; floor level evidence remains derived/provisional.
+
+The drawn ramp descends from B world 6.44 to A world 6.18 across y 47.906–49.275,
+within x 27.353–29.753. It has no public graph edge or destination yet. The C17
+audit checks all current graph directions, six ramp crossings, reference nodes
+and a height grid over the complete slab bounds; C16 rejects all six ramp
+crossings as negative controls. `tools/integrate-c17.ts` refuses changed working
+exports and validates both profiles before `--integrate` updates their entries.
+
+Ramp paths now interpolate height and require reviewed support for keyboard and
+guided movement, using the existing collision and maximum-step limits. The C17
+keyboard regression test fails with the old flat-path handling and checks the
+actual committed slab after the fix. A missing support surface rejects movement.
+`c17-ramp.spec.ts` adds only disconnected temporary test points and rebinds their
+test profile; it does not change production data, model bytes or references.
+Avoid stairs permits these ramp-only fixture paths, which does not certify
+physical accessibility. Existing production profiles are tested without overrides.
+See `verification/c17/` for the recorded sources, routes, support checks and
+remaining public activation/level work.

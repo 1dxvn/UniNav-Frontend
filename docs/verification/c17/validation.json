@@ -1,0 +1,83 @@
+{
+  "build": "passed",
+  "typecheck": "passed",
+  "frontendUnitCases": 44,
+  "apiCases": 32,
+  "distinctBrowserCases": 28,
+  "existingGuidedArrivals": 20,
+  "fixtureRampGuidedArrivals": 4,
+  "maxFinalErrorMetres": 0,
+  "independentSupportedPositions": {
+    "twoFloors": 5004,
+    "threeFloors": 2830,
+    "ramp": 170,
+    "total": 8004
+  },
+  "geometryDirectedChecks": 204,
+  "rampChecks": 6,
+  "rejectedC16RampControls": 6,
+  "heightGrid": {
+    "samples": 25536,
+    "gridMetres": 0.4,
+    "extent": [
+      -6.742000102996826,
+      5.97999999165535,
+      -67.73999786376953,
+      70.3239974975586,
+      6.44,
+      -14.60200023651123
+    ],
+    "changedInside": 24,
+    "changedOutside": 0,
+    "maxOutsideDifference": 0
+  },
+  "gpu": {
+    "two-floors": {
+      "baseline": {
+        "buffers": 579,
+        "textures": 10
+      },
+      "cycles": [
+        {
+          "buffers": 579,
+          "textures": 10
+        },
+        {
+          "buffers": 579,
+          "textures": 10
+        }
+      ],
+      "metrics": {
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "averageFps": 144
+      }
+    },
+    "three-floors": {
+      "baseline": {
+        "buffers": 953,
+        "textures": 10
+      },
+      "cycles": [
+        {
+          "buffers": 953,
+          "textures": 10
+        },
+        {
+          "buffers": 953,
+          "textures": 10
+        }
+      ],
+      "metrics": {
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "averageFps": 144.00212843792568
+      }
+    }
+  },
+  "newPublicDestinations": 0,
+  "realDatabase": [
+    19,
+    16
+  ],
+  "finalJsBundle": "index-BU9f7XsX.js",
+  "manifestSha256": "d1f8cd6b054e360f26500c855210dd8df7d1827a2f1afbd2cfde1d23dad68b62"
+}

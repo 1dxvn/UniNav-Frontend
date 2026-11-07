@@ -539,7 +539,7 @@ export class CampusScene {
         const target=this.waypoints[this.index];
         const direction=target.position.clone().sub(this.avatar.position);
         const advanced=advanceWalk(this.avatar.position,this.avatarFloor,target,WALK_SPEED*delta/count);
-        const stepSupport=target.kind==="stairs" || (target.kind==="outdoor" && this.outdoorSupports.length>0);
+        const stepSupport=target.kind==="stairs" || target.kind==="ramp" || (target.kind==="outdoor" && this.outdoorSupports.length>0);
         const next=stepSupport && this.getCatalog() ? supportedStep(this.avatar.position,advanced.position,target.kind==="outdoor" ? [...this.supports,...this.outdoorSupports]:this.supports) : advanced.position;
         if (!next || this.collides(this.avatar.position,next)) { this.state="blocked"; this.emit(); break; }
         this.avatar.position.copy(next); moved=true;
