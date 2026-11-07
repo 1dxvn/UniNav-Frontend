@@ -1,6 +1,6 @@
-# Run inside Blender: removes from P<N>_Walls the free-standing islands that wing.json now lists as room-tag bars
-# (walls_from_lines.py, "long tag bars"). A full rebuild with blender_floor.py gives the same walls, but it would also
-# undo the stair cuts of blender_stair_fixes.py; this keeps every other wall face as it is.
+# Run inside Blender: removes from P<N>_Walls the free-standing islands that wing.json now lists as room-tag bars or
+# door-type tags (walls_from_lines.py: "long tag bars", "door-type tags"). A full rebuild with blender_floor.py gives
+# the same walls, but it would also undo the stair cuts of blender_stair_fixes.py; this keeps every other wall face.
 import bpy, bmesh, json, os
 
 BASE = os.path.dirname(os.path.dirname(bpy.data.filepath)); TOOLS = os.path.join(BASE, "model", "tools")
@@ -15,7 +15,7 @@ def inside(x, y, ring):
 report = {}
 for key in FLOORS:
     W = json.load(open(os.path.join(TOOLS, "data", f"floor{key}", "wing.json"), encoding="utf-8"))
-    tags = W.get("blocks_034x138", []); walls = [p["outer"] for p in W["walls"]]
+    tags = W.get("blocks_034x138", []) + W.get("door_tags", []); walls = [p["outer"] for p in W["walls"]]
     ob = bpy.data.objects[f"P{key}_Walls"]; bm = bmesh.new(); bm.from_mesh(ob.data); bm.faces.ensure_lookup_table()
     seen, drop = set(), []
     for f0 in bm.faces:
@@ -37,4 +37,4 @@ for key in FLOORS:
         bmesh.ops.delete(bm, geom=list(vs), context="VERTS")
     bm.to_mesh(ob.data); ob.data.update(); bm.free()
     report[key] = len(drop)
-print("tag-bar islands removed per floor:", report)
+print("tag islands removed per floor:", report)

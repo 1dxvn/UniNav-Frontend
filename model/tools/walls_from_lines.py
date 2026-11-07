@@ -2,7 +2,7 @@
 Faces of the polygonized linework that are thin (equivalent thickness 2·area/perimeter < MAXT) are walls.
 They are merged with the solid hatches already in wing.json. Door-schedule and section-mark areas are excluded.
 Args: dxf wing.json(in/out) "dx,dy" [maxt]"""
-import sys, json, math, ezdxf
+import sys, json, math, re, ezdxf
 from ezdxf import path as dpath
 from shapely.geometry import Polygon, LineString, box, Point
 from shapely.ops import unary_union, polygonize
@@ -67,11 +67,26 @@ def long_tag(i, p):
     if not any(p.distance(q) < 1.1 for q in anchors) or p.distance(others) < 0.03: return False
     return all(p.distance(o) >= 0.03 for j, o in enumerate(parts) if j != i)
 long_tags = [p for i, p in enumerate(parts) if long_tag(i, p)]
-walls_out = walls      # the footprint below still uses all solids, so removing the bars leaves the slab unchanged
-if long_tags:
-    walls_out = unary_union([p for p in parts if not any(p is t for t in long_tags)])
+# Door-type tags ("P-7", "P-10"): a 0.25 x 0.54 m frame on layer 01 around the code, drawn next to each door, often
+# inside the doorway or the corridor. Their faces had become 2.8 m wall stubs that blocked the way through the door.
+door_tag_pts = []
+for e in msp.query("TEXT MTEXT"):
+    txt = e.dxf.text if e.dxftype() == "TEXT" else e.plain_text()
+    if re.match(r"^\s*P\s*-\s*\d+[A-Za-z]?\s*$", txt or ""):
+        door_tag_pts.append(Point(e.dxf.insert.x + dx - O[0], e.dxf.insert.y + dy - O[1]))
+def door_tag(p):
+    mrr = p.minimum_rotated_rectangle; c = list(mrr.exterior.coords)
+    a = LineString(c[0:2]).length; b = LineString(c[1:3]).length
+    if not (0.2 <= min(a, b) and max(a, b) <= 1.0 and p.area > 0.75 * mrr.area): return False   # a compact frame
+    return not any(p is t for t in long_tags) and any(p.distance(q) < 0.3 for q in door_tag_pts)
+door_tags = [p for p in parts if door_tag(p)]
+walls_out = walls      # the footprint below still uses all solids, so removing the tags leaves the slab unchanged
+if long_tags or door_tags:
+    walls_out = unary_union([p for p in parts if not any(p is t for t in long_tags + door_tags)])
     W["blocks_034x138"] += [[[round(x, 3), round(y, 3)] for x, y in list(p.exterior.coords)[:-1]] for p in long_tags]
+W["door_tags"] = [[[round(x, 3), round(y, 3)] for x, y in list(p.exterior.coords)[:-1]] for p in door_tags]
 print("long tag bars kept out of the walls:", len(long_tags))
+print("door-type tags kept out of the walls:", len(door_tags))
 print("repeated 0.34 x 1.38 m blocks kept out of the walls:", len(W.get("blocks_034x138", [])))
 def ring(p): return {"outer": [[round(x, 3), round(y, 3)] for x, y in list(p.exterior.coords)[:-1]], "holes": [[[round(x, 3), round(y, 3)] for x, y in list(i.coords)[:-1]] for i in p.interiors]}
 before = hatched.area
