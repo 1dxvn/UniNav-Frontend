@@ -35,10 +35,10 @@ AZOTEA, AULA 308 A, INGENIERIA, BAÑO MUJERES, BAÑO HOMBRES, VACIO, HEMEROTECA,
 
 ## Detail (C9)
 
-- **Doors and fixtures:**  and  give 15 open leaves, each with a flat swing arc, in the detected doorways.  holds 34 sanitary fixtures from the  blocks.
-- **Furniture (illustrative), :** 263 student desk sets, 8 lab benches, 5 lockers / shelving, 1 desks. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage.
-- **Floor zones, :** 4 wet, 6 lab, 2 office (ceramic, vinyl, laminate).
-- **Routes:** this floor has no API paths yet, so leaves and furniture were placed without a route-clearance check. When paths exist, rerun  with this floor's graph.
+- **Doors and fixtures:** `P3_Doors` and `P3_Door_Swings` give 15 open leaves, each with a flat swing arc, in the detected doorways. `P3_Fixtures` holds 34 sanitary fixtures from the `sanitarios` blocks.
+- **Furniture (illustrative), `P3_Furniture_<i>_<j>`:** 263 student desk sets, 8 lab benches, 5 lockers / shelving, 1 desks. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage.
+- **Floor zones, `P3_Floor_Zones`:** 4 wet, 6 lab, 2 office (ceramic, vinyl, laminate).
+- **Routes:** this floor has no API paths yet, so leaves and furniture were placed without a route-clearance check. When paths exist, rerun `extras.py` with this floor's graph.
 
 ## Not yet in this version
 

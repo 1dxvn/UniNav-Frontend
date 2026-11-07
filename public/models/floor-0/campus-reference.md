@@ -35,10 +35,10 @@ COMPRESOR, BODEGA, BAÑO MUJERES, BAÑO HOMBRES, AUDITORIO, DE POSGRADO, PATIO, 
 
 ## Detail (C9)
 
-- **Doors and fixtures:**  and  give 23 open leaves, each with a flat swing arc, in the detected doorways.  holds 18 sanitary fixtures from the  blocks.
-- **Furniture (illustrative), :** 30 lockers / shelving, 2 desks, 1 lab benches. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage.
-- **Floor zones, :** 5 wet, 1 lab, 3 office (ceramic, vinyl, laminate).
-- **Routes:** this floor has no API paths yet, so leaves and furniture were placed without a route-clearance check. When paths exist, rerun  with this floor's graph.
+- **Doors and fixtures:** `P0_Doors` and `P0_Door_Swings` give 23 open leaves, each with a flat swing arc, in the detected doorways. `P0_Fixtures` holds 18 sanitary fixtures from the `sanitarios` blocks.
+- **Furniture (illustrative), `P0_Furniture_<i>_<j>`:** 30 lockers / shelving, 2 desks, 1 lab benches. The type comes from the room label: AULA gets desks, LABORATORIO gets benches, offices get a desk, and BODEGA, ARCHIVO and LOCKERS get storage.
+- **Floor zones, `P0_Floor_Zones`:** 5 wet, 1 lab, 3 office (ceramic, vinyl, laminate).
+- **Routes:** this floor has no API paths yet, so leaves and furniture were placed without a route-clearance check. When paths exist, rerun `extras.py` with this floor's graph.
 
 ## Not yet in this version
 
