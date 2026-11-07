@@ -76,6 +76,16 @@ There is no section drawing yet. Every height below is an assumption for the mod
 | Desks, tables | 0.75; lab benches 0.90; seats 0.45–0.62 |
 | Lockers, shelving | 1.80; gym machines 1.10; turnstiles 1.00 |
 | Sanitary fixtures | 0.45 (WC, urinals); 0.85 (washbasins) |
+| Glass frames | bottom rail 0.00 → 0.07, mullions every ~1.25 m, top rail 2.50 → 2.62 |
+| Grass beds | -0.16 → -0.12 (4 cm above the paving) |
+| Stone walls / planters | -0.15 → 0.55 / -0.15 → 0.45 |
+| Green wall | -0.15 → 3.30 |
+| Trees | trunk to the crown; crowns start at ≥ 2.0 m |
+| Cypresses | 3.4–4.2 m |
+| Lamp posts | 4.6 m |
+| Solar bike canopy | panels 2.65 → 3.1 (tilted) |
+| Access pavilion roof | translucent, sloping 3.4 m (y = -8) → 5.3 m (y = 10.6) |
+| Terrace frame (over the shops) | 3.15 → 3.45, open frame without cover |
 | Storey height | 3.5 m, the backend convention, still unchecked against the building |
 
 ## How the geometry was built
@@ -90,10 +100,41 @@ There is no section drawing yet. Every height below is an assumption for the mod
 | `Doors` | One leaf per doorway, drawn **open at 90°**. Doorways are the 0.65–1.9 m gaps between wall or glass ends; gaps over 1.25 m get two leaves. Glass partitions get glass leaves |
 | `Door_Swings` | Thin swing arcs on the floor (2–8 mm high), as on a plan |
 | `Fixtures` | CAD blocks on layer `sanitarios` (WC, urinals, washbasins) and the `Lavabo` block |
-| `Furniture` | **Illustrative**, not from the drawing (see below) |
-| `Site` | The crop rectangle |
+| `Furniture_<i>_<j>` | **Illustrative**, not from the drawing (see below). Split into 20 m cells |
+| `Site` | The crop rectangle, concrete pavers |
+| `Glass_Frames_Top`, `Glass_Frames_Base`, `Glass_Mullions_<i>_<j>` | One frame per `VIDRIO` segment of the DWG: rails and mullions about every 1.25 m |
+| `Deco_Grass` | Gardens labelled JARDIN with a matching area, plus planting beds around the DWG vegetation |
+| `Deco_Tree_Trunks_<i>_<j>`, `Deco_Tree_Crowns_<i>_<j>` | One tree per `Arbol38` / `arbol existente` block. Crown size comes from the block extents |
+| `Deco_Cypress` | `PISO4` circles along the ramp. Read as cypresses, as in the photos (approximation) |
+| `Deco_Shrubs` | Clusters of `VEGETACION-A` / `VEGETACION 2` polylines |
+| `Deco_Stone_Walls`, `Deco_Planters` | `MUROPIEDRA` and `JARDINERA` lines, 30 cm / 20 cm thick |
+| `Deco_Green_Wall` | `MUROTUBOS` line on the west edge, extended south along the substation (label "Muro Verde") |
+| `Deco_Fence` | `MUROTUBOS` circles at the south-east (x ≈ 22): vertical-bar fence |
+| `Deco_Lamps` | `000ILUMINACIÓN` and `SCH_LUMINARIA` blocks |
+| `Deco_Solar_Canopy` | Closed `VOLADO` rectangle plus `PEDESTAL` posts (electric-bike shelter) |
+| `Canopy_Access_Roof`, `Canopy_Access_Frame` | `VOLADO` outline over HALL ACCESO: translucent sloping roof on a steel frame, as in the photos |
+| `Canopy_Terrace_Frame` | `VOLADO` outline over the south shops: open steel frame |
 
-Materials: `Wall_Cut` white, `Wall_Cap` near-black on wall tops, `Column` terracotta, `Glass` translucent blue, `Floor_Interior` warm light grey, `Site_Plaza` dark grey-green, `Ramp_Stairs` mid grey, `Door_Wood` brown, `Swing_Line` dark grey, `Fixture` white, `Furniture_Wood` light wood, `Furniture_Seat` blue-grey, `Furniture_Lab` off-white, `Furniture_Felt` green, `Furniture_Metal` grey.
+Materials:
+- **Walls:** `Wall_Brick` is the brick texture on exterior wall faces. A face counts as exterior when the point 0.3 m outside it falls outside the footprint. `Wall_Cut` is warm-white plaster indoors and `Wall_Cap` is the dark top cut.
+- **Structure and glass:** `Column` is exposed concrete indoors, and brick when it faces outside. `Glass` is tinted blue-grey. `Frame_Dark` covers the window frames.
+- **Floors and site:** `Floor_Interior` is 60 cm porcelain tiles and `Site_Plaza` is 50 cm concrete pavers. `Grass`, `Stone_Wall`, `Green_Wall` and `Planter` cover the planted and stone areas.
+- **Vegetation:** `Trunk`, `Foliage_A`, `Foliage_B`, `Foliage_Dark`, `Shrub` and `Shrub_Flower`.
+- **Metal and canopies:** `Metal_Light` for the canopy frames and fence, `Metal_Dark` for the lamp posts, `Solar_Panel`, and `Canopy_Translucent` (alpha 0.16).
+- **Interiors:** `Ramp_Stairs`, `Door_Wood`, `Swing_Line`, `Fixture`, plus `Furniture_Wood`, `Furniture_Seat`, `Furniture_Lab`, `Furniture_Felt` and `Furniture_Metal` for the furniture.
+
+Textures are tileable JPEGs generated procedurally (`model/textures/`, real size in `textures.json`). They are embedded in the GLB, and UVs are in metres divided by the texture size.
+
+Palette inspiration comes from the photos in `public/referenciasMaps/`: terracotta brick, dark curtain-wall frames, a green wall along the street, a translucent access pavilion, grey pavers, stone planters, cypresses and the solar bike canopy. The photos are only a visual guide. Every position comes from the DWG.
+
+### Object names and runtime hints
+
+- `Deco_*` objects are outdoor decoration and are clear of the routes:
+  - Trunks, shrubs, lamp posts, stone walls and planters stay **≥ 0.6–0.65 m** from every API route centre line. Items that failed this test were left out: 5 trees, 3 cypresses, 2 shrubs and 1 planter.
+  - Tree crowns start at ≥ 2.0 m.
+- `Canopy_*` objects are high (≥ 3.15 m) and can be hidden for an unobstructed top view; the access roof covers the start of the route.
+- Some objects sit wholly above or below the body-height rays (0.45 m and 1.2 m): crowns, top and base rails, swing arcs, grass, site and the canopy roof. Their bounding boxes let the runtime skip them cheaply. Furniture, mullions and trees are split into cells for the same reason.
+  - Measured: **1.73 ms** per `collides()` call, against 3.35 ms for the previous GLB.
 
 ## Doors and furniture
 
@@ -103,7 +144,7 @@ Materials: `Wall_Cut` white, `Wall_Cap` near-black on wall tops, `Column` terrac
   - Furniture stays at least 1.0 m from every API route centre line and 0.85 m from every doorway.
   - Door leaves stay at least 0.40 m from route centre lines. Measured minimum: 0.50 m.
   - CAD fixtures closer than 0.7 m to a route are left out, which removes the HALL ACCESO turnstiles from the entrance lane.
-  - Checked by casting the same rays as `collides()` in `src/scene/campus.ts` (two body heights, ±0.22 m) along all 12 API edges in both directions: no edge is blocked.
+  - Checked by casting the same rays as `collides()` in `src/scene/campus.ts` (two body heights, ±0.22 m) along all 16 API edges in both directions: no edge is blocked (rechecked after every export; see `docs/model-review/`).
 - If new API routes are added through rooms with furniture, regenerate the layout or move the pieces in `model/campus.blend`.
 
 ## Known gaps in this version
@@ -111,7 +152,8 @@ Materials: `Wall_Cut` white, `Wall_Cap` near-black on wall tops, `Column` terrac
 - Furniture is illustrative, and door hinge sides are inferred.
 - Some doorways are not detected: gaps wider than 1.9 m, and openings that are not between two wall ends.
 - A solid hatch in the BAÑOS / VESTIER block near plan (25.5, 2) is read as a full-height wall block.
-- Plazas and gardens are a flat base without paving or level changes.
+- Plazas and gardens have no level changes (the plan marks N -0.63). The access roof slope and height, the cypress reading of `PISO4` and the southern extension of the green wall are approximations from the photos.
+- Upper floors and roofs are not modelled: the building is a ground-floor cutaway.
 - Single floor only.
 
 ## API floor and runtime transform
@@ -130,3 +172,5 @@ Materials: `Wall_Cut` white, `Wall_Cap` near-black on wall tops, `Column` terrac
 | `model/campus.blend` | Editable source, outside the web build. Collections `UCC_Piso1` and `References`, plus `Camera_Top` (orthographic, framed on the crop) |
 | `model/campus-plan.png` | The DXF plan with the same framing and pixel size as `campus-top.png`, for overlay |
 | `model/campus-compare.png` | Plan and render side by side |
+| `model/textures/` | Procedural textures used by the model, and `textures.json` with their real-world size |
+| `docs/model-review/` | Claude's review evidence: comparable captures `before/` and `after-*/` and walk reports |
