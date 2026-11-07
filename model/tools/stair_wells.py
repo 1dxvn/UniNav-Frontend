@@ -15,8 +15,8 @@ ARRIVING = {"2": ["Stair_A_West", "Stair_A_East"], "3": ["Stair_A_West", "Stair_
 def well(name):
     (a0, a1), (b0, b1), (cx, cy), rl = STAIRS[name]
     half = Point(cx, cy).buffer(rl, 24).intersection(box(cx - rl, cy, cx + rl, cy + rl))
-    # keep a 0.6 m strip at the south end so the top of flight 2 lands on the slab
-    return unary_union([box(a0, Y0 + 0.6, b1, YL), half])
+    # keep a 0.3 m strip at the south end (top tread = slab level) so the top of flight 2 lands on the slab
+    return unary_union([box(a0, Y0 + 0.3, b1, YL), half])   # the slab keeps only the strip at the top tread level
 for n in IDS:
     p = os.path.join(DATA, f"floor{n}", "wing.json"); W = json.load(open(p, encoding="utf-8"))
     foot = unary_union([Polygon(r["outer"], r["holes"]).buffer(0) for r in W["footprint"]])

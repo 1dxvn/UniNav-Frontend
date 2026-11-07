@@ -37,7 +37,7 @@ for name, ((a0, a1), (b0, b1), (cx, cy), rl) in STAIRS.items():
     ob = bpy.data.objects.new(name, me); col.objects.link(ob)
     bm = bmesh.new(); R = RISE / 21.0
     for i in range(10):                                         # flight 1: solid steps from the floor
-        box(bm, a0, a1, Y0 + i * TREAD, Y0 + (i + 1) * TREAD, 0.0, (i + 1) * R, 0)
+        box(bm, a0, a1, Y0 + i * TREAD, Y0 + (i + 1) * TREAD, max(0.0, (i + 1) * R - 0.45), (i + 1) * R, 0)   # sloped soffit: headroom for the flight below
     zl = 11 * R                                                 # landing slab (semicircle + strip)
     segs = 14; ring = [(cx + rl * math.cos(math.pi * k / segs), cy + rl * math.sin(math.pi * k / segs)) for k in range(segs + 1)]
     for zz, flip in ((zl, False), (zl - 0.22, True)):

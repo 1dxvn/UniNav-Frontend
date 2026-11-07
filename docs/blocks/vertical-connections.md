@@ -79,6 +79,19 @@ The glass stair towers run through the whole of Block A, and the floor sheets ar
 - **Rise:** 2.94 m is the model-to-model offset, the Block B storey. The real Block A storeys are 3.31 / 3.69 / 3.50 / 3.50 m (`docs/blocks/dwg-inventory.md` §4).
 - **Assumption:** the same flight layout on every floor is an approximation. Only the first-floor flights were measured.
 
+## Stair clearance fixes after Codex's C11 probe (04:25)
+
+Codex's probe (`docs/verification/c11/stair-clearance.json`) walked the floor 1 → 2 stairs and found three issues. All are fixed in every floor model:
+
+| Finding | Cause | Fix |
+| --- | --- | --- |
+| Overhead blocker at 1.8 m on the first flight (`P2_Stair_A_*`) | The upper floor's first flight was modelled as solid blocks down to its slab, directly above the lower first flight. That left about 1.5 m of headroom at the top step | First-flight treads now sit on a sloped soffit (0.45 m below each tread), like the second flight. Headroom over the flight below is about 2.5 m |
+| Torso blockers at 0.45 m on the west second flight (`Walls`, floor 1) | The walls of the small room under the west flight 2 (LOCAL 5.2 m²) were cut at 2.80 m and pierced the flight | Those walls are cut above 1.0 m inside the flight footprint (x 16.95–19.15, y 56.2–59.25) |
+| Torso blocker at the east stair exit on floor 2 (`P2_Walls`) | The stair-hall wall at y ≈ 56 was continuous on the upper floors | That wall is opened in front of every flight, x per flight ± 0.05 and y 55.35–56.65, on floors 0 and 2–5 |
+| Support conflicts at y 56.69–56.74 (`P2_Floor_Slab` 0.16–0.18 m above the probe) | The slab strip kept over the stair top was 0.6 m deep and covered the second-to-last tread | The strip is now 0.3 m: only the top tread, at slab level. The well starts at y 56.5 |
+
+Claude's matching probe follows the same path from bottom to landing to top, with rays at 0.45, 1.2 and 1.8 m, offsets ±0.22 m, against both floor models, and checks for slab above the tread. It reports **all 9 stair passes clear** (floor 0 → 1 east, and floors 1 → 2 through 4 → 5 west and east). The floor-1 API routes are still clear: 16 edges, 0 blocked, 1.84 ms per check. The first-floor working export is SHA `93a1ad69…`. Codex already serves the previous stairs export `41e225fe…`, so this one is pending review.
+
 ## Model delivery state
 
 | File | Content | State |
