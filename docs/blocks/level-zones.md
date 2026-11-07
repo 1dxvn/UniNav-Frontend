@@ -88,3 +88,60 @@ The Block B stair's half landings are N +4.64 (floor 3, at (39.77, 33.35)), N +7
 | 4 → 5 | N +9.87 → +13.37 | 3.50 m |
 
 The candidate set built on these zones is `model/candidates/c16/`.
+
+## Piso cero (floor 0): source handoff requested in Codex's C16 review
+
+Source: sheet `PLANTA PISO CERO`, registered at (0.022, −121.485) on the first floor. The floor-1 joins use the first-floor sheet. Map: `docs/blocks/piso-cero-levels.png` (`model/tools/piso_cero_levels.py`); it draws only the sheet's own labels and flights. This section documents sources and builds no model. The C14 floor-0 preview is unchanged: world translation 0.56 (B datum N −2.94), one flat slab.
+
+### Every level label on the sheet
+
+The sheet has only these seven labels.
+
+| Plan (x, y) | Label | Where |
+| --- | --- | --- |
+| (37.04, 55.91) | N −4.13 | Block A, at the foot of the east tower stair ("S" at (36.45, 55.89)) |
+| (39.21, 35.15) | N −4.13 | South of the A facade: the east foot of the Block B stair |
+| (48.48, 39.70) | N −4.13 | South of the A facade: the clinic (`CLINICA 124.32 M2`, consulting cubicles of 3.7–4.7 m²) |
+| (35.64, 34.01) | N −2.94 | The Block B stair landing (`13.81 M2`) |
+| (20.00, 15.33) | N −2.94 | South-west service area (`COMPRESORES`, `SUCCIONADORES QUIRURGICOS`), at the foot of a ramp |
+| (75.19, 52.03) | N −4.13 | Outside the footprint (x > 70.4), east service yard (`HIDROFLO`, `REJILLA DE DRENAJE`) |
+| (75.18, 54.33) | N −2.93 | Same yard, 2.3 m north, at the top of four numbered risers |
+
+**Reading of the two points south of the facade:** they belong to a Block B area at the Block A level. This area is the east part of piso cero: the clinic, its waiting room and halls, and the foot of the B stair.
+
+### Regions
+
+| Region | Extent (plan) | Level | Status | Evidence and limits |
+| --- | --- | --- | --- | --- |
+| Block A bar | footprint north of the facade band (y 49.02–49.16), x 15.7–69. On piso cero the bar reaches y 67.7 | N −4.13 | **confirmed** at the east tower; **derived** for the rest | No step is drawn inside the bar. There is only one A label because the west tower has no flight on this sheet. The marks listed under "Unclassified marks" are not read as steps |
+| East B: clinic | south of the facade band, east of the two flights that leave −4.13 (B stair 1–6 at x 36.9–38.4; west stair 1–6 at x 36.0–37.9) | N −4.13 | **confirmed** at (39.21, 35.15) and (48.48, 39.70); extent **derived** | The facade band is open to the A bar at x 39.66–41.08 (sliding glass door) and has no walls at x 42.37–50.43, 53.08–59.57 and 62.26–70.4, so the clinic and the A bar share one level. The southern rooms (lockers, `ARCHIVO HISTORIAS CLINICAS`, `DENTALES 3D`, `PATIO`, y < 30) have no label. Their level is **pending** |
+| West and south-west B | south of the facade band, west of those flights: sterilization rooms (`AREA ESTERIL`, `VESTIER`, `AREA LIMPIA`, `AREA CONTAMINADA`), `RX 1` / `RX 2`, `ALMACEN`, `HALL ACCESO BODEGA`, the compressors | N −2.94 | **confirmed** at the B stair landing and the compressors; extent **derived** | Between y 36 and y 47.6 the sheet draws no step and no label on the line between the west and east parts. That boundary is **pending** there |
+| West stair landing (`PASILLO 22.51 M2`) | x ≈ 25.6–36.0, y ≈ 47.6–49.0, under the floor-1 hall | — | **pending** | No label. See the west stair below |
+
+### Drawn level changes and joins to floor 1
+
+| Element | Drawn | Levels | Status | Join to C16 floor 1 |
+| --- | --- | --- | --- | --- |
+| **B stair, north flight** | risers 1–6 at x 38.40 → 36.87, y ≈ 34.2, rising west ("S" at (38.87, 34.87)) | N −4.13 (east foot) → −2.94 (landing): 6 risers of 0.198 m | **confirmed** (labels at both ends) | — (inside piso cero) |
+| **B stair, south flight** | risers 7–9 at x 36.49 → 37.11, y ≈ 32.4, rising east from the landing ("S" at (35.99, 33.0)); cut above 9 | N −2.94 → the floor-1 foot of the B stair at N −0.90 (2.04 m) | **derived**: the riser count above 9 is not drawn on either sheet | Not compatible yet: in C16 the floor-1 −0.90 area is part of the pending laboratory zone and stays flat at 0.00 |
+| **A east tower** | risers 1–10 at x ≈ 37.45, y 56.3–59.2, rising north ("S" at (36.45, 55.89)) | N −4.13 → −0.63 (floor 1, label at (36.59, 55.72) at the same tower): rise 3.50 m | **confirmed** (labels at both ends) | Compatible as a 3.50 m flight with the tower layout of floors 3–5: 21 risers of 0.1667 m, foot at world −0.63 (3.5 − 4.13), top at world 2.87, the C16 floor-1 Block A. The C14 floor-0 stair rises 2.94 m from world 0.56 and does not meet C16 |
+| **A west tower** | no flight on piso cero | — | — | The west tower starts on floor 1 |
+| **Elevators** | two cars at (24.12, 55.15) and (26.38, 55.14), in the A bar | A −4.13 → A −0.63 (floor-1 elevator hall at (28.08, 50.16)) | **confirmed** (A levels at both ends) | Stops at world −0.63 and 2.87 |
+| **West stair** | one arrow from "S" at (38.11, 48.52) westwards. Risers 1–6 at x 37.85 → 36.05; the landing `PASILLO`; risers 7–18 at x 25.27 → 20.84. The floor-1 sheet draws 15–18 at x 21.98 → 20.74, with the arrowhead at x 20.74 | Foot on the clinic side (−4.13, derived). Landing and floor-1 arrival: **no label** | **pending** | Not compatible yet. If the landing is −2.94 (by analogy with the B stair, where 6 risers join −4.13 and −2.94), risers 1–6 are 0.198 m. Risers 7–18 would then be 0.245 m to reach N 0.00 (B west body), too high for a stair and above the runtime's 0.20 m, or 0.1925 m to reach N −0.63. The floor-1 arrival, next to the `9.70 M2` space at (20.8, 46.1), has no label. In C16 the floor-1 opening stays closed |
+| **South-west ramp** | `RAMPA` at (19.14, 18.94), "S" at (19.73, 15.02) | from N −2.94 up; top **not labelled** | **pending** | — (service area) |
+| **East yard stair** | risers 1–4 at x 74.77, y 52.36–53.29, rising north; outside the footprint | N −4.13 → −2.93: 1.20 m over 4 numbered risers, that is 0.30 m each | **pending** (contradictory or partly drawn) | — (outside) |
+
+**Unclassified marks:**
+- Four short arrows with "S" at x 20.0–21.2, y 50.10, 51.03, 53.26 and 54.19. They point east, inside the hatched compressor area at the west end of the A bar, each in front of a drawn door leaf.
+- One arrow with "S" at (19.27, 33.09), next to `RX 1` / `RX 2`.
+
+None of them has treads or level labels, so they are not read as level changes.
+
+### What a C16-compatible floor 0 would need
+
+This is not built; it waits for your review of these regions.
+- **Transform:** the world translation stays 0.56 (B datum N −2.94).
+- **Offsets:** the A bar and the east clinic go to −1.19 (N −4.13, world −0.63).
+- **Boundary:** along the B stair north flight and the west stair flight 1–6, with the y 36–47.6 stretch pending.
+- **East tower:** rebuilt with a 3.50 m rise.
+- **Not built:** the B stair south flight, the west stair landing and opening, the ramp and the southern rooms. They stay pending until a label or section gives their levels.

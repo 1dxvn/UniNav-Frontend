@@ -1,6 +1,6 @@
 {
  "version": 1,
- "source": "PLANOS UCC 2025 - B.dxf, first-floor and second-floor sheets (registered); docs/blocks/vertical-connections.md",
+ "source": "PLANOS UCC 2025 - B.dxf, first-floor and second-floor sheets (registered); docs/blocks/vertical-connections.md; piso cero sheet (floor 0)",
  "datum": "Sheet N levels; floor-1 Block B datum N 0.00 = world Y 3.5; floor-2 Block B datum N +2.94 = world Y 6.44",
  "floors": {
   "1": {
@@ -335,8 +335,16 @@
     },
     {
      "id": "A-B-junction-ramp",
-     "bounds": [27.35, 47.906, 29.75, 49.275],
-     "levels": [2.94, 2.68],
+     "bounds": [
+      27.35,
+      47.906,
+      29.75,
+      49.275
+     ],
+     "levels": [
+      2.94,
+      2.68
+     ],
      "levelsAt": "south edge y 47.906 (Block B), north edge y 49.275 (Block A)",
      "slope": 0.19,
      "status": "drawn: ramp notation (arrow from A to B, 'S' at the A end, no treads)"
@@ -389,6 +397,186 @@
      "level": 2.68,
      "status": "confirmed"
     }
+   ]
+  },
+  "0": {
+   "source": "PLANTA PISO CERO, registered at (0.022, -121.485); joins to floor 1 from the first-floor sheet",
+   "labels": [
+    {
+     "xy": [
+      37.04,
+      55.91
+     ],
+     "level": -4.13,
+     "where": "Block A, east tower foot"
+    },
+    {
+     "xy": [
+      39.21,
+      35.15
+     ],
+     "level": -4.13,
+     "where": "east foot of the Block B stair (south of the A facade)"
+    },
+    {
+     "xy": [
+      48.48,
+      39.7
+     ],
+     "level": -4.13,
+     "where": "clinic (south of the A facade)"
+    },
+    {
+     "xy": [
+      35.64,
+      34.01
+     ],
+     "level": -2.94,
+     "where": "Block B stair landing"
+    },
+    {
+     "xy": [
+      20.0,
+      15.33
+     ],
+     "level": -2.94,
+     "where": "south-west compressors, ramp foot"
+    },
+    {
+     "xy": [
+      75.19,
+      52.03
+     ],
+     "level": -4.13,
+     "where": "outside the footprint, east yard"
+    },
+    {
+     "xy": [
+      75.18,
+      54.33
+     ],
+     "level": -2.93,
+     "where": "outside the footprint, east yard, top of risers 1-4"
+    }
+   ],
+   "zones": [
+    {
+     "id": "A-bar",
+     "rule": "footprint north of the facade band y 49.02-49.16, x 15.7-69",
+     "level": -4.13,
+     "status": "confirmed at the east tower; extent derived"
+    },
+    {
+     "id": "B-east-clinic",
+     "rule": "south of the facade band, east of B stair risers 1-6 (x 36.9-38.4) and west stair risers 1-6 (x 36.0-37.9)",
+     "level": -4.13,
+     "status": "confirmed at (39.21, 35.15) and (48.48, 39.70); extent derived; open to the A bar at x 39.66-41.08, 42.37-50.43, 53.08-59.57, 62.26-70.4; southern rooms (y < 30) pending"
+    },
+    {
+     "id": "B-west-southwest",
+     "rule": "south of the facade band, west of those flights",
+     "level": -2.94,
+     "status": "confirmed at the B stair landing and the compressors; extent derived; west/east boundary between y 36 and 47.6 pending"
+    },
+    {
+     "id": "west-stair-landing",
+     "bounds": [
+      25.6,
+      47.6,
+      36.0,
+      49.0
+     ],
+     "level": null,
+     "status": "pending: no label"
+    }
+   ],
+   "joins": [
+    {
+     "id": "B-stair-north-flight",
+     "risers": "1-6",
+     "levels": [
+      -4.13,
+      -2.94
+     ],
+     "riser": 0.198,
+     "status": "confirmed"
+    },
+    {
+     "id": "B-stair-south-flight",
+     "risers": "7-9 drawn, cut",
+     "levels": [
+      -2.94,
+      -0.9
+     ],
+     "status": "derived; floor-1 -0.90 area is pending (flat in C16)"
+    },
+    {
+     "id": "A-east-tower-0-1",
+     "levels": [
+      -4.13,
+      -0.63
+     ],
+     "rise": 3.5,
+     "risers": 21,
+     "world": [
+      -0.63,
+      2.87
+     ],
+     "status": "confirmed; C14 floor-0 stair (2.94 m from world 0.56) does not meet C16"
+    },
+    {
+     "id": "elevators",
+     "xy": [
+      [
+       24.12,
+       55.15
+      ],
+      [
+       26.38,
+       55.14
+      ]
+     ],
+     "levels": [
+      -4.13,
+      -0.63
+     ],
+     "status": "confirmed"
+    },
+    {
+     "id": "west-stair",
+     "risers": "1-6, landing PASILLO, 7-18; floor-1 sheet draws 15-18 to x 20.74",
+     "levels": [
+      -4.13,
+      null,
+      null
+     ],
+     "status": "pending: landing and floor-1 arrival unlabelled; 7-18 would be 0.245 m to N 0.00 or 0.1925 m to N -0.63"
+    },
+    {
+     "id": "south-west-ramp",
+     "xy": [
+      19.14,
+      18.94
+     ],
+     "levels": [
+      -2.94,
+      null
+     ],
+     "status": "pending: top unlabelled"
+    },
+    {
+     "id": "east-yard-stair",
+     "risers": "1-4",
+     "levels": [
+      -4.13,
+      -2.93
+     ],
+     "status": "pending: 0.30 m per numbered riser, outside the footprint"
+    }
+   ],
+   "unclassified": [
+    "four arrows with 'S' at x 20.0-21.2, y 50.10 / 51.03 / 53.26 / 54.19 (compressor area, A bar west end)",
+    "arrow with 'S' at (19.27, 33.09) next to RX 1 / RX 2"
    ]
   }
  },
