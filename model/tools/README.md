@@ -20,6 +20,9 @@ These scripts rebuild the Block B first-floor model from the DWG. The output is 
 | 6. Materials, UVs and site (Blender, first visual pass) | `exec(open("model/tools/blender_visual_c1.py").read())` | brick, frames, vegetation, canopies |
 | 6b. Floor and sign textures | `python textures_c2.py ../textures` | `floor_*.jpg`, `sign_*.jpg` |
 | 6c. Interiors (Blender, second visual pass) | `exec(open("model/tools/blender_interiors_c2.py").read())` | shaped `Furniture_*`, `Floor_Zones`, `Sign_*` |
+| 6d. Floor registration and inventory | `python grid_axes.py <dxf> data/grid_axes.json`; `python inventory.py <dxf> data/grid_axes.json data/inventory.json out.png` | sheet shifts, `docs/blocks/dwg-inventory.md` data |
+| 6e. Exterior massing data | `python exterior_extract.py <dxf> data/grid_axes.json data/exterior.json` | outlines and glazing per floor and block |
+| 6f. Exterior (Blender) | `exec(open("model/tools/blender_exterior.py").read())`, then export only the collection `Exterior` | `public/models/blocks/campus-exterior.glb` |
 | 7. Export | glTF: selection = collections `UCC_Piso1` and `References`, Y up, no cameras or lights | `public/models/campus.glb` |
 | 8. Review captures (Blender) | `OUT_DIR = "..."` then `exec(open("model/tools/blender_review_renders.py").read())` | `docs/model-review/<rev>/blender-*.png` |
 
