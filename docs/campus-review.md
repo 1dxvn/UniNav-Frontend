@@ -79,7 +79,7 @@ The C5 exterior is now integrated as the initial Campus overview. Source commit
 the documented first-floor frame at translation `(0, 3.5, 0)`. Campus view shows
 the base model and exterior; selecting a destination or floor, or planning a
 route, restores the cutaway and releases the exterior. Collision meshes remain
-the 141 C11 navigation meshes. The exterior contributes none.
+the 141 reviewed navigation meshes. The exterior contributes none.
 
 Evidence is in `verification/c5/`, including the restored floor, fallback/retry,
 resource loading and render measurements. The model has 48 exterior meshes and
@@ -90,3 +90,16 @@ approximations. The overview does not establish navigation through those volumes
 Heights and plaza levels remain the model's documented approximations. Three
 reference pins establish registration; the movement checks separately establish
 body clearance on the routes. No furniture or model geometry was changed here.
+
+## Corrected stair pair and upper-floor doorways
+
+The current manifest pins the coherent C13 set at `a2dbda0`. The first floor
+retains the corrected stair geometry of `71c5e80` (SHA prefix `93a1ad69`); upper floors
+remove door-tag frames and use drawn leaves instead of overlapping guessed ones.
+The original 19-place / 16-path graph remains unchanged. Floors 0/2/3/4/5 stay
+non-navigable previews. Current acceptance evidence is in `verification/c13/`;
+`verification/c12/` retains the superseded intermediate rehearsal.
+
+The independent floor-2 source audit is in `blocks/floor2-access-review.md`.
+It separates CAD labels from unaccepted free-point candidates and shows why
+actual doors and turns are needed. It adds no API destinations or connections.

@@ -1,7 +1,8 @@
 # Floor previews and vertical integration review
 
-Codex review, 7 November 2026. Source exports: Claude's C8–C11 through
-`099c212` (stair wells added on floors 2–5). The preview metadata transcribes the three structural anchors and
+Codex review, 7 November 2026. Current source exports: Claude's C13 through
+`a2dbda0` (corrected stairs, removed door-tag frames and drawn door leaves). The
+preview metadata transcribes the three structural anchors and
 recommended world elevation from each `public/models/floor-N/campus-reference.md`.
 It does not create API places. The references use `alignment: structural`, not
 API-room alignment. The GLB node positions are checked separately against those
@@ -27,8 +28,9 @@ explicit approximation. Stair meshes in a preview do not establish a route.
   route only with corresponding geometry and heights. The nearby ramp direction
   is unconfirmed; no alternative connection should be inferred.
 - Check the whole body/head clearance of the first-floor candidate into floor 2,
-  including flight starts, return flight, curved landing and arrival. C11 added
-  slab wells; full stair clearance is still unverified. A single downward probe at west
+  including flight starts, return flight, curved landing and arrival. C13's four
+  directed centre-line probes between floors 1 and 2 are clear, but actual API
+  journeys and manual tread support remain pending. A single downward probe at west
   return-flight point (18.05,58) does not hit the slab on floors 2–5; this is not
   a complete clearance or support test and does not prove that a hole is needed
   at that particular point. Resolve actual obstacles from full sweeps/captures.
@@ -38,11 +40,11 @@ explicit approximation. Stair meshes in a preview do not establish a route.
   furniture/door clearance using that graph: C8/C9 furniture was exported before
   route data existed. The presence of a label is insufficient to infer its access.
 
-Previews remain explicitly non-navigable and add zero collision meshes. C11 keeps
+Previews remain explicitly non-navigable and add zero collision meshes. C13 keeps
 the original first-floor data binding and four destinations. Observing a preview must
 preserve the avatar, active route and first-floor collision resources. Only the selected
 preview is cached; leaving it releases its GPU resources.
 
 Source hashes, extracted anchors, geometry counts and slab probes are recorded
-under `docs/verification/floor-previews/`. No Blender sources, model geometry or
-Claude reference documents were edited by Codex.
+under `docs/verification/c13/` (historical previews remain in `floor-previews/`).
+No Blender sources, model geometry or Claude reference documents were edited by Codex.

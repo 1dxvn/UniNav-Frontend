@@ -5,7 +5,7 @@ import { parseReference, referenceMatrix, validateAlignment, validateModelNodes 
 import { parseModelGeometry } from "./model-geometry.ts";
 import { committedAsset } from "./reviewed-assets.ts";
 
-const output = "docs/verification/floor-previews";
+const output = process.env.UNINAV_VERIFY_DIR ?? "docs/verification/floor-previews";
 const sha = (bytes: Uint8Array) => createHash("sha256").update(bytes).digest("hex");
 const revisions = JSON.parse(await readFile(`${output}/source-revisions.json`,"utf8")) as {
   level:number; elevation_m:number; model_sha256:string; reference_sha256:string; sourceCommit:string;

@@ -1,0 +1,37 @@
+[
+  {
+    "level": 0,
+    "elevation_m": 0.56,
+    "model_sha256": "1cc05a1b3acce2e11c0b5ea04bed96b5f36206904d63c24d36eb449e62541bf7",
+    "reference_sha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
+    "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72"
+  },
+  {
+    "level": 2,
+    "elevation_m": 6.44,
+    "model_sha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a",
+    "reference_sha256": "2ba11cd9f962b681aa5ace5bcf3c973c246df7ae9200e26b4b5cf7f9793c52bc",
+    "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72"
+  },
+  {
+    "level": 3,
+    "elevation_m": 9.38,
+    "model_sha256": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72",
+    "reference_sha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
+    "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72"
+  },
+  {
+    "level": 4,
+    "elevation_m": 12.32,
+    "model_sha256": "db7a29e45defb7cfc8a0f010b7569429ca7fe39b1c0aea4d4e21a7d20eaa3987",
+    "reference_sha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
+    "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72"
+  },
+  {
+    "level": 5,
+    "elevation_m": 15.26,
+    "model_sha256": "0bedcb88c3fb0b9da213fb6fc54d8aff88fd66c3a3f250d542a30d867e65931b",
+    "reference_sha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
+    "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72"
+  }
+]

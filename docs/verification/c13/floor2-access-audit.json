@@ -1,0 +1,268 @@
+{
+  "commit": "a2dbda0",
+  "modelSha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a",
+  "elevation": 6.44,
+  "results": [
+    {
+      "sourceLabel": {
+        "text": "BIBLIOTECA 1",
+        "xy": [
+          2.947,
+          53.819
+        ]
+      },
+      "candidate": [
+        2.697,
+        53.319
+      ],
+      "offsetMetres": 0.5590169943749475,
+      "nearbyOpenings": [
+        {
+          "center": [
+            11.756,
+            53.029500000000006
+          ],
+          "width": 1.2450000000000045,
+          "kind": "glass",
+          "distanceFromLabel": 8.844308409932346
+        },
+        {
+          "center": [
+            -0.5079999999999999,
+            42.207499999999996
+          ],
+          "width": 0.7050000000000054,
+          "kind": "wall",
+          "distanceFromLabel": 12.11461750324789
+        },
+        {
+          "center": [
+            24.658,
+            53.724
+          ],
+          "width": 1.1999999999999993,
+          "kind": "wall",
+          "distanceFromLabel": 21.71120784295522
+        }
+      ],
+      "directFromEastStair": {
+        "clear": false,
+        "firstBlocker": "P2_Doors_1",
+        "position": [
+          33.41424099722992,
+          6.44,
+          -55.521072022160666
+        ]
+      },
+      "status": "Unaccepted candidate: room membership, actual doorway and complete route still require review."
+    },
+    {
+      "sourceLabel": {
+        "text": "AULA 201",
+        "xy": [
+          33.088,
+          45.198
+        ]
+      },
+      "candidate": [
+        32.338,
+        44.948
+      ],
+      "offsetMetres": 0.7905694150420949,
+      "nearbyOpenings": [
+        {
+          "center": [
+            30.374000000000002,
+            51.900000000000006
+          ],
+          "width": 1.0499999999999972,
+          "kind": "glass",
+          "distanceFromLabel": 7.230670784927224
+        },
+        {
+          "center": [
+            34.915499999999994,
+            53.58
+          ],
+          "width": 1.1030000000000015,
+          "kind": "glass",
+          "distanceFromLabel": 8.57890903611875
+        },
+        {
+          "center": [
+            26.808,
+            53.72399999999999
+          ],
+          "width": 1.2000000000000028,
+          "kind": "wall",
+          "distanceFromLabel": 10.589196192346225
+        }
+      ],
+      "directFromEastStair": {
+        "clear": false,
+        "firstBlocker": "P2_Glass",
+        "position": [
+          37.572874015748035,
+          6.44,
+          -53.95968503937008
+        ]
+      },
+      "status": "Unaccepted candidate: room membership, actual doorway and complete route still require review."
+    },
+    {
+      "sourceLabel": {
+        "text": "AULA 220",
+        "xy": [
+          24.211,
+          42.832
+        ]
+      },
+      "candidate": [
+        24.461,
+        42.832
+      ],
+      "offsetMetres": 0.25,
+      "nearbyOpenings": [
+        {
+          "center": [
+            24.658,
+            53.724
+          ],
+          "width": 1.1999999999999993,
+          "kind": "wall",
+          "distanceFromLabel": 10.901168423614045
+        },
+        {
+          "center": [
+            30.374000000000002,
+            51.900000000000006
+          ],
+          "width": 1.0499999999999972,
+          "kind": "glass",
+          "distanceFromLabel": 10.964086510056374
+        },
+        {
+          "center": [
+            26.808,
+            53.72399999999999
+          ],
+          "width": 1.2000000000000028,
+          "kind": "wall",
+          "distanceFromLabel": 11.197324367901459
+        }
+      ],
+      "directFromEastStair": {
+        "clear": false,
+        "firstBlocker": "P2_Glass",
+        "position": [
+          36.602782945736436,
+          6.44,
+          -53.97525581395349
+        ]
+      },
+      "status": "Unaccepted candidate: room membership, actual doorway and complete route still require review."
+    },
+    {
+      "sourceLabel": {
+        "text": "HALL ASCENSORES",
+        "xy": [
+          25.83,
+          53.088
+        ]
+      },
+      "candidate": [
+        25.83,
+        53.088
+      ],
+      "offsetMetres": 0,
+      "nearbyOpenings": [
+        {
+          "center": [
+            26.808,
+            53.72399999999999
+          ],
+          "width": 1.2000000000000028,
+          "kind": "wall",
+          "distanceFromLabel": 1.1666104748372474
+        },
+        {
+          "center": [
+            24.658,
+            53.724
+          ],
+          "width": 1.1999999999999993,
+          "kind": "wall",
+          "distanceFromLabel": 1.3334466618504046
+        },
+        {
+          "center": [
+            30.374000000000002,
+            51.900000000000006
+          ],
+          "width": 1.0499999999999972,
+          "kind": "glass",
+          "distanceFromLabel": 4.696730777892217
+        }
+      ],
+      "directFromEastStair": {
+        "clear": false,
+        "firstBlocker": "P2_Walls_1",
+        "position": [
+          28.365000000000002,
+          6.44,
+          -53.64187878787879
+        ]
+      },
+      "status": "Unaccepted candidate: room membership, actual doorway and complete route still require review."
+    },
+    {
+      "sourceLabel": {
+        "text": "CIRCULACION",
+        "xy": [
+          39.001,
+          55.896
+        ]
+      },
+      "candidate": [
+        39.001,
+        55.896
+      ],
+      "offsetMetres": 0,
+      "nearbyOpenings": [
+        {
+          "center": [
+            34.915499999999994,
+            53.58
+          ],
+          "width": 1.1030000000000015,
+          "kind": "glass",
+          "distanceFromLabel": 4.696292819873995
+        },
+        {
+          "center": [
+            30.374000000000002,
+            51.900000000000006
+          ],
+          "width": 1.0499999999999972,
+          "kind": "glass",
+          "distanceFromLabel": 9.507530962347685
+        },
+        {
+          "center": [
+            50.19499999999999,
+            60.64699999999999
+          ],
+          "width": 0.9440000000000026,
+          "kind": "wall",
+          "distanceFromLabel": 12.160494932361914
+        }
+      ],
+      "directFromEastStair": {
+        "clear": true,
+        "firstBlocker": null
+      },
+      "status": "Unaccepted candidate: room membership, actual doorway and complete route still require review."
+    }
+  ],
+  "note": "Source labels are not walking targets. No API places or connections were created. Nearby openings are not assigned to rooms."
+}

@@ -16,7 +16,8 @@ Survey datums are applied only with matching geometry and verified connections.
 
 Each independent floor model has a stable ID, label, floor, revision, reference
 path, source Git commit, reference SHA-256, GLB SHA-256 and data binding. The current
-entry is `ucc-first-floor`, reviewed export C11 `9ac3795`. It deliberately keeps the
+entry is `ucc-first-floor`, reviewed export C13 `a2dbda0` (first-floor geometry
+from `71c5e80`). It deliberately keeps the
 combined first-floor area together while physical block assignments are pending.
 Several independent model entries may share a software floor number.
 

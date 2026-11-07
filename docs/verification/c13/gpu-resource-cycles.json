@@ -1,0 +1,35 @@
+{
+  "baseline": {
+    "liveBuffers": 606,
+    "deletedBuffers": 189,
+    "liveTextures": 19,
+    "deletedTextures": 1
+  },
+  "cycles": [
+    {
+      "liveBuffers": 606,
+      "deletedBuffers": 1062,
+      "liveTextures": 19,
+      "deletedTextures": 25
+    },
+    {
+      "liveBuffers": 606,
+      "deletedBuffers": 1935,
+      "liveTextures": 19,
+      "deletedTextures": 49
+    }
+  ],
+  "position": "0.000,3.500,0.000",
+  "originOptions": 17,
+  "performanceSamples": [
+    {
+      "floor": 5,
+      "view": "3d",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "averageFps": 144,
+      "p95FrameMs": 7,
+      "samples": 432
+    }
+  ],
+  "pageErrors": []
+}

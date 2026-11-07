@@ -1,0 +1,63 @@
+{
+  "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+  "origin": "Hall Acceso",
+  "destination": "ICETEX",
+  "route": {
+    "path": [
+      "Hall Acceso",
+      "Access courtyard",
+      "South circulation",
+      "ICETEX approach",
+      "ICETEX doorway",
+      "ICETEX"
+    ],
+    "steps": [
+      {
+        "origin_name": "Hall Acceso",
+        "destination_name": "Access courtyard",
+        "kind": "outdoor",
+        "distance": 17.55704986607944
+      },
+      {
+        "origin_name": "Access courtyard",
+        "destination_name": "South circulation",
+        "kind": "outdoor",
+        "distance": 23.005434140654682
+      },
+      {
+        "origin_name": "South circulation",
+        "destination_name": "ICETEX approach",
+        "kind": "corridor",
+        "distance": 1.5811388300841898
+      },
+      {
+        "origin_name": "ICETEX approach",
+        "destination_name": "ICETEX doorway",
+        "kind": "corridor",
+        "distance": 2.0615528128088303
+      },
+      {
+        "origin_name": "ICETEX doorway",
+        "destination_name": "ICETEX",
+        "kind": "corridor",
+        "distance": 5.874597858577216
+      }
+    ],
+    "distance": 50.07977350820436,
+    "origin_name": "Hall Acceso",
+    "destination_name": "ICETEX"
+  },
+  "finalPosition": [
+    24.55,
+    3.5,
+    -41.78
+  ],
+  "finalErrorMetres": 0,
+  "samples": 141,
+  "maxCentreLineErrorMetres": 0.0006520198622768779,
+  "states": [
+    "walking",
+    "paused",
+    "arrived"
+  ]
+}
