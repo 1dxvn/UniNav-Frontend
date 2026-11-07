@@ -49,7 +49,7 @@ So the corridor (N 0.00) meets the landing:
 - One flight goes **down** to N -0.90, to the north-east (6 risers of ~0.15 m).
 - The other goes **up** to N +1.19, eastwards (9 risers of ~0.13 m), towards the laboratory side where `Laboratory corridor west` (41.5, 33.5) is.
 
-Next to it, a ramp hatch (x 36.2–41.8, y 36.3–40.0, `Ramps_Stairs` in the model) is probably the accessible link between those levels. Its direction is **to be confirmed**.
+Next to it, a ramp hatch (x 36.2–41.8, y 36.3–40.0, `Ramps_Stairs` in the model) is probably the accessible link between those levels. Its direction is **to be confirmed**. *(Revised at 09:15: it does not reach N +1.19. See "First-floor level changes" below.)*
 
 **Consequence for the graph (for Codex, not changed by Claude):**
 - The edge `South circulation (21.5, 33.5) → Laboratory corridor west (41.5, 33.5)` runs along y = 33.5. Between x 36.5 and 39.0 that is **on the south flight** (steps 7–15).
@@ -61,6 +61,41 @@ Next to it, a ramp hatch (x 36.2–41.8, y 36.3–40.0, `Ramps_Stairs` in the mo
 - The first-floor model keeps a flat slab there, and Claude did not add steps. Solid treads up to 1.19 m would block the current flat walk at y 33.5. Treads can be added, for example in a candidate, once the graph is split and the runtime handles height along a `stairs` edge.
 
 The upper levels of this stair: floor 2 (B) is at N +2.94, with a half landing at N +1.70 (43.2, 35.3, floor 2 sheet).
+
+## First-floor level changes on the API routes (measured at 09:15)
+
+These facts come from the first-floor sheet, in first-floor plan metres. They list every level label and stair on it. The first-floor model is flat (Blocks A and B both at 0.00), so none of these level changes is modelled yet.
+
+**Level labels on the sheet:**
+
+| Level | Where |
+| --- | --- |
+| N +1.19 | (39.48, 33.51): top of the Block B stair, laboratory side |
+| N +0.00 | (26.09, 34.08) Block B corridor; (35.94, 34.66) Block B stair landing; (28.23, 47.71) hall corridor, south of the hall steps |
+| N −0.63 | (28.08, 50.16) elevator hall, north of the hall steps; (36.59, 55.72) north circulation; (14.77, 56.15) at the west stair tower |
+| N −0.90 | (38.67, 35.32): foot of the Block B stair, north-east |
+
+**1. Hall steps, between the hall corridor (N 0.00) and the elevator hall (N −0.63).**
+- A strip x 27.3–29.8, y 47.85–49.15 (`3.20 M2` on the sheet) has three numbered treads (1–3 at y 48.08, 48.55 and 48.97) and an "S" arrow. The levels on either side give 0.63 m in total, going down northwards.
+- API edges that cross it:
+  - `Hall corridor north (28.0, 48.0) → Elevator and Restroom Hall (25.77, 51.97)`: 1.32 m inside the strip. The node `Hall corridor north` itself stands on the first tread.
+  - `Hall corridor south → Hall corridor north`: its last 0.15 m.
+- Consequence: every route from Hall Acceso to Block A goes down these steps. That covers the elevator hall, the north circulation, the Preclinic and the stair towers. On this sheet no other passage joins the hall corridor to the elevator hall.
+- West of the strip, a second stair (risers 7–14, x 22.0–25.3, y 47.6–49.2, "S" westwards) is on no API edge. Its risers 1–6 are not on this sheet.
+
+**2. Block B stair, three levels.**
+- The numbering runs continuously, 1 to 15:
+  - Steps 1–6 rise westwards from N −0.90, at the north-east foot (38.7, 35.3), to the N 0.00 landing (35.9, 34.7). The landing opens onto the Block B corridor.
+  - Steps 7–15 rise eastwards to N +1.19, at (39.5, 33.5).
+- North of the stair, a hatched hall (`76.30m2`, x 36.3–42.7, y 36–49, divided lengthwise by a central handrail) runs from the stair foot (N −0.90) to the north circulation (N −0.63). That is 0.27 m over about 13 m. The dense hatch suggests a gentle slope of about 2 %, but no level is written inside it.
+- It is therefore a route between Block B and Block A, but with 6 steps: B corridor (N 0.00) → down steps 6–1 → hall (N −0.90 → N −0.63) → north circulation.
+- The polygon south-east of the stair (x 36.6–43.5, y 18.8–31.9) is a roof (`CUBIERTA`, `60.20 M2`), not a ramp. No text on the first-floor sheet says ramp (`RAMPA`) or gives a slope. The level N +1.19 (laboratory side, Morphology Laboratory) is reached only by steps 7–15 on this sheet.
+
+**3. Consequences for the graph (Codex decides):**
+- **Step-free:** on this sheet, the destinations in Block A (elevators, Preclinic) and the Morphology Laboratory are reached only over steps. Unless an entrance not drawn here exists, they should not be offered as step-free from Hall Acceso.
+- **Hall steps:** they could become a short `stairs` edge, from about (28.0, 47.6) on N 0.00 to about (28.0, 49.4) on N −0.63, with `Hall corridor north` moved off the tread.
+- **Block B stair:** the split suggested above still applies.
+- **Real levels:** if the first-floor model gets real levels (B at 0.00, A at −0.63, the three Block B levels and the sloped hall), every Block A waypoint height changes by −0.63 m. Claude can prepare that as a candidate model when the graph is ready for it.
 
 ## Stairs on the other floors (C10)
 

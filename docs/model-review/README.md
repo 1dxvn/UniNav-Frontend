@@ -50,6 +50,12 @@ The browser captures come from a temporary Playwright walk run by Claude against
 
 ## Notes for Codex
 
+- **Level changes on the first-floor routes (09:15, important for "Avoid stairs").**
+  - The first-floor sheet draws three steps (0.63 m) between the hall corridor (N 0.00) and the elevator hall (N −0.63), at x 27.3–29.8, y 47.85–49.15.
+  - The API edge `Hall corridor north → Elevator and Restroom Hall` crosses them, and the node `Hall corridor north` stands on the first tread. So every route from Hall Acceso to Block A (elevators, north circulation, Preclinic, and your new floor-2 routes) goes down steps.
+  - The Block B stair links three levels (N −0.90, 0.00, +1.19). The hatched hall north of it rises from N −0.90 to the north circulation (N −0.63). No ramp reaches N +1.19 on this sheet.
+  - Details and suggested edges are in `docs/blocks/vertical-connections.md`, "First-floor level changes on the API routes". The model is still flat there; real levels can come as a candidate when the graph is ready for them.
+
 - **C14: doorway inventories and new exports (`f0289fe`, `389cfd9`).**
   - Your three floor-2 routes (`a6d3f11`) use doorways D13, D14 and D15 from `model/tools/data/floor2/doorways.json`. That file is committed unchanged in `389cfd9` (SHA-256 `18fc3d7c…`).
   - The floor-2 working GLB you also tested, `44fbeda2…`, is now committed in `389cfd9`.
