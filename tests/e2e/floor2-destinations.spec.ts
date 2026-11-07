@@ -7,7 +7,9 @@ import { test } from "./isolated-campus.ts";
 
 const candidate="docs/verification/h2-floor2-candidate";
 const output=process.env.UNINAV_EVIDENCE_DIR ?? candidate;
-test.use({navigationDataset:fileURLToPath(new URL("../../../data/datasets/ucc-second-floor.json",import.meta.url))});
+const stairReview=process.env.UNINAV_STAIRS_REVIEW==="1";
+const upperDataset=fileURLToPath(new URL("../../../data/datasets/ucc-second-floor.json",import.meta.url));
+test.use({navigationDataset:stairReview ? [upperDataset,fileURLToPath(new URL("../../../data/datasets/ucc-first-floor-stairs.json",import.meta.url))]:upperDataset});
 
 for(const code of ["ucc:f2:mixed-reality-entrance","ucc:f2:molecular-biology-entrance","ucc:f2:medical-research-arrival"]) {
   test(`mapped floor 2: Hall Acceso to ${code} and back through its drawn doorway`,async({page,request})=>{
@@ -21,7 +23,7 @@ for(const code of ["ucc:f2:mixed-reality-entrance","ucc:f2:molecular-biology-ent
     const target=places.find(p=>p.code===code)!,entry=places.find(p=>p.name==="Hall Acceso")!;
     const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
     await page.goto("/app/");await expect(page.locator("#model-status")).toContainText("3 references aligned");
-    await expect(page.locator("#model-status")).toHaveAttribute("data-profile","ucc-two-floors");
+    await expect(page.locator("#model-status")).toHaveAttribute("data-profile",stairReview ? "ucc-two-floors-stair-review":"ucc-two-floors");
     await page.locator("#open-login").click();await page.getByLabel("Username",{exact:true}).fill("student");await page.getByLabel("Password",{exact:true}).fill("demo1234");await page.locator("#login-submit").click();await expect(page.locator("#session-user")).toHaveText("student");
     await page.locator("#origin").selectOption(String(entry.id));
     const runs=[];

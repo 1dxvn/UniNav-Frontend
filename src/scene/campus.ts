@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import type { Building, CampusPath } from "../api/types.ts";
+import type { Building, CampusPath, RouteResponse } from "../api/types.ts";
 import { FLOOR_HEIGHT, toScenePosition, WALK_SPEED } from "./coordinates.ts";
 import { advanceWalk, manualStep, nearbyStairFloors, routingStart, stairNetworks, walkSegments, type StairNetwork, type WalkSegment, type WalkWaypoint } from "./navigation.ts";
 import { parseReference, referenceMatrix, transformMatrix, validateAlignment, validateModelNodes, type CampusReference } from "./modelReference.ts";
@@ -13,6 +13,7 @@ import { ModelStore } from "./modelStore.ts";
 import type { CampusCatalog } from "./catalog.ts";
 import { supportColliders, supportedStep } from "./walkSupport.ts";
 import { selectModelProfile } from "./modelProfiles.ts";
+import { routeUsesStairs } from "./routeConstraints.ts";
 
 interface LoadedCampusModel {
   entry: ModelEntry; reference?: CampusReference; root: THREE.Group;
@@ -258,6 +259,9 @@ export class CampusScene {
     this.emit();
   }
   getRoutingStart(): ReturnType<typeof routingStart> { return routingStart(this.avatar.position, this.places, this.segments, this.avatarFloor); }
+  routeUsesStairs(route:RouteResponse,start:ReturnType<typeof routingStart>):boolean {
+    return routeUsesStairs(route,this.getCatalog() ? this.manifest?.stairCrossings:[],start);
+  }
   setDestination(place: Building | undefined): void {
     this.destinationFloor = place?.floor;
     this.labels.forEach((label, id) => label.classList.toggle("selected", id === place?.id));
@@ -493,7 +497,8 @@ export class CampusScene {
     if (this.overview && exteriorModels.length) this.events.model(`Campus overview · First floor: ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true,"Exterior follows the documented first-floor frame. Block identities and facade details retain their documented approximations.");
     else if (floorModels.length && this.overviewError) this.events.model("Exterior unavailable · floor view",true,this.overviewError);
     else if (preview) this.events.model(`Preview only · ${floorModels.reduce((sum,model) => sum+model.references,0)} structural references aligned`,true,"Inspection only. Routes and vertical connections are pending. The model flattens documented half-levels.");
-    else if (floorModels.length) this.events.model(`${floorModels.map((model) => model.entry.label).join(" + ")} · ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true);
+    else if (floorModels.length) this.events.model(`${floorModels.map((model) => model.entry.label).join(" + ")} · ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true,
+      this.manifest?.stairCrossings?.length ? "Some documented level changes are flattened in this model. Avoid stairs excludes their mapped connections.":undefined);
     else if (this.manifest) this.events.model("Floor model pending",false);
     this.events.resources({ overview:this.overview,preview,loaded:loaded.map((model) => model.entry.id),visible:active.map((model) => model.entry.id),colliders:this.colliders.length,profile:this.profile });
     if (fit) this.resetView();

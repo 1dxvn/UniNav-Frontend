@@ -2,6 +2,7 @@ import { Box3, Mesh, Object3D, Raycaster, Vector3 } from "three";
 import type { ModelCollider } from "./modelCollision.ts";
 
 export const MAX_STEP_HEIGHT = 0.20;
+export const FOOT_SUPPORT_RADIUS = 0.12;
 
 // Only explicitly reviewed floor/stair nodes can support feet. Furniture and
 // presentation geometry remain obstacles, never automatic walking surfaces.
@@ -33,7 +34,7 @@ export function supportedStep(from: Vector3, expected: Vector3, surfaces: ModelC
   if (y===undefined) return;
   // A small foot footprint must have support too; a centre ray alone can stand
   // on an edge over a hole. Adjacent treads may differ by one allowed riser.
-  for (const [dx,dz] of [[-0.12,0],[0.12,0],[0,-0.12],[0,0.12]]) {
+  for (const [dx,dz] of [[-FOOT_SUPPORT_RADIUS,0],[FOOT_SUPPORT_RADIUS,0],[0,-FOOT_SUPPORT_RADIUS],[0,FOOT_SUPPORT_RADIUS]]) {
     const side=height(expected.x+dx,expected.z+dz);
     if (side===undefined || Math.abs(side-y)>MAX_STEP_HEIGHT+0.001) return;
   }

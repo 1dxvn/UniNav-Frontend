@@ -34,6 +34,6 @@ for(const m of [first,upper]){
   m.binding={placeNames:names,sha256:await dataFingerprint(names,places!,paths!)};
 }
 const result:CampusManifest={...manifest,identityPlaceNames:["Hall Acceso","ICETEX column reference","Lockers column reference"],
-  profiles:[{id:"ucc-two-floors",label:"UCC · First and second floors",requiresExplicitPositions:true,models:profileModels}]};
+  profiles:[{id:"ucc-two-floors",label:"UCC · First and second floors",requiresExplicitPositions:true,models:profileModels},...(manifest.profiles ?? []).filter(p=>p.id!=="ucc-two-floors")]};
 parseManifest(result);await writeFile("public/models/campus-manifest.json",JSON.stringify(result,null,2)+"\n");
 console.log(`Prepared two-floor profile for ${places!.length-1} places / ${paths!.length} paths; legacy profile preserved.`);

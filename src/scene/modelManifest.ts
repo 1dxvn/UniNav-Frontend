@@ -13,7 +13,8 @@ export interface ModelEntry {
   supportNodes?: string[];
 }
 export interface ModelProfile { id:string; label:string; requiresExplicitPositions:true; models:ModelEntry[] }
-export interface CampusManifest { version: 1; catalog: CampusCatalog; models: ModelEntry[]; identityPlaceNames?:string[]; profiles?:ModelProfile[] }
+export interface StairCrossing { connectionCode:string; originName:string; destinationName:string; source:string; planBounds?:[number,number,number,number] }
+export interface CampusManifest { version: 1; catalog: CampusCatalog; models: ModelEntry[]; identityPlaceNames?:string[]; profiles?:ModelProfile[]; stairCrossings?:StairCrossing[] }
 const hashPattern = /^[a-f0-9]{64}$/;
 const compare = (a: string,b: string) => a < b ? -1 : a > b ? 1 : 0;
 export function parseManifest(value: unknown): CampusManifest {
@@ -21,6 +22,18 @@ export function parseManifest(value: unknown): CampusManifest {
   const manifest = value as CampusManifest;
   if (manifest.version !== 1 || !Array.isArray(manifest.models)) throw new Error("Unsupported model manifest.");
   parseCatalog(manifest.catalog);
+  if(manifest.stairCrossings!==undefined){
+    if(!Array.isArray(manifest.stairCrossings))throw new Error("Invalid mapped stair crossings.");
+    const codes=new Set<string>();
+    for(const c of manifest.stairCrossings){
+      if(!c || typeof c.connectionCode!=="string" || !c.connectionCode.trim() || codes.has(c.connectionCode) ||
+        typeof c.originName!=="string" || !c.originName.trim() || typeof c.destinationName!=="string" || !c.destinationName.trim() ||
+        c.originName===c.destinationName || typeof c.source!=="string" || !c.source.trim())throw new Error("Mapped stair crossings need unique connections, endpoints and sources.");
+      codes.add(c.connectionCode);
+      if(c.planBounds!==undefined && (!Array.isArray(c.planBounds) || c.planBounds.length!==4 || c.planBounds.some(v=>!Number.isFinite(v)) ||
+        c.planBounds[0]>=c.planBounds[2] || c.planBounds[1]>=c.planBounds[3]))throw new Error("Mapped stair bounds need a finite plan rectangle.");
+    }
+  }
   if(manifest.identityPlaceNames!==undefined && (!Array.isArray(manifest.identityPlaceNames) || manifest.identityPlaceNames.length<3 ||
     new Set(manifest.identityPlaceNames).size!==manifest.identityPlaceNames.length || manifest.identityPlaceNames.some(n=>typeof n!=="string" || !n.trim()))) throw new Error("Campus identity needs three distinct source place names.");
   if(manifest.profiles!==undefined){
@@ -62,6 +75,8 @@ export function parseManifest(value: unknown): CampusManifest {
       binding.placeNames.every((name) => typeof name === "string" && !!name.trim()) && new Set(binding.placeNames).size === binding.placeNames.length;
     if (entry.state === "ready" && (!reviewed || (entry.kind !== "floor-preview" && !completeBinding))) throw new Error("Ready models need references, hashes and a complete data binding.");
   }
+  const boundNames=new Set([...manifest.models,...(manifest.profiles ?? []).flatMap(p=>p.models)].flatMap(m=>m.binding?.placeNames ?? []));
+  if(manifest.stairCrossings?.some(c=>!boundNames.has(c.originName) || !boundNames.has(c.destinationName)))throw new Error("Mapped stair endpoints must belong to a reviewed model binding.");
   return manifest;
 }
 

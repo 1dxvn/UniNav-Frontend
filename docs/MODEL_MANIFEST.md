@@ -61,6 +61,34 @@ values from the API. `effective_elevation_m` alone cannot satisfy this contract.
 A partial or stale UCC dataset is rejected; unrelated sample data keeps graph mode.
 The model badge exposes the selected profile in `data-profile`.
 
+`ucc-first-floor-stair-review` and `ucc-two-floors-stair-review` also bind the
+prepared three-connection classification in `ucc-first-floor-stairs.json`.
+The original base and two-floor profiles remain available. These revisions
+change filtering, not geometry: C13 still flattens the hall and B laboratory
+level changes. They are not physical-level acceptance or a public data rollout.
+
+`stairCrossings` records those source-backed connections separately from an
+older API's corridor labels. The client rejects them if Avoid stairs is selected,
+including in reverse. For a connector from the current position to its initial
+API node, only intersection with the documented stair rectangle (expanded by the
+existing foot footprint) blocks it. A clear portion of the same long connection
+remains available. These facts apply only to a recognized UCC model profile;
+unrelated sample data keeps its own path kinds. Missing sources, malformed bounds
+and unknown bound endpoints fail manifest validation.
+
+Regenerate the reviewed classifications after their sources change:
+
+```powershell
+node --experimental-strip-types tools/prepare-stair-review.ts
+npm run build
+```
+
+The tool uses ordered isolated imports and preserves existing model resources.
+Its proposed physical splits, source rectangles and pending levels are in
+`docs/blocks/first-floor-level-review.json`; see the companion `.md` for Claude's
+candidate request. A graph connection marked stairs can include a clear approach;
+its full distance is not a surveyed stair-flight length.
+
 `tools/prepare-floor2-profile.ts` obtains the actual serialized API snapshot using
 the disposable backend fixture's `--snapshot-json` mode. It opens no port and
 never touches a development database. Its first-floor binding includes the new

@@ -291,6 +291,361 @@
   ],
   "profiles": [
     {
+      "id": "ucc-first-floor-stair-review",
+      "label": "UCC · First floor with mapped steps",
+      "requiresExplicitPositions": true,
+      "models": [
+        {
+          "id": "ucc-first-floor",
+          "label": "UCC · First floor",
+          "floors": [
+            1
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0-stair-review-b9648f5",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/campus-reference.json",
+          "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
+          "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+          "supportNodes": [
+            "Floor_Slab",
+            "Stair_A_West_1",
+            "Stair_A_East_1"
+          ],
+          "binding": {
+            "placeNames": [
+              "Access courtyard",
+              "Elevator and Restroom Hall",
+              "Hall Acceso",
+              "Hall corridor north",
+              "Hall corridor south",
+              "Hall junction",
+              "ICETEX",
+              "ICETEX approach",
+              "ICETEX column reference",
+              "ICETEX doorway",
+              "Laboratory corridor east",
+              "Laboratory corridor west",
+              "Lockers column reference",
+              "Morphology Laboratory",
+              "North circulation east",
+              "North circulation west",
+              "Preclinic / Dentistry Coordination",
+              "Preclinic storeroom",
+              "South circulation"
+            ],
+            "sha256": "39b6168bdb7453d48d8bc1ea8b3f196cd1de52f760c2064a1487af4d96d16de5"
+          }
+        },
+        {
+          "id": "campus-exterior",
+          "kind": "exterior",
+          "navigable": false,
+          "label": "Campus overview",
+          "floors": [],
+          "state": "ready",
+          "revision": "C5-31c5d68",
+          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
+          "model": "models/blocks/campus-exterior.glb",
+          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "transform": {
+            "scale": 1,
+            "rotationYDegrees": 0,
+            "translation": [
+              0,
+              3.5,
+              0
+            ]
+          },
+          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+        },
+        {
+          "id": "ucc-floor-0-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 0 preview",
+          "floors": [
+            0
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/floor-0/campus-reference.json",
+          "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
+          "modelSha256": "1cc05a1b3acce2e11c0b5ea04bed96b5f36206904d63c24d36eb449e62541bf7",
+          "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        },
+        {
+          "id": "ucc-floor-2-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 2 preview",
+          "floors": [
+            2
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/floor-2/campus-reference.json",
+          "referenceSha256": "2ba11cd9f962b681aa5ace5bcf3c973c246df7ae9200e26b4b5cf7f9793c52bc",
+          "modelSha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a",
+          "sourceDocument": "public/models/floor-2/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        },
+        {
+          "id": "ucc-floor-3-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 3 preview",
+          "floors": [
+            3
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/floor-3/campus-reference.json",
+          "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
+          "modelSha256": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72",
+          "sourceDocument": "public/models/floor-3/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        },
+        {
+          "id": "ucc-floor-4-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 4 preview",
+          "floors": [
+            4
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/floor-4/campus-reference.json",
+          "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
+          "modelSha256": "db7a29e45defb7cfc8a0f010b7569429ca7fe39b1c0aea4d4e21a7d20eaa3987",
+          "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        },
+        {
+          "id": "ucc-floor-5-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 5 preview",
+          "floors": [
+            5
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/floor-5/campus-reference.json",
+          "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
+          "modelSha256": "0bedcb88c3fb0b9da213fb6fc54d8aff88fd66c3a3f250d542a30d867e65931b",
+          "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        }
+      ]
+    },
+    {
+      "id": "ucc-two-floors-stair-review",
+      "label": "UCC · Two floors with mapped steps",
+      "requiresExplicitPositions": true,
+      "models": [
+        {
+          "id": "ucc-first-floor",
+          "label": "UCC · First floor",
+          "floors": [
+            1
+          ],
+          "state": "ready",
+          "revision": "H2-two-floors-a6d3f11-stair-review-b9648f5",
+          "sourceCommit": "a6d3f11",
+          "reference": "models/campus-reference.json",
+          "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
+          "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+          "supportNodes": [
+            "Floor_Slab",
+            "Stair_A_West_1",
+            "Stair_A_East_1"
+          ],
+          "binding": {
+            "placeNames": [
+              "Access courtyard",
+              "East stair point 0 (floors 1-2)",
+              "East stair point 1 (floors 1-2)",
+              "East stair point 10 (floors 1-2)",
+              "East stair point 11 (floors 1-2)",
+              "East stair point 12 (floors 1-2)",
+              "East stair point 13 (floors 1-2)",
+              "East stair point 14 (floors 1-2)",
+              "East stair point 15 (floors 1-2)",
+              "East stair point 16 (floors 1-2)",
+              "East stair point 17 (floors 1-2)",
+              "East stair point 18 (floors 1-2)",
+              "East stair point 19 (floors 1-2)",
+              "East stair point 2 (floors 1-2)",
+              "East stair point 20 (floors 1-2)",
+              "East stair point 21 (floors 1-2)",
+              "East stair point 22 (floors 1-2)",
+              "East stair point 23 (floors 1-2)",
+              "East stair point 3 (floors 1-2)",
+              "East stair point 4 (floors 1-2)",
+              "East stair point 5 (floors 1-2)",
+              "East stair point 6 (floors 1-2)",
+              "East stair point 7 (floors 1-2)",
+              "East stair point 8 (floors 1-2)",
+              "East stair point 9 (floors 1-2)",
+              "Elevator and Restroom Hall",
+              "Hall Acceso",
+              "Hall corridor north",
+              "Hall corridor south",
+              "Hall junction",
+              "ICETEX",
+              "ICETEX approach",
+              "ICETEX column reference",
+              "ICETEX doorway",
+              "Laboratory corridor east",
+              "Laboratory corridor west",
+              "Lockers column reference",
+              "Morphology Laboratory",
+              "North circulation / east stair junction",
+              "North circulation east",
+              "North circulation west",
+              "Preclinic / Dentistry Coordination",
+              "Preclinic storeroom",
+              "South circulation"
+            ],
+            "sha256": "cc7f846fc35e57b3f92f941ab0492080c3e53f98c858e1eba0cdc2792dd5baa6"
+          }
+        },
+        {
+          "id": "campus-exterior",
+          "kind": "exterior",
+          "navigable": false,
+          "label": "Campus overview",
+          "floors": [],
+          "state": "ready",
+          "revision": "C5-31c5d68",
+          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
+          "model": "models/blocks/campus-exterior.glb",
+          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "transform": {
+            "scale": 1,
+            "rotationYDegrees": 0,
+            "translation": [
+              0,
+              3.5,
+              0
+            ]
+          },
+          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+        },
+        {
+          "id": "ucc-floor-0-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 0 preview",
+          "floors": [
+            0
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/floor-0/campus-reference.json",
+          "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
+          "modelSha256": "1cc05a1b3acce2e11c0b5ea04bed96b5f36206904d63c24d36eb449e62541bf7",
+          "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        },
+        {
+          "id": "ucc-floor-3-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 3 preview",
+          "floors": [
+            3
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/floor-3/campus-reference.json",
+          "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
+          "modelSha256": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72",
+          "sourceDocument": "public/models/floor-3/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        },
+        {
+          "id": "ucc-floor-4-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 4 preview",
+          "floors": [
+            4
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/floor-4/campus-reference.json",
+          "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
+          "modelSha256": "db7a29e45defb7cfc8a0f010b7569429ca7fe39b1c0aea4d4e21a7d20eaa3987",
+          "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        },
+        {
+          "id": "ucc-floor-5-preview",
+          "kind": "floor-preview",
+          "navigable": false,
+          "label": "UCC floor 5 preview",
+          "floors": [
+            5
+          ],
+          "state": "ready",
+          "revision": "C13-a2dbda0",
+          "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
+          "reference": "models/floor-5/campus-reference.json",
+          "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
+          "modelSha256": "0bedcb88c3fb0b9da213fb6fc54d8aff88fd66c3a3f250d542a30d867e65931b",
+          "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+        },
+        {
+          "id": "ucc-second-floor",
+          "label": "UCC · Second floor",
+          "floors": [
+            2
+          ],
+          "state": "ready",
+          "kind": "floor",
+          "revision": "H2-three-destinations-a6d3f11-stair-review-b9648f5",
+          "sourceCommit": "a6d3f11",
+          "reference": "models/floor-2/campus-navigation-reference.json",
+          "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
+          "modelSha256": "63a1ac43b914d7767e284dc8ace5856a6f6a87bdc38f8e1c05a661c1dda3f61a",
+          "supportNodes": [
+            "P2_Floor_Slab",
+            "P2_Stair_A_East_1",
+            "P2_Stair_A_West_1"
+          ],
+          "binding": {
+            "placeNames": [
+              "D13 corridor stand",
+              "D13 doorway centre",
+              "D13 interior stand",
+              "D14 corridor stand",
+              "D14 doorway centre",
+              "D15 corridor stand",
+              "D15 doorway centre",
+              "East stair point 24 (floors 1-2)",
+              "Medical Research Centre (floor 2)",
+              "Medical research corridor turn",
+              "Medical research interior turn 1",
+              "Medical research interior turn 2",
+              "Mixed Reality Laboratory (floor 2)",
+              "Mixed reality corridor turn",
+              "Molecular Biology Laboratory (floor 2)",
+              "Molecular biology corridor turn",
+              "P2_REF_1_Column_South",
+              "P2_REF_2_Column_NorthWest",
+              "P2_REF_3_Column_NorthEast",
+              "Second-floor north circulation"
+            ],
+            "sha256": "4cae8b12551fb279aa0b8bb9660b9382b73ad97ca93d9d120d201408a93afab8"
+          }
+        }
+      ]
+    },
+    {
       "id": "ucc-two-floors",
       "label": "UCC · First and second floors",
       "requiresExplicitPositions": true,
@@ -492,6 +847,44 @@
             "sha256": "4cae8b12551fb279aa0b8bb9660b9382b73ad97ca93d9d120d201408a93afab8"
           }
         }
+      ]
+    }
+  ],
+  "stairCrossings": [
+    {
+      "connectionCode": "ucc:floor1:e08",
+      "originName": "Hall corridor south",
+      "destinationName": "Hall corridor north",
+      "source": "docs/blocks/vertical-connections.md @ b9648f5 (hall risers); 31e9c27 / 68c7a36 (B and route crossings)",
+      "planBounds": [
+        27.3,
+        47.86,
+        29.8,
+        49.23
+      ]
+    },
+    {
+      "connectionCode": "ucc:floor1:e09",
+      "originName": "Hall corridor north",
+      "destinationName": "Elevator and Restroom Hall",
+      "source": "docs/blocks/vertical-connections.md @ b9648f5 (hall risers); 31e9c27 / 68c7a36 (B and route crossings)",
+      "planBounds": [
+        27.3,
+        47.86,
+        29.8,
+        49.23
+      ]
+    },
+    {
+      "connectionCode": "ucc:floor1:e10",
+      "originName": "South circulation",
+      "destinationName": "Laboratory corridor west",
+      "source": "docs/blocks/vertical-connections.md @ b9648f5 (hall risers); 31e9c27 / 68c7a36 (B and route crossings)",
+      "planBounds": [
+        36.5,
+        32.1,
+        39,
+        34
       ]
     }
   ]

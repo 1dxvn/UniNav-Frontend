@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-11-07T16:02:09.143656+00:00",
+  "build": "index-Cp_dfQDo.js",
+  "unitPassed": 39,
+  "apiDistinctPassed": 36,
+  "browserPassedByRun": [
+    10,
+    11,
+    2
+  ],
+  "distinctBrowserCasesPassed": 21,
+  "classifiedBaseArrivals": 8,
+  "classifiedUpperArrivals": 6,
+  "flatDirectedChecks": 6,
+  "flatProbeSamples": 1204,
+  "baseBrowserStairSupportSamples": 428,
+  "upperBrowserSupportSamples": 481,
+  "physicalLevelGeometryAccepted": false,
+  "publicDataImported": false,
+  "plansComplete": false
+}

@@ -11,7 +11,7 @@ export interface WalkSegment {
 }
 
 export interface WalkWaypoint { position: Vector3; floor: number; placeId?: number; kind?: CampusPath["kind"] }
-export interface WalkStart { place: Building; connector: [Vector3,Vector3]; floor: number; kind?: CampusPath["kind"] }
+export interface WalkStart { place: Building; connector: [Vector3,Vector3]; floor: number; kind?: CampusPath["kind"]; path?:CampusPath }
 
 // Keep API floor identity alongside position. A high landing can still belong
 // to its departure floor; world Y is never a floor number.
@@ -185,5 +185,5 @@ export function routingStart(position: Vector3, places: Building[], segments: Wa
   }
   const place = !segment.path.bidirectional || position.distanceTo(segment.b) <= position.distanceTo(segment.a)
     ? segment.target : segment.source;
-  return { place, connector: [position.clone(), toScenePosition(place)],floor,kind:segment.path.kind };
+  return { place, connector: [position.clone(), toScenePosition(place)],floor,kind:segment.path.kind,path:segment.path };
 }

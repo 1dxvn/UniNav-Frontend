@@ -14,7 +14,7 @@ if(!openapi.paths?.["/campus/datasets/import"])missingContractFields.push("/camp
 const report={url:base,places:places.length,paths:paths.length,selectedProfile:selection.profile,recognizedCampus:selection.recognized,
   expandedProfilePresent:manifest.profiles?.some(p=>p.id==="ucc-two-floors") ?? false,missingContractFields,
   apiContractSupportsPreparedData:missingContractFields.length===0,changesMade:false,
-  publicFloor2Active:selection.profile==="ucc-two-floors",
+  publicFloor2Active:selection.manifest.models.some(m=>m.state==="ready" && m.binding && m.kind!=="floor-preview" && m.floors.includes(2)),
   remainingPhysicalReview:"First-floor hall and B laboratory level changes are still flattened in C13. Resolve geometry, graph and Avoid stairs before public acceptance."};
 const output=process.env.UNINAV_VERIFY_DIR ?? "docs/verification/h2-profiles";
 await mkdir(output,{recursive:true});await writeFile(`${output}/deployment-profile.json`,JSON.stringify(report,null,2));

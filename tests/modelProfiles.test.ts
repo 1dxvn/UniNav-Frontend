@@ -15,7 +15,7 @@ async function fixture(){
   const first=structuredClone(source.models.find(m=>m.id==="ucc-first-floor")!);
   first.binding={placeNames:old.map(p=>p.name),sha256:await dataFingerprint(old.map(p=>p.name),old,[edge])};
   const fullFirst={...first,binding:{placeNames:old.map(p=>p.name),sha256:await dataFingerprint(old.map(p=>p.name),expanded,edges)}};
-  const upper={...source.profiles![0].models.find(m=>m.id==="ucc-second-floor")!,binding:{placeNames:["U","V","W"],sha256:await dataFingerprint(["U","V","W"],expanded,edges)}};
+  const upper={...source.profiles!.find(p=>p.id==="ucc-two-floors")!.models.find(m=>m.id==="ucc-second-floor")!,binding:{placeNames:["U","V","W"],sha256:await dataFingerprint(["U","V","W"],expanded,edges)}};
   const manifest:CampusManifest={version:1,catalog:source.catalog,identityPlaceNames:["A","B","C"],models:[first],profiles:[{id:"two-floors",label:"Two floors",requiresExplicitPositions:true,models:[fullFirst,upper]}]};
   return {manifest:parseManifest(manifest),old,expanded,edge,edges};
 }

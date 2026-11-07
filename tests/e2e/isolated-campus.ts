@@ -8,14 +8,15 @@ import { fileURLToPath } from "node:url";
 import { createInterface } from "node:readline";
 import { promisify } from "node:util";
 
-// Only the error rehearsal uses this fixture. Walks still use UNINAV_TEST_URL.
-export const test = base.extend<{ navigationDataset:string | undefined }>({
+// Each caller owns a real API and database; development services stay untouched.
+export const test = base.extend<{ navigationDataset:string | string[] | undefined }>({
   navigationDataset:[undefined,{ option:true }],
   baseURL: async ({ playwright,navigationDataset }, use) => {
     const backend = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
     const directory = await mkdtemp(join(tmpdir(), "uninav-e2e-"));
     const python = process.env.UNINAV_TEST_PYTHON ?? join(backend, "venv", process.platform === "win32" ? "Scripts/python.exe" : "bin/python");
-    const child = spawn(python, ["-m", "tests.serve_campus", "--directory", directory,...(navigationDataset ? ["--dataset",navigationDataset] : [])], { cwd: backend, windowsHide: true });
+    const datasets=navigationDataset ? (Array.isArray(navigationDataset) ? navigationDataset:[navigationDataset]):[];
+    const child = spawn(python, ["-m", "tests.serve_campus", "--directory", directory,...datasets.flatMap(path=>["--dataset",path])], { cwd: backend, windowsHide: true });
     const lines = createInterface({ input: child.stdout });
     let log = "";
     child.stderr.on("data", (data: Buffer) => { log = (log + data.toString()).slice(-4000); });

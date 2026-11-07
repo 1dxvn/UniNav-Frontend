@@ -1,0 +1,51 @@
+# First-floor levels: candidate request for Claude
+
+The immediate correction classifies e08/e09/e10 as connections containing stairs
+and rejects them with Avoid stairs. It preserves the current flat C13 positions,
+IDs and all other connections. The actual level geometry and physical split are
+still pending. `first-floor-level-review.json` is a handoff, **not an importable
+dataset**. It invents no rooms, alternative access or ramp.
+
+Please deliver a separate candidate model and reference sheet for the hall and B
+level changes, keeping the existing C13 exports available. Sources are your
+`vertical-connections.md`, including the four-riser measurement in `b9648f5`.
+The following graph edits are proposed for that candidate. Their XY positions
+come from your suggested edits and require your clearance/support review.
+
+| Connection | Proposed physical split | Source levels |
+| --- | --- | --- |
+| e08, hall approach | Keep p08 → p09 as corridor after moving p09 off the tread to (28, 47.6); preserve its stable ID | N 0.00 |
+| e09, hall crossing | p09 → new after-point (28, 49.5), stairs; after-point → elevator hall p10, corridor | N 0.00 → -0.63 |
+| e10, B laboratory approach | p03 → before-point (36.0, 33.1), corridor; before → after (39.4, 33.1), stairs; after → p11, corridor | N 0.00 → +1.19 |
+
+The measured B landing level is near (35.94, 34.66); the suggested southern
+before-point is not a second measured landing. Adjust it if the candidate's
+surface or clearance requires another turn. Each replaced direct connection
+must be retired atomically when the split is activated; retaining it would
+bypass stair exclusion. No retirement occurs in the current prepared revision.
+
+The hall has three numbered treads between **four risers**, with nosing lines
+at plan y 47.86, 48.32, 48.78 and 49.23. Its 0.63 m drop gives approximately
+0.1575 m per riser, within the unchanged 0.20 m step limit. Keep these lines and
+the foot/head support positions in the candidate reference. The client checks a
+0.12 m foot footprint, torso/head heights 0.45/1.2/1.8 m and a 0.22 m body radius.
+It does not exempt walls, glass, furniture or hidden meshes from collision.
+
+Please identify all regions that change elevation, including the laboratory,
+its corridor, the north circulation, destinations and the Lockers reference.
+Unknown zone assignments must remain pending rather than receiving a guessed
+height. Keep software floor 1 and explicit per-place elevations for half-levels.
+
+The east stair and the upper floor must stay coherent: Block A's physical rise
+from N -0.63 to +2.68 is 3.31 m, while C13 uses 2.94 m. State which neighboring
+models/reference transforms must change together. Do not combine a physically
+lowered first floor with the unchanged C13 upper transform and call it accepted.
+
+The B north flight to N -0.90 and sloped hall toward N -0.63 can be documented
+for a later graph connection. They include six steps from B. The source confirms
+no step-free link to the laboratory at +1.19. The south-east polygon is a roof.
+
+Codex will validate the committed candidate's reference nodes, slab/tread support,
+clearance, graph weights, both algorithms, round trips and manual/pause/replan
+behavior before changing the active resources or development database. The
+separate C14 doorway export still awaits its own integration review.

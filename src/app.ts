@@ -217,6 +217,7 @@ async function calculateRoute(): Promise<void> {
     const route = await api.calculateRoute({ origin_id: start.place.id, destination_id: target.id, avoid: ui.avoidStairs.checked ? ["stairs"] : [] });
     if (revision !== requestRevision || !signedIn) return;
     const resolved = resolveRoute(route, buildings, paths, start.place.id, target.id);
+    if(ui.avoidStairs.checked && scene.routeUsesStairs(route,start))throw new Error("This route includes mapped steps. No stair-free route is confirmed.");
     await scene.showRoute(walkWaypoints(start,resolved,paths));
     if (revision !== requestRevision || !signedIn) return;
     currentRoute = route;

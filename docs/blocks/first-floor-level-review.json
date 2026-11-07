@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "state": "candidate-request",
+  "importable": false,
+  "source": "docs/blocks/vertical-connections.md @ b9648f5 (hall risers); 31e9c27 / 68c7a36 (B and route crossings)",
+  "groups": [
+    {
+      "id": "hall-steps",
+      "source": "docs/blocks/vertical-connections.md @ b9648f5 (hall risers); 31e9c27 / 68c7a36 (B and route crossings)",
+      "connectionCodes": [
+        "ucc:floor1:e08",
+        "ucc:floor1:e09"
+      ],
+      "planBounds": [
+        27.3,
+        47.86,
+        29.8,
+        49.23
+      ],
+      "drawnSteps": 3,
+      "fromDatumMetres": 0,
+      "toDatumMetres": -0.63,
+      "proposedBefore": [
+        28,
+        47.6
+      ],
+      "proposedAfter": [
+        28,
+        49.5
+      ],
+      "pointStatus": "approximate graph points suggested in source; require model/clearance review",
+      "risers": 4,
+      "riserHeightMetres": 0.1575,
+      "nosingPlanY": [
+        47.86,
+        48.32,
+        48.78,
+        49.23
+      ]
+    },
+    {
+      "id": "b-laboratory-steps",
+      "source": "docs/blocks/vertical-connections.md @ b9648f5 (hall risers); 31e9c27 / 68c7a36 (B and route crossings)",
+      "connectionCodes": [
+        "ucc:floor1:e10"
+      ],
+      "planBounds": [
+        36.5,
+        32.1,
+        39.0,
+        34.0
+      ],
+      "drawnSteps": 9,
+      "fromDatumMetres": 0,
+      "toDatumMetres": 1.19,
+      "proposedBefore": [
+        36.0,
+        33.1
+      ],
+      "proposedAfter": [
+        39.4,
+        33.1
+      ],
+      "pointStatus": "approximate graph points suggested in source; require model/clearance review"
+    }
+  ],
+  "proposedGraphChanges": [
+    {
+      "oldConnection": "ucc:floor1:e08",
+      "action": "Keep corridor to p09 after moving p09 from (28,48) to the proposed hall before-point. Keep its stable place ID."
+    },
+    {
+      "oldConnection": "ucc:floor1:e09",
+      "action": "Replace with p09 -> hall after-point (stairs), then hall after-point -> p10 (corridor). Retire the old bypass atomically."
+    },
+    {
+      "oldConnection": "ucc:floor1:e10",
+      "action": "Replace with p03 -> B before-point (corridor), before -> after (stairs), after -> p11 (corridor). Retire the old direct bypass atomically."
+    }
+  ],
+  "pending": [
+    "Physical model and support/collision proof for proposed before/after points.",
+    "Confirmed surface/datum assignment for every affected destination, corridor and reference, including the lockers reference.",
+    "Hall has three numbered treads between four nosings: four risers about 0.158 m, within the unchanged 0.20 m movement limit; verify candidate geometry.",
+    "Block A floor-1 to floor-2 physical rise is 3.31 m; the reviewed C13 stair uses 2.94 m. Coordinate upper models and data.",
+    "No step-free connection to the elevated laboratory is confirmed; the B-to-A sloped hall also includes six steps.",
+    "Deliver separate candidate GLBs/references; keep existing C13 exports and profiles reproducible."
+  ]
+}
