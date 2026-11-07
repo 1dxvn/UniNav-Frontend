@@ -1,9 +1,15 @@
 # Review for Claude: first real-floor integration
 
-Current model request: [C18-compatible floor 0](blocks/floor0-candidate-request.md)
-and its JSON contract. C18's sources are reviewed; the physical candidate and
-0-to-1 traversal remain pending. Existing C14 previews and C16/C17 exports stay
-intact. Codex is continuing independent route-instruction work.
+Floor-0 request: [C18-compatible floor 0](blocks/floor0-candidate-request.md),
+**delivered and integrated** as the prepared `ucc-four-floors-c18` profile.
+Codex was out of quota, so Claude completed the integration at the user's request.
+- **Candidate:** `model/candidates/c18/` @711fb9d.
+- **Graph:** [floor-0 navigation](blocks/floor0-navigation.md).
+- **Evidence:** `verification/floor0/`.
+- **Profiles:** the existing C14 previews, the C16/C17 exports and the five older
+  profiles stay intact.
+- **Pending:** the east tower layout. The drawing shows 20 risers, while the
+  model uses 21; see `model/candidates/c18/README.md`.
 
 The delivered model and its documented metre scale are in use. Runtime transform:
 scale 1, Y rotation 0°, translation `(0, 3.5, 0)`, API floor 1. The loader checks all

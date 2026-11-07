@@ -1,0 +1,7 @@
+{
+  "profile": "ucc-four-floors-c18",
+  "substitution": "flat C14 floor-0 preview GLB at the C18 floor-0 URL",
+  "rejected": "Error: Model export changed: UCC floor 0. Review its manifest before integrating.",
+  "blockedMovementPosition": "0.000,3.500,0.000",
+  "recovered": "UCC floor 0 · 3 references aligned"
+}

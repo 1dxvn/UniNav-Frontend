@@ -6,7 +6,7 @@ import { test } from "./isolated-campus.ts";
 test.use({campusProfile:"ucc-three-floors-c16"});
 const output=process.env.UNINAV_EVIDENCE_DIR ?? "docs/verification/floor3";
 
-test("all six reviewed profiles serve their pinned resources",async({request})=>{
+test("all reviewed profiles serve their pinned resources",async({request})=>{
   const manifest=await(await request.get("/app/models/campus-manifest.json")).json(),results=[];
   for(const profile of [{id:"base",models:manifest.models},...manifest.profiles])for(const m of profile.models){
     if(m.state!=="ready")continue;
@@ -14,7 +14,7 @@ test("all six reviewed profiles serve their pinned resources",async({request})=>
     const ref=m.reference ? await(await request.get(`/app/${m.reference}`)).json():null,url=m.model ?? `${m.reference.slice(0,m.reference.lastIndexOf("/")+1)}${ref.model}`;
     const hash=await sha256(await(await request.get(`/app/${url}`)).body());expect(hash).toBe(m.modelSha256);results.push({profile:profile.id,id:m.id,reference:m.reference,url,hash});
   }
-  expect(results).toHaveLength(42);await mkdir(output,{recursive:true});await writeFile(`${output}/assets.json`,JSON.stringify({results},null,2));
+  expect(results).toHaveLength(49);await mkdir(output,{recursive:true});await writeFile(`${output}/assets.json`,JSON.stringify({results},null,2));
 });
 
 test("partial third-floor metadata cannot select an older compatible profile",async({page})=>{

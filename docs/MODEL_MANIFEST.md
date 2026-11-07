@@ -361,3 +361,47 @@ Avoid stairs permits these ramp-only fixture paths, which does not certify
 physical accessibility. Existing production profiles are tested without overrides.
 See `verification/c17/` for the recorded sources, routes, support checks and
 remaining public activation/level work.
+
+## Four-floor C18 profile (piso cero)
+
+`ucc-four-floors-c18` binds the prepared 150-place / 139-connection API. It is the
+three unchanged scopes plus `ucc:floor0-connection` / `c18-floor-zero-v1`, as 40
+places and 37 connections. It is listed first; the five older profiles keep their
+exact manifest entries.
+
+| Floor | Model in this profile | Source |
+| --- | --- | --- |
+| 0 | `models/c18/floor-0.glb` (`a9eba61e…`), now navigable | `711fb9d`; API reference `models/c18/floor-0-navigation-reference.json` @76a2f28, three P0 structural anchors at world 0.56; support nodes `P0_Floor_Slab`, `P0_Stair_A_East_1` |
+| 1 | `models/c18/floor-1.glb` (`b1df2d79…`) | `711fb9d`; C16 floor 1 with its `Site` ground slab opened under the stair well, other 140 meshes identical to C16. Same reference, support nodes and transform |
+| 2 | C17 | unchanged |
+| 3 | C16 | unchanged |
+| 4, 5 | C16 | unchanged, still non-navigable previews |
+
+The C18 east tower rises 3.50 m from world −0.63 to the floor-1 north junction at
+world 2.87, on the reviewed 21-riser plan points. It has two source-backed
+destinations:
+- the Clinical Simulation Laboratory, through doorway D32;
+- the waiting room, through the drawn facade sliding door.
+
+Avoiding stairs rejects travel between floor 0 and the other floors; elevator
+operation is not modelled.
+
+**Tools:**
+- `tools/prepare-floor0.ts` builds the scope from committed sources. It audits
+  all 278 directed runs with `supportedStep` and `modelCollision` against six
+  floors and checks label visibility. As a negative control, the flat C14
+  preview rejects every floor-0 connection.
+- `tools/prepare-floor0-profile.ts` takes a temporary FastAPI snapshot and adds
+  only this profile.
+
+**Browser (`tests/e2e/floor0.spec.ts`), on the production launcher with an
+isolated database and the shipped manifest:**
+- Both destinations, outbound and return, arrive with a final error of 0 m and no
+  blocked state.
+- The 49 pinned resources of all seven profiles are served.
+- Partial floor-0 metadata selects `incompatible`.
+- The flat C14 GLB at the C18 URL fails closed and recovers on retry.
+
+`floor3-assets.spec.ts` now expects the same 49 resources. See
+`blocks/floor0-navigation.md` and `verification/floor0/`.
+
