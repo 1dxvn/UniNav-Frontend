@@ -42,4 +42,4 @@ BAÑO MUJERES, BAÑO HOMBRES, AULA 513 A, AULA 514 A, AULA 512 A, AULA 515 A, AU
 
 ## Not yet in this version
 
-Signs, slab holes over stairs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.
+Signs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.

@@ -70,7 +70,6 @@ Filtered out as annotation: 462 small filled bars at the room-label anchors (roo
 
 - No signs.
 - No API places or paths for this floor (Codex).
-- No hole in the slab over the stair flights.
 - The A/B half-level (26 cm) and the ramps between them are flattened.
 
 See `docs/blocks/vertical-connections.md` for the stairs and elevators that connect this floor with the first floor.

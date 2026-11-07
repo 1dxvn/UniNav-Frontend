@@ -42,4 +42,4 @@ AZOTEA, AULA 308 A, INGENIERIA, BAÑO MUJERES, BAÑO HOMBRES, VACIO, HEMEROTECA,
 
 ## Not yet in this version
 
-Signs, slab holes over stairs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.
+Signs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.

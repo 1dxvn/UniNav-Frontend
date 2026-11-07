@@ -42,4 +42,4 @@ TERRAZA, DE ESTAR, BAÑO MUJERES, BAÑO HOMBRES, SUB- DIRECCIÓN, GESTIÓN HUMAN
 
 ## Not yet in this version
 
-Signs, slab holes over stairs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.
+Signs and the stairs and elevators of this floor. The vertical core positions are the same as in `docs/blocks/vertical-connections.md`, because the floors are registered on the same grid.
