@@ -10,8 +10,8 @@
     {
       "profile": "base",
       "id": "campus-exterior",
-      "url": "models/blocks/campus-exterior.glb",
-      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+      "url": "models/blocks/campus-exterior-c19.glb",
+      "hash": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8"
     },
     {
       "profile": "base",
@@ -58,8 +58,8 @@
     {
       "profile": "ucc-six-floors-c18",
       "id": "campus-exterior",
-      "url": "models/blocks/campus-exterior.glb",
-      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+      "url": "models/blocks/campus-exterior-c19.glb",
+      "hash": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8"
     },
     {
       "profile": "ucc-six-floors-c18",
@@ -106,8 +106,8 @@
     {
       "profile": "ucc-four-floors-c18",
       "id": "campus-exterior",
-      "url": "models/blocks/campus-exterior.glb",
-      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+      "url": "models/blocks/campus-exterior-c19.glb",
+      "hash": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8"
     },
     {
       "profile": "ucc-four-floors-c18",
@@ -154,8 +154,8 @@
     {
       "profile": "ucc-three-floors-c16",
       "id": "campus-exterior",
-      "url": "models/blocks/campus-exterior.glb",
-      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+      "url": "models/blocks/campus-exterior-c19.glb",
+      "hash": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8"
     },
     {
       "profile": "ucc-three-floors-c16",
@@ -202,8 +202,8 @@
     {
       "profile": "ucc-two-floors-c15",
       "id": "campus-exterior",
-      "url": "models/blocks/campus-exterior.glb",
-      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+      "url": "models/blocks/campus-exterior-c19.glb",
+      "hash": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8"
     },
     {
       "profile": "ucc-two-floors-c15",
@@ -250,8 +250,8 @@
     {
       "profile": "ucc-first-floor-stair-review",
       "id": "campus-exterior",
-      "url": "models/blocks/campus-exterior.glb",
-      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+      "url": "models/blocks/campus-exterior-c19.glb",
+      "hash": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8"
     },
     {
       "profile": "ucc-first-floor-stair-review",
@@ -298,8 +298,8 @@
     {
       "profile": "ucc-two-floors-stair-review",
       "id": "campus-exterior",
-      "url": "models/blocks/campus-exterior.glb",
-      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+      "url": "models/blocks/campus-exterior-c19.glb",
+      "hash": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8"
     },
     {
       "profile": "ucc-two-floors-stair-review",
@@ -346,8 +346,8 @@
     {
       "profile": "ucc-two-floors",
       "id": "campus-exterior",
-      "url": "models/blocks/campus-exterior.glb",
-      "hash": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0"
+      "url": "models/blocks/campus-exterior-c19.glb",
+      "hash": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8"
     },
     {
       "profile": "ucc-two-floors",
