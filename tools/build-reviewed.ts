@@ -2,9 +2,10 @@ import { build } from "vite";
 import { mkdtemp, readFile, writeFile, mkdir, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, posix } from "node:path";
-import { parseManifest } from "../src/scene/modelManifest.ts";
+import { parseManifest, sha256 } from "../src/scene/modelManifest.ts";
 import { parseReference } from "../src/scene/modelReference.ts";
-import { reviewedAsset } from "./reviewed-assets.ts";
+import { AVATAR } from "../src/scene/avatarAsset.ts";
+import { committedAsset, reviewedAsset } from "./reviewed-assets.ts";
 
 const manifestBytes = await readFile("public/models/campus-manifest.json");
 const manifest = parseManifest(JSON.parse(manifestBytes.toString("utf8")));
@@ -26,6 +27,10 @@ for (const entry of [...manifest.models,...(manifest.profiles ?? []).flatMap(p=>
   stage(entry.reference!,referenceBytes);
   stage(path,await reviewedAsset(entry,path,entry.modelSha256!));
 }
+// The reviewed avatar is pinned by commit and hash like the campus models.
+const avatar = await committedAsset(AVATAR.sourceCommit,AVATAR.url);
+if (await sha256(avatar) !== AVATAR.sha256) throw new Error(`Reviewed avatar ${AVATAR.url} does not match ${AVATAR.sourceCommit}.`);
+stage(AVATAR.url,avatar);
 const directory = await mkdtemp(join(tmpdir(),"uninav-reviewed-build-"));
 try {
   for (const [path,bytes] of assets) {

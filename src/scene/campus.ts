@@ -14,6 +14,7 @@ import type { CampusCatalog } from "./catalog.ts";
 import { supportColliders, supportedStep } from "./walkSupport.ts";
 import { selectModelProfile } from "./modelProfiles.ts";
 import { routeUsesStairs } from "./routeConstraints.ts";
+import { AVATAR, avatarAnimation, type AvatarAnimation } from "./avatarAsset.ts";
 
 interface LoadedCampusModel {
   entry: ModelEntry; reference?: CampusReference; root: THREE.Group;
@@ -83,6 +84,10 @@ export class CampusScene {
   private outdoorSupports:ModelCollider[]=[];
   private lastEmission = 0;
   private walkTime = 0;
+  private mixer: THREE.AnimationMixer | null = null;
+  private clips: Partial<Record<AvatarAnimation, THREE.AnimationAction>> = {};
+  private clip: AvatarAnimation = "Idle";
+  private lastMove: number | null = null;
 
   constructor(private readonly container: HTMLElement, private readonly events: SceneEvents) {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
@@ -126,6 +131,7 @@ export class CampusScene {
     ground.receiveShadow = true;
     this.scene.add(ground);
     this.makeAvatar();
+    void this.loadAvatar();
     void document.fonts.ready.then(()=>{if(!this.abort.signal.aborted)this.labelSizes.clear();});
     this.avatar.visible = false;
     this.destinationRing = new THREE.Mesh(new THREE.TorusGeometry(0.9, 0.065, 8, 48), new THREE.MeshStandardMaterial({ color: 0x0e8b75, emissive: 0x075c4d, emissiveIntensity: 0.4 }));
@@ -180,6 +186,55 @@ export class CampusScene {
     halo.rotation.x = -Math.PI / 2;
     halo.position.y = 0.035;
     this.avatar.add(this.body, contact, halo);
+    this.container.dataset.avatar = "procedural";
+  }
+
+  // Replace the procedural figure with the reviewed faceless avatar and its Idle/Walk clips. The collision volume does
+  // not change (body rays at ±0.22 m); a missing or altered file keeps the procedural fallback.
+  private async loadAvatar(): Promise<void> {
+    try {
+      const response = await fetch(AVATAR.url, { signal: this.abort.signal });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const bytes = new Uint8Array(await response.arrayBuffer());
+      if (await sha256(bytes) !== AVATAR.sha256) throw new Error("Avatar export changed; keeping the procedural avatar.");
+      const gltf = await new GLTFLoader().parseAsync(bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer, "");
+      if (this.abort.signal.aborted) { disposeGroup(gltf.scene); return; }
+      const idle = THREE.AnimationClip.findByName(gltf.animations, "Idle"), walk = THREE.AnimationClip.findByName(gltf.animations, "Walk");
+      if (!idle || !walk) throw new Error("Avatar clips Idle/Walk are missing.");
+      gltf.scene.traverse((object) => { if (object instanceof THREE.Mesh) { object.castShadow = true; object.frustumCulled = false; } });
+      const facing = new THREE.Group();
+      facing.rotation.y = Math.PI; // the export faces +Z; the body's forward is -Z (see face())
+      facing.add(gltf.scene);
+      disposeGroup(this.body);
+      this.body.add(facing);
+      this.mixer = new THREE.AnimationMixer(gltf.scene);
+      this.clips = { Idle: this.mixer.clipAction(idle), Walk: this.mixer.clipAction(walk) };
+      this.clips.Walk!.timeScale = WALK_SPEED / AVATAR.walkCycleMetres;
+      this.clips.Idle!.play();
+      this.clip = "Idle";
+      this.container.dataset.avatar = "glb:Idle";
+    } catch (error) {
+      if (!this.abort.signal.aborted) { console.warn(`Avatar unavailable: ${String(error)}`); this.container.dataset.avatar = "procedural"; }
+    }
+  }
+
+  private animateAvatar(moved: boolean, delta: number): void {
+    const now = this.clock.elapsedTime;
+    if (moved) this.lastMove = now;
+    if (!this.mixer) {
+      if (moved) this.walkTime += delta;
+      this.body.position.y = moved ? Math.sin(this.walkTime * 15) * 0.035 : 0;
+      return;
+    }
+    const next = avatarAnimation(now, this.lastMove);
+    if (next !== this.clip) {
+      const from = this.clips[this.clip]!, to = this.clips[next]!;
+      to.reset().setEffectiveWeight(1).fadeIn(AVATAR.crossFadeSeconds).play();
+      from.fadeOut(AVATAR.crossFadeSeconds);
+      this.clip = next;
+      this.container.dataset.avatar = `glb:${next}`;
+    }
+    this.mixer.update(delta);
   }
 
   setCampus(places: Building[], paths: CampusPath[]): void {
@@ -570,8 +625,7 @@ export class CampusScene {
       }
     }
     if (this.manifest && this.movementFloors().join(",")!==this.movementModelKey) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
-    if (moved) this.walkTime += delta;
-    this.body.position.y = moved ? Math.sin(this.walkTime * 15) * 0.035 : 0;
+    this.animateAvatar(moved, delta);
     this.controls.update();
     const projection = new THREE.Vector3();
     const axis = document.getElementById("plan-axis");
@@ -619,6 +673,7 @@ export class CampusScene {
   }
   dispose(): void {
     this.renderer.setAnimationLoop(null); this.abort.abort(); this.resizeObserver.disconnect(); this.controls.dispose();
+    this.mixer?.stopAllAction(); this.mixer = null; this.clips = {};
     this.models?.dispose(); this.models = null;
     disposeGroup(this.scene);
     this.colliders = [];

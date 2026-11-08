@@ -433,3 +433,20 @@ and 512 A, 513 A and 515 A (floor 5).
 resources of all eight profiles, partial floor-4 metadata (`incompatible`) and a
 wrong floor-4 GLB (fails closed, recovers on retry). See
 `blocks/floor45-navigation.md` and `verification/floor45/`.
+
+## Reviewed avatar
+
+The faceless C6 avatar (`models/avatar/avatar.glb`, `929053ab…`, commit `1faa136`)
+is staged by `tools/build-reviewed.ts` from that commit and hash
+(`src/scene/avatarAsset.ts`).
+
+- **Runtime check:** the scene checks the hash before replacing the procedural
+  figure, and keeps the procedural figure if the file is missing or changed.
+- **Clips:** `Idle` and `Walk` cross-fade over 0.25 s. Walk runs at
+  `WALK_SPEED / 1.58` per cycle, the same for keyboard and guided movement. A
+  0.15 s grace period prevents flicker.
+- **Turning and collisions:** turning stays gradual, and the collision rays
+  (±0.22 m) are unchanged.
+- **Test hook:** `#scene[data-avatar]` reports `procedural`, `glb:Idle` or
+  `glb:Walk`.
+
