@@ -40,7 +40,7 @@ let revision = 0, loading = false, signedIn = false, registerMode = false, pendi
 let scene: CampusScene | null = null;
 let overviewVisible = false;
 let role: string | null = null;
-const minimap = new Minimap(element<HTMLCanvasElement>("minimap"), (place) => selectDestination(place));
+const minimap = new Minimap(document.getElementById("minimap") as unknown as SVGSVGElement, (place) => selectDestination(place));
 const tools = new CampusTools(element("campus-tools"), element<HTMLButtonElement>("nav-back"), element<HTMLButtonElement>("nav-forward"), {
   places: () => buildings, destination: () => destination, floorName: (level) => floorName(level),
   select: (place) => selectDestination(place),
