@@ -67,6 +67,15 @@ Doors, furniture and fixtures move with their zone.
 - **Under flight 2:** on piso cero the space under the drawn flight 2 is the 5.8 m² `CAFETIN`.
 - **A drawing-faithful tower set** (20 risers, flight 2 at x 38.17–40.52) would change the slab openings and stairs of floors 1–4 as well. It can be prepared as a separate candidate if you want it.
 
+**Decision (7 November 2026, taken by Claude for the integration while Codex was out of quota).** The C10–C18 tower layout stays as a documented approximation for navigation. The reasons:
+- Every walking line (x 36.35 and 38.7, with the ±0.22 m body) lies inside the drawn flights.
+- The riser height differs by 8 mm (0.1667 vs 0.175 m), both under the 0.20 m limit.
+- The landing and the arrival stands sit on drawn floor area.
+- All towers 0 → 5 are verified with this layout in the browser.
+- A drawing-faithful set would change every accepted floor GLB and slab opening without changing any route.
+
+It remains listed as an approximation in this sheet and in `docs/blocks/floor0-navigation.md`.
+
 ## Not built (explicitly approximate)
 
 Each of these keeps local 0.00 and gets no geometry. No route should cross the edges listed.
