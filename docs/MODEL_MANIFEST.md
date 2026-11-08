@@ -450,3 +450,29 @@ is staged by `tools/build-reviewed.ts` from that commit and hash
 - **Test hook:** `#scene[data-avatar]` reports `procedural`, `glb:Idle` or
   `glb:Walk`.
 
+## C19 campus exterior (Plan 4 overview polish)
+
+The eight `campus-exterior` entries (base models and every profile) now use
+`models/blocks/campus-exterior-c19.glb` (`e903fdbc…`, sourceCommit `9d8ee41`).
+It is byte-identical to the reviewed candidate `model/candidates/c19/campus-exterior.glb @668c83a`.
+Exterior entries are served from `public/` by commit; C5 `campus-exterior.glb`
+stays as history. The transform `(0, 3.5, 0)` is unchanged, and so is every other
+manifest entry (`tools/integrate-c19-exterior.ts` checks this). The exterior is
+overview-only and takes no part in collisions or routes.
+
+Contents and fixes are listed in `model/candidates/c19/README.md`:
+- ceiling caps and single-storey roofs;
+- cafeteria windows;
+- the glazed access pavilion;
+- trimmed floating storeys;
+- full glass stair towers;
+- the rooftop rooms, sign and solar panels;
+- courts with markings and nets.
+
+Captures:
+- Blender, six fixed views: `docs/model-review/after-c19/before-*.png` and `after-*.png`;
+- the app: `docs/model-review/after-c19/app/`.
+
+The minimap is drawn as SVG, so the 3D view remains the page's only `<canvas>`.
+This keeps the existing `page.locator("canvas")` keyboard tests unambiguous.
+

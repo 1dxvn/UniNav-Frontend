@@ -188,10 +188,10 @@
       "label": "Campus overview",
       "floors": [],
       "state": "ready",
-      "revision": "C5-31c5d68",
-      "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
-      "model": "models/blocks/campus-exterior.glb",
-      "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+      "revision": "C19-exterior-polish-668c83a",
+      "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+      "model": "models/blocks/campus-exterior-c19.glb",
+      "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
       "transform": {
         "scale": 1,
         "rotationYDegrees": 0,
@@ -201,7 +201,7 @@
           0
         ]
       },
-      "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+      "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
     },
     {
       "id": "ucc-floor-0-preview",
@@ -383,10 +383,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C5-31c5d68",
-          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
-          "model": "models/blocks/campus-exterior.glb",
-          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "revision": "C19-exterior-polish-668c83a",
+          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+          "model": "models/blocks/campus-exterior-c19.glb",
+          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -396,7 +396,7 @@
               0
             ]
           },
-          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
         },
         {
           "id": "ucc-floor-zero",
@@ -888,10 +888,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C5-31c5d68",
-          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
-          "model": "models/blocks/campus-exterior.glb",
-          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "revision": "C19-exterior-polish-668c83a",
+          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+          "model": "models/blocks/campus-exterior-c19.glb",
+          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -901,7 +901,7 @@
               0
             ]
           },
-          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
         },
         {
           "id": "ucc-floor-zero",
@@ -1290,10 +1290,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C5-31c5d68",
-          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
-          "model": "models/blocks/campus-exterior.glb",
-          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "revision": "C19-exterior-polish-668c83a",
+          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+          "model": "models/blocks/campus-exterior-c19.glb",
+          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -1303,7 +1303,7 @@
               0
             ]
           },
-          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
         },
         {
           "id": "ucc-floor-0-preview",
@@ -1640,10 +1640,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C5-31c5d68",
-          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
-          "model": "models/blocks/campus-exterior.glb",
-          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "revision": "C19-exterior-polish-668c83a",
+          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+          "model": "models/blocks/campus-exterior-c19.glb",
+          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -1653,7 +1653,7 @@
               0
             ]
           },
-          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
         },
         {
           "id": "ucc-floor-0-preview",
@@ -1902,10 +1902,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C5-31c5d68",
-          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
-          "model": "models/blocks/campus-exterior.glb",
-          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "revision": "C19-exterior-polish-668c83a",
+          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+          "model": "models/blocks/campus-exterior-c19.glb",
+          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -1915,7 +1915,7 @@
               0
             ]
           },
-          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
         },
         {
           "id": "ucc-floor-0-preview",
@@ -2078,10 +2078,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C5-31c5d68",
-          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
-          "model": "models/blocks/campus-exterior.glb",
-          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "revision": "C19-exterior-polish-668c83a",
+          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+          "model": "models/blocks/campus-exterior-c19.glb",
+          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -2091,7 +2091,7 @@
               0
             ]
           },
-          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
         },
         {
           "id": "ucc-floor-0-preview",
@@ -2282,10 +2282,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C5-31c5d68",
-          "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
-          "model": "models/blocks/campus-exterior.glb",
-          "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+          "revision": "C19-exterior-polish-668c83a",
+          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+          "model": "models/blocks/campus-exterior-c19.glb",
+          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -2295,7 +2295,7 @@
               0
             ]
           },
-          "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
         },
         {
           "id": "ucc-floor-0-preview",
