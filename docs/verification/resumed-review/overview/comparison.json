@@ -1,0 +1,83 @@
+{
+  "baseline": "d540b21",
+  "nonExteriorUnchanged": true,
+  "results": [
+    {
+      "exterior": {
+        "id": "campus-exterior",
+        "kind": "exterior",
+        "navigable": false,
+        "label": "Campus overview",
+        "floors": [],
+        "state": "ready",
+        "revision": "C5-31c5d68",
+        "sourceCommit": "31c5d6817d5bfd39cf0ef8da64eac43e43b9dae9",
+        "model": "models/blocks/campus-exterior.glb",
+        "modelSha256": "913490fd652b49958558d43db17253c9fd9ae242a8e2ebdf85dab531a9aa59f0",
+        "transform": {
+          "scale": 1,
+          "rotationYDegrees": 0,
+          "translation": [
+            0,
+            3.5,
+            0
+          ]
+        },
+        "sourceDocument": "public/models/blocks/campus-exterior.md @ 31c5d68; block identities and facade details retain documented approximations."
+      },
+      "comparisonOverride": true,
+      "position": "0.000,3.500,0.000",
+      "colliders": 141,
+      "views": [
+        "default",
+        "left",
+        "right",
+        "rear",
+        "oblique",
+        "top"
+      ]
+    },
+    {
+      "exterior": {
+        "id": "campus-exterior",
+        "kind": "exterior",
+        "navigable": false,
+        "label": "Campus overview",
+        "floors": [],
+        "state": "ready",
+        "revision": "C19-exterior-polish-668c83a",
+        "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+        "model": "models/blocks/campus-exterior-c19.glb",
+        "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+        "transform": {
+          "scale": 1,
+          "rotationYDegrees": 0,
+          "translation": [
+            0,
+            3.5,
+            0
+          ]
+        },
+        "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+      },
+      "comparisonOverride": false,
+      "position": "0.000,3.500,0.000",
+      "colliders": 141,
+      "views": [
+        "default",
+        "left",
+        "right",
+        "rear",
+        "oblique",
+        "top"
+      ]
+    }
+  ],
+  "metrics": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 (0x00002D05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "averageFps": 144,
+    "frames": 432
+  },
+  "errors": [],
+  "scope": "Six views via the same OrbitControls drag gestures. Before is a C5-only comparison override; after is the unmodified shipped C19 manifest. Six-floor production launcher with temporary DB. Exterior adds zero colliders."
+}

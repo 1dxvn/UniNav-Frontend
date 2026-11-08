@@ -1,0 +1,27 @@
+{
+  "services": {
+    "8000": {
+      "health": {
+        "status": "ok",
+        "buildings": 21,
+        "edges": 50
+      },
+      "places": 21,
+      "paths": 25
+    },
+    "8001": {
+      "health": {
+        "status": "ok",
+        "buildings": 235,
+        "edges": 436
+      },
+      "places": 235,
+      "paths": 218
+    }
+  },
+  "databaseCounts": {
+    "users": 3,
+    "buildings": 235,
+    "paths": 218
+  }
+}

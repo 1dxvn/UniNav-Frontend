@@ -1,0 +1,43 @@
+{
+  "health": {
+    "status": "ok",
+    "buildings": 235,
+    "edges": 436
+  },
+  "places": 235,
+  "paths": 218,
+  "exterior": {
+    "id": "campus-exterior",
+    "kind": "exterior",
+    "navigable": false,
+    "label": "Campus overview",
+    "floors": [],
+    "state": "ready",
+    "revision": "C19-exterior-polish-668c83a",
+    "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
+    "model": "models/blocks/campus-exterior-c19.glb",
+    "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+    "transform": {
+      "scale": 1,
+      "rotationYDegrees": 0,
+      "translation": [
+        0,
+        3.5,
+        0
+      ]
+    },
+    "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+  },
+  "hash": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+  "position": "0.000,3.500,0.000",
+  "inspectedFloors": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    1
+  ],
+  "errors": [],
+  "scope": "Existing 8001 service, unauthenticated read-only browser context. No route calculation, account action, service restart or database mutation."
+}
