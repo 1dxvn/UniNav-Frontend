@@ -4,7 +4,7 @@ import type { Building,CampusPath,RouteResponse } from "../../src/api/types.ts";
 import { test } from "./isolated-campus.ts";
 
 const output=process.env.UNINAV_EVIDENCE_DIR ?? "docs/verification/campus-startup";
-for(const [profile,placesCount,pathCount] of [["base",19,16],["ucc-two-floors",64,59],["ucc-first-floor-stair-review",19,16],["ucc-two-floors-stair-review",64,59],["ucc-two-floors-c15",68,63],["ucc-three-floors-c16",110,102]] as const){
+for(const [profile,placesCount,pathCount] of [["base",19,16],["ucc-two-floors",64,59],["ucc-first-floor-stair-review",19,16],["ucc-two-floors-stair-review",64,59],["ucc-two-floors-c15",68,63],["ucc-three-floors-c16",110,102],["ucc-four-floors-c18",150,139],["ucc-six-floors-c18",235,218]] as const){
   test.describe(profile,()=>{
     test.use({campusProfile:profile});
     test("production launcher serves its reviewed API and model profile",async({page,request})=>{
