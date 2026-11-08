@@ -1,4 +1,4 @@
-import type { Building, CampusPath, Floor, Health, RouteRequest, RouteResponse, Token, User } from "./types.ts";
+import type { Building, BuildingUpdate, CampusPath, Floor, Health, NavigationState, NavigationTrail, PopularPlace, PopularRoute, QueuePosition, QueueStatus, RouteRequest, RouteResponse, RouteVisit, Token, Tour, TourSession, TourSummary, User, UserStats } from "./types.ts";
 
 // Same origin by default: FastAPI serves this app and the API from one host.
 // VITE_API_BASE_URL can point elsewhere if the API is ever hosted separately.
@@ -90,4 +90,36 @@ export const api = {
   floors: (): Promise<Floor[]> => request<Floor[]>("/floors"),
   calculateRoute: (body: RouteRequest): Promise<RouteResponse> =>
     request<RouteResponse>("/routes/calculate", { method: "POST", body: JSON.stringify(body) }),
+
+  // History and statistics
+  history: (limit = 10): Promise<RouteVisit[]> => request<RouteVisit[]>(`/routes/history?limit=${limit}`),
+  clearHistory: (): Promise<void> => request<void>("/routes/history", { method: "DELETE" }),
+  stats: (): Promise<UserStats> => request<UserStats>("/users/me/stats"),
+  // Back and forward over visited places (kept in server memory)
+  trail: (): Promise<NavigationTrail> => request<NavigationTrail>("/navigation"),
+  visit: (buildingId: number): Promise<NavigationState> => request<NavigationState>("/navigation/visit", { method: "POST", body: JSON.stringify({ building_id: buildingId }) }),
+  back: (): Promise<NavigationState> => request<NavigationState>("/navigation/back", { method: "POST" }),
+  forward: (): Promise<NavigationState> => request<NavigationState>("/navigation/forward", { method: "POST" }),
+  // Guided tours
+  tours: (): Promise<TourSummary[]> => request<TourSummary[]>("/tours"),
+  tour: (id: number): Promise<Tour> => request<Tour>(`/tours/${id}`),
+  createTour: (name: string, description: string | null, buildingIds: number[]): Promise<Tour> =>
+    request<Tour>("/tours", { method: "POST", body: JSON.stringify({ name, description, building_ids: buildingIds }) }),
+  deleteTour: (id: number): Promise<void> => request<void>(`/tours/${id}`, { method: "DELETE" }),
+  startTour: (id: number): Promise<TourSession> => request<TourSession>(`/tours/${id}/start`, { method: "POST" }),
+  tourSession: (): Promise<TourSession> => request<TourSession>("/tours/session"),
+  nextStop: (): Promise<TourSession> => request<TourSession>("/tours/session/next", { method: "POST" }),
+  previousStop: (): Promise<TourSession> => request<TourSession>("/tours/session/previous", { method: "POST" }),
+  endTour: (): Promise<void> => request<void>("/tours/session", { method: "DELETE" }),
+  // Queues and rankings
+  queue: (buildingId: number): Promise<QueueStatus> => request<QueueStatus>(`/queues/${buildingId}`),
+  queuePosition: (buildingId: number): Promise<QueuePosition> => request<QueuePosition>(`/queues/${buildingId}/position`),
+  joinQueue: (buildingId: number): Promise<QueuePosition> => request<QueuePosition>(`/queues/${buildingId}/join`, { method: "POST" }),
+  leaveQueue: (buildingId: number): Promise<void> => request<void>(`/queues/${buildingId}/leave`, { method: "DELETE" }),
+  serveQueue: (buildingId: number): Promise<unknown> => request<unknown>(`/queues/${buildingId}/serve`, { method: "POST" }),
+  rankings: (limit = 10): Promise<PopularPlace[]> => request<PopularPlace[]>(`/rankings/places?limit=${limit}`),
+  popularRoutes: (): Promise<PopularRoute[]> => request<PopularRoute[]>("/routes/popular"),
+  // Administration (admin role)
+  updateBuilding: (id: number, body: BuildingUpdate): Promise<Building> => request<Building>(`/buildings/${id}`, { method: "PUT", body: JSON.stringify(body) }),
+  reloadGraph: (): Promise<unknown> => request<unknown>("/graph/reload", { method: "POST" }),
 };

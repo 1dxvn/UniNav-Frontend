@@ -17,9 +17,15 @@ It must be excluded by the backend's `.git/info/exclude`.
 npm ci
 npm run build
 cd ..
-python -m scripts.run_campus --port 8001
-# Windows: venv/Scripts/python.exe -m scripts.run_campus --port 8001
+python -m scripts.run_campus --port 8001 --profile ucc-six-floors-c18
+# Windows: venv/Scripts/python.exe -m scripts.run_campus --port 8001 --profile ucc-six-floors-c18
 ```
+
+`ucc-six-floors-c18` is the complete reviewed campus data: floors 0 to 5 with
+235 places and 218 connections. Without `--profile`, the launcher keeps the
+historical 19/16 first-floor baseline. Upgrading a database is in place and
+keeps users and history; going back to an older profile is refused.
+See `../docs/CAMPUS_STARTUP.md`.
 
 Open <http://127.0.0.1:8001/>. Sign in with `student` / `demo1234`.
 The real floor uses the backend's separate `uninav-campus.db`, seeded idempotently.
@@ -28,6 +34,19 @@ The real floor uses the backend's separate `uninav-campus.db`, seeded idempotent
 Four destinations are connected: ICETEX, Morphology Laboratory, Elevator and
 Restroom Hall, and Preclinic / Dentistry Coordination. Preclinic uses the north
 circulation and storeroom. See [the one-minute rehearsal](docs/REHEARSAL.md).
+
+With the six-floor profile, destinations are connected on every floor 0–5 through
+the Block A east tower:
+- floor 0: the Clinical Simulation Laboratory and the waiting room;
+- floor 2: the Mixed Reality, Molecular Biology and Medical Research entrances;
+- floor 3: Computer Labs 308 A–310 A;
+- floor 4: Classrooms 420 A–422 A;
+- floor 5: Classrooms 512 A, 513 A and 515 A.
+
+The **Your campus** panel holds the assistant, history and statistics,
+back/forward, guided tours, queues and rankings, and administration (admin
+role). A minimap follows the observed floor. The avatar is the reviewed faceless
+GLB with Idle and Walk clips. See [application functions](docs/APP_FUNCTIONS.md).
 
 ## Development
 
@@ -106,6 +125,8 @@ Screenshots, the real API response and measured arrival coordinates are in
 ## Layout
 
 - `src/app.ts`: session, search, route panel, loading and error states.
+- `src/campusTools.ts`, `src/assistant.ts`, `src/minimap.ts`: the "Your campus" panel, the catalogue assistant and the minimap.
+- `src/scene/avatarAsset.ts`: the pinned avatar and its clip selection.
 - `src/api/`: typed FastAPI client; no client pathfinder.
 - `src/scene/`: rendering, coordinates, validated navigation and GLB references.
 - `public/models/`: GLB, top capture and reference sidecar.

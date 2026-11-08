@@ -2,11 +2,13 @@ import "@fontsource-variable/dm-sans";
 import "@fontsource-variable/manrope";
 import "./style.css";
 import { api, ApiError } from "./api/client.ts";
-import type { Building, CampusPath, Floor, RouteResponse } from "./api/types.ts";
+import type { Building, CampusPath, Floor, RouteResponse, User } from "./api/types.ts";
 import { CampusScene, type TravelState, type TravelUpdate } from "./scene/campus.ts";
 import { resolveRoute, walkWaypoints } from "./scene/navigation.ts";
 import { toScenePosition, WALK_SPEED } from "./scene/coordinates.ts";
 import { activeInstruction,routeInstructions,type RouteInstruction } from "./routeInstructions.ts";
+import { Minimap } from "./minimap.ts";
+import { CampusTools } from "./campusTools.ts";
 
 function element<T extends HTMLElement>(id: string): T {
   const found = document.getElementById(id);
@@ -37,6 +39,14 @@ let travelState: TravelState = "idle";
 let revision = 0, loading = false, signedIn = false, registerMode = false, pendingNavigation = false;
 let scene: CampusScene | null = null;
 let overviewVisible = false;
+let role: string | null = null;
+const minimap = new Minimap(element<HTMLCanvasElement>("minimap"), (place) => selectDestination(place));
+const tools = new CampusTools(element("campus-tools"), element<HTMLButtonElement>("nav-back"), element<HTMLButtonElement>("nav-forward"), {
+  places: () => buildings, destination: () => destination, floorName: (level) => floorName(level),
+  select: (place) => selectDestination(place),
+  routeTo: async (place) => { selectDestination(place); await calculateRoute(); },
+  signedIn: () => signedIn, admin: () => role === "admin", openLogin: () => openLogin(),
+});
 
 function showError(target: HTMLElement, error: unknown): void {
   target.textContent = error instanceof Error ? error.message : String(error);
@@ -49,6 +59,7 @@ function clearRoute(): void {
   currentRoute = null;
   directions=[];
   scene?.cancel();
+  minimap.setRoute(null);
   ui.card.hidden = true;
   ui.routeError.hidden = true;
 }
@@ -88,19 +99,23 @@ function selectDestination(place: Building): void {
   destination = place;
   scene?.setDestination(place);
   scene?.setFloor(place.floor);
+  minimap.setDestination(place);
   ui.preview.hidden = false;
   ui.destinationName.textContent = placeName(place);
   ui.destinationMeta.textContent = `${place.block_code ? `Block ${place.block_code} · ` : ""}${floorName(place.floor)} · ${place.faculty ?? "Campus"}`;
   ui.calculate.disabled = false;
   renderPlaces();
 }
-function showSession(username: string | null): void {
+function showSession(user: User | null): void {
+  const username = user?.username ?? null;
   signedIn = username !== null;
+  role = user?.role ?? null;
   ui.openLogin.hidden = signedIn;
   ui.session.hidden = !signedIn;
   ui.username.textContent = username ?? "";
   ui.initial.textContent = username?.slice(0, 1).toUpperCase() ?? "";
   if (!signedIn) clearRoute();
+  void tools.refresh();
 }
 function openLogin(): void {
   ui.loginError.hidden = true;
@@ -109,6 +124,8 @@ function openLogin(): void {
 function updateTravel(update: TravelUpdate): void {
   const changed = travelState !== update.state;
   travelState = update.state;
+  minimap.setAvatar(update.position, update.floor);
+  if (changed && update.state === "arrived" && destination) void tools.arrived(destination);
   const activeStep=activeInstruction(directions,update.waypoint),cue=directions[activeStep]?.text;
   const inspectingPreview = ui.modelStatus.dataset.preview === "true";
   const title: Record<TravelState, string> = {
@@ -140,7 +157,7 @@ function updateTravel(update: TravelUpdate): void {
 try {
   scene = new CampusScene(element("scene"), {
     travel: updateTravel, select: selectDestination,
-    floor: (floor) => { ui.floor.value = String(floor); element("floor-title").textContent = floorName(floor); },
+    floor: (floor) => { ui.floor.value = String(floor); element("floor-title").textContent = floorName(floor); minimap.setFloor(floor); },
     model: (message, loaded, detail) => { ui.modelStatus.textContent = message; ui.modelStatus.title = detail ?? ""; ui.modelStatus.classList.toggle("verified", loaded); element("references").hidden = !loaded; },
     view: syncViewControls,
     resources: (state) => {
@@ -176,6 +193,7 @@ async function loadCampus(): Promise<void> {
     ui.origin.disabled = !places.length;
     clearRoute();
     scene.setCampus(places, connections);
+    minimap.setCampus(places, connections);
     const entry = places.find((place) => place.building_type === "entrance") ?? places[0];
     if (entry) ui.origin.value = String(entry.id);
     const candidates = places.filter((place) => place.floor === entry?.floor && place.id !== entry?.id && !["waypoint", "junction", "corridor", "reference", "stairs", "elevator"].includes(place.building_type ?? ""));
@@ -228,6 +246,7 @@ async function calculateRoute(): Promise<void> {
     await scene.showRoute(walkWaypoints(start,resolved,paths));
     if (revision !== requestRevision || !signedIn) return;
     currentRoute = route;
+    minimap.setRoute(resolved);
     ui.origin.value = String(start.place.id);
     scene.setFloor(start.place.floor);
     ui.card.hidden = false;
@@ -289,7 +308,7 @@ ui.loginForm.addEventListener("submit", async (event) => {
   try {
     const username = String(data.get("username")).trim(), password = String(data.get("password"));
     const user = await (registerMode ? api.register(username, password) : api.login(username, password));
-    showSession(user.username);
+    showSession(user);
     ui.loginForm.reset();
     const navigate = pendingNavigation;
     ui.dialog.close();
@@ -321,7 +340,7 @@ element("export").addEventListener("click", () => scene?.exportView());
 async function start(): Promise<void> {
   await loadCampus();
   if (api.hasToken()) {
-    try { showSession((await api.me()).username); }
+    try { showSession(await api.me()); }
     catch (error) { if (error instanceof ApiError && error.status === 401) api.logout(); showSession(null); }
   } else showSession(null);
 }

@@ -161,3 +161,30 @@ dialog p { color: #86957b; font-size: 12px; line-height: 1.8; }
 @media (max-width: 1050px) { .header-subtitle, .header-divider { display: none; } .header { padding: 0 22px; } .workspace { grid-template-columns: 303px minmax(0,1fr); } .sidebar { padding: 27px 22px; } .walk-status .keycap { display: none; } .scale-label { display: none; } .map-heading { left: 22px; } .view-switch { right: 18px; } }
 @media (max-width: 760px) { body { grid-template-rows: 66px minmax(0,1fr) 33px; } .header { padding: 0 17px; } .brand { font-size: 25px; } .brand-mark { width: 31px; height: 33px; font-size: 29px; line-height: 34px; } .live-badge { display: none; } .header-right { gap: 9px; } .header .button { min-height: 35px; padding: 8px 12px; font-size: 10px; } .workspace { display: flex; flex-direction: column; overflow-y: auto; } .viewport { order: -1; min-height: 53dvh; flex-shrink: 0; } .sidebar { overflow: visible; border: 0; padding: 23px; } .intro { display: none; } .planner { border: 0; padding-top: 0; } .place-list { max-height: 168px; } .sidebar-note { display: none; } .map-heading { top: 19px; left: 20px; } .map-heading h2 { font-size: 20px; margin-top: 7px; } .model-status { font-size: 7px; max-width: 60vw; padding: 4px 6px; } .map-heading .eyebrow { font-size: 7px; } .view-switch { top: 16px; right: 14px; } .view-switch button { padding: 6px 9px; font-size: 9px; } .compass { top: 70px; right: 28px; } .compass svg { width: 26px; height: 26px; } .map-tools { right: 14px; gap: 0; } .map-tools button { width: 28px; height: 27px; font-size: 16px; } .floor-control { left: 18px; bottom: 90px; padding: 8px 5px 0; } .floor-control select { font-size: 14px; } .walk-status { left: 14px; right: 14px; bottom: 14px; padding: 10px 12px; min-height: 49px; } .walk-status strong { font-size: 10px; } .walk-status div > span { font-size: 8px; } .map-bottom { bottom: 77px; left: 18px; right: 14px; justify-content: flex-end; } .map-legend { gap: 11px; } .map-legend span { font-size: 8px; } .footer { padding: 0 16px; } .footer > span:nth-child(2) { display: none; } .user-session { gap: 7px; font-size: 10px; } .user-initial { width: 24px; height: 24px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+/* Your campus panel (Plan 1 §11) */
+.campus-tools { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+.campus-tools h2 { font-size: 15px; margin: 0; }
+.nav-history { display: flex; gap: 4px; }
+.nav-history button { width: 30px; height: 28px; border: 1px solid #d5decc; border-radius: 7px; background: #fff; font-size: 14px; color: #3d6a5a; }
+.tool-tabs { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px; }
+.tool-tab { border: 1px solid #d9e1d3; background: #fff; border-radius: 999px; padding: 6px 11px; font-size: 11px; color: #4f6a5c; }
+.tool-tab.active { background: var(--green); color: #eef6e6; border-color: var(--green); }
+.tool-body { display: flex; flex-direction: column; gap: 9px; font-size: 12px; }
+.tool-body input { width: 100%; border: 1px solid #d5decc; border-radius: 8px; padding: 9px 10px; background: #fff; color: inherit; }
+.tool-row { display: flex; gap: 6px; align-items: center; }
+.tool-row .button { flex: 1; min-height: 36px; padding: 9px 12px; }
+.tool-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.tool-item { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid #e3e8dd; border-radius: 9px; background: #fff; }
+.tool-item > span { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tool-item small { color: var(--muted); font-size: 10px; }
+.tool-link { border: 0; background: none; padding: 0; text-align: left; font-weight: 600; color: #234e41; }
+.tool-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.tool-stats div { background: #eef5e8; border-radius: 9px; padding: 9px; display: flex; flex-direction: column; gap: 2px; }
+.tool-stats strong { font-size: 15px; }
+.tool-stats small { color: var(--muted); font-size: 10px; }
+.tool-session { display: flex; flex-direction: column; gap: 6px; padding: 11px; border-radius: 10px; background: #eef5e8; }
+.tool-heading { margin-top: 6px; }
+.tool-note { margin: 0; }
+.minimap { position: absolute; right: 84px; bottom: 141px; width: 220px; height: 160px; background: #fbfcf5ee; border: 1px solid #d5decc; border-radius: 10px; z-index: 2; cursor: crosshair; }
+@media (max-width: 900px) { .minimap { width: 150px; height: 110px; } }
+

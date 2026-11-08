@@ -95,3 +95,19 @@ export interface Floor {
   name: string;
   building_count: number;
 }
+
+// Plan 1 §11 application functions (existing FastAPI endpoints)
+export interface RouteVisit { id: number; origin_name: string; destination_name: string; distance: number; visited_at: string }
+export interface UserStats { total_routes: number; total_distance: number; average_distance: number; most_visited_destination: string | null }
+export interface PopularPlace { rank: number; building_id: number; building_name: string; floor: number; visits: number }
+export interface PopularRoute { origin_name: string; destination_name: string; frequency: number }
+export interface TourSummary { id: number; name: string; description: string | null; stop_count: number }
+export interface TourStop { position: number; building_id: number; building_name: string; floor: number }
+export interface Tour { id: number; name: string; description: string | null; stops: TourStop[] }
+export interface TourSession { tour_id: number; tour_name: string; current_stop: TourStop; total_stops: number }
+export interface QueueStatus { building_id: number; building_name: string; length: number }
+export interface QueuePosition extends QueueStatus { position: number }
+export interface NavigationStop { building_id: number; building_name: string; floor: number }
+export interface NavigationState { current: NavigationStop | null; can_go_back: boolean; can_go_forward: boolean }
+export interface NavigationTrail extends NavigationState { trail: (NavigationStop & { is_current: boolean })[] }
+export interface BuildingUpdate { display_name?: string | null; building_type?: string | null; faculty?: string | null }
