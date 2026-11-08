@@ -28,6 +28,8 @@ function message(error: unknown): string {
 
 export class CampusTools {
   private tab: Tab = "assistant";
+  private renderRevision = 0;
+  private sessionRevision = 0;
   private readonly body: HTMLElement;
   private readonly tabs = new Map<Tab, HTMLButtonElement>();
   private navigation: NavigationState = { current: null, can_go_back: false, can_go_forward: false };
@@ -49,23 +51,35 @@ export class CampusTools {
     void this.show("assistant");
   }
 
-  // Session or role changes refresh the visible tab and the back/forward state.
+  // Invalidate pending private responses immediately when the account changes.
   async refresh(): Promise<void> {
+    const session = ++this.sessionRevision;
+    this.draft = [];
+    this.navigation = { current: null, can_go_back: false, can_go_forward: false };
+    this.syncNavigation();
     this.tabs.get("admin")!.hidden = !this.host.admin();
     if (this.tab === "admin" && !this.host.admin()) this.tab = "assistant";
-    await this.loadNavigation();
-    await this.show(this.tab);
+    await Promise.all([this.show(this.tab), this.loadNavigation(session)]);
   }
   // Called when the avatar arrives at a destination: records the visit for back/forward.
   async arrived(place: Building): Promise<void> {
     if (!this.host.signedIn()) return;
-    try { this.navigation = await api.visit(place.id); } catch { /* the route itself already succeeded */ }
+    const session = this.sessionRevision;
+    try {
+      const navigation = await api.visit(place.id);
+      if (session !== this.sessionRevision) return;
+      this.navigation = navigation;
+    } catch { /* the route itself already succeeded */ }
+    if (session !== this.sessionRevision) return;
     this.syncNavigation();
     if (this.tab === "history") await this.show("history");
   }
-  private async loadNavigation(): Promise<void> {
-    if (!this.host.signedIn()) { this.navigation = { current: null, can_go_back: false, can_go_forward: false }; this.syncNavigation(); return; }
-    try { this.navigation = await api.trail(); } catch { this.navigation = { current: null, can_go_back: false, can_go_forward: false }; }
+  private async loadNavigation(session: number): Promise<void> {
+    if (!this.host.signedIn()) return;
+    let navigation: NavigationState = { current: null, can_go_back: false, can_go_forward: false };
+    try { navigation = await api.trail(); } catch { /* retain the empty trail */ }
+    if (session !== this.sessionRevision) return;
+    this.navigation = navigation;
     this.syncNavigation();
   }
   private syncNavigation(): void {
@@ -74,15 +88,28 @@ export class CampusTools {
     this.forward.title = this.navigation.can_go_forward ? "Next visited place" : "No next visited place";
   }
   private async step(direction: "back" | "forward"): Promise<void> {
+    const session = this.sessionRevision;
     try {
-      this.navigation = await (direction === "back" ? api.back() : api.forward());
-      const place = this.navigation.current && this.host.places().find((p) => p.id === this.navigation.current!.building_id);
+      const navigation = await (direction === "back" ? api.back() : api.forward());
+      if (session !== this.sessionRevision) return;
+      this.navigation = navigation;
+      const place = navigation.current && this.host.places().find((p) => p.id === navigation.current!.building_id);
       if (place) this.host.select(place);
-    } catch (error) { this.notice(message(error)); }
-    this.syncNavigation();
+    } catch (error) { if (session === this.sessionRevision) this.notice(message(error)); }
+    if (session === this.sessionRevision) this.syncNavigation();
   }
 
-  private notice(text: string, kind: "info" | "error" = "error"): void {
+  private isCurrent(revision: number): boolean { return revision === this.renderRevision; }
+  // An authorized action may finish after a tab change; its old view must stay closed.
+  private async action(revision: number, request: () => Promise<void>, tab?: Tab): Promise<void> {
+    try {
+      await request();
+      if (this.isCurrent(revision) && tab) await this.show(tab);
+    } catch (error) { this.notice(message(error), "error", revision); }
+  }
+
+  private notice(text: string, kind: "info" | "error" = "error", revision = this.renderRevision): void {
+    if (!this.isCurrent(revision)) return;
     const note = el("p", { className: kind === "error" ? "error tool-note" : "field-hint tool-note", textContent: text });
     note.setAttribute("role", kind === "error" ? "alert" : "status");
     this.body.querySelector(".tool-note")?.remove(); this.body.prepend(note);
@@ -103,16 +130,18 @@ export class CampusTools {
   }
 
   async show(tab: Tab): Promise<void> {
+    const revision = ++this.renderRevision;
     this.tab = tab;
+    this.body.replaceChildren(el("p", { className: "field-hint", textContent: "Loading..." }));
     for (const [name, button] of this.tabs) { button.classList.toggle("active", name === tab); button.setAttribute("aria-selected", String(name === tab)); }
     this.root.dataset.tab = tab;
     try {
       if (tab === "assistant") this.renderAssistant();
-      else if (tab === "history") await this.renderHistory();
-      else if (tab === "tours") await this.renderTours();
-      else if (tab === "queues") await this.renderQueues();
-      else await this.renderAdmin();
-    } catch (error) { this.body.replaceChildren(); this.notice(message(error)); }
+      else if (tab === "history") await this.renderHistory(revision);
+      else if (tab === "tours") await this.renderTours(revision);
+      else if (tab === "queues") await this.renderQueues(revision);
+      else await this.renderAdmin(revision);
+    } catch (error) { if (this.isCurrent(revision)) { this.body.replaceChildren(); this.notice(message(error)); } }
   }
 
   private renderAssistant(): void {
@@ -130,9 +159,10 @@ export class CampusTools {
     this.body.replaceChildren(el("p", { className: "field-hint", textContent: "Answers come only from confirmed campus places." }), el("div", { className: "tool-row" }, input, ask), answers);
   }
 
-  private async renderHistory(): Promise<void> {
+  private async renderHistory(revision: number): Promise<void> {
     if (!this.requireSession()) return;
     const [stats, visits] = await Promise.all([api.stats(), api.history(8)]);
+    if (!this.isCurrent(revision)) return;
     const tiles = el("div", { className: "tool-stats", id: "history-stats" },
       ...[["Routes", String(stats.total_routes)], ["Distance", `${stats.total_distance.toFixed(0)} m`], ["Average", `${stats.average_distance.toFixed(0)} m`]]
         .map(([k, v]) => el("div", {}, el("strong", { textContent: v }), el("small", { textContent: k }))));
@@ -143,14 +173,16 @@ export class CampusTools {
     }));
     if (!visits.length) list.append(el("li", { className: "field-hint", textContent: "No routes yet. Your calculated routes appear here." }));
     const clear = el("button", { type: "button", className: "text-button", textContent: "Clear history", disabled: !visits.length });
-    clear.addEventListener("click", async () => { try { await api.clearHistory(); await this.show("history"); } catch (error) { this.notice(message(error)); } });
+    clear.addEventListener("click", () => void this.action(revision, () => api.clearHistory(), "history"));
     this.body.replaceChildren(tiles, stats.most_visited_destination ? el("p", { className: "field-hint", textContent: `Most visited: ${stats.most_visited_destination}` }) : "", list, clear);
   }
 
-  private async renderTours(): Promise<void> {
+  private async renderTours(revision: number): Promise<void> {
     const tours = await api.tours();
+    if (!this.isCurrent(revision)) return;
     let session: TourSession | null = null;
     if (this.host.signedIn()) { try { session = await api.tourSession(); } catch { session = null; } }
+    if (!this.isCurrent(revision)) return;
     const parts: (Node | string)[] = [];
     if (session) {
       const stop = this.host.places().find((p) => p.id === session!.current_stop.building_id);
@@ -158,10 +190,10 @@ export class CampusTools {
       const next = el("button", { type: "button", className: "button button-outline", textContent: "Next →", disabled: session.current_stop.position >= session.total_stops });
       const go = el("button", { type: "button", className: "button button-dark", textContent: "Walk to this stop →", disabled: !stop, id: "tour-go" });
       const end = el("button", { type: "button", className: "text-button", textContent: "End tour" });
-      prev.addEventListener("click", async () => { await api.previousStop().catch((e) => this.notice(message(e))); await this.show("tours"); });
-      next.addEventListener("click", async () => { await api.nextStop().catch((e) => this.notice(message(e))); await this.show("tours"); });
+      prev.addEventListener("click", () => void this.action(revision, async () => { await api.previousStop(); }, "tours"));
+      next.addEventListener("click", () => void this.action(revision, async () => { await api.nextStop(); }, "tours"));
       go.addEventListener("click", () => { if (stop) void this.host.routeTo(stop); });
-      end.addEventListener("click", async () => { await api.endTour().catch(() => undefined); await this.show("tours"); });
+      end.addEventListener("click", () => void this.action(revision, () => api.endTour(), "tours"));
       parts.push(el("div", { className: "tool-session", id: "tour-session" }, el("span", { className: "eyebrow", textContent: `TOUR · STOP ${session.current_stop.position} OF ${session.total_stops}` }),
         el("strong", { textContent: session.current_stop.building_name }), el("small", { className: "field-hint", textContent: `${session.tour_name} · ${this.host.floorName(session.current_stop.floor)}` }),
         el("div", { className: "tool-row" }, prev, next), go, end));
@@ -170,7 +202,7 @@ export class CampusTools {
       const start = el("button", { type: "button", className: "text-button", textContent: "Start ↗" });
       start.addEventListener("click", async () => {
         if (!this.host.signedIn()) { this.host.openLogin(); return; }
-        try { await api.startTour(t.id); await this.show("tours"); } catch (error) { this.notice(message(error)); }
+        await this.action(revision, async () => { await api.startTour(t.id); }, "tours");
       });
       return el("li", { className: "tool-item" }, el("span", {}, el("strong", { textContent: t.name }), el("small", { textContent: `${t.stop_count} stops${t.description ? ` · ${t.description}` : ""}` })), start);
     }));
@@ -178,18 +210,21 @@ export class CampusTools {
     this.body.replaceChildren(...parts, list);
   }
 
-  private async renderQueues(): Promise<void> {
+  private async renderQueues(revision: number): Promise<void> {
     const target = this.host.destination();
     const [ranking, popular] = await Promise.all([api.rankings(8), api.popularRoutes().catch(() => [])]);
+    if (!this.isCurrent(revision)) return;
     const parts: (Node | string)[] = [];
     if (target) {
       const status = await api.queue(target.id);
+      if (!this.isCurrent(revision)) return;
       let position: number | null = null;
       if (this.host.signedIn()) { try { position = (await api.queuePosition(target.id)).position; } catch { position = null; } }
+      if (!this.isCurrent(revision)) return;
       const join = el("button", { type: "button", className: "button button-dark", textContent: position ? "Leave the queue" : "Join the queue", id: "queue-toggle" });
       join.addEventListener("click", async () => {
         if (!this.host.signedIn()) { this.host.openLogin(); return; }
-        try { if (position) await api.leaveQueue(target.id); else await api.joinQueue(target.id); await this.show("queues"); } catch (error) { this.notice(message(error)); }
+        await this.action(revision, async () => { if (position) await api.leaveQueue(target.id); else await api.joinQueue(target.id); }, "queues");
       });
       parts.push(el("div", { className: "tool-session", id: "queue-status" }, el("span", { className: "eyebrow", textContent: "QUEUE AT YOUR DESTINATION" }), el("strong", { textContent: target.display_name ?? target.name }),
         el("small", { className: "field-hint", textContent: `${status.length} waiting${position ? ` · you are number ${position}` : ""}` }), join));
@@ -206,7 +241,7 @@ export class CampusTools {
     this.body.replaceChildren(...parts);
   }
 
-  private async renderAdmin(): Promise<void> {
+  private async renderAdmin(revision: number): Promise<void> {
     if (!this.requireSession()) return;
     if (!this.host.admin()) { this.body.replaceChildren(el("p", { className: "field-hint", textContent: "Administration needs an admin account." })); return; }
     const target = this.host.destination(), parts: (Node | string)[] = [el("p", { className: "field-hint", textContent: "Changes apply to the live API immediately." })];
@@ -215,11 +250,11 @@ export class CampusTools {
       name.setAttribute("aria-label", "Display name"); type.setAttribute("aria-label", "Place type");
       const save = el("button", { type: "button", className: "button button-dark", textContent: "Save place", id: "admin-save" });
       save.addEventListener("click", async () => {
-        try { const updated = await api.updateBuilding(target.id, { display_name: name.value.trim() || null, building_type: type.value.trim() || null }); Object.assign(target, updated); this.notice(`Saved ${updated.display_name ?? updated.name}.`, "info"); }
-        catch (error) { this.notice(message(error)); }
+        try { const updated = await api.updateBuilding(target.id, { display_name: name.value.trim() || null, building_type: type.value.trim() || null }); if (!this.isCurrent(revision)) return; Object.assign(target, updated); this.notice(`Saved ${updated.display_name ?? updated.name}.`, "info", revision); }
+        catch (error) { this.notice(message(error), "error", revision); }
       });
       const serve = el("button", { type: "button", className: "button button-outline", textContent: "Serve next in queue" });
-      serve.addEventListener("click", async () => { try { await api.serveQueue(target.id); this.notice("Served the next person.", "info"); } catch (error) { this.notice(message(error)); } });
+      serve.addEventListener("click", async () => { try { await api.serveQueue(target.id); this.notice("Served the next person.", "info", revision); } catch (error) { this.notice(message(error), "error", revision); } });
       parts.push(el("span", { className: "eyebrow tool-heading", textContent: `EDIT · ${(target.display_name ?? target.name).toUpperCase()}` }), el("label", { className: "field-label", textContent: "DISPLAY NAME" }), name,
         el("label", { className: "field-label", textContent: "TYPE" }), type, el("div", { className: "tool-row" }, save, serve));
     } else parts.push(el("p", { className: "field-hint", textContent: "Choose a destination to edit it." }));
@@ -230,15 +265,24 @@ export class CampusTools {
     add.addEventListener("click", () => { if (target && !this.draft.some((p) => p.id === target.id)) this.draft.push(target); void this.show("admin"); });
     const create = el("button", { type: "button", className: "button button-dark", textContent: "Create tour", disabled: this.draft.length < 2, id: "admin-create-tour" });
     create.addEventListener("click", async () => {
-      try { const tour = await api.createTour(tourName.value.trim() || "Campus tour", null, this.draft.map((p) => p.id)); this.draft = []; await this.show("admin"); this.notice(`Created “${tour.name}” with ${tour.stops.length} stops.`, "info"); }
-      catch (error) { this.notice(message(error)); }
+      try {
+        const session = this.sessionRevision;
+        const tour = await api.createTour(tourName.value.trim() || "Campus tour", null, this.draft.map((p) => p.id));
+        if (session !== this.sessionRevision) return;
+        this.draft = [];
+        if (!this.isCurrent(revision)) return;
+        await this.show("admin");
+        if (session === this.sessionRevision && this.tab === "admin") this.notice(`Created “${tour.name}” with ${tour.stops.length} stops.`, "info");
+      }
+      catch (error) { this.notice(message(error), "error", revision); }
     });
     const reload = el("button", { type: "button", className: "text-button", textContent: "Reload route graph" });
-    reload.addEventListener("click", async () => { try { await api.reloadGraph(); this.notice("Route graph reloaded.", "info"); } catch (error) { this.notice(message(error)); } });
+    reload.addEventListener("click", async () => { try { await api.reloadGraph(); this.notice("Route graph reloaded.", "info", revision); } catch (error) { this.notice(message(error), "error", revision); } });
     const tours = await api.tours();
+    if (!this.isCurrent(revision)) return;
     const existing = el("ol", { className: "tool-list" }, ...tours.map((t) => {
       const remove = el("button", { type: "button", className: "text-button", textContent: "Delete" });
-      remove.addEventListener("click", async () => { try { await api.deleteTour(t.id); await this.show("admin"); } catch (error) { this.notice(message(error)); } });
+      remove.addEventListener("click", () => void this.action(revision, () => api.deleteTour(t.id), "admin"));
       return el("li", { className: "tool-item" }, el("span", {}, el("strong", { textContent: t.name }), el("small", { textContent: `${t.stop_count} stops` })), remove);
     }));
     parts.push(el("span", { className: "eyebrow tool-heading", textContent: "NEW GUIDED TOUR" }), tourName, stops, el("div", { className: "tool-row" }, add, create),
