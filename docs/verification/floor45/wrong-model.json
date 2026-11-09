@@ -1,7 +1,0 @@
-{
-  "profile": "ucc-six-floors-c18",
-  "substitution": "C16 floor-5 GLB at the floor-4 URL",
-  "rejected": "Error: Model export changed: UCC fourth floor. Review its manifest before integrating.",
-  "blockedMovementPosition": "0.000,3.500,0.000",
-  "recovered": "UCC fourth floor · 3 references aligned"
-}

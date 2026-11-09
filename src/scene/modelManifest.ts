@@ -12,7 +12,6 @@ export interface ModelEntry {
   binding?: { placeNames: string[]; sha256: string };
   supportNodes?: string[];
   outdoorSupportNodes?:string[];
-  modelSource?:{commit:string;path:string};
 }
 export interface ModelProfile { id:string; label:string; requiresExplicitPositions:true; models:ModelEntry[]; stairCrossings?:StairCrossing[] }
 export interface StairCrossing { connectionCode:string; originName:string; destinationName:string; source:string; planBounds?:[number,number,number,number] }
@@ -55,9 +54,6 @@ export function parseManifest(value: unknown): CampusManifest {
       !Array.isArray(entry.floors) || (entry.kind !== "exterior" && !entry.floors.length) ||
       entry.floors.some((f) => !Number.isInteger(f) || f < 0 || f > 7) || new Set(entry.floors).size !== entry.floors.length) throw new Error("Invalid or duplicate model entry.");
     ids.add(entry.id);
-    if(entry.modelSource!==undefined && (!entry.modelSource || entry.kind==="exterior" || !/^[a-f0-9]{7,40}$/.test(entry.modelSource.commit) ||
-      !/^model\/candidates\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+\.glb$/.test(entry.modelSource.path) ||
-      !/^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.glb$/.test(entry.model ?? "")))throw new Error("Candidate models need a committed source path and an explicit safe model URL.");
     if(entry.model!==undefined && entry.kind!=="exterior" && !/^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.glb$/.test(entry.model))throw new Error("Invalid floor model URL.");
     if (entry.supportNodes !== undefined && (entry.kind === "floor-preview" || entry.kind === "exterior" ||
       !Array.isArray(entry.supportNodes) || !entry.supportNodes.length || new Set(entry.supportNodes).size !== entry.supportNodes.length ||

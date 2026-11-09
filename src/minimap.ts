@@ -74,7 +74,7 @@ export class Minimap {
     const bounds = floorBounds(this.places, this.floor), parts: SVGElement[] = [];
     this.svg.dataset.routePoints = String(this.route.filter((p) => p.floor === this.floor).length);
     if (!bounds) {
-      const t = this.node("text", { x: 10, y: height / 2, fill: "#7a857d", "font-size": 11 }); t.textContent = "No mapped places on this floor";
+      const t = this.node("text", { x: 10, y: height / 2, fill: "#7a857d", "font-size": 11 }); t.textContent = "Este piso no tiene lugares registrados";
       this.svg.replaceChildren(this.title(), t); return;
     }
     const map = planToCanvas(bounds, width, height), byId = new Map(this.places.map((p) => [p.id, p]));

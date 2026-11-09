@@ -67,7 +67,7 @@ export function askCampus(question: string, places: Building[], limit = 5): Assi
       else if (/^\d{3}$/.test(token) && haystack.includes(token)) { score += 3; hits.push(token); }
     }
     if (!understood.length && floor !== null) score = 1;
-    if (score > 0) matches.push({ place, score, reason: hits.length ? `matches ${hits.join(", ")}` : `on floor ${floor}` });
+    if (score > 0) matches.push({ place, score, reason: hits.length ? `coincide con ${hits.join(", ")}` : `en el piso ${floor}` });
   }
   matches.sort((a, b) => b.score - a.score || (a.place.display_name ?? a.place.name).localeCompare(b.place.display_name ?? b.place.name));
   return { floor, matches: matches.slice(0, limit), understood };

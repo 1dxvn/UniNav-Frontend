@@ -1,7 +1,0 @@
-{
-  "profile": "ucc-three-floors-c16",
-  "substitution": "floor2 GLB at floor3 URL",
-  "rejected": "Error: Model export changed: UCC third floor. Review its manifest before integrating.",
-  "blockedMovementPosition": "0.000,3.500,0.000",
-  "recovered": "UCC third floor · 3 references aligned"
-}

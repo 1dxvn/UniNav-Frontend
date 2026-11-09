@@ -1,134 +1,80 @@
-﻿# UniNav Frontend
+# UniNav Frontend
 
-A TypeScript / Three.js campus explorer connected to the UniNav FastAPI backend.
-The UCC Bloque B first-floor GLB is supplied by Claude; all runtime routes come
-from FastAPI. The app supports sign-in and registration, search, floor selection,
-step-free graph filtering, keyboard movement, guidance, pause/resume and arrival.
-The initial Campus view shows the reviewed exterior massing. **3D floor** and
-**Top floor** expose the navigable cutaway; planning a route switches to it.
-The exterior is visual only and adds no destinations or collision obstacles.
+Interfaz de UniNav en TypeScript y Three.js. Permite explorar el campus en 3D, buscar lugares, seleccionar
+pisos, consultar rutas y utilizar las funciones de usuario y administración del servidor FastAPI.
+Incluye los modelos C20 finales y las fuentes locales; no utiliza un CDN ni requiere herramientas de modelado.
 
-## Start the real-floor demo
+## Ejecutar la aplicación completa
 
-Keep this independent repository cloned as `UniNav-Frontend/` inside the backend.
-It must be excluded by the backend's `.git/info/exclude`.
+La forma recomendada es utilizar el instalador del [servidor UniNav](https://github.com/1dxvn/UniNav).
+Este descarga el frontend, instala las dependencias y compila los modelos automáticamente:
+
+```bash
+git clone --depth 1 https://github.com/1dxvn/UniNav.git
+cd UniNav
+```
+
+```powershell
+# Windows: Python 3.11+, Node.js 22.12+ y Git instalados
+py -3 start.py
+```
+
+```bash
+# Linux / macOS
+python3 start.py
+```
+
+Abre **http://127.0.0.1:8001/app/**. Acceso de demostración: `student` / `demo1234`;
+administración: `admin` / `demo1234`. El servidor crea su base de datos en el primer arranque.
+
+## Compilar este repositorio
+
+Con Node.js 22.12 o posterior:
 
 ```bash
 npm ci
 npm run build
-cd ..
-python -m scripts.run_campus --port 8001 --profile ucc-six-floors-c18
-# Windows: venv/Scripts/python.exe -m scripts.run_campus --port 8001 --profile ucc-six-floors-c18
 ```
 
-`ucc-six-floors-c18` is the complete reviewed campus data: floors 0 to 5 with
-235 places and 218 connections. Without `--profile`, the launcher keeps the
-historical 19/16 first-floor baseline. Upgrading a database is in place and
-keeps users and history; going back to an older profile is refused.
-See `../docs/CAMPUS_STARTUP.md`.
+El resultado queda en `dist/`. El build comprueba los SHA-256 de todos los modelos y referencias locales.
+Funciona desde un clon superficial o una descarga ZIP; no recupera archivos del historial Git.
+El servidor espera esta estructura, que el instalador crea automáticamente:
 
-Open <http://127.0.0.1:8001/>. Sign in with `student` / `demo1234`.
-The real floor uses the backend's separate `uninav-campus.db`, seeded idempotently.
-`python main.py` still uses the original sample database and port 8000.
-
-Four destinations are connected: ICETEX, Morphology Laboratory, Elevator and
-Restroom Hall, and Preclinic / Dentistry Coordination. Preclinic uses the north
-circulation and storeroom. See [the one-minute rehearsal](docs/REHEARSAL.md).
-
-With the six-floor profile, destinations are connected on every floor 0–5 through
-the Block A east tower:
-- floor 0: the Clinical Simulation Laboratory and the waiting room;
-- floor 2: the Mixed Reality, Molecular Biology and Medical Research entrances;
-- floor 3: Computer Labs 308 A–310 A;
-- floor 4: Classrooms 420 A–422 A;
-- floor 5: Classrooms 512 A, 513 A and 515 A.
-
-The **Your campus** panel holds the assistant, history and statistics,
-back/forward, guided tours, queues and rankings, and administration (admin
-role). A minimap follows the observed floor. The avatar is the reviewed faceless
-GLB with Idle and Walk clips. See [application functions](docs/APP_FUNCTIONS.md).
-
-## Development
-
-With the real-floor backend running on port 8001:
-
-```powershell
-$env:UNINAV_BACKEND_URL = 'http://127.0.0.1:8001'
-npm run dev
-# Open http://localhost:5173/app/
+```text
+UniNav/
+  start.py
+  main.py
+  UniNav-Frontend/
+    package.json
+    public/models/
+    src/
+    dist/             # generado por npm run build
 ```
 
-Vite is configured with `base: '/app/'` and proxies all existing API groups.
-FastAPI redirects `/` to `/app/` and serves `dist/` on the same origin. The API
-and `/docs` still start without a frontend build. The default development proxy
-is port 8000; `UNINAV_BACKEND_URL` changes it. `VITE_API_BASE_URL` is only needed
-when intentionally building for an API on another origin.
+## Desarrollo
 
-Fonts and the model are local build assets; the browser needs no CDN or map API.
-No external service keys are stored in the frontend.
-Builds use only the exports reviewed in `public/models/campus-manifest.json`.
-Working model changes remain with Claude until integrated. See
-[the catalogue and manifest contract](docs/MODEL_MANIFEST.md) for revision checks,
-resource lifecycle and preparation of another floor.
-
-## Movement and coordinates
-
-API plan metres `(x, y, floor)` become `(x, floor * 3.5, -y)` with world Y up.
-The drawing's +Y is a plan axis, not geographic north. The delivered model is at
-local zero and is translated up 3.5 m for API floor 1. Heights remain approximate.
-
-Choose a start point to place the avatar. Click a destination or search for it,
-find the route, then start walking. Pause/resume and Cancel are separate actions.
-W/A/S/D or arrows take manual control (W = plan +Y); Esc cancels guidance.
-Movement stays within graph corridors and model barriers. Calculating from a
-mid-edge position connects along that edge, respecting its direction.
-
-The client resolves every returned place and directed edge before drawing it.
-It never skips unknown waypoints or rounds corners across walls. The GLB loader
-checks three noncollinear references against the live API and actual named GLB
-nodes, with a maximum registration error of 0.15 m. A mismatch keeps the labelled
-graph preview available. See [model review](docs/campus-review.md) and
-[coordinate handoff](docs/campus-handoff.md).
-
-## Validation
-
-Tested with Node 24.19 and Python 3.14 on Windows. Tests are also TypeScript.
+Inicia el backend en el puerto 8001 y ejecuta:
 
 ```bash
-npm run typecheck
-npm test
-npm run build
+npm run dev
 ```
 
-With the real backend running, set `UNINAV_TEST_URL=http://127.0.0.1:8001` and run
-`npm run test:e2e`. Playwright uses an installed Brave on this Windows machine,
-`UNINAV_BROWSER` if supplied, or its Chromium (`npx playwright install chromium`).
-The sample test runs when the configured API contains the original sample campus.
-The no-route and expired-session test starts a separate real FastAPI instance on
-an OS-assigned free port, using `../venv/Scripts/python.exe` and the backend's
-`tests.serve_campus`. It creates an isolated destination in a temporary database,
-then removes its process and files. `UNINAV_TEST_PYTHON` can override the interpreter.
-It never inserts test destinations into the running campus or sample database.
+Abre http://localhost:5173/app/. Para usar otro backend:
 
-Set `UNINAV_EVIDENCE_DIR` to a folder for the model revision under review, such as
-`docs/verification/c2`, to preserve older screenshots and walk reports. The
-presentation test can use `UNINAV_RENDERER=hardware` and `UNINAV_REQUIRE_FPS=1`
-to check the 30 FPS target against the actual GPU. Software rendering remains the
-default for functional tests. See [the C2 evidence](docs/verification/c2/README.md).
+```powershell
+$env:UNINAV_BACKEND_URL = 'http://127.0.0.1:8002'
+npm run dev
+```
 
-`node --experimental-strip-types tools/verify-model.ts` checks actual GLB anchors
-and clearance for every API edge. `tools/prepare-campus-graph.ts` is an offline
-geometry check and graph-drafting aid only; the app never imports it.
-Screenshots, the real API response and measured arrival coordinates are in
-[`docs/verification/`](docs/verification/).
+```bash
+UNINAV_BACKEND_URL=http://127.0.0.1:8002 npm run dev
+```
 
-## Layout
+`npm run typecheck` comprueba TypeScript. `npm run preview` sirve únicamente la interfaz compilada;
+para utilizar autenticación, datos y rutas necesitas el backend.
 
-- `src/app.ts`: session, search, route panel, loading and error states.
-- `src/campusTools.ts`, `src/assistant.ts`, `src/minimap.ts`: the "Your campus" panel, the catalogue assistant and the minimap.
-- `src/scene/avatarAsset.ts`: the pinned avatar and its clip selection.
-- `src/api/`: typed FastAPI client; no client pathfinder.
-- `src/scene/`: rendering, coordinates, validated navigation and GLB references.
-- `public/models/`: GLB, top capture and reference sidecar.
-- `model/`: Claude's editable Blender source and plan comparison, outside the build.
-- `tests/`, `tools/`: graph guards, browser rehearsal and model verification.
+## Modelos incluidos
+
+Vista Campus, pisos 0–5 y terraza como piso 6. La terraza solo tiene vista previa.
+Algunos recorridos pueden bloquearse al encontrarse con muros o diferencias de apoyo de los modelos C20.
+Las comprobaciones de hashes, referencias y colisiones permanecen activas.

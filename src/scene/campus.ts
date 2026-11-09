@@ -74,6 +74,7 @@ export class CampusScene {
   private viewFloor = 0;
   private avatarFloor = 0;
   private frustum = 35;
+  private fittedSize: { width: number; height: number } | null = null;
   private topView = false;
   private overview = false;
   private overviewError: string | null = null;
@@ -100,7 +101,7 @@ export class CampusScene {
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1;
-    this.renderer.domElement.setAttribute("aria-label", "Interactive 3D campus. W A S D or arrows to walk; drag to orbit.");
+    this.renderer.domElement.setAttribute("aria-label", "Campus 3D interactivo. Usa W A S D o las flechas para caminar; arrastra para girar la vista.");
     this.renderer.domElement.tabIndex = 0;
     container.appendChild(this.renderer.domElement);
     this.scene.background = new THREE.Color(0xe9eeeb);
@@ -112,6 +113,7 @@ export class CampusScene {
     this.controls.minZoom = 0.45;
     this.controls.maxZoom = 4;
     this.controls.screenSpacePanning = true;
+    this.controls.addEventListener("start", () => { this.fittedSize = null; });
     this.scene.add(new THREE.HemisphereLight(0xf7fcff, 0xb5b8a4, 1.5));
     const sun = new THREE.DirectionalLight(0xfff1dc, 2.2);
     sun.position.set(-15, 65, 30);
@@ -124,7 +126,7 @@ export class CampusScene {
     const fill = new THREE.DirectionalLight(0xddeeff, 0.7);
     fill.position.set(50, 20, -40);
     this.scene.add(fill);
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000), new THREE.MeshStandardMaterial({ color: 0xe9eeeb, roughness: 1 }));
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000), new THREE.ShadowMaterial({ opacity: .12 }));
     ground.rotation.x = -Math.PI / 2;
     ground.name = "presentation-ground";
     ground.position.y = -0.5;
@@ -140,19 +142,21 @@ export class CampusScene {
     this.scene.add(this.destinationRing);
     const options = { signal: this.abort.signal };
     window.addEventListener("keydown", (event) => {
-      if (event.target instanceof HTMLElement && (event.target.closest("input, select, textarea, button") || event.target.isContentEditable)) return;
+      if (document.querySelector("dialog[open]")) return;
       const key = event.key.toLowerCase();
+      if (key === "escape") { this.cancel(); return; }
+      if (event.target instanceof HTMLElement && (event.target.closest("input, select, textarea, button") || event.target.isContentEditable)) return;
       if (["w", "a", "s", "d", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(key)) {
         event.preventDefault();
         if (this.state !== "idle") this.cancel();
         this.keys.add(key);
       }
-      if (key === "escape") this.cancel();
     }, options);
     window.addEventListener("keyup", (event) => {
       if (this.keys.delete(event.key.toLowerCase())) this.emit();
     }, options);
     window.addEventListener("blur", () => this.keys.clear(), options);
+    window.addEventListener("focusin", () => this.keys.clear(), options);
     document.addEventListener("visibilitychange", () => {
       this.keys.clear();
       if (document.hidden && this.state === "walking") this.pause();
@@ -283,7 +287,7 @@ export class CampusScene {
       label.className = "place-label";
       label.textContent = place.display_name ?? place.name;
       label.type = "button";
-      label.title = `Navigate to ${place.display_name ?? place.name}`;
+      label.title = `Ir a ${place.display_name ?? place.name}`;
       label.addEventListener("click", () => this.events.select(place));
       this.container.appendChild(label);
       this.labels.set(place.id, label);
@@ -304,7 +308,7 @@ export class CampusScene {
     this.applyModels(fit);
     this.events.floor(floor);
     this.events.view(false,this.topView);
-    if (this.manifest) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
+    if (this.manifest) void this.syncModels().catch((error) => this.events.model("Modelo no disponible · mostrando las conexiones",false,String(error)));
   }
   setOrigin(place: Building): void {
     this.clearRoute();
@@ -333,11 +337,11 @@ export class CampusScene {
     const generation = this.routeGeneration;
     this.waypoints = points.map((point) => ({ ...point,position:point.position.clone() }));
     if (!this.waypoints.length) return;
-    if (this.avatar.position.distanceTo(this.waypoints[0].position) > 0.1 || this.avatarFloor !== this.waypoints[0].floor) throw new Error("Your position changed. Calculate the route again.");
+    if (this.avatar.position.distanceTo(this.waypoints[0].position) > 0.1 || this.avatarFloor !== this.waypoints[0].floor) throw new Error("Tu posición cambió. Vuelve a calcular la ruta.");
     await this.syncModels(true);
     if (generation !== this.routeGeneration) return;
     if (this.getCatalog()) for (const floor of this.routeFloors()) {
-      if (!this.models?.values().some((model) => model.entry.kind !== "floor-preview" && model.entry.floors.includes(floor))) throw new Error(`Floor ${floor} navigation is pending. This route cannot be followed yet.`);
+      if (!this.models?.values().some((model) => model.entry.kind !== "floor-preview" && model.entry.floors.includes(floor))) throw new Error(`La navegación del piso ${floor} está pendiente. Todavía no se puede seguir esta ruta.`);
     }
     for (let i = 1; i < this.waypoints.length; i++) {
       if (this.waypoints[i-1].position.distanceToSquared(this.waypoints[i].position)<0.000001) continue;
@@ -365,7 +369,7 @@ export class CampusScene {
   clearRoute(): void {
     this.routeGeneration++;
     disposeGroup(this.routeGroup); this.waypoints = []; this.index = 1; this.totalLength = 0; this.state = "idle";
-    if (this.manifest) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
+    if (this.manifest) void this.syncModels().catch((error) => this.events.model("Modelo no disponible · mostrando las conexiones",false,String(error)));
   }
   toggleLabels(): boolean { this.labelsVisible = !this.labelsVisible; return this.labelsVisible; }
   toggleReferences(): boolean { this.referenceGroup.visible = !this.referenceGroup.visible; return this.referenceGroup.visible; }
@@ -378,7 +382,7 @@ export class CampusScene {
     this.renderer.shadowMap.needsUpdate = true;
     this.resetView();
     this.events.view(false,top);
-    if (this.manifest) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
+    if (this.manifest) void this.syncModels().catch((error) => this.events.model("Modelo no disponible · mostrando las conexiones",false,String(error)));
   }
   hasOverview(): boolean {
     return !!this.getCatalog() && !!this.manifest?.models.some((entry) => entry.kind === "exterior" && entry.state === "ready") &&
@@ -391,15 +395,15 @@ export class CampusScene {
     this.applyModels(true); this.events.view(enabled,false);
     try {
       await this.syncModels(true);
-      if (this.overview && !this.models?.values().some((model) => model.entry.kind === "exterior")) throw new Error("Campus exterior is unavailable.");
+      if (this.overview && !this.models?.values().some((model) => model.entry.kind === "exterior")) throw new Error("El exterior del campus no está disponible.");
     } catch (error) {
       this.overviewError = error instanceof Error ? error.message : String(error);
       this.overview = false; this.applyModels(true); this.events.view(false,false);
       await this.syncModels();
-      this.events.model("Exterior unavailable · floor view",true,String(error));
+      this.events.model("Exterior no disponible · vista del piso",true,String(error));
     }
   }
-  zoom(amount: number): void { this.camera.zoom = THREE.MathUtils.clamp(this.camera.zoom * amount, 0.45, 4); this.camera.updateProjectionMatrix(); }
+  zoom(amount: number): void { this.fittedSize = null; this.camera.zoom = THREE.MathUtils.clamp(this.camera.zoom * amount, 0.45, 4); this.camera.updateProjectionMatrix(); }
 
   resetView(): void {
     const points = this.places.filter((place) => this.overview || place.floor === this.viewFloor).map(toScenePosition);
@@ -407,14 +411,16 @@ export class CampusScene {
     const bounds = points.length ? new THREE.Box3().setFromPoints(points).expandByScalar(5) : visibleModels.length ? new THREE.Box3() : new THREE.Box3(new THREE.Vector3(-20, 0, -15), new THREE.Vector3(20, 0, 15));
     for (const model of visibleModels) bounds.union(new THREE.Box3().setFromObject(model.root));
     const center = bounds.getCenter(new THREE.Vector3());
-    const size = bounds.getSize(new THREE.Vector3());
-    const aspect = this.container.clientWidth / Math.max(this.container.clientHeight, 1);
-    this.frustum = Math.max(18, size.z * 0.75, (size.x + size.z * (this.topView ? 0 : 0.35)) / aspect * 0.64);
-    if (this.overview) this.frustum = Math.max(this.frustum,size.y*0.8+size.z*0.55);
     this.camera.zoom = 1;
     this.controls.target.copy(center);
     this.camera.position.copy(center).add(this.topView ? new THREE.Vector3(0, 85, 0.001) : this.overview ? new THREE.Vector3(45, 50, 70) : new THREE.Vector3(24, 55, 42));
     this.controls.update();
+    this.camera.updateMatrixWorld(true);
+    const projected = new THREE.Box3();
+    for (const x of [bounds.min.x,bounds.max.x]) for (const y of [bounds.min.y,bounds.max.y]) for (const z of [bounds.min.z,bounds.max.z])
+      projected.expandByPoint(new THREE.Vector3(x,y,z).applyMatrix4(this.camera.matrixWorldInverse));
+    const size = projected.getSize(new THREE.Vector3());
+    this.fittedSize = { width: size.x, height: size.y };
     this.resize();
   }
   async loadModel(): Promise<void> {
@@ -428,10 +434,10 @@ export class CampusScene {
     this.supports = [];
     this.outdoorSupports=[];
     this.setFloor(this.viewFloor, false);
-    this.events.model("Loading campus model…", false);
+    this.events.model("Cargando el modelo del campus…", false);
     const response = await fetch(`${import.meta.env.BASE_URL}models/campus-manifest.json`, { cache:"no-cache" });
-    if (response.status === 404) { this.events.model("Campus model manifest pending",false); return; }
-    if (!response.ok) throw new Error("Could not read the campus model manifest.");
+    if (response.status === 404) { this.events.model("Catálogo del modelo pendiente",false); return; }
+    if (!response.ok) throw new Error("No se pudo leer el catálogo del modelo.");
     const selected=await selectModelProfile(parseManifest(await response.json()),this.places,this.paths);
     this.manifest=selected.manifest;this.profile=selected.profile;this.catalogMatched=selected.recognized;
     if(selected.error){this.applyModels(false);throw new Error(selected.error);}
@@ -514,14 +520,14 @@ export class CampusScene {
     const required = requiredModels(manifest,this.viewFloor,this.avatarFloor,movementFloors,this.overview)
       .filter((entry) => this.getCatalog() || (entry.kind !== "floor-preview" && entry.kind !== "exterior"));
     const missing = required.some((entry) => !store.values().some((model) => model.entry.id === entry.id));
-    if (missing) this.events.model("Loading campus model…",false);
+    if (missing) this.events.model("Cargando el modelo del campus…",false);
     const result = await store.sync(required.map((entry) => entry.id));
     if (store !== this.models || !result.current) return;
     this.renderer.shadowMap.needsUpdate = true;
     this.applyModels(missing);
     if (result.errors.length) {
       if (strict) throw result.errors[0];
-      this.events.model(this.floorPresentation(this.viewFloor) === "preview" ? "Floor preview unavailable · choose another floor" : "Model unavailable · using graph preview",false,String(result.errors[0]));
+      this.events.model(this.floorPresentation(this.viewFloor) === "preview" ? "Vista previa no disponible · elige otro piso" : "Modelo no disponible · mostrando las conexiones",false,String(result.errors[0]));
     }
   }
   private applyModels(fit: boolean): void {
@@ -553,12 +559,12 @@ export class CampusScene {
     this.routeGroup.visible = !this.overview && !preview;
     this.avatar.visible = this.places.length > 0 && this.avatarFloor === this.viewFloor && !this.overview && !preview;
     this.destinationRing.visible = this.destinationFloor === this.viewFloor && !this.overview;
-    if (this.overview && exteriorModels.length) this.events.model(`Campus overview · First floor: ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true,"Exterior follows the documented first-floor frame. Block identities and facade details retain their documented approximations.");
-    else if (floorModels.length && this.overviewError) this.events.model("Exterior unavailable · floor view",true,this.overviewError);
-    else if (preview) this.events.model(`Preview only · ${floorModels.reduce((sum,model) => sum+model.references,0)} structural references aligned`,true,"Inspection only. Routes and vertical connections are pending. The model flattens documented half-levels.");
-    else if (floorModels.length) this.events.model(`${floorModels.map((model) => model.entry.label).join(" + ")} · ${floorModels.reduce((sum,model) => sum+model.references,0)} references aligned`,true,
-      this.manifest?.stairCrossings?.length ? "Some documented level changes are flattened in this model. Avoid stairs excludes their mapped connections.":undefined);
-    else if (this.manifest) this.events.model("Floor model pending",false);
+    if (this.overview && exteriorModels.length) this.events.model(`Vista del campus · Piso 1: ${floorModels.reduce((sum,model) => sum+model.references,0)} referencias alineadas`,true,"El exterior sigue el marco documentado del primer piso. Los bloques y las fachadas conservan las aproximaciones documentadas.");
+    else if (floorModels.length && this.overviewError) this.events.model("Exterior no disponible · vista del piso",true,this.overviewError);
+    else if (preview) this.events.model(`Solo vista previa · ${floorModels.reduce((sum,model) => sum+model.references,0)} referencias estructurales alineadas`,true,"Solo para explorar. Las rutas y conexiones verticales están pendientes. El modelo simplifica los medios niveles documentados.");
+    else if (floorModels.length) this.events.model(`${floorModels.map((model) => model.entry.label).join(" + ")} · ${floorModels.reduce((sum,model) => sum+model.references,0)} referencias alineadas`,true,
+      this.manifest?.stairCrossings?.length ? "El modelo simplifica algunos cambios de nivel documentados. Evitar escaleras excluye sus conexiones registradas.":undefined);
+    else if (this.manifest) this.events.model("Modelo de este piso pendiente",false);
     this.events.resources({ overview:this.overview,preview,loaded:loaded.map((model) => model.entry.id),visible:active.map((model) => model.entry.id),colliders:this.colliders.length,profile:this.profile });
     if (fit) this.resetView();
   }
@@ -624,7 +630,7 @@ export class CampusScene {
         if (step.floor!==this.avatarFloor) { this.avatarFloor=step.floor; this.setFloor(step.floor,false,true); }
       }
     }
-    if (this.manifest && this.movementFloors().join(",")!==this.movementModelKey) void this.syncModels().catch((error) => this.events.model("Model unavailable · using graph preview",false,String(error)));
+    if (this.manifest && this.movementFloors().join(",")!==this.movementModelKey) void this.syncModels().catch((error) => this.events.model("Modelo no disponible · mostrando las conexiones",false,String(error)));
     this.animateAvatar(moved, delta);
     this.controls.update();
     const projection = new THREE.Vector3();
@@ -667,6 +673,7 @@ export class CampusScene {
     this.labelSizes.clear();
     const width = Math.max(this.container.clientWidth, 1), height = Math.max(this.container.clientHeight, 1);
     const aspect = width / height;
+    if (this.fittedSize) this.frustum = Math.max(12, this.fittedSize.height / 2, this.fittedSize.width / (2 * aspect)) * 1.16;
     Object.assign(this.camera, { left: -this.frustum * aspect, right: this.frustum * aspect, top: this.frustum, bottom: -this.frustum });
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);

@@ -1,67 +1,62 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#163e36" />
-    <meta name="description" content="Explore your campus in 3D and find your way with UniNav." />
-    <title>UniNav · Find your way</title>
+    <meta name="description" content="Explora tu universidad en 3D y encuentra cómo llegar con UniNav." />
+    <title>UniNav · Tu campus, a tu ritmo</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23163e36'/%3E%3Cpath d='M11 12v11a9 9 0 0018 0V12M15 18l5-5 5 5' fill='none' stroke='%23c9edb6' stroke-width='3'/%3E%3C/svg%3E" />
   </head>
-  <body>
-    <header class="header">
-      <a class="brand" href="/app/" aria-label="UniNav home"><span class="brand-mark">u<span>↗</span></span><span>UniNav<span class="brand-dot">.</span></span></a>
-      <div class="header-divider"></div><span class="header-subtitle">A little direction. A world to discover.</span>
-      <div class="header-right"><span class="live-badge"><i></i> Campus explorer</span><button id="open-login" class="button button-dark" type="button">Sign in <span>↗</span></button><div id="session" class="user-session" hidden><span id="user-initial" class="user-initial"></span><span id="session-user"></span><button id="logout" class="text-button" type="button">Sign out</button></div></div>
-    </header>
+  <body data-panel="none">
+    <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M5 7v7a5 5 0 0 0 5 5h7M9 5h5a5 5 0 0 1 5 5v3m-3-3 3 3 3-3"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="i-fit" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Zm6-2v16m6-14v16"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    </defs></svg>
+    <a class="skip-link" href="#scene">Ir al campus 3D</a>
     <main class="workspace">
-      <aside class="sidebar">
-        <div class="intro"><span class="eyebrow">YOUR CAMPUS, CONNECTED</span><h1>Find your<br />next stop<span>.</span></h1><p>Less searching.<br />More getting where you belong.</p></div>
-        <section class="planner" aria-label="Plan your route">
-          <div class="section-heading"><h2>Where are you headed?</h2><span class="tiny-badge">01</span></div>
-          <label class="field-label" for="origin">START POINT</label><div class="select-wrap origin-wrap"><span class="input-symbol">◉</span><select id="origin" aria-label="Start point" disabled></select></div>
-          <p class="field-hint">Changing the start point places your avatar there.</p>
-          <label class="field-label" for="search">FIND A PLACE</label><div class="search-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Room, service or faculty…" autocomplete="off" /></div>
-          <div class="filter-row"><label class="sr-only" for="destination-floor">Destination floor</label><select id="destination-floor"><option value="all">All floors</option></select><span id="place-count" class="field-hint"></span></div>
-          <div id="place-list" class="place-list" aria-label="Destinations"></div>
-          <div id="destination-preview" class="destination-preview" hidden><span class="destination-icon">↗</span><div><span class="field-label">YOUR DESTINATION</span><strong id="destination-name"></strong><span id="destination-meta" class="field-hint"></span></div></div>
-          <label class="checkbox"><input id="avoid-stairs" type="checkbox" /><span>Avoid stairs</span><span class="checkbox-note">Based on mapped paths</span></label>
-          <button id="calculate" class="button button-primary" type="button" disabled>Find my route <span>↗</span></button>
-          <p id="route-error" class="error" role="alert" hidden></p>
-        </section>
-        <section id="route-card" class="route-card" aria-label="Your route" hidden>
-          <div class="section-heading"><span class="eyebrow">YOUR ROUTE</span><span id="route-distance" class="route-distance"></span></div>
-          <h2 id="route-title"></h2><p id="route-summary" class="field-hint"></p>
-          <progress id="route-progress" max="1" value="0" aria-label="Route progress"></progress>
-          <div class="route-actions"><button id="follow" class="button button-dark" type="button">Start walking →</button><button id="cancel" class="button button-outline" type="button">Cancel</button></div>
-          <details><summary>Step-by-step directions</summary><ol id="route-steps" class="steps"></ol></details>
-        </section>
-        <section id="campus-tools" class="campus-tools" aria-label="Your campus">
-          <div class="section-heading"><h2>Your campus</h2><span class="nav-history"><button id="nav-back" type="button" aria-label="Previous visited place" disabled>←</button><button id="nav-forward" type="button" aria-label="Next visited place" disabled>→</button></span></div>
-          <div class="tool-tabs" role="tablist" aria-label="Campus functions"></div>
-          <div class="tool-body"></div>
-        </section>
-        <div class="sidebar-note"><span>⌁</span><p>A familiar place.<br /><strong>A new perspective.</strong></p><span class="note-grid" aria-hidden="true">✳</span></div>
-      </aside>
-      <section class="viewport" aria-label="Campus explorer">
-        <div id="scene"></div>
-        <div class="map-heading"><span class="eyebrow">EXPLORE IN 3D</span><h2 id="floor-title">Ground floor</h2><span id="model-status" class="model-status">Connecting to campus…</span></div>
-        <div class="view-switch" aria-label="Camera view"><button id="campus-overview" type="button" aria-pressed="false" hidden>Campus</button><button id="isometric" class="active" type="button" aria-pressed="true">3D floor</button><button id="top-view" type="button" aria-pressed="false">Top floor</button></div>
-        <div id="map-loading" class="map-message" role="status"><span class="loading-ring"></span><h3>Finding our bearings…</h3><p>Connecting to your campus.</p><button id="retry" class="button button-dark" type="button" hidden>Try again</button></div>
-        <svg id="minimap" class="minimap" role="img" aria-label="Minimap of the visible floor"><title>Minimap · click a place to choose it</title></svg>
-        <div class="floor-control"><label class="eyebrow" for="floor">FLOOR</label><select id="floor" aria-label="Visible floor"></select></div>
-        <div class="map-tools"><button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button><button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button><span></span><button id="reset-view" type="button" aria-label="Fit campus" title="Fit campus">⌖</button><button id="labels" type="button" aria-label="Toggle place labels" aria-pressed="true" title="Place labels">Aa</button><button id="references" type="button" aria-label="Toggle reference points" aria-pressed="false" title="Model reference points" hidden>△</button><button id="export" type="button" aria-label="Export view" title="Export view">↧</button></div>
-        <div class="compass" title="Plan +Y axis. This drawing is not oriented to geographic north."><span>+Y</span><svg id="plan-axis" viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 31 34 22 27 13 34Z" fill="#315e50"/><path d="M22 5v22l-9 7Z" fill="#a1b3a3"/></svg></div>
-        <div class="map-bottom"><div class="map-legend"><span><i class="legend-avatar"></i>You</span><span><i class="legend-path"></i>Walkway</span><span><i class="legend-route"></i>Your route</span></div><span class="scale-label">METRES · 1:1 WORLD SCALE</span></div>
-        <div class="walk-status"><span class="avatar-status-icon">↟</span><div><strong id="travel-status" role="status">Ready to explore</strong><span id="travel-detail">W A S D to walk · Drag to orbit · Scroll to zoom</span></div><span class="keycap">W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span></div>
+      <section class="viewport" aria-label="Explorador del campus">
+        <div id="scene" tabindex="-1"></div>
+        <div id="map-loading" class="map-message" role="status"><span class="loading-ring"></span><h3>Preparando tu campus</h3><p>En un momento podrás explorar.</p><button id="retry" class="button button-dark" type="button" hidden>Volver a intentar</button></div>
+        <div class="map-heading"><span class="eyebrow">TU UNIVERSIDAD, MÁS CERCA</span><h2 id="floor-title">Campus</h2><span class="scene-hint">Arrastra para explorar · Desliza para acercarte</span></div>
+        <div class="map-tools" aria-label="Controles del visor">
+          <button id="zoom-in" type="button" aria-label="Acercar" title="Acercar">+</button><button id="zoom-out" type="button" aria-label="Alejar" title="Alejar">−</button><span></span>
+          <button id="reset-view" type="button" aria-label="Encuadrar campus" title="Encuadrar campus"><svg class="icon"><use href="#i-fit"/></svg></button>
+          <button id="minimap-toggle" type="button" aria-label="Mostrar minimapa" aria-controls="minimap-wrap" aria-expanded="false" title="Minimapa"><svg class="icon"><use href="#i-map"/></svg></button>
+          <details class="more-tools"><summary aria-label="Más controles" title="Más controles">···</summary><div class="more-tools-menu"><button id="labels" type="button" aria-pressed="true">Etiquetas</button><button id="references" type="button" aria-pressed="false" hidden>Referencias</button><button id="export" type="button">Guardar imagen</button><button id="focus-toggle" type="button">Solo el campus</button></div></details>
+        </div>
+        <div class="compass" title="Eje +Y del plano; no representa el norte geográfico"><svg id="plan-axis" viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 31 34 22 27 13 34Z" fill="#315e50"/><path d="M22 5v22l-9 7Z" fill="#a1b3a3"/></svg><span>+Y</span></div>
+        <section id="minimap-wrap" class="minimap-wrap floating-card" aria-label="Mapa del piso" hidden><div class="minimap-heading"><strong>Tu ubicación</strong><button id="minimap-close" class="icon-button" type="button" aria-label="Cerrar minimapa"><svg class="icon"><use href="#i-close"/></svg></button></div><svg id="minimap" class="minimap" role="img" aria-label="Minimapa del piso visible"><title>Selecciona un lugar en el minimapa</title></svg><div class="map-legend"><span><i class="legend-avatar"></i>Tú</span><span><i class="legend-route"></i>Ruta</span></div></section>
+        <div class="view-controls"><div class="floor-control floating-card"><svg class="icon"><use href="#i-layers"/></svg><label class="sr-only" for="floor">Piso visible</label><select id="floor" aria-label="Piso visible"></select></div><div class="view-switch floating-card" aria-label="Vista del campus"><button id="campus-overview" type="button" aria-pressed="false" hidden>Campus</button><button id="isometric" class="active" type="button" aria-pressed="true">Piso 3D</button><button id="top-view" type="button" aria-pressed="false">Planta</button></div></div>
       </section>
+      <header class="explorer-header">
+        <a class="brand floating-card" href="/app/" aria-label="UniNav, inicio"><span class="brand-mark">u<span>↗</span></span><span>UniNav<span class="brand-dot">.</span><small>EXPLORA TU CAMPUS</small></span></a>
+        <div class="search-bar floating-card" role="search"><svg class="icon"><use href="#i-search"/></svg><label class="sr-only" for="search">Buscar un lugar</label><input id="search" type="search" placeholder="¿A dónde quieres ir?" autocomplete="off" aria-controls="place-list" /><button id="search-clear" class="icon-button" type="button" aria-label="Limpiar búsqueda" hidden><svg class="icon"><use href="#i-close"/></svg></button><kbd>/</kbd></div>
+        <div class="account-control floating-card"><button id="open-login" type="button" class="account-button"><svg class="icon"><use href="#i-user"/></svg><span>Ingresar</span></button><details id="session" class="user-session" hidden><summary aria-label="Mi cuenta"><span id="user-initial" class="user-initial"></span><span id="session-user"></span></summary><div class="account-menu"><button id="logout" class="text-button" type="button">Cerrar sesión</button></div></details></div>
+      </header>
+      <aside id="campus-panel" class="explorer-panel floating-card" aria-labelledby="panel-title" hidden>
+        <div class="panel-header"><button id="panel-expand" type="button" class="sheet-handle" aria-label="Expandir panel" aria-expanded="false"><span></span></button><div><span id="panel-kicker" class="eyebrow">DESCUBRE UNINAV</span><h1 id="panel-title">Encuentra tu lugar</h1></div><button id="panel-close" class="icon-button" type="button" aria-label="Cerrar panel"><svg class="icon"><use href="#i-close"/></svg></button></div>
+        <div class="panel-scroll">
+          <section id="planner" class="planner" aria-label="Buscar y preparar ruta">
+            <div id="places-content"><p class="panel-description">Aulas, servicios y espacios de tu universidad.</p><div class="filter-row"><label class="sr-only" for="destination-floor">Filtrar por piso</label><select id="destination-floor"><option value="all">Todos los pisos</option></select><span id="place-count" class="field-hint"></span></div><div id="place-list" class="place-list" aria-label="Destinos"></div></div>
+            <div id="route-options" hidden><p class="panel-description">Elige desde dónde sales. Nosotros te acompañamos.</p><label class="field-label" for="origin">PUNTO DE PARTIDA</label><div class="select-wrap"><span class="input-symbol">◉</span><select id="origin" aria-label="Punto de partida" disabled></select></div><p class="field-hint origin-hint">Tu personaje se situará en el punto que elijas.</p><div class="route-connector" aria-hidden="true">⋮</div><div id="destination-preview" class="destination-preview" hidden><span class="destination-icon">↗</span><div><span class="field-label">TU DESTINO</span><strong id="destination-name"></strong><span id="destination-meta" class="field-hint"></span></div></div><label class="checkbox"><input id="avoid-stairs" type="checkbox"/><span>Evitar escaleras</span><span class="checkbox-note">Según rutas verificadas</span></label><p id="route-error" class="error" role="alert" hidden></p><button id="active-route-return" class="button button-outline" type="button" hidden>Volver al recorrido →</button></div>
+          </section>
+          <section id="campus-tools" class="campus-tools" aria-label="Tu campus" hidden><div class="section-heading"><h2>Todo, en un lugar</h2><span class="nav-history"><button id="nav-back" type="button" aria-label="Lugar anterior" disabled>←</button><button id="nav-forward" type="button" aria-label="Lugar siguiente" disabled>→</button></span></div><div class="tool-tabs" role="tablist" aria-label="Funciones del campus"></div><div class="tool-body"></div></section>
+          <details class="service-details"><summary>Estado y ayuda</summary><p id="api-status">Conectando con tu campus…</p><p id="model-status" class="model-status">Preparando el visor…</p><a href="/docs" target="_blank" rel="noopener">Documentación de la API ↗</a></details>
+        </div>
+        <div id="panel-route-actions" class="panel-route-actions" hidden><button id="calculate" class="button button-primary" type="button" disabled>Encontrar mi ruta <span>↗</span></button></div>
+      </aside>
+      <section id="route-card" class="route-card floating-card" aria-label="Tu recorrido" hidden><div class="section-heading"><span class="eyebrow">TU RECORRIDO</span><span id="route-distance" class="route-distance"></span><button id="journey-collapse" class="icon-button" type="button" aria-expanded="true" aria-label="Reducir tarjeta de recorrido">⌄</button></div><h2 id="route-title"></h2><div class="walk-status"><span class="avatar-status-icon">↟</span><div><strong id="travel-status" role="status">Listo para explorar</strong><span id="travel-detail">Elige un lugar para comenzar.</span></div></div><div class="journey-detail"><p id="route-summary" class="field-hint"></p><progress id="route-progress" max="1" value="0" aria-label="Progreso del recorrido"></progress></div><div class="route-actions"><button id="follow" class="button button-dark" type="button">Comenzar →</button><button id="cancel" class="button button-outline" type="button">Finalizar</button></div><details class="journey-detail"><summary>Indicaciones paso a paso</summary><ol id="route-steps" class="steps"></ol></details></section>
+      <nav class="explorer-dock floating-card" aria-label="Explorar UniNav"><button id="open-places" type="button" aria-controls="campus-panel" aria-expanded="false"><svg class="icon"><use href="#i-search"/></svg><span>Explorar</span></button><button id="open-directions" type="button" aria-controls="campus-panel" aria-expanded="false"><svg class="icon"><use href="#i-route"/></svg><span>Mi ruta</span><i id="route-dot" hidden></i></button><button id="open-tools" type="button" aria-controls="campus-panel" aria-expanded="false"><svg class="icon"><use href="#i-grid"/></svg><span>Tu campus</span></button></nav>
+      <button id="exit-focus" class="button button-dark" type="button" hidden>Mostrar controles <span>Esc</span></button>
     </main>
-    <footer class="footer"><span id="api-status"><i class="status-dot"></i> Connecting to campus</span><span>UNINAV <span class="footer-separator">/</span> MADE FOR YOUR EVERYDAY JOURNEY</span><a href="/docs" target="_blank" rel="noopener">API docs ↗</a></footer>
-    <dialog id="auth-dialog" aria-labelledby="auth-title">
-      <button id="close-login" class="dialog-close" type="button" aria-label="Close sign in">×</button><span class="eyebrow">WELCOME TO UNINAV</span><h2 id="auth-title">Your campus awaits<span>.</span></h2><p id="auth-description">Sign in to find a route and start exploring.</p>
-      <form id="login-form" class="auth-form"><label>Username<input name="username" autocomplete="username" minlength="3" maxlength="50" pattern="[A-Za-z0-9_.-]+" required /></label><label>Password<input name="password" type="password" autocomplete="current-password" maxlength="72" required /></label><p id="login-error" class="error" role="alert" hidden></p><button id="login-submit" class="button button-primary" type="submit">Sign in →</button></form>
-      <button id="auth-toggle" class="text-button" type="button">New here? Create an account</button>
-    </dialog>
+    <dialog id="auth-dialog" aria-labelledby="auth-title"><button id="close-login" class="dialog-close icon-button" type="button" aria-label="Cerrar inicio de sesión"><svg class="icon"><use href="#i-close"/></svg></button><span class="eyebrow">BIENVENIDO A UNINAV</span><h2 id="auth-title">Tu campus te espera.</h2><p id="auth-description">Ingresa para guardar tus recorridos y encontrar tu ruta.</p><form id="login-form" class="auth-form"><label>Usuario<input name="username" autocomplete="username" minlength="3" maxlength="50" pattern="[A-Za-z0-9_.-]+" required/></label><label>Contraseña<input name="password" type="password" autocomplete="current-password" maxlength="72" required/></label><p id="login-error" class="error" role="alert" hidden></p><button id="login-submit" class="button button-primary" type="submit">Ingresar →</button></form><button id="auth-toggle" class="text-button" type="button">¿Primera vez? Crea una cuenta</button></dialog>
     <script type="module" src="/src/app.ts"></script>
   </body>
 </html>

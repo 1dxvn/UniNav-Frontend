@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "label": "UCC piso 6 · terraza y canchas (vista previa)",
+  "floor": 6,
+  "model": "floor-6.glb",
+  "alignment": "structural",
+  "transform": {
+    "scale": 1,
+    "rotationYDegrees": 0,
+    "translation": [
+      0,
+      20.37,
+      0
+    ]
+  },
+  "references": [
+    {
+      "buildingName": "P6_REF_1_Pilastra_21_62",
+      "nodeName": "P6_REF_1_Pilastra_21_62",
+      "planPosition": [
+        21.223344,
+        62.340593
+      ],
+      "position": [
+        21.223344,
+        0,
+        -62.340593
+      ]
+    },
+    {
+      "buildingName": "P6_REF_2_Pilastra_30_62",
+      "nodeName": "P6_REF_2_Pilastra_30_62",
+      "planPosition": [
+        30.203344,
+        62.368093
+      ],
+      "position": [
+        30.203344,
+        0,
+        -62.368093
+      ]
+    },
+    {
+      "buildingName": "P6_REF_3_Pilastra_30_56",
+      "nodeName": "P6_REF_3_Pilastra_30_56",
+      "planPosition": [
+        30.203344,
+        56.145593
+      ],
+      "position": [
+        30.203344,
+        0,
+        -56.145593
+      ]
+    }
+  ]
+}

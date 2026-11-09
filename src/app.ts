@@ -9,6 +9,9 @@ import { toScenePosition, WALK_SPEED } from "./scene/coordinates.ts";
 import { activeInstruction,routeInstructions,type RouteInstruction } from "./routeInstructions.ts";
 import { Minimap } from "./minimap.ts";
 import { CampusTools } from "./campusTools.ts";
+import { ExplorerShell } from "./explorerShell.ts";
+import { askCampus, normalize } from "./assistant.ts";
+import {placeTypeLabel} from './placeLabels.ts';
 
 function element<T extends HTMLElement>(id: string): T {
   const found = document.getElementById(id);
@@ -38,22 +41,31 @@ let directions:RouteInstruction[]=[];
 let travelState: TravelState = "idle";
 let revision = 0, loading = false, signedIn = false, registerMode = false, pendingNavigation = false;
 let scene: CampusScene | null = null;
-let overviewVisible = false;
 let role: string | null = null;
+let loginReturnFocus: HTMLElement | null = null;
 const minimap = new Minimap(document.getElementById("minimap") as unknown as SVGSVGElement, (place) => selectDestination(place));
+const shell = new ExplorerShell(() => minimap.draw());
+const sessionEvents = new AbortController();
+window.addEventListener('uninav:session-expired', (event) => {
+  showSession(null);
+  pendingNavigation = (event as CustomEvent<{path:string}>).detail.path === '/routes/calculate';
+  openLogin();
+}, {signal:sessionEvents.signal});
 const tools = new CampusTools(element("campus-tools"), element<HTMLButtonElement>("nav-back"), element<HTMLButtonElement>("nav-forward"), {
   places: () => buildings, destination: () => destination, floorName: (level) => floorName(level),
   select: (place) => selectDestination(place),
   routeTo: async (place) => { selectDestination(place); await calculateRoute(); },
   signedIn: () => signedIn, admin: () => role === "admin", openLogin: () => openLogin(),
+  sessionExpired: () => showSession(null),
 });
 
 function showError(target: HTMLElement, error: unknown): void {
   target.textContent = error instanceof Error ? error.message : String(error);
   target.hidden = false;
+  if (target === ui.routeError) shell.open("directions");
 }
 function placeName(place: Building): string { return place.display_name ?? place.name; }
-function floorName(level: number): string { return floors.find((floor) => floor.level === level)?.name ?? `Floor ${level}`; }
+function floorName(level: number): string { return `Piso ${level}`; }
 function clearRoute(): void {
   revision++;
   currentRoute = null;
@@ -62,14 +74,17 @@ function clearRoute(): void {
   minimap.setRoute(null);
   ui.card.hidden = true;
   ui.routeError.hidden = true;
+  shell.routeActive(false);
 }
 function renderPlaces(): void {
-  const query = ui.search.value.trim().toLowerCase();
+  const query = normalize(ui.search.value);
   const selectedFloor = ui.destinationFloor.value;
+  const matches = query ? askCampus(ui.search.value, buildings, buildings.length).matches.map(match => match.place.id) : [];
   const places = buildings.filter((place) => !["waypoint", "junction", "corridor", "reference"].includes(place.building_type ?? "") &&
     (selectedFloor === "all" || place.floor === Number(selectedFloor)) &&
-    `${placeName(place)} ${place.name} ${place.block_code ?? ""} ${place.faculty ?? ""} ${place.building_type ?? ""} ${floorName(place.floor)}`.toLowerCase().includes(query));
-  ui.count.textContent = `${places.length} places`;
+    (!query || matches.includes(place.id) || normalize(`${placeName(place)} ${place.name} ${place.block_code ?? ""} ${place.faculty ?? ""} ${place.building_type ?? ""} ${floorName(place.floor)}`).includes(query)));
+  if (query) places.sort((a,b) => { const rank=(id:number) => matches.includes(id) ? matches.indexOf(id) : matches.length; return rank(a.id)-rank(b.id); });
+  ui.count.textContent = `${places.length} ${places.length === 1 ? "lugar" : "lugares"}`;
   ui.places.replaceChildren();
   for (const place of places) {
     const button = document.createElement("button");
@@ -81,7 +96,7 @@ function renderPlaces(): void {
     icon.textContent = place.building_type === "stairs" ? "↟" : place.building_type === "elevator" ? "↕" : "⌑";
     const text = document.createElement("span"), title = document.createElement("strong"), meta = document.createElement("small");
     title.textContent = placeName(place);
-    meta.textContent = `${place.block_code ? `Block ${place.block_code} · ` : ""}${floorName(place.floor)} · ${(place.building_type ?? "place").replaceAll("_", " ")}`;
+    meta.textContent = `${place.block_code ? `Bloque ${place.block_code} · ` : ""}${floorName(place.floor)} · ${placeTypeLabel(place.building_type)}`;
     text.append(title, meta);
     const arrow = document.createElement("span"); arrow.className = "place-arrow"; arrow.textContent = "↗";
     button.append(icon, text, arrow);
@@ -90,11 +105,11 @@ function renderPlaces(): void {
   }
   if (!places.length) {
     const empty = document.createElement("p"); empty.className = "empty-state";
-    empty.textContent = buildings.length ? "No matching places. Try another name or floor." : "No campus places are available yet.";
+    empty.textContent = buildings.length ? "No encontramos ese lugar. Prueba otro nombre o piso." : "Todavía no hay lugares disponibles.";
     ui.places.appendChild(empty);
   }
 }
-function selectDestination(place: Building): void {
+function selectDestination(place: Building, reveal = true): void {
   clearRoute();
   destination = place;
   scene?.setDestination(place);
@@ -102,24 +117,30 @@ function selectDestination(place: Building): void {
   minimap.setDestination(place);
   ui.preview.hidden = false;
   ui.destinationName.textContent = placeName(place);
-  ui.destinationMeta.textContent = `${place.block_code ? `Block ${place.block_code} · ` : ""}${floorName(place.floor)} · ${place.faculty ?? "Campus"}`;
+  ui.destinationMeta.textContent = `${place.block_code ? `Bloque ${place.block_code} · ` : ""}${floorName(place.floor)} · ${place.faculty ?? "Campus"}`;
   ui.calculate.disabled = false;
   renderPlaces();
+  tools.destinationChanged();
+  if (reveal) shell.selected();
 }
 function showSession(user: User | null): void {
   const username = user?.username ?? null;
+  const changed = signedIn !== (username !== null) || role !== (user?.role ?? null) || ui.username.textContent !== (username ?? '');
   signedIn = username !== null;
   role = user?.role ?? null;
   ui.openLogin.hidden = signedIn;
   ui.session.hidden = !signedIn;
   ui.username.textContent = username ?? "";
   ui.initial.textContent = username?.slice(0, 1).toUpperCase() ?? "";
-  if (!signedIn) clearRoute();
-  void tools.refresh();
+  if (!signedIn && changed) clearRoute();
+  if (changed) void tools.refresh();
 }
-function openLogin(): void {
+function openLogin(trigger?: HTMLElement): void {
   ui.loginError.hidden = true;
-  if (!ui.dialog.open) ui.dialog.showModal();
+  if (!ui.dialog.open) {
+    loginReturnFocus = trigger ?? (document.activeElement instanceof HTMLElement ? document.activeElement : ui.openLogin);
+    ui.dialog.showModal();
+  }
 }
 function updateTravel(update: TravelUpdate): void {
   const changed = travelState !== update.state;
@@ -129,22 +150,26 @@ function updateTravel(update: TravelUpdate): void {
   const activeStep=activeInstruction(directions,update.waypoint),cue=directions[activeStep]?.text;
   const inspectingPreview = ui.modelStatus.dataset.preview === "true";
   const title: Record<TravelState, string> = {
-    idle: inspectingPreview ? "Inspecting this floor" : "Ready to explore", ready: "Your route is ready", walking: "On your way", paused: "Taking a pause",
-    arrived: `You've arrived${destination ? ` at ${placeName(destination)}` : ""}`, blocked: "The walkway is blocked",
+    idle: inspectingPreview ? "Explorando este piso" : "Listo para explorar", ready: "Tu ruta está lista", walking: "En camino", paused: "Recorrido en pausa",
+    arrived: `Llegaste${destination ? ` a ${placeName(destination)}` : ""}`, blocked: "El paso está bloqueado",
   };
   if (changed || ui.travelStatus.textContent !== title[update.state]) ui.travelStatus.textContent = title[update.state];
   ui.travelStatus.dataset.state = update.state;
   document.querySelectorAll<HTMLElement>(".walk-status .keycap").forEach((key) => { key.hidden = inspectingPreview; });
-  ui.travelDetail.textContent = update.state === "idle" ? (inspectingPreview ? "View only · routes on this floor are pending." : overviewVisible ? "Choose a destination or open a floor to start walking." : "W A S D to walk · Drag to orbit · Scroll to zoom") :
-    update.state === "blocked" ? "Model geometry obstructs this route. Check the corridor alignment." :
-    update.state === "arrived" ? `${floorName(update.floor)} · Choose another place to keep exploring.` :
-    `${cue ? `${cue} · `:""}${update.remaining.toFixed(1)} m remaining · ${floorName(update.floor)} · Esc to cancel`;
+  ui.travelDetail.textContent = update.state === "idle" ? (inspectingPreview ? "Vista previa; las rutas de este piso aún no están habilitadas." : "Elige un destino para comenzar.") :
+    update.state === "blocked" ? "La geometría impide continuar. Puedes elegir otra ruta." :
+    update.state === "arrived" ? `${floorName(update.floor)} · Elige otro lugar para seguir explorando.` :
+    `${cue ? `${cue} · `:""}${update.remaining.toFixed(1)} m restantes · ${floorName(update.floor)}`;
   ui.progress.value = update.progress;
-  ui.follow.textContent = update.state === "walking" ? "Pause walking Ⅱ" : update.state === "paused" ? "Resume walking →" : update.state === "arrived" ? "Destination reached ✓" : "Start walking →";
+  ui.follow.textContent = update.state === "walking" ? "Pausar Ⅱ" : update.state === "paused" ? "Continuar →" : update.state === "arrived" ? "Llegaste ✓" : "Comenzar →";
+  if (changed && update.state === "walking") shell.walking();
   ui.follow.disabled = ["idle", "arrived", "blocked"].includes(update.state);
   element<HTMLButtonElement>("campus-overview").disabled = ["ready","walking","paused"].includes(update.state);
-  if (update.state === "idle" && currentRoute) { currentRoute = null; ui.card.hidden = true; revision++; }
-  if (update.state === "blocked" && changed) showError(ui.routeError, "The model blocks the calculated corridor. Cancel and check the reference points or graph.");
+  if (update.state === "idle" && currentRoute) {
+    currentRoute = null; directions = []; minimap.setRoute(null);
+    ui.card.hidden = true; shell.routeActive(false); revision++;
+  }
+  if (update.state === "blocked" && changed) showError(ui.routeError, "No se puede seguir esta ruta con la geometría disponible. Finaliza el recorrido y elige otra ruta.");
   Array.from(ui.steps.children).forEach((item,index)=>{
     const current=index===activeStep && ["walking","paused"].includes(update.state);
     item.classList.toggle("current",current);
@@ -170,8 +195,8 @@ try {
     },
   });
 } catch (error) {
-  ui.loading.querySelector("h3")!.textContent = "3D rendering is unavailable";
-  ui.loading.querySelector("p")!.textContent = "Enable WebGL in your browser and reload this page.";
+  ui.loading.querySelector("h3")!.textContent = "El visor 3D no está disponible";
+  ui.loading.querySelector("p")!.textContent = "Activa WebGL en tu navegador y vuelve a cargar esta página.";
   ui.loading.querySelector(".loading-ring")!.remove();
   console.error(error);
 }
@@ -186,10 +211,10 @@ async function loadCampus(): Promise<void> {
     buildings = places; paths = connections; floors = levels;
     ui.status.replaceChildren();
     const dot = document.createElement("i"); dot.className = "status-dot online";
-    ui.status.append(dot, ` Campus online · ${health.buildings} places`);
+    ui.status.append(dot, ` Campus conectado · ${health.buildings} lugares`);
     ui.floor.replaceChildren(...floors.filter((floor) => floor.building_count > 0).map((floor) => new Option(String(floor.level).padStart(2, "0"), String(floor.level))));
-    ui.destinationFloor.replaceChildren(new Option("All floors", "all"), ...floors.filter((floor) => floor.building_count > 0).map((floor) => new Option(floor.name, String(floor.level))));
-    ui.origin.replaceChildren(...places.filter((place) => place.building_type !== "reference").map((place) => new Option(`${placeName(place)} · ${place.block_code ? `Block ${place.block_code} · ` : ""}F${place.floor}`, String(place.id))));
+    ui.destinationFloor.replaceChildren(new Option("Todos los pisos", "all"), ...floors.filter((floor) => floor.building_count > 0).map((floor) => new Option(floorName(floor.level), String(floor.level))));
+    ui.origin.replaceChildren(...places.filter((place) => place.building_type !== "reference").map((place) => new Option(`${placeName(place)} · ${place.block_code ? `Bloque ${place.block_code} · ` : ""}F${place.floor}`, String(place.id))));
     ui.origin.disabled = !places.length;
     clearRoute();
     scene.setCampus(places, connections);
@@ -198,13 +223,13 @@ async function loadCampus(): Promise<void> {
     if (entry) ui.origin.value = String(entry.id);
     const candidates = places.filter((place) => place.floor === entry?.floor && place.id !== entry?.id && !["waypoint", "junction", "corridor", "reference", "stairs", "elevator"].includes(place.building_type ?? ""));
     destination = undefined;
-    if (candidates[0]) selectDestination(candidates[0]);
+    if (candidates[0]) selectDestination(candidates[0], false);
     else { ui.preview.hidden = true; ui.calculate.disabled = true; renderPlaces(); }
     ui.loading.hidden = true;
-    ui.modelStatus.textContent = "Sample campus · real floor model pending";
+    ui.modelStatus.textContent = "Preparando el modelo del campus";
     try { await scene.loadModel(); }
     catch (error) {
-      ui.modelStatus.textContent = "Model unavailable · using graph preview";
+      ui.modelStatus.textContent = "Modelo no disponible; puedes consultar los lugares y las conexiones";
       ui.modelStatus.title = error instanceof Error ? error.message : String(error);
       ui.modelStatus.classList.remove("verified");
       element("references").hidden = true;
@@ -213,15 +238,15 @@ async function loadCampus(): Promise<void> {
     if (catalog) {
       const observed = ui.floor.value;
       const levels = [...new Set(catalog.blocks.flatMap((block) => block.floors.map((floor) => floor.level)))].sort((a,b) => a-b);
-      ui.floor.replaceChildren(...levels.map((level) => new Option(`${String(level).padStart(2,"0")}${scene!.floorPresentation(level) === "preview" ? " · preview" : scene!.floorPresentation(level) === "pending" ? " · model pending" : ""}`,String(level))));
+      ui.floor.replaceChildren(...levels.map((level) => new Option(`${String(level).padStart(2,"0")}${scene!.floorPresentation(level) === "preview" ? " · vista previa" : scene!.floorPresentation(level) === "pending" ? " · modelo pendiente" : ""}`,String(level))));
       ui.floor.value = observed;
     }
     const overview = element("campus-overview");
     overview.hidden = !scene.hasOverview();
     if (!overview.hidden) await scene.setOverview(true);
   } catch (error) {
-    ui.status.textContent = "Campus connection unavailable";
-    ui.loading.querySelector("h3")!.textContent = "Let's reconnect";
+    ui.status.textContent = "No hay conexión con el campus";
+    ui.loading.querySelector("h3")!.textContent = "Volvamos a conectar";
     ui.loading.querySelector("p")!.textContent = error instanceof Error ? error.message : String(error);
     ui.loading.querySelector(".loading-ring")?.classList.add("stopped");
     ui.retry.hidden = false;
@@ -236,13 +261,13 @@ async function calculateRoute(): Promise<void> {
   const requestRevision = revision;
   const target = destination;
   ui.calculate.disabled = true;
-  ui.calculate.textContent = "Finding your route…";
+  ui.calculate.textContent = "Buscando tu ruta…";
   try {
     const start = scene.getRoutingStart();
     const route = await api.calculateRoute({ origin_id: start.place.id, destination_id: target.id, avoid: ui.avoidStairs.checked ? ["stairs"] : [] });
     if (revision !== requestRevision || !signedIn) return;
     const resolved = resolveRoute(route, buildings, paths, start.place.id, target.id);
-    if(ui.avoidStairs.checked && scene.routeUsesStairs(route,start))throw new Error("This route includes mapped steps. No stair-free route is confirmed.");
+    if(ui.avoidStairs.checked && scene.routeUsesStairs(route,start))throw new Error("Esta ruta tiene escalones. No hay un recorrido sin escaleras verificado.");
     await scene.showRoute(walkWaypoints(start,resolved,paths));
     if (revision !== requestRevision || !signedIn) return;
     currentRoute = route;
@@ -255,14 +280,14 @@ async function calculateRoute(): Promise<void> {
     ui.distance.textContent = `${physicalDistance.toFixed(0)} m`;
     ui.title.textContent = placeName(target);
     directions=routeInstructions(route,resolved,floorName,{distance:connectorLength,kind:start.kind ?? "corridor",floor:start.floor});
-    ui.summary.textContent = `About ${Math.max(1, Math.ceil(physicalDistance / WALK_SPEED))} sec · ${directions.length} ${directions.length===1 ? "direction":"directions"}${ui.avoidStairs.checked ? " · Mapped stairs excluded" : ""}`;
+    ui.summary.textContent = `Aprox. ${Math.max(1, Math.ceil(physicalDistance / WALK_SPEED))} s · ${directions.length} indicaciones${ui.avoidStairs.checked ? " · Sin escaleras verificadas" : ""}`;
     ui.steps.replaceChildren(...directions.map((step) => {
       const item = document.createElement("li");
       item.textContent = `${step.text} · ${step.distance.toFixed(1)} m`;
       item.dataset.firstStep=String(step.firstStep);item.dataset.lastStep=String(step.lastStep);item.dataset.kind=step.kind;item.dataset.phase=step.phase;
       return item;
     }));
-    ui.card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    shell.routeReady();
   } catch (error) {
     if (revision !== requestRevision) return;
     clearRoute();
@@ -270,11 +295,24 @@ async function calculateRoute(): Promise<void> {
     showError(ui.routeError, error);
   } finally {
     ui.calculate.disabled = !destination;
-    ui.calculate.textContent = "Find my route ↗";
+    ui.calculate.textContent = "Encontrar mi ruta ↗";
   }
 }
 
 ui.search.addEventListener("input", renderPlaces);
+ui.search.addEventListener('keydown', event => {
+  if (event.isComposing) return;
+  const first = ui.places.querySelector<HTMLButtonElement>('button');
+  if (event.key === 'ArrowDown' && first) { event.preventDefault(); first.focus(); }
+  else if (event.key === 'Enter' && first && ui.search.value.trim()) { event.preventDefault(); first.click(); }
+});
+ui.places.addEventListener('keydown', event => {
+  const buttons = [...ui.places.querySelectorAll<HTMLButtonElement>('button')];
+  const index = buttons.indexOf(document.activeElement as HTMLButtonElement);
+  if (index < 0) return;
+  if (event.key === 'ArrowDown') { event.preventDefault(); buttons[Math.min(index + 1, buttons.length - 1)]?.focus(); }
+  else if (event.key === 'ArrowUp') { event.preventDefault(); if (index === 0) ui.search.focus(); else buttons[index - 1].focus(); }
+});
 ui.destinationFloor.addEventListener("change", () => { renderPlaces(); if (ui.destinationFloor.value !== "all") scene?.setFloor(Number(ui.destinationFloor.value)); });
 ui.floor.addEventListener("change", () => scene?.setFloor(Number(ui.floor.value)));
 ui.origin.addEventListener("change", () => {
@@ -286,16 +324,31 @@ ui.calculate.addEventListener("click", () => void calculateRoute());
 ui.follow.addEventListener("click", () => { if (travelState === "walking") scene?.pause(); else scene?.follow(); });
 ui.cancel.addEventListener("click", clearRoute);
 ui.retry.addEventListener("click", () => void loadCampus());
-ui.openLogin.addEventListener("click", openLogin);
+ui.openLogin.addEventListener("click", () => openLogin(ui.openLogin));
 element("close-login").addEventListener("click", () => ui.dialog.close());
-ui.dialog.addEventListener("close", () => { pendingNavigation = false; });
+ui.dialog.addEventListener("close", () => {
+  pendingNavigation = false;
+  if (!signedIn) {
+    const target = loginReturnFocus?.isConnected && loginReturnFocus.getClientRects().length ? loginReturnFocus : ui.openLogin;
+    target.focus({preventScroll:true});
+  }
+});
+ui.dialog.addEventListener('keydown', event => {
+  if (event.key !== 'Tab') return;
+  const controls = [...ui.dialog.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),a[href],[tabindex="0"]')]
+    .filter(node => !node.hidden && node.getClientRects().length);
+  const first = controls[0], last = controls.at(-1);
+  if ((!event.shiftKey && document.activeElement === last) || (event.shiftKey && document.activeElement === first)) {
+    event.preventDefault(); (event.shiftKey ? last : first)?.focus();
+  }
+});
 element("logout").addEventListener("click", () => { api.logout(); showSession(null); });
 ui.authToggle.addEventListener("click", () => {
   registerMode = !registerMode;
   ui.loginError.hidden = true;
-  element("auth-title").textContent = registerMode ? "Make yourself at home." : "Your campus awaits.";
-  ui.loginSubmit.textContent = registerMode ? "Create account →" : "Sign in →";
-  ui.authToggle.textContent = registerMode ? "Already here? Sign in" : "New here? Create an account";
+  element("auth-title").textContent = registerMode ? "Tu campus empieza aquí." : "Tu campus te espera.";
+  ui.loginSubmit.textContent = registerMode ? "Crear cuenta →" : "Ingresar →";
+  ui.authToggle.textContent = registerMode ? "¿Ya tienes cuenta? Ingresa" : "¿Primera vez? Crea una cuenta";
   const password = ui.loginForm.elements.namedItem("password") as HTMLInputElement;
   password.minLength = registerMode ? 6 : 1;
   password.autocomplete = registerMode ? "new-password" : "current-password";
@@ -320,11 +373,10 @@ function viewMode(top: boolean): void {
   scene?.setTopView(top);
 }
 function syncViewControls(overview: boolean, top: boolean): void {
-  overviewVisible = overview;
   for (const [id,active] of [["campus-overview",overview],["top-view",!overview&&top],["isometric",!overview&&!top]] as const) {
     element(id).classList.toggle("active",active); element(id).setAttribute("aria-pressed",String(active));
   }
-  element("floor-title").textContent = overview ? "Campus overview" : floorName(Number(ui.floor.value));
+  element("floor-title").textContent = overview ? "Tu campus, en 3D" : floorName(Number(ui.floor.value));
   ui.floor.closest<HTMLElement>(".floor-control")!.hidden = overview;
 }
 element("campus-overview").addEventListener("click",() => { void scene?.setOverview(true); });
@@ -344,5 +396,5 @@ async function start(): Promise<void> {
     catch (error) { if (error instanceof ApiError && error.status === 401) api.logout(); showSession(null); }
   } else showSession(null);
 }
-if (import.meta.hot) import.meta.hot.dispose(() => scene?.dispose());
+if (import.meta.hot) import.meta.hot.dispose(() => { sessionEvents.abort(); shell.dispose(); scene?.dispose(); });
 void start();

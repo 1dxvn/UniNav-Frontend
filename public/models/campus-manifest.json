@@ -3,7 +3,7 @@
   "catalog": {
     "version": 1,
     "id": "ucc-pasto",
-    "revision": "dwg-a35f892-identities-b36d328",
+    "revision": "dwg-a35f892-identities-b36d328-rooftop-c20",
     "source": "UniNav-Frontend/docs/blocks/dwg-inventory.md @ a35f892; PLANOS UCC 2025 - B.dwg; UniNav-Frontend/docs/blocks/level-zones.md @b36d328; user confirmation 2026-11-07 16:07: Block A north bar, Block B south body",
     "integrated_dataset": {
       "id": "ucc-first-floor",
@@ -67,6 +67,14 @@
             "source_label": "PLANTA QUINTO PISO",
             "datum_elevation_m": 13.37,
             "evidence": "derived"
+          },
+          {
+            "id": "A-6",
+            "level": 6,
+            "name": "Piso 6 · Terraza",
+            "source_label": "PLANTA AZOTEA CANCHAS SINTETICAS",
+            "datum_elevation_m": 16.87,
+            "evidence": "derived"
           }
         ]
       },
@@ -128,11 +136,10 @@
       }
     ],
     "unassigned_sheets": [
-      "PLANTA AZOTEA CANCHAS SINTETICAS",
       "PLANTA AZOTEA CUBIERTAS"
     ],
     "notes": [
-      "The user confirmed Block A as the north bar and Block B as the south body on 2026-11-07; recorded by Claude in level-zones.md @b36d328. Identity confirmation does not certify every height, room or accessibility condition.",
+      "The user confirmed Block A as the north bar and Block B as the south body on 2026-11-07. Identity confirmation does not certify every height, room or accessibility condition.",
       "Sheet level values and local level zones remain documented/derived from their sources. Identity confirmation does not make one datum valid throughout a floor. The historical C2 profile remains a flat slab at scene elevation 3.5 m.",
       "Block B ground-floor clinic also contains N -4.13; first-floor ramps have intermediate levels. A single floor datum does not describe every point.",
       "Plan (x,y) maps to scene (x,elevation,-y). Plan +Y is not geographic north. Survey datums must be reconciled with each exported model before navigation is enabled."
@@ -146,15 +153,16 @@
         1
       ],
       "state": "ready",
-      "revision": "C13-a2dbda0",
+      "revision": "C20-floor-1-navigation",
       "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
       "reference": "models/campus-reference.json",
       "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-      "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+      "modelSha256": "a13ae89a0f385f16204a1a432d5f8db68d4dbe71fe98b64401873342ba1bd71c",
       "supportNodes": [
         "Floor_Slab",
-        "Stair_A_West_1",
-        "Stair_A_East_1"
+        "Stair_A_East",
+        "Stair_A_West",
+        "UCC_Piso1_Stairs"
       ],
       "binding": {
         "placeNames": [
@@ -179,7 +187,12 @@
           "South circulation"
         ],
         "sha256": "75f46e58551e42cd1a509ff080d0767902717e620b52b4d736719947d032e197"
-      }
+      },
+      "model": "models/c20/floor-1.glb",
+      "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+      "outdoorSupportNodes": [
+        "Site"
+      ]
     },
     {
       "id": "campus-exterior",
@@ -188,10 +201,10 @@
       "label": "Campus overview",
       "floors": [],
       "state": "ready",
-      "revision": "C19-exterior-polish-668c83a",
-      "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
-      "model": "models/blocks/campus-exterior-c19.glb",
-      "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+      "revision": "C20-campus-complete",
+      "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+      "model": "models/c20/campus-overview.glb",
+      "modelSha256": "2e75a1d9d0a625349521b0edbb1388f23f1ab6a3b4ca2f547a09657d8628cb52",
       "transform": {
         "scale": 1,
         "rotationYDegrees": 0,
@@ -201,7 +214,7 @@
           0
         ]
       },
-      "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+      "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
     },
     {
       "id": "ucc-floor-0-preview",
@@ -212,12 +225,13 @@
         0
       ],
       "state": "ready",
-      "revision": "C14-ucc-floor-0-preview-389cfd9",
+      "revision": "C20-floor-0-preview",
       "sourceCommit": "389cfd9",
       "reference": "models/floor-0/campus-reference.json",
       "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-      "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
-      "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+      "modelSha256": "d13e7b25c294364fbd06377d8449c710a4798558db4b6ab6c83d4ca325044532",
+      "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+      "model": "models/c20/floor-0.glb"
     },
     {
       "id": "ucc-floor-2-preview",
@@ -228,12 +242,13 @@
         2
       ],
       "state": "ready",
-      "revision": "C14-ucc-floor-2-preview-389cfd9",
+      "revision": "C20-floor-2-preview",
       "sourceCommit": "389cfd9",
       "reference": "models/floor-2/campus-reference.json",
       "referenceSha256": "2ba11cd9f962b681aa5ace5bcf3c973c246df7ae9200e26b4b5cf7f9793c52bc",
-      "modelSha256": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6",
-      "sourceDocument": "public/models/floor-2/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+      "modelSha256": "64d583b725646114dab2119132ca038f0ab6b052567dc5f0268d2b0fb8905277",
+      "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+      "model": "models/c20/floor-2.glb"
     },
     {
       "id": "ucc-floor-3-preview",
@@ -244,12 +259,13 @@
         3
       ],
       "state": "ready",
-      "revision": "C13-a2dbda0",
+      "revision": "C20-floor-3-preview",
       "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
       "reference": "models/floor-3/campus-reference.json",
       "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-      "modelSha256": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72",
-      "sourceDocument": "public/models/floor-3/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+      "modelSha256": "ab4997fcd7a58a28de550ae9b9c3095f141cd6cfd5cb9486ce402e15a3b60cba",
+      "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+      "model": "models/c20/floor-3.glb"
     },
     {
       "id": "ucc-floor-4-preview",
@@ -260,12 +276,13 @@
         4
       ],
       "state": "ready",
-      "revision": "C14-ucc-floor-4-preview-389cfd9",
+      "revision": "C20-floor-4-preview",
       "sourceCommit": "389cfd9",
       "reference": "models/floor-4/campus-reference.json",
       "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-      "modelSha256": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06",
-      "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+      "modelSha256": "413f38d1de52d1c61269eeaf757b73a2185fef28bab60e89336412fbfe5e5b52",
+      "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+      "model": "models/c20/floor-4.glb"
     },
     {
       "id": "ucc-floor-5-preview",
@@ -276,12 +293,30 @@
         5
       ],
       "state": "ready",
-      "revision": "C14-ucc-floor-5-preview-389cfd9",
+      "revision": "C20-floor-5-preview",
       "sourceCommit": "389cfd9",
       "reference": "models/floor-5/campus-reference.json",
       "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-      "modelSha256": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592",
-      "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+      "modelSha256": "9c714281105cb441e013dc5e95aba4b11c87ae09955fc9a8f31245c452008a37",
+      "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+      "model": "models/c20/floor-5.glb"
+    },
+    {
+      "id": "ucc-floor-6-preview",
+      "label": "Piso 6 · Terraza",
+      "floors": [
+        6
+      ],
+      "state": "ready",
+      "kind": "floor-preview",
+      "navigable": false,
+      "revision": "C20-rooftop-preview",
+      "reference": "models/floor-6/campus-reference.json",
+      "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+      "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
+      "model": "models/c20/floor-6.glb",
+      "modelSha256": "6532fab568474560ff166577ab52908f695a6f11e09269c082d3ffb50340d1f2",
+      "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
     }
   ],
   "identityPlaceNames": [
@@ -302,15 +337,16 @@
             1
           ],
           "state": "ready",
-          "revision": "C18-floor-1-open-well-711fb9d",
+          "revision": "C20-floor-1-navigation",
           "sourceCommit": "a6d3f11",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "b1df2d79ab77695dd0d6811d2812937445e76b4f5340d500a4e92f4652f9ede7",
+          "modelSha256": "a13ae89a0f385f16204a1a432d5f8db68d4dbe71fe98b64401873342ba1bd71c",
           "supportNodes": [
             "Floor_Slab",
-            "Stair_A_West_1",
-            "Stair_A_East_1"
+            "Stair_A_East",
+            "Stair_A_West",
+            "UCC_Piso1_Stairs"
           ],
           "binding": {
             "placeNames": [
@@ -366,15 +402,11 @@
             ],
             "sha256": "1fd33884ae1f9627b8ef84e43845b49513ec6682c8a948c7d9ed9ff6d67474cd"
           },
-          "model": "models/c18/floor-1.glb",
-          "modelSource": {
-            "commit": "711fb9d",
-            "path": "model/candidates/c18/floor-1.glb"
-          },
+          "model": "models/c20/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
           ],
-          "sourceDocument": "model/candidates/c18/README.md @711fb9d; C16 floor 1 with its Site ground slab opened under the stair well; the other 140 meshes are identical to C16 15745b7e."
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "campus-exterior",
@@ -383,10 +415,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C19-exterior-polish-668c83a",
-          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
-          "model": "models/blocks/campus-exterior-c19.glb",
-          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+          "revision": "C20-campus-complete",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "model": "models/c20/campus-overview.glb",
+          "modelSha256": "2e75a1d9d0a625349521b0edbb1388f23f1ab6a3b4ca2f547a09657d8628cb52",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -396,7 +428,7 @@
               0
             ]
           },
-          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "ucc-floor-zero",
@@ -406,20 +438,17 @@
             0
           ],
           "state": "ready",
-          "revision": "C18-floor-0-navigation-v1",
+          "revision": "C20-floor-0-navigation",
           "sourceCommit": "76a2f284aa9f8a74b557b77ab47dd3a27cca3b82",
           "reference": "models/c18/floor-0-navigation-reference.json",
           "referenceSha256": "83f50bca96e71063187bd18172aedb120545e5e09806022448478c94f24235f6",
-          "modelSha256": "a9eba61eb8a2013ec687c2df261cb1c5b0c800229ff5725ea4cbcb7f44acf3af",
-          "sourceDocument": "docs/blocks/floor0-navigation.md @76a2f28; model/candidates/c18/README.md @711fb9d; Block A and east clinic N-4.13 / world-0.63; Clinical Simulation Laboratory (D32) and waiting room. B stair, west stair, ramp, southern rooms and elevator operation remain pending.",
-          "model": "models/c18/floor-0.glb",
-          "modelSource": {
-            "commit": "711fb9d",
-            "path": "model/candidates/c18/floor-0.glb"
-          },
+          "modelSha256": "d13e7b25c294364fbd06377d8449c710a4798558db4b6ab6c83d4ca325044532",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-0.glb",
           "supportNodes": [
-            "P0_Floor_Slab",
-            "P0_Stair_A_East_1"
+            "P0_A_Floor_Slab",
+            "P0_B_Floor_Slab",
+            "P0_A_Stair_A_East"
           ],
           "binding": {
             "placeNames": [
@@ -474,21 +503,18 @@
             3
           ],
           "state": "ready",
-          "revision": "C16-third-floor-navigation-v1",
+          "revision": "C20-floor-3-navigation",
           "sourceCommit": "72d1aaa91188fe70ecc3fb26f70d96f035d68b43",
           "reference": "models/c16/floor-3-navigation-reference.json",
           "referenceSha256": "1535d24623825443a9924633f53d0963211b845e3ca458167fbcd4653f50a3dd",
-          "modelSha256": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d",
-          "sourceDocument": "docs/blocks/floor3-navigation.md @72d1aaa; three north-bar laboratory entrances; C16 physical A level. Other rooms and A/B transitions remain pending.",
-          "model": "models/c16/floor-3.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-3.glb"
-          },
+          "modelSha256": "ab4997fcd7a58a28de550ae9b9c3095f141cd6cfd5cb9486ce402e15a3b60cba",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-3.glb",
           "supportNodes": [
-            "P3_Floor_Slab",
-            "P3_Stair_A_East_1",
-            "P3_Stair_A_West_1"
+            "P3_A_Floor_Slab",
+            "P3_B_Floor_Slab",
+            "P3_A_Stair_A_East",
+            "P3_A_Stair_A_West"
           ],
           "binding": {
             "placeNames": [
@@ -546,21 +572,18 @@
             4
           ],
           "state": "ready",
-          "revision": "C16-floor-4-navigation-v1",
+          "revision": "C20-floor-4-navigation",
           "sourceCommit": "fdbe565922fd8dd1b1ec6e4daa529b1faf8a8fd1",
           "reference": "models/c16/floor-4-navigation-reference.json",
           "referenceSha256": "1e76fc77280fd7e1abace3c14b5db917f1835390488e7228959a416fd44bde02",
-          "modelSha256": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf",
-          "sourceDocument": "docs/blocks/floor45-navigation.md @fdbe565; C16 physical Block A level; three source-backed classroom entrances. A/B junctions, western rooms and the rooftop remain pending.",
-          "model": "models/c16/floor-4.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-4.glb"
-          },
+          "modelSha256": "413f38d1de52d1c61269eeaf757b73a2185fef28bab60e89336412fbfe5e5b52",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-4.glb",
           "supportNodes": [
-            "P4_Floor_Slab",
-            "P4_Stair_A_East_1",
-            "P4_Stair_A_West_1"
+            "P4_A_Floor_Slab",
+            "P4_B_Floor_Slab",
+            "P4_A_Stair_A_East",
+            "P4_A_Stair_A_West"
           ],
           "binding": {
             "placeNames": [
@@ -619,19 +642,16 @@
             5
           ],
           "state": "ready",
-          "revision": "C16-floor-5-navigation-v1",
+          "revision": "C20-floor-5-navigation",
           "sourceCommit": "fdbe565922fd8dd1b1ec6e4daa529b1faf8a8fd1",
           "reference": "models/c16/floor-5-navigation-reference.json",
           "referenceSha256": "0cd8c25da06cf1134c0dfeaba532d2c468ecb56d5cb8546346aeeed95907f978",
-          "modelSha256": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d",
-          "sourceDocument": "docs/blocks/floor45-navigation.md @fdbe565; C16 physical Block A level; three source-backed classroom entrances. A/B junctions, western rooms and the rooftop remain pending.",
-          "model": "models/c16/floor-5.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-5.glb"
-          },
+          "modelSha256": "9c714281105cb441e013dc5e95aba4b11c87ae09955fc9a8f31245c452008a37",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-5.glb",
           "supportNodes": [
-            "P5_Floor_Slab"
+            "P5_A_Floor_Slab",
+            "P5_B_Floor_Slab"
           ],
           "binding": {
             "placeNames": [
@@ -664,15 +684,17 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C17-floor-2-ramp-0f6a862",
+          "revision": "C20-floor-2-navigation",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
+          "modelSha256": "64d583b725646114dab2119132ca038f0ab6b052567dc5f0268d2b0fb8905277",
           "supportNodes": [
-            "P2_Floor_Slab",
-            "P2_Stair_A_East_1",
-            "P2_Stair_A_West_1"
+            "P2_A_Floor_Slab",
+            "P2_B_Floor_Slab",
+            "P2_A_Stair_A_East",
+            "P2_A_Stair_A_West",
+            "P2_AB_Rampa"
           ],
           "binding": {
             "placeNames": [
@@ -724,12 +746,25 @@
             ],
             "sha256": "caa68d32f0b46b435479979611cbbae6da4a09f388bde573edcf398fbcdd431d"
           },
-          "model": "models/c17/floor-2.glb",
-          "modelSource": {
-            "commit": "0f6a862",
-            "path": "model/candidates/c17/floor-2.glb"
-          },
-          "sourceDocument": "model/candidates/c17/README.md @0f6a862; drawn A/B ramp, world6.44 to6.18; step-free geometry, accessibility not certified. No new API connection."
+          "model": "models/c20/floor-2.glb",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
+        },
+        {
+          "id": "ucc-floor-6-preview",
+          "label": "Piso 6 · Terraza",
+          "floors": [
+            6
+          ],
+          "state": "ready",
+          "kind": "floor-preview",
+          "navigable": false,
+          "revision": "C20-rooftop-preview",
+          "reference": "models/floor-6/campus-reference.json",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
+          "model": "models/c20/floor-6.glb",
+          "modelSha256": "6532fab568474560ff166577ab52908f695a6f11e09269c082d3ffb50340d1f2",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         }
       ],
       "stairCrossings": [
@@ -807,15 +842,16 @@
             1
           ],
           "state": "ready",
-          "revision": "C18-floor-1-open-well-711fb9d",
+          "revision": "C20-floor-1-navigation",
           "sourceCommit": "a6d3f11",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "b1df2d79ab77695dd0d6811d2812937445e76b4f5340d500a4e92f4652f9ede7",
+          "modelSha256": "a13ae89a0f385f16204a1a432d5f8db68d4dbe71fe98b64401873342ba1bd71c",
           "supportNodes": [
             "Floor_Slab",
-            "Stair_A_West_1",
-            "Stair_A_East_1"
+            "Stair_A_East",
+            "Stair_A_West",
+            "UCC_Piso1_Stairs"
           ],
           "binding": {
             "placeNames": [
@@ -871,15 +907,11 @@
             ],
             "sha256": "1fd33884ae1f9627b8ef84e43845b49513ec6682c8a948c7d9ed9ff6d67474cd"
           },
-          "model": "models/c18/floor-1.glb",
-          "modelSource": {
-            "commit": "711fb9d",
-            "path": "model/candidates/c18/floor-1.glb"
-          },
+          "model": "models/c20/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
           ],
-          "sourceDocument": "model/candidates/c18/README.md @711fb9d; C16 floor 1 with its Site ground slab opened under the stair well; the other 140 meshes are identical to C16 15745b7e."
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "campus-exterior",
@@ -888,10 +920,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C19-exterior-polish-668c83a",
-          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
-          "model": "models/blocks/campus-exterior-c19.glb",
-          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+          "revision": "C20-campus-complete",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "model": "models/c20/campus-overview.glb",
+          "modelSha256": "2e75a1d9d0a625349521b0edbb1388f23f1ab6a3b4ca2f547a09657d8628cb52",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -901,7 +933,7 @@
               0
             ]
           },
-          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "ucc-floor-zero",
@@ -911,20 +943,17 @@
             0
           ],
           "state": "ready",
-          "revision": "C18-floor-0-navigation-v1",
+          "revision": "C20-floor-0-navigation",
           "sourceCommit": "76a2f284aa9f8a74b557b77ab47dd3a27cca3b82",
           "reference": "models/c18/floor-0-navigation-reference.json",
           "referenceSha256": "83f50bca96e71063187bd18172aedb120545e5e09806022448478c94f24235f6",
-          "modelSha256": "a9eba61eb8a2013ec687c2df261cb1c5b0c800229ff5725ea4cbcb7f44acf3af",
-          "sourceDocument": "docs/blocks/floor0-navigation.md @76a2f28; model/candidates/c18/README.md @711fb9d; Block A and east clinic N-4.13 / world-0.63; Clinical Simulation Laboratory (D32) and waiting room. B stair, west stair, ramp, southern rooms and elevator operation remain pending.",
-          "model": "models/c18/floor-0.glb",
-          "modelSource": {
-            "commit": "711fb9d",
-            "path": "model/candidates/c18/floor-0.glb"
-          },
+          "modelSha256": "d13e7b25c294364fbd06377d8449c710a4798558db4b6ab6c83d4ca325044532",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-0.glb",
           "supportNodes": [
-            "P0_Floor_Slab",
-            "P0_Stair_A_East_1"
+            "P0_A_Floor_Slab",
+            "P0_B_Floor_Slab",
+            "P0_A_Stair_A_East"
           ],
           "binding": {
             "placeNames": [
@@ -979,21 +1008,18 @@
             3
           ],
           "state": "ready",
-          "revision": "C16-third-floor-navigation-v1",
+          "revision": "C20-floor-3-navigation",
           "sourceCommit": "72d1aaa91188fe70ecc3fb26f70d96f035d68b43",
           "reference": "models/c16/floor-3-navigation-reference.json",
           "referenceSha256": "1535d24623825443a9924633f53d0963211b845e3ca458167fbcd4653f50a3dd",
-          "modelSha256": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d",
-          "sourceDocument": "docs/blocks/floor3-navigation.md @72d1aaa; three north-bar laboratory entrances; C16 physical A level. Other rooms and A/B transitions remain pending.",
-          "model": "models/c16/floor-3.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-3.glb"
-          },
+          "modelSha256": "ab4997fcd7a58a28de550ae9b9c3095f141cd6cfd5cb9486ce402e15a3b60cba",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-3.glb",
           "supportNodes": [
-            "P3_Floor_Slab",
-            "P3_Stair_A_East_1",
-            "P3_Stair_A_West_1"
+            "P3_A_Floor_Slab",
+            "P3_B_Floor_Slab",
+            "P3_A_Stair_A_East",
+            "P3_A_Stair_A_West"
           ],
           "binding": {
             "placeNames": [
@@ -1027,17 +1053,13 @@
             4
           ],
           "state": "ready",
-          "revision": "C16-floor-4-002aaec",
+          "revision": "C20-floor-4-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf",
-          "sourceDocument": "model/candidates/c16/README.md @002aaec; docs/blocks/level-zones.md @fb39c86; Block A physical level, structural B datum anchors. Pending western and A/B junctions remain unresolved; inspection only, no API destinations or routes.",
-          "model": "models/c16/floor-4.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-4.glb"
-          }
+          "modelSha256": "413f38d1de52d1c61269eeaf757b73a2185fef28bab60e89336412fbfe5e5b52",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -1048,17 +1070,13 @@
             5
           ],
           "state": "ready",
-          "revision": "C16-floor-5-002aaec",
+          "revision": "C20-floor-5-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d",
-          "sourceDocument": "model/candidates/c16/README.md @002aaec; docs/blocks/level-zones.md @fb39c86; Block A physical level, structural B datum anchors. Pending western and A/B junctions remain unresolved; inspection only, no API destinations or routes.",
-          "model": "models/c16/floor-5.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-5.glb"
-          }
+          "modelSha256": "9c714281105cb441e013dc5e95aba4b11c87ae09955fc9a8f31245c452008a37",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -1068,15 +1086,17 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C17-floor-2-ramp-0f6a862",
+          "revision": "C20-floor-2-navigation",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
+          "modelSha256": "64d583b725646114dab2119132ca038f0ab6b052567dc5f0268d2b0fb8905277",
           "supportNodes": [
-            "P2_Floor_Slab",
-            "P2_Stair_A_East_1",
-            "P2_Stair_A_West_1"
+            "P2_A_Floor_Slab",
+            "P2_B_Floor_Slab",
+            "P2_A_Stair_A_East",
+            "P2_A_Stair_A_West",
+            "P2_AB_Rampa"
           ],
           "binding": {
             "placeNames": [
@@ -1128,12 +1148,25 @@
             ],
             "sha256": "caa68d32f0b46b435479979611cbbae6da4a09f388bde573edcf398fbcdd431d"
           },
-          "model": "models/c17/floor-2.glb",
-          "modelSource": {
-            "commit": "0f6a862",
-            "path": "model/candidates/c17/floor-2.glb"
-          },
-          "sourceDocument": "model/candidates/c17/README.md @0f6a862; drawn A/B ramp, world6.44 to6.18; step-free geometry, accessibility not certified. No new API connection."
+          "model": "models/c20/floor-2.glb",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
+        },
+        {
+          "id": "ucc-floor-6-preview",
+          "label": "Piso 6 · Terraza",
+          "floors": [
+            6
+          ],
+          "state": "ready",
+          "kind": "floor-preview",
+          "navigable": false,
+          "revision": "C20-rooftop-preview",
+          "reference": "models/floor-6/campus-reference.json",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
+          "model": "models/c20/floor-6.glb",
+          "modelSha256": "6532fab568474560ff166577ab52908f695a6f11e09269c082d3ffb50340d1f2",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         }
       ],
       "stairCrossings": [
@@ -1211,15 +1244,16 @@
             1
           ],
           "state": "ready",
-          "revision": "C16-floor-1-002aaec",
+          "revision": "C20-floor-1-navigation",
           "sourceCommit": "a6d3f11",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c",
+          "modelSha256": "a13ae89a0f385f16204a1a432d5f8db68d4dbe71fe98b64401873342ba1bd71c",
           "supportNodes": [
             "Floor_Slab",
-            "Stair_A_West_1",
-            "Stair_A_East_1"
+            "Stair_A_East",
+            "Stair_A_West",
+            "UCC_Piso1_Stairs"
           ],
           "binding": {
             "placeNames": [
@@ -1274,14 +1308,11 @@
             ],
             "sha256": "6f9e18d7b6a08cfb5730393152679569106bcfbb08e8dfafc1735d480628e082"
           },
-          "model": "models/c16/floor-1.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-1.glb"
-          },
+          "model": "models/c20/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
-          ]
+          ],
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "campus-exterior",
@@ -1290,10 +1321,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C19-exterior-polish-668c83a",
-          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
-          "model": "models/blocks/campus-exterior-c19.glb",
-          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+          "revision": "C20-campus-complete",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "model": "models/c20/campus-overview.glb",
+          "modelSha256": "2e75a1d9d0a625349521b0edbb1388f23f1ab6a3b4ca2f547a09657d8628cb52",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -1303,7 +1334,7 @@
               0
             ]
           },
-          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "ucc-floor-0-preview",
@@ -1314,12 +1345,13 @@
             0
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-0-preview-389cfd9",
+          "revision": "C20-floor-0-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
-          "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "d13e7b25c294364fbd06377d8449c710a4798558db4b6ab6c83d4ca325044532",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-0.glb"
         },
         {
           "id": "ucc-third-floor",
@@ -1329,21 +1361,18 @@
             3
           ],
           "state": "ready",
-          "revision": "C16-third-floor-navigation-v1",
+          "revision": "C20-floor-3-navigation",
           "sourceCommit": "72d1aaa91188fe70ecc3fb26f70d96f035d68b43",
           "reference": "models/c16/floor-3-navigation-reference.json",
           "referenceSha256": "1535d24623825443a9924633f53d0963211b845e3ca458167fbcd4653f50a3dd",
-          "modelSha256": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d",
-          "sourceDocument": "docs/blocks/floor3-navigation.md @72d1aaa; three north-bar laboratory entrances; C16 physical A level. Other rooms and A/B transitions remain pending.",
-          "model": "models/c16/floor-3.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-3.glb"
-          },
+          "modelSha256": "ab4997fcd7a58a28de550ae9b9c3095f141cd6cfd5cb9486ce402e15a3b60cba",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-3.glb",
           "supportNodes": [
-            "P3_Floor_Slab",
-            "P3_Stair_A_East_1",
-            "P3_Stair_A_West_1"
+            "P3_A_Floor_Slab",
+            "P3_B_Floor_Slab",
+            "P3_A_Stair_A_East",
+            "P3_A_Stair_A_West"
           ],
           "binding": {
             "placeNames": [
@@ -1377,17 +1406,13 @@
             4
           ],
           "state": "ready",
-          "revision": "C16-floor-4-002aaec",
+          "revision": "C20-floor-4-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf",
-          "sourceDocument": "model/candidates/c16/README.md @002aaec; docs/blocks/level-zones.md @fb39c86; Block A physical level, structural B datum anchors. Pending western and A/B junctions remain unresolved; inspection only, no API destinations or routes.",
-          "model": "models/c16/floor-4.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-4.glb"
-          }
+          "modelSha256": "413f38d1de52d1c61269eeaf757b73a2185fef28bab60e89336412fbfe5e5b52",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -1398,17 +1423,13 @@
             5
           ],
           "state": "ready",
-          "revision": "C16-floor-5-002aaec",
+          "revision": "C20-floor-5-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d",
-          "sourceDocument": "model/candidates/c16/README.md @002aaec; docs/blocks/level-zones.md @fb39c86; Block A physical level, structural B datum anchors. Pending western and A/B junctions remain unresolved; inspection only, no API destinations or routes.",
-          "model": "models/c16/floor-5.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-5.glb"
-          }
+          "modelSha256": "9c714281105cb441e013dc5e95aba4b11c87ae09955fc9a8f31245c452008a37",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -1418,15 +1439,17 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C17-floor-2-ramp-0f6a862",
+          "revision": "C20-floor-2-navigation",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
+          "modelSha256": "64d583b725646114dab2119132ca038f0ab6b052567dc5f0268d2b0fb8905277",
           "supportNodes": [
-            "P2_Floor_Slab",
-            "P2_Stair_A_East_1",
-            "P2_Stair_A_West_1"
+            "P2_A_Floor_Slab",
+            "P2_B_Floor_Slab",
+            "P2_A_Stair_A_East",
+            "P2_A_Stair_A_West",
+            "P2_AB_Rampa"
           ],
           "binding": {
             "placeNames": [
@@ -1478,12 +1501,25 @@
             ],
             "sha256": "caa68d32f0b46b435479979611cbbae6da4a09f388bde573edcf398fbcdd431d"
           },
-          "model": "models/c17/floor-2.glb",
-          "modelSource": {
-            "commit": "0f6a862",
-            "path": "model/candidates/c17/floor-2.glb"
-          },
-          "sourceDocument": "model/candidates/c17/README.md @0f6a862; drawn A/B ramp, world6.44 to6.18; step-free geometry, accessibility not certified. No new API connection."
+          "model": "models/c20/floor-2.glb",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
+        },
+        {
+          "id": "ucc-floor-6-preview",
+          "label": "Piso 6 · Terraza",
+          "floors": [
+            6
+          ],
+          "state": "ready",
+          "kind": "floor-preview",
+          "navigable": false,
+          "revision": "C20-rooftop-preview",
+          "reference": "models/floor-6/campus-reference.json",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
+          "model": "models/c20/floor-6.glb",
+          "modelSha256": "6532fab568474560ff166577ab52908f695a6f11e09269c082d3ffb50340d1f2",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         }
       ],
       "stairCrossings": [
@@ -1561,15 +1597,16 @@
             1
           ],
           "state": "ready",
-          "revision": "C16-floor-1-002aaec",
+          "revision": "C20-floor-1-navigation",
           "sourceCommit": "a6d3f11",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "15745b7e64ac39f717b43f11b5d910bddc96c104334d47d630827432ce4dbc9c",
+          "modelSha256": "a13ae89a0f385f16204a1a432d5f8db68d4dbe71fe98b64401873342ba1bd71c",
           "supportNodes": [
             "Floor_Slab",
-            "Stair_A_West_1",
-            "Stair_A_East_1"
+            "Stair_A_East",
+            "Stair_A_West",
+            "UCC_Piso1_Stairs"
           ],
           "binding": {
             "placeNames": [
@@ -1624,14 +1661,11 @@
             ],
             "sha256": "6f9e18d7b6a08cfb5730393152679569106bcfbb08e8dfafc1735d480628e082"
           },
-          "model": "models/c16/floor-1.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-1.glb"
-          },
+          "model": "models/c20/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
-          ]
+          ],
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "campus-exterior",
@@ -1640,10 +1674,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C19-exterior-polish-668c83a",
-          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
-          "model": "models/blocks/campus-exterior-c19.glb",
-          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+          "revision": "C20-campus-complete",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "model": "models/c20/campus-overview.glb",
+          "modelSha256": "2e75a1d9d0a625349521b0edbb1388f23f1ab6a3b4ca2f547a09657d8628cb52",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -1653,7 +1687,7 @@
               0
             ]
           },
-          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "ucc-floor-0-preview",
@@ -1664,12 +1698,13 @@
             0
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-0-preview-389cfd9",
+          "revision": "C20-floor-0-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
-          "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "d13e7b25c294364fbd06377d8449c710a4798558db4b6ab6c83d4ca325044532",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-0.glb"
         },
         {
           "id": "ucc-floor-3-preview",
@@ -1680,17 +1715,13 @@
             3
           ],
           "state": "ready",
-          "revision": "C16-floor-3-002aaec",
+          "revision": "C20-floor-3-preview",
           "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
           "reference": "models/floor-3/campus-reference.json",
           "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-          "modelSha256": "9f2cd05b0863083e3b2f3436edbbd0e5ed966f497279028739b3b03b944e6f0d",
-          "sourceDocument": "model/candidates/c16/README.md @002aaec; docs/blocks/level-zones.md @fb39c86; Block A physical level, structural B datum anchors. Pending western and A/B junctions remain unresolved; inspection only, no API destinations or routes.",
-          "model": "models/c16/floor-3.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-3.glb"
-          }
+          "modelSha256": "ab4997fcd7a58a28de550ae9b9c3095f141cd6cfd5cb9486ce402e15a3b60cba",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-3.glb"
         },
         {
           "id": "ucc-floor-4-preview",
@@ -1701,17 +1732,13 @@
             4
           ],
           "state": "ready",
-          "revision": "C16-floor-4-002aaec",
+          "revision": "C20-floor-4-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "a187213ffb66dfe4767c18e6395d8787d8255f88a1c273bbcbc5308e5556bfcf",
-          "sourceDocument": "model/candidates/c16/README.md @002aaec; docs/blocks/level-zones.md @fb39c86; Block A physical level, structural B datum anchors. Pending western and A/B junctions remain unresolved; inspection only, no API destinations or routes.",
-          "model": "models/c16/floor-4.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-4.glb"
-          }
+          "modelSha256": "413f38d1de52d1c61269eeaf757b73a2185fef28bab60e89336412fbfe5e5b52",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -1722,17 +1749,13 @@
             5
           ],
           "state": "ready",
-          "revision": "C16-floor-5-002aaec",
+          "revision": "C20-floor-5-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "8ba3edac908449e6668957f81c8e38708789c40a680b6d12d7b2f3758567961d",
-          "sourceDocument": "model/candidates/c16/README.md @002aaec; docs/blocks/level-zones.md @fb39c86; Block A physical level, structural B datum anchors. Pending western and A/B junctions remain unresolved; inspection only, no API destinations or routes.",
-          "model": "models/c16/floor-5.glb",
-          "modelSource": {
-            "commit": "002aaec",
-            "path": "model/candidates/c16/floor-5.glb"
-          }
+          "modelSha256": "9c714281105cb441e013dc5e95aba4b11c87ae09955fc9a8f31245c452008a37",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -1742,15 +1765,17 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C17-floor-2-ramp-0f6a862",
+          "revision": "C20-floor-2-navigation",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "7a81de62674b3b9d535a5ccfc500721a04ae5c5a0f1c369990e1097b59d3e9de",
+          "modelSha256": "64d583b725646114dab2119132ca038f0ab6b052567dc5f0268d2b0fb8905277",
           "supportNodes": [
-            "P2_Floor_Slab",
-            "P2_Stair_A_East_1",
-            "P2_Stair_A_West_1"
+            "P2_A_Floor_Slab",
+            "P2_B_Floor_Slab",
+            "P2_A_Stair_A_East",
+            "P2_A_Stair_A_West",
+            "P2_AB_Rampa"
           ],
           "binding": {
             "placeNames": [
@@ -1777,12 +1802,25 @@
             ],
             "sha256": "a71ad3d8304012b6aa7edd065895b6b884d7a55be420a0c54a3385c0773a32a4"
           },
-          "model": "models/c17/floor-2.glb",
-          "modelSource": {
-            "commit": "0f6a862",
-            "path": "model/candidates/c17/floor-2.glb"
-          },
-          "sourceDocument": "model/candidates/c17/README.md @0f6a862; drawn A/B ramp, world6.44 to6.18; step-free geometry, accessibility not certified. No new API connection."
+          "model": "models/c20/floor-2.glb",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
+        },
+        {
+          "id": "ucc-floor-6-preview",
+          "label": "Piso 6 · Terraza",
+          "floors": [
+            6
+          ],
+          "state": "ready",
+          "kind": "floor-preview",
+          "navigable": false,
+          "revision": "C20-rooftop-preview",
+          "reference": "models/floor-6/campus-reference.json",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
+          "model": "models/c20/floor-6.glb",
+          "modelSha256": "6532fab568474560ff166577ab52908f695a6f11e09269c082d3ffb50340d1f2",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         }
       ],
       "stairCrossings": [
@@ -1860,15 +1898,16 @@
             1
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0-stair-review-b9648f5",
+          "revision": "C20-floor-1-navigation",
           "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+          "modelSha256": "a13ae89a0f385f16204a1a432d5f8db68d4dbe71fe98b64401873342ba1bd71c",
           "supportNodes": [
             "Floor_Slab",
-            "Stair_A_West_1",
-            "Stair_A_East_1"
+            "Stair_A_East",
+            "Stair_A_West",
+            "UCC_Piso1_Stairs"
           ],
           "binding": {
             "placeNames": [
@@ -1893,7 +1932,12 @@
               "South circulation"
             ],
             "sha256": "39b6168bdb7453d48d8bc1ea8b3f196cd1de52f760c2064a1487af4d96d16de5"
-          }
+          },
+          "model": "models/c20/floor-1.glb",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "outdoorSupportNodes": [
+            "Site"
+          ]
         },
         {
           "id": "campus-exterior",
@@ -1902,10 +1946,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C19-exterior-polish-668c83a",
-          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
-          "model": "models/blocks/campus-exterior-c19.glb",
-          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+          "revision": "C20-campus-complete",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "model": "models/c20/campus-overview.glb",
+          "modelSha256": "2e75a1d9d0a625349521b0edbb1388f23f1ab6a3b4ca2f547a09657d8628cb52",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -1915,7 +1959,7 @@
               0
             ]
           },
-          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "ucc-floor-0-preview",
@@ -1926,12 +1970,13 @@
             0
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-0-preview-389cfd9",
+          "revision": "C20-floor-0-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
-          "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "d13e7b25c294364fbd06377d8449c710a4798558db4b6ab6c83d4ca325044532",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-0.glb"
         },
         {
           "id": "ucc-floor-2-preview",
@@ -1942,12 +1987,13 @@
             2
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-2-preview-389cfd9",
+          "revision": "C20-floor-2-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-reference.json",
           "referenceSha256": "2ba11cd9f962b681aa5ace5bcf3c973c246df7ae9200e26b4b5cf7f9793c52bc",
-          "modelSha256": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6",
-          "sourceDocument": "public/models/floor-2/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "64d583b725646114dab2119132ca038f0ab6b052567dc5f0268d2b0fb8905277",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-2.glb"
         },
         {
           "id": "ucc-floor-3-preview",
@@ -1958,12 +2004,13 @@
             3
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
+          "revision": "C20-floor-3-preview",
           "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
           "reference": "models/floor-3/campus-reference.json",
           "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-          "modelSha256": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72",
-          "sourceDocument": "public/models/floor-3/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "ab4997fcd7a58a28de550ae9b9c3095f141cd6cfd5cb9486ce402e15a3b60cba",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-3.glb"
         },
         {
           "id": "ucc-floor-4-preview",
@@ -1974,12 +2021,13 @@
             4
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-4-preview-389cfd9",
+          "revision": "C20-floor-4-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06",
-          "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "413f38d1de52d1c61269eeaf757b73a2185fef28bab60e89336412fbfe5e5b52",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -1990,12 +2038,30 @@
             5
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-5-preview-389cfd9",
+          "revision": "C20-floor-5-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592",
-          "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "9c714281105cb441e013dc5e95aba4b11c87ae09955fc9a8f31245c452008a37",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-5.glb"
+        },
+        {
+          "id": "ucc-floor-6-preview",
+          "label": "Piso 6 · Terraza",
+          "floors": [
+            6
+          ],
+          "state": "ready",
+          "kind": "floor-preview",
+          "navigable": false,
+          "revision": "C20-rooftop-preview",
+          "reference": "models/floor-6/campus-reference.json",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
+          "model": "models/c20/floor-6.glb",
+          "modelSha256": "6532fab568474560ff166577ab52908f695a6f11e09269c082d3ffb50340d1f2",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         }
       ]
     },
@@ -2011,15 +2077,16 @@
             1
           ],
           "state": "ready",
-          "revision": "H2-two-floors-a6d3f11-stair-review-b9648f5",
+          "revision": "C20-floor-1-navigation",
           "sourceCommit": "a6d3f11",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+          "modelSha256": "a13ae89a0f385f16204a1a432d5f8db68d4dbe71fe98b64401873342ba1bd71c",
           "supportNodes": [
             "Floor_Slab",
-            "Stair_A_West_1",
-            "Stair_A_East_1"
+            "Stair_A_East",
+            "Stair_A_West",
+            "UCC_Piso1_Stairs"
           ],
           "binding": {
             "placeNames": [
@@ -2069,7 +2136,12 @@
               "South circulation"
             ],
             "sha256": "cc7f846fc35e57b3f92f941ab0492080c3e53f98c858e1eba0cdc2792dd5baa6"
-          }
+          },
+          "model": "models/c20/floor-1.glb",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "outdoorSupportNodes": [
+            "Site"
+          ]
         },
         {
           "id": "campus-exterior",
@@ -2078,10 +2150,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C19-exterior-polish-668c83a",
-          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
-          "model": "models/blocks/campus-exterior-c19.glb",
-          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+          "revision": "C20-campus-complete",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "model": "models/c20/campus-overview.glb",
+          "modelSha256": "2e75a1d9d0a625349521b0edbb1388f23f1ab6a3b4ca2f547a09657d8628cb52",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -2091,7 +2163,7 @@
               0
             ]
           },
-          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "ucc-floor-0-preview",
@@ -2102,12 +2174,13 @@
             0
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-0-preview-389cfd9",
+          "revision": "C20-floor-0-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
-          "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "d13e7b25c294364fbd06377d8449c710a4798558db4b6ab6c83d4ca325044532",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-0.glb"
         },
         {
           "id": "ucc-floor-3-preview",
@@ -2118,12 +2191,13 @@
             3
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
+          "revision": "C20-floor-3-preview",
           "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
           "reference": "models/floor-3/campus-reference.json",
           "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-          "modelSha256": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72",
-          "sourceDocument": "public/models/floor-3/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "ab4997fcd7a58a28de550ae9b9c3095f141cd6cfd5cb9486ce402e15a3b60cba",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-3.glb"
         },
         {
           "id": "ucc-floor-4-preview",
@@ -2134,12 +2208,13 @@
             4
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-4-preview-389cfd9",
+          "revision": "C20-floor-4-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06",
-          "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "413f38d1de52d1c61269eeaf757b73a2185fef28bab60e89336412fbfe5e5b52",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -2150,12 +2225,13 @@
             5
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-5-preview-389cfd9",
+          "revision": "C20-floor-5-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592",
-          "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "9c714281105cb441e013dc5e95aba4b11c87ae09955fc9a8f31245c452008a37",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -2165,15 +2241,17 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C14-ucc-second-floor-389cfd9",
+          "revision": "C20-floor-2-navigation",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6",
+          "modelSha256": "64d583b725646114dab2119132ca038f0ab6b052567dc5f0268d2b0fb8905277",
           "supportNodes": [
-            "P2_Floor_Slab",
-            "P2_Stair_A_East_1",
-            "P2_Stair_A_West_1"
+            "P2_A_Floor_Slab",
+            "P2_B_Floor_Slab",
+            "P2_A_Stair_A_East",
+            "P2_A_Stair_A_West",
+            "P2_AB_Rampa"
           ],
           "binding": {
             "placeNames": [
@@ -2199,7 +2277,26 @@
               "Second-floor north circulation"
             ],
             "sha256": "4cae8b12551fb279aa0b8bb9660b9382b73ad97ca93d9d120d201408a93afab8"
-          }
+          },
+          "model": "models/c20/floor-2.glb",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
+        },
+        {
+          "id": "ucc-floor-6-preview",
+          "label": "Piso 6 · Terraza",
+          "floors": [
+            6
+          ],
+          "state": "ready",
+          "kind": "floor-preview",
+          "navigable": false,
+          "revision": "C20-rooftop-preview",
+          "reference": "models/floor-6/campus-reference.json",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
+          "model": "models/c20/floor-6.glb",
+          "modelSha256": "6532fab568474560ff166577ab52908f695a6f11e09269c082d3ffb50340d1f2",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         }
       ]
     },
@@ -2215,15 +2312,16 @@
             1
           ],
           "state": "ready",
-          "revision": "H2-two-floors-a6d3f11",
+          "revision": "C20-floor-1-navigation",
           "sourceCommit": "a6d3f11",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "93a1ad6969a82467b12bc17fdb92a559319a6b80bf667c1afa2f12adc1314a8d",
+          "modelSha256": "a13ae89a0f385f16204a1a432d5f8db68d4dbe71fe98b64401873342ba1bd71c",
           "supportNodes": [
             "Floor_Slab",
-            "Stair_A_West_1",
-            "Stair_A_East_1"
+            "Stair_A_East",
+            "Stair_A_West",
+            "UCC_Piso1_Stairs"
           ],
           "binding": {
             "placeNames": [
@@ -2273,7 +2371,12 @@
               "South circulation"
             ],
             "sha256": "15aa4d3179542df234e9c7182709dd8443c78f5bf9bc42d7f8f7988244e9d961"
-          }
+          },
+          "model": "models/c20/floor-1.glb",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "outdoorSupportNodes": [
+            "Site"
+          ]
         },
         {
           "id": "campus-exterior",
@@ -2282,10 +2385,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C19-exterior-polish-668c83a",
-          "sourceCommit": "9d8ee41b12405593c0d11b5e4a56007cfd49beb2",
-          "model": "models/blocks/campus-exterior-c19.glb",
-          "modelSha256": "e903fdbc5687586648296dad57b43c1e5b853b735cc5068177e7f8c6a2b79dd8",
+          "revision": "C20-campus-complete",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "model": "models/c20/campus-overview.glb",
+          "modelSha256": "2e75a1d9d0a625349521b0edbb1388f23f1ab6a3b4ca2f547a09657d8628cb52",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -2295,7 +2398,7 @@
               0
             ]
           },
-          "sourceDocument": "model/candidates/c19/README.md @668c83a; Plan 4 overview polish: caps and roofs, cafeteria windows, access pavilion, trimmed floating storeys, glass stair towers, rooftop rooms, courts and nets. Approximations documented."
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         },
         {
           "id": "ucc-floor-0-preview",
@@ -2306,12 +2409,13 @@
             0
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-0-preview-389cfd9",
+          "revision": "C20-floor-0-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "a266b1629cbcc0e84cb0f351277c7f156696714930b8cc4fb99f9ebbfc5f1f7d",
-          "sourceDocument": "public/models/floor-0/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "d13e7b25c294364fbd06377d8449c710a4798558db4b6ab6c83d4ca325044532",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-0.glb"
         },
         {
           "id": "ucc-floor-3-preview",
@@ -2322,12 +2426,13 @@
             3
           ],
           "state": "ready",
-          "revision": "C13-a2dbda0",
+          "revision": "C20-floor-3-preview",
           "sourceCommit": "a2dbda03112b23e1af9139b54137cf2e35311e72",
           "reference": "models/floor-3/campus-reference.json",
           "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-          "modelSha256": "905b611a7aec9072ed22d182aa5054803fbe617975b96979268a7807ece51f72",
-          "sourceDocument": "public/models/floor-3/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "ab4997fcd7a58a28de550ae9b9c3095f141cd6cfd5cb9486ce402e15a3b60cba",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-3.glb"
         },
         {
           "id": "ucc-floor-4-preview",
@@ -2338,12 +2443,13 @@
             4
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-4-preview-389cfd9",
+          "revision": "C20-floor-4-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "18f2fcaa7cbc842f30417bbb91902a3aed26755c41480b515d9977049e5bcf06",
-          "sourceDocument": "public/models/floor-4/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "413f38d1de52d1c61269eeaf757b73a2185fef28bab60e89336412fbfe5e5b52",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -2354,12 +2460,13 @@
             5
           ],
           "state": "ready",
-          "revision": "C14-ucc-floor-5-preview-389cfd9",
+          "revision": "C20-floor-5-preview",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "fc94285536711e619749da4f5bbd1e0f27b68ca62ebb6023f982be6bd9f75592",
-          "sourceDocument": "public/models/floor-5/campus-reference.md @ a2dbda0; structural anchors and recommended model elevation. Flattened half-levels and repeated-flight approximations remain; routes pending."
+          "modelSha256": "9c714281105cb441e013dc5e95aba4b11c87ae09955fc9a8f31245c452008a37",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación.",
+          "model": "models/c20/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -2369,15 +2476,17 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C14-ucc-second-floor-389cfd9",
+          "revision": "C20-floor-2-navigation",
           "sourceCommit": "389cfd9",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "44fbeda292f178da1acb3e75e9bad4bb86b218d0dd3d70f07830b8a25370bfb6",
+          "modelSha256": "64d583b725646114dab2119132ca038f0ab6b052567dc5f0268d2b0fb8905277",
           "supportNodes": [
-            "P2_Floor_Slab",
-            "P2_Stair_A_East_1",
-            "P2_Stair_A_West_1"
+            "P2_A_Floor_Slab",
+            "P2_B_Floor_Slab",
+            "P2_A_Stair_A_East",
+            "P2_A_Stair_A_West",
+            "P2_AB_Rampa"
           ],
           "binding": {
             "placeNames": [
@@ -2403,7 +2512,26 @@
               "Second-floor north circulation"
             ],
             "sha256": "4cae8b12551fb279aa0b8bb9660b9382b73ad97ca93d9d120d201408a93afab8"
-          }
+          },
+          "model": "models/c20/floor-2.glb",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
+        },
+        {
+          "id": "ucc-floor-6-preview",
+          "label": "Piso 6 · Terraza",
+          "floors": [
+            6
+          ],
+          "state": "ready",
+          "kind": "floor-preview",
+          "navigable": false,
+          "revision": "C20-rooftop-preview",
+          "reference": "models/floor-6/campus-reference.json",
+          "sourceCommit": "411261e426be7d1f58313eb3f7334b8152ca0415",
+          "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
+          "model": "models/c20/floor-6.glb",
+          "modelSha256": "6532fab568474560ff166577ab52908f695a6f11e09269c082d3ffb50340d1f2",
+          "sourceDocument": "README.md: modelos C20 y limitaciones de navegación."
         }
       ]
     }

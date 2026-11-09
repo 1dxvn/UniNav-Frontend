@@ -45,15 +45,15 @@ export function routeInstructions(route:RouteResponse,points:Building[],floorNam
   }
   const result:RouteInstruction[]=groups.map(g=>{
     let text:string;
-    if(g.kind==="stairs")text=g.phase==="landing" ? "Cross the landing":g.phase==="enter" ? "Enter the stairs":g.phase==="exit" ? "Leave the stairs":g.phase==="up" ? "Go up the stairs":g.phase==="down" ? "Go down the stairs":"Use the mapped steps";
-    else if(g.kind==="elevator")text=`Take the elevator to ${floorName(g.b.floor)}`;
-    else if(g.kind==="ramp")text=`Follow the ramp${g.phase==="up" ? " up":g.phase==="down" ? " down":""}`;
-    else text=named(g.b) ? `${g.kind==="outdoor" ? "Walk outside":"Continue"} to ${label(g.b)}`:g.kind==="outdoor" ? "Follow the outdoor path":"Follow the corridor";
-    if(g.kind==="stairs" && g.changesFloor && g.phase!=="landing")text+=`${g.phase==="exit" ? " on":" toward"} ${floorName(g.targetFloor)}`;
+    if(g.kind==="stairs")text=g.phase==="landing" ? "Cruza el descanso":g.phase==="enter" ? "Entra en la escalera":g.phase==="exit" ? "Sal de la escalera":g.phase==="up" ? "Sube por la escalera":g.phase==="down" ? "Baja por la escalera":"Utiliza los escalones señalados";
+    else if(g.kind==="elevator")text=`Toma el ascensor hasta ${floorName(g.b.floor)}`;
+    else if(g.kind==="ramp")text=`Sigue la rampa${g.phase==="up" ? " de subida":g.phase==="down" ? " de bajada":""}`;
+    else text=named(g.b) ? `${g.kind==="outdoor" ? "Camina por el exterior":"Continúa"} hasta ${label(g.b)}`:g.kind==="outdoor" ? "Sigue el sendero exterior":"Sigue el pasillo";
+    if(g.kind==="stairs" && g.changesFloor && g.phase!=="landing")text+=`${g.phase==="exit" ? " en":" hacia"} ${floorName(g.targetFloor)}`;
     return {firstStep:g.firstStep,lastStep:g.lastStep,kind:g.kind,phase:g.phase,text,distance:g.distance};
   });
   if(connector && (connector.distance>.001 || connector.floor!==points[0].floor))result.unshift({firstStep:-1,lastStep:-1,kind:connector.kind,phase:"connector",distance:connector.distance,
-    text:connector.kind==="stairs" ? "Rejoin the stairs":connector.kind==="ramp" ? "Rejoin the ramp":"Rejoin the mapped path"});
+    text:connector.kind==="stairs" ? "Vuelve a la escalera":connector.kind==="ramp" ? "Vuelve a la rampa":"Vuelve al camino señalado"});
   return result;
 }
 

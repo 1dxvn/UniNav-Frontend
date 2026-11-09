@@ -1,12 +1,14 @@
 import type { Building, BuildingUpdate, CampusPath, Floor, Health, NavigationState, NavigationTrail, PopularPlace, PopularRoute, QueuePosition, QueueStatus, RouteRequest, RouteResponse, RouteVisit, Token, Tour, TourSession, TourSummary, User, UserStats } from "./types.ts";
 
+import {requestErrorMessage,retrySeconds} from './errors.ts';
+
 // Same origin by default: FastAPI serves this app and the API from one host.
 // VITE_API_BASE_URL can point elsewhere if the API is ever hosted separately.
 const API_BASE_URL: string = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
 const TOKEN_STORAGE_KEY = "uninav.token";
 
 export class ApiError extends Error {
-  constructor(public readonly status: number, message: string) {
+  constructor(public readonly status: number, message: string, public readonly retryAfterSeconds: number | null = null) {
     super(message);
   }
 }
@@ -44,6 +46,7 @@ function describeError(body: unknown, fallback: string): string {
 
 async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   const headers = new Headers(init.headers);
+  const requestToken = token;
   if (init.body !== undefined) headers.set("Content-Type", "application/json");
   if (token) headers.set("Authorization", `Bearer ${token}`);
 
@@ -51,14 +54,17 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   try {
     response = await fetch(`${API_BASE_URL}${path}`, { ...init, headers, signal: init.signal ?? AbortSignal.timeout(15000) });
   } catch {
-    throw new ApiError(0, "Cannot reach UniNav. Check your connection and try again.");
+    throw new ApiError(0, requestErrorMessage(0,path,''));
   }
-  if (response.status === 401) storeToken(null);
+  if (response.status === 401 && token === requestToken) {
+    storeToken(null);
+    if (requestToken) window.dispatchEvent(new CustomEvent('uninav:session-expired',{detail:{path}}));
+  }
   if (!response.ok) {
     const body: unknown = await response.json().catch(() => null);
     const message = describeError(body, `Request failed with status ${response.status}.`);
-    const retry = response.headers.get("Retry-After");
-    throw new ApiError(response.status, response.status === 429 && retry ? `${message} Try again in ${retry} seconds.` : message);
+    const retry = retrySeconds(response.headers.get("Retry-After"));
+    throw new ApiError(response.status, requestErrorMessage(response.status,path,message,retry),retry);
   }
   if (response.status === 204) return undefined as T;
   return (await response.json()) as T;
@@ -95,7 +101,7 @@ export const api = {
   history: (limit = 10): Promise<RouteVisit[]> => request<RouteVisit[]>(`/routes/history?limit=${limit}`),
   clearHistory: (): Promise<void> => request<void>("/routes/history", { method: "DELETE" }),
   stats: (): Promise<UserStats> => request<UserStats>("/users/me/stats"),
-  // Back and forward over visited places (kept in server memory)
+  // Back and forward over visited places, persisted by the updated API worker.
   trail: (): Promise<NavigationTrail> => request<NavigationTrail>("/navigation"),
   visit: (buildingId: number): Promise<NavigationState> => request<NavigationState>("/navigation/visit", { method: "POST", body: JSON.stringify({ building_id: buildingId }) }),
   back: (): Promise<NavigationState> => request<NavigationState>("/navigation/back", { method: "POST" }),
