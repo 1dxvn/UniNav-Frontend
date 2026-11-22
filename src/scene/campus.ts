@@ -5,8 +5,8 @@ import type { Building, CampusPath, RouteResponse } from "../api/types.ts";
 import { FLOOR_HEIGHT, toScenePosition, WALK_SPEED } from "./coordinates.ts";
 import { advanceWalk, manualStep, nearbyStairFloors, routingStart, stairNetworks, walkSegments, type StairNetwork, type WalkSegment, type WalkWaypoint } from "./navigation.ts";
 import { parseReference, referenceMatrix, transformMatrix, validateAlignment, validateModelNodes, type CampusReference } from "./modelReference.ts";
-import { modelColliders, modelCollision, type ModelCollider } from "./modelCollision.ts";
-import { prepareModelPresentation, setModelTopView } from "./modelPresentation.ts";
+import { modelColliders, modelCollision, modelBodyCollision, type ModelCollider } from "./modelCollision.ts";
+import { freezeModelTransforms, prepareModelPresentation, setModelTopView } from "./modelPresentation.ts";
 import { disposeGroup } from "./dispose.ts";
 import { dataFingerprint, parseManifest, requiredModels, sha256, type CampusManifest, type ModelEntry } from "./modelManifest.ts";
 import { ModelStore } from "./modelStore.ts";
@@ -15,6 +15,7 @@ import { supportColliders, supportedStep } from "./walkSupport.ts";
 import { selectModelProfile } from "./modelProfiles.ts";
 import { routeUsesStairs } from "./routeConstraints.ts";
 import { AVATAR, avatarAnimation, type AvatarAnimation } from "./avatarAsset.ts";
+import { parseRoomLabels, RoomLabels } from "./roomLabels.ts";
 
 interface LoadedCampusModel {
   entry: ModelEntry; reference?: CampusReference; root: THREE.Group;
@@ -53,11 +54,23 @@ export class CampusScene {
   private readonly destinationRing: THREE.Mesh;
   private readonly labels = new Map<number, HTMLButtonElement>();
   private readonly labelSizes = new Map<number,{width:number;height:number}>();
+  private readonly roomLabels: RoomLabels;
+  private destinationCode: string | undefined;
+  private originCode: string | undefined;
   private readonly floorGroups = new Map<number, THREE.Group>();
   private readonly keys = new Set<string>();
   private readonly abort = new AbortController();
   private readonly resizeObserver: ResizeObserver;
   private places: Building[] = [];
+  private readonly placesById = new Map<number, Building>();
+  private legacyLabelKey = "";
+  private frame: number | undefined;
+  private avatarAnimateUntil = 0;
+  private preloadTimer: number | undefined;
+  private preloadIdle: number | undefined;
+  private cameraInteracting = false;
+  private userCameraMotion = false;
+  private readonly retainModels = ((navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 8) <= 4 ? 0 : 1;
   private paths: CampusPath[] = [];
   private manifest: CampusManifest | null = null;
   private profile="base";
@@ -91,8 +104,8 @@ export class CampusScene {
   private lastMove: number | null = null;
 
   constructor(private readonly container: HTMLElement, private readonly events: SceneEvents) {
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: false, powerPreference: "high-performance" });
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     // Model and lights are static. Reusing their shadow map avoids rendering the
@@ -104,6 +117,9 @@ export class CampusScene {
     this.renderer.domElement.setAttribute("aria-label", "Campus 3D interactivo. Usa W A S D o las flechas para caminar; arrastra para girar la vista.");
     this.renderer.domElement.tabIndex = 0;
     container.appendChild(this.renderer.domElement);
+    this.roomLabels = new RoomLabels(container, place => this.events.select(place), () => this.requestRender());
+    this.scene.matrixAutoUpdate = false;
+    for (const group of [this.campus, this.modelGroup, this.referenceGroup]) group.matrixAutoUpdate = false;
     this.scene.background = new THREE.Color(0xe9eeeb);
     this.scene.add(this.campus, this.routeGroup, this.avatar, this.referenceGroup, this.modelGroup);
     this.referenceGroup.visible = false;
@@ -113,7 +129,15 @@ export class CampusScene {
     this.controls.minZoom = 0.45;
     this.controls.maxZoom = 4;
     this.controls.screenSpacePanning = true;
-    this.controls.addEventListener("start", () => { this.fittedSize = null; });
+    this.controls.addEventListener("start", () => {
+      this.fittedSize = null; this.cameraInteracting = this.userCameraMotion = true;
+      this.roomLabels.suspendDuringMotion();
+    });
+    this.controls.addEventListener("end", () => { this.cameraInteracting = false; });
+    this.controls.addEventListener("change", () => {
+      if (this.userCameraMotion) this.roomLabels.suspendDuringMotion();
+      this.requestRender();
+    });
     this.scene.add(new THREE.HemisphereLight(0xf7fcff, 0xb5b8a4, 1.5));
     const sun = new THREE.DirectionalLight(0xfff1dc, 2.2);
     sun.position.set(-15, 65, 30);
@@ -134,7 +158,7 @@ export class CampusScene {
     this.scene.add(ground);
     this.makeAvatar();
     void this.loadAvatar();
-    void document.fonts.ready.then(()=>{if(!this.abort.signal.aborted)this.labelSizes.clear();});
+    void document.fonts.ready.then(()=>{if(!this.abort.signal.aborted){this.labelSizes.clear();this.legacyLabelKey="";this.requestRender();}});
     this.avatar.visible = false;
     this.destinationRing = new THREE.Mesh(new THREE.TorusGeometry(0.9, 0.065, 8, 48), new THREE.MeshStandardMaterial({ color: 0x0e8b75, emissive: 0x075c4d, emissiveIntensity: 0.4 }));
     this.destinationRing.rotation.x = -Math.PI / 2;
@@ -149,7 +173,10 @@ export class CampusScene {
       if (["w", "a", "s", "d", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(key)) {
         event.preventDefault();
         if (this.state !== "idle") this.cancel();
+        const manualStarting = this.keys.size === 0;
         this.keys.add(key);
+        if (manualStarting) this.clock.getDelta();
+        this.requestRender();
       }
     }, options);
     window.addEventListener("keyup", (event) => {
@@ -160,11 +187,13 @@ export class CampusScene {
     document.addEventListener("visibilitychange", () => {
       this.keys.clear();
       if (document.hidden && this.state === "walking") this.pause();
+      if (document.hidden && this.frame !== undefined) { cancelAnimationFrame(this.frame); this.frame = undefined; }
+      if (!document.hidden) { this.clock.getDelta(); this.avatarAnimateUntil = performance.now() + 400; this.requestRender(); }
     }, options);
     this.resizeObserver = new ResizeObserver(() => this.resize());
     this.resizeObserver.observe(container);
     this.resize();
-    this.renderer.setAnimationLoop(() => this.tick());
+    this.requestRender();
   }
 
   private makeAvatar(): void {
@@ -217,6 +246,8 @@ export class CampusScene {
       this.clips.Idle!.play();
       this.clip = "Idle";
       this.container.dataset.avatar = "glb:Idle";
+      this.avatarAnimateUntil = performance.now() + 400;
+      this.requestRender();
     } catch (error) {
       if (!this.abort.signal.aborted) { console.warn(`Avatar unavailable: ${String(error)}`); this.container.dataset.avatar = "procedural"; }
     }
@@ -242,6 +273,7 @@ export class CampusScene {
   }
 
   setCampus(places: Building[], paths: CampusPath[]): void {
+    this.roomLabels.setData([], places);
     this.clearRoute();
     disposeGroup(this.campus);
     this.floorGroups.clear();
@@ -249,6 +281,9 @@ export class CampusScene {
     this.labels.clear();
     this.labelSizes.clear();
     this.places = places;
+    this.placesById.clear();
+    places.forEach(place => this.placesById.set(place.id, place));
+    this.legacyLabelKey = "";
     this.paths = paths;
     this.segments = walkSegments(places, paths);
     this.stairs = stairNetworks(this.segments);
@@ -292,6 +327,7 @@ export class CampusScene {
       this.container.appendChild(label);
       this.labels.set(place.id, label);
     }
+    freezeModelTransforms(this.campus);
     const firstFloor = Math.min(...places.map((place) => place.floor));
     this.setFloor(Number.isFinite(firstFloor) ? firstFloor : 0);
     if (places.length) this.setOrigin(places.find((place) => place.building_type === "entrance") ?? places[0]);
@@ -311,6 +347,7 @@ export class CampusScene {
     if (this.manifest) void this.syncModels().catch((error) => this.events.model("Modelo no disponible · mostrando las conexiones",false,String(error)));
   }
   setOrigin(place: Building): void {
+    this.originCode = place.code;
     this.clearRoute();
     this.avatar.position.copy(toScenePosition(place));
     this.avatarFloor = place.floor;
@@ -318,11 +355,28 @@ export class CampusScene {
     this.setFloor(place.floor);
     this.emit();
   }
-  getRoutingStart(): ReturnType<typeof routingStart> { return routingStart(this.avatar.position, this.places, this.segments, this.avatarFloor); }
+  getRoutingStart(destinationId?:number,avoid:CampusPath["kind"][]=[]): ReturnType<typeof routingStart> {
+    return routingStart(this.avatar.position, this.places, this.segments, this.avatarFloor,destinationId,avoid);
+  }
+  async locateAt(place: Building): Promise<void> {
+    this.setOrigin(place);
+    if (this.manifest) await this.syncModels();
+    const center = this.avatar.position.clone().add(new THREE.Vector3(0, .8, 0));
+    this.camera.position.add(center.clone().sub(this.controls.target));
+    this.controls.target.copy(center);
+    this.fittedSize = null;
+    this.frustum = 11;
+    this.camera.zoom = 1;
+    this.controls.update();
+    this.resize();
+  }
   routeUsesStairs(route:RouteResponse,start:ReturnType<typeof routingStart>):boolean {
     return routeUsesStairs(route,this.getCatalog() ? this.manifest?.stairCrossings:[],start);
   }
   setDestination(place: Building | undefined): void {
+    this.legacyLabelKey = "";
+    this.requestRender();
+    this.destinationCode = place?.code;
     this.destinationFloor = place?.floor;
     this.labels.forEach((label, id) => label.classList.toggle("selected", id === place?.id));
     this.destinationRing.visible = !!place && !this.overview && place.floor === this.viewFloor;
@@ -362,17 +416,25 @@ export class CampusScene {
       this.keys.clear();
       if (this.viewFloor !== this.avatarFloor) this.setFloor(this.avatarFloor);
       this.state = "walking"; this.emit();
+      this.clock.getDelta();
     }
   }
   pause(): void { if (this.state === "walking") { this.state = "paused"; this.emit(); } }
   cancel(): void { this.clearRoute(); this.emit(); }
   clearRoute(): void {
+    this.requestRender();
     this.routeGeneration++;
     disposeGroup(this.routeGroup); this.waypoints = []; this.index = 1; this.totalLength = 0; this.state = "idle";
     if (this.manifest) void this.syncModels().catch((error) => this.events.model("Modelo no disponible · mostrando las conexiones",false,String(error)));
   }
-  toggleLabels(): boolean { this.labelsVisible = !this.labelsVisible; return this.labelsVisible; }
-  toggleReferences(): boolean { this.referenceGroup.visible = !this.referenceGroup.visible; return this.referenceGroup.visible; }
+  namesVisible(): boolean { return this.labelsVisible && !this.overview; }
+  toggleLabels(): boolean {
+    if (this.overview) { this.labelsVisible = true; this.setFloor(this.viewFloor); }
+    else this.labelsVisible = !this.labelsVisible;
+    this.requestRender();
+    return this.namesVisible();
+  }
+  toggleReferences(): boolean { this.referenceGroup.visible = !this.referenceGroup.visible; this.requestRender(); return this.referenceGroup.visible; }
   setTopView(top: boolean): void {
     this.overviewError = null;
     this.overview = false;
@@ -403,7 +465,7 @@ export class CampusScene {
       this.events.model("Exterior no disponible · vista del piso",true,String(error));
     }
   }
-  zoom(amount: number): void { this.fittedSize = null; this.camera.zoom = THREE.MathUtils.clamp(this.camera.zoom * amount, 0.45, 4); this.camera.updateProjectionMatrix(); }
+  zoom(amount: number): void { this.fittedSize = null; this.camera.zoom = THREE.MathUtils.clamp(this.camera.zoom * amount, 0.45, 4); this.camera.updateProjectionMatrix(); this.requestRender(); }
 
   resetView(): void {
     const points = this.places.filter((place) => this.overview || place.floor === this.viewFloor).map(toScenePosition);
@@ -424,6 +486,8 @@ export class CampusScene {
     this.resize();
   }
   async loadModel(): Promise<void> {
+    this.cancelPreload();
+    this.roomLabels.setData([], this.places);
     this.manifest = null;
     this.catalogMatched=false;
     this.profile="base";
@@ -441,11 +505,25 @@ export class CampusScene {
     const selected=await selectModelProfile(parseManifest(await response.json()),this.places,this.paths);
     this.manifest=selected.manifest;this.profile=selected.profile;this.catalogMatched=selected.recognized;
     if(selected.error){this.applyModels(false);throw new Error(selected.error);}
+    if (this.catalogMatched && this.profile === "ucc-navigation-p01") {
+      try {
+        const rooms=[];
+        for(const file of ["p01-labels.json","p23-labels.json","p4-labels.json","p5-labels.json","p6-labels.json"]) {
+          const annotations=await fetch(`${import.meta.env.BASE_URL}models/annotations/${file}`,{signal:this.abort.signal});
+          if(annotations.status===404 && file!=="p01-labels.json")continue;
+          if(!annotations.ok)throw new Error("No se pudo cargar el catálogo de nombres.");
+          rooms.push(...parseRoomLabels(await annotations.json()));
+        }
+        this.roomLabels.setData(rooms, this.places);
+      } catch (error) {
+        if (!this.abort.signal.aborted) console.warn("Nombres del campus no disponibles:", error);
+      }
+    }
     const entries = this.manifest.models;
     this.models = new ModelStore((id) => this.loadModelEntry(entries.find((entry) => entry.id === id)!), (model) => {
       model.root.removeFromParent(); model.pins.removeFromParent();
       disposeGroup(model.root); disposeGroup(model.pins);
-    });
+    }, this.retainModels);
     await this.syncModels(true);
   }
   getCatalog(): CampusCatalog | null {
@@ -460,20 +538,23 @@ export class CampusScene {
   private async loadModelEntry(entry: ModelEntry): Promise<LoadedCampusModel> {
     if (entry.kind === "exterior") {
       const modelURL = new URL(entry.model!,new URL(import.meta.env.BASE_URL,location.href));
-      const resource = await fetch(modelURL,{ cache:"no-cache" });
+      modelURL.searchParams.set("v", entry.modelSha256!);
+      const resource = await fetch(modelURL,{ cache:"force-cache" });
       if (!resource.ok) throw new Error("Could not load the campus exterior.");
       const bytes = await resource.arrayBuffer();
       if (await sha256(new Uint8Array(bytes)) !== entry.modelSha256) throw new Error("Campus exterior export changed. Review the manifest.");
       const gltf = await new GLTFLoader().parseAsync(bytes,new URL(".",modelURL).href);
       const root = new THREE.Group(); root.applyMatrix4(transformMatrix(entry.transform!)); root.add(gltf.scene); root.updateMatrixWorld(true);
       prepareModelPresentation(root);
+      freezeModelTransforms(root);
       // Exterior geometry has no navigation references and never becomes a collider.
       return { entry,root,pins:new THREE.Group(),colliders:[],supports:[],outdoorSupports:[],references:0 };
     }
     const preview = entry.kind === "floor-preview";
     if (!preview && (!entry.binding || await dataFingerprint(entry.binding.placeNames,this.places,this.paths) !== entry.binding.sha256)) throw new Error(`Model data revision differs: ${entry.label}. Reload compatible campus data.`);
     const referenceURL = new URL(entry.reference!,new URL(import.meta.env.BASE_URL,location.href));
-    const response = await fetch(referenceURL,{ cache:"no-cache" });
+    referenceURL.searchParams.set("v", entry.referenceSha256!);
+    const response = await fetch(referenceURL,{ cache:"force-cache" });
     if (!response.ok) throw new Error(`Could not read references for ${entry.label}.`);
     const referenceBytes = await response.arrayBuffer();
     if (await sha256(new Uint8Array(referenceBytes)) !== entry.referenceSha256) throw new Error(`Model references changed: ${entry.label}.`);
@@ -482,7 +563,8 @@ export class CampusScene {
     if (entry.floors.length !== 1 || entry.floors[0] !== reference.floor) throw new Error("Model floor and reference floor differ.");
     const aligned = validateAlignment(reference, this.places);
     const modelURL = entry.model ? new URL(entry.model,new URL(import.meta.env.BASE_URL,location.href)):new URL(reference.model,referenceURL);
-    const resource = await fetch(modelURL,{ cache:"no-cache" });
+    modelURL.searchParams.set("v", entry.modelSha256!);
+    const resource = await fetch(modelURL,{ cache:"force-cache" });
     if (!resource.ok) throw new Error(`Could not load ${entry.label}.`);
     const bytes = await resource.arrayBuffer();
     if (await sha256(new Uint8Array(bytes)) !== entry.modelSha256) throw new Error(`Model export changed: ${entry.label}. Review its manifest before integrating.`);
@@ -504,6 +586,8 @@ export class CampusScene {
     let supports:ModelCollider[]=[],outdoorSupports:ModelCollider[]=[];
     try { supports=preview ? [] : supportColliders(root,entry.supportNodes ?? []);outdoorSupports=preview ? []:supportColliders(root,entry.outdoorSupportNodes ?? []); }
     catch (error) { disposeGroup(root); disposeGroup(pins); throw error; }
+    freezeModelTransforms(root);
+    freezeModelTransforms(pins);
     return { entry,reference,root,pins,colliders:preview ? [] : modelColliders(root),supports,outdoorSupports,references:aligned.length };
   }
   private routeFloors(): number[] {
@@ -525,12 +609,14 @@ export class CampusScene {
     if (store !== this.models || !result.current) return;
     this.renderer.shadowMap.needsUpdate = true;
     this.applyModels(missing);
+    this.schedulePreload();
     if (result.errors.length) {
       if (strict) throw result.errors[0];
       this.events.model(this.floorPresentation(this.viewFloor) === "preview" ? "Vista previa no disponible · elige otro piso" : "Modelo no disponible · mostrando las conexiones",false,String(result.errors[0]));
     }
   }
   private applyModels(fit: boolean): void {
+    this.requestRender();
     const loaded = this.models?.values() ?? [];
     const floor = this.overview ? this.manifest?.catalog.integrated_dataset.legacy_floor : this.viewFloor;
     const floorModels = loaded.filter((model) => model.entry.kind !== "exterior" && model.entry.floors.includes(floor!));
@@ -567,6 +653,31 @@ export class CampusScene {
     else if (this.manifest) this.events.model("Modelo de este piso pendiente",false);
     this.events.resources({ overview:this.overview,preview,loaded:loaded.map((model) => model.entry.id),visible:active.map((model) => model.entry.id),colliders:this.colliders.length,profile:this.profile });
     if (fit) this.resetView();
+    this.emit();
+  }
+  private cancelPreload(): void {
+    if (this.preloadTimer !== undefined) window.clearTimeout(this.preloadTimer);
+    if (this.preloadIdle !== undefined) window.cancelIdleCallback(this.preloadIdle);
+    this.preloadTimer = this.preloadIdle = undefined;
+  }
+  private schedulePreload(): void {
+    this.cancelPreload();
+    if (!this.retainModels || this.profile !== "ucc-navigation-p01" || !this.models) return;
+    this.preloadTimer = window.setTimeout(() => {
+      this.preloadTimer = undefined;
+      const run = () => {
+        this.preloadIdle = undefined;
+        if (this.abort.signal.aborted) return;
+        if (document.hidden || this.cameraInteracting || this.state === "walking") { this.schedulePreload(); return; }
+        const store = this.models;
+        const floor = this.viewFloor === 0 ? 1 : 0;
+        const entry = this.manifest?.models.find(m => m.state === "ready" && m.kind !== "floor-preview" && m.kind !== "exterior" && m.floors.includes(floor));
+        if (!store || !entry || store.values().some(m => m.entry.id === entry.id)) return;
+        void store.prefetch([entry.id]).then(() => { if (store === this.models && !this.abort.signal.aborted) this.applyModels(false); }).catch(() => undefined);
+      };
+      if ("requestIdleCallback" in window) this.preloadIdle = window.requestIdleCallback(run, { timeout: 3000 });
+      else run();
+    }, 1000);
   }
   exportView(): void {
     this.renderer.render(this.scene, this.camera);
@@ -575,8 +686,10 @@ export class CampusScene {
     link.href = this.renderer.domElement.toDataURL("image/png");
     link.click();
   }
-  private collides(from: THREE.Vector3, to: THREE.Vector3): boolean {
-    return !!modelCollision(from, to, this.colliders);
+  private collides(from: THREE.Vector3, to: THREE.Vector3,kind?:CampusPath["kind"]): boolean {
+    // Stair gait permits treads below the old torso threshold; feet still
+    // require reviewed support on every substep. P4 A–B uses CAD risers of 26.25 cm.
+    return !!(this.avatarFloor>=0 && this.avatarFloor<=6 ? modelBodyCollision(from,to,this.colliders,kind==='stairs' ? .45:undefined):modelCollision(from,to,this.colliders));
   }
   private remaining(): number {
     if (this.index >= this.waypoints.length) return 0;
@@ -585,9 +698,14 @@ export class CampusScene {
     return distance;
   }
   private emit(): void {
+    this.requestRender();
     const remaining = this.remaining();
     this.events.travel({ state: this.state, position: this.avatar.position.toArray(), floor: this.avatarFloor, remaining,
       progress: this.totalLength > 0 ? 1 - remaining / this.totalLength : this.state === "arrived" ? 1 : 0, waypoint: this.index });
+  }
+  private requestRender(): void {
+    if (this.abort.signal.aborted || document.hidden || this.frame !== undefined) return;
+    this.frame = requestAnimationFrame(() => { this.frame = undefined; this.tick(); });
   }
   private tick(): void {
     // Preserve walking speed on slower presentation GPUs. Each movement remains
@@ -600,9 +718,11 @@ export class CampusScene {
         const target=this.waypoints[this.index];
         const direction=target.position.clone().sub(this.avatar.position);
         const advanced=advanceWalk(this.avatar.position,this.avatarFloor,target,WALK_SPEED*delta/count);
-        const stepSupport=target.kind==="stairs" || target.kind==="ramp" || (target.kind==="outdoor" && this.outdoorSupports.length>0);
-        const next=stepSupport && this.getCatalog() ? supportedStep(this.avatar.position,advanced.position,target.kind==="outdoor" ? [...this.supports,...this.outdoorSupports]:this.supports) : advanced.position;
-        if (!next || this.collides(this.avatar.position,next)) { this.state="blocked"; this.emit(); break; }
+        const stepSupport=(this.avatarFloor>=0 && this.avatarFloor<=6) ? this.supports.length>0:
+          target.kind==="stairs" || target.kind==="ramp" || (target.kind==="outdoor" && this.outdoorSupports.length>0);
+        const next=stepSupport && this.getCatalog() ? supportedStep(this.avatar.position,advanced.position,target.kind==="outdoor" ? [...this.supports,...this.outdoorSupports]:this.supports,target.kind==="stairs" ? this.avatarFloor===4 && target.floor===4 ? .28:.25 : undefined,
+          target.kind==="stairs" && this.avatarFloor>=0 && this.avatarFloor<=6) : advanced.position;
+        if (!next || this.collides(this.avatar.position,next,target.kind)) { this.state="blocked"; this.emit(); break; }
         this.avatar.position.copy(next); moved=true;
         if (direction.x*direction.x+direction.z*direction.z>0.001) this.face(direction,delta/count);
         if (advanced.reached) {
@@ -631,54 +751,78 @@ export class CampusScene {
       }
     }
     if (this.manifest && this.movementFloors().join(",")!==this.movementModelKey) void this.syncModels().catch((error) => this.events.model("Modelo no disponible · mostrando las conexiones",false,String(error)));
-    this.animateAvatar(moved, delta);
-    this.controls.update();
-    const projection = new THREE.Vector3();
+    if (moved) this.avatarAnimateUntil = performance.now() + 600;
+    if (moved || performance.now() < this.avatarAnimateUntil) this.animateAvatar(moved, delta);
+    const cameraChanged = this.controls.update();
+    if (!cameraChanged && !this.cameraInteracting) this.userCameraMotion = false;
     const axis = document.getElementById("plan-axis");
     if (axis) {
       const zero = new THREE.Vector3().project(this.camera);
       const direction = new THREE.Vector3(0, 0, -1).project(this.camera).sub(zero);
-      axis.style.transform = `rotate(${Math.atan2(direction.x, direction.y) * 180 / Math.PI}deg)`;
+      const transform = `rotate(${(Math.atan2(direction.x, direction.y) * 180 / Math.PI).toFixed(2)}deg)`;
+      if (axis.style.transform !== transform) axis.style.transform = transform;
     }
-    // Measure as a batch only when labels/fonts/layout change, before position
-    // writes. Prefer the destination, then hide overlapping labels as we zoom.
-    const unmeasured=[...this.labels].filter(([id])=>!this.labelSizes.has(id));
-    for(const [,label] of unmeasured)label.hidden=false;
-    for(const [id,label] of unmeasured)this.labelSizes.set(id,{width:label.offsetWidth || 150,height:label.offsetHeight || 27});
-    const candidates:{id:number;label:HTMLButtonElement;x:number;y:number;depth:number;selected:boolean}[]=[];
-    this.labels.forEach((label, id) => {
-      const place = this.places.find((candidate) => candidate.id === id)!;
-      projection.copy(toScenePosition(place)).y += 0.6;
-      projection.project(this.camera);
-      const visible = !this.overview && this.labelsVisible && place.floor === this.viewFloor && Math.abs(projection.x) < 0.92 && Math.abs(projection.y) < 0.9 && projection.z < 1;
-      label.hidden=true;
-      if(visible)candidates.push({id,label,x:(projection.x*0.5+0.5)*this.container.clientWidth,y:(-projection.y*0.5+0.5)*this.container.clientHeight,depth:projection.z,selected:label.classList.contains("selected")});
-    });
-    const occupied:{left:number;top:number;right:number;bottom:number}[]=[];
-    for(const p of candidates.sort((a,b)=>Number(b.selected)-Number(a.selected) || a.depth-b.depth)){
-      const size=this.labelSizes.get(p.id)!,box={left:p.x-size.width/2,right:p.x+size.width/2,top:p.y-size.height*1.6,bottom:p.y-size.height*0.6};
-      if(occupied.some(b=>box.left<b.right+6 && box.right>b.left-6 && box.top<b.bottom+6 && box.bottom>b.top-6))continue;
-      occupied.push(box);p.label.hidden=false;p.label.style.left=`${p.x}px`;p.label.style.top=`${p.y}px`;
-    }
+    this.updateLegacyLabels();
+    this.roomLabels.update(this.camera, this.viewFloor, this.namesVisible(), this.destinationCode, this.originCode);
     this.destinationRing.scale.setScalar(1 + Math.sin(this.clock.elapsedTime * 2) * 0.06);
     this.lastEmission += delta;
-    if (this.lastEmission > 0.12) { this.lastEmission = 0; this.emit(); }
+    if (this.state === "walking" && this.lastEmission > 0.12) { this.lastEmission = 0; this.emit(); }
     this.renderer.render(this.scene, this.camera);
+    if (this.state === "walking" || this.keys.size > 0 || performance.now() < this.avatarAnimateUntil) this.requestRender();
+  }
+  private updateLegacyLabels(): void {
+    const key = [this.viewFloor,this.namesVisible(),this.roomLabels.hasFloor(this.viewFloor),...this.camera.matrixWorld.elements,...this.camera.projectionMatrix.elements].join(",");
+    if (key === this.legacyLabelKey) return;
+    this.legacyLabelKey = key;
+    if (!this.namesVisible() || this.roomLabels.hasFloor(this.viewFloor)) {
+      this.labels.forEach(label => { if (!label.hidden) label.hidden = true; });
+      return;
+    }
+    // Legacy floors only: measure the observed floor once, never search all API
+    // places per button or touch hidden floors on each animation frame.
+    const width = this.container.clientWidth, height = this.container.clientHeight;
+    const unmeasured = [...this.labels].filter(([id]) => !this.labelSizes.has(id) && this.placesById.get(id)?.floor === this.viewFloor);
+    for (const [,label] of unmeasured) label.hidden = false;
+    for (const [id,label] of unmeasured) this.labelSizes.set(id, { width:label.offsetWidth || 150, height:label.offsetHeight || 27 });
+    const projection = new THREE.Vector3();
+    const candidates: { id:number; label:HTMLButtonElement; x:number; y:number; depth:number; selected:boolean }[] = [];
+    this.labels.forEach((label, id) => {
+      const place = this.placesById.get(id)!;
+      if (place.floor !== this.viewFloor) { if (!label.hidden) label.hidden = true; return; }
+      projection.copy(toScenePosition(place)).y += .6;
+      projection.project(this.camera);
+      if (!label.hidden) label.hidden = true;
+      if (Math.abs(projection.x) < .92 && Math.abs(projection.y) < .9 && projection.z < 1) candidates.push({
+        id,label,x:(projection.x*.5+.5)*width,y:(-projection.y*.5+.5)*height,depth:projection.z,selected:label.classList.contains("selected"),
+      });
+    });
+    const occupied: { left:number; top:number; right:number; bottom:number }[] = [];
+    for (const p of candidates.sort((a,b) => Number(b.selected)-Number(a.selected) || a.depth-b.depth)) {
+      const size = this.labelSizes.get(p.id)!, box = { left:p.x-size.width/2, right:p.x+size.width/2, top:p.y-size.height*1.6, bottom:p.y-size.height*.6 };
+      if (occupied.some(b => box.left < b.right+6 && box.right > b.left-6 && box.top < b.bottom+6 && box.bottom > b.top-6)) continue;
+      occupied.push(box); p.label.hidden = false; p.label.style.left = `${p.x}px`; p.label.style.top = `${p.y}px`;
+    }
   }
   private face(direction: THREE.Vector3, delta: number): void {
     const target = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.atan2(-direction.x, -direction.z));
     this.body.quaternion.slerp(target, Math.min(delta * 10, 1));
   }
   private resize(): void {
+    this.roomLabels.invalidate();
     this.labelSizes.clear();
+    this.legacyLabelKey = "";
     const width = Math.max(this.container.clientWidth, 1), height = Math.max(this.container.clientHeight, 1);
     const aspect = width / height;
     if (this.fittedSize) this.frustum = Math.max(12, this.fittedSize.height / 2, this.fittedSize.width / (2 * aspect)) * 1.16;
     Object.assign(this.camera, { left: -this.frustum * aspect, right: this.frustum * aspect, top: this.frustum, bottom: -this.frustum });
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
+    this.requestRender();
   }
   dispose(): void {
+    this.cancelPreload();
+    if (this.frame !== undefined) cancelAnimationFrame(this.frame);
+    this.roomLabels.dispose();
     this.renderer.setAnimationLoop(null); this.abort.abort(); this.resizeObserver.disconnect(); this.controls.dispose();
     this.mixer?.stopAllAction(); this.mixer = null; this.clips = {};
     this.models?.dispose(); this.models = null;

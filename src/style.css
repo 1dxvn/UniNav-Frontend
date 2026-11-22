@@ -21,6 +21,28 @@ a { color: inherit; text-decoration: none; }
 .workspace { position: fixed; top: var(--app-top,0px); left: 0; width: 100%; height: var(--app-height,100dvh); overflow: hidden; isolation: isolate; }
 .viewport,#scene { position: absolute; inset: 0; min-width: 0; overflow: hidden; }
 #scene canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.place-label { position: absolute; transform: translate(-50%,-160%); z-index: 3; border: 1px solid #c4d5c5; border-radius: 5px; padding: 4px 7px; background: #fcfff4de; font-size: 11px; }
+.room-label-layer { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.room-label-leaders { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
+.room-label-leaders line { stroke: #466c5a99; stroke-width: .8; }
+.room-label { position: absolute; left: 0; top: 0; contain: layout style; pointer-events: auto; border: 0; border-radius: 4px; padding: 3px 6px; background: #fcfff2db; color: #254738; font-size: 11px; line-height: 15px; font-weight: 550; text-align: center; overflow-wrap: anywhere; box-shadow: 0 0 0 1px #faffee9c; }
+.room-label::before { content: ''; position: absolute; inset: -3px; border-radius: inherit; }
+.room-label.is-symbol { display: grid; place-items: center; padding: 3px; background: #fafff0d9; }
+.room-label.is-symbol .icon { width: 17px; height: 17px; }
+.room-label.is-marker { padding: 0; border: 1px solid #fcffed; border-radius: 50%; background: #5c8068c9; box-shadow: 0 0 0 2px #faffef80; }
+.room-label.is-marker::before { inset: -6px; }
+.room-label[data-access-pending="true"] { border-bottom: 1px dashed #a18459; }
+.room-label.is-selected,.room-label:hover,.room-label[aria-expanded="true"] { background: #e0f2ce; color: #174c36; box-shadow: 0 0 0 1px #86b18c; z-index: 2; }
+.room-label.is-marker:hover,.room-label.is-marker.is-selected { background: #217655; }
+.room-label:focus-visible { outline-width: 2px; outline-offset: 3px; z-index: 3; }
+.room-label-detail { position: absolute; width: min(270px,calc(100vw - 24px)); padding: 17px; pointer-events: auto; z-index: 5; text-align: left; box-shadow: 0 8px 26px #193e3520; }
+.room-label-detail h3 { margin: 5px 16px 9px 0; font-size: 14px; line-height: 1.35; }
+.room-label-detail p { margin: 8px 0 0; font-size: 11px; line-height: 1.5; color: #617568; }
+.room-label-detail .room-detail-meta { margin: 0; font-size: 10px; color: #67826b; }
+.room-detail-close { position: absolute; right: 7px; top: 6px; background: transparent; border: 0; width: 28px; height: 28px; border-radius: 8px; font-size: 23px; color: #66816c; }
+.room-detail-close:hover { background: #edf4e7; }
+.room-label-detail .room-detail-pending { color: #836542; }
+.room-detail-destination { margin-top: 12px; min-height: 34px; font-size: 11px; width: 100%; }
 .floating-card { border: 1px solid #ffffffc9; background: var(--glass); box-shadow: var(--shadow); border-radius: 18px; }
 .explorer-header { position: absolute; top: max(var(--edge),env(safe-area-inset-top)); left: var(--edge); right: var(--edge); display: grid; grid-template-columns: 1fr minmax(300px,440px) 1fr; align-items: center; gap: 24px; z-index: 10; pointer-events: none; }
 .explorer-header > * { pointer-events: auto; }
@@ -37,6 +59,20 @@ a { color: inherit; text-decoration: none; }
 input::placeholder { color: #73857a; }
 kbd { padding: 3px 6px; border: 1px solid var(--line); border-radius: 5px; font: 12px inherit; color: #75877a; }
 .account-control { justify-self: end; border-radius: 14px; position: relative; }
+.header-actions { display: flex; justify-self: end; align-items: center; gap: 10px; }
+.location-trigger { display: flex; align-items: center; gap: 9px; min-height: 54px; padding: 10px 14px; border-radius: 14px; text-align: left; font-size: 12px; font-weight: 650; white-space: nowrap; }
+.location-trigger:hover:not(:disabled) { background: #edf4e6; }
+.location-trigger > span { min-width: 0; }
+.location-trigger small { display: block; margin-top: 3px; max-width: 122px; overflow: hidden; text-overflow: ellipsis; color: var(--muted); font-size: 10px; font-weight: 450; }
+.location-dialog { display: none; width: 470px; }
+.location-dialog[open] { display: flex; flex-direction: column; overflow: hidden; }
+.location-dialog h2 { flex-shrink: 0; }
+.location-dialog > p { margin-top: 0; }
+.location-search { display: flex; align-items: center; gap: 10px; padding: 0 12px; border: 1px solid var(--line); border-radius: 12px; background: white; }
+.location-search:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.location-search input { width: 100%; min-width: 0; height: 48px; border: 0; outline: none; background: transparent; color: var(--green); font-size: 16px; }
+.location-dialog .filter-row { margin-top: 12px; flex-shrink: 0; }
+.location-results { max-height: 330px; min-height: 80px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .account-button { display: flex; align-items: center; gap: 9px; border: 0; padding: 14px 18px; background: transparent; font-size: 12px; font-weight: 650; border-radius: inherit; }
 .user-session summary { display: flex; align-items: center; gap: 9px; padding: 9px 14px 9px 9px; font-size: 12px; list-style: none; }
 .user-session summary::-webkit-details-marker { display: none; }
@@ -60,6 +96,11 @@ body:not([data-panel="none"]) .map-heading { visibility: hidden; }
 .compass svg { width: 30px; height: 30px; }
 .compass span { font-size: 9px; }
 .view-controls { position: absolute; right: var(--edge); bottom: max(var(--edge),env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 10px; z-index: 6; }
+.floor-options { display: flex; align-items: center; gap: 8px; }
+.names-control { display: flex; align-items: center; gap: 7px; min-height: 52px; padding: 0 14px; border-radius: 14px; font-size: 12px; color: #627a67; }
+.names-control > span { font: 650 16px/1 'Manrope Variable',sans-serif; }
+.names-control.active { background: #e7f0df; border-color: #bad0b5; color: #28533c; }
+.names-control:hover { background: #e0edda; }
 .view-switch { display: flex; padding: 5px; border-radius: 14px; gap: 2px; }
 .view-switch button { border: 0; background: none; border-radius: 9px; color: #667b6c; font-size: 12px; font-weight: 500; min-height: 42px; padding: 0 16px; }
 .view-switch button.active { background: var(--green); color: #fbfff7; box-shadow: 0 2px 5px #163e3620; }
@@ -206,7 +247,13 @@ dialog p { font-size: 12px; line-height: 1.8; color: #61785f; }
   .brand { grid-area: brand; padding: 0; background: transparent; border: 0; box-shadow: none; font-size: 25px; gap: 8px; }
   .brand-mark { width: 34px; height: 35px; font-size: 31px; line-height: 34px; border-radius: 10px; }
   .brand small { display: none; }
-  .account-control { grid-area: account; }
+  .header-actions { grid-area: account; gap: 7px; }
+  .location-trigger { min-height: 44px; padding: 8px 10px; font-size: 11px; gap: 6px; }
+  .location-trigger .icon { width: 17px; height: 17px; }
+  .location-trigger small { max-width: 94px; font-size: 9px; }
+  .header-actions .account-button span { display: none; }
+  .location-dialog { padding: 25px 20px 20px; }
+  .location-results { max-height: min(330px,45dvh); }
   .account-button { padding: 10px 13px; min-height: 44px; }
   .account-button .icon { width: 17px; height: 17px; }
   .search-bar { grid-area: search; min-height: 52px; border-radius: 15px; }
@@ -227,6 +274,9 @@ dialog p { font-size: 12px; line-height: 1.8; color: #61785f; }
   .view-switch { padding: 4px; border-radius: 11px; }
   .view-switch button { padding: 0 11px; min-height: 36px; font-size: 10px; }
   .floor-control { min-height: 39px; border-radius: 10px; }
+  .floor-options { gap: 6px; }
+  .names-control { min-height: 39px; padding: 0 11px; border-radius: 10px; font-size: 11px; }
+  .room-label { font-size: 12px; }
   .floor-control select { min-height: 39px; padding: 6px 5px; font-size: 11px; max-width: 120px; }
   .map-tools { top: auto; bottom: 110px; transform: none; right: 14px; padding: 4px; border-radius: 13px; }
   .map-tools > button,.more-tools > summary { width: 44px; height: 44px; }
@@ -276,4 +326,5 @@ dialog p { font-size: 12px; line-height: 1.8; color: #61785f; }
   .route-card { bottom: 80px; max-height: calc(100% - 155px); width: 365px; right: auto; }
 }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+@media (max-width: 360px) { .header-actions { gap: 5px; } .brand > span:last-child { display: none; } }
 

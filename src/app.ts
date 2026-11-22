@@ -12,6 +12,7 @@ import { CampusTools } from "./campusTools.ts";
 import { ExplorerShell } from "./explorerShell.ts";
 import { askCampus, normalize } from "./assistant.ts";
 import {placeTypeLabel} from './placeLabels.ts';
+import {LocationPicker} from './locationPicker.ts';
 
 function element<T extends HTMLElement>(id: string): T {
   const found = document.getElementById(id);
@@ -57,6 +58,13 @@ const tools = new CampusTools(element("campus-tools"), element<HTMLButtonElement
   routeTo: async (place) => { selectDestination(place); await calculateRoute(); },
   signedIn: () => signedIn, admin: () => role === "admin", openLogin: () => openLogin(),
   sessionExpired: () => showSession(null),
+});
+
+const locationPicker = new LocationPicker(async place => {
+  if (!scene) throw new Error('El mapa todavía no está disponible.');
+  clearRoute();
+  ui.origin.value = String(place.id);
+  await scene.locateAt(place);
 });
 
 function showError(target: HTMLElement, error: unknown): void {
@@ -147,6 +155,7 @@ function updateTravel(update: TravelUpdate): void {
   travelState = update.state;
   minimap.setAvatar(update.position, update.floor);
   if (changed && update.state === "arrived" && destination) void tools.arrived(destination);
+  if (changed && update.state === "arrived" && destination) locationPicker.setCurrent(destination);
   const activeStep=activeInstruction(directions,update.waypoint),cue=directions[activeStep]?.text;
   const inspectingPreview = ui.modelStatus.dataset.preview === "true";
   const title: Record<TravelState, string> = {
@@ -244,6 +253,10 @@ async function loadCampus(): Promise<void> {
     const overview = element("campus-overview");
     overview.hidden = !scene.hasOverview();
     if (!overview.hidden) await scene.setOverview(true);
+    const connected = new Set(connections.flatMap(path => [path.source_id,path.target_id]));
+    locationPicker.setPlaces(places.filter(place => connected.has(place.id) &&
+      !['waypoint','junction','corridor','reference'].includes(place.building_type ?? '') &&
+      (!scene?.getCatalog() || scene.floorPresentation(place.floor) === 'navigable')));
   } catch (error) {
     ui.status.textContent = "No hay conexión con el campus";
     ui.loading.querySelector("h3")!.textContent = "Volvamos a conectar";
@@ -263,7 +276,7 @@ async function calculateRoute(): Promise<void> {
   ui.calculate.disabled = true;
   ui.calculate.textContent = "Buscando tu ruta…";
   try {
-    const start = scene.getRoutingStart();
+    const start = scene.getRoutingStart(target.id,ui.avoidStairs.checked ? ["stairs"]:[]);
     const route = await api.calculateRoute({ origin_id: start.place.id, destination_id: target.id, avoid: ui.avoidStairs.checked ? ["stairs"] : [] });
     if (revision !== requestRevision || !signedIn) return;
     const resolved = resolveRoute(route, buildings, paths, start.place.id, target.id);
@@ -317,7 +330,7 @@ ui.destinationFloor.addEventListener("change", () => { renderPlaces(); if (ui.de
 ui.floor.addEventListener("change", () => scene?.setFloor(Number(ui.floor.value)));
 ui.origin.addEventListener("change", () => {
   const place = buildings.find((candidate) => candidate.id === Number(ui.origin.value));
-  if (place) { clearRoute(); scene?.setOrigin(place); }
+  if (place) { clearRoute(); scene?.setOrigin(place); locationPicker.setCurrent(place); }
 });
 ui.avoidStairs.addEventListener("change", clearRoute);
 ui.calculate.addEventListener("click", () => void calculateRoute());
@@ -378,6 +391,12 @@ function syncViewControls(overview: boolean, top: boolean): void {
   }
   element("floor-title").textContent = overview ? "Tu campus, en 3D" : floorName(Number(ui.floor.value));
   ui.floor.closest<HTMLElement>(".floor-control")!.hidden = overview;
+  syncNamesControl();
+}
+function syncNamesControl(): void {
+  const active = scene?.namesVisible() ?? false;
+  element("labels").setAttribute("aria-pressed", String(active));
+  element("labels").classList.toggle("active", active);
 }
 element("campus-overview").addEventListener("click",() => { void scene?.setOverview(true); });
 element("top-view").addEventListener("click", () => viewMode(true));
@@ -385,7 +404,7 @@ element("isometric").addEventListener("click", () => viewMode(false));
 element("zoom-in").addEventListener("click", () => scene?.zoom(1.2));
 element("zoom-out").addEventListener("click", () => scene?.zoom(1 / 1.2));
 element("reset-view").addEventListener("click", () => scene?.resetView());
-element("labels").addEventListener("click", () => element("labels").setAttribute("aria-pressed", String(scene?.toggleLabels())));
+element("labels").addEventListener("click", () => { scene?.toggleLabels(); syncNamesControl(); });
 element("references").addEventListener("click", () => element("references").setAttribute("aria-pressed", String(scene?.toggleReferences())));
 element("export").addEventListener("click", () => scene?.exportView());
 
@@ -396,5 +415,5 @@ async function start(): Promise<void> {
     catch (error) { if (error instanceof ApiError && error.status === 401) api.logout(); showSession(null); }
   } else showSession(null);
 }
-if (import.meta.hot) import.meta.hot.dispose(() => { sessionEvents.abort(); shell.dispose(); scene?.dispose(); });
+if (import.meta.hot) import.meta.hot.dispose(() => { sessionEvents.abort(); shell.dispose(); locationPicker.dispose(); scene?.dispose(); });
 void start();

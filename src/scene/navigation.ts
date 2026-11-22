@@ -177,14 +177,55 @@ export function canWalk(from: Vector3, to: Vector3, segments: WalkSegment[], flo
 
 // Walking can end between nodes. Continue along that edge to a reachable endpoint
 // before using the API route; do not jump to an unrelated nearest room.
-export function routingStart(position: Vector3, places: Building[], segments: WalkSegment[], floor: number): WalkStart {
-  const exact = places.find((place) => place.floor === floor && toScenePosition(place).distanceTo(position) < 0.00001);
+function distancesTo(destination: number, segments: WalkSegment[], avoid: ReadonlySet<CampusPath["kind"]>): Map<number,number> {
+  const incoming = new Map<number,{id:number;cost:number}[]>();
+  const connect = (to:number,id:number,cost:number) => { const edges=incoming.get(to) ?? []; edges.push({id,cost}); incoming.set(to,edges); };
+  for (const s of segments) {
+    if (avoid.has(s.path.kind)) continue;
+    const cost=Math.max(s.path.weight,s.a.distanceTo(s.b));
+    connect(s.target.id,s.source.id,cost);
+    if(s.path.bidirectional)connect(s.source.id,s.target.id,cost);
+  }
+  const costs=new Map([[destination,0]]), heap:{id:number;cost:number}[]=[];
+  function push(value:{id:number;cost:number}) {
+    let i=heap.length;heap.push(value);
+    while(i>0) { const p=(i-1)>>1;if(heap[p].cost<=value.cost)break;heap[i]=heap[p];i=p; }
+    heap[i]=value;
+  }
+  function pop() {
+    const first=heap[0],last=heap.pop()!;
+    if(heap.length) {
+      let i=0;
+      while(i*2+1<heap.length) { let child=i*2+1;if(child+1<heap.length && heap[child+1].cost<heap[child].cost)child++;
+        if(last.cost<=heap[child].cost)break;heap[i]=heap[child];i=child; }
+      heap[i]=last;
+    }
+    return first;
+  }
+  push({id:destination,cost:0});
+  while(heap.length) {
+    const current=pop();if(current.cost>(costs.get(current.id) ?? Infinity))continue;
+    for(const edge of incoming.get(current.id) ?? []) {
+      const cost=current.cost+edge.cost;if(cost>=(costs.get(edge.id) ?? Infinity))continue;
+      costs.set(edge.id,cost);push({id:edge.id,cost});
+    }
+  }
+  return costs;
+}
+
+export function routingStart(position: Vector3, places: Building[], segments: WalkSegment[], floor: number,
+  destinationId?:number, avoid:CampusPath["kind"][]=[]): WalkStart {
+  const costs=destinationId===undefined ? undefined:distancesTo(destinationId,segments,new Set(avoid));
+  const score=(p:Building) => position.distanceTo(toScenePosition(p))+(costs?.get(p.id) ?? (costs ? Infinity:0));
+  const exact = places.filter((place) => place.floor === floor && toScenePosition(place).distanceTo(position) < 0.00001)
+    .sort((a,b)=>score(a)-score(b))[0];
   if (exact) return { place: exact, connector: [position.clone(), toScenePosition(exact)],floor };
   const segment = nearestWalkSegment(position, segments, floor);
   if (!segment || projectOnSegment(position, segment.a, segment.b).distance > CORRIDOR_RADIUS + 0.01) {
     throw new Error("Choose a start point before calculating a route.");
   }
-  const place = !segment.path.bidirectional || position.distanceTo(segment.b) <= position.distanceTo(segment.a)
-    ? segment.target : segment.source;
+  if(avoid.includes(segment.path.kind))throw new Error("Tu posición está en un tramo excluido. Termina ese tramo antes de cambiar esta preferencia.");
+  const place = !segment.path.bidirectional || score(segment.target) <= score(segment.source) ? segment.target:segment.source;
+  if(costs && !Number.isFinite(score(place)))throw new Error("No hay un recorrido conectado desde tu posición con estas preferencias.");
   return { place, connector: [position.clone(), toScenePosition(place)],floor,kind:segment.path.kind,path:segment.path };
 }

@@ -16,3 +16,10 @@ export function setModelTopView(root: Object3D, top: boolean): void {
     if (/^Canopy_/.test(object.name)) object.visible = !top;
   });
 }
+
+export function freezeModelTransforms(root: Object3D): void {
+  // CAD geometry is static. Retain world matrices for picking/collision while
+  // avoiding local matrix composition for every wall, chair and plant per frame.
+  root.updateMatrixWorld(true);
+  root.traverse(object => { object.matrixAutoUpdate = false; });
+}
