@@ -42,11 +42,13 @@ export interface CampusPath {
   kind: PathKind;
 }
 
+export type RouteMode = "shortest" | "comfortable";
 export interface RouteRequest {
   origin_id: number;
   destination_id: number;
   algorithm?: "a_star" | "dijkstra";
   avoid?: PathKind[];
+  mode?: RouteMode;
 }
 
 export interface RouteStep {
@@ -82,7 +84,16 @@ export interface RouteResponse {
   distance: number;
   origin_name: string;
   destination_name: string;
+  mode?: RouteMode;
+  estimated_seconds?: number | null;
+  observation_id?: number | null;
 }
+export interface RouteAlternative { key: string; label: string; mode: RouteMode; avoid: PathKind[]; distance: number; estimated_seconds: number; steps: number; uses_stairs: boolean; uses_elevator: boolean }
+export type FeedbackReason = "too_long" | "confusing" | "crowded" | "closed" | "other";
+export interface RoutePreferences { suggest_avoid_stairs: boolean; recent_avoid_stairs: number; recent_routes: number }
+export interface LearnedPath { path_id: number; origin_name: string; destination_name: string; kind: PathKind; multiplier: number; evidence: number }
+export interface BlockedPathStatus { path_id: number; origin_name: string; destination_name: string; reports: number; confirmed: boolean; active: boolean; expires_at: string | null }
+export interface RouteLearning { observations: number; feedback: Record<string, number>; outcomes: Record<string, number>; learned_paths: LearnedPath[]; blocked_paths: BlockedPathStatus[]; parameters: Record<string, number> }
 
 export interface Health {
   status: string;

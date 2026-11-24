@@ -92,6 +92,13 @@ export class Minimap {
       if (p.floor !== this.floor || HIDDEN.has(p.building_type ?? "")) continue;
       const [x, y] = map.toCanvas(p.x, p.y); parts.push(this.node("circle", { cx: f(x), cy: f(y), r: 3, fill: "#315e50" }));
     }
+    const car=onFloor.find(p=>/^ucc:elev-a[12]:p[0-5]:cabina$/.test(p.code ?? ""));
+    if (car) {
+      const [x,y]=map.toCanvas(car.x,car.y);
+      const marker=this.node("rect",{x:x-5,y:y-5,width:10,height:10,rx:2,fill:"#315e50"});
+      const title=this.node("title",{});title.textContent=car.display_name ?? car.name;
+      marker.append(title);parts.push(marker);
+    }
     if (this.destination && this.destination.floor === this.floor) {
       const [x, y] = map.toCanvas(this.destination.x, this.destination.y);
       parts.push(this.node("circle", { cx: f(x), cy: f(y), r: 7, fill: "none", stroke: "#0e8b75", "stroke-width": 2.5 }));

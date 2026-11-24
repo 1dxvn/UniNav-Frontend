@@ -153,11 +153,11 @@
         1
       ],
       "state": "ready",
-      "revision": "C39-floor-1-fachada-carril",
-      "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+      "revision": "C40-floor-1",
+      "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
       "reference": "models/campus-reference.json",
       "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-      "modelSha256": "c91fe85fbb226f8f4d171c9aaa4e3c17b06bf734604e9395567dd844e7db3e77",
+      "modelSha256": "e26df4c0228868c9c6899e2339f87271f0375dcc9704bcc4bb2a6d4f619bdaad",
       "supportNodes": [
         "Floor_Slab",
         "Stair_A_East",
@@ -188,8 +188,7 @@
         ],
         "sha256": "75f46e58551e42cd1a509ff080d0767902717e620b52b4d736719947d032e197"
       },
-      "model": "models/c39/floor-1.glb",
-      "sourceDocument": "public/models/c39",
+      "model": "models/c40/floor-1.glb",
       "outdoorSupportNodes": [
         "Site"
       ]
@@ -201,10 +200,10 @@
       "label": "Campus overview",
       "floors": [],
       "state": "ready",
-      "revision": "C39-campus-overview-fachada-carril",
-      "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
-      "model": "models/c39/campus-overview.glb",
-      "modelSha256": "472ea3a02d5d61f39502af15ab1a5029183eb64b61069c45c4ae73712a987016",
+      "revision": "C40-campus-overview",
+      "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
+      "model": "models/c40/campus-overview.glb",
+      "modelSha256": "46179691d34f0d2cb1bddb5b881e64c50d0bba6419acce1511ea388c8c10294b",
       "transform": {
         "scale": 1,
         "rotationYDegrees": 0,
@@ -213,8 +212,7 @@
           3.5,
           0
         ]
-      },
-      "sourceDocument": "public/models/c39"
+      }
     },
     {
       "id": "ucc-floor-0-preview",
@@ -225,13 +223,12 @@
         0
       ],
       "state": "ready",
-      "revision": "C39-floor-0-fachada-carril",
-      "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+      "revision": "C40-floor-0",
+      "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
       "reference": "models/floor-0/campus-reference.json",
       "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-      "modelSha256": "155f68e56376cbaef2a0b61bfc661f7e53cd928208a8d3b68572277076198f54",
-      "sourceDocument": "public/models/c39",
-      "model": "models/c39/floor-0.glb"
+      "modelSha256": "e29eb3f732f74de041a93ef2d8fe7ef23ea7a92f72eff7e2253f57a5829430a6",
+      "model": "models/c40/floor-0.glb"
     },
     {
       "id": "ucc-floor-2-preview",
@@ -242,13 +239,12 @@
         2
       ],
       "state": "ready",
-      "revision": "C39-floor-2-fachada-carril",
-      "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+      "revision": "C40-floor-2",
+      "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
       "reference": "models/floor-2/campus-reference.json",
       "referenceSha256": "2ba11cd9f962b681aa5ace5bcf3c973c246df7ae9200e26b4b5cf7f9793c52bc",
-      "modelSha256": "8a7d752b4ee8795af965c890cbba43c7a0bba338c0a5411a9230c94c468c3880",
-      "sourceDocument": "public/models/c39",
-      "model": "models/c39/floor-2.glb"
+      "modelSha256": "d39dc679c2dbdc0aa378db585c984320f399a9e1c9dc083ab754e11e590a2911",
+      "model": "models/c40/floor-2.glb"
     },
     {
       "id": "ucc-floor-3-preview",
@@ -259,13 +255,12 @@
         3
       ],
       "state": "ready",
-      "revision": "C39-floor-3-fachada-carril",
-      "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+      "revision": "C40-floor-3",
+      "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
       "reference": "models/floor-3/campus-reference.json",
       "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-      "modelSha256": "5f5ccab3872d78cfe223fe201252bd5b20f9c280bbaf2e5b599940a3598e4adf",
-      "sourceDocument": "public/models/c39",
-      "model": "models/c39/floor-3.glb"
+      "modelSha256": "b9ecbe80d03561f99b911f9dfb11be7e4fe821f483e5394a4bb054dde79eeba1",
+      "model": "models/c40/floor-3.glb"
     },
     {
       "id": "ucc-floor-4-preview",
@@ -276,13 +271,12 @@
         4
       ],
       "state": "ready",
-      "revision": "C39-floor-4-fachada-carril",
-      "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+      "revision": "C40-floor-4",
+      "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
       "reference": "models/floor-4/campus-reference.json",
       "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-      "modelSha256": "2dfc0b4680d72b2051d4441602fe03b36fcf81808a489cbca4a6c62c804b2bc9",
-      "sourceDocument": "public/models/c39",
-      "model": "models/c39/floor-4.glb"
+      "modelSha256": "1a102f8e0784492c41a4df0f0c7f1a9a75dde7162b5869490ada98cfc6773e0f",
+      "model": "models/c40/floor-4.glb"
     },
     {
       "id": "ucc-floor-5-preview",
@@ -293,13 +287,12 @@
         5
       ],
       "state": "ready",
-      "revision": "C39-floor-5-fachada-carril",
-      "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+      "revision": "C40-floor-5",
+      "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
       "reference": "models/floor-5/campus-reference.json",
       "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-      "modelSha256": "322b7d8754215db878ff152b5c96e31578cdbb1cb0ce38612f56645ef00958a2",
-      "sourceDocument": "public/models/c39",
-      "model": "models/c39/floor-5.glb"
+      "modelSha256": "980f22f5109607a769d1e98b7f5099bb6978cb45dcbc2347e8c2bc623e647cd6",
+      "model": "models/c40/floor-5.glb"
     },
     {
       "id": "ucc-floor-6-preview",
@@ -310,13 +303,12 @@
       "state": "ready",
       "kind": "floor-preview",
       "navigable": false,
-      "revision": "C39-floor-6-fachada-carril",
+      "revision": "C40-floor-6",
       "reference": "models/floor-6/campus-reference.json",
-      "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+      "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
       "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
-      "model": "models/c39/floor-6.glb",
-      "modelSha256": "55dcb9576bcf49faa77e49a508e0e2ee92e063e6e09e6da4d35756d5aaecb393",
-      "sourceDocument": "public/models/c39"
+      "model": "models/c40/floor-6.glb",
+      "modelSha256": "28d78a4d51777aa499e8f97cf00ad1d99e045127fa4ae173a9d5338d606f98b4"
     }
   ],
   "identityPlaceNames": [
@@ -337,11 +329,11 @@
             1
           ],
           "state": "ready",
-          "revision": "C39-floor-1-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-1",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "c91fe85fbb226f8f4d171c9aaa4e3c17b06bf734604e9395567dd844e7db3e77",
+          "modelSha256": "e26df4c0228868c9c6899e2339f87271f0375dcc9704bcc4bb2a6d4f619bdaad",
           "supportNodes": [
             "Floor_Slab",
             "Stair_A_East",
@@ -1678,12 +1670,15 @@
               "P23 historical connection 44",
               "P23 historical connection 45",
               "P23 historical connection 46",
-              "P23 historical connection 47"
+              "P23 historical connection 47",
+              "Rellano del ascensor 1 - Piso 1",
+              "Cabina del ascensor 1 - Piso 1",
+              "Rellano del ascensor 2 - Piso 1",
+              "Cabina del ascensor 2 - Piso 1"
             ],
-            "sha256": "0ac2cf7934a12164cfe1875bee920add4ff98bbb5c4d13c9a360fa2bdd4c1061"
+            "sha256": "de613c8adb51da93cb50e35a5f1d99f6ff0feaa37c2ec52c7bf7648f445e7bf1"
           },
-          "model": "models/c39/floor-1.glb",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-1.glb"
         },
         {
           "id": "campus-exterior",
@@ -1692,10 +1687,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C39-campus-overview-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
-          "model": "models/c39/campus-overview.glb",
-          "modelSha256": "472ea3a02d5d61f39502af15ab1a5029183eb64b61069c45c4ae73712a987016",
+          "revision": "C40-campus-overview",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
+          "model": "models/c40/campus-overview.glb",
+          "modelSha256": "46179691d34f0d2cb1bddb5b881e64c50d0bba6419acce1511ea388c8c10294b",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -1704,8 +1699,7 @@
               3.5,
               0
             ]
-          },
-          "sourceDocument": "public/models/c39"
+          }
         },
         {
           "id": "ucc-floor-zero",
@@ -1715,13 +1709,12 @@
             0
           ],
           "state": "ready",
-          "revision": "C39-floor-0-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-0",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c18/floor-0-navigation-reference.json",
           "referenceSha256": "83f50bca96e71063187bd18172aedb120545e5e09806022448478c94f24235f6",
-          "modelSha256": "155f68e56376cbaef2a0b61bfc661f7e53cd928208a8d3b68572277076198f54",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-0.glb",
+          "modelSha256": "e29eb3f732f74de041a93ef2d8fe7ef23ea7a92f72eff7e2253f57a5829430a6",
+          "model": "models/c40/floor-0.glb",
           "supportNodes": [
             "P0_A_Floor_Slab",
             "P0_B_Floor_Slab",
@@ -2464,9 +2457,13 @@
               "P0 circulation 590 890",
               "P0 circulation 610 890",
               "P0 circulation 710 890",
-              "P0 circulation 730 890"
+              "P0 circulation 730 890",
+              "Rellano del ascensor 1 - Piso 0",
+              "Cabina del ascensor 1 - Piso 0",
+              "Rellano del ascensor 2 - Piso 0",
+              "Cabina del ascensor 2 - Piso 0"
             ],
-            "sha256": "7b8831805f1dbf79c063f1a3e928f3ca9905783d98cf8a65b38ce4590fe9521f"
+            "sha256": "b9315931d3e34ea2afdb66c433ab8cb5c3b77ded9a8b8c67072d5769dfe78b8b"
           }
         },
         {
@@ -2477,13 +2474,12 @@
             3
           ],
           "state": "ready",
-          "revision": "C39-floor-3-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-3",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c16/floor-3-navigation-reference.json",
           "referenceSha256": "1535d24623825443a9924633f53d0963211b845e3ca458167fbcd4653f50a3dd",
-          "modelSha256": "5f5ccab3872d78cfe223fe201252bd5b20f9c280bbaf2e5b599940a3598e4adf",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-3.glb",
+          "modelSha256": "b9ecbe80d03561f99b911f9dfb11be7e4fe821f483e5394a4bb054dde79eeba1",
+          "model": "models/c40/floor-3.glb",
           "supportNodes": [
             "P3_A_Floor_Slab",
             "P3_B_Floor_Slab",
@@ -3574,9 +3570,13 @@
               "P4nav ucc:p4:historical:162",
               "P4nav ucc:p4:historical:163",
               "P4nav ucc:p4:historical:164",
-              "P4nav ucc:p4:historical:165"
+              "P4nav ucc:p4:historical:165",
+              "Rellano del ascensor 1 - Piso 3",
+              "Cabina del ascensor 1 - Piso 3",
+              "Rellano del ascensor 2 - Piso 3",
+              "Cabina del ascensor 2 - Piso 3"
             ],
-            "sha256": "82e9bed110b78a58f130f97f40826f6b8f15709728d1dd00e2c5c568b807ef15"
+            "sha256": "c257ca65d118c62d6a7996767f142b2fdf0d95010ee95f67742f15441450b9de"
           }
         },
         {
@@ -3587,13 +3587,12 @@
             4
           ],
           "state": "ready",
-          "revision": "C39-floor-4-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-4",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c16/floor-4-navigation-reference.json",
           "referenceSha256": "1e76fc77280fd7e1abace3c14b5db917f1835390488e7228959a416fd44bde02",
-          "modelSha256": "2dfc0b4680d72b2051d4441602fe03b36fcf81808a489cbca4a6c62c804b2bc9",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-4.glb",
+          "modelSha256": "1a102f8e0784492c41a4df0f0c7f1a9a75dde7162b5869490ada98cfc6773e0f",
+          "model": "models/c40/floor-4.glb",
           "supportNodes": [
             "P4_A_Floor_Slab",
             "P4_B_Floor_Slab",
@@ -4344,9 +4343,13 @@
               "P56nav ucc:p56:historical:204",
               "P56nav ucc:p56:historical:205",
               "P56nav ucc:p56:historical:206",
-              "P56nav ucc:p56:historical:18674"
+              "P56nav ucc:p56:historical:18674",
+              "Rellano del ascensor 1 - Piso 4",
+              "Cabina del ascensor 1 - Piso 4",
+              "Rellano del ascensor 2 - Piso 4",
+              "Cabina del ascensor 2 - Piso 4"
             ],
-            "sha256": "c58760edd61f48dbe32bb2bff1e6ee956f171d5a8d0c52c6b22a572ba70d2af6"
+            "sha256": "9137bb4d02291abe56cc8ebc1d8675d6df43d8d34f5a3e5fb0df3135cbda6186"
           }
         },
         {
@@ -4357,13 +4360,12 @@
             5
           ],
           "state": "ready",
-          "revision": "C39-floor-5-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-5",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c16/floor-5-navigation-reference.json",
           "referenceSha256": "0cd8c25da06cf1134c0dfeaba532d2c468ecb56d5cb8546346aeeed95907f978",
-          "modelSha256": "322b7d8754215db878ff152b5c96e31578cdbb1cb0ce38612f56645ef00958a2",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-5.glb",
+          "modelSha256": "980f22f5109607a769d1e98b7f5099bb6978cb45dcbc2347e8c2bc623e647cd6",
+          "model": "models/c40/floor-5.glb",
           "supportNodes": [
             "P5_A_Floor_Slab",
             "P5_B_Floor_Slab",
@@ -4960,9 +4962,13 @@
               "P56nav ucc:p56:historical:215",
               "P56nav ucc:p56:historical:216",
               "P56nav ucc:p56:historical:217",
-              "P56nav ucc:p56:historical:218"
+              "P56nav ucc:p56:historical:218",
+              "Rellano del ascensor 1 - Piso 5",
+              "Cabina del ascensor 1 - Piso 5",
+              "Rellano del ascensor 2 - Piso 5",
+              "Cabina del ascensor 2 - Piso 5"
             ],
-            "sha256": "0a7d17c54e969344aabb29eb7d9420b2bebc3bf778685da8280a8ee3bcab5a37"
+            "sha256": "e519d9cb67c90c0def1fffc2f0c131d1b211a004a8dee638ac2777569ec65ddb"
           }
         },
         {
@@ -4973,11 +4979,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C39-floor-2-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-2",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "8a7d752b4ee8795af965c890cbba43c7a0bba338c0a5411a9230c94c468c3880",
+          "modelSha256": "d39dc679c2dbdc0aa378db585c984320f399a9e1c9dc083ab754e11e590a2911",
           "supportNodes": [
             "P2_A_Floor_Slab",
             "P2_B_Floor_Slab",
@@ -5853,12 +5859,15 @@
               "P23 historical connection 86",
               "P23 historical connection 87",
               "P23 historical connection 88",
-              "P23 historical connection 89"
+              "P23 historical connection 89",
+              "Rellano del ascensor 1 - Piso 2",
+              "Cabina del ascensor 1 - Piso 2",
+              "Rellano del ascensor 2 - Piso 2",
+              "Cabina del ascensor 2 - Piso 2"
             ],
-            "sha256": "95dfd5b1540c39d21f245bab3b8f663d5c83f8669969bfa5cf4c535a96337150"
+            "sha256": "b20b4215c5a32a32e48219f5027f8c3b3cd130facca21a10b3b2c98d3e02ee4d"
           },
-          "model": "models/c39/floor-2.glb",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-2.glb"
         },
         {
           "id": "ucc-floor-6-preview",
@@ -5868,13 +5877,12 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C39-floor-6-fachada-carril",
+          "revision": "C40-floor-6",
           "reference": "models/navigation-p56/floor-6-reference.json",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "referenceSha256": "8f25c7a3196a5ed69fd4dca12601c1cebb2bd93a192b2150802ca782cc279c36",
-          "model": "models/c39/floor-6.glb",
-          "modelSha256": "55dcb9576bcf49faa77e49a508e0e2ee92e063e6e09e6da4d35756d5aaecb393",
-          "sourceDocument": "public/models/c39",
+          "model": "models/c40/floor-6.glb",
+          "modelSha256": "28d78a4d51777aa499e8f97cf00ad1d99e045127fa4ae173a9d5338d606f98b4",
           "supportNodes": [
             "P6_A_Canchas",
             "P6_Cubierta",
@@ -6285,11 +6293,11 @@
             1
           ],
           "state": "ready",
-          "revision": "C39-floor-1-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-1",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "c91fe85fbb226f8f4d171c9aaa4e3c17b06bf734604e9395567dd844e7db3e77",
+          "modelSha256": "e26df4c0228868c9c6899e2339f87271f0375dcc9704bcc4bb2a6d4f619bdaad",
           "supportNodes": [
             "Floor_Slab",
             "Stair_A_East",
@@ -6350,11 +6358,10 @@
             ],
             "sha256": "ab2083dee43458acab2d13101b375f7568877988b60df2c5c4a2374c70b32cf3"
           },
-          "model": "models/c39/floor-1.glb",
+          "model": "models/c40/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
-          ],
-          "sourceDocument": "public/models/c39"
+          ]
         },
         {
           "id": "campus-exterior",
@@ -6363,10 +6370,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C39-campus-overview-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
-          "model": "models/c39/campus-overview.glb",
-          "modelSha256": "472ea3a02d5d61f39502af15ab1a5029183eb64b61069c45c4ae73712a987016",
+          "revision": "C40-campus-overview",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
+          "model": "models/c40/campus-overview.glb",
+          "modelSha256": "46179691d34f0d2cb1bddb5b881e64c50d0bba6419acce1511ea388c8c10294b",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -6375,8 +6382,7 @@
               3.5,
               0
             ]
-          },
-          "sourceDocument": "public/models/c39"
+          }
         },
         {
           "id": "ucc-floor-zero",
@@ -6386,13 +6392,12 @@
             0
           ],
           "state": "ready",
-          "revision": "C39-floor-0-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-0",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c18/floor-0-navigation-reference.json",
           "referenceSha256": "83f50bca96e71063187bd18172aedb120545e5e09806022448478c94f24235f6",
-          "modelSha256": "155f68e56376cbaef2a0b61bfc661f7e53cd928208a8d3b68572277076198f54",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-0.glb",
+          "modelSha256": "e29eb3f732f74de041a93ef2d8fe7ef23ea7a92f72eff7e2253f57a5829430a6",
+          "model": "models/c40/floor-0.glb",
           "supportNodes": [
             "P0_A_Floor_Slab",
             "P0_B_Floor_Slab",
@@ -6451,13 +6456,12 @@
             3
           ],
           "state": "ready",
-          "revision": "C39-floor-3-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-3",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c16/floor-3-navigation-reference.json",
           "referenceSha256": "1535d24623825443a9924633f53d0963211b845e3ca458167fbcd4653f50a3dd",
-          "modelSha256": "5f5ccab3872d78cfe223fe201252bd5b20f9c280bbaf2e5b599940a3598e4adf",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-3.glb",
+          "modelSha256": "b9ecbe80d03561f99b911f9dfb11be7e4fe821f483e5394a4bb054dde79eeba1",
+          "model": "models/c40/floor-3.glb",
           "supportNodes": [
             "P3_A_Floor_Slab",
             "P3_B_Floor_Slab",
@@ -6520,13 +6524,12 @@
             4
           ],
           "state": "ready",
-          "revision": "C39-floor-4-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-4",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c16/floor-4-navigation-reference.json",
           "referenceSha256": "1e76fc77280fd7e1abace3c14b5db917f1835390488e7228959a416fd44bde02",
-          "modelSha256": "2dfc0b4680d72b2051d4441602fe03b36fcf81808a489cbca4a6c62c804b2bc9",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-4.glb",
+          "modelSha256": "1a102f8e0784492c41a4df0f0c7f1a9a75dde7162b5869490ada98cfc6773e0f",
+          "model": "models/c40/floor-4.glb",
           "supportNodes": [
             "P4_A_Floor_Slab",
             "P4_B_Floor_Slab",
@@ -6590,13 +6593,12 @@
             5
           ],
           "state": "ready",
-          "revision": "C39-floor-5-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-5",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c16/floor-5-navigation-reference.json",
           "referenceSha256": "0cd8c25da06cf1134c0dfeaba532d2c468ecb56d5cb8546346aeeed95907f978",
-          "modelSha256": "322b7d8754215db878ff152b5c96e31578cdbb1cb0ce38612f56645ef00958a2",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-5.glb",
+          "modelSha256": "980f22f5109607a769d1e98b7f5099bb6978cb45dcbc2347e8c2bc623e647cd6",
+          "model": "models/c40/floor-5.glb",
           "supportNodes": [
             "P5_A_Floor_Slab",
             "P5_B_Floor_Slab"
@@ -6632,11 +6634,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C39-floor-2-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-2",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "8a7d752b4ee8795af965c890cbba43c7a0bba338c0a5411a9230c94c468c3880",
+          "modelSha256": "d39dc679c2dbdc0aa378db585c984320f399a9e1c9dc083ab754e11e590a2911",
           "supportNodes": [
             "P2_A_Floor_Slab",
             "P2_B_Floor_Slab",
@@ -6694,8 +6696,7 @@
             ],
             "sha256": "f545484ddd4b50c3dcc3b911a38b412ea9dc14dd3cc6fa3574dec3eaba0ccdc8"
           },
-          "model": "models/c39/floor-2.glb",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-2.glb"
         },
         {
           "id": "ucc-floor-6-preview",
@@ -6706,13 +6707,12 @@
           "state": "ready",
           "kind": "floor-preview",
           "navigable": false,
-          "revision": "C39-floor-6-fachada-carril",
+          "revision": "C40-floor-6",
           "reference": "models/floor-6/campus-reference.json",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
-          "model": "models/c39/floor-6.glb",
-          "modelSha256": "55dcb9576bcf49faa77e49a508e0e2ee92e063e6e09e6da4d35756d5aaecb393",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-6.glb",
+          "modelSha256": "28d78a4d51777aa499e8f97cf00ad1d99e045127fa4ae173a9d5338d606f98b4"
         }
       ],
       "stairCrossings": [
@@ -6742,11 +6742,11 @@
             1
           ],
           "state": "ready",
-          "revision": "C39-floor-1-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-1",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "c91fe85fbb226f8f4d171c9aaa4e3c17b06bf734604e9395567dd844e7db3e77",
+          "modelSha256": "e26df4c0228868c9c6899e2339f87271f0375dcc9704bcc4bb2a6d4f619bdaad",
           "supportNodes": [
             "Floor_Slab",
             "Stair_A_East",
@@ -6807,11 +6807,10 @@
             ],
             "sha256": "ab2083dee43458acab2d13101b375f7568877988b60df2c5c4a2374c70b32cf3"
           },
-          "model": "models/c39/floor-1.glb",
+          "model": "models/c40/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
-          ],
-          "sourceDocument": "public/models/c39"
+          ]
         },
         {
           "id": "campus-exterior",
@@ -6820,10 +6819,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C39-campus-overview-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
-          "model": "models/c39/campus-overview.glb",
-          "modelSha256": "472ea3a02d5d61f39502af15ab1a5029183eb64b61069c45c4ae73712a987016",
+          "revision": "C40-campus-overview",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
+          "model": "models/c40/campus-overview.glb",
+          "modelSha256": "46179691d34f0d2cb1bddb5b881e64c50d0bba6419acce1511ea388c8c10294b",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -6832,8 +6831,7 @@
               3.5,
               0
             ]
-          },
-          "sourceDocument": "public/models/c39"
+          }
         },
         {
           "id": "ucc-floor-zero",
@@ -6843,13 +6841,12 @@
             0
           ],
           "state": "ready",
-          "revision": "C39-floor-0-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-0",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c18/floor-0-navigation-reference.json",
           "referenceSha256": "83f50bca96e71063187bd18172aedb120545e5e09806022448478c94f24235f6",
-          "modelSha256": "155f68e56376cbaef2a0b61bfc661f7e53cd928208a8d3b68572277076198f54",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-0.glb",
+          "modelSha256": "e29eb3f732f74de041a93ef2d8fe7ef23ea7a92f72eff7e2253f57a5829430a6",
+          "model": "models/c40/floor-0.glb",
           "supportNodes": [
             "P0_A_Floor_Slab",
             "P0_B_Floor_Slab",
@@ -6908,13 +6905,12 @@
             3
           ],
           "state": "ready",
-          "revision": "C39-floor-3-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-3",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c16/floor-3-navigation-reference.json",
           "referenceSha256": "1535d24623825443a9924633f53d0963211b845e3ca458167fbcd4653f50a3dd",
-          "modelSha256": "5f5ccab3872d78cfe223fe201252bd5b20f9c280bbaf2e5b599940a3598e4adf",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-3.glb",
+          "modelSha256": "b9ecbe80d03561f99b911f9dfb11be7e4fe821f483e5394a4bb054dde79eeba1",
+          "model": "models/c40/floor-3.glb",
           "supportNodes": [
             "P3_A_Floor_Slab",
             "P3_B_Floor_Slab",
@@ -6953,13 +6949,12 @@
             4
           ],
           "state": "ready",
-          "revision": "C39-floor-4-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-4",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "2dfc0b4680d72b2051d4441602fe03b36fcf81808a489cbca4a6c62c804b2bc9",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-4.glb"
+          "modelSha256": "1a102f8e0784492c41a4df0f0c7f1a9a75dde7162b5869490ada98cfc6773e0f",
+          "model": "models/c40/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -6970,13 +6965,12 @@
             5
           ],
           "state": "ready",
-          "revision": "C39-floor-5-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-5",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "322b7d8754215db878ff152b5c96e31578cdbb1cb0ce38612f56645ef00958a2",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-5.glb"
+          "modelSha256": "980f22f5109607a769d1e98b7f5099bb6978cb45dcbc2347e8c2bc623e647cd6",
+          "model": "models/c40/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -6986,11 +6980,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C39-floor-2-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-2",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "8a7d752b4ee8795af965c890cbba43c7a0bba338c0a5411a9230c94c468c3880",
+          "modelSha256": "d39dc679c2dbdc0aa378db585c984320f399a9e1c9dc083ab754e11e590a2911",
           "supportNodes": [
             "P2_A_Floor_Slab",
             "P2_B_Floor_Slab",
@@ -7048,8 +7042,7 @@
             ],
             "sha256": "f545484ddd4b50c3dcc3b911a38b412ea9dc14dd3cc6fa3574dec3eaba0ccdc8"
           },
-          "model": "models/c39/floor-2.glb",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-2.glb"
         },
         {
           "id": "ucc-floor-6-preview",
@@ -7060,13 +7053,12 @@
           "state": "ready",
           "kind": "floor-preview",
           "navigable": false,
-          "revision": "C39-floor-6-fachada-carril",
+          "revision": "C40-floor-6",
           "reference": "models/floor-6/campus-reference.json",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
-          "model": "models/c39/floor-6.glb",
-          "modelSha256": "55dcb9576bcf49faa77e49a508e0e2ee92e063e6e09e6da4d35756d5aaecb393",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-6.glb",
+          "modelSha256": "28d78a4d51777aa499e8f97cf00ad1d99e045127fa4ae173a9d5338d606f98b4"
         }
       ],
       "stairCrossings": [
@@ -7096,11 +7088,11 @@
             1
           ],
           "state": "ready",
-          "revision": "C39-floor-1-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-1",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "c91fe85fbb226f8f4d171c9aaa4e3c17b06bf734604e9395567dd844e7db3e77",
+          "modelSha256": "e26df4c0228868c9c6899e2339f87271f0375dcc9704bcc4bb2a6d4f619bdaad",
           "supportNodes": [
             "Floor_Slab",
             "Stair_A_East",
@@ -7160,11 +7152,10 @@
             ],
             "sha256": "cca5b21443ceaa5cf8e8d0ccf5f193414cb1d8a0ec2d91765ce9083cccf41e81"
           },
-          "model": "models/c39/floor-1.glb",
+          "model": "models/c40/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
-          ],
-          "sourceDocument": "public/models/c39"
+          ]
         },
         {
           "id": "campus-exterior",
@@ -7173,10 +7164,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C39-campus-overview-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
-          "model": "models/c39/campus-overview.glb",
-          "modelSha256": "472ea3a02d5d61f39502af15ab1a5029183eb64b61069c45c4ae73712a987016",
+          "revision": "C40-campus-overview",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
+          "model": "models/c40/campus-overview.glb",
+          "modelSha256": "46179691d34f0d2cb1bddb5b881e64c50d0bba6419acce1511ea388c8c10294b",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -7185,8 +7176,7 @@
               3.5,
               0
             ]
-          },
-          "sourceDocument": "public/models/c39"
+          }
         },
         {
           "id": "ucc-floor-0-preview",
@@ -7197,13 +7187,12 @@
             0
           ],
           "state": "ready",
-          "revision": "C39-floor-0-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-0",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "155f68e56376cbaef2a0b61bfc661f7e53cd928208a8d3b68572277076198f54",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-0.glb"
+          "modelSha256": "e29eb3f732f74de041a93ef2d8fe7ef23ea7a92f72eff7e2253f57a5829430a6",
+          "model": "models/c40/floor-0.glb"
         },
         {
           "id": "ucc-third-floor",
@@ -7213,13 +7202,12 @@
             3
           ],
           "state": "ready",
-          "revision": "C39-floor-3-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-3",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/c16/floor-3-navigation-reference.json",
           "referenceSha256": "1535d24623825443a9924633f53d0963211b845e3ca458167fbcd4653f50a3dd",
-          "modelSha256": "5f5ccab3872d78cfe223fe201252bd5b20f9c280bbaf2e5b599940a3598e4adf",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-3.glb",
+          "modelSha256": "b9ecbe80d03561f99b911f9dfb11be7e4fe821f483e5394a4bb054dde79eeba1",
+          "model": "models/c40/floor-3.glb",
           "supportNodes": [
             "P3_A_Floor_Slab",
             "P3_B_Floor_Slab",
@@ -7258,13 +7246,12 @@
             4
           ],
           "state": "ready",
-          "revision": "C39-floor-4-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-4",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "2dfc0b4680d72b2051d4441602fe03b36fcf81808a489cbca4a6c62c804b2bc9",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-4.glb"
+          "modelSha256": "1a102f8e0784492c41a4df0f0c7f1a9a75dde7162b5869490ada98cfc6773e0f",
+          "model": "models/c40/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -7275,13 +7262,12 @@
             5
           ],
           "state": "ready",
-          "revision": "C39-floor-5-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-5",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "322b7d8754215db878ff152b5c96e31578cdbb1cb0ce38612f56645ef00958a2",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-5.glb"
+          "modelSha256": "980f22f5109607a769d1e98b7f5099bb6978cb45dcbc2347e8c2bc623e647cd6",
+          "model": "models/c40/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -7291,11 +7277,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C39-floor-2-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-2",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "8a7d752b4ee8795af965c890cbba43c7a0bba338c0a5411a9230c94c468c3880",
+          "modelSha256": "d39dc679c2dbdc0aa378db585c984320f399a9e1c9dc083ab754e11e590a2911",
           "supportNodes": [
             "P2_A_Floor_Slab",
             "P2_B_Floor_Slab",
@@ -7353,8 +7339,7 @@
             ],
             "sha256": "f545484ddd4b50c3dcc3b911a38b412ea9dc14dd3cc6fa3574dec3eaba0ccdc8"
           },
-          "model": "models/c39/floor-2.glb",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-2.glb"
         },
         {
           "id": "ucc-floor-6-preview",
@@ -7365,13 +7350,12 @@
           "state": "ready",
           "kind": "floor-preview",
           "navigable": false,
-          "revision": "C39-floor-6-fachada-carril",
+          "revision": "C40-floor-6",
           "reference": "models/floor-6/campus-reference.json",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
-          "model": "models/c39/floor-6.glb",
-          "modelSha256": "55dcb9576bcf49faa77e49a508e0e2ee92e063e6e09e6da4d35756d5aaecb393",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-6.glb",
+          "modelSha256": "28d78a4d51777aa499e8f97cf00ad1d99e045127fa4ae173a9d5338d606f98b4"
         }
       ],
       "stairCrossings": [
@@ -7401,11 +7385,11 @@
             1
           ],
           "state": "ready",
-          "revision": "C39-floor-1-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-1",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "c91fe85fbb226f8f4d171c9aaa4e3c17b06bf734604e9395567dd844e7db3e77",
+          "modelSha256": "e26df4c0228868c9c6899e2339f87271f0375dcc9704bcc4bb2a6d4f619bdaad",
           "supportNodes": [
             "Floor_Slab",
             "Stair_A_East",
@@ -7465,11 +7449,10 @@
             ],
             "sha256": "cca5b21443ceaa5cf8e8d0ccf5f193414cb1d8a0ec2d91765ce9083cccf41e81"
           },
-          "model": "models/c39/floor-1.glb",
+          "model": "models/c40/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
-          ],
-          "sourceDocument": "public/models/c39"
+          ]
         },
         {
           "id": "campus-exterior",
@@ -7478,10 +7461,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C39-campus-overview-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
-          "model": "models/c39/campus-overview.glb",
-          "modelSha256": "472ea3a02d5d61f39502af15ab1a5029183eb64b61069c45c4ae73712a987016",
+          "revision": "C40-campus-overview",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
+          "model": "models/c40/campus-overview.glb",
+          "modelSha256": "46179691d34f0d2cb1bddb5b881e64c50d0bba6419acce1511ea388c8c10294b",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -7490,8 +7473,7 @@
               3.5,
               0
             ]
-          },
-          "sourceDocument": "public/models/c39"
+          }
         },
         {
           "id": "ucc-floor-0-preview",
@@ -7502,13 +7484,12 @@
             0
           ],
           "state": "ready",
-          "revision": "C39-floor-0-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-0",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "155f68e56376cbaef2a0b61bfc661f7e53cd928208a8d3b68572277076198f54",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-0.glb"
+          "modelSha256": "e29eb3f732f74de041a93ef2d8fe7ef23ea7a92f72eff7e2253f57a5829430a6",
+          "model": "models/c40/floor-0.glb"
         },
         {
           "id": "ucc-floor-3-preview",
@@ -7519,13 +7500,12 @@
             3
           ],
           "state": "ready",
-          "revision": "C39-floor-3-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-3",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-3/campus-reference.json",
           "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-          "modelSha256": "5f5ccab3872d78cfe223fe201252bd5b20f9c280bbaf2e5b599940a3598e4adf",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-3.glb"
+          "modelSha256": "b9ecbe80d03561f99b911f9dfb11be7e4fe821f483e5394a4bb054dde79eeba1",
+          "model": "models/c40/floor-3.glb"
         },
         {
           "id": "ucc-floor-4-preview",
@@ -7536,13 +7516,12 @@
             4
           ],
           "state": "ready",
-          "revision": "C39-floor-4-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-4",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "2dfc0b4680d72b2051d4441602fe03b36fcf81808a489cbca4a6c62c804b2bc9",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-4.glb"
+          "modelSha256": "1a102f8e0784492c41a4df0f0c7f1a9a75dde7162b5869490ada98cfc6773e0f",
+          "model": "models/c40/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -7553,13 +7532,12 @@
             5
           ],
           "state": "ready",
-          "revision": "C39-floor-5-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-5",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "322b7d8754215db878ff152b5c96e31578cdbb1cb0ce38612f56645ef00958a2",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-5.glb"
+          "modelSha256": "980f22f5109607a769d1e98b7f5099bb6978cb45dcbc2347e8c2bc623e647cd6",
+          "model": "models/c40/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -7569,11 +7547,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C39-floor-2-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-2",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "8a7d752b4ee8795af965c890cbba43c7a0bba338c0a5411a9230c94c468c3880",
+          "modelSha256": "d39dc679c2dbdc0aa378db585c984320f399a9e1c9dc083ab754e11e590a2911",
           "supportNodes": [
             "P2_A_Floor_Slab",
             "P2_B_Floor_Slab",
@@ -7606,8 +7584,7 @@
             ],
             "sha256": "d8997a459ba9da273624c33fba7e969e996f84ab9917f77108668e8be2d258f1"
           },
-          "model": "models/c39/floor-2.glb",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-2.glb"
         },
         {
           "id": "ucc-floor-6-preview",
@@ -7618,13 +7595,12 @@
           "state": "ready",
           "kind": "floor-preview",
           "navigable": false,
-          "revision": "C39-floor-6-fachada-carril",
+          "revision": "C40-floor-6",
           "reference": "models/floor-6/campus-reference.json",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
-          "model": "models/c39/floor-6.glb",
-          "modelSha256": "55dcb9576bcf49faa77e49a508e0e2ee92e063e6e09e6da4d35756d5aaecb393",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-6.glb",
+          "modelSha256": "28d78a4d51777aa499e8f97cf00ad1d99e045127fa4ae173a9d5338d606f98b4"
         }
       ],
       "stairCrossings": [
@@ -7654,11 +7630,11 @@
             1
           ],
           "state": "ready",
-          "revision": "C39-floor-1-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-1",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "c91fe85fbb226f8f4d171c9aaa4e3c17b06bf734604e9395567dd844e7db3e77",
+          "modelSha256": "e26df4c0228868c9c6899e2339f87271f0375dcc9704bcc4bb2a6d4f619bdaad",
           "supportNodes": [
             "Floor_Slab",
             "Stair_A_East",
@@ -7689,8 +7665,7 @@
             ],
             "sha256": "39b6168bdb7453d48d8bc1ea8b3f196cd1de52f760c2064a1487af4d96d16de5"
           },
-          "model": "models/c39/floor-1.glb",
-          "sourceDocument": "public/models/c39",
+          "model": "models/c40/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
           ]
@@ -7702,10 +7677,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C39-campus-overview-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
-          "model": "models/c39/campus-overview.glb",
-          "modelSha256": "472ea3a02d5d61f39502af15ab1a5029183eb64b61069c45c4ae73712a987016",
+          "revision": "C40-campus-overview",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
+          "model": "models/c40/campus-overview.glb",
+          "modelSha256": "46179691d34f0d2cb1bddb5b881e64c50d0bba6419acce1511ea388c8c10294b",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -7714,8 +7689,7 @@
               3.5,
               0
             ]
-          },
-          "sourceDocument": "public/models/c39"
+          }
         },
         {
           "id": "ucc-floor-0-preview",
@@ -7726,13 +7700,12 @@
             0
           ],
           "state": "ready",
-          "revision": "C39-floor-0-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-0",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "155f68e56376cbaef2a0b61bfc661f7e53cd928208a8d3b68572277076198f54",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-0.glb"
+          "modelSha256": "e29eb3f732f74de041a93ef2d8fe7ef23ea7a92f72eff7e2253f57a5829430a6",
+          "model": "models/c40/floor-0.glb"
         },
         {
           "id": "ucc-floor-2-preview",
@@ -7743,13 +7716,12 @@
             2
           ],
           "state": "ready",
-          "revision": "C39-floor-2-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-2",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-2/campus-reference.json",
           "referenceSha256": "2ba11cd9f962b681aa5ace5bcf3c973c246df7ae9200e26b4b5cf7f9793c52bc",
-          "modelSha256": "8a7d752b4ee8795af965c890cbba43c7a0bba338c0a5411a9230c94c468c3880",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-2.glb"
+          "modelSha256": "d39dc679c2dbdc0aa378db585c984320f399a9e1c9dc083ab754e11e590a2911",
+          "model": "models/c40/floor-2.glb"
         },
         {
           "id": "ucc-floor-3-preview",
@@ -7760,13 +7732,12 @@
             3
           ],
           "state": "ready",
-          "revision": "C39-floor-3-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-3",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-3/campus-reference.json",
           "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-          "modelSha256": "5f5ccab3872d78cfe223fe201252bd5b20f9c280bbaf2e5b599940a3598e4adf",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-3.glb"
+          "modelSha256": "b9ecbe80d03561f99b911f9dfb11be7e4fe821f483e5394a4bb054dde79eeba1",
+          "model": "models/c40/floor-3.glb"
         },
         {
           "id": "ucc-floor-4-preview",
@@ -7777,13 +7748,12 @@
             4
           ],
           "state": "ready",
-          "revision": "C39-floor-4-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-4",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "2dfc0b4680d72b2051d4441602fe03b36fcf81808a489cbca4a6c62c804b2bc9",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-4.glb"
+          "modelSha256": "1a102f8e0784492c41a4df0f0c7f1a9a75dde7162b5869490ada98cfc6773e0f",
+          "model": "models/c40/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -7794,13 +7764,12 @@
             5
           ],
           "state": "ready",
-          "revision": "C39-floor-5-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-5",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "322b7d8754215db878ff152b5c96e31578cdbb1cb0ce38612f56645ef00958a2",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-5.glb"
+          "modelSha256": "980f22f5109607a769d1e98b7f5099bb6978cb45dcbc2347e8c2bc623e647cd6",
+          "model": "models/c40/floor-5.glb"
         },
         {
           "id": "ucc-floor-6-preview",
@@ -7811,13 +7780,12 @@
           "state": "ready",
           "kind": "floor-preview",
           "navigable": false,
-          "revision": "C39-floor-6-fachada-carril",
+          "revision": "C40-floor-6",
           "reference": "models/floor-6/campus-reference.json",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
-          "model": "models/c39/floor-6.glb",
-          "modelSha256": "55dcb9576bcf49faa77e49a508e0e2ee92e063e6e09e6da4d35756d5aaecb393",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-6.glb",
+          "modelSha256": "28d78a4d51777aa499e8f97cf00ad1d99e045127fa4ae173a9d5338d606f98b4"
         }
       ],
       "stairCrossings": []
@@ -7834,11 +7802,11 @@
             1
           ],
           "state": "ready",
-          "revision": "C39-floor-1-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-1",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "c91fe85fbb226f8f4d171c9aaa4e3c17b06bf734604e9395567dd844e7db3e77",
+          "modelSha256": "e26df4c0228868c9c6899e2339f87271f0375dcc9704bcc4bb2a6d4f619bdaad",
           "supportNodes": [
             "Floor_Slab",
             "Stair_A_East",
@@ -7894,8 +7862,7 @@
             ],
             "sha256": "cc7f846fc35e57b3f92f941ab0492080c3e53f98c858e1eba0cdc2792dd5baa6"
           },
-          "model": "models/c39/floor-1.glb",
-          "sourceDocument": "public/models/c39",
+          "model": "models/c40/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
           ]
@@ -7907,10 +7874,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C39-campus-overview-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
-          "model": "models/c39/campus-overview.glb",
-          "modelSha256": "472ea3a02d5d61f39502af15ab1a5029183eb64b61069c45c4ae73712a987016",
+          "revision": "C40-campus-overview",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
+          "model": "models/c40/campus-overview.glb",
+          "modelSha256": "46179691d34f0d2cb1bddb5b881e64c50d0bba6419acce1511ea388c8c10294b",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -7919,8 +7886,7 @@
               3.5,
               0
             ]
-          },
-          "sourceDocument": "public/models/c39"
+          }
         },
         {
           "id": "ucc-floor-0-preview",
@@ -7931,13 +7897,12 @@
             0
           ],
           "state": "ready",
-          "revision": "C39-floor-0-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-0",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "155f68e56376cbaef2a0b61bfc661f7e53cd928208a8d3b68572277076198f54",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-0.glb"
+          "modelSha256": "e29eb3f732f74de041a93ef2d8fe7ef23ea7a92f72eff7e2253f57a5829430a6",
+          "model": "models/c40/floor-0.glb"
         },
         {
           "id": "ucc-floor-3-preview",
@@ -7948,13 +7913,12 @@
             3
           ],
           "state": "ready",
-          "revision": "C39-floor-3-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-3",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-3/campus-reference.json",
           "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-          "modelSha256": "5f5ccab3872d78cfe223fe201252bd5b20f9c280bbaf2e5b599940a3598e4adf",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-3.glb"
+          "modelSha256": "b9ecbe80d03561f99b911f9dfb11be7e4fe821f483e5394a4bb054dde79eeba1",
+          "model": "models/c40/floor-3.glb"
         },
         {
           "id": "ucc-floor-4-preview",
@@ -7965,13 +7929,12 @@
             4
           ],
           "state": "ready",
-          "revision": "C39-floor-4-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-4",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "2dfc0b4680d72b2051d4441602fe03b36fcf81808a489cbca4a6c62c804b2bc9",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-4.glb"
+          "modelSha256": "1a102f8e0784492c41a4df0f0c7f1a9a75dde7162b5869490ada98cfc6773e0f",
+          "model": "models/c40/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -7982,13 +7945,12 @@
             5
           ],
           "state": "ready",
-          "revision": "C39-floor-5-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-5",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "322b7d8754215db878ff152b5c96e31578cdbb1cb0ce38612f56645ef00958a2",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-5.glb"
+          "modelSha256": "980f22f5109607a769d1e98b7f5099bb6978cb45dcbc2347e8c2bc623e647cd6",
+          "model": "models/c40/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -7998,11 +7960,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C39-floor-2-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-2",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "8a7d752b4ee8795af965c890cbba43c7a0bba338c0a5411a9230c94c468c3880",
+          "modelSha256": "d39dc679c2dbdc0aa378db585c984320f399a9e1c9dc083ab754e11e590a2911",
           "supportNodes": [
             "P2_A_Floor_Slab",
             "P2_B_Floor_Slab",
@@ -8035,8 +7997,7 @@
             ],
             "sha256": "4cae8b12551fb279aa0b8bb9660b9382b73ad97ca93d9d120d201408a93afab8"
           },
-          "model": "models/c39/floor-2.glb",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-2.glb"
         },
         {
           "id": "ucc-floor-6-preview",
@@ -8047,13 +8008,12 @@
           "state": "ready",
           "kind": "floor-preview",
           "navigable": false,
-          "revision": "C39-floor-6-fachada-carril",
+          "revision": "C40-floor-6",
           "reference": "models/floor-6/campus-reference.json",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
-          "model": "models/c39/floor-6.glb",
-          "modelSha256": "55dcb9576bcf49faa77e49a508e0e2ee92e063e6e09e6da4d35756d5aaecb393",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-6.glb",
+          "modelSha256": "28d78a4d51777aa499e8f97cf00ad1d99e045127fa4ae173a9d5338d606f98b4"
         }
       ],
       "stairCrossings": []
@@ -8070,11 +8030,11 @@
             1
           ],
           "state": "ready",
-          "revision": "C39-floor-1-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-1",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/campus-reference.json",
           "referenceSha256": "5a5cb66d8e5bcdae60c1a5f25291d4233aa3268de0594ad41bb0d501effa5308",
-          "modelSha256": "c91fe85fbb226f8f4d171c9aaa4e3c17b06bf734604e9395567dd844e7db3e77",
+          "modelSha256": "e26df4c0228868c9c6899e2339f87271f0375dcc9704bcc4bb2a6d4f619bdaad",
           "supportNodes": [
             "Floor_Slab",
             "Stair_A_East",
@@ -8130,8 +8090,7 @@
             ],
             "sha256": "15aa4d3179542df234e9c7182709dd8443c78f5bf9bc42d7f8f7988244e9d961"
           },
-          "model": "models/c39/floor-1.glb",
-          "sourceDocument": "public/models/c39",
+          "model": "models/c40/floor-1.glb",
           "outdoorSupportNodes": [
             "Site"
           ]
@@ -8143,10 +8102,10 @@
           "label": "Campus overview",
           "floors": [],
           "state": "ready",
-          "revision": "C39-campus-overview-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
-          "model": "models/c39/campus-overview.glb",
-          "modelSha256": "472ea3a02d5d61f39502af15ab1a5029183eb64b61069c45c4ae73712a987016",
+          "revision": "C40-campus-overview",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
+          "model": "models/c40/campus-overview.glb",
+          "modelSha256": "46179691d34f0d2cb1bddb5b881e64c50d0bba6419acce1511ea388c8c10294b",
           "transform": {
             "scale": 1,
             "rotationYDegrees": 0,
@@ -8155,8 +8114,7 @@
               3.5,
               0
             ]
-          },
-          "sourceDocument": "public/models/c39"
+          }
         },
         {
           "id": "ucc-floor-0-preview",
@@ -8167,13 +8125,12 @@
             0
           ],
           "state": "ready",
-          "revision": "C39-floor-0-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-0",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-0/campus-reference.json",
           "referenceSha256": "555607e82212e0e21b5c54d66366fd4d559574e28fa9c4bc3cb62e343efa4b7e",
-          "modelSha256": "155f68e56376cbaef2a0b61bfc661f7e53cd928208a8d3b68572277076198f54",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-0.glb"
+          "modelSha256": "e29eb3f732f74de041a93ef2d8fe7ef23ea7a92f72eff7e2253f57a5829430a6",
+          "model": "models/c40/floor-0.glb"
         },
         {
           "id": "ucc-floor-3-preview",
@@ -8184,13 +8141,12 @@
             3
           ],
           "state": "ready",
-          "revision": "C39-floor-3-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-3",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-3/campus-reference.json",
           "referenceSha256": "358cf6fe440957f8e78b5f351e7d5b766b01519f29d277d8b5d3f70ed48d0264",
-          "modelSha256": "5f5ccab3872d78cfe223fe201252bd5b20f9c280bbaf2e5b599940a3598e4adf",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-3.glb"
+          "modelSha256": "b9ecbe80d03561f99b911f9dfb11be7e4fe821f483e5394a4bb054dde79eeba1",
+          "model": "models/c40/floor-3.glb"
         },
         {
           "id": "ucc-floor-4-preview",
@@ -8201,13 +8157,12 @@
             4
           ],
           "state": "ready",
-          "revision": "C39-floor-4-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-4",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-4/campus-reference.json",
           "referenceSha256": "991f88124267d939872f35da41328284a71dc278304f2bad3274441bf902999a",
-          "modelSha256": "2dfc0b4680d72b2051d4441602fe03b36fcf81808a489cbca4a6c62c804b2bc9",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-4.glb"
+          "modelSha256": "1a102f8e0784492c41a4df0f0c7f1a9a75dde7162b5869490ada98cfc6773e0f",
+          "model": "models/c40/floor-4.glb"
         },
         {
           "id": "ucc-floor-5-preview",
@@ -8218,13 +8173,12 @@
             5
           ],
           "state": "ready",
-          "revision": "C39-floor-5-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-5",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-5/campus-reference.json",
           "referenceSha256": "04fe3ec0dbc98abd7f64799fdb0e30b8c26094f35c09c24a417d26169618a835",
-          "modelSha256": "322b7d8754215db878ff152b5c96e31578cdbb1cb0ce38612f56645ef00958a2",
-          "sourceDocument": "public/models/c39",
-          "model": "models/c39/floor-5.glb"
+          "modelSha256": "980f22f5109607a769d1e98b7f5099bb6978cb45dcbc2347e8c2bc623e647cd6",
+          "model": "models/c40/floor-5.glb"
         },
         {
           "id": "ucc-second-floor",
@@ -8234,11 +8188,11 @@
           ],
           "state": "ready",
           "kind": "floor",
-          "revision": "C39-floor-2-fachada-carril",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "revision": "C40-floor-2",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "reference": "models/floor-2/campus-navigation-reference.json",
           "referenceSha256": "ae68f9c9cfd55f4c63584727924e38965d4fafd02ec2c67e96c7e17ef12a20d7",
-          "modelSha256": "8a7d752b4ee8795af965c890cbba43c7a0bba338c0a5411a9230c94c468c3880",
+          "modelSha256": "d39dc679c2dbdc0aa378db585c984320f399a9e1c9dc083ab754e11e590a2911",
           "supportNodes": [
             "P2_A_Floor_Slab",
             "P2_B_Floor_Slab",
@@ -8271,8 +8225,7 @@
             ],
             "sha256": "4cae8b12551fb279aa0b8bb9660b9382b73ad97ca93d9d120d201408a93afab8"
           },
-          "model": "models/c39/floor-2.glb",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-2.glb"
         },
         {
           "id": "ucc-floor-6-preview",
@@ -8283,13 +8236,12 @@
           "state": "ready",
           "kind": "floor-preview",
           "navigable": false,
-          "revision": "C39-floor-6-fachada-carril",
+          "revision": "C40-floor-6",
           "reference": "models/floor-6/campus-reference.json",
-          "sourceCommit": "9504ad4c29b35a7060b9a866bace073436e60244",
+          "sourceCommit": "53245c7868276574fd7a682a5cbdfdf490b2c5f3",
           "referenceSha256": "b17b3f5317353780ce599d482f6e9cf240cb41c2127532924afc620a94db3446",
-          "model": "models/c39/floor-6.glb",
-          "modelSha256": "55dcb9576bcf49faa77e49a508e0e2ee92e063e6e09e6da4d35756d5aaecb393",
-          "sourceDocument": "public/models/c39"
+          "model": "models/c40/floor-6.glb",
+          "modelSha256": "28d78a4d51777aa499e8f97cf00ad1d99e045127fa4ae173a9d5338d606f98b4"
         }
       ],
       "stairCrossings": []

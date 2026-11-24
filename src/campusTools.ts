@@ -3,7 +3,8 @@
 // single-worker backend persists its queue and linked-list state in its own database.
 import { api, ApiError } from "./api/client.ts";
 import type { Building, NavigationState, TourSession } from "./api/types.ts";
-import { askCampus } from "./assistant.ts";
+import { CampusAssistant, type AssistantAction, type AssistantPlace, type AssistantRoute } from "./assistant.ts";
+import { icon, labelled, placeIcon, type IconName } from "./icons.ts";
 
 export interface CampusToolsHost {
   places(): Building[];
@@ -15,7 +16,17 @@ export interface CampusToolsHost {
   admin(): boolean;
   openLogin(): void;
   sessionExpired(): void;
+  // Assistant hooks: where the person is, the active route and the route preferences it may change.
+  here(): Building | null;
+  locatable(): Building[];
+  route(): AssistantRoute | null;
+  avoidStairs(): boolean;
+  setAvoidStairs(value: boolean): void;
+  setMode(mode: "comfortable" | "shortest"): void;
+  locate(place: Building): Promise<void>;
+  showAlternatives(): void;
 }
+interface ChatEntry { role: "user" | "assistant"; text: string; places?: AssistantPlace[]; suggestions?: string[] }
 type Tab = "assistant" | "history" | "tours" | "queues" | "admin";
 
 function el<K extends keyof HTMLElementTagNameMap>(tag: K, props: Partial<HTMLElementTagNameMap[K]> & { dataset?: Record<string, string> } = {}, ...children: (Node | string)[]): HTMLElementTagNameMap[K] {
@@ -41,12 +52,15 @@ export class CampusTools {
   private readonly back: HTMLButtonElement;
   private readonly forward: HTMLButtonElement;
   private readonly host: CampusToolsHost;
+  private readonly assistant = new CampusAssistant();
+  private chat: ChatEntry[] = [];
 
   constructor(root: HTMLElement, back: HTMLButtonElement, forward: HTMLButtonElement, host: CampusToolsHost) {
     this.root = root; this.back = back; this.forward = forward; this.host = host;
     const bar = root.querySelector<HTMLElement>(".tool-tabs")!; this.body = root.querySelector<HTMLElement>(".tool-body")!;
+    const tabIcons: Record<Tab, IconName> = { assistant: "sparkle", history: "clock", tours: "flag", queues: "users", admin: "shield" };
     for (const [tab, label] of [["assistant", "Asistente"], ["history", "Historial"], ["tours", "Recorridos"], ["queues", "Colas"], ["admin", "Admin"]] as [Tab, string][]) {
-      const button = el("button", { type: "button", className: "tool-tab", textContent: label, id: `tool-${tab}` });
+      const button = el("button", { type: "button", className: "tool-tab", id: `tool-${tab}` }, icon(tabIcons[tab]), label);
       button.setAttribute("role", "tab"); button.addEventListener("click", () => void this.show(tab)); bar.append(button); this.tabs.set(tab, button);
     }
     back.addEventListener("click", () => void this.step("back"));
@@ -71,6 +85,7 @@ export class CampusTools {
     this.draft = [];
     this.draftName = "";
     this.creatingTour = false;
+    this.chat = [];
     this.navigation = { current: null, can_go_back: false, can_go_forward: false };
     this.syncNavigation();
     this.tabs.get("admin")!.hidden = !this.host.admin();
@@ -149,11 +164,11 @@ export class CampusTools {
     this.body.querySelector(".tool-note")?.remove(); this.body.prepend(note);
   }
   private placeButton(place: Building, detail: string): HTMLElement {
-    const go = el("button", { type: "button", className: "text-button", textContent: "Ir ↗" });
+    const go = el("button", { type: "button", className: "text-button" }, ...labelled("Ir", "arrow-up-right"));
     go.addEventListener("click", () => void this.host.routeTo(place));
     const pick = el("button", { type: "button", className: "tool-link", textContent: place.display_name ?? place.name });
     pick.addEventListener("click", () => this.host.select(place));
-    return el("li", { className: "tool-item" }, el("span", {}, pick, el("small", { textContent: detail })), go);
+    return el("li", { className: "tool-item" }, el("span", { className: "tool-place-icon" }, icon(placeIcon(place))), el("span", {}, pick, el("small", { textContent: detail })), go);
   }
   private requireSession(): boolean {
     if (this.host.signedIn()) return true;
@@ -178,19 +193,66 @@ export class CampusTools {
     } catch (error) { if (this.isCurrent(revision)) { this.body.replaceChildren(); this.handleError(error, revision); } }
   }
 
+  // Free, local conversational assistant (assistant.ts): it answers with verified places only, and its
+  // actions (route, locate, preferences) are carried out here with the ids it returns.
   private renderAssistant(): void {
-    const input = el("input", { type: "search", placeholder: "Por ejemplo: laboratorio, baño, aula 512…", id: "assistant-question" });
-    input.setAttribute("aria-label", "Consultar al asistente del campus");
-    const ask = el("button", { type: "button", className: "button button-dark", textContent: "Buscar →", id: "assistant-ask" });
-    const answers = el("ol", { className: "tool-list", id: "assistant-answers" });
-    const run = () => {
-      const answer = askCampus(input.value, this.host.places());
-      answers.replaceChildren(...answer.matches.map((m) => this.placeButton(m.place, `${m.place.block_code ? `Bloque ${m.place.block_code} · ` : ""}${this.host.floorName(m.place.floor)} · ${m.reason}`)));
-      if (!answer.matches.length) answers.replaceChildren(el("li", { className: "field-hint", textContent: input.value.trim() ? "No encontramos un lugar verificado. Prueba un aula, servicio o piso." : "Cuéntanos qué estás buscando." }));
-      this.root.dataset.answers = String(answer.matches.length);
+    const input = el("input", { type: "search", placeholder: "Pregúntame: baño más cercano, tengo hambre, aula 512…", id: "assistant-question" });
+    input.setAttribute("aria-label", "Escribe tu pregunta para el asistente del campus");
+    input.autocomplete = "off";
+    const ask = el("button", { type: "button", className: "button button-dark", id: "assistant-ask", title: "Enviar" }, ...labelled("Enviar", "send"));
+    const log = el("div", { className: "chat-log", id: "assistant-log" });
+    log.setAttribute("aria-live", "polite");
+    const draw = () => {
+      log.replaceChildren(...this.chat.map((entry, index) => {
+        const bubble = el("div", { className: `chat-bubble ${entry.role}` },
+          entry.role === "assistant" ? el("p", {}, icon("sparkle", "chat-mark"), ` ${entry.text}`) : el("p", { textContent: entry.text }));
+        const latest = index === this.chat.length - 1;
+        if (entry.places?.length) bubble.append(el("ol", { className: "tool-list", ...(latest ? { id: "assistant-answers" } : {}) },
+          ...entry.places.map((item) => this.placeButton(item.place, item.detail))));
+        if (latest && entry.suggestions?.length) bubble.append(el("div", { className: "chat-suggestions" }, ...entry.suggestions.map((text) => {
+          const chip = el("button", { type: "button", className: "route-chip", textContent: text });
+          chip.addEventListener("click", () => { input.value = text; void send(); });
+          return chip;
+        })));
+        return bubble;
+      }));
+      if (!this.chat.length || this.chat.at(-1)!.role !== "assistant" || !this.chat.at(-1)!.places?.length)
+        log.append(el("ol", { className: "tool-list", id: "assistant-answers", hidden: true }));
+      log.scrollTop = log.scrollHeight;
     };
-    ask.addEventListener("click", run); input.addEventListener("keydown", (e) => { if (e.key === "Enter") run(); });
-    this.body.replaceChildren(el("p", { className: "field-hint", textContent: "Encuentra lugares verificados del campus, con tus propias palabras." }), el("div", { className: "tool-row" }, input, ask), answers);
+    const context = () => ({
+      places: this.host.places(), locatable: this.host.locatable(), here: this.host.here(), destination: this.host.destination() ?? null,
+      route: this.host.route(), avoidStairs: this.host.avoidStairs(), floorName: (level: number) => this.host.floorName(level),
+    });
+    const send = async () => {
+      const question = input.value.trim();
+      if (!question) return;
+      input.value = "";
+      const reply = this.assistant.reply(question, context());
+      this.chat.push({ role: "user", text: question }, { role: "assistant", text: reply.text, places: reply.places, suggestions: reply.suggestions });
+      this.chat = this.chat.slice(-24);
+      this.root.dataset.answers = String(reply.places.length);
+      draw();
+      for (const action of reply.actions) {
+        try { await this.perform(action); }
+        catch (error) { this.chat.push({ role: "assistant", text: message(error) }); draw(); break; }
+      }
+    };
+    ask.addEventListener("click", () => void send());
+    input.addEventListener("keydown", (event) => { if (event.key === "Enter" && !event.isComposing) void send(); });
+    if (!this.chat.length) this.chat.push({ role: "assistant", text: "¡Hola! Pregúntame por un lugar, una necesidad («tengo sed», «necesito un baño») o pídeme que te lleve. También entiendo «sin escaleras», «¿cuánto falta?» y «estoy en…».",
+      suggestions: this.assistant.examples("es") });
+    draw();
+    this.body.replaceChildren(log, el("div", { className: "tool-row" }, input, ask),
+      el("small", { className: "field-hint", textContent: "Asistente gratuito: funciona en tu navegador y solo usa lugares verificados del campus." }));
+  }
+
+  private async perform(action: AssistantAction): Promise<void> {
+    if (action.kind === "avoid-stairs") this.host.setAvoidStairs(action.value);
+    else if (action.kind === "mode") this.host.setMode(action.mode);
+    else if (action.kind === "locate") await this.host.locate(action.place);
+    else if (action.kind === "alternatives") this.host.showAlternatives();
+    else if (action.kind === "route") await this.host.routeTo(action.place);
   }
 
   private async renderHistory(revision: number): Promise<void> {
@@ -220,9 +282,9 @@ export class CampusTools {
     const parts: (Node | string)[] = [];
     if (session) {
       const stop = this.host.places().find((p) => p.id === session!.current_stop.building_id);
-      const prev = el("button", { type: "button", className: "button button-outline", textContent: "← Anterior", disabled: session.current_stop.position <= 1 });
-      const next = el("button", { type: "button", className: "button button-outline", textContent: "Siguiente →", disabled: session.current_stop.position >= session.total_stops });
-      const go = el("button", { type: "button", className: "button button-dark", textContent: "Ir a esta parada →", disabled: !stop, id: "tour-go" });
+      const prev = el("button", { type: "button", className: "button button-outline", disabled: session.current_stop.position <= 1 }, ...labelled("Anterior", "arrow-left", true));
+      const next = el("button", { type: "button", className: "button button-outline", disabled: session.current_stop.position >= session.total_stops }, ...labelled("Siguiente", "arrow-right"));
+      const go = el("button", { type: "button", className: "button button-dark", disabled: !stop, id: "tour-go" }, ...labelled("Ir a esta parada", "arrow-right"));
       const end = el("button", { type: "button", className: "text-button", textContent: "Finalizar recorrido" });
       prev.addEventListener("click", () => void this.action(revision, async () => { await api.previousStop(); }, "tours"));
       next.addEventListener("click", () => void this.action(revision, async () => { await api.nextStop(); }, "tours"));
@@ -233,7 +295,7 @@ export class CampusTools {
         el("div", { className: "tool-row" }, prev, next), go, end));
     }
     const list = el("ol", { className: "tool-list", id: "tour-list" }, ...tours.map((t) => {
-      const start = el("button", { type: "button", className: "text-button", textContent: "Comenzar ↗" });
+      const start = el("button", { type: "button", className: "text-button" }, ...labelled("Comenzar", "arrow-up-right"));
       start.addEventListener("click", async () => {
         if (!this.host.signedIn()) { this.host.openLogin(); return; }
         await this.action(revision, async () => { await api.startTour(t.id); }, "tours");
@@ -273,7 +335,7 @@ export class CampusTools {
     if (!ranking.length) ranks.append(el("li", { className: "field-hint", textContent: "Todavía no hay visitas registradas." }));
     parts.push(el("span", { className: "eyebrow tool-heading", textContent: "LUGARES MÁS VISITADOS" }), ranks);
     if (popular.length) parts.push(el("span", { className: "eyebrow tool-heading", textContent: "RUTAS FRECUENTES" }),
-      el("ol", { className: "tool-list" }, ...popular.slice(0, 5).map((r) => el("li", { className: "tool-item" }, el("span", {}, el("strong", { textContent: `${r.origin_name} → ${r.destination_name}` }), el("small", { textContent: `${r.frequency} ${r.frequency === 1 ? "vez" : "veces"}` }))))));
+      el("ol", { className: "tool-list" }, ...popular.slice(0, 5).map((r) => el("li", { className: "tool-item" }, el("span", {}, el("strong", {}, r.origin_name, icon("arrow-right", "inline-arrow"), r.destination_name), el("small", { textContent: `${r.frequency} ${r.frequency === 1 ? "vez" : "veces"}` }))))));
     this.body.replaceChildren(...parts);
   }
 
@@ -327,6 +389,8 @@ export class CampusTools {
         }
       }
     });
+    parts.push(...await this.learningSection(revision));
+    if (!this.isCurrent(revision)) return;
     const reload = el("button", { type: "button", className: "text-button", textContent: "Actualizar conexiones" });
     reload.addEventListener("click", async () => { try { await api.reloadGraph(); this.notice("Conexiones actualizadas.", "info", revision); } catch (error) { this.notice(message(error), "error", revision); } });
     const tours = await api.tours();
@@ -339,5 +403,33 @@ export class CampusTools {
     parts.push(el("span", { className: "eyebrow tool-heading", textContent: "NUEVO RECORRIDO GUIADO" }), tourName, stops, el("div", { className: "tool-row" }, add, create),
       el("span", { className: "eyebrow tool-heading", textContent: "RECORRIDOS" }), existing, reload);
     this.body.replaceChildren(...parts);
+  }
+
+  // What the router learned from people's answers, and the connections reported as closed.
+  private async learningSection(revision: number): Promise<(Node | string)[]> {
+    let learning;
+    try { learning = await api.routeLearning(); } catch { return []; }
+    const parts: (Node | string)[] = [el("span", { className: "eyebrow tool-heading", textContent: "APRENDIZAJE DE RUTAS" })];
+    const negative = Object.entries(learning.feedback).filter(([key]) => key !== "positive").reduce((sum, [, count]) => sum + count, 0);
+    parts.push(el("div", { className: "tool-stats", id: "learning-stats" },
+      ...([["Rutas", String(learning.observations), "route"], ["Útiles", String(learning.feedback.positive ?? 0), "thumbs-up"], ["Por mejorar", String(negative), "thumbs-down"]] as [string, string, IconName][])
+        .map(([k, v, name]) => el("div", {}, el("strong", { textContent: v }), el("small", {}, icon(name), ` ${k}`)))));
+    parts.push(el("p", { className: "field-hint", textContent: `Un tramo cambia solo con ${learning.parameters.min_evidence} señales o más, entre ×${learning.parameters.min_multiplier} y ×${learning.parameters.max_multiplier}. La ruta «más corta» no cambia.` }));
+    if (learning.learned_paths.length) parts.push(el("ol", { className: "tool-list", id: "learning-paths" }, ...learning.learned_paths.slice(0, 6).map((path) =>
+      el("li", { className: "tool-item" }, el("span", {}, el("strong", {}, path.origin_name, icon("arrow-right", "inline-arrow"), path.destination_name),
+        el("small", { textContent: `×${path.multiplier} · ${path.evidence} señales · ${path.kind}` }))))));
+    const blocked = el("ol", { className: "tool-list", id: "blocked-paths" }, ...learning.blocked_paths.map((path) => {
+      const confirm = el("button", { type: "button", className: "text-button", textContent: "Confirmar", disabled: path.confirmed });
+      const clear = el("button", { type: "button", className: "text-button", textContent: "Liberar" });
+      confirm.addEventListener("click", () => void this.action(revision, () => api.confirmBlocked(path.path_id), "admin"));
+      clear.addEventListener("click", () => void this.action(revision, () => api.clearBlocked(path.path_id), "admin"));
+      const state = path.active ? `cerrado hasta ${path.expires_at ? new Date(path.expires_at + "Z").toLocaleDateString() : "—"}` : "en revisión";
+      return el("li", { className: "tool-item" }, el("span", {}, el("strong", {}, path.origin_name, icon("arrow-right", "inline-arrow"), path.destination_name),
+        el("small", { textContent: `${path.reports} ${path.reports === 1 ? "reporte" : "reportes"} · ${state}${path.confirmed ? " · confirmado" : ""}` })), el("span", { className: "tool-row" }, confirm, clear));
+    }));
+    if (!learning.blocked_paths.length) blocked.append(el("li", { className: "field-hint", textContent: "Ningún paso reportado como cerrado." }));
+    if (!this.isCurrent(revision)) return [];
+    parts.push(el("span", { className: "eyebrow tool-heading", textContent: "PASOS REPORTADOS" }), blocked);
+    return parts;
   }
 }

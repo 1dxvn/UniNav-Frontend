@@ -1,5 +1,6 @@
 import type { Building } from './api/types.ts';
-import { normalize } from './assistant.ts';
+import { locationQuery, normalize, searchPlaces } from './search.ts';
+import { icon as svgIcon, placeIcon } from './icons.ts';
 
 const get = <T extends HTMLElement>(id:string) => document.getElementById(id) as T;
 const name = (place:Building) => place.display_name ?? place.name;
@@ -50,6 +51,9 @@ export class LocationPicker {
     if(this.dialog.open)this.render();
   }
 
+  // Places where the avatar can be placed (connected and navigable), for the assistant's «estoy en…».
+  getPlaces():Building[] { return this.places; }
+
   setCurrent(place:Building):void {
     this.current=place;
     const label=`${name(place)} · Piso ${place.floor}`;
@@ -57,22 +61,51 @@ export class LocationPicker {
     this.trigger.title=`Tu ubicación: ${label}`;
   }
 
-  private render():void {
-    const tokens=normalize(this.search.value).split(/\s+/).filter(Boolean);
-    const places=this.places.filter(p=>(this.floor.value==='all' || p.floor===Number(this.floor.value)) &&
+  // Same search as the search bar and the assistant: typos, plurals, English, categories («un baño»),
+  // «estoy en…» phrasing and places the map lacks; plain text matches are kept after the ranked ones.
+  private matches():{places:Building[];details:Map<number,string>;note:string;suggestion:string|null} {
+    const inFloor=(p:Building)=>this.floor.value==='all' || p.floor===Number(this.floor.value);
+    const raw=this.search.value.trim(),details=new Map<number,string>();
+    if(!raw)return {places:this.places.filter(inFloor),details,note:'',suggestion:null};
+    const query=locationQuery(raw);
+    const answer=searchPlaces(query,this.places,{limit:this.places.length,origin:this.current});
+    const ranked=answer.matches.filter(m=>inFloor(m.place));
+    for(const m of ranked)if(m.via!=='name')details.set(m.place.id,m.reason);
+    const tokens=normalize(query).split(' ').filter(Boolean);
+    const literal=this.places.filter(p=>inFloor(p) && !ranked.some(m=>m.place.id===p.id) &&
       tokens.every(t=>normalize(`${name(p)} ${p.name} ${p.block_code ?? ''} Piso ${p.floor}`).includes(t)));
+    const places=[...ranked.map(m=>m.place),...literal];
+    if(!places.length && answer.missing){
+      const ask=answer.missing.ask.filter(inFloor);
+      return {places:ask,details,note:`${answer.missing.message}${ask.length ? ' Elige un lugar que veas cerca:':''}`,suggestion:null};
+    }
+    return {places,details,note:'',suggestion:places.length ? null:answer.suggestion};
+  }
+
+  private render():void {
+    const {places,details,note,suggestion}=this.matches();
     get('location-count').textContent=`${places.length} ${places.length===1 ? 'lugar':'lugares'}`;
     this.results.replaceChildren();
+    if(note){const hint=document.createElement('p');hint.className='field-hint location-note';hint.textContent=note;this.results.append(hint);}
     for(const place of places) {
       const button=document.createElement('button');button.type='button';button.className='place-option';button.disabled=this.busy;
       button.dataset.placeCode=place.code ?? String(place.id);button.setAttribute('aria-pressed',String(this.current?.id===place.id));
-      const icon=document.createElement('span');icon.className='place-icon';icon.textContent='◉';icon.setAttribute('aria-hidden','true');
+      const icon=document.createElement('span');icon.className='place-icon';icon.replaceChildren(svgIcon(placeIcon(place)));icon.setAttribute('aria-hidden','true');
       const text=document.createElement('span'),title=document.createElement('strong'),meta=document.createElement('small');
-      title.textContent=name(place);meta.textContent=`Piso ${place.floor}${place.block_code ? ` · Bloque ${place.block_code}`:''}`;
+      const detail=details.get(place.id);
+      title.textContent=name(place);meta.textContent=`Piso ${place.floor}${place.block_code ? ` · Bloque ${place.block_code}`:''}${detail ? ` · ${detail}`:''}`;
       text.append(title,meta);button.append(icon,text);
       button.addEventListener('click',()=>void this.choose(place));this.results.append(button);
     }
-    if(!places.length){const empty=document.createElement('p');empty.className='empty-state';empty.textContent='No encontramos ese lugar. Prueba otro nombre o piso.';this.results.append(empty);}
+    if(!places.length){
+      const empty=document.createElement('p');empty.className='empty-state';
+      if(suggestion){
+        const retry=document.createElement('button');retry.type='button';retry.className='text-button';retry.textContent=`Buscar «${suggestion}»`;
+        retry.addEventListener('click',()=>{this.search.value=suggestion;this.render();this.search.focus();});
+        empty.append('No encontramos ese lugar. ¿Quisiste decir ',retry,'?');
+      } else empty.textContent='No encontramos ese lugar. Escribe lo que ves cerca: un aula, un baño, la cafetería o un hall.';
+      this.results.append(empty);
+    }
   }
 
   private async choose(place:Building):Promise<void> {

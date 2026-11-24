@@ -1,4 +1,5 @@
 // Presentation only: opening a panel never moves the avatar, changes a route or reloads a model.
+import { icon } from "./icons.ts";
 export type ExplorerPanel = "places" | "directions" | "tools";
 
 function get<T extends HTMLElement>(id: string): T {
@@ -126,7 +127,7 @@ export class ExplorerShell {
     get("route-card").classList.toggle("is-compact", compact);
     get("journey-collapse").setAttribute("aria-expanded", String(!compact));
     get("journey-collapse").setAttribute("aria-label", compact ? "Ampliar tarjeta de recorrido" : "Reducir tarjeta de recorrido");
-    get("journey-collapse").textContent = compact ? "⌃" : "⌄";
+    get("journey-collapse").replaceChildren(icon(compact ? "chevron-up" : "chevron-down"));
   }
 
   private showMinimap(show: boolean): void {

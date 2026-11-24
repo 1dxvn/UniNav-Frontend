@@ -1,4 +1,5 @@
-import type { Building, BuildingUpdate, CampusPath, Floor, Health, NavigationState, NavigationTrail, PopularPlace, PopularRoute, QueuePosition, QueueStatus, RouteRequest, RouteResponse, RouteVisit, Token, Tour, TourSession, TourSummary, User, UserStats } from "./types.ts";
+import type { Building, BuildingUpdate, CampusPath, Floor, Health, NavigationState, NavigationTrail, PopularPlace, PopularRoute, QueuePosition, QueueStatus, FeedbackReason, RouteAlternative, RouteLearning, RoutePreferences, RouteRequest, RouteResponse, RouteVisit, Token, Tour, TourSession, TourSummary, User, UserStats } from "./types.ts";
+import type { PlaceGuide } from "../search.ts";
 
 import {requestErrorMessage,retrySeconds} from './errors.ts';
 
@@ -96,6 +97,17 @@ export const api = {
   floors: (): Promise<Floor[]> => request<Floor[]>("/floors"),
   calculateRoute: (body: RouteRequest): Promise<RouteResponse> =>
     request<RouteResponse>("/routes/calculate", { method: "POST", body: JSON.stringify(body) }),
+  routeAlternatives: (body: RouteRequest): Promise<RouteAlternative[]> =>
+    request<RouteAlternative[]>("/routes/alternatives", { method: "POST", body: JSON.stringify(body) }),
+  routeFeedback: (body: { observation_id: number; rating: 1 | -1; reason?: FeedbackReason; step_index?: number }): Promise<{ recorded: boolean; blocked_reported: boolean }> =>
+    request<{ recorded: boolean; blocked_reported: boolean }>("/routes/feedback", { method: "POST", body: JSON.stringify(body) }),
+  routeOutcome: (observationId: number, outcome: "arrived" | "abandoned"): Promise<void> =>
+    request<void>(`/routes/observations/${observationId}/outcome`, { method: "POST", body: JSON.stringify({ outcome }) }),
+  routePreferences: (): Promise<RoutePreferences> => request<RoutePreferences>("/routes/preferences"),
+  routeLearning: (): Promise<RouteLearning> => request<RouteLearning>("/routes/learning"),
+  confirmBlocked: (pathId: number): Promise<void> => request<void>(`/routes/blocked/${pathId}/confirm`, { method: "POST" }),
+  clearBlocked: (pathId: number): Promise<void> => request<void>(`/routes/blocked/${pathId}`, { method: "DELETE" }),
+  placeGuide: (): Promise<PlaceGuide> => request<PlaceGuide>("/campus/place-guide"),
 
   // History and statistics
   history: (limit = 10): Promise<RouteVisit[]> => request<RouteVisit[]>(`/routes/history?limit=${limit}`),

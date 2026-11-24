@@ -1,9 +1,10 @@
+import { ElevatorAssembly } from "./elevator.ts";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import type { Building, CampusPath, RouteResponse } from "../api/types.ts";
 import { FLOOR_HEIGHT, toScenePosition, WALK_SPEED } from "./coordinates.ts";
-import { advanceWalk, manualStep, nearbyStairFloors, routingStart, stairNetworks, walkSegments, type StairNetwork, type WalkSegment, type WalkWaypoint } from "./navigation.ts";
+import { advanceWalk, nearbyStairFloors, routingStart, stairNetworks, walkSegments, type StairNetwork, type WalkSegment, type WalkWaypoint } from "./navigation.ts";
 import { parseReference, referenceMatrix, transformMatrix, validateAlignment, validateModelNodes, type CampusReference } from "./modelReference.ts";
 import { modelColliders, modelCollision, modelBodyCollision, type ModelCollider } from "./modelCollision.ts";
 import { freezeModelTransforms, prepareModelPresentation, setModelTopView } from "./modelPresentation.ts";
@@ -30,6 +31,7 @@ export interface TravelUpdate {
   remaining: number;
   progress: number;
   waypoint: number;
+  elevatorStatus?: string;
 }
 interface SceneEvents {
   travel: (update: TravelUpdate) => void;
@@ -58,7 +60,6 @@ export class CampusScene {
   private destinationCode: string | undefined;
   private originCode: string | undefined;
   private readonly floorGroups = new Map<number, THREE.Group>();
-  private readonly keys = new Set<string>();
   private readonly abort = new AbortController();
   private readonly resizeObserver: ResizeObserver;
   private places: Building[] = [];
@@ -85,6 +86,8 @@ export class CampusScene {
   private state: TravelState = "idle";
   private totalLength = 0;
   private viewFloor = 0;
+  private elevatorStatus?: string;
+  private elevators?: ElevatorAssembly;
   private avatarFloor = 0;
   private frustum = 35;
   private fittedSize: { width: number; height: number } | null = null;
@@ -114,13 +117,21 @@ export class CampusScene {
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1;
-    this.renderer.domElement.setAttribute("aria-label", "Campus 3D interactivo. Usa W A S D o las flechas para caminar; arrastra para girar la vista.");
+    this.renderer.domElement.setAttribute("aria-label", "Campus 3D interactivo. Elige un destino para recorrer la ruta; arrastra para girar la vista.");
     this.renderer.domElement.tabIndex = 0;
     container.appendChild(this.renderer.domElement);
     this.roomLabels = new RoomLabels(container, place => this.events.select(place), () => this.requestRender());
     this.scene.matrixAutoUpdate = false;
     for (const group of [this.campus, this.modelGroup, this.referenceGroup]) group.matrixAutoUpdate = false;
     this.scene.background = new THREE.Color(0xe9eeeb);
+    void new GLTFLoader().loadAsync(import.meta.env.BASE_URL+"models/ascensores.glb").then(asset => {
+      if (this.abort.signal.aborted) { disposeGroup(asset.scene); return; }
+      this.elevators = new ElevatorAssembly(asset.scene);
+      this.elevators.showFloor(this.viewFloor);
+      asset.scene.visible=this.places.some(p=>p.code?.startsWith("ucc:elev-a"));
+      this.scene.add(asset.scene);
+      this.requestRender();
+    }).catch(() => { /* The route also works without the lift assembly. */ });
     this.scene.add(this.campus, this.routeGroup, this.avatar, this.referenceGroup, this.modelGroup);
     this.referenceGroup.visible = false;
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
@@ -167,25 +178,9 @@ export class CampusScene {
     const options = { signal: this.abort.signal };
     window.addEventListener("keydown", (event) => {
       if (document.querySelector("dialog[open]")) return;
-      const key = event.key.toLowerCase();
-      if (key === "escape") { this.cancel(); return; }
-      if (event.target instanceof HTMLElement && (event.target.closest("input, select, textarea, button") || event.target.isContentEditable)) return;
-      if (["w", "a", "s", "d", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(key)) {
-        event.preventDefault();
-        if (this.state !== "idle") this.cancel();
-        const manualStarting = this.keys.size === 0;
-        this.keys.add(key);
-        if (manualStarting) this.clock.getDelta();
-        this.requestRender();
-      }
+      if (event.key === "Escape") this.cancel();
     }, options);
-    window.addEventListener("keyup", (event) => {
-      if (this.keys.delete(event.key.toLowerCase())) this.emit();
-    }, options);
-    window.addEventListener("blur", () => this.keys.clear(), options);
-    window.addEventListener("focusin", () => this.keys.clear(), options);
     document.addEventListener("visibilitychange", () => {
-      this.keys.clear();
       if (document.hidden && this.state === "walking") this.pause();
       if (document.hidden && this.frame !== undefined) { cancelAnimationFrame(this.frame); this.frame = undefined; }
       if (!document.hidden) { this.clock.getDelta(); this.avatarAnimateUntil = performance.now() + 400; this.requestRender(); }
@@ -281,6 +276,7 @@ export class CampusScene {
     this.labels.clear();
     this.labelSizes.clear();
     this.places = places;
+    if(this.elevators) this.elevators.root.visible=places.some(p=>p.code?.startsWith("ucc:elev-a"));
     this.placesById.clear();
     places.forEach(place => this.placesById.set(place.id, place));
     this.legacyLabelKey = "";
@@ -333,11 +329,11 @@ export class CampusScene {
     if (places.length) this.setOrigin(places.find((place) => place.building_type === "entrance") ?? places[0]);
   }
 
-  setFloor(floor: number, fit = true, preserveKeys = false): void {
+  setFloor(floor: number, fit = true): void {
     this.overviewError = null;
-    if (!preserveKeys) this.keys.clear();
     this.overview = false;
     this.viewFloor = floor;
+    this.elevators?.showFloor(floor);
     this.renderer.shadowMap.needsUpdate = true;
     const ground = this.scene.getObjectByName("presentation-ground");
     if (ground) ground.position.y = floor * FLOOR_HEIGHT - 0.5;
@@ -411,9 +407,9 @@ export class CampusScene {
     this.state = this.waypoints.length === 1 ? "arrived" : "ready";
     this.emit();
   }
+  skipElevatorWait(): void { this.elevators?.skipWait(); }
   follow(): void {
     if (["ready", "paused"].includes(this.state)) {
-      this.keys.clear();
       if (this.viewFloor !== this.avatarFloor) this.setFloor(this.avatarFloor);
       this.state = "walking"; this.emit();
       this.clock.getDelta();
@@ -423,6 +419,8 @@ export class CampusScene {
   cancel(): void { this.clearRoute(); this.emit(); }
   clearRoute(): void {
     this.requestRender();
+    this.elevatorStatus=undefined;
+    this.elevators?.reset();
     this.routeGeneration++;
     disposeGroup(this.routeGroup); this.waypoints = []; this.index = 1; this.totalLength = 0; this.state = "idle";
     if (this.manifest) void this.syncModels().catch((error) => this.events.model("Modelo no disponible · mostrando las conexiones",false,String(error)));
@@ -453,7 +451,7 @@ export class CampusScene {
   async setOverview(enabled: boolean): Promise<void> {
     if (enabled && (!this.hasOverview() || ["ready","walking","paused"].includes(this.state))) return;
     this.overviewError = null;
-    this.overview = enabled; this.topView = false; this.keys.clear();
+    this.overview = enabled; this.topView = false;
     this.applyModels(true); this.events.view(enabled,false);
     try {
       await this.syncModels(true);
@@ -700,7 +698,7 @@ export class CampusScene {
   private emit(): void {
     this.requestRender();
     const remaining = this.remaining();
-    this.events.travel({ state: this.state, position: this.avatar.position.toArray(), floor: this.avatarFloor, remaining,
+    this.events.travel({ elevatorStatus:this.elevatorStatus, state: this.state, position: this.avatar.position.toArray(), floor: this.avatarFloor, remaining,
       progress: this.totalLength > 0 ? 1 - remaining / this.totalLength : this.state === "arrived" ? 1 : 0, waypoint: this.index });
   }
   private requestRender(): void {
@@ -717,37 +715,57 @@ export class CampusScene {
       for (let i=0;i<count && this.state==="walking";i++) {
         const target=this.waypoints[this.index];
         const direction=target.position.clone().sub(this.avatar.position);
-        const advanced=advanceWalk(this.avatar.position,this.avatarFloor,target,WALK_SPEED*delta/count);
+        const previous=this.waypoints[this.index-1];
+        const code=(point: WalkWaypoint) => this.placesById.get(point.placeId ?? -1)?.code ?? "";
+        const from=code(previous), to=code(target);
+        const car=/^ucc:elev-a([12]):p[0-5]:cabina$/;
+        const lift=to.match(car)?.[1] ?? from.match(car)?.[1];
+        const boarding=!!lift && from.endsWith(":rellano") && car.test(to);
+        const leaving=!!lift && car.test(from) && to.endsWith(":rellano");
+        if (boarding) this.elevatorStatus = this.elevators?.waiting ? `Llamando al ascensor ${lift}` : `Entra en el ascensor ${lift}`;
+        else if (target.kind==="elevator" && lift) {
+          let first=this.index;
+          while(first>1 && this.waypoints[first-1].kind==="elevator") first--;
+          const start=this.waypoints[first-1].floor;
+          let last=this.index;
+          while (this.waypoints[last+1]?.kind==="elevator") last++;
+          this.elevatorStatus=`En el ascensor ${lift} · Piso ${start} → ${this.waypoints[last].floor}`;
+          this.face(new THREE.Vector3(0,0,1),delta/count);
+        } else this.elevatorStatus=undefined;
+        if (lift && this.elevators) {
+          this.elevators.updateIndicators(lift,this.avatarFloor);
+          this.elevators.move(lift,this.avatar.position.y);
+          if (!this.elevators.beforeStep(this.index,delta/count,lift,this.avatarFloor,boarding,leaving)) continue;
+        }
+        const speed=target.kind==="elevator" ? Math.min(1.2,Math.sqrt(.04+2*Math.min(
+          previous.position.distanceTo(this.avatar.position),direction.length()))):WALK_SPEED;
+        const advanced=advanceWalk(this.avatar.position,this.avatarFloor,target,speed*delta/count);
         const stepSupport=(this.avatarFloor>=0 && this.avatarFloor<=6) ? this.supports.length>0:
           target.kind==="stairs" || target.kind==="ramp" || (target.kind==="outdoor" && this.outdoorSupports.length>0);
-        const next=stepSupport && this.getCatalog() ? supportedStep(this.avatar.position,advanced.position,target.kind==="outdoor" ? [...this.supports,...this.outdoorSupports]:this.supports,target.kind==="stairs" ? this.avatarFloor===4 && target.floor===4 ? .28:.25 : undefined,
+        // The car and sill support the avatar across the cut in the static slab.
+        const riding=target.kind==="elevator" || boarding || leaving;
+        const next=riding ? advanced.position : stepSupport && this.getCatalog() ? supportedStep(this.avatar.position,advanced.position,target.kind==="outdoor" ? [...this.supports,...this.outdoorSupports]:this.supports,target.kind==="stairs" ? this.avatarFloor===4 && target.floor===4 ? .28:.25 : undefined,
           target.kind==="stairs" && this.avatarFloor>=0 && this.avatarFloor<=6) : advanced.position;
-        if (!next || this.collides(this.avatar.position,next,target.kind)) { this.state="blocked"; this.emit(); break; }
-        this.avatar.position.copy(next); moved=true;
+        if (!next || (target.kind!=="elevator" && this.collides(this.avatar.position,next,target.kind))) { this.state="blocked"; this.emit(); break; }
+        if (target.kind==="elevator") {
+          const dy=next.y-this.avatar.position.y;
+          this.controls.target.y+=dy;
+          this.camera.position.y+=dy;
+        }
+        moved ||= target.kind!=="elevator" && next.distanceToSquared(this.avatar.position)>1e-10;
+        this.avatar.position.copy(next);
+        if (lift) this.elevators?.move(lift,next.y);
         if (direction.x*direction.x+direction.z*direction.z>0.001) this.face(direction,delta/count);
         if (advanced.reached) {
+          if (leaving && lift && this.elevators) {
+            if (!this.elevators.closeAfterExit(lift,delta/count)) continue;
+            this.elevators.reset();
+          }
           this.index++;
           if (advanced.floor!==this.avatarFloor) { this.avatarFloor=advanced.floor; this.setFloor(advanced.floor,false); }
           if (this.index>=this.waypoints.length) { this.state="arrived"; this.emit(); }
           break;
         }
-      }
-    } else if (this.keys.size && this.avatar.visible) {
-      const dx = Number(this.keys.has("d") || this.keys.has("arrowright")) - Number(this.keys.has("a") || this.keys.has("arrowleft"));
-      const dz = Number(this.keys.has("s") || this.keys.has("arrowdown")) - Number(this.keys.has("w") || this.keys.has("arrowup"));
-      const direction = new THREE.Vector3(dx, 0, dz).normalize();
-      const modelsReady=!this.getCatalog() || this.movementFloors().every((floor) => this.models?.values().some((m) => m.entry.kind!=="floor-preview" && m.entry.kind!=="exterior" && m.entry.floors.includes(floor)));
-      // Bound substeps below a tread depth, including on a slow frame. Never
-      // skip a riser or a narrow unsupported gap with one long keyboard move.
-      const count=Math.max(1,Math.ceil(WALK_SPEED*delta/0.06));
-      for (let i=0;modelsReady && i<count;i++) {
-        const next=this.avatar.position.clone().addScaledVector(direction,WALK_SPEED*delta/count);
-        const step=manualStep(this.avatar.position,next,this.segments,this.avatarFloor,
-          (from,expected,kind) => this.getCatalog() && (kind!=="outdoor" || this.outdoorSupports.length>0)
-            ? supportedStep(from,expected,kind==="outdoor" ? [...this.supports,...this.outdoorSupports]:this.supports):expected,(from,to) => this.collides(from,to));
-        if (!step) break;
-        this.avatar.position.copy(step.position); this.face(direction,delta/count); moved=true;
-        if (step.floor!==this.avatarFloor) { this.avatarFloor=step.floor; this.setFloor(step.floor,false,true); }
       }
     }
     if (this.manifest && this.movementFloors().join(",")!==this.movementModelKey) void this.syncModels().catch((error) => this.events.model("Modelo no disponible · mostrando las conexiones",false,String(error)));
@@ -768,7 +786,7 @@ export class CampusScene {
     this.lastEmission += delta;
     if (this.state === "walking" && this.lastEmission > 0.12) { this.lastEmission = 0; this.emit(); }
     this.renderer.render(this.scene, this.camera);
-    if (this.state === "walking" || this.keys.size > 0 || performance.now() < this.avatarAnimateUntil) this.requestRender();
+    if (this.state === "walking" || performance.now() < this.avatarAnimateUntil) this.requestRender();
   }
   private updateLegacyLabels(): void {
     const key = [this.viewFloor,this.namesVisible(),this.roomLabels.hasFloor(this.viewFloor),...this.camera.matrixWorld.elements,...this.camera.projectionMatrix.elements].join(",");

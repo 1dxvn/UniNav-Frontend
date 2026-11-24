@@ -12,6 +12,7 @@ export interface ModelEntry {
   binding?: { placeNames: string[]; sha256: string };
   supportNodes?: string[];
   outdoorSupportNodes?:string[];
+  modelSource?:{commit:string;path:string};
 }
 export interface ModelProfile { id:string; label:string; requiresExplicitPositions:true; models:ModelEntry[]; stairCrossings?:StairCrossing[] }
 export interface StairCrossing { connectionCode:string; originName:string; destinationName:string; source:string; planBounds?:[number,number,number,number] }
@@ -54,6 +55,9 @@ export function parseManifest(value: unknown): CampusManifest {
       !Array.isArray(entry.floors) || (entry.kind !== "exterior" && !entry.floors.length) ||
       entry.floors.some((f) => !Number.isInteger(f) || f < 0 || f > 7) || new Set(entry.floors).size !== entry.floors.length) throw new Error("Invalid or duplicate model entry.");
     ids.add(entry.id);
+    if(entry.modelSource!==undefined && (!entry.modelSource || entry.kind==="exterior" || !/^[a-f0-9]{7,40}$/.test(entry.modelSource.commit) ||
+      !/^model\/candidates\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+\.glb$/.test(entry.modelSource.path) ||
+      !/^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.glb$/.test(entry.model ?? "")))throw new Error("Candidate models need a committed source path and an explicit safe model URL.");
     if(entry.model!==undefined && entry.kind!=="exterior" && !/^models\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.glb$/.test(entry.model))throw new Error("Invalid floor model URL.");
     if (entry.supportNodes !== undefined && (entry.kind === "floor-preview" || entry.kind === "exterior" ||
       !Array.isArray(entry.supportNodes) || !entry.supportNodes.length || new Set(entry.supportNodes).size !== entry.supportNodes.length ||
@@ -95,7 +99,9 @@ export async function sha256(bytes: Uint8Array): Promise<string> {
 export async function dataFingerprint(placeNames: string[], places: Building[], paths: CampusPath[]): Promise<string> {
   const scope = new Set(placeNames), byId = new Map(places.map((place) => [place.id,place]));
   for (const name of scope) if (places.filter((place) => place.name === name).length !== 1) throw new Error(`Model binding needs one API place: ${name}.`);
-  const edges = paths.filter((edge) => scope.has(byId.get(edge.source_id)?.name ?? "") || scope.has(byId.get(edge.target_id)?.name ?? ""));
+  // Elevator hops are rides between halls, never walked on the model geometry (no support or collision check),
+  // so adding an elevator does not invalidate the reviewed walking contract of a floor model.
+  const edges = paths.filter((edge) => edge.kind !== "elevator" && (scope.has(byId.get(edge.source_id)?.name ?? "") || scope.has(byId.get(edge.target_id)?.name ?? "")));
   const names = new Set(scope);
   const connections = edges.map((edge) => {
     const a = byId.get(edge.source_id), b = byId.get(edge.target_id);

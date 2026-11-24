@@ -2,7 +2,7 @@ import "@fontsource-variable/dm-sans";
 import "@fontsource-variable/manrope";
 import "./style.css";
 import { api, ApiError } from "./api/client.ts";
-import type { Building, CampusPath, Floor, RouteResponse, User } from "./api/types.ts";
+import type { Building, CampusPath, FeedbackReason, Floor, RouteMode, RouteResponse, User } from "./api/types.ts";
 import { CampusScene, type TravelState, type TravelUpdate } from "./scene/campus.ts";
 import { resolveRoute, walkWaypoints } from "./scene/navigation.ts";
 import { toScenePosition, WALK_SPEED } from "./scene/coordinates.ts";
@@ -11,6 +11,8 @@ import { Minimap } from "./minimap.ts";
 import { CampusTools } from "./campusTools.ts";
 import { ExplorerShell } from "./explorerShell.ts";
 import { askCampus, normalize } from "./assistant.ts";
+import { searchPlaces, setPlaceGuide } from "./search.ts";
+import { icon as svgIcon, placeIcon, setLabel } from "./icons.ts";
 import {placeTypeLabel} from './placeLabels.ts';
 import {LocationPicker} from './locationPicker.ts';
 
@@ -34,6 +36,8 @@ const ui = {
   authToggle: element<HTMLButtonElement>("auth-toggle"), openLogin: element<HTMLButtonElement>("open-login"),
   session: element("session"), username: element("session-user"), initial: element("user-initial"),
   travelStatus: element("travel-status"), travelDetail: element("travel-detail"), modelStatus: element("model-status"),
+  mode: element<HTMLSelectElement>("route-mode"), stairsSuggestion: element("stairs-suggestion"), alternatives: element("route-alternatives"),
+  feedback: element("route-feedback"), voice: element<HTMLButtonElement>("route-voice"),
 };
 let buildings: Building[] = [], paths: CampusPath[] = [], floors: Floor[] = [];
 let destination: Building | undefined;
@@ -44,6 +48,27 @@ let revision = 0, loading = false, signedIn = false, registerMode = false, pendi
 let scene: CampusScene | null = null;
 let role: string | null = null;
 let loginReturnFocus: HTMLElement | null = null;
+// Route learning and guidance state: the API observation of the current route, where the walk is, voice guidance.
+let routePoints: Building[] = [];
+let observationId: number | null = null, outcomeSent = false;
+let activeStepIndex = -1, lastRemaining: number | null = null, voiceOn = false;
+const MODE_KEY = "uninav.route-mode";
+try { const saved = localStorage.getItem(MODE_KEY); if (saved === "shortest" || saved === "comfortable") ui.mode.value = saved; } catch { /* storage may be unavailable */ }
+function rememberMode(): void { try { localStorage.setItem(MODE_KEY, ui.mode.value); } catch { /* per-viewer convenience only */ } }
+function currentLocation(): Building | null { return buildings.find((place) => place.id === Number(ui.origin.value)) ?? null; }
+function formatDuration(seconds: number): string { return seconds < 90 ? `${Math.max(1, Math.round(seconds))} s` : `${Math.round(seconds / 60)} min`; }
+function speak(text: string): void {
+  try {
+    if (!voiceOn || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text.replace(/ · (\d+) m$/, ", $1 metros"));
+    utterance.lang = "es-CO";
+    window.speechSynthesis.speak(utterance);
+  } catch { /* speech is optional */ }
+}
+function make<K extends keyof HTMLElementTagNameMap>(tag: K, props: Partial<HTMLElementTagNameMap[K]> = {}, ...children: (Node | string)[]): HTMLElementTagNameMap[K] {
+  const node = document.createElement(tag); Object.assign(node, props); node.append(...children); return node;
+}
 const minimap = new Minimap(document.getElementById("minimap") as unknown as SVGSVGElement, (place) => selectDestination(place));
 const shell = new ExplorerShell(() => minimap.draw());
 const sessionEvents = new AbortController();
@@ -58,14 +83,24 @@ const tools = new CampusTools(element("campus-tools"), element<HTMLButtonElement
   routeTo: async (place) => { selectDestination(place); await calculateRoute(); },
   signedIn: () => signedIn, admin: () => role === "admin", openLogin: () => openLogin(),
   sessionExpired: () => showSession(null),
+  here: () => currentLocation(),
+  locatable: () => locationPicker.getPlaces(),
+  route: () => currentRoute ? { instructions: directions, active: activeStepIndex, remaining: lastRemaining, points: routePoints } : null,
+  avoidStairs: () => ui.avoidStairs.checked,
+  setAvoidStairs: (value) => { if (ui.avoidStairs.checked !== value) { ui.avoidStairs.checked = value; clearRoute(); } },
+  setMode: (mode) => { if (ui.mode.value !== mode) { ui.mode.value = mode; rememberMode(); clearRoute(); } },
+  locate: (place) => locateAt(place),
+  showAlternatives: () => { if (currentRoute) { ui.card.hidden = false; ui.alternatives.scrollIntoView({ block: "nearest" }); } },
 });
 
-const locationPicker = new LocationPicker(async place => {
+async function locateAt(place: Building): Promise<void> {
   if (!scene) throw new Error('El mapa todavía no está disponible.');
   clearRoute();
   ui.origin.value = String(place.id);
   await scene.locateAt(place);
-});
+  locationPicker.setCurrent(place);
+}
+const locationPicker = new LocationPicker(locateAt);
 
 function showError(target: HTMLElement, error: unknown): void {
   target.textContent = error instanceof Error ? error.message : String(error);
@@ -75,6 +110,11 @@ function showError(target: HTMLElement, error: unknown): void {
 function placeName(place: Building): string { return place.display_name ?? place.name; }
 function floorName(level: number): string { return `Piso ${level}`; }
 function clearRoute(): void {
+  // Leaving a route halfway teaches the router too (local statistics in the campus API).
+  if (observationId && !outcomeSent && ["walking", "paused"].includes(travelState)) void api.routeOutcome(observationId, "abandoned").catch(() => undefined);
+  observationId = null; outcomeSent = false; routePoints = []; activeStepIndex = -1; lastRemaining = null;
+  ui.alternatives.replaceChildren(); ui.feedback.hidden = true; ui.stairsSuggestion.hidden = true;
+  try { if (voiceOn) window.speechSynthesis?.cancel(); } catch { /* optional */ }
   revision++;
   currentRoute = null;
   directions=[];
@@ -87,7 +127,7 @@ function clearRoute(): void {
 function renderPlaces(): void {
   const query = normalize(ui.search.value);
   const selectedFloor = ui.destinationFloor.value;
-  const matches = query ? askCampus(ui.search.value, buildings, buildings.length).matches.map(match => match.place.id) : [];
+  const matches = query ? askCampus(ui.search.value, buildings, buildings.length, currentLocation()).matches.map(match => match.place.id) : [];
   const places = buildings.filter((place) => !["waypoint", "junction", "corridor", "reference"].includes(place.building_type ?? "") &&
     (selectedFloor === "all" || place.floor === Number(selectedFloor)) &&
     (!query || matches.includes(place.id) || normalize(`${placeName(place)} ${place.name} ${place.block_code ?? ""} ${place.faculty ?? ""} ${place.building_type ?? ""} ${floorName(place.floor)}`).includes(query)));
@@ -101,19 +141,22 @@ function renderPlaces(): void {
     button.setAttribute("aria-pressed", String(destination?.id === place.id));
     const icon = document.createElement("span");
     icon.className = "place-icon";
-    icon.textContent = place.building_type === "stairs" ? "↟" : place.building_type === "elevator" ? "↕" : "⌑";
+    icon.replaceChildren(svgIcon(placeIcon(place)));
     const text = document.createElement("span"), title = document.createElement("strong"), meta = document.createElement("small");
     title.textContent = placeName(place);
     meta.textContent = `${place.block_code ? `Bloque ${place.block_code} · ` : ""}${floorName(place.floor)} · ${placeTypeLabel(place.building_type)}`;
     text.append(title, meta);
-    const arrow = document.createElement("span"); arrow.className = "place-arrow"; arrow.textContent = "↗";
+    const arrow = document.createElement("span"); arrow.className = "place-arrow"; arrow.replaceChildren(svgIcon("arrow-up-right"));
     button.append(icon, text, arrow);
     button.addEventListener("click", () => selectDestination(place));
     ui.places.appendChild(button);
   }
   if (!places.length) {
     const empty = document.createElement("p"); empty.className = "empty-state";
-    empty.textContent = buildings.length ? "No encontramos ese lugar. Prueba otro nombre o piso." : "Todavía no hay lugares disponibles.";
+    const answer = query ? searchPlaces(ui.search.value, buildings) : null;
+    empty.textContent = !buildings.length ? "Todavía no hay lugares disponibles." :
+      answer?.missing ? `${answer.missing.message}${answer.missing.ask.length ? ` Puedes preguntar en: ${answer.missing.ask.map(placeName).join(", ")}.` : ""}` :
+      answer?.suggestion ? `No encontramos ese lugar. ¿Quisiste decir «${answer.suggestion}»?` : "No encontramos ese lugar. Prueba otro nombre o piso.";
     ui.places.appendChild(empty);
   }
 }
@@ -156,10 +199,16 @@ function updateTravel(update: TravelUpdate): void {
   minimap.setAvatar(update.position, update.floor);
   if (changed && update.state === "arrived" && destination) void tools.arrived(destination);
   if (changed && update.state === "arrived" && destination) locationPicker.setCurrent(destination);
-  const activeStep=activeInstruction(directions,update.waypoint),cue=directions[activeStep]?.text;
+  const activeStep=activeInstruction(directions,update.waypoint),cue=directions[activeStep]?.cue;
+  if (activeStep !== activeStepIndex && update.state === "walking" && cue) speak(cue);
+  activeStepIndex = activeStep; lastRemaining = update.remaining;
+  if (changed && update.state === "arrived" && observationId && !outcomeSent) {
+    outcomeSent = true; void api.routeOutcome(observationId, "arrived").catch(() => undefined);
+    renderFeedback(true); if (destination) speak(`Llegaste a ${placeName(destination)}`);
+  }
   const inspectingPreview = ui.modelStatus.dataset.preview === "true";
   const title: Record<TravelState, string> = {
-    idle: inspectingPreview ? "Explorando este piso" : "Listo para explorar", ready: "Tu ruta está lista", walking: "En camino", paused: "Recorrido en pausa",
+    idle: inspectingPreview ? "Explorando este piso" : "Listo para explorar", ready: "Tu ruta está lista", walking: update.elevatorStatus ?? "En camino", paused: "Recorrido en pausa",
     arrived: `Llegaste${destination ? ` a ${placeName(destination)}` : ""}`, blocked: "El paso está bloqueado",
   };
   if (changed || ui.travelStatus.textContent !== title[update.state]) ui.travelStatus.textContent = title[update.state];
@@ -169,8 +218,12 @@ function updateTravel(update: TravelUpdate): void {
     update.state === "blocked" ? "La geometría impide continuar. Puedes elegir otra ruta." :
     update.state === "arrived" ? `${floorName(update.floor)} · Elige otro lugar para seguir explorando.` :
     `${cue ? `${cue} · `:""}${update.remaining.toFixed(1)} m restantes · ${floorName(update.floor)}`;
+  element("skip-elevator").hidden = update.state !== "walking" || !update.elevatorStatus?.startsWith("Llamando");
   ui.progress.value = update.progress;
-  ui.follow.textContent = update.state === "walking" ? "Pausar Ⅱ" : update.state === "paused" ? "Continuar →" : update.state === "arrived" ? "Llegaste ✓" : "Comenzar →";
+  if (update.state === "walking") setLabel(ui.follow, "Pausar", "pause");
+  else if (update.state === "paused") setLabel(ui.follow, "Continuar", "arrow-right");
+  else if (update.state === "arrived") setLabel(ui.follow, "Llegaste", "check");
+  else setLabel(ui.follow, "Comenzar", "arrow-right");
   if (changed && update.state === "walking") shell.walking();
   ui.follow.disabled = ["idle", "arrived", "blocked"].includes(update.state);
   element<HTMLButtonElement>("campus-overview").disabled = ["ready","walking","paused"].includes(update.state);
@@ -216,7 +269,8 @@ async function loadCampus(): Promise<void> {
   ui.loading.hidden = false;
   ui.retry.hidden = true;
   try {
-    const [health, places, connections, levels] = await Promise.all([api.health(), api.buildings(), api.paths(), api.floors()]);
+    const [health, places, connections, levels, guide] = await Promise.all([api.health(), api.buildings(), api.paths(), api.floors(), api.placeGuide().catch(() => null)]);
+    setPlaceGuide(guide);
     buildings = places; paths = connections; floors = levels;
     ui.status.replaceChildren();
     const dot = document.createElement("i"); dot.className = "status-dot online";
@@ -274,10 +328,11 @@ async function calculateRoute(): Promise<void> {
   const requestRevision = revision;
   const target = destination;
   ui.calculate.disabled = true;
-  ui.calculate.textContent = "Buscando tu ruta…";
+  setLabel(ui.calculate, "Buscando tu ruta…");
   try {
     const start = scene.getRoutingStart(target.id,ui.avoidStairs.checked ? ["stairs"]:[]);
-    const route = await api.calculateRoute({ origin_id: start.place.id, destination_id: target.id, avoid: ui.avoidStairs.checked ? ["stairs"] : [] });
+    const mode: RouteMode = ui.mode.value === "shortest" ? "shortest" : "comfortable";
+    const route = await api.calculateRoute({ origin_id: start.place.id, destination_id: target.id, avoid: ui.avoidStairs.checked ? ["stairs"] : [], mode });
     if (revision !== requestRevision || !signedIn) return;
     const resolved = resolveRoute(route, buildings, paths, start.place.id, target.id);
     if(ui.avoidStairs.checked && scene.routeUsesStairs(route,start))throw new Error("Esta ruta tiene escalones. No hay un recorrido sin escaleras verificado.");
@@ -292,15 +347,22 @@ async function calculateRoute(): Promise<void> {
     const physicalDistance = resolved.slice(1).reduce((sum, place, index) => sum + toScenePosition(place).distanceTo(toScenePosition(resolved[index])), connectorLength);
     ui.distance.textContent = `${physicalDistance.toFixed(0)} m`;
     ui.title.textContent = placeName(target);
-    directions=routeInstructions(route,resolved,floorName,{distance:connectorLength,kind:start.kind ?? "corridor",floor:start.floor});
-    ui.summary.textContent = `Aprox. ${Math.max(1, Math.ceil(physicalDistance / WALK_SPEED))} s · ${directions.length} indicaciones${ui.avoidStairs.checked ? " · Sin escaleras verificadas" : ""}`;
+    directions=routeInstructions(route,resolved,floorName,{distance:connectorLength,kind:start.kind ?? "corridor",floor:start.floor},buildings);
+    routePoints = resolved; observationId = route.observation_id ?? null; outcomeSent = false;
+    const seconds = route.estimated_seconds ?? physicalDistance / WALK_SPEED;
+    const usesElevator = route.steps.some((step) => step.kind === "elevator");
+    ui.summary.textContent = `Aprox. ${formatDuration(seconds)} · ${directions.length} indicaciones${ui.avoidStairs.checked ? " · Sin escaleras verificadas" : ""}${usesElevator ? " · Usa el ascensor" : ""}`;
     ui.steps.replaceChildren(...directions.map((step) => {
       const item = document.createElement("li");
-      item.textContent = `${step.text} · ${step.distance.toFixed(1)} m`;
+      item.textContent = step.cue;
       item.dataset.firstStep=String(step.firstStep);item.dataset.lastStep=String(step.lastStep);item.dataset.kind=step.kind;item.dataset.phase=step.phase;
       return item;
     }));
     shell.routeReady();
+    renderFeedback(false);
+    void renderAlternatives(start.place.id, target.id, requestRevision);
+    void suggestStairFree(requestRevision);
+    if (directions[0]) speak(directions[0].cue);
   } catch (error) {
     if (revision !== requestRevision) return;
     clearRoute();
@@ -308,7 +370,7 @@ async function calculateRoute(): Promise<void> {
     showError(ui.routeError, error);
   } finally {
     ui.calculate.disabled = !destination;
-    ui.calculate.textContent = "Encontrar mi ruta ↗";
+    setLabel(ui.calculate, "Encontrar mi ruta", "arrow-up-right");
   }
 }
 
@@ -333,7 +395,77 @@ ui.origin.addEventListener("change", () => {
   if (place) { clearRoute(); scene?.setOrigin(place); locationPicker.setCurrent(place); }
 });
 ui.avoidStairs.addEventListener("change", clearRoute);
+ui.mode.addEventListener("change", () => { rememberMode(); clearRoute(); });
+ui.voice.hidden = !("speechSynthesis" in window);
+ui.voice.addEventListener("click", () => {
+  voiceOn = !voiceOn;
+  ui.voice.setAttribute("aria-pressed", String(voiceOn)); ui.voice.classList.toggle("active", voiceOn);
+  if (voiceOn) speak(directions[Math.max(0, activeStepIndex)]?.cue ?? "Guía por voz activada");
+  else try { window.speechSynthesis.cancel(); } catch { /* optional */ }
+});
+
+// Other routes between the same places (comfortable, shortest, without stairs), with time and metres.
+async function renderAlternatives(originId: number, destinationId: number, requestRevision: number): Promise<void> {
+  try {
+    const options = await api.routeAlternatives({ origin_id: originId, destination_id: destinationId });
+    if (revision !== requestRevision || options.length < 2) return;
+    const current = ui.avoidStairs.checked ? "no_stairs" : ui.mode.value === "shortest" ? "shortest" : "comfortable";
+    ui.alternatives.replaceChildren(make("span", { className: "field-label", textContent: "OTRAS RUTAS" }), ...options.map((option) => {
+      const chip = make("button", { type: "button", className: `route-chip${option.key === current ? " active" : ""}`,
+        textContent: `${option.label} · ${formatDuration(option.estimated_seconds)} · ${Math.round(option.distance)} m${option.uses_elevator ? " · ascensor" : ""}` });
+      chip.setAttribute("aria-pressed", String(option.key === current));
+      chip.addEventListener("click", () => {
+        if (option.key === current) return;
+        ui.avoidStairs.checked = option.avoid.includes("stairs"); ui.mode.value = option.mode; rememberMode();
+        void calculateRoute();
+      });
+      return chip;
+    }));
+  } catch { /* alternatives are optional */ }
+}
+
+// Suggest (never switch on) avoiding stairs when the person did so in most recent routes.
+async function suggestStairFree(requestRevision: number): Promise<void> {
+  if (!signedIn || ui.avoidStairs.checked) return;
+  try {
+    const preferences = await api.routePreferences();
+    if (revision !== requestRevision || !preferences.suggest_avoid_stairs) return;
+    const accept = make("button", { type: "button", className: "text-button", textContent: "Activar «Evitar escaleras»" });
+    accept.addEventListener("click", () => { ui.avoidStairs.checked = true; void calculateRoute(); });
+    ui.stairsSuggestion.replaceChildren(`Sueles evitar las escaleras (${preferences.recent_avoid_stairs} de tus últimas ${preferences.recent_routes} rutas). `, accept);
+    ui.stairsSuggestion.hidden = false;
+  } catch { /* optional */ }
+}
+
+// "Was this route good?" Each answer adjusts the router (bounded statistics on the reviewed connections).
+function renderFeedback(arrived: boolean): void {
+  if (!observationId) { ui.feedback.hidden = true; return; }
+  const id = observationId;
+  const thanks = (text: string) => ui.feedback.replaceChildren(make("p", { className: "field-hint", textContent: text }));
+  const send = async (rating: 1 | -1, reason?: FeedbackReason) => {
+    const step = directions[Math.max(0, activeStepIndex)]?.firstStep;
+    try {
+      const result = await api.routeFeedback({ observation_id: id, rating, ...(reason ? { reason } : {}),
+        ...(rating < 0 && step !== undefined && step >= 0 ? { step_index: step } : {}) });
+      thanks(rating > 0 ? "¡Gracias! UniNav recomendará más rutas como esta." :
+        result.blocked_reported ? "Gracias. Si otras personas lo confirman, UniNav evitará ese paso durante unos días." :
+        "Gracias. Lo tendremos en cuenta en las próximas rutas «más cómodas».");
+    } catch (error) { thanks(error instanceof Error ? error.message : String(error)); }
+  };
+  const up = make("button", { type: "button", className: "button button-outline" }, svgIcon("thumbs-up"), " Sí");
+  const down = make("button", { type: "button", className: "button button-outline" }, svgIcon("thumbs-down"), " No");
+  up.addEventListener("click", () => void send(1));
+  down.addEventListener("click", () => {
+    const reasons: [FeedbackReason, string][] = [["too_long", "Muy larga"], ["confusing", "Confusa"], ["crowded", "Congestionada"], ["closed", "Paso cerrado aquí"], ["other", "Otro motivo"]];
+    ui.feedback.replaceChildren(make("span", { className: "field-label", textContent: "¿QUÉ PASÓ?" }), make("div", { className: "feedback-reasons" },
+      ...reasons.map(([reason, label]) => { const chip = make("button", { type: "button", className: "route-chip", textContent: label }); chip.addEventListener("click", () => void send(-1, reason)); return chip; })));
+  });
+  ui.feedback.replaceChildren(make("span", { className: "field-label", textContent: arrived ? "¿LLEGASTE BIEN?" : "¿TE SIRVE ESTA RUTA?" }), make("div", { className: "tool-row" }, up, down),
+    make("small", { className: "field-hint", textContent: "Tu respuesta enseña a UniNav las mejores rutas." }));
+  ui.feedback.hidden = false;
+}
 ui.calculate.addEventListener("click", () => void calculateRoute());
+element("skip-elevator").addEventListener("click",()=>scene?.skipElevatorWait());
 ui.follow.addEventListener("click", () => { if (travelState === "walking") scene?.pause(); else scene?.follow(); });
 ui.cancel.addEventListener("click", clearRoute);
 ui.retry.addEventListener("click", () => void loadCampus());
@@ -360,7 +492,7 @@ ui.authToggle.addEventListener("click", () => {
   registerMode = !registerMode;
   ui.loginError.hidden = true;
   element("auth-title").textContent = registerMode ? "Tu campus empieza aquí." : "Tu campus te espera.";
-  ui.loginSubmit.textContent = registerMode ? "Crear cuenta →" : "Ingresar →";
+  setLabel(ui.loginSubmit, registerMode ? "Crear cuenta" : "Ingresar", "arrow-right");
   ui.authToggle.textContent = registerMode ? "¿Ya tienes cuenta? Ingresa" : "¿Primera vez? Crea una cuenta";
   const password = ui.loginForm.elements.namedItem("password") as HTMLInputElement;
   password.minLength = registerMode ? 6 : 1;

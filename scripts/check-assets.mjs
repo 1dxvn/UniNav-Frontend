@@ -16,6 +16,7 @@ for(const entry of [...manifest.models,...(manifest.profiles ?? []).flatMap(p=>p
   if(entry.reference)add(entry.reference,entry.referenceSha256);
   add(entry.model,entry.modelSha256);
 }
+add('models/ascensores.glb','63fdfe5ce124a56458209e7becdd5dfbdd288506cc62e5c9d7d5a1d4e6552326');
 const avatar=await readFile(resolve(root,'src/scene/avatarAsset.ts'),'utf8');
 add(avatar.match(/url:\s*"([^"]+)"/)?.[1],avatar.match(/sha256:\s*"([a-f0-9]{64})"/)?.[1]);
 for(const [path,expected] of assets){
