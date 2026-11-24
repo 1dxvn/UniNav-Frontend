@@ -1,6 +1,7 @@
 import { OrthographicCamera, Vector3 } from "three";
 import type { Building } from "../api/types.ts";
 import { orientationSymbol, presentRoomLabel, type RoomLabelDisplay } from "./roomLabelPolicy.ts";
+import { icon } from "../icons.ts";
 
 export interface RoomAnnotation {
   code: string; floor: number; text: string; shortText: string; referenceName: string;
@@ -162,7 +163,7 @@ export class RoomLabels {
     item.button.setAttribute("aria-expanded", "true");
     const { room } = item;
     const close = document.createElement("button");
-    close.type = "button"; close.className = "room-detail-close"; close.textContent = "×";
+    close.type = "button"; close.className = "room-detail-close"; close.replaceChildren(icon("close"));
     close.setAttribute("aria-label", "Cerrar detalle del recinto");
     close.addEventListener("click", () => this.close(true));
     const heading = document.createElement("h3");
